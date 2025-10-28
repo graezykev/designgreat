@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false
+  },
+  "include": [
+    "packages/**/*",
+    "scripts/**/*",
+    "eslint.config.js",
+    "commitlint.config.js",
+    "prettier.config.js",
+    "*.js",
+    "*.ts"
+  ],
+  "exclude": ["node_modules", "dist", "build", "coverage", "**/dist/**/*"]
+}

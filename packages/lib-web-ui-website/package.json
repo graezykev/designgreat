@@ -1,0 +1,22 @@
+{
+  "name": "@designgreat/lib-web-ui-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "dev": "turbo run dev --filter=@designgreat/lib-web-ui-website",
+    "build": "tsc -p ../../tsconfig.react.json",
+    "typecheck": "tsc --noEmit -p ../../tsconfig.react.json",
+    "lint": "pnpm exec eslint src --max-warnings 0",
+    "test": "pnpm exec vitest run",
+    "clean": "rm -rf dist"
+  }
+}

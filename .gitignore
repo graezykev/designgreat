@@ -1,0 +1,38 @@
+# Node dependencies
+node_modules/
+pnpm-lock.yaml
+.pnpm-store/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Build and cache directories
+dist/
+build/
+coverage/
+.turbo/
+turbo/
+.out/
+.next/
+.vite/
+*.tsbuildinfo
+
+# Temporary files
+temp/
+tmp/
+.DS_Store
+*.swp
+
+# Editor settings
+.idea/
+.vscode/
+
+# Environment files
+.env
+.env.*
+
+# Husky generated data
+.husky/_/

@@ -1,0 +1,16 @@
+{
+  "name": "@designgreat/app-service-a",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "dev": "pnpm exec node --watch src/index.ts",
+    "build": "tsc -p ../../tsconfig.library.json",
+    "typecheck": "tsc --noEmit -p ../../tsconfig.node.json",
+    "lint": "pnpm exec eslint src --max-warnings 0",
+    "test": "pnpm exec vitest run",
+    "clean": "rm -rf dist"
+  }
+}
