@@ -9,17 +9,24 @@ function getChangesetFiles(): string[] {
   return fs.readdirSync(changesetDir).filter(file => file.endsWith('.md'))
 }
 
-function getLastMergeCommit(): { prNumber: string; author: string } | undefined {
+function getLatestMergeMetadata(): { prNumber: string; author: string } | undefined {
   try {
-    const log = execSync('git log -2 --pretty=format:%s|%an').toString()
-    const match = /Merge pull request #(\d+) from .+\|(.+)/m.exec(log)
-    if (!match) return
-    return {
-      prNumber: match[1],
-      author: match[2]
+    // Use single quotes to avoid shell interpretation issues (especially in fish)
+    const output = execSync("git log -3 --pretty='%s|%an'").toString().trim()
+
+    // Example: "Merge pull request #123 from feature/login|github-actions[bot]"
+    const match = /Merge pull request #(\d+) from .+\|(.+)/m.exec(output)
+    if (!match) {
+      console.warn('⚠️ No merge commit found in latest entry.')
+      return
     }
+
+    const prNumber = match[1]
+    const author = match[2]
+
+    return { prNumber, author }
   } catch (error) {
-    console.warn('⚠️ Failed to parse last merge commit.')
+    console.error('❌ Failed to extract merge metadata:', error)
   }
 }
 
@@ -43,7 +50,7 @@ function main(): void {
   }
 
   const repo = process.env.GITHUB_REPOSITORY ?? 'your-org/your-repo'
-  const commitInfo = getLastMergeCommit()
+  const commitInfo = getLatestMergeMetadata()
   if (!commitInfo) {
     console.warn('⚠️ Could not extract PR number and author.')
     return
