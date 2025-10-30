@@ -2,6 +2,9 @@
   "name": "@designgreat/eslint-config",
   "version": "0.1.0",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./base.js",
   "exports": {
