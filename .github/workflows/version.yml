@@ -35,7 +35,7 @@ jobs:
         run: pnpm install
 
       - name: Inject metadata into changeset files
-        run: pnpm exectsx scripts/inject-changeset-metadata.ts
+        run: pnpm exec tsx scripts/inject-changeset-metadata.ts
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
 

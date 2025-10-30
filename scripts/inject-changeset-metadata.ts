@@ -11,8 +11,8 @@ function getChangesetFiles(): string[] {
 
 function getLastMergeCommit(): { prNumber: string; author: string } | undefined {
   try {
-    const log = execSync('git log -1 --pretty=format:%s|%an').toString()
-    const match = /Merge pull request #(\d+) from .+\|(.+)/.exec(log)
+    const log = execSync('git log -2 --pretty=format:%s|%an').toString()
+    const match = /Merge pull request #(\d+) from .+\|(.+)/m.exec(log)
     if (!match) return
     return {
       prNumber: match[1],
