@@ -1,0 +1,17 @@
+name: Check for Changeset
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-changeset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for changeset file
+        run: |
+          if [ -z "$(ls .changeset/*.md 2>/dev/null)" ]; then
+            echo "❌ No changeset file found. Please run 'pnpm exec changeset'."
+            exit 1
+          fi
