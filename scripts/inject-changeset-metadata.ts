@@ -1,7 +1,10 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 const changesetDir = path.resolve(__dirname, '..', '.changeset')
 
 function getChangesetFiles(): string[] {
@@ -12,7 +15,7 @@ function getChangesetFiles(): string[] {
 function getLatestMergeMetadata(): { prNumber: string; author: string } | undefined {
   try {
     // Use single quotes to avoid shell interpretation issues (especially in fish)
-    const output = execSync("git log -3 --pretty='%s|%an'").toString().trim()
+    const output = execSync("git log -4 --pretty='%s|%an'").toString().trim()
 
     // Example: "Merge pull request #123 from feature/login|github-actions[bot]"
     const match = /Merge pull request #(\d+) from .+\|(.+)/m.exec(output)
