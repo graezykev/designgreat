@@ -15,7 +15,7 @@ function getChangesetFiles(): string[] {
 function getLatestMergeMetadata(): { prNumber: string; author: string } | undefined {
   try {
     // Use single quotes to avoid shell interpretation issues (especially in fish)
-    const output = execSync("git log -4 --pretty='%s|%an'").toString().trim()
+    const output = execSync("git log -10 --pretty='%s|%an'").toString().trim()
 
     // Example: "Merge pull request #123 from feature/login|github-actions[bot]"
     const match = /Merge pull request #(\d+) from .+\|(.+)/m.exec(output)
@@ -48,15 +48,14 @@ function injectMetadata(filePath: string, prUrl: string, authorTag: string): voi
 function main(): void {
   const files = getChangesetFiles()
   if (files.length === 0) {
-    console.log('✅ No changeset files found.')
+    console.warn('⚠️ No changeset files found.')
     return
   }
 
   const repo = process.env.GITHUB_REPOSITORY ?? 'your-org/your-repo'
   const commitInfo = getLatestMergeMetadata()
   if (!commitInfo) {
-    console.warn('⚠️ Could not extract PR number and author.')
-    return
+    throw new Error('❌ Could not extract PR number and author.')
   }
 
   const prUrl = `https://github.com/${repo}/pull/${commitInfo.prNumber}`
