@@ -15,7 +15,7 @@ function getChangesetFiles(): string[] {
 function getLatestMergeMetadata(): { prNumber: string; author: string } | undefined {
   try {
     // Use single quotes to avoid shell interpretation issues (especially in fish)
-    const output = execSync("git log -n 10 --pretty='%s|%an'").toString().trim()
+    const output = execSync("git log -n 20 --pretty='%s|%an'").toString().trim()
 
     // Example: "Merge pull request #123 from feature/login|github-actions[bot]"
     const match = /Merge pull request #(\d+) from .+\|(.+)/m.exec(output)
