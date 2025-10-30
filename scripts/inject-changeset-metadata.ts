@@ -20,6 +20,8 @@ function getLatestMergeMetadata(): { prNumber: string; author: string } | undefi
     // Example: "Merge pull request #123 from feature/login|github-actions[bot]"
     const match = /Merge pull request #(\d+) from .+\|(.+)/m.exec(output)
     if (!match) {
+      console.log(output)
+      console.log(match)
       console.warn('⚠️ No merge commit found in latest entry.')
       return
     }
