@@ -21,7 +21,8 @@
     "setup": "bash scripts/setup.sh",
     "sync:eslint-deps": "pnpm exec tsx scripts/sync-eslint-deps.ts",
     "changeset": "changeset",
-    "release": "pnpm changeset version && pnpm install --no-frozen-lockfile && pnpm changeset publish"
+    "version": "pnpm changeset version",
+    "release": "pnpm install --no-frozen-lockfile && pnpm changeset publish"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": [

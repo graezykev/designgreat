@@ -13,5 +13,36 @@
 '@designgreat/shared': minor
 ---
 
-Phase 1 delivers the monorepo foundation—workspace scaffolding, shared tooling, and initial package
-shells ready for subsequent feature work.
+## Phase 1 delivers the monorepo foundation—workspace scaffolding, shared tooling, and initial package shells ready for subsequent feature work.
+
+- pnpm
+  - packages: libs, apps, node, shared
+  - peer dependencies in the package
+  - sync: eslint-deps
+- turborepo
+  - tasks: build, dev, test, lint, typecheck
+  - scripts
+- husky, commitlint, changeset
+- .nvmrc, .npmrc, .gitignore
+- .github/workflows
+- ESLint
+  - XO-style configuration
+  - custom rules: no-semicolons single-quote ...
+  - base + node + react
+  - glob patterns in workspace-globs.js
+  - markdown
+- prettier & editorconfig - compatible with ESLint
+- TS
+  - base + node + react + library
+  - typecheck scaffold for each package
+- scripts
+  - setup: install dependencies, run lint, format, typecheck, etc.
+  - clean: remove dist, node_modules, etc.
+  - sync: eslint-deps
+- infrastructure
+  - terraform
+  - kubernetes
+- docs
+  - architecture
+  - contributing
+- README.md
