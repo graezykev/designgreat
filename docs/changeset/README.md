@@ -23,8 +23,8 @@ Personal Branch → Changeset File → PR → CI Metadata Injection → Versioni
    - Bumps versions
    - Updates changelogs for each package (`CHANGELOG.md`)
    - Deletes `.changeset/*.md` files
-9. **CI runs `pnpm exec changeset publish` to publish changed packages to npm**
-10. **CI commit the changelog(s) to `main`**
+9. **CI commit the changelog(s) to `main`**
+10. **CI runs `pnpm exec changeset publish` to publish changed packages to npm**
 
 ### Best Practices
 
