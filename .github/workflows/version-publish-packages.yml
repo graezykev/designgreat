@@ -8,7 +8,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     outputs:
-      versioned: ${{ steps.versioned.outputs.versioned }}
+      versioned: ${{ steps.set-output.outputs.versioned }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -46,17 +46,18 @@ jobs:
         run: pnpm exec changeset version
 
       - name: Commit (version bump and changelog updates)
+        id: set-output
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
 
           if git diff --cached --quiet; then
-            echo "versioned=false" >> $GITHUB_OUTPUT
+            echo "versioned=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore: version packages and update changelogs"
             git push origin main --no-verify
-            echo "versioned=true" >> $GITHUB_OUTPUT
+            echo "versioned=true" >> "$GITHUB_OUTPUT"
           fi
 
   publish:
@@ -79,6 +80,14 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 9
+
+      - name: Cache PNPM store
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-store-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-${{ runner.os }}-
 
       - name: Install dependencies
         run: pnpm install
