@@ -1,4 +1,4 @@
-### Changeset Summary Template
+## Changeset Summary Template
 
 - What changed?
 - Why does it matter?
