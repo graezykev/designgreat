@@ -38,13 +38,13 @@ function getLatestMergeMetadata(): { prNumber: string; author: string } | undefi
 function injectMetadata(filePath: string, prUrl: string, authorTag: string): void {
   const content = fs.readFileSync(filePath, 'utf-8')
   if (content.includes(prUrl) && content.includes(authorTag)) {
-    console.log(`✅ ${path.basename(filePath)} already contains metadata.`)
+    console.log(`📝 ${path.basename(filePath)} already contains metadata.`)
     return
   }
 
   const updated = `${content.trim()}\n\nRelated PR: [#${prUrl.split('/').pop()}](${prUrl})\nAuthor: ${authorTag}`
   fs.writeFileSync(filePath, updated)
-  console.log(`📝 Injected metadata into ${path.basename(filePath)}`)
+  console.log(`✅ Injected metadata into ${path.basename(filePath)}`)
 }
 
 function main(): void {
