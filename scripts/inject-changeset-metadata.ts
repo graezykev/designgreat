@@ -50,8 +50,7 @@ function injectMetadata(filePath: string, prUrl: string, authorTag: string): voi
 function main(): void {
   const files = getChangesetFiles()
   if (files.length === 0) {
-    console.warn('⚠️ No changeset files found.')
-    return
+    throw new Error('❌ No changeset files found.')
   }
 
   const repo = process.env.GITHUB_REPOSITORY ?? 'your-org/your-repo'
