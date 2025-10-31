@@ -11,6 +11,6 @@
     "typecheck": "tsc --noEmit -p ../../tsconfig.node.json",
     "lint": "pnpm exec eslint src --max-warnings 0",
     "test": "pnpm exec vitest run",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist tsconfig*.tsbuildinfo"
   }
 }

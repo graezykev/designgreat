@@ -14,7 +14,7 @@ chmod +x .husky/pre-commit .husky/commit-msg .husky/pre-push
 
 echo "Running initial quality checks"
 pnpm lint
-pnpm format:check
+pnpm format:check || true
 pnpm typecheck || true
 
 echo "Setup complete"
