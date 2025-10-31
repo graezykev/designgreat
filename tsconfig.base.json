@@ -23,7 +23,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@designgreat/*": ["packages/*/src"]
+      "@designgreat/*": ["packages/*/src"],
+      "@designgreat/design-token-support": ["packages/shared/design-token-support/src/index.ts"]
     },
     "types": ["node"]
   }

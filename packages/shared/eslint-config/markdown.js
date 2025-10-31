@@ -67,7 +67,8 @@ const createMarkdownConfig = () => [
     processor: markdown.processors.markdown,
     rules: {
       'eol-last': 'off',
-      'no-trailing-spaces': 'off'
+      'no-trailing-spaces': 'off',
+      '@typescript-eslint/no-unused-vars': 'off'
     }
   },
   {
@@ -78,7 +79,10 @@ const createMarkdownConfig = () => [
         project: false
       }
     },
-    rules: Object.fromEntries(typeAwareRulesToDisable.map((rule) => [rule, 'off']))
+    rules: {
+      ...Object.fromEntries(typeAwareRulesToDisable.map((rule) => [rule, 'off'])),
+      '@typescript-eslint/no-unused-vars': 'off'
+    }
   }
 ]
 

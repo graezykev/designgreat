@@ -32,6 +32,7 @@ function getLatestMergeMetadata(): { prNumber: string; author: string } | undefi
     return { prNumber, author }
   } catch (error) {
     console.error('❌ Failed to extract merge metadata:', error)
+    return undefined
   }
 }
 

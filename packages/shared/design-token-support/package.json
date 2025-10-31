@@ -1,0 +1,33 @@
+{
+  "name": "@designgreat/design-token-support",
+  "version": "0.1.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "pnpm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "pnpm exec eslint . --max-warnings 0",
+    "test": "pnpm exec vitest run",
+    "clean": "rm -rf dist tsconfig*.tsbuildinfo"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@designgreat/lib-web-ui-design-token": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^1.5.0"
+  }
+}

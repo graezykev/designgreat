@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "../..",
+    "outDir": "./dist",
+    "paths": {
+      "@designgreat/lib-web-ui-design-token": ["../../lib-web-ui-design-token/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*", "vitest.config.ts", "../../lib-web-ui-design-token/src/**/*"],
+  "exclude": ["dist", "build"]
+}

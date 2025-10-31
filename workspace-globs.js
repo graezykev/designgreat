@@ -10,6 +10,7 @@ export const nodeWorkspaceGlobs = [
   'infrastructure/**/*.{js,ts}',
   'packages/app-service-*/**/*.{js,ts}',
   'packages/app-service-serverless-a/**/*.{js,ts}',
+  'packages/**/scripts/**/*.{js,ts,mjs,cjs}',
   '*.config.{js,ts,mjs,cjs}',
   'packages/**/eslint.config.{js,ts}'
 ]

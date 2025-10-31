@@ -37,4 +37,7 @@ for file in "${files[@]}"; do
   find packages -type f -name "$file" -delete
 done
 
+# Remove TypeScript incremental build metadata across the workspace
+find . -type f -name "*.tsbuildinfo" -delete
+
 echo "Workspace cleaned"
