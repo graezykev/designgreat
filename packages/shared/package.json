@@ -1,5 +1,5 @@
 {
-  "name": "@designgreat/app-web-mobile-core",
+  "name": "@designgreat/shared",
   "version": "0.2.0",
   "private": true,
   "type": "module",
@@ -12,11 +12,10 @@
     }
   },
   "scripts": {
-    "dev": "turbo run dev --filter=@designgreat/app-web-mobile-core",
-    "build": "tsc -p ../../tsconfig.react.json",
-    "typecheck": "tsc --noEmit -p ../../tsconfig.react.json",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "pnpm exec eslint src --max-warnings 0",
     "test": "pnpm exec vitest run",
-    "clean": "rm -rf dist tsconfig*.tsbuildinfo"
+    "clean": "rm -rf dist"
   }
 }
