@@ -43,7 +43,7 @@ function injectMetadata(filePath: string, prUrl: string, authorTag: string): voi
     return
   }
 
-  const updated = `${content.trim()}\n\nRelated PR: [#${prUrl.split('/').pop()}](${prUrl})\nAuthor: ${authorTag}`
+  const updated = `${content.trim()}\n\n**Related PR:** [#${prUrl.split('/').pop()}](${prUrl})\n\n**Author:** ${authorTag}`
   fs.writeFileSync(filePath, updated)
   console.log(`✅ Injected metadata into ${path.basename(filePath)}`)
 }
