@@ -1,5 +1,21 @@
 # @designgreat/lib-web-ui-design-token
 
+## 0.3.1
+
+### Patch Changes
+
+- 12e545c: ## Font Download Optimization
+  - **What changed?**
+    - 1. Prebuild script now skips downloading Roboto assets when the font file already exists.
+  - **Why does it matter?**
+    - 1. Prevents unnecessary network calls and speeds up repeated token builds.
+  - **What's next?**
+    - 1. Monitor build logs to ensure cached fonts remain valid across theme updates.
+
+  **Related PR:** [#4](https://github.com/graezykev/designgreat/pull/4)
+
+  **Author:** @chunman-yeung
+
 ## 0.3.0
 
 ### Minor Changes
