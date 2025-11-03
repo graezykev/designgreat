@@ -89,7 +89,9 @@ async function downloadFromURL(url, filePath) {
     const resolvedPath = `${filePath}${extensionMatch ? extensionMatch[0] : ''}`
 
     if (fs.existsSync(resolvedPath)) {
-      fs.unlinkSync(resolvedPath)
+      console.log(`[design-token-support] Skipping download, font already exists: ${path.basename(resolvedPath)}`)
+      resolve()
+      return
     }
 
     const requestUrl = new URL(url)

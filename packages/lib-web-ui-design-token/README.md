@@ -31,6 +31,20 @@ TypeScript runtime that downstream packages consume.
 5. Commit regenerated artifacts (`dist/**`, `src/generated/themes.ts`, copied fonts) alongside the
    source changes.
 
+## Style Dictionary Configuration
+
+- **Config entry point:** `scripts/style-dictionary/config.js` extends Style Dictionary v5 with
+  custom transforms (gradients, alpha blending, typography shorthands, asset URLs).
+- **Execution pipeline:** `scripts/style-dictionary/prebuild-download-fonts.js`,
+  `build-style-dictionary.js`, and `post-build-export.js` run sequentially to download fonts, build
+  themed outputs (`dist/css`, `dist/jsts`, `dist/json`), and emit `src/generated/themes.ts`.
+- **Module loading:** `scripts/style-dictionary/load-style-dictionary.js` resolves the local Style
+  Dictionary dependency before executing the custom config.
+- **Themes:** The build currently targets `light` and `dark` sequentially to keep output ordering
+  deterministic and to surface naming collisions emitted by Style Dictionary warnings.
+- **When to regenerate:** Run `pnpm --filter @designgreat/lib-web-ui-design-token build` whenever
+  files under `src/tokens/**` change so all artifacts (CSS, JS/TS, fonts) remain in sync.
+
 ## Validation & Testing
 
 - `pnpm --filter @designgreat/lib-web-ui-design-token test` – verifies runtime helpers and

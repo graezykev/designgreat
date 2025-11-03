@@ -188,13 +188,13 @@ Each component should include:
 
 #### 3.3 Storybook Setup
 
-- Install and configure Storybook 7+ for React
+- Install and configure Storybook v10+ for React
 - Create stories for all three components with:
   - All variants and states
   - Interactive controls
   - Accessibility addon
   - Design token documentation
-- Configure Storybook to work with TailwindCSS and design tokens
+- Configure Storybook to work with TailwindCSS v4 and design tokens
 - Set up Storybook build for deployment
 
 #### 3.4 Testing Infrastructure
