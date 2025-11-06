@@ -2,6 +2,7 @@ import { getThemeClassName } from '@designgreat/design-token-support'
 import { light } from '@designgreat/lib-web-ui-design-token'
 import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
+import type { PluginCreator } from 'tailwindcss/types/config'
 
 const DARK_THEME_CLASS = getThemeClassName('dark')
 
@@ -12,6 +13,10 @@ const fontFamilyScale = flattenTokenValues(light['font-family'] ?? {}, ['font-fa
 const fontWeightScale = flattenTokenValues(light['font-weight'] ?? {}, ['font-weight'])
 const lineHeightScale = flattenTokenValues(light.number?.['line-height'] ?? {}, ['number', 'line-height'])
 const letterSpacingScale = flattenTokenValues(light['letter-spacing'] ?? {}, ['letter-spacing'])
+
+const addThemeVariant: PluginCreator = ({ addVariant }) => {
+  addVariant('theme-dark', `&:where(.${DARK_THEME_CLASS} &)` as const)
+}
 
 const config: Config = {
   darkMode: 'class',
@@ -31,11 +36,7 @@ const config: Config = {
       letterSpacing: letterSpacingScale
     }
   },
-  plugins: [
-    plugin(({ addVariant }) => {
-      addVariant('theme-dark', `&:where(.${DARK_THEME_CLASS} &)` as const)
-    })
-  ]
+  plugins: [plugin(addThemeVariant)]
 }
 
 export default config
