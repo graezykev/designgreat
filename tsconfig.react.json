@@ -4,6 +4,8 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "jsx": "react-jsx",
     "types": ["node", "jest"],
+    "typeRoots": ["./node_modules/@types", "./packages/lib-web-ui/node_modules/@types"],
+    "allowImportingTsExtensions": true,
     "noEmit": true
   },
   "include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.js", "packages/**/*.jsx"],

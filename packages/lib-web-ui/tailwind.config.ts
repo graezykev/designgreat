@@ -2,9 +2,15 @@ import { getThemeClassName } from '@designgreat/design-token-support'
 import { light } from '@designgreat/lib-web-ui-design-token'
 import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
-import type { PluginCreator } from 'tailwindcss/types/config'
 
 const DARK_THEME_CLASS = getThemeClassName('dark')
+
+type TailwindPluginApi = {
+  addVariant: (
+    name: string,
+    definition: string | string[] | (() => string) | Array<() => string>
+  ) => void
+}
 
 const colorUtilities = flattenColorVars(light.color, ['color'])
 const spacingScale = flattenTokenValues(light.spacing, ['spacing'])
@@ -14,7 +20,7 @@ const fontWeightScale = flattenTokenValues(light['font-weight'] ?? {}, ['font-we
 const lineHeightScale = flattenTokenValues(light.number?.['line-height'] ?? {}, ['number', 'line-height'])
 const letterSpacingScale = flattenTokenValues(light['letter-spacing'] ?? {}, ['letter-spacing'])
 
-const addThemeVariant: PluginCreator = ({ addVariant }) => {
+const addThemeVariant = ({ addVariant }: TailwindPluginApi): void => {
   addVariant('theme-dark', `&:where(.${DARK_THEME_CLASS} &)` as const)
 }
 

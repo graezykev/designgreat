@@ -2,6 +2,7 @@ import { createThemeStyles, getThemeClassName, listThemeNames } from '@designgre
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { format } from 'prettier'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,10 +26,11 @@ async function ensureThemeStyles(): Promise<void> {
     )
     .join('\n\n')
 
-  const fileContents = `@layer base {\n${indentedLayers}\n}\n`
   const outputPath = path.join(stylesDir, 'designgreat-theme.css')
+  const fileContents = `@layer base {\n${indentedLayers}\n}\n`
+  const formattedContents = await format(fileContents, { filepath: outputPath })
 
-  await writeFile(outputPath, fileContents, 'utf8')
+  await writeFile(outputPath, formattedContents, 'utf8')
 }
 
 void ensureThemeStyles()

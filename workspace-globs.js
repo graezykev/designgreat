@@ -22,5 +22,6 @@ export const devDependencyGlobs = [
   '**/*.setup.[jt]s?(x)',
   '**/*.stories.*',
   'scripts/**',
+  'packages/**/scripts/**',
   'packages/shared/eslint-config/**'
 ]
