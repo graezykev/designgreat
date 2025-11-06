@@ -8,7 +8,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     outputs:
-      versioned: ${{ steps.set-output.outputs.versioned }}
+      versioned: ${{ steps.commit-version.outputs.versioned }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -38,15 +38,19 @@ jobs:
         run: pnpm install
 
       - name: Inject metadata into changeset files
+        id: inject-metadata
+        continue-on-error: true
         run: pnpm exec tsx scripts/inject-changeset-metadata.ts
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Version (bumps versions, updates changelogs, deletes .changeset/*.md)
+        if: steps.inject-metadata.outcome == 'success'
         run: pnpm exec changeset version
 
       - name: Commit (version bump and changelog updates)
-        id: set-output
+        id: commit-version
+        if: steps.inject-metadata.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -59,6 +63,10 @@ jobs:
             git push origin main --no-verify
             echo "versioned=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Skip due to metadata injection failure
+        if: steps.inject-metadata.outcome != 'success'
+        run: echo "Metadata injection failed; skipping versioning steps."
 
   publish:
     needs: version
