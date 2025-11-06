@@ -19,7 +19,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "pnpm exec eslint . --max-warnings 0",
     "test": "pnpm exec vitest run",
-    "clean": "rm -rf dist tsconfig*.tsbuildinfo"
+    "clean": "rm -rf dist tsconfig*.tsbuildinfo",
+    "prepare": "pnpm run build || (echo \"ERROR: This package must be installed without --prod\" && exit 1)"
   },
   "files": [
     "dist"

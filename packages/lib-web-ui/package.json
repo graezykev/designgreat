@@ -36,7 +36,8 @@
     "test": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --runInBand --config jest.config.ts",
     "test:watch": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --watch --config jest.config.ts",
     "coverage": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --config jest.config.ts --coverage",
-    "prepare": "pnpm run generate:theme"
+    "prepare": "pnpm run generate:theme",
+    "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
     "@designgreat/design-token-support": "workspace:*",
@@ -57,8 +58,8 @@
     "@storybook/blocks": "^8.1.0",
     "@storybook/react": "^8.1.0",
     "@storybook/react-vite": "^8.6.14",
-    "@testing-library/react": "^15.0.0",
     "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.2.45",
@@ -69,6 +70,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.38",
+    "prettier": "^3.3.0",
     "react-icons": "^5",
     "storybook": "^8.1.0",
     "tailwindcss": "^3.4.3",

@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.react.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "types": ["node", "jest"],
     "paths": {
       "@designgreat/lib-web-ui": ["./src"],
       "@designgreat/lib-web-ui/*": ["./src/*"]
@@ -16,6 +16,8 @@
     "vite.config.ts",
     "postcss.config.ts",
     "jest.config.ts",
-    "jest.setup.ts"
-  ]
+    "jest.setup.ts",
+    "types/**/*.d.ts"
+  ],
+  "exclude": ["node_modules", "dist", "build"]
 }

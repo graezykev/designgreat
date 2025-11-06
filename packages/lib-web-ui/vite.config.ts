@@ -2,7 +2,7 @@ import react from '@vitejs/plugin-react'
 import path from 'node:path'
 import { defineConfig } from 'vite'
 
-import postcssConfig from './postcss.config'
+import postcssConfig from './postcss.config.ts'
 
 const resolvePath = (...segments: string[]): string =>
   path.resolve(__dirname, ...segments)

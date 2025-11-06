@@ -5,6 +5,13 @@ import plugin from 'tailwindcss/plugin'
 
 const DARK_THEME_CLASS = getThemeClassName('dark')
 
+type TailwindPluginApi = {
+  addVariant: (
+    name: string,
+    definition: string | string[] | (() => string) | Array<() => string>
+  ) => void
+}
+
 const colorUtilities = flattenColorVars(light.color, ['color'])
 const spacingScale = flattenTokenValues(light.spacing, ['spacing'])
 const fontSizeScale = flattenTokenValues(light.size?.font ?? {}, ['size', 'font'])
@@ -12,6 +19,10 @@ const fontFamilyScale = flattenTokenValues(light['font-family'] ?? {}, ['font-fa
 const fontWeightScale = flattenTokenValues(light['font-weight'] ?? {}, ['font-weight'])
 const lineHeightScale = flattenTokenValues(light.number?.['line-height'] ?? {}, ['number', 'line-height'])
 const letterSpacingScale = flattenTokenValues(light['letter-spacing'] ?? {}, ['letter-spacing'])
+
+const addThemeVariant = ({ addVariant }: TailwindPluginApi): void => {
+  addVariant('theme-dark', `&:where(.${DARK_THEME_CLASS} &)` as const)
+}
 
 const config: Config = {
   darkMode: 'class',
@@ -31,11 +42,7 @@ const config: Config = {
       letterSpacing: letterSpacingScale
     }
   },
-  plugins: [
-    plugin(({ addVariant }) => {
-      addVariant('theme-dark', `&:where(.${DARK_THEME_CLASS} &)` as const)
-    })
-  ]
+  plugins: [plugin(addThemeVariant)]
 }
 
 export default config
