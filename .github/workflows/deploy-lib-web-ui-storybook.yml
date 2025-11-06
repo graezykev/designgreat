@@ -81,7 +81,7 @@ jobs:
 
       - name: Skip deployment (no relevant changes)
         if: steps.changes.outputs.changed != 'true'
-        run: echo "No lib-web-ui changes detected; skipping Storybook deployment."
+        run: echo "No lib-web-ui changes detected, skipping Storybook deployment."
 
   deploy:
     name: Deploy to GitHub Pages
