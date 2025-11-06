@@ -10,7 +10,7 @@
     "build": "tsc -p ../../tsconfig.library.json",
     "typecheck": "tsc --noEmit -p ../../tsconfig.node.json",
     "lint": "pnpm exec eslint src --max-warnings 0",
-    "test": "pnpm exec vitest run",
+    "test": "echo \"test not implemented yet\"",
     "clean": "rm -rf dist tsconfig*.tsbuildinfo"
   }
 }

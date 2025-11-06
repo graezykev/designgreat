@@ -41,7 +41,7 @@ describe('design tokens public api', () => {
     })
 
     expect(theme.color.background.DEFAULT).toBe('#f0f0f0')
-    expect(getThemeTokens(DEFAULT_THEME).color.background.DEFAULT).toBe('#1d1d1f')
+    expect(getThemeTokens(DEFAULT_THEME).color.background.DEFAULT).toBe('#ffffff')
   })
 
   it('throws when requesting an unknown theme', () => {

@@ -138,33 +138,33 @@ export default {
         DEFAULT: {
           value: "{color.text.input.DEFAULT}", // same to input text
           type: 'color'
+        },
+        left: {
+          value: "{color.text.label.DEFAULT}",
+          type: 'color'
+        },
+        above: {
+          value: "{color.text.label.DEFAULT}",
+          type: 'color'
+        },
+        'inside-border': {
+          value: "{color.text.label.DEFAULT}",
+          type: 'color'
+        },
+        'checkbox-radio': {
+          value: "{color.text.label.DEFAULT}",
+          type: 'color'
+        },
+        below: {
+          value: "{color.accent.neutral.subtle}",
+          type: 'color'
+        },
+        'inside-input': { // same to placeholder
+          value: "{color.text.placeholder.DEFAULT}",
+          type: 'color'
         }
       },
-      'label.left': {
-        value: "{color.text.label.DEFAULT}",
-        type: 'color'
-      },
-      'label.above': {
-        value: "{color.text.label.DEFAULT}",
-        type: 'color'
-      },
-      'label.inside.border': {
-        value: "{color.text.label.DEFAULT}",
-        type: 'color'
-      },
-      'label.checkbox.radio': {
-        value: "{color.text.label.DEFAULT}",
-        type: 'color'
-      },
-      'label.below': {
-        value: "{color.accent.neutral.subtle}",
-        type: 'color'
-      },
-      'label.inside.input': { // same to placeholder
-        value: "{color.text.placeholder.DEFAULT}",
-        type: 'color'
-      },
-      'placeholder': {
+      placeholder: {
         DEFAULT: {
           value: "{color.accent.neutral.subtler}",
           type: 'color'

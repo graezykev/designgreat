@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": false,
     "moduleResolution": "node16",
     "module": "Node16"
   },

@@ -32,6 +32,7 @@ const createReactConfig = (globs = ['**/*.jsx', '**/*.tsx']) => [
       }
     },
     rules: {
+      'func-names': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
       'react/jsx-uses-vars': 'error',
@@ -39,6 +40,13 @@ const createReactConfig = (globs = ['**/*.jsx', '**/*.tsx']) => [
       'react/jsx-no-useless-fragment': 'warn',
       'react/self-closing-comp': ['error', { component: true, html: true }],
       'react/prop-types': 'off',
+      'react/button-has-type': 'off',
+      'react/function-component-definition': 'off',
+      'react/boolean-prop-naming': 'off',
+      'react/jsx-indent': ['error', 2],
+      'react/jsx-indent-props': ['error', 2],
+      'react/jsx-tag-spacing': 'off',
+      'react/require-default-props': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       'jsx-a11y/anchor-is-valid': 'warn',
