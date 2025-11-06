@@ -1,4 +1,8 @@
-"@designgreat/lib-web-ui": minor **Phase 2: Token-driven Tailwind adoption**
+---
+'@designgreat/lib-web-ui': minor
+---
+
+**Phase 2: Token-driven Tailwind adoption**
 
 - 1. Map design tokens directly to Tailwind classes (`bg-color-background-button-default`,
      `px-spacing-11`, etc.) so components stay alias-free.
