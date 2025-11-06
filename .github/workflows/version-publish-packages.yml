@@ -3,28 +3,42 @@ name: Version and Publish Packages
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      run_publish_only:
+        description: 'Skip versioning steps and trigger publish job only'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   version:
     runs-on: ubuntu-latest
     outputs:
-      versioned: ${{ steps.commit-version.outputs.versioned }}
+      versioned: ${{ steps.commit-version.outputs.versioned || steps.publish-only.outputs.versioned }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Set publish-only output
+        id: publish-only
+        if: github.event_name == 'workflow_dispatch' && inputs.run_publish_only == true
+        run: echo "versioned=true" >> "$GITHUB_OUTPUT"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
+        if: github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
         with:
           version: 9
+        if: github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true
 
       - name: Cache PNPM store
         uses: actions/cache@v3
@@ -33,24 +47,27 @@ jobs:
           key: pnpm-store-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-store-${{ runner.os }}-
+        if: github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true
 
       - name: Install dependencies
+        if: github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true
         run: pnpm install
 
       - name: Inject metadata into changeset files
         id: inject-metadata
         continue-on-error: true
+        if: github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true
         run: pnpm exec tsx scripts/inject-changeset-metadata.ts
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Version (bumps versions, updates changelogs, deletes .changeset/*.md)
-        if: steps.inject-metadata.outcome == 'success'
+        if: (github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true) && steps.inject-metadata.outcome == 'success'
         run: pnpm exec changeset version
 
       - name: Commit (version bump and changelog updates)
         id: commit-version
-        if: steps.inject-metadata.outcome == 'success'
+        if: (github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true) && steps.inject-metadata.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -65,7 +82,7 @@ jobs:
           fi
 
       - name: Skip due to metadata injection failure
-        if: steps.inject-metadata.outcome != 'success'
+        if: (github.event_name != 'workflow_dispatch' || inputs.run_publish_only != true) && steps.inject-metadata.outcome != 'success'
         run: echo "Metadata injection failed; skipping versioning steps."
 
   publish:
