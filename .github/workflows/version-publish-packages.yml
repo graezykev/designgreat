@@ -105,6 +105,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build dependent packages
+        run: pnpm build
+
       - name: Publish packages
         run: pnpm exec changeset publish
         env:
