@@ -53,8 +53,7 @@ export const defaultDevDependencyGlobs = [
   '**/__tests__/**',
   '**/?(*.)+(test|spec).[jt]s?(x)',
   '**/*.config.[jt]s?(x)',
-  '**/*.setup.[jt]s?(x)',
-  '**/*.stories.*'
+  '**/*.setup.[jt]s?(x)'
 ]
 
 export const createBaseConfig = ({ devDependencyGlobs = [] } = {}) => {

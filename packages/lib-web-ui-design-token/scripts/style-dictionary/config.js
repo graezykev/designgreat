@@ -297,7 +297,12 @@ function registerColorTransform(StyleDictionary, theme) {
           darkestLightness = 0.05,
           lightestLightness = 0.95
         } = token.gradientConfig
-        const rst = generateColorShades(colorName, token.value, totalShades, defaultShade, darkestLightness, lightestLightness)
+        const rst = generateColorShades(colorName, token.value, {
+          totalShades,
+          defaultShade,
+          darkestLightness,
+          lightestLightness
+        })
         gradients = rst.gradients
         return gradients[gradientLevel]
       }

@@ -19,6 +19,7 @@ turbo/
 .next/
 .vite/
 *.tsbuildinfo
+storybook-static/
 
 # Temporary files
 temp/

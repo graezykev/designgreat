@@ -19,56 +19,56 @@ export const light = {
   "color": {
     "accent": {
       "grey": {
-        "1": "#f2f2f3",
-        "2": "#cdcdd0",
-        "3": "#a9a9ae",
-        "4": "#84848c",
-        "5": "#616168",
-        "6": "#3f3f44",
-        "7": "#1d1d1f",
-        "8": "#171719",
-        "9": "#121213",
-        "10": "#0c0c0d",
+        "1": "#ffffff",
+        "2": "#e8e8e9",
+        "3": "#d0d0d3",
+        "4": "#b9b9be",
+        "5": "#a2a2a8",
+        "6": "#8b8b92",
+        "7": "#74747c",
+        "8": "#5e5e65",
+        "9": "#48484d",
+        "10": "#333336",
         "11": "#1d1d1f",
-        "12": "#1d1d1f",
-        "bold": "#171719",
+        "12": "#0c0c0d",
+        "bold": "#0c0c0d",
         "DEFAULT": "#1d1d1f",
-        "subtle": "#3f3f44",
-        "subtler": "#616168",
-        "subtlest": "#84848c",
-        "low": "#a9a9ae",
-        "lower": "#cdcdd0",
-        "lowest": "#f2f2f3",
-        "dull": "#1d1d1f",
-        "duller": "#1d1d1f",
-        "dullest": "#1d1d1f",
-        "silent": "#1d1d1f"
+        "subtle": "#333336",
+        "subtler": "#48484d",
+        "subtlest": "#5e5e65",
+        "low": "#74747c",
+        "lower": "#8b8b92",
+        "lowest": "#a2a2a8",
+        "dull": "#b9b9be",
+        "duller": "#d0d0d3",
+        "dullest": "#e8e8e9",
+        "silent": "#ffffff"
       },
       "neutral": {
-        "1": "#f2f2f3",
-        "2": "#cdcdd0",
-        "3": "#a9a9ae",
-        "4": "#84848c",
-        "5": "#616168",
-        "6": "#3f3f44",
-        "7": "#1d1d1f",
-        "8": "#171719",
-        "9": "#121213",
-        "10": "#0c0c0d",
+        "1": "#ffffff",
+        "2": "#e8e8e9",
+        "3": "#d0d0d3",
+        "4": "#b9b9be",
+        "5": "#a2a2a8",
+        "6": "#8b8b92",
+        "7": "#74747c",
+        "8": "#5e5e65",
+        "9": "#48484d",
+        "10": "#333336",
         "11": "#1d1d1f",
-        "12": "#1d1d1f",
-        "bold": "#171719",
+        "12": "#0c0c0d",
+        "bold": "#0c0c0d",
         "DEFAULT": "#1d1d1f",
-        "subtle": "#3f3f44",
-        "subtler": "#616168",
-        "subtlest": "#84848c",
-        "low": "#a9a9ae",
-        "lower": "#cdcdd0",
-        "lowest": "#f2f2f3",
-        "dull": "#1d1d1f",
-        "duller": "#1d1d1f",
-        "dullest": "#1d1d1f",
-        "silent": "#1d1d1f"
+        "subtle": "#333336",
+        "subtler": "#48484d",
+        "subtlest": "#5e5e65",
+        "low": "#74747c",
+        "lower": "#8b8b92",
+        "lowest": "#a2a2a8",
+        "dull": "#b9b9be",
+        "duller": "#d0d0d3",
+        "dullest": "#e8e8e9",
+        "silent": "#ffffff"
       },
       "red": {
         "1": "#fbebea",
@@ -471,10 +471,10 @@ export const light = {
       }
     },
     "background": {
-      "boldest": "#1d1d1f",
-      "bolder": "#1d1d1f",
-      "bold": "#1d1d1f",
-      "DEFAULT": "#1d1d1f",
+      "boldest": "#b9b9be",
+      "bolder": "#d0d0d3",
+      "bold": "#e8e8e9",
+      "DEFAULT": "#ffffff",
       "information": "#0055cc",
       "discover": "#efedf7",
       "success": "#ebf9f3",
@@ -514,25 +514,25 @@ export const light = {
       },
       "select": {
         "interaction": {
-          "hover": "#1d1d1f",
-          "active": "#1d1d1f"
+          "hover": "#d0d0d3",
+          "active": "#b9b9be"
         },
         "state": {
           "opened": "#599effb3"
         },
-        "arrow": "#1d1d1f"
+        "arrow": "#ffffff"
       },
       "option": {
         "interaction": {
-          "hover": "#1d1d1f",
-          "active": "#1d1d1f"
+          "hover": "#e8e8e9",
+          "active": "#d0d0d3"
         }
       },
       "checkbox": {
         "state": {
           "checked": "#0055cc"
         },
-        "checkmark": "#1d1d1f"
+        "checkmark": "#ffffff"
       },
       "radio": {
         "checkmark": "#0055cc"
@@ -543,7 +543,7 @@ export const light = {
       "nav": {
         "DEFAULT": {
           "interaction": {
-            "hover": "#1d1d1f"
+            "hover": "#e8e8e9"
           },
           "state": {
             "activated": "#599effb3"
@@ -552,15 +552,21 @@ export const light = {
       }
     },
     "border": {
-      "inverse": "#1d1d1f",
-      "bold": "#616168",
+      "inverse": "#ffffff",
+      "bold": "#48484d",
       "DEFAULT": "#1d1d1f7d",
       "subtle": "#1d1d1f4f",
       "information": "#0055cc",
       "discover": "#efedf7",
-      "success": "#ebf9f3",
+      "success": {
+        "DEFAULT": "#ebf9f3",
+        "bold": "#216e4e"
+      },
       "warning": "#fff1e5",
-      "error": "#fbebea",
+      "error": {
+        "DEFAULT": "#fbebea",
+        "bold": "#ae2e24"
+      },
       "button": {
         "interaction": {
           "hover": "#003c90",
@@ -638,22 +644,22 @@ export const light = {
       }
     },
     "icon": {
-      "inverse": "#1d1d1f",
-      "bold": "#171719",
+      "inverse": "#ffffff",
+      "bold": "#0c0c0d",
       "DEFAULT": "#1d1d1f",
-      "subtle": "#3f3f44",
-      "subtler": "#616168",
-      "subtlest": "#84848c",
+      "subtle": "#333336",
+      "subtler": "#48484d",
+      "subtlest": "#5e5e65",
       "link": {
         "DEFAULT": "#0055cc"
       },
       "nav": {
         "DEFAULT": "#1d1d1f",
         "secondary": {
-          "DEFAULT": "#3f3f44"
+          "DEFAULT": "#333336"
         },
         "tertiary": {
-          "DEFAULT": "#616168"
+          "DEFAULT": "#48484d"
         }
       },
       "information": "#0055cc",
@@ -665,17 +671,17 @@ export const light = {
     "text": {
       "option": {
         "interaction": {
-          "hover": "#1d1d1f"
+          "hover": "#ffffff"
         },
         "DEFAULT": "#1d1d1f"
       },
       "button": {
         "wireframe": {
           "interaction": {
-            "hover": "#1d1d1f",
-            "focus": "#1d1d1f",
-            "focus-visible": "#1d1d1f",
-            "active": "#1d1d1f"
+            "hover": "#ffffff",
+            "focus": "#ffffff",
+            "focus-visible": "#ffffff",
+            "active": "#ffffff"
           },
           "state": {
             "disabled": "#599effb3"
@@ -683,7 +689,7 @@ export const light = {
           "DEFAULT": "#0055cc"
         },
         "state": {
-          "disabled": "#1d1d1f"
+          "disabled": "#ffffff80"
         },
         "subtle": {
           "state": {
@@ -691,7 +697,7 @@ export const light = {
           },
           "DEFAULT": "#1d1d1f"
         },
-        "DEFAULT": "#1d1d1f"
+        "DEFAULT": "#ffffff"
       },
       "input": {
         "state": {
@@ -707,14 +713,10 @@ export const light = {
         "DEFAULT": "#1d1d1f",
         "left": "#1d1d1f",
         "above": "#1d1d1f",
-        "inside": {
-          "border": "#1d1d1f",
-          "input": "#616168"
-        },
-        "checkbox": {
-          "radio": "#1d1d1f"
-        },
-        "below": "#3f3f44"
+        "inside-border": "#1d1d1f",
+        "checkbox-radio": "#1d1d1f",
+        "below": "#333336",
+        "inside-input": "#48484d"
       },
       "select": {
         "state": {
@@ -726,7 +728,7 @@ export const light = {
         "state": {
           "invalid": "#ae2e24"
         },
-        "DEFAULT": "#616168"
+        "DEFAULT": "#48484d"
       },
       "tip-error": "#ae2e24",
       "link": {
@@ -742,27 +744,27 @@ export const light = {
       "nav": {
         "tertiary": {
           "interaction": {
-            "hover": "#3f3f44"
+            "hover": "#333336"
           },
           "state": {
             "activated": "#0055cc"
           },
-          "DEFAULT": "#616168"
+          "DEFAULT": "#48484d"
         },
         "secondary": {
           "state": {
             "activated": "#0055cc"
           },
-          "DEFAULT": "#3f3f44"
+          "DEFAULT": "#333336"
         },
         "DEFAULT": "#1d1d1f"
       },
-      "inverse": "#1d1d1f",
-      "bold": "#171719",
+      "inverse": "#ffffff",
+      "bold": "#0c0c0d",
       "DEFAULT": "#1d1d1f",
-      "subtle": "#3f3f44",
-      "subtler": "#616168",
-      "subtlest": "#84848c",
+      "subtle": "#333336",
+      "subtler": "#48484d",
+      "subtlest": "#5e5e65",
       "information": "#0055cc",
       "discover": "#5e4db2",
       "success": "#216e4e",
@@ -1957,7 +1959,7 @@ export const dark = {
       "DEFAULT": {
         "width": "0.0625rem",
         "style": "solid",
-        "color": "#84848c7d"
+        "color": "#e8e8e97d"
       },
       "focus": {
         "width": "0.0625rem",
@@ -1969,56 +1971,56 @@ export const dark = {
   "color": {
     "accent": {
       "grey": {
-        "1": "#f2f2f3",
-        "2": "#cdcdd0",
-        "3": "#a9a9ae",
-        "4": "#84848c",
-        "5": "#616168",
-        "6": "#3f3f44",
-        "7": "#1d1d1f",
-        "8": "#171719",
-        "9": "#121213",
-        "10": "#0c0c0d",
+        "1": "#ffffff",
+        "2": "#e8e8e9",
+        "3": "#d0d0d3",
+        "4": "#b9b9be",
+        "5": "#a2a2a8",
+        "6": "#8b8b92",
+        "7": "#74747c",
+        "8": "#5e5e65",
+        "9": "#48484d",
+        "10": "#333336",
         "11": "#1d1d1f",
-        "12": "#1d1d1f",
-        "bold": "#a9a9ae",
-        "DEFAULT": "#84848c",
-        "subtle": "#616168",
-        "subtler": "#3f3f44",
-        "subtlest": "#1d1d1f",
-        "low": "#171719",
-        "lower": "#121213",
-        "lowest": "#0c0c0d",
-        "dull": "#1d1d1f",
-        "duller": "#1d1d1f",
+        "12": "#0c0c0d",
+        "bold": "#ffffff",
+        "DEFAULT": "#e8e8e9",
+        "subtle": "#d0d0d3",
+        "subtler": "#b9b9be",
+        "subtlest": "#a2a2a8",
+        "low": "#8b8b92",
+        "lower": "#74747c",
+        "lowest": "#5e5e65",
+        "dull": "#48484d",
+        "duller": "#333336",
         "dullest": "#1d1d1f",
-        "silent": "#1d1d1f"
+        "silent": "#0c0c0d"
       },
       "neutral": {
-        "1": "#f2f2f3",
-        "2": "#cdcdd0",
-        "3": "#a9a9ae",
-        "4": "#84848c",
-        "5": "#616168",
-        "6": "#3f3f44",
-        "7": "#1d1d1f",
-        "8": "#171719",
-        "9": "#121213",
-        "10": "#0c0c0d",
+        "1": "#ffffff",
+        "2": "#e8e8e9",
+        "3": "#d0d0d3",
+        "4": "#b9b9be",
+        "5": "#a2a2a8",
+        "6": "#8b8b92",
+        "7": "#74747c",
+        "8": "#5e5e65",
+        "9": "#48484d",
+        "10": "#333336",
         "11": "#1d1d1f",
-        "12": "#1d1d1f",
-        "bold": "#a9a9ae",
-        "DEFAULT": "#84848c",
-        "subtle": "#616168",
-        "subtler": "#3f3f44",
-        "subtlest": "#1d1d1f",
-        "low": "#171719",
-        "lower": "#121213",
-        "lowest": "#0c0c0d",
-        "dull": "#1d1d1f",
-        "duller": "#1d1d1f",
+        "12": "#0c0c0d",
+        "bold": "#ffffff",
+        "DEFAULT": "#e8e8e9",
+        "subtle": "#d0d0d3",
+        "subtler": "#b9b9be",
+        "subtlest": "#a2a2a8",
+        "low": "#8b8b92",
+        "lower": "#74747c",
+        "lowest": "#5e5e65",
+        "dull": "#48484d",
+        "duller": "#333336",
         "dullest": "#1d1d1f",
-        "silent": "#1d1d1f"
+        "silent": "#0c0c0d"
       },
       "red": {
         "1": "#fbebea",
@@ -2221,18 +2223,18 @@ export const dark = {
     },
     "alpha": {
       "grey": {
-        "1": "#84848c08",
-        "2": "#84848c0f",
-        "3": "#84848c24",
-        "4": "#84848c4f",
-        "5": "#84848c7d"
+        "1": "#e8e8e908",
+        "2": "#e8e8e90f",
+        "3": "#e8e8e924",
+        "4": "#e8e8e94f",
+        "5": "#e8e8e97d"
       },
       "neutral": {
-        "1": "#84848c08",
-        "2": "#84848c0f",
-        "3": "#84848c24",
-        "4": "#84848c4f",
-        "5": "#84848c7d"
+        "1": "#e8e8e908",
+        "2": "#e8e8e90f",
+        "3": "#e8e8e924",
+        "4": "#e8e8e94f",
+        "5": "#e8e8e97d"
       }
     },
     "base": {
@@ -2421,10 +2423,10 @@ export const dark = {
       }
     },
     "background": {
-      "boldest": "#1d1d1f",
-      "bolder": "#1d1d1f",
+      "boldest": "#48484d",
+      "bolder": "#333336",
       "bold": "#1d1d1f",
-      "DEFAULT": "#1d1d1f",
+      "DEFAULT": "#0c0c0d",
       "information": "#599eff",
       "discover": "#090812",
       "success": "#06140e",
@@ -2439,15 +2441,15 @@ export const dark = {
         },
         "subtle": {
           "interaction": {
-            "hover": "#84848c7d",
-            "focus": "#84848c4f",
-            "focus-visible": "#84848c4f",
-            "active": "#84848c24"
+            "hover": "#e8e8e97d",
+            "focus": "#e8e8e94f",
+            "focus-visible": "#e8e8e94f",
+            "active": "#e8e8e924"
           },
           "state": {
-            "disabled": "#84848c0f"
+            "disabled": "#e8e8e90f"
           },
-          "DEFAULT": "#84848c4f"
+          "DEFAULT": "#e8e8e94f"
         },
         "wireframe": {
           "interaction": {
@@ -2464,25 +2466,25 @@ export const dark = {
       },
       "select": {
         "interaction": {
-          "hover": "#1d1d1f",
-          "active": "#1d1d1f"
+          "hover": "#333336",
+          "active": "#48484d"
         },
         "state": {
           "opened": "#0055ccb3"
         },
-        "arrow": "#1d1d1f"
+        "arrow": "#0c0c0d"
       },
       "option": {
         "interaction": {
           "hover": "#1d1d1f",
-          "active": "#1d1d1f"
+          "active": "#333336"
         }
       },
       "checkbox": {
         "state": {
           "checked": "#599eff"
         },
-        "checkmark": "#1d1d1f"
+        "checkmark": "#0c0c0d"
       },
       "radio": {
         "checkmark": "#599eff"
@@ -2502,15 +2504,21 @@ export const dark = {
       }
     },
     "border": {
-      "inverse": "#1d1d1f",
-      "bold": "#3f3f44",
-      "DEFAULT": "#84848c7d",
-      "subtle": "#84848c4f",
+      "inverse": "#0c0c0d",
+      "bold": "#b9b9be",
+      "DEFAULT": "#e8e8e97d",
+      "subtle": "#e8e8e94f",
       "information": "#599eff",
       "discover": "#090812",
-      "success": "#06140e",
+      "success": {
+        "DEFAULT": "#06140e",
+        "bold": "#68d2a6"
+      },
       "warning": "#190b00",
-      "error": "#150604",
+      "error": {
+        "DEFAULT": "#150604",
+        "bold": "#e38078"
+      },
       "button": {
         "interaction": {
           "hover": "#88baff",
@@ -2520,15 +2528,15 @@ export const dark = {
         },
         "subtle": {
           "interaction": {
-            "hover": "#84848c7d",
-            "focus": "#84848c4f",
-            "focus-visible": "#84848c4f",
-            "active": "#84848c24"
+            "hover": "#e8e8e97d",
+            "focus": "#e8e8e94f",
+            "focus-visible": "#e8e8e94f",
+            "active": "#e8e8e924"
           },
           "state": {
-            "disabled": "#84848c0f"
+            "disabled": "#e8e8e90f"
           },
-          "DEFAULT": "#84848c4f"
+          "DEFAULT": "#e8e8e94f"
         },
         "wireframe": {
           "interaction": {
@@ -2553,9 +2561,9 @@ export const dark = {
         },
         "state": {
           "invalid": "#e38078",
-          "disabled": "#84848c4f"
+          "disabled": "#e8e8e94f"
         },
-        "DEFAULT": "#84848c7d"
+        "DEFAULT": "#e8e8e97d"
       },
       "checkbox": {
         "interaction": {
@@ -2563,9 +2571,9 @@ export const dark = {
         },
         "state": {
           "checked": "#599eff",
-          "disabled": "#84848c4f"
+          "disabled": "#e8e8e94f"
         },
-        "DEFAULT": "#84848c7d"
+        "DEFAULT": "#e8e8e97d"
       },
       "radio": {
         "interaction": {
@@ -2573,37 +2581,37 @@ export const dark = {
         },
         "state": {
           "checked": "#599eff",
-          "disabled": "#84848c4f"
+          "disabled": "#e8e8e94f"
         },
-        "DEFAULT": "#84848c7d"
+        "DEFAULT": "#e8e8e97d"
       },
       "select": {
         "interaction": {
           "focus": "#599eff"
         },
         "state": {
-          "disabled": "#84848c4f"
+          "disabled": "#e8e8e94f"
         },
-        "DEFAULT": "#84848c7d"
+        "DEFAULT": "#e8e8e97d"
       }
     },
     "icon": {
-      "inverse": "#1d1d1f",
-      "bold": "#a9a9ae",
-      "DEFAULT": "#84848c",
-      "subtle": "#616168",
-      "subtler": "#3f3f44",
-      "subtlest": "#1d1d1f",
+      "inverse": "#0c0c0d",
+      "bold": "#ffffff",
+      "DEFAULT": "#e8e8e9",
+      "subtle": "#d0d0d3",
+      "subtler": "#b9b9be",
+      "subtlest": "#a2a2a8",
       "link": {
         "DEFAULT": "#599eff"
       },
       "nav": {
-        "DEFAULT": "#84848c",
+        "DEFAULT": "#e8e8e9",
         "secondary": {
-          "DEFAULT": "#616168"
+          "DEFAULT": "#d0d0d3"
         },
         "tertiary": {
-          "DEFAULT": "#3f3f44"
+          "DEFAULT": "#b9b9be"
         }
       },
       "information": "#599eff",
@@ -2615,17 +2623,17 @@ export const dark = {
     "text": {
       "option": {
         "interaction": {
-          "hover": "#1d1d1f"
+          "hover": "#0c0c0d"
         },
-        "DEFAULT": "#84848c"
+        "DEFAULT": "#e8e8e9"
       },
       "button": {
         "wireframe": {
           "interaction": {
-            "hover": "#1d1d1f",
-            "focus": "#1d1d1f",
-            "focus-visible": "#1d1d1f",
-            "active": "#1d1d1f"
+            "hover": "#0c0c0d",
+            "focus": "#0c0c0d",
+            "focus-visible": "#0c0c0d",
+            "active": "#0c0c0d"
           },
           "state": {
             "disabled": "#0055ccb3"
@@ -2633,50 +2641,46 @@ export const dark = {
           "DEFAULT": "#599eff"
         },
         "state": {
-          "disabled": "#1d1d1f"
+          "disabled": "#0c0c0d80"
         },
         "subtle": {
           "state": {
-            "disabled": "#84848c7d"
+            "disabled": "#e8e8e97d"
           },
-          "DEFAULT": "#84848c"
+          "DEFAULT": "#e8e8e9"
         },
-        "DEFAULT": "#1d1d1f"
+        "DEFAULT": "#0c0c0d"
       },
       "input": {
         "state": {
           "invalid": "#e38078"
         },
-        "DEFAULT": "#84848c",
-        "caret": "#84848c"
+        "DEFAULT": "#e8e8e9",
+        "caret": "#e8e8e9"
       },
       "label": {
         "state": {
           "invalid": "#e38078"
         },
-        "DEFAULT": "#84848c",
-        "left": "#84848c",
-        "above": "#84848c",
-        "inside": {
-          "border": "#84848c",
-          "input": "#3f3f44"
-        },
-        "checkbox": {
-          "radio": "#84848c"
-        },
-        "below": "#616168"
+        "DEFAULT": "#e8e8e9",
+        "left": "#e8e8e9",
+        "above": "#e8e8e9",
+        "inside-border": "#e8e8e9",
+        "checkbox-radio": "#e8e8e9",
+        "below": "#d0d0d3",
+        "inside-input": "#b9b9be"
       },
       "select": {
         "state": {
           "opened": "#599eff"
         },
-        "DEFAULT": "#84848c"
+        "DEFAULT": "#e8e8e9"
       },
       "placeholder": {
         "state": {
           "invalid": "#e38078"
         },
-        "DEFAULT": "#3f3f44"
+        "DEFAULT": "#b9b9be"
       },
       "tip-error": "#e38078",
       "link": {
@@ -2692,27 +2696,27 @@ export const dark = {
       "nav": {
         "tertiary": {
           "interaction": {
-            "hover": "#616168"
+            "hover": "#d0d0d3"
           },
           "state": {
             "activated": "#599eff"
           },
-          "DEFAULT": "#3f3f44"
+          "DEFAULT": "#b9b9be"
         },
         "secondary": {
           "state": {
             "activated": "#599eff"
           },
-          "DEFAULT": "#616168"
+          "DEFAULT": "#d0d0d3"
         },
-        "DEFAULT": "#84848c"
+        "DEFAULT": "#e8e8e9"
       },
-      "inverse": "#1d1d1f",
-      "bold": "#a9a9ae",
-      "DEFAULT": "#84848c",
-      "subtle": "#616168",
-      "subtler": "#3f3f44",
-      "subtlest": "#1d1d1f",
+      "inverse": "#0c0c0d",
+      "bold": "#ffffff",
+      "DEFAULT": "#e8e8e9",
+      "subtle": "#d0d0d3",
+      "subtler": "#b9b9be",
+      "subtlest": "#a2a2a8",
       "information": "#599eff",
       "discover": "#a69dd5",
       "success": "#68d2a6",
@@ -2755,7 +2759,7 @@ export const dark = {
           "focus": "#0055ccb3"
         }
       },
-      "DEFAULT": "#84848c4f"
+      "DEFAULT": "#e8e8e94f"
     },
     "tertiary": {
       "DEFAULT": "#943d73",
@@ -2843,7 +2847,7 @@ export const dark = {
     "box": {
       "highlight": [
         {
-          "color": "#84848c4f",
+          "color": "#e8e8e94f",
           "offsetX": "0.125rem",
           "offsetY": "0.125rem",
           "blur": "0.375rem",

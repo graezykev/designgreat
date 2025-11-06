@@ -6,19 +6,76 @@
     "access": "public"
   },
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.cjs"
     }
   },
   "scripts": {
-    "build": "tsc -p ../../tsconfig.library.json",
-    "typecheck": "tsc --noEmit -p ../../tsconfig.react.json",
-    "lint": "pnpm exec eslint src --max-warnings 0",
-    "test": "pnpm exec vitest run",
-    "clean": "rm -rf dist tsconfig*.tsbuildinfo"
+    "clean": "rm -rf dist coverage tsconfig*.tsbuildinfo storybook-static",
+    "generate:theme": "tsx ./scripts/generate-theme-css.ts",
+    "build": "pnpm run clean && pnpm run generate:theme && tsc -p tsconfig.build.json && vite build && pnpm run storybook:build",
+    "dev": "pnpm run generate:theme && vite dev",
+    "storybook": "pnpm run generate:theme && storybook dev -p 6006",
+    "storybook:build": "pnpm run generate:theme && storybook build",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "pnpm exec eslint . --max-warnings 0",
+    "test": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --runInBand --config jest.config.ts",
+    "test:watch": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --watch --config jest.config.ts",
+    "coverage": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --config jest.config.ts --coverage",
+    "prepare": "pnpm run generate:theme"
+  },
+  "dependencies": {
+    "@designgreat/design-token-support": "workspace:*",
+    "@designgreat/lib-web-ui-design-token": "workspace:*",
+    "clsx": "^2.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "@storybook/addon-a11y": "^8.1.0",
+    "@storybook/addon-essentials": "^8.1.0",
+    "@storybook/blocks": "^8.1.0",
+    "@storybook/react": "^8.1.0",
+    "@storybook/react-vite": "^8.6.14",
+    "@testing-library/react": "^15.0.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.12",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^5.1.0",
+    "autoprefixer": "^10.4.18",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "postcss": "^8.4.38",
+    "react-icons": "^5",
+    "storybook": "^8.1.0",
+    "tailwindcss": "^3.4.3",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.0",
+    "vite": "^6.4.1"
   }
 }

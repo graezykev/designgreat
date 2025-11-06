@@ -37,6 +37,20 @@ const config = [
     rules: {
       'no-console': 'off'
     }
+  },
+  {
+    name: 'designgreat/storybook-config',
+    files: ['packages/**/.storybook/**/*'],
+    languageOptions: {
+      parserOptions: {
+        project: [fileURLToPath(new URL('./packages/lib-web-ui/tsconfig.json', import.meta.url))],
+        tsconfigRootDir: repoRoot
+      }
+    }
+  },
+  {
+    name: 'designgreat/storybook-static-ignore',
+    ignores: ['**/storybook-static/**']
   }
 ]
 
