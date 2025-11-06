@@ -26,7 +26,8 @@
     "validate": "pnpm exec tsx src/run-validation.ts",
     "lint": "pnpm exec eslint . --max-warnings 0",
     "test": "pnpm exec vitest run",
-    "clean": "rm -rf dist src/generated tsconfig*.tsbuildinfo"
+    "clean": "rm -rf dist src/generated tsconfig*.tsbuildinfo",
+    "prepare": "pnpm run build || (echo \"ERROR: This package must be installed without --prod\" && exit 1)"
   },
   "dependencies": {
     "tinycolor2": "^1"
