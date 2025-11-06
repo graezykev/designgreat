@@ -15,7 +15,17 @@ async function ensureThemeStyles(): Promise<void> {
     return createThemeStyles(theme, { selector, indent: 2 })
   })
 
-  const fileContents = `@layer base {\n${layers.join('\n\n')}\n}\n`
+  const indentation = '  '
+  const indentedLayers = layers
+    .map((layer) =>
+      layer
+        .split('\n')
+        .map((line) => (line.length > 0 ? `${indentation}${line}` : line))
+        .join('\n')
+    )
+    .join('\n\n')
+
+  const fileContents = `@layer base {\n${indentedLayers}\n}\n`
   const outputPath = path.join(stylesDir, 'designgreat-theme.css')
 
   await writeFile(outputPath, fileContents, 'utf8')
