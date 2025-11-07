@@ -80,6 +80,11 @@ export function App() {
 See Storybook for interactive demos and controls. Run
 `pnpm --filter @designgreat/lib-web-ui storybook` locally to explore the latest build.
 
+## Storybook
+
+Storybook is the most convenient way to develop components. Quick-start, workflow tips, and
+troubleshooting live in [`STORYBOOK.md`](./STORYBOOK.md).
+
 ## Development
 
 ```
@@ -139,11 +144,6 @@ See Storybook for interactive demos and controls. Run
   - Ensures the package compiles (`tsc --noEmit`). Generated artifacts
     (`src/styles/designgreat-theme.css`, declaration outputs) are committed to ease local iteration
     and integration with CI.
-
-## Storybook
-
-Storybook is the most convenient way to develop components. Quick-start, workflow tips, and
-troubleshooting live in [`STORYBOOK.md`](./STORYBOOK.md).
 
 ### Tailwind Token Utilities
 
