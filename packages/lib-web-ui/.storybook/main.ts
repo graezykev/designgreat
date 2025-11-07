@@ -12,6 +12,8 @@ const config: StorybookConfig = {
     autodocs: 'tag'
   },
   async viteFinal(config) {
+    const base = process.env.STORYBOOK_BASE_PATH ?? '/'
+
     const optimizeDeps = {
       ...(config.optimizeDeps ?? {}),
       esbuildOptions: {
@@ -27,6 +29,7 @@ const config: StorybookConfig = {
 
     return {
       ...config,
+      base,
       resolve: {
         ...(config.resolve ?? {}),
         alias: {

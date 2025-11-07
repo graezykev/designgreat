@@ -140,6 +140,11 @@ See Storybook for interactive demos and controls. Run
     (`src/styles/designgreat-theme.css`, declaration outputs) are committed to ease local iteration
     and integration with CI.
 
+## Storybook
+
+Storybook is the most convenient way to develop components. Quick-start, workflow tips, and
+troubleshooting live in [`STORYBOOK.md`](./STORYBOOK.md).
+
 ### Tailwind Token Utilities
 
 The Tailwind configuration mirrors the design token tree so you can reference tokens directly in
@@ -157,7 +162,3 @@ generated from the active theme at build time.
 
 > TODO: explore whether the design token build can emit CSS variables on demand (only for the tokens
 > actually used) to trim the generated theme bundle size without hurting Theme switch behaviour.
-
-## Storybook
-
-- Quick-start, workflow tips, and troubleshooting live in [`STORYBOOK.md`](./STORYBOOK.md).

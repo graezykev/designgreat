@@ -65,13 +65,29 @@ jobs:
 
       - name: Build lib-web-ui Storybook
         if: steps.changes.outputs.changed == 'true'
+        env:
+          STORYBOOK_BASE_PATH: /designgreat/lib-web-ui/
         run: pnpm --filter @designgreat/lib-web-ui storybook:build
+
+      - name: Relocate Storybook output
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          tmp_dir="packages/lib-web-ui/storybook-temp"
+          final_dir="packages/lib-web-ui/storybook-static/lib-web-ui"
+          mv packages/lib-web-ui/storybook-static "$tmp_dir"
+          mkdir -p "$final_dir"
+          shopt -s dotglob
+          mv "$tmp_dir"/* "$final_dir"/
+          shopt -u dotglob
+          rmdir "$tmp_dir"
 
       - name: Verify static build output
         if: steps.changes.outputs.changed == 'true'
         run: |
           test -d packages/lib-web-ui/storybook-static
-          test -f packages/lib-web-ui/storybook-static/index.html
+          test -d packages/lib-web-ui/storybook-static/lib-web-ui
+          test -f packages/lib-web-ui/storybook-static/lib-web-ui/index.html
 
       - name: Upload Pages artifact
         if: steps.changes.outputs.changed == 'true'
