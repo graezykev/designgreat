@@ -1,5 +1,17 @@
 # @designgreat/lib-web-ui
 
+## 0.4.1
+
+### Patch Changes
+
+- dfbd821: **Improve Code Demo toggle contrast**
+  - provide solid-color fallbacks for the gradient toggle buttons so the background color is
+    detectable for WCAG contrast tooling
+
+  **Related PR:** [#11](https://github.com/graezykev/designgreat/pull/11)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.0
 
 ### Minor Changes
