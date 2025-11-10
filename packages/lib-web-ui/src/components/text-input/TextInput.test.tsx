@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { createRef } from 'react'
 
 import { TextInput } from './TextInput'
 
@@ -32,5 +33,57 @@ describe('TextInput', () => {
     const input = screen.getByLabelText('Email')
     expect(input).toHaveAttribute('aria-invalid', 'true')
     expect(screen.getByText('Required')).toBeInTheDocument()
+  })
+
+  it('shows optional indicator and honors provided id', () => {
+    render(<TextInput optional id="company" label="Company" />)
+
+    const input = screen.getByLabelText(/^Company/)
+    expect(input).toHaveAttribute('id', 'company')
+    expect(screen.getByText('Optional')).toBeInTheDocument()
+  })
+
+  it('concatenates description and error ids for aria-describedby', () => {
+    render(
+      <TextInput label="Username" description="3-16 characters" errorMessage="Already taken" />
+    )
+
+    const description = screen.getByText(/3-16/)
+    const error = screen.getByText('Already taken')
+    const input = screen.getByLabelText('Username')
+
+    expect(input).toHaveAttribute('aria-describedby', `${description.id} ${error.id}`)
+  })
+
+  it('renders leading and trailing icons with padding adjustments', () => {
+    render(
+      <TextInput
+        label="Amount"
+        leadingIcon={<span data-testid="leading">$</span>}
+        trailingIcon={<span data-testid="trailing">USD</span>}
+      />
+    )
+
+    const input = screen.getByLabelText('Amount')
+    expect(input).toHaveClass('pl-spacing-9')
+    expect(input).toHaveClass('pr-spacing-9')
+    expect(screen.getByTestId('leading').parentElement).toHaveClass('left-spacing-7')
+    expect(screen.getByTestId('trailing').parentElement).toHaveClass('right-spacing-7')
+  })
+
+  it('respects validation state prop and disabled styling', () => {
+    render(<TextInput disabled label="Budget" validationState="success" />)
+
+    const input = screen.getByLabelText('Budget')
+    expect(input).not.toHaveAttribute('aria-invalid')
+    expect(input).toBeDisabled()
+    expect(input).toHaveClass('cursor-not-allowed')
+  })
+
+  it('forwards refs to the underlying input element', () => {
+    const ref = createRef<HTMLInputElement>()
+    render(<TextInput ref={ref} label="Full name" />)
+
+    expect(ref.current).toBe(screen.getByLabelText('Full name'))
   })
 })

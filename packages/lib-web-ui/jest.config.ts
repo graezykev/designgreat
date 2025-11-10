@@ -10,6 +10,7 @@ const config: Config = {
   moduleDirectories: ['node_modules', '<rootDir>/src'],
   moduleNameMapper: {
     '\\.(css|less|scss)$': 'identity-obj-proxy',
+    '^@designgreat/design-token-support$': '<rootDir>/../shared/design-token-support/src',
     '^@designgreat/(.*)$': '<rootDir>/../$1/src',
     '^(\\.{1,2}/.*)\\.js$': '$1'
   },
