@@ -57,7 +57,6 @@ pnpm turbo run build --dry-run
 | ---------------- | ------------------------------------------------- |
 | `pnpm install`   | Install workspace dependencies                    |
 | `pnpm lint`      | Run ESLint (flat config) with XO-compatible rules |
-| `pnpm xo`        | Run XO directly for quick lint feedback           |
 | `pnpm format`    | Format files with Prettier                        |
 | `pnpm test`      | Execute the Turborepo test pipeline               |
 | `pnpm clean`     | Remove build artifacts and dependency caches      |
@@ -90,7 +89,6 @@ See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for detailed guidelines.
 
 - Ensure you are using Node 22 (`nvm use`).
 - Clear caches with `pnpm clean && pnpm install` if installations fail.
-- Verify local linting with `pnpm xo --verbose` when ESLint output is unclear.
 - When in doubt, regenerate Husky hooks via `pnpm prepare`.
 
 Happy shipping!
