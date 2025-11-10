@@ -20,17 +20,58 @@ const ThemeDecorator: Decorator = (Story, context) => {
 
   useEffect(() => {
     const classNames = Object.values(THEMES).map(({ className }) => className)
-    const targets = [document.documentElement, document.body]
 
-    for (const target of targets) {
+    const html = document.documentElement
+    const { body } = document
+    const root = document.getElementById('storybook-root')
+    const main = document.querySelector<HTMLElement>('.sb-show-main')
+
+    for (const target of [html, body]) {
       target.classList.remove(...classNames)
       target.classList.add(theme.className)
+      target.style.height = '100%'
+      target.style.overflow = 'hidden'
+      target.style.margin = '0'
+      target.style.padding = '0'
+    }
+
+    if (root) {
+      root.style.height = '100%'
+      root.style.overflow = 'hidden'
+      root.style.margin = '0'
+      root.style.padding = '0'
+    }
+
+    if (main) {
+      main.style.padding = '0'
+      main.style.margin = '0'
+    }
+
+    return () => {
+      for (const target of [html, body]) {
+        target.style.height = ''
+        target.style.overflow = ''
+        target.style.margin = ''
+        target.style.padding = ''
+      }
+
+      if (root) {
+        root.style.height = ''
+        root.style.overflow = ''
+        root.style.margin = ''
+        root.style.padding = ''
+      }
+
+      if (main) {
+        main.style.padding = ''
+        main.style.margin = ''
+      }
     }
   }, [theme])
 
   return (
     <div
-      className={`${theme.className} min-h-screen bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-default)]`}
+      className={`${theme.className} min-h-screen bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-default)] overflow-hidden`}
     >
       <Story />
     </div>
@@ -39,7 +80,6 @@ const ThemeDecorator: Decorator = (Story, context) => {
 
 const preview: Preview = {
   parameters: {
-    layout: 'centered',
     controls: {
       expanded: true
     },
