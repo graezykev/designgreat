@@ -1,5 +1,22 @@
 # @designgreat/lib-web-ui
 
+## 0.3.1
+
+### Patch Changes
+
+- 7e93311: **Improve Button stories and Storybook chrome for theme demos**
+  - 1. Add Code block.
+  - 2. Clamp Storybook html/body/root containers to 100% height with hidden overflow so themed
+       previews render without scroll bleed.
+  - 3. Add dark/light-aware styling for the demo/code toggle buttons and backdrop so the controls
+       mirror the selected theme.
+  - 4. Silence lint warnings around `react/no-danger` and index keys in the story to keep the
+       Storybook suite clean.
+
+  **Related PR:** [#8](https://github.com/graezykev/designgreat/pull/8)
+
+  **Author:** @chunman-yeung
+
 ## 0.3.0
 
 ### Minor Changes
