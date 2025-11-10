@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Button } from './Button'
 
@@ -30,6 +31,36 @@ describe('Button', () => {
     fireEvent.click(button)
     expect(handleClick).not.toHaveBeenCalled()
     expect(button).toHaveAttribute('aria-busy', 'true')
+  })
+
+  it('responds to Space and Enter key presses', async () => {
+    const user = userEvent.setup()
+    const handleClick = jest.fn()
+    render(<Button onClick={handleClick}>Keyboard</Button>)
+
+    const button = screen.getByRole('button', { name: 'Keyboard' })
+    button.focus()
+    await user.keyboard('{Enter}')
+    await user.keyboard(' ')
+
+    expect(handleClick).toHaveBeenCalledTimes(2)
+  })
+
+  it('ignores keyboard activation when disabled', async () => {
+    const user = userEvent.setup()
+    const handleClick = jest.fn()
+    render(
+      <Button disabled onClick={handleClick}>
+        Disabled key
+      </Button>
+    )
+
+    const button = screen.getByRole('button', { name: /disabled key/i })
+    button.focus()
+    await user.keyboard('{Enter}')
+    await user.keyboard(' ')
+
+    expect(handleClick).not.toHaveBeenCalled()
   })
 
   it('applies full width styles when requested', () => {

@@ -40,14 +40,18 @@ const SIZE_CLASSNAME: Record<DialogSize, string> = {
   lg: 'max-w-3xl'
 }
 
-export type DialogProps = {
-  readonly open: boolean
-  readonly onClose: () => void
-  readonly size?: DialogSize
-  readonly closeOnOverlayClick?: boolean
-  readonly initialFocusRef?: React.RefObject<HTMLElement>
-  readonly renderInPortal?: boolean
-} & PropsWithChildren
+type DialogBaseProps = Omit<HTMLAttributes<HTMLDivElement>, 'role'>
+
+export type DialogProps = PropsWithChildren<
+  {
+    readonly open: boolean
+    readonly onClose: () => void
+    readonly size?: DialogSize
+    readonly closeOnOverlayClick?: boolean
+    readonly initialFocusRef?: React.RefObject<HTMLElement>
+    readonly renderInPortal?: boolean
+  } & DialogBaseProps
+>
 
 export function Dialog({
   open,
@@ -56,7 +60,11 @@ export function Dialog({
   closeOnOverlayClick = true,
   initialFocusRef,
   renderInPortal = true,
-  children
+  children,
+  className,
+  'aria-labelledby': ariaLabelledByProp,
+  'aria-describedby': ariaDescribedByProp,
+  ...rest
 }: DialogProps): ReactNode {
   const overlayRef = useRef<HTMLDivElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
@@ -105,13 +113,15 @@ export function Dialog({
           ref={dialogRef}
           role="dialog"
           aria-modal="true"
-          aria-labelledby={titleId}
-          aria-describedby={descriptionId}
+          aria-labelledby={[ariaLabelledByProp, titleId].filter(Boolean).join(' ') || undefined}
+          aria-describedby={[ariaDescribedByProp, descriptionId].filter(Boolean).join(' ') || undefined}
           tabIndex={-1}
           className={clsx(
             'dg-dialog-panel relative mx-auto flex w-full flex-col gap-spacing-7 rounded-xl bg-color-background-default text-color-text-default shadow-xl outline-none focus-visible:ring-2 focus-visible:ring-color-border-button-interaction-focus-visible',
-            SIZE_CLASSNAME[size]
+            SIZE_CLASSNAME[size],
+            className
           )}
+          {...rest}
         >
           {children}
         </div>
