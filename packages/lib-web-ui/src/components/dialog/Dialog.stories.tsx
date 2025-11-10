@@ -10,7 +10,85 @@ import {
   DialogTitle,
   type DialogProps
 } from './Dialog'
+import { withCodeDemo } from '../../storybook/CodeDemoToggle'
 import { Button } from '../button/Button'
+
+const buildDialogSnippet = ({
+  size = 'md',
+  renderInPortal = false
+}: {
+  readonly size?: DialogProps['size']
+  readonly renderInPortal?: boolean
+} = {}) => `import { useState } from 'react'
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle
+} from '@designgreat/lib-web-ui'
+
+export function DialogExample() {
+  const [open, setOpen] = useState(true)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Launch dialog</Button>
+      <Dialog
+        size="${size}"${renderInPortal ? '' : '\n        renderInPortal={false}'}
+        open={open}
+        onClose={() => {
+          setOpen(false)
+        }}
+      >
+        <DialogHeader>
+          <DialogTitle>Schedule team sync</DialogTitle>
+          <DialogDescription>
+            Keep everyone aligned by sharing an agenda and highlighting key decisions ahead of time.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>
+            Dialogue content lives here. You can place layout primitives, forms, or interactive elements inside the
+            body section.
+          </p>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="secondary" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button onClick={() => setOpen(false)}>
+            Save changes
+          </Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`
+
+const DIALOG_SNIPPETS = {
+  default: buildDialogSnippet(),
+  large: buildDialogSnippet({ size: 'lg' }),
+  withoutPortal: buildDialogSnippet({ renderInPortal: false })
+} as const
+
+const renderWithCodeToggle = (code: string) =>
+  withCodeDemo<DialogProps>({
+    code,
+    render: args => <ControlledDialog {...args} />
+  })
+
+const buildDocsParameters = (code: string) => ({
+  docs: {
+    source: {
+      language: 'tsx',
+      state: 'open',
+      code
+    }
+  }
+})
 
 const meta: Meta<DialogProps> = {
   title: 'Components/Dialog',
@@ -88,19 +166,22 @@ function ControlledDialog(args: DialogProps) {
 }
 
 export const Default: Story = {
-  render: (args: DialogProps) => <ControlledDialog {...args} />
+  render: renderWithCodeToggle(DIALOG_SNIPPETS.default),
+  parameters: buildDocsParameters(DIALOG_SNIPPETS.default)
 }
 
 export const Large: Story = {
   args: {
     size: 'lg'
   },
-  render: (args: DialogProps) => <ControlledDialog {...args} />
+  render: renderWithCodeToggle(DIALOG_SNIPPETS.large),
+  parameters: buildDocsParameters(DIALOG_SNIPPETS.large)
 }
 
 export const WithoutPortal: Story = {
   args: {
     renderInPortal: false
   },
-  render: (args: DialogProps) => <ControlledDialog {...args} />
+  render: renderWithCodeToggle(DIALOG_SNIPPETS.withoutPortal),
+  parameters: buildDocsParameters(DIALOG_SNIPPETS.withoutPortal)
 }
