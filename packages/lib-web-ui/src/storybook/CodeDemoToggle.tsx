@@ -345,6 +345,7 @@ const ToggleButton = ({
   const activeGradient = isDark
     ? 'linear-gradient(135deg, #2563eb, #1d4ed8)'
     : 'linear-gradient(135deg, #1d4ed8, #60a5fa)'
+  const activeFallbackColor = isDark ? '#1d4ed8' : '#1d4ed8'
 
   return (
     <button
@@ -352,7 +353,8 @@ const ToggleButton = ({
       aria-pressed={active}
       style={{
         ...toggleButtonBaseStyle,
-        background: active ? activeGradient : 'transparent',
+        backgroundColor: active ? activeFallbackColor : 'transparent',
+        backgroundImage: active ? activeGradient : 'none',
         color: active ? '#ffffff' : inactiveColor,
         border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid transparent',
         boxShadow: active ? '0 8px 18px rgba(37,99,235,0.35)' : 'none',
