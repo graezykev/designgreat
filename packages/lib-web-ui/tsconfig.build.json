@@ -1,6 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@designgreat/lib-web-ui": ["./src"],
+      "@designgreat/lib-web-ui/*": ["./src/*"]
+    },
     "rootDir": "src",
     "outDir": "dist/types",
     "jsx": "react-jsx",
