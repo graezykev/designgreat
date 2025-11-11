@@ -117,13 +117,19 @@ function ControlledDialog(args: DialogProps) {
 
   return (
     <div className="flex min-h-[60vh] items-start justify-center pt-[var(--dg-spacing-16)]">
-      <Button
-        onClick={() => {
-          setOpen(true)
-        }}
-      >
-        Launch dialog
-      </Button>
+      {open ? (
+        <span aria-hidden className="sr-only">
+          Dialog open
+        </span>
+      ) : (
+        <Button
+          onClick={() => {
+            setOpen(true)
+          }}
+        >
+          Launch dialog
+        </Button>
+      )}
       <Dialog
         {...args}
         open={open}

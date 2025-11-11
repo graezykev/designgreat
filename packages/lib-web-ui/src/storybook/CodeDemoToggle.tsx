@@ -36,13 +36,10 @@ const wrapperStyle: CSSProperties = {
 }
 
 const toggleRowStyle: CSSProperties = {
-  position: 'sticky',
-  top: '1rem',
   display: 'flex',
   justifyContent: 'flex-end',
   padding: '0 1.5rem',
-  marginBottom: '0.5rem',
-  zIndex: 5
+  marginBottom: '0.5rem'
 }
 
 const toggleGroupStyle: CSSProperties = {
@@ -50,7 +47,6 @@ const toggleGroupStyle: CSSProperties = {
   gap: '0.2rem',
   padding: '0.2rem',
   borderRadius: '999px',
-  zIndex: 20,
   backdropFilter: 'blur(10px)'
 }
 
@@ -61,7 +57,7 @@ const toggleButtonBaseStyle: CSSProperties = {
   fontSize: '0.8rem',
   lineHeight: 1.2,
   cursor: 'pointer',
-  background: 'transparent',
+  backgroundColor: 'transparent',
   color: 'var(--dg-color-text-muted, #9da9c7)',
   fontWeight: 600,
   minWidth: '3.6rem',
@@ -342,10 +338,8 @@ const ToggleButton = ({
 }) => {
   const isDark = themeVariant === 'dark'
   const inactiveColor = isDark ? '#cbd5f5' : '#0f172a'
-  const activeGradient = isDark
-    ? 'linear-gradient(135deg, #2563eb, #1d4ed8)'
-    : 'linear-gradient(135deg, #1d4ed8, #60a5fa)'
-  const activeFallbackColor = isDark ? '#1d4ed8' : '#1d4ed8'
+  const activeBackground = 'var(--dg-color-background-button-default, #1d4ed8)'
+  const activeTextColor = 'var(--dg-color-text-button-default, #ffffff)'
 
   return (
     <button
@@ -353,16 +347,15 @@ const ToggleButton = ({
       aria-pressed={active}
       style={{
         ...toggleButtonBaseStyle,
-        backgroundColor: active ? activeFallbackColor : 'transparent',
-        backgroundImage: active ? activeGradient : 'none',
-        color: active ? '#ffffff' : inactiveColor,
+        backgroundColor: active ? activeBackground : 'transparent',
+        color: active ? activeTextColor : inactiveColor,
         border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid transparent',
         boxShadow: active ? '0 8px 18px rgba(37,99,235,0.35)' : 'none',
         transition: 'all 180ms ease'
       }}
       onClick={onClick}
     >
-      {label}
+      <span>{label}</span>
     </button>
   )
 }
