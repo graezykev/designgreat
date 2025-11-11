@@ -1,5 +1,20 @@
 # @designgreat/lib-web-ui
 
+## 0.4.3
+
+### Patch Changes
+
+- 58354f7: **Restore the CodeDemo toggle contrast in dark mode while keeping Storybook chrome
+  consistent**
+  - 1. Replace the gradient overlay around the demo/code buttons with token-based fills so
+       accessibility tooling can sample the actual background color.
+  - 2. Reuse theme tokens for the border and shadow chrome so the toggle group renders the same
+       visual weight without gradients.
+
+  **Related PR:** [#13](https://github.com/graezykev/designgreat/pull/13)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.2
 
 ### Patch Changes
