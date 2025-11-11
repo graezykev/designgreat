@@ -33,16 +33,46 @@ const INPUT_SIZES: Record<TextInputSize, string> = {
 export type TextInputSize = 'sm' | 'md' | 'lg'
 export type TextInputValidationState = 'default' | 'error' | 'success'
 
-export type TextInputProps = {
+/**
+ * Component-specific props for the TextInput component.
+ */
+export type TextInputOwnProps = {
+  /**
+   * Visible label text rendered above the input.
+   */
   readonly label?: string
+  /**
+   * Supplementary helper text rendered below the input.
+   */
   readonly description?: string
+  /**
+   * Error message shown when validation fails.
+   */
   readonly errorMessage?: string
+  /**
+   * Controls the visual state (default/success/error).
+   */
   readonly validationState?: TextInputValidationState
+  /**
+   * Tokenized height and padding preset.
+   * @defaultValue 'md'
+   */
   readonly size?: TextInputSize
+  /**
+   * Displays an "Optional" badge next to the label.
+   */
   readonly optional?: boolean
+  /**
+   * Slot rendered inside the left side of the input.
+   */
   readonly leadingIcon?: ReactNode
+  /**
+   * Slot rendered inside the right side of the input.
+   */
   readonly trailingIcon?: ReactNode
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
+}
+
+export type TextInputProps = TextInputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 
 const LABEL_BASE = 'mb-spacing-4 block text-sm font-medium text-color-text-default'
 const DESCRIPTION_CLASS = 'mt-spacing-4 text-sm text-color-text-subtle'

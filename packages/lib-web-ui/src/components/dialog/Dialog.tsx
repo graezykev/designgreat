@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
   type HTMLAttributes,
-  type PropsWithChildren,
   type ReactNode
 } from 'react'
 import { createPortal } from 'react-dom'
@@ -42,16 +41,44 @@ const SIZE_CLASSNAME: Record<DialogSize, string> = {
 
 type DialogBaseProps = Omit<HTMLAttributes<HTMLDivElement>, 'role'>
 
-export type DialogProps = PropsWithChildren<
-  {
-    readonly open: boolean
-    readonly onClose: () => void
-    readonly size?: DialogSize
-    readonly closeOnOverlayClick?: boolean
-    readonly initialFocusRef?: React.RefObject<HTMLElement>
-    readonly renderInPortal?: boolean
-  } & DialogBaseProps
->
+/**
+ * Component-specific props for the Dialog component.
+ */
+export type DialogOwnProps = {
+  /**
+   * Controls whether the dialog is rendered.
+   */
+  readonly open: boolean
+  /**
+   * Called when the dialog should close (Escape key, overlay click, close buttons).
+   */
+  readonly onClose: () => void
+  /**
+   * Determines the max-width of the panel.
+   * @defaultValue 'md'
+   */
+  readonly size?: DialogSize
+  /**
+   * When false, overlay clicks will not close the dialog.
+   * @defaultValue true
+   */
+  readonly closeOnOverlayClick?: boolean
+  /**
+   * Focus will land on this ref when the dialog opens.
+   */
+  readonly initialFocusRef?: React.RefObject<HTMLElement>
+  /**
+   * Render the dialog inside a React portal.
+   * @defaultValue true
+   */
+  readonly renderInPortal?: boolean
+  /**
+   * Dialog content including header/body/footer.
+   */
+  readonly children: ReactNode
+} & DialogBaseProps
+
+export type DialogProps = DialogOwnProps
 
 export function Dialog({
   open,
