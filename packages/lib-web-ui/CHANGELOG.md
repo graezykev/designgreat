@@ -1,5 +1,19 @@
 # @designgreat/lib-web-ui
 
+## 0.4.2
+
+### Patch Changes
+
+- 0cf54e0: Fix Storybook code/demo toggle background so a11y tooling can read dialog text contrast.
+  - Replaced the gradient overlay on toggle buttons with theme token fills and kept them in normal
+    layout flow.
+  - Removes the invisible overlay covering dialog copy, letting axe confirm WCAG contrast for dialog
+    content.
+
+  **Related PR:** [#12](https://github.com/graezykev/designgreat/pull/12)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.1
 
 ### Patch Changes
