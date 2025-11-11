@@ -50,6 +50,19 @@ const toggleGroupStyle: CSSProperties = {
   backdropFilter: 'blur(10px)'
 }
 
+const toggleSurfaceChrome = {
+  light: {
+    backgroundColor: 'var(--dg-color-background-default, #ffffff)',
+    borderColor: 'var(--dg-color-border-subtle, rgba(15, 23, 42, 0.12))',
+    boxShadow: '0 12px 24px rgba(15, 23, 42, 0.12)'
+  },
+  dark: {
+    backgroundColor: 'var(--dg-color-background-bold, #1d1d1f)',
+    borderColor: 'var(--dg-color-border-subtle, rgba(232, 232, 233, 0.2))',
+    boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)'
+  }
+} as const
+
 const toggleButtonBaseStyle: CSSProperties = {
   border: 'none',
   borderRadius: '999px',
@@ -363,6 +376,7 @@ const ToggleButton = ({
 export const CodeDemoToggle = ({ code, children }: CodeDemoToggleProps) => {
   const [mode, setMode] = useState<'demo' | 'code'>('demo')
   const isDarkTheme = useIsDarkTheme()
+  const chrome = toggleSurfaceChrome[isDarkTheme ? 'dark' : 'light']
 
   return (
     <div style={wrapperStyle}>
@@ -370,13 +384,9 @@ export const CodeDemoToggle = ({ code, children }: CodeDemoToggleProps) => {
         <div
           style={{
             ...toggleGroupStyle,
-            background: isDarkTheme
-              ? 'linear-gradient(145deg, rgba(8, 11, 22, 0.95), rgba(18, 22, 33, 0.92))'
-              : 'rgba(255, 255, 255, 0.95)',
-            border: isDarkTheme ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(15,23,42,0.12)',
-            boxShadow: isDarkTheme
-              ? '0 12px 30px rgba(0, 0, 0, 0.35)'
-              : '0 12px 24px rgba(15, 23, 42, 0.12)'
+            backgroundColor: chrome.backgroundColor,
+            border: `1px solid ${chrome.borderColor}`,
+            boxShadow: chrome.boxShadow
           }}
         >
           <ToggleButton
