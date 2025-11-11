@@ -46,14 +46,40 @@ const SIZE_STYLES: Record<ButtonSize, string> = {
 export type ButtonVariant = 'primary' | 'secondary' | 'outline'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
-export type ButtonProps = {
+/**
+ * Component-specific props consumed by the Button component.
+ */
+export type ButtonOwnProps = {
+  /**
+   * Visual treatment of the button.
+   * @defaultValue 'primary'
+   */
   readonly variant?: ButtonVariant
+  /**
+   * Tokenized size that drives height, padding, and typography.
+   * @defaultValue 'md'
+   */
   readonly size?: ButtonSize
+  /**
+   * Makes the button expand to the full width of its container.
+   */
   readonly fullWidth?: boolean
+  /**
+   * Optional icon rendered before the label.
+   */
   readonly leadingIcon?: ReactNode
+  /**
+   * Optional icon rendered after the label.
+   */
   readonly trailingIcon?: ReactNode
+  /**
+   * Displays a spinner and disables pointer events.
+   * @defaultValue false
+   */
   readonly loading?: boolean
-} & ButtonHTMLAttributes<HTMLButtonElement>
+}
+
+export type ButtonProps = ButtonOwnProps & ButtonHTMLAttributes<HTMLButtonElement>
 
 const SPINNER_CLASSES =
   'inline-block h-4 w-4 animate-spin rounded-full border-2 border-transparent border-t-current'
