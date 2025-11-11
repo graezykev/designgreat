@@ -142,7 +142,7 @@ describe('CodeDemoToggle', () => {
       await user.click(screen.getByRole('button', { name: 'Code' }))
     })
     const toggleGroup = screen.getByRole('button', { name: 'Demo' }).parentElement!
-    expect(toggleGroup.style.border).toContain('rgba(15,23,42,0.12)')
+    expect(toggleGroup.style.boxShadow).toContain('0 12px 24px rgba(15, 23, 42, 0.12)')
 
     document.body.classList.add('dg-theme-dark')
     await act(async () => {
@@ -150,7 +150,7 @@ describe('CodeDemoToggle', () => {
     })
 
     await waitFor(() => {
-      expect(toggleGroup.style.border).toContain('rgba(255,255,255,0.15)')
+      expect(toggleGroup.style.boxShadow).toContain('0 12px 30px rgba(0, 0, 0, 0.35)')
     })
 
     unmount()
