@@ -218,6 +218,17 @@ Each component should include:
 - Optimize bundle size (tree-shaking, code splitting)
 - Set up build validation
 
+#### 3.6 GitHub Actions - NPM Publishing
+
+Create reusable workflow for `lib-web-ui`:
+
+- Trigger on push to `main` when package changes
+- Run lint, test, and build
+- Use Changesets to determine version bump
+- Publish to NPM registry with `@designgreat` scope
+- Create GitHub release with changelog
+- Configure NPM authentication (setup instructions)
+
 ### Deliverables
 
 - Functional UI component library with three components
@@ -237,10 +248,11 @@ Create documentation website and set up automated publishing pipelines.
 
 #### 4.1 Documentation Website (`lib-web-ui-website`)
 
-- Initialize Docusaurus project
+- Initialize Docusaurus (v3) project
 - Configure with TypeScript support
 - Create homepage and navigation structure
 - Set up MDX for rich component documentation
+- Set up ESLint for MDX, similar to md
 
 #### 4.2 Component Documentation
 
@@ -248,31 +260,21 @@ Create documentation for each component including:
 
 - Overview and use cases
 - Interactive demos (embedded from Storybook or live code)
-- Props API documentation (auto-generated from TypeScript)
+- Props API documentation (auto-generated from TypeScript if provided)
 - Accessibility guidelines
 - Code examples
 - Links to StackBlitz sandboxes (prepare structure for your scripts)
 
 #### 4.3 Design System Documentation
 
+- Token Structure & Interpretation - Color Palette, Space system, etc.
 - Token usage guide
 - Theming guide
 - Getting started guide
 - Installation instructions
 - Migration guides (for future versions)
 
-#### 4.4 GitHub Actions - NPM Publishing
-
-Create reusable workflow for `lib-web-ui`:
-
-- Trigger on push to `main` when package changes
-- Run lint, test, and build
-- Use Changesets to determine version bump
-- Publish to NPM registry with `@designgreat` scope
-- Create GitHub release with changelog
-- Configure NPM authentication (setup instructions)
-
-#### 4.5 GitHub Actions - Documentation Deployment
+#### 4.4 GitHub Actions - Documentation Deployment
 
 Create workflow for `lib-web-ui-website`:
 
@@ -281,18 +283,9 @@ Create workflow for `lib-web-ui-website`:
 - Deploy to GitHub Pages
 - Configure custom domain (if provided later)
 
-#### 4.6 NPM Package Configuration
-
-- Configure `.npmrc` for registry and scope
-- Set up `.npmignore` or `files` field in `package.json`
-- Create README for NPM package page
-- Add license, keywords, and repository info
-
 ### Deliverables
 
 - Live documentation website on GitHub Pages
-- Automated NPM publishing pipeline
-- Published `@designgreat/web-ui` package on NPM
 - Documentation: Publishing workflow, contribution process
 
 ---
