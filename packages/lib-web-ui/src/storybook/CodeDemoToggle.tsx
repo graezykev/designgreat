@@ -341,18 +341,15 @@ const CodeBlock = ({ code }: { readonly code: string }) => {
 const ToggleButton = ({
   active,
   label,
-  onClick,
-  themeVariant
+  onClick
 }: {
   readonly active: boolean
   readonly label: string
   readonly onClick: () => void
-  readonly themeVariant: 'light' | 'dark'
 }) => {
-  const isDark = themeVariant === 'dark'
-  const inactiveColor = isDark ? '#cbd5f5' : '#0f172a'
   const activeBackground = 'var(--dg-color-background-button-default, #1d4ed8)'
   const activeTextColor = 'var(--dg-color-text-button-default, #ffffff)'
+  const inactiveTextColor = 'var(--dg-color-text-default, #0f172a)'
 
   return (
     <button
@@ -361,7 +358,7 @@ const ToggleButton = ({
       style={{
         ...toggleButtonBaseStyle,
         backgroundColor: active ? activeBackground : 'transparent',
-        color: active ? activeTextColor : inactiveColor,
+        color: active ? activeTextColor : inactiveTextColor,
         border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid transparent',
         boxShadow: active ? '0 8px 18px rgba(37,99,235,0.35)' : 'none',
         transition: 'all 180ms ease'
@@ -392,13 +389,11 @@ export const CodeDemoToggle = ({ code, children }: CodeDemoToggleProps) => {
           <ToggleButton
             active={mode === 'demo'}
             label="Demo"
-            themeVariant={isDarkTheme ? 'dark' : 'light'}
             onClick={() => { setMode('demo') }}
           />
           <ToggleButton
             active={mode === 'code'}
             label="Code"
-            themeVariant={isDarkTheme ? 'dark' : 'light'}
             onClick={() => { setMode('code') }}
           />
         </div>
