@@ -21,7 +21,7 @@
     "test": "pnpm exec vitest run",
     "clean": "rm -rf dist tsconfig*.tsbuildinfo",
     "prepare": "if [ \"$CI\" != \"true\" ]; then pnpm run build || (echo \"ERROR: This package must be installed without --prod\" && exit 1); fi",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "if [ \"$CI\" != \"true\" ]; then pnpm run build; fi"
   },
   "files": [
     "dist"
