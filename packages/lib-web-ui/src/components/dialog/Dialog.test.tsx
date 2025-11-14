@@ -67,7 +67,7 @@ describe('Dialog', () => {
       </Dialog>
     )
 
-    const overlay = document.querySelector('.dg-dialog-overlay')!
+    const overlay = document.querySelector('.dg-dialog__overlay')!
     fireEvent.mouseDown(overlay)
     expect(handleClose).toHaveBeenCalledTimes(1)
   })
@@ -82,7 +82,7 @@ describe('Dialog', () => {
       </Dialog>
     )
 
-    const overlay = document.querySelector('.dg-dialog-overlay')!
+    const overlay = document.querySelector('.dg-dialog__overlay')!
     fireEvent.mouseDown(overlay)
     expect(handleClose).not.toHaveBeenCalled()
   })
@@ -124,7 +124,7 @@ describe('Dialog', () => {
       expect(screen.getByRole('dialog', { name: /portal dialog/i })).toBeInTheDocument()
     })
 
-    expect(container.querySelector('.dg-dialog-overlay')).toBeNull()
+    expect(container.querySelector('.dg-dialog__overlay')).toBeNull()
 
     rerender(
       <Dialog open renderInPortal={false} onClose={handleClose}>
@@ -134,7 +134,7 @@ describe('Dialog', () => {
       </Dialog>
     )
 
-    expect(container.querySelector('.dg-dialog-overlay')).not.toBeNull()
+    expect(container.querySelector('.dg-dialog__overlay')).not.toBeNull()
   })
 
   it('traps focus inside the dialog and closes on Escape', async () => {

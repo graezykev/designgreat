@@ -1,33 +1,16 @@
 import clsx from 'clsx'
 import { forwardRef, useId, type InputHTMLAttributes, type ReactNode } from 'react'
 
-const INPUT_BASE =
-  'block w-full rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-color-border-input-interaction-focus focus-visible:ring-offset-2 transition-shadow duration-150'
-
-const INPUT_VARIANTS: Record<TextInputValidationState, string> = {
-  default: clsx(
-    'bg-color-background-default',
-    'text-color-text-input-default',
-    'border-color-border-input-default'
-  ),
-  error: clsx(
-    'bg-color-background-default',
-    'border-color-border-error-bold',
-    'focus-visible:ring-color-border-error-bold',
-    'focus-visible:ring-offset-color-background-default'
-  ),
-  success: clsx(
-    'bg-color-background-default',
-    'border-color-border-success-bold',
-    'focus-visible:ring-color-border-success-bold',
-    'focus-visible:ring-offset-color-background-default'
-  )
+const INPUT_SIZES: Record<TextInputSize, string> = {
+  sm: 'dg-text-input__field--sm',
+  md: '',
+  lg: 'dg-text-input__field--lg'
 }
 
-const INPUT_SIZES: Record<TextInputSize, string> = {
-  sm: 'h-9 px-spacing-8 text-sm',
-  md: 'h-10 px-spacing-9 text-base',
-  lg: 'h-12 px-spacing-10 text-lg'
+const INPUT_STATES: Record<TextInputValidationState, string> = {
+  default: '',
+  error: 'dg-text-input__field--error',
+  success: 'dg-text-input__field--success'
 }
 
 export type TextInputSize = 'sm' | 'md' | 'lg'
@@ -74,10 +57,6 @@ export type TextInputOwnProps = {
 
 export type TextInputProps = TextInputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 
-const LABEL_BASE = 'mb-spacing-4 block text-sm font-medium text-color-text-default'
-const DESCRIPTION_CLASS = 'mt-spacing-4 text-sm text-color-text-subtle'
-const ERROR_CLASS = 'mt-spacing-4 text-sm text-color-text-error'
-
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function TextInput(
   {
     id,
@@ -102,25 +81,18 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function T
 
   const ariaDescribedBy = [descriptionId, errorId].filter(Boolean).join(' ') || undefined
 
-  const iconWrapperClasses =
-    'pointer-events-none absolute inset-y-0 flex items-center text-color-text-subtle'
-
   return (
-    <div className={clsx('flex flex-col', className)}>
+    <div className={clsx('dg-text-input', className)}>
       {label ? (
-        <label className={LABEL_BASE} htmlFor={inputId}>
+        <label className="dg-text-input__label" htmlFor={inputId}>
           <span>{label}</span>
-          {optional ? (
-            <span className="ml-spacing-3 text-color-text-subtle">
-              Optional
-            </span>
-          ) : null}
+          {optional ? <span className="dg-text-input__optional">Optional</span> : null}
         </label>
       ) : null}
 
-      <div className="relative">
+      <div className="dg-text-input__field-wrapper">
         {leadingIcon ? (
-          <span className={clsx(iconWrapperClasses, 'left-spacing-7')}>
+          <span className="dg-text-input__icon dg-text-input__icon--leading">
             {leadingIcon}
           </span>
         ) : null}
@@ -128,12 +100,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function T
           ref={ref}
           id={inputId}
           className={clsx(
-            INPUT_BASE,
-            INPUT_VARIANTS[validationState],
+            'dg-text-input__field',
             INPUT_SIZES[size],
-            leadingIcon && 'pl-spacing-9',
-            trailingIcon && 'pr-spacing-9',
-            disabled && 'bg-color-background-bold cursor-not-allowed'
+            INPUT_STATES[validationState],
+            leadingIcon && 'dg-text-input__field--has-leading',
+            trailingIcon && 'dg-text-input__field--has-trailing'
           )}
           aria-describedby={ariaDescribedBy}
           aria-invalid={validationState === 'error' ? true : undefined}
@@ -141,20 +112,20 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function T
           {...rest}
         />
         {trailingIcon ? (
-          <span className={clsx(iconWrapperClasses, 'right-spacing-7')}>
+          <span className="dg-text-input__icon dg-text-input__icon--trailing">
             {trailingIcon}
           </span>
         ) : null}
       </div>
 
       {description ? (
-        <p id={descriptionId} className={DESCRIPTION_CLASS}>
+        <p id={descriptionId} className="dg-text-input__description">
           {description}
         </p>
       ) : null}
 
       {errorMessage ? (
-        <p id={errorId} className={ERROR_CLASS}>
+        <p id={errorId} className="dg-text-input__error">
           {errorMessage}
         </p>
       ) : null}

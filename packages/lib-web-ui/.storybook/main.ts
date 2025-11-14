@@ -30,6 +30,7 @@ const config: StorybookConfig = {
     return {
       ...config,
       base,
+      publicDir: path.resolve(__dirname, '../public'),
       resolve: {
         ...(config.resolve ?? {}),
         alias: {

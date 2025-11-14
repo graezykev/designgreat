@@ -34,9 +34,9 @@ function useDialogContext(componentName: string): DialogContextValue {
 }
 
 const SIZE_CLASSNAME: Record<DialogSize, string> = {
-  sm: 'max-w-md',
-  md: 'max-w-xl',
-  lg: 'max-w-3xl'
+  sm: 'dg-dialog--sm',
+  md: 'dg-dialog--md',
+  lg: 'dg-dialog--lg'
 }
 
 type DialogBaseProps = Omit<HTMLAttributes<HTMLDivElement>, 'role'>
@@ -124,7 +124,7 @@ export function Dialog({
     <DialogContext.Provider value={contextValue}>
       <div
         ref={overlayRef}
-        className="dg-dialog-overlay fixed inset-0 z-50 flex items-center justify-center bg-color-alpha-neutral-5 px-spacing-8 py-spacing-10"
+        className="dg-dialog__overlay"
         onMouseDown={(event) => {
           if (!closeOnOverlayClick) {
             return
@@ -144,7 +144,7 @@ export function Dialog({
           aria-describedby={[ariaDescribedByProp, descriptionId].filter(Boolean).join(' ') || undefined}
           tabIndex={-1}
           className={clsx(
-            'dg-dialog-panel relative mx-auto flex w-full flex-col gap-spacing-7 rounded-xl bg-color-background-default text-color-text-default shadow-xl outline-none focus-visible:ring-2 focus-visible:ring-color-border-button-interaction-focus-visible',
+            'dg-dialog',
             SIZE_CLASSNAME[size],
             className
           )}
@@ -165,16 +165,10 @@ export function Dialog({
 
 export type DialogSectionProps = HTMLAttributes<HTMLDivElement>
 
-const PADDING_X = 'px-spacing-12'
-
 export function DialogHeader({ className, ...rest }: DialogSectionProps): ReactNode {
   return (
     <div
-      className={clsx(
-        'dg-dialog-header flex flex-col gap-spacing-4 pt-spacing-12',
-        PADDING_X,
-        className
-      )}
+      className={clsx('dg-dialog__section dg-dialog__header', className)}
       {...rest}
     />
   )
@@ -183,11 +177,7 @@ export function DialogHeader({ className, ...rest }: DialogSectionProps): ReactN
 export function DialogBody({ className, ...rest }: DialogSectionProps): ReactNode {
   return (
     <div
-      className={clsx(
-        'dg-dialog-body flex flex-col gap-spacing-6 pb-spacing-10',
-        PADDING_X,
-        className
-      )}
+      className={clsx('dg-dialog__section dg-dialog__body', className)}
       {...rest}
     />
   )
@@ -196,11 +186,7 @@ export function DialogBody({ className, ...rest }: DialogSectionProps): ReactNod
 export function DialogFooter({ className, ...rest }: DialogSectionProps): ReactNode {
   return (
     <div
-      className={clsx(
-        'dg-dialog-footer flex flex-col gap-spacing-5 border-t border-color-border-subtle pt-spacing-6 pb-spacing-12 sm:flex-row sm:justify-end',
-        PADDING_X,
-        className
-      )}
+      className={clsx('dg-dialog__section dg-dialog__footer', className)}
       {...rest}
     />
   )
@@ -223,7 +209,7 @@ export function DialogTitle({ id, className, ...rest }: DialogTitleProps): React
   return (
     <h2
       id={titleId}
-      className={clsx('text-lg font-semibold text-color-text-bold', className)}
+      className={clsx('dg-dialog__title', className)}
       {...rest}
     />
   )
@@ -246,7 +232,7 @@ export function DialogDescription({ id, className, ...rest }: DialogDescriptionP
   return (
     <p
       id={descriptionId}
-      className={clsx('text-base text-[var(--dg-color-text-subtle,#616168)]', className)}
+      className={clsx('dg-dialog__description', className)}
       {...rest}
     />
   )

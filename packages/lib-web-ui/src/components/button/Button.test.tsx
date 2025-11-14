@@ -66,6 +66,6 @@ describe('Button', () => {
   it('applies full width styles when requested', () => {
     render(<Button fullWidth>Download</Button>)
 
-    expect(screen.getByRole('button', { name: /download/i })).toHaveClass('w-full')
+    expect(screen.getByRole('button', { name: /download/i })).toHaveClass('dg-btn--block')
   })
 })
