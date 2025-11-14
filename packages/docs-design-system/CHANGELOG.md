@@ -1,5 +1,18 @@
 # @designgreat/docs-design-system
 
+## 0.1.0
+
+### Minor Changes
+
+- 579d77c: Make docs-design-system package publicly publishable to npm
+  - Changed `private: true` to `private: false` to allow npm publishing
+  - Added `publishConfig` with `access: "public"` for public npm registry
+  - Updated GitHub Pages deployment workflow with improved concurrency settings
+
+  **Related PR:** [#20](https://github.com/graezykev/designgreat/pull/20)
+
+  **Author:** @chunman-yeung
+
 ## 0.0.3
 
 ### Patch Changes
