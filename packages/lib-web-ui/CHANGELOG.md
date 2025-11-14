@@ -1,5 +1,18 @@
 # @designgreat/lib-web-ui
 
+## 0.4.9
+
+### Patch Changes
+
+- ee65af0: Fix prepare script to run full build instead of only theme generation
+  - Changed `prepare` script from `pnpm run generate:theme` to `pnpm run build`
+  - Ensures the package is fully built during installation, not just theme files
+  - Aligns prepare script with prepublishOnly script behavior
+
+  **Related PR:** [#21](https://github.com/graezykev/designgreat/pull/21)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.8
 
 ### Patch Changes

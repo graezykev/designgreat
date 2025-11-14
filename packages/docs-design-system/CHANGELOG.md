@@ -1,5 +1,22 @@
 # @designgreat/docs-design-system
 
+## 0.1.1
+
+### Patch Changes
+
+- ee65af0: Fix TypeScript configuration for proper ES module and React type support
+  - Added `"type": "module"` to package.json to correctly identify ES module files
+  - Added `@types/react` as a dev dependency to resolve React type definitions
+  - Configured `@site/*` path alias in tsconfig.json for Docusaurus imports
+  - Fixed TypeScript errors related to CommonJS/ES module conflicts and missing type declarations
+
+  **Related PR:** [#21](https://github.com/graezykev/designgreat/pull/21)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [ee65af0]
+  - @designgreat/lib-web-ui@0.4.9
+
 ## 0.1.0
 
 ### Minor Changes
