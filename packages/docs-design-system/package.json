@@ -1,7 +1,10 @@
 {
   "name": "@designgreat/docs-design-system",
   "version": "0.0.3",
-  "private": true,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "docusaurus": "docusaurus",
     "copy:fonts": "tsx ./scripts/copy-fonts.ts",
