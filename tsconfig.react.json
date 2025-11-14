@@ -9,5 +9,5 @@
     "noEmit": true
   },
   "include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.js", "packages/**/*.jsx"],
-  "exclude": ["node_modules", "dist", "build"]
+  "exclude": ["node_modules", "dist", "build", "packages/docs-design-system"]
 }
