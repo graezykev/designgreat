@@ -8,8 +8,8 @@ on:
       - completed
 
 concurrency:
-  group: deploy-docs-design-system
-  cancel-in-progress: true
+  group: github-pages-deployment
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:

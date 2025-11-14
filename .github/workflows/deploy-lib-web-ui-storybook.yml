@@ -4,12 +4,13 @@ on:
   workflow_run:
     workflows:
       - Version and Publish Packages
+      - Deploy docs-design-system Docusaurus
     types:
       - completed
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: github-pages-deployment
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -95,11 +96,65 @@ jobs:
           test -d packages/lib-web-ui/storybook-static/lib-web-ui
           test -f packages/lib-web-ui/storybook-static/lib-web-ui/index.html
 
+      - name: Download current GitHub Pages site
+        if: steps.changes.outputs.changed == 'true'
+        continue-on-error: true
+        run: |
+          set +e
+          echo "Attempting to download existing GitHub Pages site..."
+          wget \
+            --recursive \
+            --no-parent \
+            --no-host-directories \
+            --directory-prefix=existing-site \
+            --cut-dirs=1 \
+            --page-requisites \
+            --adjust-extension \
+            --convert-links \
+            --timeout=10 \
+            --tries=3 \
+            --reject "*.js.map" \
+            https://graezykev.github.io/designgreat/ 2>&1 | tee wget.log || true
+
+          # Check if download was successful
+          if [ -d "existing-site" ] && [ "$(ls -A existing-site)" ]; then
+            echo "Successfully downloaded existing site"
+            echo "SITE_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "No existing site found or download failed - will deploy fresh"
+            echo "SITE_EXISTS=false" >> $GITHUB_ENV
+          fi
+
+      - name: Merge Storybook with existing site
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          mkdir -p final-site
+
+          # Copy existing site if it exists
+          if [ "$SITE_EXISTS" = "true" ] && [ -d "existing-site" ]; then
+            echo "Copying existing site content..."
+            cp -r existing-site/* final-site/ || true
+          else
+            echo "No existing site to merge - deploying Storybook only"
+          fi
+
+          # Ensure lib-web-ui directory exists and copy Storybook content
+          echo "Adding Storybook content to /lib-web-ui..."
+          mkdir -p final-site/lib-web-ui
+          cp -r packages/lib-web-ui/storybook-static/lib-web-ui/* final-site/lib-web-ui/
+
+          # Verify the merge
+          echo "Verifying merged content..."
+          ls -la final-site/
+          test -f final-site/lib-web-ui/index.html
+          echo "Merge completed successfully"
+
       - name: Upload Pages artifact
         if: steps.changes.outputs.changed == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/lib-web-ui/storybook-static
+          path: final-site
 
       - name: Skip deployment (no relevant changes)
         if: steps.changes.outputs.changed != 'true'
