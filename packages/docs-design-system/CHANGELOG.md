@@ -1,5 +1,13 @@
 # @designgreat/docs-design-system
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [a8481f4]
+  - @designgreat/lib-web-ui-design-token@0.4.1
+  - @designgreat/lib-web-ui@0.4.7
+
 ## 0.0.1
 
 ### Patch Changes

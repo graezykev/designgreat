@@ -1,5 +1,24 @@
 # @designgreat/design-token-support
 
+## 0.2.4
+
+### Patch Changes
+
+- a8481f4: Fix CI/CD publish failures by making prepare scripts conditional
+  - Modified `prepare` scripts to skip during CI environment to prevent build errors during
+    `changeset publish`
+  - Local development workflow unchanged: `pnpm install` still auto-builds packages
+  - CI/CD workflow now uses explicit build steps before publishing, avoiding circular dependency
+    issues
+  - Resolves "Cannot find module" errors during package publishing in GitHub Actions
+
+  **Related PR:** [#17](https://github.com/graezykev/designgreat/pull/17)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [a8481f4]
+  - @designgreat/lib-web-ui-design-token@0.4.1
+
 ## 0.2.3
 
 ### Patch Changes
