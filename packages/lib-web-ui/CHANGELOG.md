@@ -1,5 +1,25 @@
 # @designgreat/lib-web-ui
 
+## 0.4.8
+
+### Patch Changes
+
+- 8769553: Fix CI/CD publish failures by making prepare and prepublishOnly scripts conditional
+  - Modified `prepare` and `prepublishOnly` scripts to skip during CI environment to prevent build
+    errors during `changeset publish`
+  - Local development workflow unchanged: `pnpm install` still auto-builds packages
+  - CI/CD workflow now uses explicit build steps before publishing, avoiding circular dependency
+    issues
+  - Resolves "Cannot find module" errors during package publishing in GitHub Actions
+
+  **Related PR:** [#18](https://github.com/graezykev/designgreat/pull/18)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [8769553]
+  - @designgreat/lib-web-ui-design-token@0.4.2
+  - @designgreat/design-token-support@0.2.5
+
 ## 0.4.7
 
 ### Patch Changes
