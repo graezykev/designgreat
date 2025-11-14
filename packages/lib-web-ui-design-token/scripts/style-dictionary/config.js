@@ -19,7 +19,7 @@ const BASE_TRANSFORMS_REGISTERED = new WeakSet()
 const BASE_FORMATS_REGISTERED = new WeakSet()
 const COLOR_TRANSFORM_NAMES = new WeakMap()
 
-const FontAssetPath = '/assets/fonts'
+const FontAssetPath = '.' // Relative path - fonts in same directory as CSS
 const BasePixelFontSize = 16
 
 export default function getStyleDictionaryConfig(theme, StyleDictionary) {
@@ -27,12 +27,30 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
   registerBaseFormats(StyleDictionary)
   const colorTransformName = registerColorTransform(StyleDictionary, theme)
 
+  // Only generate font-face.css and copy assets for the first theme (light)
+  const isFirstTheme = theme === 'light'
+
   return {
     source: [
       `${resolve(srcRoot, 'tokens')}/**/*.json`,
       `${resolve(srcRoot, 'tokens')}/**/*.js`
     ],
     platforms: {
+      // Font platform - theme-independent, generates to dist/font/
+      ...(isFirstTheme ? {
+        font: {
+          transforms: ['attribute/cti'],
+          buildPath: `${resolve(distRoot, 'font')}/`,
+          files: [
+            {
+              destination: 'font-face.css',
+              filter: (token) => token.type === 'fontFace' && token?.attributes?.fonts,
+              format: 'css/font-face'
+            }
+          ]
+        }
+      } : {}),
+      // CSS platform - theme-specific variables
       css: {
         transforms: [
           'attribute/cti',
@@ -61,11 +79,6 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
         prefix: 'token',
         files: [
           {
-            destination: 'font-face.css',
-            filter: (token) => token.type === 'fontFace' && token?.attributes?.fonts,
-            format: 'css/font-face'
-          },
-          {
             destination: 'variables.scss',
             format: 'scss/variables'
           },
@@ -74,7 +87,7 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
             format: 'css/variables'
           }
         ],
-        actions: ['copy_assets']
+        actions: []
       },
       jsts: {
         transforms: [
@@ -92,11 +105,6 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
         ],
         buildPath: `${resolve(distRoot, 'jsts', theme)}/`,
         files: [
-          {
-            destination: 'font-face.js',
-            filter: (token) => token.type === 'fontFace' && token?.attributes?.fonts,
-            format: 'js/font-face'
-          },
           {
             destination: 'variables.js',
             format: 'javascript/esm'
@@ -236,17 +244,6 @@ function registerBaseFormats(StyleDictionary) {
     }
   })
 
-  StyleDictionary.registerFormat({
-    name: 'js/font-face',
-    format({ dictionary }) {
-      const faces = dictionary.allTokens
-        .map(generateFontFaceJS)
-        .map((value, index) => `'${dictionary.allTokens[index].path.join('-')}': ${JSON.stringify(value, null, 2)}`)
-        .join(',\n')
-      return `export default {\n${faces}\n}`
-    }
-  })
-
   StyleDictionary.registerTransform({
     name: 'css/flatten-composition-properties',
     type: 'value',
@@ -364,40 +361,4 @@ function generateFontFaceCSS(token) {
       }).join('\n')
     }).join('\n')
   }).join('\n')
-}
-
-function generateFontFaceJS(token) {
-  const fonts = token?.attributes?.fonts
-  if (!fonts) {
-    return []
-  }
-
-  const faces = Object.keys(fonts).reduce((langList, lang) => {
-    const font = fonts[lang]
-    const weightMap = font['font-weight'] || { '': null }
-    const weightArr = Object.keys(weightMap)
-    langList.push(...weightArr.reduce((weightList, weight) => {
-      const styles = font['font-style'] || ['']
-      weightList.push(...styles.reduce((styleList, style) => {
-        const name = [token.value, lang, weight, style].reduce((acc, item) => {
-          if (item) acc.push(item)
-          return acc
-        }, []).join('-')
-        const range = font['unicode-range']
-        const obj = {
-          fontFamily: `'${token.value}'`,
-          src: `url('${FontAssetPath}/${name}.woff2') format('woff2'),\nurl('${FontAssetPath}/${name}.woff') format('woff'),\nurl('${FontAssetPath}/${name}.ttf') format('truetype'),\nurl('${FontAssetPath}/${name}.otf') format('opentype');`,
-          fontDisplay: 'swap'
-        }
-        if (weight) obj.fontWeight = `${weightMap[weight]}`
-        if (style) obj.fontStyle = `${style}`
-        if (range) obj.unicodeRange = `${range}`
-        styleList.push(obj)
-        return styleList
-      }, []))
-      return weightList
-    }, []))
-    return langList
-  }, [])
-  return faces
 }

@@ -12,7 +12,11 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./font": "./dist/font/font-face.css",
+    "./font/*": "./dist/font/*",
+    "./css/light": "./dist/css/light/variables.css",
+    "./css/dark": "./dist/css/dark/variables.css"
   },
   "files": [
     "dist"
