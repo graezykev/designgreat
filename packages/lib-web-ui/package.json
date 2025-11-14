@@ -32,7 +32,7 @@
     "test": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --runInBand --config jest.config.ts",
     "test:watch": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --watch --config jest.config.ts",
     "coverage": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --config jest.config.ts --coverage",
-    "prepare": "pnpm run generate:theme",
+    "prepare": "if [ \"$CI\" != \"true\" ]; then pnpm run generate:theme; fi",
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {

@@ -20,7 +20,8 @@
     "lint": "pnpm exec eslint . --max-warnings 0",
     "test": "pnpm exec vitest run",
     "clean": "rm -rf dist tsconfig*.tsbuildinfo",
-    "prepare": "pnpm run build || (echo \"ERROR: This package must be installed without --prod\" && exit 1)"
+    "prepare": "if [ \"$CI\" != \"true\" ]; then pnpm run build || (echo \"ERROR: This package must be installed without --prod\" && exit 1); fi",
+    "prepublishOnly": "pnpm run build"
   },
   "files": [
     "dist"
