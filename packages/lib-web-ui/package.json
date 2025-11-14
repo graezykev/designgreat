@@ -17,10 +17,11 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/packages/lib-web-ui/src/index.mjs",
       "require": "./dist/packages/lib-web-ui/src/index.cjs"
-    }
+    },
+    "./dist/*": "./dist/*"
   },
   "scripts": {
-    "clean": "rm -rf dist coverage tsconfig*.tsbuildinfo storybook-static",
+    "clean": "rm -rf dist coverage tsconfig*.tsbuildinfo storybook-static public",
     "generate:theme": "tsx ./scripts/generate-theme-css.ts",
     "build": "pnpm run clean && pnpm run generate:theme && tsc -p tsconfig.build.json && vite build && pnpm run storybook:build",
     "dev": "pnpm run generate:theme && vite dev",

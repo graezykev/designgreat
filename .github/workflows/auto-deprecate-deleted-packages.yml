@@ -1,0 +1,97 @@
+name: Auto-Deprecate Deleted Packages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/**'
+
+jobs:
+  detect-deleted-packages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout current commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Detect deleted packages
+        id: detect
+        run: |
+          echo "Checking for deleted packages..."
+
+          # Get list of deleted package.json files
+          DELETED_PACKAGES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'packages/.*/package.json' || true)
+
+          if [ -z "$DELETED_PACKAGES" ]; then
+            echo "No packages were deleted"
+            echo "has_deletions=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "has_deletions=true" >> $GITHUB_OUTPUT
+
+          # Extract package names from deleted package.json files
+          PACKAGE_NAMES=""
+          for pkg_file in $DELETED_PACKAGES; do
+            # Get the package.json content from previous commit
+            PACKAGE_NAME=$(git show HEAD~1:$pkg_file | jq -r '.name' 2>/dev/null || echo "")
+            IS_PRIVATE=$(git show HEAD~1:$pkg_file | jq -r '.private' 2>/dev/null || echo "false")
+            
+            if [ -n "$PACKAGE_NAME" ] && [ "$IS_PRIVATE" != "true" ]; then
+              echo "Found deleted package: $PACKAGE_NAME"
+              PACKAGE_NAMES="${PACKAGE_NAMES}${PACKAGE_NAME},"
+            fi
+          done
+
+          # Remove trailing comma
+          PACKAGE_NAMES=${PACKAGE_NAMES%,}
+
+          echo "package_names=$PACKAGE_NAMES" >> $GITHUB_OUTPUT
+          echo "Packages to deprecate: $PACKAGE_NAMES"
+
+      - name: Deprecate deleted packages
+        if: steps.detect.outputs.has_deletions == 'true' && steps.detect.outputs.package_names != ''
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          IFS=',' read -ra PACKAGES <<< "${{ steps.detect.outputs.package_names }}"
+
+          for package in "${PACKAGES[@]}"; do
+            echo "Processing: $package"
+            
+            # Check if package exists on NPM
+            if npm view "$package" version > /dev/null 2>&1; then
+              echo "Deprecating $package..."
+              npm deprecate "$package" "⚠️ This package has been removed from the monorepo and is no longer maintained. Please remove it from your dependencies."
+              echo "✓ Deprecated: $package"
+            else
+              echo "⊘ Package not found on NPM (might not have been published): $package"
+            fi
+          done
+
+      - name: Summary
+        if: steps.detect.outputs.has_deletions == 'true' && steps.detect.outputs.package_names != ''
+        run: |
+          echo "## Auto-Deprecation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The following packages were deleted and have been deprecated on NPM:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          IFS=',' read -ra PACKAGES <<< "${{ steps.detect.outputs.package_names }}"
+          for package in "${PACKAGES[@]}"; do
+            echo "- \`$package\`" >> $GITHUB_STEP_SUMMARY
+          done
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Deprecation Message:** ⚠️ This package has been removed from the monorepo and is no longer maintained. Please remove it from your dependencies." >> $GITHUB_STEP_SUMMARY

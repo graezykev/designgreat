@@ -1,0 +1,68 @@
+name: Deprecate NPM Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: 'Package name to deprecate (e.g., @designgreat/lib-web-ui-website)'
+        required: true
+        type: string
+      deprecation_message:
+        description: 'Deprecation message'
+        required: true
+        type: string
+        default: 'This package is no longer maintained. Please remove it from your dependencies.'
+
+jobs:
+  deprecate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Verify package exists
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "Checking if package exists on NPM..."
+          if npm view "${{ inputs.package_name }}" version > /dev/null 2>&1; then
+            echo "✓ Package found: ${{ inputs.package_name }}"
+          else
+            echo "✗ Package not found on NPM: ${{ inputs.package_name }}"
+            exit 1
+          fi
+
+      - name: Deprecate package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "Deprecating package: ${{ inputs.package_name }}"
+          npm deprecate "${{ inputs.package_name }}" "${{ inputs.deprecation_message }}"
+          echo "✓ Package deprecated successfully"
+
+      - name: Verify deprecation
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "Verifying deprecation..."
+          npm view "${{ inputs.package_name }}" deprecated
+          echo "✓ Deprecation verified"
+
+      - name: Summary
+        run: |
+          echo "## Deprecation Complete ✓" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Package:** \`${{ inputs.package_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Message:** ${{ inputs.deprecation_message }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Users installing this package will now see a deprecation warning." >> $GITHUB_STEP_SUMMARY

@@ -9,6 +9,7 @@ const resolvePath = (...segments: string[]): string =>
 
 export default defineConfig({
   plugins: [react()],
+  publicDir: resolvePath('public'),
   css: {
     postcss: postcssConfig
   },

@@ -1,5 +1,25 @@
 import markdown from '@eslint/markdown'
 
+/**
+ * ESLint configuration for Markdown and MDX files.
+ *
+ * This configuration enables linting of code blocks within .md and .mdx files:
+ * - Uses the markdown processor to extract and lint code blocks
+ * - Disables type-aware TypeScript rules (since code blocks don't have full context)
+ * - Allows code examples to be more lenient with unused variables
+ * - Supports JavaScript, TypeScript, JSX, and TSX code blocks
+ *
+ * Note: For MDX files, only code blocks (triple backticks) are linted.
+ * The mixed JSX/Markdown content in MDX files is NOT linted - the MDX compiler
+ * (built into Docusaurus) handles syntax checking for that.
+ *
+ * @example
+ * ```js
+ * // This code block in a .md or .mdx file will be linted
+ * const example = 'hello world'
+ * ```
+ */
+
 const typeAwareRulesToDisable = [
   '@typescript-eslint/await-thenable',
   '@typescript-eslint/consistent-return',
@@ -72,8 +92,18 @@ const createMarkdownConfig = () => [
     }
   },
   {
+    name: 'designgreat/mdx-processor',
+    files: ['**/*.mdx'],
+    processor: markdown.processors.markdown,
+    rules: {
+      'eol-last': 'off',
+      'no-trailing-spaces': 'off',
+      '@typescript-eslint/no-unused-vars': 'off'
+    }
+  },
+  {
     name: 'designgreat/markdown-codeblocks',
-    files: ['**/*.md/*.js', '**/*.md/*.cjs', '**/*.md/*.mjs', '**/*.md/*.ts', '**/*.md/*.tsx'],
+    files: ['**/*.md/*.js', '**/*.md/*.cjs', '**/*.md/*.mjs', '**/*.md/*.ts', '**/*.md/*.tsx', '**/*.md/*.jsx'],
     languageOptions: {
       parserOptions: {
         project: false
@@ -81,7 +111,26 @@ const createMarkdownConfig = () => [
     },
     rules: {
       ...Object.fromEntries(typeAwareRulesToDisable.map((rule) => [rule, 'off'])),
-      '@typescript-eslint/no-unused-vars': 'off'
+      '@typescript-eslint/no-unused-vars': 'off',
+      'no-alert': 'off', // Allow alert() in documentation examples
+      'no-console': 'off', // Allow console in documentation examples
+      'no-undef': 'off' // Allow undefined variables in isolated examples
+    }
+  },
+  {
+    name: 'designgreat/mdx-codeblocks',
+    files: ['**/*.mdx/*.js', '**/*.mdx/*.cjs', '**/*.mdx/*.mjs', '**/*.mdx/*.ts', '**/*.mdx/*.tsx', '**/*.mdx/*.jsx'],
+    languageOptions: {
+      parserOptions: {
+        project: false
+      }
+    },
+    rules: {
+      ...Object.fromEntries(typeAwareRulesToDisable.map((rule) => [rule, 'off'])),
+      '@typescript-eslint/no-unused-vars': 'off',
+      'no-alert': 'off', // Allow alert() in documentation examples
+      'no-console': 'off', // Allow console in documentation examples
+      'no-undef': 'off' // Allow undefined variables in isolated examples
     }
   }
 ]

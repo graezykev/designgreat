@@ -65,10 +65,16 @@ describe('TextInput', () => {
     )
 
     const input = screen.getByLabelText('Amount')
-    expect(input).toHaveClass('pl-spacing-9')
-    expect(input).toHaveClass('pr-spacing-9')
-    expect(screen.getByTestId('leading').parentElement).toHaveClass('left-spacing-7')
-    expect(screen.getByTestId('trailing').parentElement).toHaveClass('right-spacing-7')
+    expect(input).toHaveClass('dg-text-input__field--has-leading')
+    expect(input).toHaveClass('dg-text-input__field--has-trailing')
+    expect(screen.getByTestId('leading').parentElement).toHaveClass(
+      'dg-text-input__icon',
+      'dg-text-input__icon--leading'
+    )
+    expect(screen.getByTestId('trailing').parentElement).toHaveClass(
+      'dg-text-input__icon',
+      'dg-text-input__icon--trailing'
+    )
   })
 
   it('respects validation state prop and disabled styling', () => {
@@ -77,7 +83,6 @@ describe('TextInput', () => {
     const input = screen.getByLabelText('Budget')
     expect(input).not.toHaveAttribute('aria-invalid')
     expect(input).toBeDisabled()
-    expect(input).toHaveClass('cursor-not-allowed')
   })
 
   it('forwards refs to the underlying input element', () => {

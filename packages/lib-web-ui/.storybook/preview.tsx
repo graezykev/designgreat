@@ -2,6 +2,8 @@ import { createThemeConfig, getThemeClassName } from '@designgreat/design-token-
 import type { Decorator, Preview } from '@storybook/react'
 import { useEffect } from 'react'
 
+// Import font-face definitions for Storybook
+import '@designgreat/lib-web-ui-design-token/font'
 import '../src/styles/tailwind.css'
 
 const LIGHT_THEME = createThemeConfig('light', { selector: ':root' })
@@ -33,6 +35,7 @@ const ThemeDecorator: Decorator = (Story, context) => {
       target.style.overflow = 'hidden'
       target.style.margin = '0'
       target.style.padding = '0'
+      target.style.fontFamily = 'var(--dg-font-family-primary, Roboto), -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif'
     }
 
     if (root) {
@@ -53,6 +56,7 @@ const ThemeDecorator: Decorator = (Story, context) => {
         target.style.overflow = ''
         target.style.margin = ''
         target.style.padding = ''
+        target.style.fontFamily = ''
       }
 
       if (root) {

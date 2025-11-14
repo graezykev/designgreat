@@ -13,7 +13,8 @@ async function ensureThemeStyles(): Promise<void> {
 
   const layers = listThemeNames().map((theme) => {
     const selector = theme === 'light' ? ':root' : `.${getThemeClassName(theme)}`
-    return createThemeStyles(theme, { selector, indent: 2 })
+    const raw = createThemeStyles(theme, { selector, indent: 2 })
+    return raw.replace(/url\((['"])\/assets\/logo\.png\1\)/g, 'none')
   })
 
   const indentation = '  '
@@ -27,7 +28,8 @@ async function ensureThemeStyles(): Promise<void> {
     .join('\n\n')
 
   const outputPath = path.join(stylesDir, 'designgreat-theme.css')
-  const fileContents = `@layer base {\n${indentedLayers}\n}\n`
+  // const fileContents = `@layer base {\n${indentedLayers}\n}\n`
+  const fileContents = `${indentedLayers}\n`
   const prettierConfig = await resolveConfig(outputPath)
   const formattedContents = await format(fileContents, {
     ...(prettierConfig ?? {}),

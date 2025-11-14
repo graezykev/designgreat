@@ -1,0 +1,368 @@
+.dg-btn {
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  padding: 0 var(--dg-spacing-12, 1.5rem);
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dg-spacing-5, 0.5rem);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--dg-color-text-default, #0c0c0d) 12%, transparent);
+  background-color: transparent;
+  color: inherit;
+}
+
+.dg-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px var(--dg-color-background-button-interaction-focus-visible, #599eff),
+    0 10px 25px color-mix(in srgb, var(--dg-color-text-default, #0c0c0d) 18%, transparent);
+}
+
+.dg-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.dg-btn--primary {
+  background-color: color-mix(
+    in srgb,
+    var(--dg-color-background-button-default, #0055cc) 82%,
+    var(--dg-color-background-default, #0c0c0d)
+  );
+  color: var(--dg-color-text-button-default, #0c0c0d);
+}
+
+.dg-btn--primary:not(:disabled):hover {
+  background-color: color-mix(
+    in srgb,
+    var(--dg-color-background-button-interaction-hover, #2a83ff) 80%,
+    var(--dg-color-background-default, #0c0c0d)
+  );
+}
+
+.dg-btn--primary:not(:disabled):active {
+  background-color: color-mix(
+    in srgb,
+    var(--dg-color-background-button-interaction-active, #0b62d1) 85%,
+    var(--dg-color-background-bold, #1d1d1f)
+  );
+}
+
+.dg-btn--secondary {
+  background-color: color-mix(
+    in srgb,
+    var(--dg-color-background-button-subtle-default, #f3f4f6) 92%,
+    var(--dg-color-text-default, #0c0c0d)
+  );
+  color: color-mix(
+    in srgb,
+    var(--dg-color-text-button-subtle-default, #1d1d1f) 85%,
+    var(--dg-color-text-inverse, #ffffff)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--dg-color-border-button-subtle-default, rgba(0, 0, 0, 0.06)) 85%,
+    var(--dg-color-background-default, #ffffff)
+  );
+}
+
+.dg-btn--secondary:not(:disabled):hover {
+  background-color: color-mix(
+    in srgb,
+    var(--dg-color-background-button-subtle-interaction-hover, rgba(0, 0, 0, 0.04)) 95%,
+    var(--dg-color-text-inverse, #ffffff)
+  );
+}
+
+.dg-btn--outline {
+  border-color: var(--dg-color-border-button-wireframe-default, #599eff);
+  color: var(--dg-color-text-button-wireframe-default, #599eff);
+  background-color: transparent;
+}
+
+.dg-btn--outline:not(:disabled):hover {
+  border-color: var(--dg-color-border-button-wireframe-interaction-hover, #88baff);
+  color: var(--dg-color-text-button-wireframe-interaction-hover, #0c0c0d);
+}
+
+.dg-btn--sm {
+  min-height: 2.25rem;
+  padding: 0 var(--dg-spacing-9, 1rem);
+  font-size: 0.875rem;
+}
+
+.dg-btn--lg {
+  min-height: 3.25rem;
+  padding: 0 var(--dg-spacing-14, 1.75rem);
+  font-size: 1.0625rem;
+}
+
+.dg-btn--block {
+  width: 100%;
+}
+
+.dg-btn--loading {
+  cursor: progress;
+}
+
+.dg-btn--loading .dg-btn__label {
+  opacity: 0.85;
+}
+
+.dg-btn__label {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dg-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+
+.dg-btn__icon--leading {
+  margin-left: -0.25rem;
+}
+
+.dg-btn__icon--trailing {
+  margin-right: -0.25rem;
+}
+
+.dg-btn__spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  animation: dg-spin 0.7s linear infinite;
+}
+
+@keyframes dg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dg-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--dg-color-alpha-neutral-4, rgba(0, 0, 0, 0.31));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--dg-spacing-12, 3rem) var(--dg-spacing-8, 1.5rem);
+  z-index: 40;
+}
+
+.dg-dialog {
+  background-color: var(--dg-color-background-bold, #f8f9fb);
+  color: var(--dg-color-text-default, #0c0c0d);
+  border-radius: 1rem;
+  width: 100%;
+  max-height: calc(100vh - 4rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid
+    color-mix(in srgb, var(--dg-color-border-subtle, rgba(0, 0, 0, 0.08)) 40%, transparent);
+  box-shadow:
+    0 25px 65px color-mix(in srgb, var(--dg-color-text-default, #0c0c0d) 45%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--dg-color-text-inverse, #ffffff) 6%, transparent) inset;
+  backdrop-filter: blur(6px);
+}
+
+.dg-dialog--sm {
+  max-width: 26rem;
+}
+
+.dg-dialog--md {
+  max-width: 34rem;
+}
+
+.dg-dialog--lg {
+  max-width: 46rem;
+}
+
+.dg-dialog__section {
+  padding: var(--dg-spacing-10, 2.5rem) var(--dg-spacing-12, 3rem);
+}
+
+.dg-dialog__header {
+  padding-bottom: var(--dg-spacing-6, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--dg-spacing-4, 0.25rem);
+}
+
+.dg-dialog__body {
+  padding-top: 0;
+  padding-bottom: var(--dg-spacing-8, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--dg-spacing-6, 1.25rem);
+  color: var(--dg-color-text-default, #0c0c0d);
+}
+
+.dg-dialog__body p {
+  margin: 0;
+}
+
+.dg-dialog__footer {
+  padding-top: var(--dg-spacing-6, 1.5rem);
+  border-top: 1px solid
+    color-mix(in srgb, var(--dg-color-border-subtle, rgba(0, 0, 0, 0.08)) 70%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: var(--dg-spacing-4, 0.5rem);
+}
+
+@media (min-width: 640px) {
+  .dg-dialog__footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.dg-dialog__title {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--dg-color-text-bold, #0c0c0d);
+}
+
+.dg-dialog__description {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--dg-color-text-subtle, #616168);
+}
+
+.dg-text-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dg-spacing-3, 0.5rem);
+  width: 100%;
+}
+
+.dg-text-input__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--dg-color-text-default, #0c0c0d);
+  display: inline-flex;
+  gap: var(--dg-spacing-2, 0.25rem);
+  align-items: baseline;
+}
+
+.dg-text-input__optional {
+  font-size: 0.75rem;
+  color: var(--dg-color-text-subtle, #616168);
+}
+
+.dg-text-input__field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dg-text-input__field {
+  width: 100%;
+  font: inherit;
+  color: var(--dg-color-text-default, #0c0c0d);
+  background-color: color-mix(
+    in srgb,
+    var(--dg-color-background-default, #ffffff) 85%,
+    var(--dg-color-background-bold, #f8f9fb)
+  );
+  border-radius: 0.75rem;
+  border: 1px solid var(--dg-color-border-input-default, rgba(0, 0, 0, 0.15));
+  padding: 0 var(--dg-spacing-9, 1rem);
+  min-height: 2.75rem;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+.dg-text-input__field:focus-visible {
+  outline: none;
+  border-color: var(--dg-color-border-input-interaction-focus, #599eff);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--dg-color-background-button-default, #599eff) 30%, transparent);
+}
+
+.dg-text-input__field--sm {
+  min-height: 2.25rem;
+  font-size: 0.875rem;
+}
+
+.dg-text-input__field--lg {
+  min-height: 3.25rem;
+  font-size: 1.0625rem;
+}
+
+.dg-text-input__field--error {
+  border-color: var(--dg-color-border-error-bold, #e38078);
+}
+
+.dg-text-input__field--success {
+  border-color: var(--dg-color-border-success-bold, #68d2a6);
+}
+
+.dg-text-input__field:disabled {
+  background-color: var(--dg-color-background-bold, #f3f4f6);
+  cursor: not-allowed;
+}
+
+.dg-text-input__icon {
+  position: absolute;
+  inset-block: 0;
+  display: flex;
+  align-items: center;
+  color: var(--dg-color-text-subtle, #616168);
+  pointer-events: none;
+}
+
+.dg-text-input__icon--leading {
+  left: var(--dg-spacing-7, 0.75rem);
+}
+
+.dg-text-input__icon--trailing {
+  right: var(--dg-spacing-7, 0.75rem);
+}
+
+.dg-text-input__field--has-leading {
+  padding-left: 2.5rem;
+}
+
+.dg-text-input__field--has-trailing {
+  padding-right: 2.5rem;
+}
+
+.dg-text-input__description,
+.dg-text-input__error {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.dg-text-input__description {
+  color: var(--dg-color-text-subtle, #616168);
+}
+
+.dg-text-input__error {
+  color: var(--dg-color-text-error, #e38078);
+}

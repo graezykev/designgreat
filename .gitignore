@@ -19,6 +19,10 @@ turbo/
 .vite/
 *.tsbuildinfo
 storybook-static/
+public/
+
+# Copied font assets (generated from lib-web-ui-design-token)
+**/static/font/
 
 # Temporary files
 temp/
