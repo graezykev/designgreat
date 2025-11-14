@@ -32,6 +32,14 @@ const config = [
     ]
   },
   {
+    name: 'designgreat/docs-design-system-ignore',
+    ignores: [
+      'packages/docs-design-system/.docusaurus/**',
+      'packages/docs-design-system/build/**',
+      'packages/docs-design-system/docs/tutorial-basics/markdown-features.mdx'
+    ]
+  },
+  {
     name: 'designgreat/tests',
     files: ['**/*.test.*', '**/*.spec.*', '**/*.stories.*'],
     rules: {

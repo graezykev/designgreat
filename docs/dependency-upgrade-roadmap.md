@@ -11,6 +11,10 @@
 - [ ] Storybook → 10.x (current: 8.6.x)
   - Adopt Builder V4 config format and new story store
   - Replace `.storybook/main.ts` overrides once migration codemods run
+- [ ] Docusaurus → 4.x (current: 3.9.2)
+  - Test MDX compatibility and migration codemods
+  - Verify theme customizations and plugin compatibility
+  - Update configuration format if breaking changes exist
 
 ## Build & Tooling
 
@@ -22,6 +26,14 @@
 - [ ] TailwindCSS → 4.x (current: 3.4.x)
   - Prototype in a branch; align token integration with new CSS-first authoring model
 - [ ] PostCSS / Autoprefixer → latest minor versions once Tailwind upgrades land
+
+## Linting & Code Quality
+
+- [ ] ESLint MDX Support → `eslint-plugin-mdx` or alternative strategy
+  - Currently linting only code blocks in MDX files using `@eslint/markdown` processor
+  - Wait for `eslint-plugin-mdx` to support ESLint 9 flat config, or evaluate alternative MDX
+    linting strategies
+  - Goal: Properly lint both code blocks AND JSX/Markdown content in `.mdx` files
 
 ## Testing Stack
 
