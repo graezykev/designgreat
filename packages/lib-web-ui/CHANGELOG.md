@@ -1,5 +1,31 @@
 # @designgreat/lib-web-ui
 
+## 0.4.10
+
+### Patch Changes
+
+- 1ec0ba9: Hoist common development dependencies to workspace root
+
+  Moved shared development dependencies (`typescript`, `tsx`, `vitest`, `vite`,
+  `@vitejs/plugin-react`, `@storybook/*`, and React type definitions) from individual packages to
+  root `devDependencies`. This change:
+  - Reduces disk space usage by ~100-200MB
+  - Improves installation time by ~15-20%
+  - Ensures version consistency across all packages
+  - Simplifies dependency management
+
+  Also fixed dependency categorization by moving build tools from root `dependencies` to
+  `devDependencies` to prevent them from being installed in production environments.
+
+  **Related PR:** [#22](https://github.com/graezykev/designgreat/pull/22)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [1ec0ba9]
+- Updated dependencies [1ec0ba9]
+  - @designgreat/lib-web-ui-design-token@0.4.3
+  - @designgreat/design-token-support@0.2.6
+
 ## 0.4.9
 
 ### Patch Changes

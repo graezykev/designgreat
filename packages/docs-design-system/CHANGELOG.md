@@ -1,5 +1,25 @@
 # @designgreat/docs-design-system
 
+## 0.1.2
+
+### Patch Changes
+
+- 1ec0ba9: Fix ESM module format for Docusaurus scripts
+
+  Renamed `scripts/copy-fonts.ts` to `scripts/copy-fonts.mts` to explicitly mark it as an ESM
+  module. This allows the script to use `import.meta` syntax while being properly linted and
+  typechecked by Node.js configs, without requiring `"type": "module"` in package.json (which would
+  break Docusaurus compatibility).
+
+  **Related PR:** [#22](https://github.com/graezykev/designgreat/pull/22)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [1ec0ba9]
+- Updated dependencies [1ec0ba9]
+  - @designgreat/lib-web-ui-design-token@0.4.3
+  - @designgreat/lib-web-ui@0.4.10
+
 ## 0.1.1
 
 ### Patch Changes

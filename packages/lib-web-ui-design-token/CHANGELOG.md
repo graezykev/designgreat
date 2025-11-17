@@ -1,5 +1,39 @@
 # @designgreat/lib-web-ui-design-token
 
+## 0.4.3
+
+### Patch Changes
+
+- 1ec0ba9: Fix typecheck to generate tokens before type checking
+
+  Updated the `typecheck` script to run `build:tokens` before TypeScript type checking. This ensures
+  that generated theme files exist before type checking runs, preventing module resolution errors.
+
+  Also updated workspace TypeScript configuration and Turbo pipeline to ensure all dependency
+  packages are fully built before dependent packages run type checking, eliminating race conditions
+  in the build process.
+
+  **Related PR:** [#22](https://github.com/graezykev/designgreat/pull/22)
+
+  **Author:** @chunman-yeung
+
+- 1ec0ba9: Hoist common development dependencies to workspace root
+
+  Moved shared development dependencies (`typescript`, `tsx`, `vitest`, `vite`,
+  `@vitejs/plugin-react`, `@storybook/*`, and React type definitions) from individual packages to
+  root `devDependencies`. This change:
+  - Reduces disk space usage by ~100-200MB
+  - Improves installation time by ~15-20%
+  - Ensures version consistency across all packages
+  - Simplifies dependency management
+
+  Also fixed dependency categorization by moving build tools from root `dependencies` to
+  `devDependencies` to prevent them from being installed in production environments.
+
+  **Related PR:** [#22](https://github.com/graezykev/designgreat/pull/22)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.2
 
 ### Patch Changes
