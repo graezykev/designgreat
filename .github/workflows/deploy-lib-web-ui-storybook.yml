@@ -1,12 +1,19 @@
-name: Deploy lib-web-ui Storybook
+# ⚠️ DEPRECATED: This workflow has been replaced by deploy-docs-storybook-gh-pages.yml
+# The unified workflow prevents race conditions and ensures atomic deployments
+# This file is kept for reference but should not be triggered
+name: Deploy lib-web-ui Storybook (DEPRECATED)
+
+# Trigger disabled - now handled by deploy-docs-storybook-gh-pages.yml
+# on:
+#   workflow_run:
+#     workflows:
+#       - Version and Publish Packages
+#       - Deploy docs-design-system Docusaurus
+#     types:
+#       - completed
 
 on:
-  workflow_run:
-    workflows:
-      - Version and Publish Packages
-      - Deploy docs-design-system Docusaurus
-    types:
-      - completed
+  workflow_dispatch: # Manual trigger only for emergency use
 
 concurrency:
   group: github-pages-deployment
