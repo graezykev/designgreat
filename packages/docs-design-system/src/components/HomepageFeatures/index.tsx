@@ -1,9 +1,10 @@
-import SvgMountain from '@site/static/img/undraw_docusaurus_mountain.svg'
-import SvgReact from '@site/static/img/undraw_docusaurus_react.svg'
-import SvgTree from '@site/static/img/undraw_docusaurus_tree.svg'
 import Heading from '@theme/Heading'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
+
+import SvgMountain from '@site/static/img/undraw_docusaurus_mountain.svg'
+import SvgReact from '@site/static/img/undraw_docusaurus_react.svg'
+import SvgTree from '@site/static/img/undraw_docusaurus_tree.svg'
 
 import styles from './styles.module.css'
 

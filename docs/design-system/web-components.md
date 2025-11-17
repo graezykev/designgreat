@@ -96,8 +96,9 @@ export function App() {
 For runtime theme switching, use state to manage the active theme:
 
 ```tsx
-import { createThemeConfig } from '@designgreat/design-token-support'
 import { useState } from 'react'
+
+import { createThemeConfig } from '@designgreat/design-token-support'
 
 const lightTheme = createThemeConfig('light')
 const darkTheme = createThemeConfig('dark')
@@ -231,6 +232,8 @@ function Example() {
 Accessible modal with focus trapping, portal rendering, and section subcomponents.
 
 ```tsx
+import { useState } from 'react'
+
 import {
   Button,
   Dialog,
@@ -240,7 +243,6 @@ import {
   DialogTitle,
   DialogDescription
 } from '@designgreat/lib-web-ui'
-import { useState } from 'react'
 
 function Example() {
   const [isOpen, setIsOpen] = useState(false)

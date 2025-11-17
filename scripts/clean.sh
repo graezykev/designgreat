@@ -6,7 +6,9 @@ dirs=(
   ".turbo"
   "dist"
   "build"
-  "coverage"
+  "coverage",
+  "storybook-static",
+  ".docusaurus"
 )
 
 files=(
