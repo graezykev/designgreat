@@ -20,9 +20,12 @@
     "packages/**/*.config.mjs",
     "packages/**/*.config.cjs",
     "packages/**/*.setup.ts",
+    "packages/app-service-*/src/**/*",
+    "packages/app-service-serverless-*/src/**/*",
     "*.config.ts",
     "*.config.js",
     "*.config.cjs",
     "*.config.mjs"
-  ]
+  ],
+  "exclude": ["packages/docs-design-system/**/*"]
 }

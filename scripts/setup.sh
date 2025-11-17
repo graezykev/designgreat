@@ -13,8 +13,14 @@ pnpm exec husky
 chmod +x .husky/pre-commit .husky/commit-msg .husky/pre-push
 
 echo "Running initial quality checks"
+
 pnpm lint
 pnpm format:check || true
-pnpm typecheck || true
+pnpm typecheck
+pnpm test
+
+echo "Building the project"
+
+pnpm build
 
 echo "Setup complete"

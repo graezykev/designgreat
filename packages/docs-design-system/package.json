@@ -7,7 +7,7 @@
   },
   "scripts": {
     "docusaurus": "docusaurus",
-    "copy:fonts": "tsx ./scripts/copy-fonts.ts",
+    "copy:fonts": "tsx ./scripts/copy-fonts.mts",
     "start": "pnpm run copy:fonts && docusaurus start",
     "build": "pnpm run copy:fonts && docusaurus build",
     "swizzle": "docusaurus swizzle",
@@ -33,10 +33,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/tsconfig": "3.9.2",
-    "@docusaurus/types": "3.9.2",
-    "@types/react": "^18",
-    "tsx": "^4.7.2",
-    "typescript": "~5.6.2"
+    "@docusaurus/types": "3.9.2"
   },
   "browserslist": {
     "production": [

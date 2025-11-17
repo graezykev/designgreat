@@ -28,8 +28,5 @@
   ],
   "dependencies": {
     "@designgreat/lib-web-ui-design-token": "workspace:*"
-  },
-  "devDependencies": {
-    "vitest": "^1.5.0"
   }
 }

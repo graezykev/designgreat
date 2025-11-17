@@ -7,10 +7,71 @@ import importPlugin from 'eslint-plugin-import'
 import promisePlugin from 'eslint-plugin-promise'
 import unicorn from 'eslint-plugin-unicorn'
 import globals from 'globals'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname
 })
+
+// Get workspace root (goes up from packages/shared/eslint-config to root)
+const getWorkspaceRoot = () => {
+  const currentDir = fileURLToPath(new URL('.', import.meta.url))
+  return path.resolve(currentDir, '../../..')
+}
+
+const workspaceRoot = getWorkspaceRoot()
+
+// Dynamically discover all package directories in the monorepo
+// This automatically finds all packages with package.json files,
+// so no manual maintenance is needed when adding/removing packages
+/**
+ * @param {string} root
+ * @returns {string[]}
+ */
+const discoverPackages = (root) => {
+  const packageDirs = [root]
+  const packagesDir = path.join(root, 'packages')
+
+  if (!fs.existsSync(packagesDir)) {
+    return packageDirs
+  }
+
+  /**
+   * @param {string} dir
+   */
+  const scanDirectory = (dir) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true })
+
+    for (const entry of entries) {
+      if (entry.isDirectory() && entry.name) {
+        const fullPath = path.join(dir, entry.name)
+        const packageJsonPath = path.join(fullPath, 'package.json')
+
+        // If this directory has a package.json, it's a package
+        if (fs.existsSync(packageJsonPath)) {
+          packageDirs.push(fullPath)
+        }
+
+        // Also scan subdirectories (for packages/shared/*, etc.)
+        // But don't scan node_modules, dist, build, etc.
+        const skipDirs = ['node_modules', 'dist', 'build', '.turbo', '.next', 'coverage']
+        if (!skipDirs.includes(entry.name)) {
+          scanDirectory(fullPath)
+        }
+      }
+    }
+  }
+
+  scanDirectory(packagesDir)
+  return packageDirs
+}
+
+// Discover all package directories at module load time
+// This provides absolute paths to ESLint's import/no-extraneous-dependencies rule
+// so it can find dependencies whether linting from root or within a package
+const packageDirs = discoverPackages(workspaceRoot)
 
 const INCOMPATIBLE_RULES = [
   '@typescript-eslint/no-restricted-imports',
@@ -108,7 +169,22 @@ export const createBaseConfig = ({ devDependencyGlobs = [] } = {}) => {
         'eslint-comments': eslintComments
       },
       settings: {
-        'import/extensions': ['.js', '.mjs', '.cjs', '.ts', '.tsx', '.jsx', '.json']
+        'import/extensions': ['.js', '.mjs', '.cjs', '.ts', '.tsx', '.jsx', '.json'],
+        'import/resolver': {
+          typescript: {
+            alwaysTryTypes: true,
+            project: [
+              'tsconfig.json',
+              'packages/*/tsconfig.json',
+              'packages/*/*/tsconfig.json'
+            ]
+          },
+          node: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs', '.cjs'],
+            moduleDirectory: ['node_modules', '../../node_modules']
+          }
+        },
+        'import/external-module-folders': ['node_modules', '../../node_modules']
       },
       rules: {
         semi: 'off',
@@ -146,7 +222,8 @@ export const createBaseConfig = ({ devDependencyGlobs = [] } = {}) => {
         'import/no-extraneous-dependencies': [
           'error',
           {
-            devDependencies: mergedDevGlobs
+            devDependencies: mergedDevGlobs,
+            packageDir: packageDirs
           }
         ],
         '@typescript-eslint/no-unused-vars': [

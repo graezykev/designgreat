@@ -78,12 +78,13 @@ selectors:
 
 ```typescript
 // scripts/generate-theme-css.ts
+import { writeFileSync } from 'node:fs'
+
 import {
   createThemeStyles,
   getThemeClassName,
   listThemeNames
 } from '@designgreat/design-token-support'
-import { writeFileSync } from 'node:fs'
 
 // Generate theme CSS with proper selectors
 const lightCss = createThemeStyles('light', { selector: ':root', indent: 2 })
@@ -203,8 +204,9 @@ it alongside the Tailwind entry point:
 
 ```typescript
 // scripts/generate-tailwind-theme.ts
-import { createThemeStyles, getThemeClassName } from '@designgreat/design-token-support'
 import { writeFileSync } from 'node:fs'
+
+import { createThemeStyles, getThemeClassName } from '@designgreat/design-token-support'
 
 const rootCss = createThemeStyles('light', { selector: ':root', indent: 2 })
 const darkCss = createThemeStyles('dark', {
@@ -232,8 +234,9 @@ directly to token values. The helper package continues to offer `createCssVariab
 Apply theme classes to switch between light and dark modes:
 
 ```tsx
-import { createThemeConfig } from '@designgreat/design-token-support'
 import { useState } from 'react'
+
+import { createThemeConfig } from '@designgreat/design-token-support'
 
 // Create theme configurations
 const lightTheme = createThemeConfig('light')

@@ -41,15 +41,21 @@
     "@eslint/eslintrc": "^3.0.4",
     "@eslint/js": "^9.3.0",
     "@eslint/markdown": "^7.0.0",
+    "@storybook/builder-vite": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
     "@types/node": "^20.12.7",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
+    "@vitejs/plugin-react": "^5",
     "eslint": "^9.3.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-xo": "^0.44.0",
     "eslint-config-xo-react": "^0.28.0",
     "eslint-config-xo-space": "^0.34.0",
     "eslint-config-xo-typescript": "^0.57.0",
+    "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -65,12 +71,7 @@
     "tsx": "^4.7.2",
     "turbo": "^2.0.0",
     "typescript": "^5",
+    "vite": "^6",
     "vitest": "^1.5.0"
-  },
-  "dependencies": {
-    "@storybook/builder-vite": "^8.6.14",
-    "@storybook/react-vite": "^8.6.14",
-    "@vitejs/plugin-react": "^5",
-    "vite": "^6"
   }
 }
