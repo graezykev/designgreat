@@ -1,5 +1,12 @@
 # @designgreat/docs-design-system
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [7e38708]
+  - @designgreat/lib-web-ui@0.5.1
+
 ## 0.1.3
 
 ### Patch Changes
