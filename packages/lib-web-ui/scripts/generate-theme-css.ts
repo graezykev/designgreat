@@ -1,4 +1,4 @@
-import { createThemeStyles, getThemeClassName, listThemeNames } from '@designgreat/design-token-support'
+import { createThemeStyles, getThemeClassName } from '@designgreat/design-token-support'
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -11,7 +11,11 @@ async function ensureThemeStyles(): Promise<void> {
   const stylesDir = path.resolve(dirname, '../src/styles')
   await mkdir(stylesDir, { recursive: true })
 
-  const layers = listThemeNames().map((theme) => {
+  // IMPORTANT: Generate light theme first (:root), then dark theme (.dg-theme-dark)
+  // This ensures dark theme overrides light theme in the cascade
+  const themeOrder = ['light', 'dark'] as const
+
+  const layers = themeOrder.map((theme) => {
     const selector = theme === 'light' ? ':root' : `.${getThemeClassName(theme)}`
     const raw = createThemeStyles(theme, { selector, indent: 2 })
     return raw.replace(/url\((['"])\/assets\/logo\.png\1\)/g, 'none')
