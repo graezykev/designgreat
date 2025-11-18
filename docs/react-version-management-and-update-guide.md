@@ -396,6 +396,11 @@ This will prevent version drift by failing the build if React versions are incon
 - [`packages/docs-design-system/package.json`](../packages/docs-design-system/package.json) - App
   example
 
+## Related Guides
+
+- [`eslint-configuration-guide.md`](./eslint-configuration-guide.md) - ESLint setup and maintenance
+- [`ARCHITECTURE.md`](./ARCHITECTURE.md) - Monorepo overview
+
 ---
 
 ## References

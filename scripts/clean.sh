@@ -6,8 +6,8 @@ dirs=(
   ".turbo"
   "dist"
   "build"
-  "coverage",
-  "storybook-static",
+  "coverage"
+  "storybook-static"
   ".docusaurus"
 )
 

@@ -67,10 +67,13 @@ Infrastructure code should import shared modules where possible and rely on the 
   `build`, `test`, `lint`, `typecheck`, and `format`.
 - **TypeScript** base configuration lives in `tsconfig.base.json`; package-specific tasks use
   `tsconfig.library.json`, `tsconfig.react.json`, or `tsconfig.node.json` depending on runtime.
-- **Linting** is enforced through ESLint 9 flat configs provided by `@designgreat/eslint-config` and
-  wired in the root `eslint.config.js`. Project-specific glob patterns live in `workspace-globs.js`;
-  update that file when packages move or new targets are added so linting remains accurate.
+- **Linting** uses ESLint 9 flat config via `@designgreat/eslint-config`. See
+  [`docs/eslint-configuration-guide.md`](./eslint-configuration-guide.md) for setup, customization,
+  and maintenance.
 - **Formatting** uses Prettier 3 configured to match XO's no-semicolon style.
+- **React version management** uses pnpm catalog for consistency. See
+  [`docs/react-version-management-and-update-guide.md`](./react-version-management-and-update-guide.md)
+  for updates and syncing.
 
 ## Environments
 
