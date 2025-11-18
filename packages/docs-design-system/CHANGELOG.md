@@ -1,5 +1,36 @@
 # @designgreat/docs-design-system
 
+## 0.2.0
+
+### Minor Changes
+
+- fef6c91: **Implement design token theme integration with Docusaurus**
+  - Integrated `@designgreat/lib-web-ui-design-token`, `@designgreat/lib-web-ui`, and
+    `@designgreat/design-token-support` for consistent theming across documentation site
+  - Implemented robust theme synchronization between Docusaurus's `[data-theme]` attribute and
+    design token classes (`.dg-theme-light`, `.dg-theme-dark`)
+  - Created `Root.tsx` component with `MutationObserver` to maintain theme class synchronization
+    during React lifecycle
+  - Added `preinit.ts` client module to apply theme classes before React hydration, preventing flash
+    of unstyled content
+  - Created `constants.ts` that leverages `@designgreat/design-token-support` utilities
+    (`getThemeClassName`, `ThemeName`) for centralized, type-safe theme management
+  - Mapped all Infima CSS variables (`--ifm-*`) to design token variables (`--dg-*`) in `custom.css`
+    for comprehensive theme coverage including colors, typography, spacing, navigation, footer, code
+    blocks, table of contents, and more
+  - Improved script organization by simplifying `dev` and `start` script relationship
+  - Removed unnecessary `@docusaurus/theme-common` dependency by implementing direct DOM
+    manipulation
+
+  **Related PR:** [#26](https://github.com/graezykev/designgreat/pull/26)
+
+  **Author:** @chunman-yeung
+
+### Patch Changes
+
+- Updated dependencies [fef6c91]
+  - @designgreat/lib-web-ui@0.5.2
+
 ## 0.1.4
 
 ### Patch Changes

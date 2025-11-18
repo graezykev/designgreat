@@ -1,5 +1,20 @@
 # @designgreat/lib-web-ui
 
+## 0.5.2
+
+### Patch Changes
+
+- fef6c91: **Fix theme CSS cascade order for proper dark mode support**
+  - Fixed CSS generation order in `generate-theme-css.ts` to ensure light theme (`:root`) is defined
+    before dark theme (`.dg-theme-dark`)
+  - This prevents dark theme variables from being overridden by light theme in the CSS cascade
+  - Updated README documentation to explain the theme CSS ordering and its importance for proper
+    theme switching
+
+  **Related PR:** [#26](https://github.com/graezykev/designgreat/pull/26)
+
+  **Author:** @chunman-yeung
+
 ## 0.5.1
 
 ### Patch Changes
