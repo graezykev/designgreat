@@ -1,5 +1,19 @@
 # @designgreat/docs-design-system
 
+## 0.1.3
+
+### Patch Changes
+
+- 8169818: Internal: Use pnpm catalog for React dependencies to ensure version consistency across
+  the monorepo.
+
+  **Related PR:** [#23](https://github.com/graezykev/designgreat/pull/23)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [8169818]
+  - @designgreat/lib-web-ui@0.5.0
+
 ## 0.1.2
 
 ### Patch Changes
