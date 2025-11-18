@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import { getThemeClassName } from '@designgreat/design-token-support'
-import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useState, useTransition, type CSSProperties, type ReactNode } from 'react'
 
 const DARK_THEME_CLASS = getThemeClassName('dark')
 
@@ -243,13 +243,28 @@ const CodeBlock = ({ code }: { readonly code: string }) => {
   const isDarkTheme = useIsDarkTheme()
   const palette = isDarkTheme ? CODE_VIEW_THEME.dark : CODE_VIEW_THEME.light
   const [copied, setCopied] = useState(false)
+  const [, startTransition] = useTransition()
   const highlightedLines = useMemo(
     () => buildHighlightedLines(code, palette),
     [code, palette]
   )
 
-  const handleCopy = () => {
-    void (async () => {
+  useEffect(() => {
+    if (!copied) return undefined
+
+    const timeoutId = window.setTimeout(() => {
+      startTransition(() => {
+        setCopied(false)
+      })
+    }, 1200)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+    }
+  }, [copied])
+
+  const handleCopy = useCallback(() => {
+    const copyToClipboard = async () => {
       try {
         await navigator.clipboard?.writeText(code.trim())
       } catch {
@@ -262,12 +277,15 @@ const CodeBlock = ({ code }: { readonly code: string }) => {
         textarea.select()
         document.execCommand('copy')
         document.body.removeChild(textarea)
-      } finally {
-        setCopied(true)
-        window.setTimeout(() => { setCopied(false) }, 1200)
       }
-    })()
-  }
+
+      startTransition(() => {
+        setCopied(true)
+      })
+    }
+
+    void copyToClipboard()
+  }, [code])
 
   return (
     <div
