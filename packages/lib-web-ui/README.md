@@ -51,6 +51,17 @@ The CSS **does** include:
 - ✅ Tailwind utilities (generated from token values)
 - ✅ Component-specific styles
 
+**Theme CSS Order:**
+
+The distributed CSS includes both light and dark themes in a specific order to ensure proper CSS
+cascade:
+
+1. **`:root { ... }`** - Light theme variables (applied by default)
+2. **`.dg-theme-dark { ... }`** - Dark theme variables (override when class is present)
+
+This ordering ensures that when the `.dg-theme-dark` class is applied to the `<html>` element, dark
+theme variables correctly override the light theme defaults.
+
 ### Dependency Flow
 
 ```
@@ -306,8 +317,15 @@ This allows developers to use design tokens directly in utility classes without 
 │   lib-web-ui-design-token      │
 │ • Combines into single file    │
 │ • Emits to src/styles/         │
+│ • Order: light (:root) first,  │
+│   then dark (.dg-theme-dark)   │
 └────────────────────────────────┘
 ```
+
+**Important:** The theme generation script (`scripts/generate-theme-css.ts`) explicitly orders
+themes as `['light', 'dark']` to ensure proper CSS cascade. This means light theme variables in
+`:root` are defined first, followed by dark theme variables in `.dg-theme-dark`, allowing the dark
+theme to correctly override light theme when the class is applied.
 
 ### Regenerating Tokens
 

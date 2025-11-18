@@ -196,6 +196,9 @@ importers:
 
   packages/docs-design-system:
     dependencies:
+      '@designgreat/design-token-support':
+        specifier: workspace:*
+        version: link:../shared/design-token-support
       '@designgreat/lib-web-ui':
         specifier: workspace:*
         version: link:../lib-web-ui

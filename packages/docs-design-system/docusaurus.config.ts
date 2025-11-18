@@ -41,6 +41,11 @@ const config: Config = {
     locales: ['en']
   },
 
+  // Client modules run in the browser before React hydrates
+  clientModules: [
+    require.resolve('./src/theme/preinit.ts')
+  ],
+
   presets: [
     [
       'classic',

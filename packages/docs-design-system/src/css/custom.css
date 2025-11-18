@@ -4,34 +4,125 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+@import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
 
-  /* Apply Roboto as the default font family */
-  /* Font-face definitions are loaded automatically from static/assets/fonts */
+/* Apply design token theme classes to work with Docusaurus theme system */
+/* The lib-web-ui.css now has the correct order: :root (light) first, then .dg-theme-dark */
+/* The Root.tsx component syncs .dg-theme-dark class with Docusaurus's [data-theme='dark'] */
+
+/* Map Infima variables to Design Tokens for Light Theme */
+:root {
+  /* Font family - using Roboto from design tokens */
   --ifm-font-family-base:
     Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Primary colors - Brand blue */
+  --ifm-color-primary: var(--dg-color-primary-default);
+  --ifm-color-primary-dark: var(--dg-color-primary-hover-default);
+  --ifm-color-primary-darker: var(--dg-color-primary-active-default);
+  --ifm-color-primary-darkest: var(--dg-color-primary-bold);
+  --ifm-color-primary-light: var(--dg-color-primary-subtle);
+  --ifm-color-primary-lighter: var(--dg-color-primary-subtler);
+  --ifm-color-primary-lightest: var(--dg-color-accent-blue-lowest);
+
+  /* Background colors */
+  --ifm-background-color: var(--dg-color-background-default);
+  --ifm-background-surface-color: var(--dg-color-background-bold);
+
+  /* Text colors */
+  --ifm-font-color-base: var(--dg-color-text-default);
+  --ifm-font-color-base-inverse: var(--dg-color-text-inverse);
+  --ifm-font-color-secondary: var(--dg-color-text-subtle);
+
+  /* Heading colors */
+  --ifm-heading-color: var(--dg-color-text-bold);
+
+  /* Link colors */
+  --ifm-link-color: var(--dg-color-text-link-default);
+  --ifm-link-hover-color: var(--dg-color-text-link-interaction-hover);
+
+  /* Navbar */
+  --ifm-navbar-background-color: var(--dg-color-background-default);
+  --ifm-navbar-link-color: var(--dg-color-text-nav-default);
+  --ifm-navbar-link-hover-color: var(--dg-color-text-nav-tertiary-interaction-hover);
+
+  /* Footer */
+  --ifm-footer-background-color: var(--dg-color-background-bold);
+  --ifm-footer-color: var(--dg-color-text-default);
+  --ifm-footer-link-color: var(--dg-color-text-link-default);
+  --ifm-footer-link-hover-color: var(--dg-color-text-link-interaction-hover);
+
+  /* Menu / Sidebar */
+  --ifm-menu-color: var(--dg-color-text-default);
+  --ifm-menu-color-active: var(--dg-color-primary-default);
+  --ifm-menu-color-background-active: var(--dg-color-background-interaction-selected);
+
+  /* Code blocks */
+  --ifm-code-background: var(--dg-color-background-bold);
+  --ifm-code-color: var(--dg-color-text-default);
+  --ifm-pre-background: var(--dg-color-background-bolder);
+  --docusaurus-highlighted-code-line-bg: var(--dg-color-alpha-neutral-2);
+
+  /* Borders */
+  --ifm-color-emphasis-300: var(--dg-color-border-default);
+  --ifm-hr-border-color: var(--dg-color-border-subtle);
+  --ifm-table-border-color: var(--dg-color-border-default);
+
+  /* Alerts/Admonitions */
+  --ifm-color-info: var(--dg-color-semantic-info-default);
+  --ifm-color-success: var(--dg-color-semantic-success-default);
+  --ifm-color-warning: var(--dg-color-semantic-warning-default);
+  --ifm-color-danger: var(--dg-color-semantic-error-default);
+
+  /* Spacing - use design token spacing */
+  --ifm-spacing-horizontal: var(--dg-spacing-px16);
+  --ifm-spacing-vertical: var(--dg-spacing-px16);
+
+  /* Font sizes */
+  --ifm-font-size-base: var(--dg-size-font-base);
+  --ifm-code-font-size: 90%;
+
+  /* Table of Contents (TOC) */
+  --ifm-toc-border-color: var(--dg-color-border-subtle);
+  --ifm-toc-link-color: var(--dg-color-text-subtle);
+
+  /* Breadcrumbs */
+  --ifm-breadcrumb-color-active: var(--dg-color-text-default);
+
+  /* Tabs */
+  --ifm-tabs-color: var(--dg-color-text-subtle);
+  --ifm-tabs-color-active: var(--dg-color-primary-default);
+  --ifm-tabs-color-active-border: var(--dg-color-primary-default);
+
+  /* Pagination */
+  --ifm-pagination-color-active: var(--dg-color-background-default);
+  --ifm-pagination-nav-color-hover: var(--dg-color-primary-hover-default);
+
+  /* Cards */
+  --ifm-card-background-color: var(--dg-color-background-bold);
+  --ifm-card-border-radius: 0.75rem;
+
+  /* Dropdown */
+  --ifm-dropdown-background-color: var(--dg-color-background-bold);
+  --ifm-dropdown-hover-background-color: var(--dg-color-background-bolder);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* Additional TOC styling for visibility */
+.table-of-contents__link {
+  color: var(--dg-color-text-subtle);
 }
 
-@import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
+.table-of-contents__link:hover,
+.table-of-contents__link:hover code {
+  color: var(--dg-color-primary-default);
+  text-decoration: none;
+}
+
+.table-of-contents__link--active {
+  color: var(--dg-color-primary-default);
+  font-weight: 600;
+}
+
+.table-of-contents__link--active code {
+  color: var(--dg-color-primary-default);
+}
