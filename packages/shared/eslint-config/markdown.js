@@ -112,9 +112,12 @@ const createMarkdownConfig = () => [
     rules: {
       ...Object.fromEntries(typeAwareRulesToDisable.map((rule) => [rule, 'off'])),
       '@typescript-eslint/no-unused-vars': 'off',
+      'import/no-extraneous-dependencies': 'off', // Allow examples to import any package
       'no-alert': 'off', // Allow alert() in documentation examples
       'no-console': 'off', // Allow console in documentation examples
-      'no-undef': 'off' // Allow undefined variables in isolated examples
+      'no-labels': 'off', // Allow labeled statements in examples
+      'no-undef': 'off', // Allow undefined variables in isolated examples
+      'no-unused-labels': 'off' // Allow unused labels in examples
     }
   },
   {

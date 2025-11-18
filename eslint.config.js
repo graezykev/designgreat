@@ -59,6 +59,11 @@ const config = [
   {
     name: 'designgreat/storybook-static-ignore',
     ignores: ['**/storybook-static/**']
+  },
+  {
+    name: 'designgreat/docs-eslint-guide-ignore',
+    // This doc contains many code examples that are intentionally incomplete/illustrative
+    ignores: ['docs/eslint-configuration-guide.md']
   }
 ]
 
