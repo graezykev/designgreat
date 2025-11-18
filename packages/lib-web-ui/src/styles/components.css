@@ -67,11 +67,7 @@
     var(--dg-color-background-button-subtle-default, #f3f4f6) 92%,
     var(--dg-color-text-default, #0c0c0d)
   );
-  color: color-mix(
-    in srgb,
-    var(--dg-color-text-button-subtle-default, #1d1d1f) 85%,
-    var(--dg-color-text-inverse, #ffffff)
-  );
+  color: color-mix(in srgb, var(--dg-color-text-inverse, #ffffff) 85%);
   border-color: color-mix(
     in srgb,
     var(--dg-color-border-button-subtle-default, rgba(0, 0, 0, 0.06)) 85%,
