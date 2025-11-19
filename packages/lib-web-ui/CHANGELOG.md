@@ -1,5 +1,16 @@
 # @designgreat/lib-web-ui
 
+## 0.5.3
+
+### Patch Changes
+
+- 9562c72: Fix button label alignment issues by adding margin and padding reset for paragraph
+  elements within button labels
+
+  **Related PR:** [#27](https://github.com/graezykev/designgreat/pull/27)
+
+  **Author:** @chunman-yeung
+
 ## 0.5.2
 
 ### Patch Changes
