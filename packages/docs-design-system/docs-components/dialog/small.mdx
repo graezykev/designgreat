@@ -1,0 +1,105 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { useState } from 'react';
+import { Button } from '@designgreat/lib-web-ui';
+import { Dialog, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogDescription } from '@designgreat/lib-web-ui';
+
+# Small Dialog
+
+A compact dialog for simple confirmations or short messages.
+
+## Basic Example
+
+export function SmallDialogExample() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Small Dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)} size="sm">
+        <DialogHeader>
+          <DialogTitle>Delete Item</DialogTitle>
+        </DialogHeader>
+        <DialogBody>
+          <DialogDescription>
+            Are you sure you want to delete this item? This action cannot be undone.
+          </DialogDescription>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={() => setOpen(false)}>
+            Delete
+          </Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <SmallDialogExample />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { useState } from 'react'
+    import { Button } from '@designgreat/lib-web-ui'
+    import {
+      Dialog,
+      DialogHeader,
+      DialogBody,
+      DialogFooter,
+      DialogTitle,
+      DialogDescription
+    } from '@designgreat/lib-web-ui'
+
+    function SmallDialogExample() {
+      const [open, setOpen] = useState(false)
+
+      return (
+        <>
+          <Button onClick={() => setOpen(true)}>Open Small Dialog</Button>
+          <Dialog open={open} onClose={() => setOpen(false)} size="sm">
+            <DialogHeader>
+              <DialogTitle>Delete Item</DialogTitle>
+            </DialogHeader>
+            <DialogBody>
+              <DialogDescription>
+                Are you sure you want to delete this item? This action cannot be undone.
+              </DialogDescription>
+            </DialogBody>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={() => setOpen(false)}>
+                Delete
+              </Button>
+            </DialogFooter>
+          </Dialog>
+        </>
+      )
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Simple confirmations
+- Alert messages
+- Quick yes/no decisions
+- Single-field forms
+
+### Best Practices
+- Keep content brief and focused
+- Use for critical actions that need confirmation
+- Include clear action buttons
+- Max 2-3 lines of body text
+

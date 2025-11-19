@@ -1,0 +1,150 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { TextInput } from '@designgreat/lib-web-ui';
+
+# Success State
+
+Text input with validation success state.
+
+## Basic Success
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Email"
+      placeholder="Enter your email"
+      validationState="success"
+      value="user@example.com"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { TextInput } from '@designgreat/lib-web-ui'
+
+    <TextInput
+      label="Email"
+      placeholder="Enter your email"
+      validationState="success"
+      value="user@example.com"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Success with Description
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Username"
+      placeholder="Choose a username"
+      validationState="success"
+      value="john_doe"
+      description="Username is available!"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Username"
+      placeholder="Choose a username"
+      validationState="success"
+      value="john_doe"
+      description="Username is available!"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Success with Icon
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Verification Code"
+      placeholder="Enter code"
+      validationState="success"
+      value="ABC123"
+      trailingIcon="✓"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Verification Code"
+      placeholder="Enter code"
+      validationState="success"
+      value="ABC123"
+      trailingIcon="✓"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Multiple Success States
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <TextInput
+        label="Email"
+        validationState="success"
+        value="verified@example.com"
+      />
+      <TextInput
+        label="Password"
+        type="password"
+        validationState="success"
+        value="********"
+      />
+      <TextInput
+        label="Username"
+        validationState="success"
+        value="john_doe"
+      />
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Email"
+      validationState="success"
+      value="verified@example.com"
+    />
+
+    <TextInput
+      label="Password"
+      type="password"
+      validationState="success"
+      value="********"
+    />
+
+    <TextInput
+      label="Username"
+      validationState="success"
+      value="john_doe"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Successful form validation
+- Real-time validation confirmation
+- Account verification status
+- Availability checks (username, email)
+
+### Best Practices
+- Show success state after validation passes
+- Use green color for clear visual confirmation
+- Include checkmark icon for additional clarity
+- Keep success messages brief and positive
+- Don't overuse - reserve for important confirmations
+
+

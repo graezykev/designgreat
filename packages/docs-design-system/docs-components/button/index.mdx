@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+---
+
+# Button
+
+A versatile button component with multiple variants, sizes, and states.
+
+## Overview
+
+The Button component is a fundamental interactive element that triggers actions when clicked. It supports various visual styles, sizes, icons, and loading states.
+
+## Import
+
+```tsx
+import { Button } from '@designgreat/lib-web-ui'
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'outline'` | `'primary'` | Visual treatment of the button |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size preset for height, padding, and typography |
+| `fullWidth` | `boolean` | `false` | Makes the button expand to full container width |
+| `leadingIcon` | `ReactNode` | - | Icon rendered before the label |
+| `trailingIcon` | `ReactNode` | - | Icon rendered after the label |
+| `loading` | `boolean` | `false` | Displays a spinner and disables interaction |
+| `disabled` | `boolean` | `false` | Disables the button |
+
+Plus all standard HTML button attributes (`onClick`, `type`, `className`, etc.)
+
+## Accessibility
+
+- Semantic `<button>` element
+- Supports `aria-busy` when loading
+- Maintains focus management
+- Keyboard accessible (Enter/Space)
+

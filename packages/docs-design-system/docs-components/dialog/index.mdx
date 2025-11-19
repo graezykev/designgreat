@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+---
+
+# Dialog
+
+A modal dialog component for displaying content that requires user attention or interaction.
+
+## Overview
+
+The Dialog component creates an accessible modal overlay with focus management, keyboard navigation, and customizable sizes. It includes sub-components for header, body, footer, title, and description.
+
+## Import
+
+```tsx
+import {
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription
+} from '@designgreat/lib-web-ui'
+```
+
+## Props
+
+### Dialog
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | **required** | Controls whether the dialog is rendered |
+| `onClose` | `() => void` | **required** | Called when dialog should close |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Max-width of the dialog panel |
+| `closeOnOverlayClick` | `boolean` | `true` | Whether clicking overlay closes the dialog |
+| `initialFocusRef` | `RefObject<HTMLElement>` | - | Element to focus when dialog opens |
+| `renderInPortal` | `boolean` | `true` | Render dialog in a React portal |
+
+### Sub-components
+
+- `DialogHeader` - Container for header content
+- `DialogBody` - Main content area with scroll
+- `DialogFooter` - Container for actions/buttons
+- `DialogTitle` - Accessible title (auto-connected to aria-labelledby)
+- `DialogDescription` - Description text (auto-connected to aria-describedby)
+
+## Accessibility
+
+- `role="dialog"` with `aria-modal="true"`
+- Automatic `aria-labelledby` from DialogTitle
+- Automatic `aria-describedby` from DialogDescription  
+- Focus trap within dialog
+- Escape key to close
+- Focus restoration on close
+- Body scroll lock when open
+

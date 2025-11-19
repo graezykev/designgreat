@@ -1,0 +1,165 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { TextInput } from '@designgreat/lib-web-ui';
+
+# Default State
+
+The standard text input in its default state.
+
+## Basic Example
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Email"
+      placeholder="Enter your email"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { TextInput } from '@designgreat/lib-web-ui'
+
+    <TextInput
+      label="Email"
+      placeholder="Enter your email"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## With Description
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Username"
+      placeholder="Choose a username"
+      description="Must be unique and 3-20 characters"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Username"
+      placeholder="Choose a username"
+      description="Must be unique and 3-20 characters"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Optional Field
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Phone Number"
+      placeholder="(555) 123-4567"
+      optional
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Phone Number"
+      placeholder="(555) 123-4567"
+      optional
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## With Icons
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <TextInput
+        label="Search"
+        placeholder="Search..."
+        leadingIcon="🔍"
+      />
+      <TextInput
+        label="Website"
+        placeholder="https://example.com"
+        trailingIcon="↗"
+      />
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Search"
+      placeholder="Search..."
+      leadingIcon="🔍"
+    />
+
+    <TextInput
+      label="Website"
+      placeholder="https://example.com"
+      trailingIcon="↗"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Sizes
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <TextInput label="Small" size="sm" placeholder="Small input" />
+      <TextInput label="Medium" size="md" placeholder="Medium input" />
+      <TextInput label="Large" size="lg" placeholder="Large input" />
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput label="Small" size="sm" placeholder="Small input" />
+    <TextInput label="Medium" size="md" placeholder="Medium input" />
+    <TextInput label="Large" size="lg" placeholder="Large input" />
+    ```
+  </TabItem>
+</Tabs>
+
+## Disabled
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Disabled Field"
+      placeholder="Cannot edit"
+      disabled
+      value="Read-only value"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Disabled Field"
+      placeholder="Cannot edit"
+      disabled
+      value="Read-only value"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Single-line text entry
+- Email, phone, username fields
+- Search inputs
+- Any form requiring text input
+
+### Best Practices
+- Always include a label for accessibility
+- Use placeholder for format examples, not instructions
+- Keep labels concise and descriptive
+- Use helper text for additional context
+

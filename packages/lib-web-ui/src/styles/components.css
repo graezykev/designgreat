@@ -127,6 +127,11 @@
   text-overflow: ellipsis;
 }
 
+.dg-btn__label p {
+  margin: 0;
+  padding: 0;
+}
+
 .dg-btn__icon {
   display: inline-flex;
   align-items: center;

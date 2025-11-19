@@ -1,0 +1,41 @@
+---
+sidebar_position: 3
+---
+
+# TextInput
+
+A fully-featured text input component with label, description, error states, and icon slots.
+
+## Overview
+
+The TextInput component provides a complete form input solution with built-in support for labels, helper text, validation states, and decorative icons.
+
+## Import
+
+```tsx
+import { TextInput } from '@designgreat/lib-web-ui'
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Visible label text above the input |
+| `description` | `string` | - | Helper text below the input |
+| `errorMessage` | `string` | - | Error message (sets validation state to error) |
+| `validationState` | `'default' \| 'error' \| 'success'` | `'default'` | Visual validation state |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding preset |
+| `optional` | `boolean` | `false` | Shows "Optional" badge next to label |
+| `leadingIcon` | `ReactNode` | - | Icon slot on the left side |
+| `trailingIcon` | `ReactNode` | - | Icon slot on the right side |
+
+Plus all standard HTML input attributes (`type`, `placeholder`, `value`, `onChange`, etc.)
+
+## Accessibility
+
+- Semantic `<label>` and `<input>` elements
+- Automatic `id` generation if not provided
+- `aria-describedby` for description and error messages
+- `aria-invalid` when validation state is error
+- Proper focus management
+

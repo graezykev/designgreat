@@ -1,0 +1,120 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { Button } from '@designgreat/lib-web-ui';
+
+# Primary
+
+The primary button variant is used for the main call-to-action on a page.
+
+## Basic Example
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <Button variant="primary">Primary Button</Button>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { Button } from '@designgreat/lib-web-ui'
+
+    <Button variant="primary">Primary Button</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## With Icons
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Button variant="primary" leadingIcon="→">
+        With Leading Icon
+      </Button>
+      <Button variant="primary" trailingIcon="←">
+        With Trailing Icon
+      </Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="primary" leadingIcon="→">
+      With Leading Icon
+    </Button>
+
+    <Button variant="primary" trailingIcon="←">
+      With Trailing Icon
+    </Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## Sizes
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button variant="primary" size="sm">Small</Button>
+      <Button variant="primary" size="md">Medium</Button>
+      <Button variant="primary" size="lg">Large</Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="primary" size="sm">Small</Button>
+    <Button variant="primary" size="md">Medium</Button>
+    <Button variant="primary" size="lg">Large</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## States
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Button variant="primary">Normal</Button>
+      <Button variant="primary" disabled>Disabled</Button>
+      <Button variant="primary" loading>Loading</Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="primary">Normal</Button>
+    <Button variant="primary" disabled>Disabled</Button>
+    <Button variant="primary" loading>Loading</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## Full Width
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <Button variant="primary" fullWidth>
+      Full Width Button
+    </Button>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="primary" fullWidth>
+      Full Width Button
+    </Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Primary action on a page or dialog
+- Submit buttons in forms
+- Most important action in a group
+
+### Best Practices
+- Use only one primary button per section
+- Label should be action-oriented (e.g., "Save Changes", "Continue")
+- Keep labels concise (2-3 words max)
+

@@ -1,0 +1,75 @@
+---
+sidebar_position: 4
+---
+
+# Writing Documentation
+
+Learn how to create and author documentation pages.
+
+## File Structure
+
+Documentation lives in the `docs/` directory:
+
+```
+docs/
+├── contributing/                # Contributing guides
+│   ├── index.mdx
+│   ├── getting-started.mdx
+│   └── ...
+├── tutorial-basics/             # Tutorial category
+│   ├── create-a-document.md
+│   └── ...
+└── tutorial-extras/             # Another category
+    └── ...
+```
+
+## Creating a New Doc
+
+Create a Markdown (`.md`) or MDX (`.mdx`) file in the `docs/` directory:
+
+```markdown
+---
+sidebar_position: 1
+sidebar_label: 'Quick Start'
+---
+
+# Document Title
+
+Your content here...
+```
+
+## Frontmatter Fields
+
+**Key frontmatter fields:**
+- `sidebar_position` - Order in sidebar (lower = higher)
+- `sidebar_label` - Custom label (overrides title)
+- `title` - Page title (overrides H1)
+
+For all frontmatter options, see the [Docs Frontmatter Documentation](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter).
+
+## Markdown Syntax
+
+Docusaurus supports standard Markdown plus additional features like:
+
+- **Admonitions** - Callout boxes (note, tip, warning, etc.)
+- **Code blocks** - Syntax highlighting with line numbers
+- **Tabs** - Tabbed content sections  
+- **React components** - Embed interactive components
+
+See the [Markdown Features](./markdown-features.mdx) guide for detailed examples and syntax.
+
+## Static Assets
+
+Place static files in the `static/` directory:
+
+- `static/img/` → Images
+- `static/font/` → Fonts (copied from design token package)
+- `static/files/` → Downloadable files
+
+Reference in docs:
+
+```markdown
+![Logo](/img/logo.svg)
+[Download PDF](/files/guide.pdf)
+```
+

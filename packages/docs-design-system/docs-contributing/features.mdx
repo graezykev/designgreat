@@ -1,0 +1,64 @@
+---
+sidebar_position: 6
+---
+
+# Additional Features
+
+Additional features and enhancements available for the documentation site.
+
+## Search
+
+Static search is already configured using `@easyops-cn/docusaurus-search-local`. The search functionality:
+
+- ✅ Runs entirely client-side
+- ✅ No external dependencies
+- ✅ Offline support
+- ✅ Keyboard shortcut (Ctrl/Cmd + K)
+
+### Advanced Search Options
+
+For more advanced search features, consider:
+
+- [Algolia DocSearch](https://docsearch.algolia.com/) - Free managed search for open source projects
+- [Typesense DocSearch](https://typesense.org/docs/guide/docsearch.html) - Self-hosted search alternative
+
+## Blog
+
+The blog feature is available but currently disabled. See [BLOG-FEATURES.md](https://github.com/graezykev/designgreat/blob/main/packages/docs-design-system/BLOG-FEATURES.md) for:
+
+- How to enable the blog
+- Configuration options
+- Writing blog posts
+- Managing authors and tags
+
+## Design Tokens
+
+This site integrates with `@designgreat/lib-web-ui` for consistent theming:
+
+- Shares the same design tokens as the component library
+- CSS variables for colors, spacing, typography
+- Automatic theme synchronization
+
+## Dark Mode
+
+Dark mode is automatically synced with design token themes:
+
+- Uses `.dg-theme-dark` class
+- Respects system preferences
+- Smooth transitions between themes
+- Consistent with component library
+
+## Versioning
+
+Docusaurus supports documentation versioning for maintaining multiple versions:
+
+- See [Docusaurus Versioning](https://docusaurus.io/docs/versioning) for setup
+- Useful for maintaining docs for multiple product versions
+
+## Internationalization (i18n)
+
+Support multiple languages:
+
+- See [Docusaurus i18n](https://docusaurus.io/docs/i18n/introduction) for setup
+- Translate docs, UI, and configuration
+
