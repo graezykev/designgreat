@@ -1,0 +1,91 @@
+---
+sidebar_position: 2
+---
+
+# Navigation Configuration
+
+Configure the navbar and footer for the documentation site.
+
+## Navbar Configuration
+
+Edit `docusaurus.config.ts` under `themeConfig.navbar.items`:
+
+```typescript
+navbar: {
+  title: 'Design Great',
+  logo: {
+    alt: 'Designgreat Logo',
+    src: 'img/logo.svg'
+  },
+  items: [
+    // Doc sidebar
+    {
+      type: 'docSidebar',
+      sidebarId: 'tutorialSidebar',
+      position: 'left',
+      label: 'Docs'
+    },
+    // Direct link
+    {
+      to: '/blog',
+      label: 'Blog',
+      position: 'left'
+    },
+    // Dropdown
+    {
+      type: 'dropdown',
+      label: 'Community',
+      position: 'left',
+      items: [
+        {
+          label: 'Discord',
+          href: 'https://discord.gg/...'
+        },
+        {
+          label: 'Twitter',
+          href: 'https://twitter.com/...'
+        }
+      ]
+    },
+    // Version dropdown (if versioning enabled)
+    {
+      type: 'docsVersionDropdown',
+      position: 'right'
+    },
+    // Search
+    {
+      type: 'search',
+      position: 'right'
+    },
+    // External link
+    {
+      href: 'https://github.com/graezykev/designgreat',
+      label: 'GitHub',
+      position: 'right'
+    }
+  ]
+}
+```
+
+For all available navbar item types and options, see the [Navbar Configuration Documentation](https://docusaurus.io/docs/api/themes/configuration#navbar).
+
+## Footer Configuration
+
+Edit `docusaurus.config.ts` under `themeConfig.footer`:
+
+```typescript
+footer: {
+  style: 'dark',  // 'dark' or 'light'
+  links: [
+    {
+      title: 'Column Title',
+      items: [
+        { label: 'Link Text', to: '/path' },
+        { label: 'External Link', href: 'https://...' }
+      ]
+    }
+  ],
+  copyright: `Copyright © ${new Date().getFullYear()} Your Org.`
+}
+```
+

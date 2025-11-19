@@ -1,0 +1,111 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { useState } from 'react';
+import { Button } from '@designgreat/lib-web-ui';
+import { Dialog, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogDescription } from '@designgreat/lib-web-ui';
+
+# Medium Dialog
+
+The default size for most dialog use cases.
+
+## Basic Example
+
+export function MediumDialogExample() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Medium Dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)} size="md">
+        <DialogHeader>
+          <DialogTitle>Edit Profile</DialogTitle>
+        </DialogHeader>
+        <DialogBody>
+          <DialogDescription>
+            Update your profile information. Changes will be saved automatically.
+          </DialogDescription>
+          <div style={{ marginTop: '1rem' }}>
+            <p>Form fields would go here...</p>
+          </div>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={() => setOpen(false)}>
+            Save Changes
+          </Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <MediumDialogExample />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { useState } from 'react'
+    import { Button } from '@designgreat/lib-web-ui'
+    import {
+      Dialog,
+      DialogHeader,
+      DialogBody,
+      DialogFooter,
+      DialogTitle,
+      DialogDescription
+    } from '@designgreat/lib-web-ui'
+
+    function MediumDialogExample() {
+      const [open, setOpen] = useState(false)
+
+      return (
+        <>
+          <Button onClick={() => setOpen(true)}>Open Medium Dialog</Button>
+          <Dialog open={open} onClose={() => setOpen(false)} size="md">
+            <DialogHeader>
+              <DialogTitle>Edit Profile</DialogTitle>
+            </DialogHeader>
+            <DialogBody>
+              <DialogDescription>
+                Update your profile information. Changes will be saved automatically.
+              </DialogDescription>
+              <div style={{ marginTop: '1rem' }}>
+                {/* Form fields */}
+              </div>
+            </DialogBody>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={() => setOpen(false)}>
+                Save Changes
+              </Button>
+            </DialogFooter>
+          </Dialog>
+        </>
+      )
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Standard forms (2-5 fields)
+- Multi-step workflows
+- Content that needs moderate space
+- Default choice for most dialogs
+
+### Best Practices
+- Use for most dialog scenarios
+- Balance content density with readability
+- Ensure scrollable content has visual indicators
+- Keep forms organized with clear labels
+

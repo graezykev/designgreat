@@ -1,0 +1,104 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { Button } from '@designgreat/lib-web-ui';
+
+# Outline
+
+The outline button variant provides a lighter, bordered appearance.
+
+## Basic Example
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <Button variant="outline">Outline Button</Button>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { Button } from '@designgreat/lib-web-ui'
+
+    <Button variant="outline">Outline Button</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## With Icons
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Button variant="outline" leadingIcon="→">
+        With Leading Icon
+      </Button>
+      <Button variant="outline" trailingIcon="←">
+        With Trailing Icon
+      </Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="outline" leadingIcon="→">
+      With Leading Icon
+    </Button>
+
+    <Button variant="outline" trailingIcon="←">
+      With Trailing Icon
+    </Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## Sizes
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button variant="outline" size="sm">Small</Button>
+      <Button variant="outline" size="md">Medium</Button>
+      <Button variant="outline" size="lg">Large</Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="outline" size="sm">Small</Button>
+    <Button variant="outline" size="md">Medium</Button>
+    <Button variant="outline" size="lg">Large</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## States
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Button variant="outline">Normal</Button>
+      <Button variant="outline" disabled>Disabled</Button>
+      <Button variant="outline" loading>Loading</Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="outline">Normal</Button>
+    <Button variant="outline" disabled>Disabled</Button>
+    <Button variant="outline" loading>Loading</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Tertiary actions
+- Less emphasis needed but still clickable
+- On colored backgrounds where solid buttons don't work well
+- Filter or toggle buttons
+
+### Best Practices
+- Use for the least important actions in a button group
+- Ensure sufficient contrast with background
+- Good for repetitive actions (like in lists or tables)
+

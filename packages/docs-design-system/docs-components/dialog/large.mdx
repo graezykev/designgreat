@@ -1,0 +1,114 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { useState } from 'react';
+import { Button } from '@designgreat/lib-web-ui';
+import { Dialog, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogDescription } from '@designgreat/lib-web-ui';
+
+# Large Dialog
+
+A spacious dialog for complex content or detailed forms.
+
+## Basic Example
+
+export function LargeDialogExample() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Large Dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)} size="lg">
+        <DialogHeader>
+          <DialogTitle>Advanced Settings</DialogTitle>
+        </DialogHeader>
+        <DialogBody>
+          <DialogDescription>
+            Configure advanced options for your application. These settings may affect performance and behavior.
+          </DialogDescription>
+          <div style={{ marginTop: '1rem' }}>
+            <p>Larger form with multiple sections...</p>
+            <p>More content here...</p>
+            <p>Additional configuration options...</p>
+          </div>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={() => setOpen(false)}>
+            Apply Settings
+          </Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <LargeDialogExample />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { useState } from 'react'
+    import { Button } from '@designgreat/lib-web-ui'
+    import {
+      Dialog,
+      DialogHeader,
+      DialogBody,
+      DialogFooter,
+      DialogTitle,
+      DialogDescription
+    } from '@designgreat/lib-web-ui'
+
+    function LargeDialogExample() {
+      const [open, setOpen] = useState(false)
+
+      return (
+        <>
+          <Button onClick={() => setOpen(true)}>Open Large Dialog</Button>
+          <Dialog open={open} onClose={() => setOpen(false)} size="lg">
+            <DialogHeader>
+              <DialogTitle>Advanced Settings</DialogTitle>
+            </DialogHeader>
+            <DialogBody>
+              <DialogDescription>
+                Configure advanced options for your application.
+              </DialogDescription>
+              <div style={{ marginTop: '1rem' }}>
+                {/* Complex form or content */}
+              </div>
+            </DialogBody>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={() => setOpen(false)}>
+                Apply Settings
+              </Button>
+            </DialogFooter>
+          </Dialog>
+        </>
+      )
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Complex forms (6+ fields)
+- Rich content displays
+- Data tables or lists within dialogs
+- Settings panels with multiple sections
+
+### Best Practices
+- Use sparingly - consider full pages instead
+- Organize content into clear sections
+- Ensure adequate spacing between elements
+- Consider breaking into multi-step flows
+- Test on smaller screens
+

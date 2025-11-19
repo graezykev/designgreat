@@ -1,0 +1,120 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { TextInput } from '@designgreat/lib-web-ui';
+
+# Error State
+
+Text input with validation error state.
+
+## Basic Error
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Email"
+      placeholder="Enter your email"
+      errorMessage="Please enter a valid email address"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { TextInput } from '@designgreat/lib-web-ui'
+
+    <TextInput
+      label="Email"
+      placeholder="Enter your email"
+      errorMessage="Please enter a valid email address"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Multiple Error Scenarios
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <TextInput
+        label="Password"
+        type="password"
+        placeholder="Enter password"
+        errorMessage="Password must be at least 8 characters"
+      />
+      <TextInput
+        label="Username"
+        placeholder="Choose a username"
+        errorMessage="This username is already taken"
+      />
+      <TextInput
+        label="Credit Card"
+        placeholder="1234 5678 9012 3456"
+        errorMessage="Invalid card number"
+      />
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Password"
+      type="password"
+      placeholder="Enter password"
+      errorMessage="Password must be at least 8 characters"
+    />
+
+    <TextInput
+      label="Username"
+      placeholder="Choose a username"
+      errorMessage="This username is already taken"
+    />
+
+    <TextInput
+      label="Credit Card"
+      placeholder="1234 5678 9012 3456"
+      errorMessage="Invalid card number"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Error with Icon
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <TextInput
+      label="Email"
+      placeholder="email@example.com"
+      trailingIcon="❌"
+      errorMessage="Invalid email format"
+    />
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <TextInput
+      label="Email"
+      placeholder="email@example.com"
+      trailingIcon="❌"
+      errorMessage="Invalid email format"
+    />
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Form validation failures
+- Real-time input validation
+- Server-side validation errors
+- Required field indicators
+
+### Best Practices
+- Show errors after user interaction (blur or submit)
+- Provide specific, actionable error messages
+- Use red color for clear visual indication
+- Keep error messages concise but helpful
+- Don't show errors before user has a chance to input
+

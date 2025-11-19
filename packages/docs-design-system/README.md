@@ -1,44 +1,35 @@
-# Website
+# Design System Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Documentation hub for the DesignGreat design system.
 
-## Installation
+## 📚 View Documentation
+
+**Live Site:** [https://graezykev.github.io/designgreat/](https://graezykev.github.io/designgreat/)
+
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
 pnpm install
-```
 
-## Local Development
+# Start dev server
+pnpm dev
 
-```bash
-pnpm start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are
-reflected live without having to restart the server.
-
-## Build
-
-```bash
+# Build for production
 pnpm build
 ```
 
-This command generates static content into the `build` directory and can be served using any static
-contents hosting service.
+## 📖 Contributing
 
-## Deployment
+For detailed information about developing and contributing to this documentation site, see the
+[Contributing to Documentation](https://graezykev.github.io/designgreat/contributing) guide.
 
-Using SSH:
+## 🔗 Additional Resources
 
-```bash
-USE_SSH=true pnpm deploy
-```
+- [BLOG-FEATURES.md](./BLOG-FEATURES.md) - How to enable and configure the blog
+- [Main Repository README](../../README.md) - Monorepo documentation
 
-Not using SSH:
+## 🤝 Contributing
 
-```bash
-GIT_USER=<Your GitHub username> pnpm deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and
-push to the `gh-pages` branch.
+This documentation site uses [Docusaurus](https://docusaurus.io/). See the
+[monorepo contributing guide](../../docs/CONTRIBUTING.md) for general contribution guidelines.

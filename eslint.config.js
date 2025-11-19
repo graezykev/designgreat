@@ -36,7 +36,9 @@ const config = [
     ignores: [
       'packages/docs-design-system/.docusaurus/**',
       'packages/docs-design-system/build/**',
-      'packages/docs-design-system/docs/tutorial-basics/markdown-features.mdx'
+      'packages/docs-design-system/docs-contributing/markdown-features.mdx',
+      'packages/docs-design-system/docs-contributing/navigation.mdx',
+      'packages/docs-design-system/BLOG-FEATURES.md'
     ]
   },
   {

@@ -9,8 +9,8 @@ const projectName = 'designgreat'
 const baseUrl = `/${projectName}/`
 
 const config: Config = {
-  title: 'Designgreat Docs',
-  tagline: 'Documentation hub for the Designgreat Design System',
+  title: 'Design Great Docs',
+  tagline: 'Documentation hub for the Design System (@designgreat)',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -64,6 +64,28 @@ const config: Config = {
   ],
 
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'contributing',
+        path: 'docs-contributing',
+        routeBasePath: 'contributing',
+        sidebarPath: './sidebars-contributing.ts',
+        editUrl:
+          `https://github.com/${organizationName}/${projectName}/tree/main/packages/docs-design-system/`
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'components',
+        path: 'docs-components',
+        routeBasePath: 'components',
+        sidebarPath: './sidebars-components.ts',
+        editUrl:
+          `https://github.com/${organizationName}/${projectName}/tree/main/packages/docs-design-system/`
+      }
+    ],
     () => ({
       name: 'custom-webpack-config',
       configureWebpack() {
@@ -89,13 +111,25 @@ const config: Config = {
     })
   ],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true
+      }
+    ]
+  ],
+
   themeConfig: {
     image: 'img/social-card.png',
     colorMode: {
       respectPrefersColorScheme: true
     },
     navbar: {
-      title: 'Designgreat Docs',
+      title: 'Design Great',
       logo: {
         alt: 'Designgreat Logo',
         src: 'img/logo.svg'
@@ -106,6 +140,20 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Docs'
+        },
+        {
+          type: 'doc',
+          docId: 'button/index',
+          docsPluginId: 'components',
+          position: 'left',
+          label: 'Components'
+        },
+        {
+          type: 'doc',
+          docId: 'index',
+          docsPluginId: 'contributing',
+          position: 'left',
+          label: 'Contributing'
         },
         {
           href: `https://github.com/${organizationName}/${projectName}`,
@@ -121,12 +169,34 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Introduction',
-              to: '/docs/intro'
-            },
-            {
               label: 'Tutorials',
               to: '/docs/category/tutorial---basics'
+            }
+          ]
+        },
+        {
+          title: 'Components',
+          items: [
+            {
+              label: 'Button',
+              to: '/components/button'
+            },
+            {
+              label: 'Dialog',
+              to: '/components/dialog'
+            },
+            {
+              label: 'TextInput',
+              to: '/components/text-input'
+            }
+          ]
+        },
+        {
+          title: 'Contributing',
+          items: [
+            {
+              label: 'Getting Started',
+              to: '/contributing'
             }
           ]
         },
@@ -140,7 +210,7 @@ const config: Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Designgreat. Built with Docusaurus.`
+      copyright: `Copyright © ${new Date().getFullYear()} Design Great. Built with Docusaurus.`
     },
     prism: {
       theme: prismThemes.github,

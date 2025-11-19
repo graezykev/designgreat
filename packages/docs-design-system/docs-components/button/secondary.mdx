@@ -1,0 +1,103 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { Button } from '@designgreat/lib-web-ui';
+
+# Secondary
+
+The secondary button variant is used for less prominent actions.
+
+## Basic Example
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <Button variant="secondary">Secondary Button</Button>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    import { Button } from '@designgreat/lib-web-ui'
+
+    <Button variant="secondary">Secondary Button</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## With Icons
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Button variant="secondary" leadingIcon="→">
+        With Leading Icon
+      </Button>
+      <Button variant="secondary" trailingIcon="←">
+        With Trailing Icon
+      </Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="secondary" leadingIcon="→">
+      With Leading Icon
+    </Button>
+
+    <Button variant="secondary" trailingIcon="←">
+      With Trailing Icon
+    </Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## Sizes
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button variant="secondary" size="sm">Small</Button>
+      <Button variant="secondary" size="md">Medium</Button>
+      <Button variant="secondary" size="lg">Large</Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="secondary" size="sm">Small</Button>
+    <Button variant="secondary" size="md">Medium</Button>
+    <Button variant="secondary" size="lg">Large</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## States
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Button variant="secondary">Normal</Button>
+      <Button variant="secondary" disabled>Disabled</Button>
+      <Button variant="secondary" loading>Loading</Button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="secondary">Normal</Button>
+    <Button variant="secondary" disabled>Disabled</Button>
+    <Button variant="secondary" loading>Loading</Button>
+    ```
+  </TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### When to Use
+- Secondary actions in a group
+- Cancel or back buttons
+- Alternative actions that complement a primary action
+
+### Best Practices
+- Pair with a primary button for clear hierarchy
+- Use for actions that are important but not primary
+- Maintain consistent styling across the application
+
