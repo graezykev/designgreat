@@ -1,5 +1,5 @@
 ---
-'docs-design-system': patch
+'@designgreat/docs-design-system': patch
 ---
 
 Refined README.md to improve clarity and remove redundant information
