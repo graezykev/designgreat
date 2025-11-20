@@ -1,5 +1,18 @@
 # @designgreat/lib-web-ui
 
+## 0.5.5
+
+### Patch Changes
+
+- bda057c: Fix TypeScript linting errors in Storybook preview
+  - Added explicit type annotations for `classNames` and `themeClassName` variables
+  - Resolved `@typescript-eslint/no-unsafe-argument` errors in theme decorator
+  - Improved type safety in Storybook theme switching implementation
+
+  **Related PR:** [#30](https://github.com/graezykev/designgreat/pull/30)
+
+  **Author:** @chunman-yeung
+
 ## 0.5.4
 
 ### Patch Changes

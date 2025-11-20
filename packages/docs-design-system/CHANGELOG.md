@@ -1,5 +1,24 @@
 # @designgreat/docs-design-system
 
+## 0.4.2
+
+### Patch Changes
+
+- bda057c: Migrate blog setup guide and improve documentation structure
+  - Migrated `BLOG-FEATURES.md` content into `docs-contributing/features.mdx` under the "Blog"
+    section
+  - Updated README and CHANGELOG references to point to the new documentation location
+  - Improved ESLint configuration to ignore all MDX files in `docs-contributing/**/*.mdx`,
+    `docs/design-tokens/**/*.mdx`, and `docs-components/**/*.mdx`
+  - All blog setup instructions now accessible directly in the Contributing documentation section
+
+  **Related PR:** [#30](https://github.com/graezykev/designgreat/pull/30)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [bda057c]
+  - @designgreat/lib-web-ui@0.5.5
+
 ## 0.4.1
 
 ### Patch Changes
