@@ -1,5 +1,12 @@
 # @designgreat/design-token-support
 
+## 0.2.7
+
+### Patch Changes
+
+- Updated dependencies [5d57854]
+  - @designgreat/lib-web-ui-design-token@0.4.4
+
 ## 0.2.6
 
 ### Patch Changes

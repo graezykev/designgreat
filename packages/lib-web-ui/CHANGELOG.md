@@ -1,5 +1,25 @@
 # @designgreat/lib-web-ui
 
+## 0.5.4
+
+### Patch Changes
+
+- 5d57854: Update documentation links to point to new Docusaurus structure
+  - Updated README links from local markdown files to published Docusaurus URLs
+  - Changed component library usage guide link to point to
+    `https://graezykev.github.io/designgreat/components/guides/overview`
+  - Updated font setup guide link to new location
+  - Updated design tokens guide link reference
+  - Updated historical CHANGELOG entry to reflect documentation migration path
+
+  **Related PR:** [#28](https://github.com/graezykev/designgreat/pull/28)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [5d57854]
+  - @designgreat/lib-web-ui-design-token@0.4.4
+  - @designgreat/design-token-support@0.2.7
+
 ## 0.5.3
 
 ### Patch Changes
