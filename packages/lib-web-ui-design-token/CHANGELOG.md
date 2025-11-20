@@ -1,5 +1,22 @@
 # @designgreat/lib-web-ui-design-token
 
+## 0.4.5
+
+### Patch Changes
+
+- cad7912: **Simplify README for better maintainability**
+  - Simplified `README.md` to act as a clean entry point with two main documentation links
+  - Enhanced package description to better communicate the token authoring, build pipeline, and
+    TypeScript runtime capabilities
+  - README now matches the concise, low-maintenance style across all packages
+
+  This change reduces maintenance overhead by delegating detailed documentation to the comprehensive
+  documentation site.
+
+  **Related PR:** [#31](https://github.com/graezykev/designgreat/pull/31)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.4
 
 ### Patch Changes

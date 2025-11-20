@@ -1,5 +1,53 @@
 # @designgreat/docs-design-system
 
+## 0.4.3
+
+### Patch Changes
+
+- cad7912: **Enhance documentation structure and fix link consistency**
+
+  ### Documentation Structure Improvements
+  - Enhanced "Quick Links" sections in Design Tokens Guide and Web Components Guide with DocCardList
+    visual cards
+  - Added `description` frontmatter to multiple MDX files for better card display
+  - Improved cross-linking between consumer docs and contributor docs
+
+  ### Link Consistency Fixes
+  - Standardized all relative links in `docs-contributing/design-tokens-development/` to remove
+    `.mdx` extensions
+  - Updated 7 files: troubleshooting, testing-validation, development-workflow, build-system,
+    token-authoring, architecture
+  - Fixed link in `documentation-site/writing-docs.mdx` to use consistent format
+  - Verified all links working correctly with zero broken links detected
+
+  ### Related Resources Updates
+  - Updated "Related Resources" sections to include Component Library Development Guide
+  - Ensured consistent navigation patterns across all documentation sections
+
+  **Related PR:** [#31](https://github.com/graezykev/designgreat/pull/31)
+
+  **Author:** @chunman-yeung
+
+- cad7912: **Improve Web Components Guide maintainability**
+  - Removed "Component Documentation" section from Web Components Guide to avoid laborious
+    maintenance as the component library grows
+  - Added "Contributing to Web Components" section linking to the Component Library Development
+    Guide
+  - Enhanced "Related Resources" to include Component Library Development Guide
+
+  This change eliminates the need to manually maintain a list of components in the overview page,
+  reducing maintenance burden as the library scales.
+
+  **Related PR:** [#31](https://github.com/graezykev/designgreat/pull/31)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [cad7912]
+- Updated dependencies [cad7912]
+  - @designgreat/lib-web-ui-design-token@0.4.5
+  - @designgreat/lib-web-ui@0.5.6
+  - @designgreat/design-token-support@0.2.8
+
 ## 0.4.2
 
 ### Patch Changes
