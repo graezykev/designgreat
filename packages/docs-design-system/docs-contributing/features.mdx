@@ -24,12 +24,87 @@ For more advanced search features, consider:
 
 ## Blog
 
-The blog feature is available but currently disabled. See [BLOG-FEATURES.md](https://github.com/graezykev/designgreat/blob/main/packages/docs-design-system/BLOG-FEATURES.md) for:
+The blog feature is available but currently disabled. To enable it:
 
-- How to enable the blog
-- Configuration options
-- Writing blog posts
-- Managing authors and tags
+### Enable Blog
+
+Edit `docusaurus.config.ts` and replace `blog: false` with:
+
+```ts
+blog: {
+  showReadingTime: true,
+  feedOptions: {
+    type: ['rss', 'atom'],
+    xslt: true
+  },
+  editUrl: `https://github.com/${organizationName}/${projectName}/tree/main/packages/docs-design-system/`,
+  blogTitle: 'Design System Blog',
+  blogDescription: 'Updates, guides, and best practices for the Design System',
+  blogSidebarTitle: 'All posts',
+  blogSidebarCount: 'ALL'
+}
+```
+
+### Add Navigation Links
+
+In `themeConfig.navbar.items`, add:
+
+```ts
+{
+  to: '/blog',
+  label: 'Blog',
+  position: 'left'
+}
+```
+
+### Blog Content
+
+Blog posts live in the `blog/` directory:
+
+- **Posts:** `YYYY-MM-DD-post-title.md` or `.mdx`
+- **Authors:** Define in `blog/authors.yml`
+- **Tags:** Define in `blog/tags.yml`
+
+Example post:
+
+```markdown
+---
+slug: my-post
+title: My First Post
+authors: [yourname]
+tags: [design-system, components]
+---
+
+Post introduction text...
+
+<!-- truncate -->
+
+Full post content after the fold...
+```
+
+### Configuration Options
+
+Common blog options in `docusaurus.config.ts`:
+
+| Option             | Description                 | Default             |
+| ------------------ | --------------------------- | ------------------- |
+| `showReadingTime`  | Show estimated reading time | `true`              |
+| `postsPerPage`     | Posts per page              | `10`                |
+| `blogSidebarCount` | Sidebar post count          | `5`                 |
+| `blogSidebarTitle` | Sidebar title               | 'Recent'            |
+| `routeBasePath`    | Blog URL base path          | `'blog'`            |
+| `include`          | Files to include            | `['**/*.{md,mdx}']` |
+
+### URLs After Enabling
+
+- **Blog home:** `/blog`
+- **Individual post:** `/blog/post-slug`
+- **Tags:** `/blog/tags`
+- **Archive:** `/blog/archive`
+- **RSS feed:** `/blog/rss.xml`
+- **Atom feed:** `/blog/atom.xml`
+
+For more details, see [Docusaurus Blog Docs](https://docusaurus.io/docs/blog) and [Blog Plugin API](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
 
 ## Design Tokens
 
