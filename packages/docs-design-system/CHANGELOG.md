@@ -77,7 +77,7 @@
   - Create comprehensive "Components" documentation section with interactive examples for Button,
     Dialog, and TextInput components
   - Implement tabbed UI (Preview/Code toggle) for all component examples using Docusaurus Tabs
-  - Add blog feature configuration guide (BLOG-FEATURES.md)
+  - Add blog feature configuration guide (migrated to docs-contributing/features.mdx)
   - Restructure documentation with improved navigation and sidebar organization
   - Update site branding to "Design Great"
   - Remove broken Storybook links from component documentation

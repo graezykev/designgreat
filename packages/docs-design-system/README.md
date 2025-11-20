@@ -26,8 +26,9 @@ For detailed information about developing and contributing to this documentation
 
 ## 🔗 Additional Resources
 
-- [BLOG-FEATURES.md](./BLOG-FEATURES.md) - How to enable and configure the blog
 - [Main Repository README](../../README.md) - Monorepo documentation
+- [Blog Setup Guide](https://graezykev.github.io/designgreat/contributing/features#blog) - How to
+  enable and configure the blog
 
 ## 🤝 Contributing
 

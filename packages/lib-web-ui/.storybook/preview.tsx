@@ -19,9 +19,10 @@ const THEMES = {
 const ThemeDecorator: Decorator = (Story, context) => {
   const themeName = (context.globals.theme as keyof typeof THEMES) ?? 'light'
   const theme = THEMES[themeName] ?? LIGHT_THEME
+  const themeClassName: string = theme.className
 
   useEffect(() => {
-    const classNames = Object.values(THEMES).map(({ className }) => className)
+    const classNames: string[] = Object.values(THEMES).map(({ className }) => className)
 
     const html = document.documentElement
     const { body } = document
@@ -30,7 +31,7 @@ const ThemeDecorator: Decorator = (Story, context) => {
 
     for (const target of [html, body]) {
       target.classList.remove(...classNames)
-      target.classList.add(theme.className)
+      target.classList.add(themeClassName)
       target.style.height = '100%'
       target.style.overflow = 'hidden'
       target.style.margin = '0'
@@ -71,11 +72,11 @@ const ThemeDecorator: Decorator = (Story, context) => {
         main.style.margin = ''
       }
     }
-  }, [theme])
+  }, [theme, themeClassName])
 
   return (
     <div
-      className={`${theme.className} min-h-screen bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-default)] overflow-hidden`}
+      className={`${themeClassName} min-h-screen bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-default)] overflow-hidden`}
     >
       <Story />
     </div>
