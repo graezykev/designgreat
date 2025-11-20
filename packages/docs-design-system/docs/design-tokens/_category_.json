@@ -1,7 +1,7 @@
 {
   "label": "Design Tokens",
   "position": 1,
-  "collapsed": false,
+  "collapsed": true,
   "link": {
     "type": "doc",
     "id": "design-tokens/overview"

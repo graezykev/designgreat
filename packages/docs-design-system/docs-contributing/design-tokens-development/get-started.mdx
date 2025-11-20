@@ -1,0 +1,118 @@
+---
+sidebar_position: 1
+sidebar_label: Get Started
+description: Quick setup guide for contributing to design tokens
+---
+
+# Get Started
+
+Get started contributing to the design token package quickly.
+
+## Prerequisites
+
+- **Node.js** 22 or higher
+- **PNPM** 9 or higher
+- **Git**
+- Monorepo already cloned and dependencies installed
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/graezykev/designgreat.git
+cd designgreat
+```
+
+## Installation
+
+Install all dependencies from the monorepo root:
+
+```bash
+pnpm install
+```
+
+## Package Location
+
+The design token package is located at:
+
+```
+packages/lib-web-ui-design-token/
+```
+
+## Development Commands
+
+### Local Development (Watch Mode)
+
+Rebuild automatically on changes (best for active development):
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run watch
+```
+
+### Other Development Commands
+
+Build tokens only (quick build, just the token pipeline):
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run build:tokens
+```
+
+Full build (includes font download, Style Dictionary, TypeScript compilation):
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run build
+```
+
+## Lint
+
+Lint the TypeScript runtime and build scripts:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run lint
+```
+
+## Typecheck
+
+Type check without emitting files:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run typecheck
+```
+
+## Test and Validate
+
+### Run Tests
+
+Run the Vitest suite for runtime helpers and validation utilities:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run test
+```
+
+### Validate Token Integrity
+
+Execute integrity checks for generated themes:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run validate
+```
+
+## Build
+
+Full production build:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token run build
+```
+
+This runs the complete pipeline:
+1. Clean (`rm -rf dist src/generated`)
+2. Build tokens (download fonts → Style Dictionary → generate themes.ts)
+3. Compile TypeScript runtime
+4. Copy token sources to dist
+
+## Next Steps
+
+- Learn about [Architecture](./architecture) to understand the package structure
+- Start with [Token Authoring](./token-authoring) to create or modify tokens
+- Follow the [Development Workflow](./development-workflow) for day-to-day tasks
+

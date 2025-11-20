@@ -1,0 +1,157 @@
+---
+sidebar_position: 2
+description: Package structure and design philosophy
+---
+
+# Architecture
+
+This page explains the architecture and design philosophy of the `@designgreat/lib-web-ui-design-token` package.
+
+## Package Role
+
+This package serves as the **single source of truth** for all design decisions in the DesignGreat system. It acts as the foundation layer that all other packages depend on for consistent styling.
+
+## Key Principles
+
+1. **Domain-Organized Tokens** – Tokens are organized by domain (color, typography, size) rather than by theme
+2. **Theme-Agnostic Authoring** – Token definitions don't hardcode theme values; themes are applied during build
+3. **Multiple Output Formats** – Generate CSS, SCSS, JS/TS, and JSON to support various consumption patterns
+4. **Type Safety First** – Full TypeScript support with auto-generated types
+5. **Portable Font Assets** – Self-contained font directory with relative paths
+
+## Token Authoring Structure
+
+Tokens live under `src/tokens/` and are organized by domain:
+
+```
+src/tokens/
+├── color/
+│   ├── accent/          # Accent color palettes (grey, neutral, saturated)
+│   ├── alpha/           # Semi-transparent colors
+│   ├── base/            # Base color scales
+│   ├── brand.js         # Brand colors
+│   ├── primary.js       # Primary colors
+│   ├── secondary.js     # Secondary colors
+│   ├── tertiary.js      # Tertiary colors
+│   ├── quartus.js       # Quaternary colors
+│   ├── semantic.js      # Semantic colors (success, error, warning)
+│   └── shortcut/        # Common color shortcuts (background, text, border)
+├── typography/
+│   ├── font-face.js     # Font definitions and configurations
+│   ├── font-family.js   # Font family stacks
+│   ├── font-size.js     # Font size scale
+│   ├── font-weight.js   # Font weight values
+│   ├── line-height.js   # Line height ratios
+│   ├── letter-spacing.js
+│   └── ...              # Other typography tokens
+├── size/
+│   ├── border-radius.js # Corner radius scale
+│   ├── font.js          # Font-related sizes
+│   ├── shadow.js        # Shadow size definitions
+│   └── size.js          # General size scale
+├── shadow/              # Box & text shadow definitions
+├── transition/          # Motion tokens (durations, easings)
+├── gradient.js          # Gradient definitions
+├── cubic-bezier.js      # Easing functions
+├── duration.js          # Animation durations
+└── border.js            # Border styles
+```
+
+:::info
+Font assets and font-face definitions are generated once and shared across all themes.
+:::
+
+## Build Outputs
+
+The build process generates several types of artifacts:
+
+### Font Outputs (Theme-Independent)
+
+- `dist/font/font-face.css` – Font-face definitions with relative paths
+- `dist/font/*.woff2` – All font files (Roboto + custom fonts, 108 files)
+
+:::tip Portable Fonts
+The entire `dist/font/` directory is self-contained with relative paths (`./filename.woff2`), making it portable and easy to integrate with any bundler or static site generator.
+:::
+
+### CSS Outputs (Theme-Specific)
+
+- `dist/css/light/variables.css` – Light theme CSS variables
+- `dist/css/light/variables.scss` – Light theme SCSS variables  
+- `dist/css/dark/variables.css` – Dark theme CSS variables
+- `dist/css/dark/variables.scss` – Dark theme SCSS variables
+
+### JavaScript/TypeScript Outputs (Theme-Specific)
+
+- `dist/jsts/light/variables.js` – Light theme tokens (ESM)
+- `dist/jsts/light/variables.d.ts` – Light theme TypeScript definitions
+- `dist/jsts/dark/variables.js` – Dark theme tokens (ESM)
+- `dist/jsts/dark/variables.d.ts` – Dark theme TypeScript definitions
+
+### Generated Runtime
+
+- `src/generated/themes.ts` – Flattened light/dark objects that power the TypeScript runtime
+- `dist/index.js` – Compiled runtime with helpers (getThemeTokens, createTheme, etc.)
+- `dist/index.d.ts` – TypeScript definitions for the runtime
+
+### Token Sources
+
+- `dist/tokens/` – Copy of token source files for inspection/distribution
+
+## Package Exports
+
+The package provides clean exports for consumers:
+
+```json
+{
+  "exports": {
+    ".": "./dist/index.js",
+    "./font": "./dist/font/font-face.css",
+    "./font/*": "./dist/font/*",
+    "./css/light": "./dist/css/light/variables.css",
+    "./css/dark": "./dist/css/dark/variables.css"
+  }
+}
+```
+
+### Example Font Consumption
+
+```typescript
+// In your app or component library
+import '@designgreat/lib-web-ui-design-token/font'
+```
+
+Bundlers (Vite, Webpack, etc.) will automatically resolve the relative font paths from the CSS.
+
+## Data Flow
+
+```
+Token Sources (JS)
+    ↓
+Style Dictionary Build
+    ↓
+├─→ CSS Variables (light/dark)
+├─→ SCSS Variables (light/dark)
+├─→ JS/TS Objects (light/dark)
+└─→ Generated Runtime (src/generated/themes.ts)
+    ↓
+TypeScript Compilation
+    ↓
+Dist Artifacts (dist/index.js + types)
+```
+
+## Dependencies
+
+Key dependencies:
+
+- **Style Dictionary** – Token transformation engine
+- **TypeScript** – Type safety and compilation
+- **Vitest** – Testing framework
+- **Google Fonts** – Roboto font family
+
+## Next Steps
+
+- Learn about [Token Authoring](./token-authoring)
+- Understand the [Build System](./build-system)
+- Explore the [Development Workflow](./development-workflow)
+

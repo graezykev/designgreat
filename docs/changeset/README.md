@@ -28,11 +28,32 @@ Personal Branch → Changeset File → PR → CI Metadata Injection → Versioni
 
 ### Best Practices
 
-1. If the changes are unrelated or deserve different summaries, split them into separate
-   `.changeset/*.md` files. You can run `pnpm exec changeset` multiple times to create multiple
-   `.md` files — one per logical change.
+#### 1. One Changeset Per Logical Change
 
-2. Otherwise, group related work into a single changeset if the changes are general.
+**Split changesets when changes address different concerns:**
 
-3. Keep the summary concise — this message becomes part of the release **changelog**
-   (`CHANGELOG.md`).
+- Bug fix vs. feature vs. refactor
+- Different areas of functionality
+- Changes that deserve distinct changelog entries
+
+**Example:** Multiple changesets for the same package is OK and encouraged:
+
+```
+.changeset/fix-button-accessibility.md
+.changeset/add-button-loading-state.md
+.changeset/refactor-button-styles.md
+```
+
+Changesets will automatically merge all entries into one changelog and take the highest version
+bump.
+
+#### 2. Group Tightly Coupled Changes
+
+Combine into a single changeset when changes are part of the same logical unit and don't need
+separate documentation.
+
+#### 3. Write Clear, User-Facing Summaries
+
+- Focus on the "what" and "why", not the "how"
+- Follow the [template](./template.md) for consistency
+- Keep it concise—this becomes part of `CHANGELOG.md`

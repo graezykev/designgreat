@@ -1,0 +1,271 @@
+---
+sidebar_position: 3
+description: How to create and organize tokens
+---
+
+# Token Authoring
+
+This guide explains how to create and organize design tokens in the `@designgreat/lib-web-ui-design-token` package.
+
+## Token Format
+
+Tokens are defined as JavaScript objects with Style Dictionary placeholders:
+
+```javascript
+// src/tokens/color/primary.js
+export default {
+  color: {
+    primary: {
+      DEFAULT: { value: '#3B82F6' },
+      hover: { value: '{color.primary.DEFAULT}', attributes: { alpha: 0.8 } }
+    }
+  }
+}
+```
+
+## Token Structure
+
+Each token object should follow this structure:
+
+```javascript
+{
+  [domain]: {
+    [category]: {
+      [name]: {
+        value: '...',           // Required: The actual value
+        attributes: {},         // Optional: Build-time metadata
+        comment: '...'          // Optional: Documentation
+      }
+    }
+  }
+}
+```
+
+## Token References
+
+Use Style Dictionary placeholders to reference other tokens:
+
+```javascript
+export default {
+  color: {
+    background: {
+      primary: { value: '{color.accent.blue.DEFAULT}' },
+      secondary: { value: '{color.accent.grey.200}' }
+    }
+  }
+}
+```
+
+### Reference Syntax
+
+- Use curly braces: `{domain.category.name}`
+- Path must match the token hierarchy
+- References are resolved during build time
+- Circular references will cause build errors
+
+## Build-Time Metadata
+
+Tokens can include metadata that affects how they're transformed:
+
+### Alpha Transparency
+
+```javascript
+export default {
+  color: {
+    primary: {
+      translucent: {
+        value: '{color.primary.DEFAULT}',
+        attributes: { alpha: 0.5 }  // 50% opacity
+      }
+    }
+  }
+}
+```
+
+### Gradient Configurations
+
+```javascript
+export default {
+  gradient: {
+    sunset: {
+      value: {
+        type: 'linear',
+        angle: '45deg',
+        stops: [
+          { color: '#FF6B6B', position: '0%' },
+          { color: '#FFA500', position: '100%' }
+        ]
+      }
+    }
+  }
+}
+```
+
+### Shadow Definitions
+
+```javascript
+export default {
+  shadow: {
+    card: {
+      value: {
+        x: '0px',
+        y: '4px',
+        blur: '8px',
+        spread: '0px',
+        color: 'rgba(0, 0, 0, 0.1)'
+      }
+    }
+  }
+}
+```
+
+## Organization Best Practices
+
+### Domain Organization
+
+Organize tokens by **domain** (color, typography, size), not by theme:
+
+✅ **Good:**
+```
+src/tokens/
+├── color/
+│   ├── primary.js
+│   ├── secondary.js
+│   └── semantic.js
+```
+
+❌ **Bad:**
+```
+src/tokens/
+├── light-theme.js
+├── dark-theme.js
+```
+
+### File Naming
+
+- Use kebab-case for file names: `font-family.js`, `border-radius.js`
+- Group related tokens in subdirectories
+- Keep files focused on a single domain
+
+### Token Naming
+
+Use descriptive, hierarchical names:
+
+✅ **Good:**
+```javascript
+{
+  color: {
+    background: {
+      primary: { value: '#FFFFFF' },
+      secondary: { value: '#F5F5F5' }
+    }
+  }
+}
+```
+
+❌ **Bad:**
+```javascript
+{
+  color: {
+    bgPrimary: { value: '#FFFFFF' },
+    bg2: { value: '#F5F5F5' }
+  }
+}
+```
+
+## Common Token Patterns
+
+### Color Scales
+
+Define base colors and derive variants:
+
+```javascript
+export default {
+  color: {
+    blue: {
+      50: { value: '#EFF6FF' },
+      100: { value: '#DBEAFE' },
+      200: { value: '#BFDBFE' },
+      // ... more shades
+      900: { value: '#1E3A8A' }
+    }
+  }
+}
+```
+
+### Typography Tokens
+
+```javascript
+export default {
+  typography: {
+    heading: {
+      h1: {
+        value: {
+          fontFamily: '{typography.fontFamily.sans}',
+          fontSize: '{typography.fontSize.4xl}',
+          fontWeight: '{typography.fontWeight.bold}',
+          lineHeight: '{typography.lineHeight.tight}'
+        }
+      }
+    }
+  }
+}
+```
+
+### Spacing Scale
+
+```javascript
+export default {
+  size: {
+    spacing: {
+      0: { value: '0' },
+      1: { value: '0.25rem' },  // 4px
+      2: { value: '0.5rem' },   // 8px
+      3: { value: '0.75rem' },  // 12px
+      4: { value: '1rem' },     // 16px
+      // ... more sizes
+    }
+  }
+}
+```
+
+## Theme-Specific Tokens
+
+While authoring is theme-agnostic, you can define theme-specific mappings:
+
+```javascript
+export default {
+  color: {
+    text: {
+      primary: {
+        value: '{color.grey.900}',  // Will be different in dark theme
+        $dark: '{color.grey.100}'   // Dark theme override
+      }
+    }
+  }
+}
+```
+
+## Adding New Tokens
+
+1. Create or modify files in `src/tokens/`
+2. Follow the established naming conventions
+3. Use references to maintain consistency
+4. Document complex tokens with comments
+5. Run `pnpm run build:tokens` to verify
+
+## Token Validation
+
+The build process validates:
+
+- All token references resolve correctly
+- No circular dependencies exist
+- Required token sections are present
+- Token values are valid for their type
+
+## Next Steps
+
+- Learn about the [Build System](./build-system)
+- Understand the [Development Workflow](./development-workflow)
+- Review [Testing & Validation](./testing-validation)
+

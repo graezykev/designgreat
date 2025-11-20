@@ -1,0 +1,106 @@
+---
+sidebar_position: 2.1
+description: Design token integration and CSS generation
+---
+
+# Design Token Integration
+
+This page explains how the component library integrates with design tokens.
+
+## Token Generation Flow
+
+```
+┌────────────────────────────────┐
+│ lib-web-ui-design-token build  │ ← Design token package
+│ • Style Dictionary processes   │
+│   token JSON files             │
+│ • Generates CSS variables      │
+└───────────────┬────────────────┘
+                │
+                ▼
+┌────────────────────────────────┐
+│ lib-web-ui generate:theme      │ ← This package
+│ • Reads generated CSS from     │
+│   lib-web-ui-design-token      │
+│ • Combines into single file    │
+│ • Emits to src/styles/         │
+│ • Order: light (:root) first,  │
+│   then dark (.dg-theme-dark)   │
+└────────────────────────────────┘
+```
+
+**Important:** The theme generation script (`scripts/generate-theme-css.ts`) explicitly orders themes as `['light', 'dark']` to ensure proper CSS cascade.
+
+## Tailwind Configuration
+
+The Tailwind config (`tailwind.config.ts`) extends the design token system to generate utility classes:
+
+```typescript
+// Simplified example
+export default {
+  theme: {
+    extend: {
+      colors: {
+        'color-background-button-default': 'var(--dg-color-background-button-default)',
+        'color-text-heading': 'var(--dg-color-text-heading)'
+        // ... all color tokens
+      },
+      spacing: {
+        '1': 'var(--dg-spacing-1)',
+        '4': 'var(--dg-spacing-4)'
+        // ... all spacing tokens
+      }
+    }
+  }
+}
+```
+
+This allows using design tokens directly in utility classes:
+
+```tsx
+<button className="bg-color-background-button-default text-color-text-button-default px-spacing-11">
+  Submit
+</button>
+```
+
+### Benefits
+
+- ✅ **Automatic theme switching** - Utilities use CSS variables
+- ✅ **Type-safe** - Via Tailwind IntelliSense
+- ✅ **JIT optimization** - Only used utilities are generated
+
+## Regenerating Tokens
+
+During development, you may need to regenerate tokens after changes to `lib-web-ui-design-token`:
+
+```bash
+# From monorepo root
+pnpm --filter @designgreat/lib-web-ui-design-token build
+pnpm --filter @designgreat/lib-web-ui generate:theme
+```
+
+Or use the dev workflow which handles this automatically:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui dev
+```
+
+## Token File Location
+
+Generated theme CSS is committed to the repository for convenience:
+
+```
+src/styles/designgreat-theme.css
+```
+
+This allows:
+- Local iteration without rebuilding tokens
+- CI/CD to work without design token build
+- Faster development workflow
+
+## Next Steps
+
+- Review [Architecture](./architecture) for package structure
+- Check [Font Handling](./font-handling) for font integration details
+- See [Get Started](./get-started) for setup instructions
+
