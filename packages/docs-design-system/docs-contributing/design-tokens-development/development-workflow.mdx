@@ -1,0 +1,327 @@
+---
+sidebar_position: 5
+description: Day-to-day development process
+---
+
+# Development Workflow
+
+This guide covers the day-to-day development workflow for working with design tokens.
+
+## Initial Setup
+
+### Clone and Install
+
+```bash
+# Clone the repository
+git clone https://github.com/graezykev/designgreat.git
+cd designgreat
+
+# Install dependencies
+pnpm install
+
+# Build all packages
+pnpm run build
+```
+
+### Verify Setup
+
+```bash
+# Navigate to the design token package
+cd packages/lib-web-ui-design-token
+
+# Run tests
+pnpm run test
+
+# Validate token integrity
+pnpm run validate
+
+# Type check
+pnpm run typecheck
+```
+
+## Adding or Modifying Tokens
+
+### Step-by-Step Process
+
+1. **Update or add files in `src/tokens/**`**
+
+   ```bash
+   # Example: Edit primary colors
+   vim src/tokens/color/primary.js
+   ```
+
+2. **Run build to regenerate outputs**
+
+   ```bash
+   pnpm run build:tokens
+   ```
+
+3. **Verify changes in generated files**
+
+   ```bash
+   # Check generated themes
+   cat src/generated/themes.ts
+   
+   # Check CSS output
+   cat dist/css/light/variables.css
+   
+   # Check TypeScript output
+   cat dist/jsts/light/variables.d.ts
+   ```
+
+4. **Run quality gates**
+
+   ```bash
+   pnpm run lint && pnpm run test && pnpm run typecheck && pnpm run validate
+   ```
+
+5. **Commit both source changes and generated artifacts**
+
+   ```bash
+   git add src/tokens/ src/generated/ dist/
+   git commit -m "feat(tokens): add new primary color variants"
+   ```
+
+## Watch Mode for Iteration
+
+For rapid iteration during development:
+
+```bash
+pnpm run watch
+```
+
+This rebuilds tokens automatically when files change. Open in a separate terminal and keep it running while you work.
+
+## Testing Changes Locally
+
+### Quick Verification
+
+```bash
+# Run token validation
+pnpm run validate
+
+# Run unit tests
+pnpm run test
+
+# Check types
+pnpm run typecheck
+```
+
+### Visual Verification
+
+To see your changes in action:
+
+1. Build the design token package:
+
+   ```bash
+   pnpm --filter @designgreat/lib-web-ui-design-token run build
+   ```
+
+2. Build dependent packages:
+
+   ```bash
+   pnpm --filter @designgreat/lib-web-ui build
+   ```
+
+3. Start Storybook:
+
+   ```bash
+   pnpm --filter @designgreat/lib-web-ui run storybook
+   ```
+
+4. View components with updated tokens at `http://localhost:6006`
+
+## Integration Testing
+
+After token changes, rebuild downstream packages to ensure compatibility:
+
+```bash
+# Build design token support package
+pnpm --filter @designgreat/design-token-support build
+
+# Build component library
+pnpm --filter @designgreat/lib-web-ui build
+
+# Build documentation site
+pnpm --filter @designgreat/docs-design-system build
+```
+
+## Common Development Tasks
+
+### Adding a New Color Token
+
+```javascript
+// src/tokens/color/accent/new-color.js
+export default {
+  color: {
+    accent: {
+      purple: {
+        50: { value: '#F5F3FF' },
+        100: { value: '#EDE9FE' },
+        200: { value: '#DDD6FE' },
+        // ... more shades
+        900: { value: '#4C1D95' }
+      }
+    }
+  }
+}
+```
+
+### Adding a New Typography Token
+
+```javascript
+// src/tokens/typography/heading-styles.js
+export default {
+  typography: {
+    heading: {
+      h3: {
+        value: {
+          fontFamily: '{typography.fontFamily.sans}',
+          fontSize: '{typography.fontSize.2xl}',
+          fontWeight: '{typography.fontWeight.semibold}',
+          lineHeight: '{typography.lineHeight.tight}'
+        }
+      }
+    }
+  }
+}
+```
+
+### Adding a New Shadow Token
+
+```javascript
+// src/tokens/shadow/elevation.js
+export default {
+  shadow: {
+    elevation: {
+      high: {
+        value: {
+          x: '0px',
+          y: '12px',
+          blur: '24px',
+          spread: '0px',
+          color: 'rgba(0, 0, 0, 0.15)'
+        }
+      }
+    }
+  }
+}
+```
+
+## Quality Gates
+
+Before committing, ensure all checks pass:
+
+### Linting
+
+```bash
+pnpm run lint
+```
+
+Fixes most issues automatically. Review any remaining warnings.
+
+### Type Checking
+
+```bash
+pnpm run typecheck
+```
+
+Ensures TypeScript runtime is valid.
+
+### Testing
+
+```bash
+pnpm run test
+```
+
+Runs Vitest suite for runtime helpers and validation utilities.
+
+### Validation
+
+```bash
+pnpm run validate
+```
+
+Checks token integrity and structure.
+
+## Git Workflow
+
+### Branch Naming
+
+```bash
+# Feature
+git checkout -b feat/add-purple-accent-colors
+
+# Fix
+git checkout -b fix/correct-font-weight-values
+
+# Chore
+git checkout -b chore/update-style-dictionary
+```
+
+### Commit Messages
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```bash
+# Features
+git commit -m "feat(tokens): add purple accent color scale"
+
+# Fixes
+git commit -m "fix(tokens): correct font-weight mapping for bold"
+
+# Chores
+git commit -m "chore(tokens): update Style Dictionary to v5.2.0"
+```
+
+### Pull Request Checklist
+
+Before opening a PR:
+
+- [ ] All tests pass (`pnpm run test`)
+- [ ] Linting passes (`pnpm run lint`)
+- [ ] Type checking passes (`pnpm run typecheck`)
+- [ ] Token validation passes (`pnpm run validate`)
+- [ ] Generated files are committed (`src/generated/`, `dist/`)
+- [ ] Downstream packages build successfully
+- [ ] Documentation is updated (if needed)
+
+## Debugging Tips
+
+### Check Token Resolution
+
+```bash
+# View generated themes to see resolved values
+cat src/generated/themes.ts | less
+```
+
+### Verify CSS Output
+
+```bash
+# Check CSS variables for light theme
+cat dist/css/light/variables.css | grep --color 'color-primary'
+```
+
+### Test Runtime Helpers
+
+```typescript
+// In Node.js or test file
+import { getThemeTokens, listThemeNames } from './src/index'
+
+console.log(listThemeNames())
+console.log(getThemeTokens('light').color.primary)
+```
+
+## Performance Tips
+
+- Use `pnpm run watch` for rapid iteration
+- Only run full `pnpm run build` before committing
+- Font downloads are cached locally
+- Style Dictionary builds in < 1 second
+
+## Next Steps
+
+- Review [Testing & Validation](./testing-validation)
+- Learn about [Troubleshooting](./troubleshooting)
+- Understand the [Build System](./build-system)
+

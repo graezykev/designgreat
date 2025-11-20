@@ -1,0 +1,143 @@
+---
+sidebar_position: 1
+sidebar_label: Get Started
+description: Quick setup guide for contributing to the component library
+---
+
+# Get Started
+
+Get started contributing to the component library package quickly.
+
+## Prerequisites
+
+- **Node.js** 22 or higher
+- **PNPM** 9 or higher
+- **Git**
+- **`@designgreat/lib-web-ui-design-token`** (workspace dependency)
+- Monorepo already cloned and dependencies installed
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/graezykev/designgreat.git
+cd designgreat
+```
+
+## Installation
+
+Install all dependencies from the monorepo root:
+
+```bash
+pnpm install
+```
+
+## Package Location
+
+The component library package is located at:
+
+```
+packages/lib-web-ui/
+```
+
+## Development Commands
+
+### Local Development (Storybook)
+
+Start Storybook development server (recommended):
+
+```bash
+pnpm --filter @designgreat/lib-web-ui storybook
+```
+
+Opens at `http://localhost:6006`
+
+**What happens:**
+1. Fonts are copied from `lib-web-ui-design-token/dist/font/` to `public/assets/fonts/`
+2. Design tokens are regenerated (`generate:theme`)
+3. Vite-powered Storybook server starts
+4. Tailwind JIT generates utilities on-demand
+5. Theme switcher toolbar allows testing light/dark themes
+
+### Other Development Commands
+
+Component development without Storybook:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui dev
+```
+
+Regenerate theme CSS:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui generate:theme
+```
+
+## Lint
+
+Lint the component library code:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui lint
+```
+
+## Typecheck
+
+Type check without emitting files:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui typecheck
+```
+
+## Test and Validate
+
+### Run Tests
+
+Run Vitest tests:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui test
+```
+
+Watch mode:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui test -- --watch
+```
+
+Coverage:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui test -- --coverage
+```
+
+## Build
+
+Full production build:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui build
+```
+
+This runs the complete pipeline:
+1. Clean previous build artifacts
+2. Regenerate CSS from design tokens
+3. Type check and emit `.d.ts` files
+4. Bundle components (ESM + CJS) and CSS with Vite
+5. Build static Storybook site
+
+**Build artifacts:**
+- `dist/` – Published package artifacts
+- `storybook-static/` – Deployable Storybook site
+
+### Build Storybook Only
+
+```bash
+pnpm --filter @designgreat/lib-web-ui storybook:build
+```
+
+## Next Steps
+
+- Learn about [Architecture](./architecture) to understand the package structure
+- Follow the [Storybook Workflow](./storybook-workflow) for component development
+- Review [Troubleshooting](./troubleshooting) for common issues
+

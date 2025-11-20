@@ -1,0 +1,139 @@
+---
+sidebar_position: 2.2
+description: Font loading strategy and best practices
+---
+
+# Font Handling
+
+This page explains the font loading strategy and how fonts are handled in the component library.
+
+## Why No Fonts in Library CSS?
+
+The library CSS intentionally **excludes** fonts to:
+
+- **Avoid font conflicts** - No conflicts with existing applications
+- **Consumer choice** - Allow consumers to choose font loading strategy
+- **Reduced bundle size** - Applications using different fonts don't download unused fonts
+- **Performance optimization** - Enable better performance optimization (preload, async, etc.)
+
+## What the Library CSS Includes
+
+The distributed CSS (`dist/lib-web-ui.css`) does **NOT** include:
+
+- ❌ `@font-face` declarations
+- ❌ Default `font-family` rules on `body` or `html`
+
+The CSS **does** include:
+
+- ✅ Design token CSS variables (color, spacing, typography values)
+- ✅ Tailwind utilities (generated from token values)
+- ✅ Component-specific styles
+
+## Storybook Font Loading
+
+Storybook **does** load fonts for preview purposes:
+
+- Fonts are copied from `lib-web-ui-design-token/dist/font/` to `public/assets/fonts/`
+- `font-face.css` is imported in `.storybook/preview.tsx`
+- `font-family` is applied dynamically via React `useEffect` in `ThemeDecorator`
+
+**Important:** This happens **only** for Storybook, not in the published library.
+
+## Consumer Font Options
+
+Consumers can load fonts in two ways:
+
+### Option 1: Import from Design Token Package
+
+```tsx
+import '@designgreat/lib-web-ui-design-token/font'
+```
+
+This imports the complete font-face CSS with all font files.
+
+### Option 2: Use Custom Font Loading
+
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+  rel="stylesheet"
+/>
+```
+
+This loads fonts from a CDN, allowing for custom font loading strategies.
+
+## Font Variables
+
+The library uses CSS variables for font families defined in design tokens:
+
+```css
+/* From design tokens */
+--dg-font-family-sans: 'Roboto', sans-serif;
+--dg-font-family-mono: 'Roboto Mono', monospace;
+```
+
+Components reference these variables:
+
+```css
+.button {
+  font-family: var(--dg-font-family-sans);
+}
+```
+
+## Storybook Font Copy Process
+
+The Storybook dev server automatically copies fonts:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui storybook
+```
+
+**What happens:**
+1. Fonts are copied from `../lib-web-ui-design-token/dist/font/` to `public/assets/fonts/`
+2. Font-face CSS is imported in preview
+3. Fonts are available for all stories
+
+If fonts don't load, manually copy them:
+
+```bash
+cd packages/lib-web-ui
+cp -r ../lib-web-ui-design-token/dist/font/* public/assets/fonts/
+```
+
+## Best Practices
+
+### For Library Development
+
+- Don't add `@font-face` to component styles
+- Use CSS variables for font families
+- Test components in Storybook with fonts loaded
+- Ensure fonts are in `.gitignore` for `public/assets/fonts/`
+
+### For Library Consumers
+
+- Choose your font loading strategy
+- Preload fonts for better performance:
+
+```html
+<link
+  rel="preload"
+  href="/path/to/font.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+```
+
+- Consider font subsetting for smaller file sizes
+- Use `font-display: swap` for better UX
+
+## Troubleshooting
+
+See [Troubleshooting - Storybook Fonts Missing](./troubleshooting#storybook-fonts-missing) for font loading issues.
+
+## Next Steps
+
+- Review [Architecture](./architecture) for package structure
+- Check [Design Token Integration](./design-token-integration) for token details
+- See [Storybook Workflow](./storybook-workflow) for development workflow
+

@@ -1,0 +1,130 @@
+---
+sidebar_position: 2.3
+description: Package publishing and distribution
+---
+
+# Publishing
+
+This page explains how the component library package is published and distributed.
+
+## Publishing Process
+
+The package is automatically published to NPM via GitHub Actions using [changesets](https://github.com/changesets/changesets).
+
+### Automated Publishing Workflow
+
+1. **Create Changeset** - When making changes, create a changeset:
+   ```bash
+   pnpm changeset
+   ```
+
+2. **Version Bump** - Changesets creates a PR that bumps versions automatically
+
+3. **Auto-Publish** - When merged to `main`, GitHub Actions publishes to NPM
+
+**GitHub Actions Workflow:** [View Configuration](https://github.com/graezykev/designgreat/blob/main/.github/workflows/version-publish-packages.yml)
+
+The workflow handles:
+- Version detection
+- Build and test execution
+- NPM registry publishing
+- GitHub release creation
+
+## Package Exports
+
+The package provides clean exports for different module systems:
+
+```json
+{
+  "name": "@designgreat/lib-web-ui",
+  "version": "x.x.x",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/lib-web-ui.css": "./dist/lib-web-ui.css"
+  }
+}
+```
+
+### Export Breakdown
+
+- **`.`** (main entry) - Exports all React components
+  - `import` - ESM format for modern bundlers
+  - `require` - CommonJS format for Node.js
+  - `types` - TypeScript definitions
+
+- **`./dist/lib-web-ui.css`** - Complete CSS bundle
+  - Design token variables
+  - Tailwind utilities
+  - Component styles
+
+## Published Files
+
+The package includes only necessary files:
+
+```json
+{
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
+```
+
+**Published artifacts:**
+- `dist/` - All build artifacts (JS, CSS, types)
+- `README.md` - Package documentation
+- `LICENSE` - MIT license
+
+**Not published:**
+- Source files (`src/`)
+- Storybook files (`.storybook/`)
+- Test files (`*.test.tsx`)
+- Development configs
+
+## Build Artifacts
+
+### JavaScript/TypeScript
+
+```
+dist/
+├── index.js                 # ESM entry point
+├── index.cjs                # CommonJS entry point
+├── index.d.ts               # TypeScript definitions
+└── components/              # Individual component bundles
+    ├── Button.js
+    ├── Button.d.ts
+    ├── TextInput.js
+    ├── TextInput.d.ts
+    ├── Dialog.js
+    └── Dialog.d.ts
+```
+
+### CSS
+
+```
+dist/
+└── lib-web-ui.css           # Complete CSS bundle
+```
+
+## Package Size
+
+The package is optimized for minimal size:
+
+- **Tree-shakeable** - Consumers only bundle imported components
+- **No fonts** - Fonts are separate, loaded by consumer choice
+- **Optimized CSS** - Only necessary styles, no unused utilities
+- **Type definitions** - Minimal `.d.ts` files
+
+## Next Steps
+
+- Review [Architecture](./architecture) for package structure
+- Check [Get Started](./get-started) for development setup
+- See [Troubleshooting](./troubleshooting) for common issues

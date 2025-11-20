@@ -1,0 +1,136 @@
+---
+sidebar_position: 2
+description: Package structure, build pipeline, and design philosophy
+---
+
+# Architecture
+
+This page explains the architecture and design decisions of the `@designgreat/lib-web-ui` component library.
+
+## Package Overview
+
+The component library provides React components built with design tokens, Tailwind utilities, and Storybook documentation.
+
+## Build Artifacts
+
+```
+dist/
+├── lib-web-ui.css           # Complete CSS bundle (tokens + utilities + components)
+├── index.js                 # ESM entry point
+├── index.cjs                # CommonJS entry point
+├── index.d.ts               # TypeScript definitions
+└── components/              # Individual component bundles
+    ├── Button.js
+    ├── TextInput.js
+    └── Dialog.js
+```
+
+## CSS Bundling Strategy
+
+The distributed CSS (`dist/lib-web-ui.css`) is intentionally **clean** and does not include:
+
+- ❌ `@font-face` declarations
+- ❌ Default `font-family` rules on `body` or `html`
+
+This allows consumers to:
+
+- Load fonts independently (from `@designgreat/lib-web-ui-design-token/font` or via CDN)
+- Integrate seamlessly with existing projects without font conflicts
+- Control font loading strategy (preload, async, etc.)
+
+The CSS **does** include:
+
+- ✅ Design token CSS variables (color, spacing, typography values)
+- ✅ Tailwind utilities (generated from token values)
+- ✅ Component-specific styles
+
+### Theme CSS Order
+
+The distributed CSS includes both light and dark themes in a specific order to ensure proper CSS cascade:
+
+1. **`:root { ... }`** - Light theme variables (applied by default)
+2. **`.dg-theme-dark { ... }`** - Dark theme variables (override when class is present)
+
+This ordering ensures that when the `.dg-theme-dark` class is applied to the `<html>` element, dark theme variables correctly override the light theme defaults.
+
+## Dependency Flow
+
+```
+┌────────────────────────────────────┐
+│  @designgreat/lib-web-ui-design-   │
+│  token (Design Tokens)             │
+│  • CSS variables (colors, spacing) │
+│  • Typography values               │
+│  • Font files + font-face.css      │
+└──────────────┬─────────────────────┘
+               │ consumed by
+               ▼
+┌────────────────────────────────────┐
+│  @designgreat/lib-web-ui           │
+│  (Component Library)               │
+│  • React components                │
+│  • Tailwind config (token-aware)   │
+│  • Component styles                │
+└────────────────────────────────────┘
+```
+
+## Project Structure
+
+```
+packages/lib-web-ui/
+├── .storybook/              # Storybook configuration
+│   ├── main.ts              # Vite + addon config
+│   ├── preview.tsx          # Global decorators (theme switching)
+│   └── theme.ts             # Storybook UI theme
+├── public/                  # Static assets for Storybook
+│   └── assets/fonts/        # Copied from lib-web-ui-design-token (gitignored)
+├── src/
+│   ├── components/          # React components
+│   │   ├── Button/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Button.test.tsx
+│   │   │   └── Button.stories.tsx
+│   │   ├── TextInput/
+│   │   └── Dialog/
+│   ├── styles/
+│   │   ├── tailwind.css     # Main Tailwind entrypoint
+│   │   ├── designgreat-theme.css  # Generated theme CSS (committed)
+│   │   └── components/      # Component-specific styles
+│   │       ├── button.css
+│   │       ├── textinput.css
+│   │       └── dialog.css
+│   └── index.ts             # Package entry point
+├── scripts/
+│   └── generate-theme.ts    # Theme CSS generation script
+├── tailwind.config.ts       # Tailwind configuration (token-aware)
+├── vite.config.ts           # Vite build configuration
+├── vitest.config.ts         # Vitest test configuration
+└── package.json
+```
+
+## Build Pipeline
+
+```
+┌───────────────────────────┐
+│  pnpm build pipeline      │
+│  • clean                  │
+│  • generate:theme         │ ← Regenerate design tokens
+│  • tsc -p tsconfig.build  │ ← Type check and emit .d.ts
+│  • vite build (ESM/CJS)   │ ← Bundle components and CSS
+│  • storybook build        │ ← Build static Storybook site
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│  Published package        │ ← Clean CSS without font dependencies
+└───────────────────────────┘
+```
+
+## Next Steps
+
+- Learn about [Design Token Integration](./design-token-integration) for token generation
+- Understand [Font Handling](./font-handling) for font loading strategy
+- Review [Publishing](./publishing) for package distribution
+- Follow the [Storybook Workflow](./storybook-workflow) for component development
+- Check [Troubleshooting](./troubleshooting) for common issues
+
