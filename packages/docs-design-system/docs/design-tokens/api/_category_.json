@@ -1,5 +1,9 @@
 {
   "label": "API Reference",
   "position": 7,
-  "collapsed": false
+  "collapsed": false,
+  "link": {
+    "type": "doc",
+    "id": "design-tokens/api/runtime-apis"
+  }
 }
