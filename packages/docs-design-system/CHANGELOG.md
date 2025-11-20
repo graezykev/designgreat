@@ -1,5 +1,19 @@
 # @designgreat/docs-design-system
 
+## 0.4.4
+
+### Patch Changes
+
+- daed5c0: Refined README.md to improve clarity and remove redundant information
+  - Removed unnecessary Quick Start section
+  - Removed Blog Setup link from Additional Resources
+  - Fixed contributing documentation link to point to correct path
+  - Removed duplicate Contributing section
+
+  **Related PR:** [#33](https://github.com/graezykev/designgreat/pull/33)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.3
 
 ### Patch Changes
