@@ -1,0 +1,103 @@
+---
+sidebar_position: 3
+---
+
+# CSS Integration
+
+There are two ways to consume design tokens as CSS, depending on whether you need theme switching support.
+
+## Option 1: Using `@designgreat/design-token-support` (Recommended)
+
+**For theme switching support**, use the `design-token-support` package to generate CSS with proper selectors:
+
+```typescript
+// scripts/generate-theme-css.ts
+import { writeFileSync } from 'node:fs'
+import {
+  createThemeStyles,
+  getThemeClassName,
+  listThemeNames
+} from '@designgreat/design-token-support'
+
+// Generate theme CSS with proper selectors
+const lightCss = createThemeStyles('light', { selector: ':root', indent: 2 })
+const darkCss = createThemeStyles('dark', {
+  selector: `.${getThemeClassName('dark')}`,
+  indent: 2
+})
+
+// Write to file
+writeFileSync('src/styles/theme.css', `${lightCss}\n\n${darkCss}\n`)
+```
+
+Then import in your application:
+
+```css
+/* Import generated theme CSS with proper selectors */
+@import './styles/theme.css';
+
+body {
+  background: var(--dg-color-background-default);
+  color: var(--dg-color-text-default);
+}
+```
+
+```tsx
+// Switch themes by applying class to a wrapper
+function App() {
+  const [isDark, setIsDark] = useState(false)
+  const themeClass = isDark ? 'dg-theme-dark' : ''
+
+  return <div className={themeClass}>{/* Your app */}</div>
+}
+```
+
+### Why This Approach?
+
+- ✅ Proper theme switching with class-based selectors
+- ✅ Light theme uses `:root`, dark theme uses `.dg-theme-dark`
+- ✅ Supports dynamic theme switching at runtime
+- ✅ Variables are scoped correctly
+
+## Option 2: Direct CSS Import (Single Theme Only)
+
+**If you only need ONE theme** (no switching), you can import the raw CSS directly:
+
+```css
+/* Import font-face definitions (once, shared across all themes) */
+@import '@designgreat/lib-web-ui-design-token/font';
+
+/* Import ONE theme's variables */
+@import '@designgreat/lib-web-ui-design-token/css/light';
+/* OR */
+@import '@designgreat/lib-web-ui-design-token/css/dark';
+
+body {
+  background: var(--token-color-background-default);
+  color: var(--token-color-text-default);
+}
+```
+
+:::warning Single Theme Only
+Both `light` and `dark` CSS files use `:root` selector. **Do not import both** or they will conflict. This approach does not support theme switching.
+:::
+
+## Using CSS Variables
+
+Once you've imported the CSS, you can use the variables in your stylesheets:
+
+```css
+.my-component {
+  background-color: var(--dg-color-background-card);
+  color: var(--dg-color-text-body);
+  padding: var(--dg-spacing-11);
+  border-radius: var(--dg-radius-md);
+}
+```
+
+## Next Steps
+
+- Learn about [Theme Switching](./theme-switching.mdx)
+- See [Tailwind CSS Integration](./tailwind-integration.mdx)
+- Understand [Font Integration](./font-integration.mdx) handling
+

@@ -1,0 +1,9 @@
+{
+  "label": "Guides",
+  "position": 1,
+  "collapsed": false,
+  "link": {
+    "type": "doc",
+    "id": "guides/overview"
+  }
+}

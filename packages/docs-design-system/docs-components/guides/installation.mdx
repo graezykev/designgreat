@@ -1,0 +1,77 @@
+---
+sidebar_position: 1
+---
+
+# Installation
+
+## Package Installation
+
+Install the component library using pnpm (or npm/yarn):
+
+```bash
+pnpm add @designgreat/lib-web-ui
+```
+
+**Peer dependencies:**
+
+- `react` `^18`
+- `react-dom` `^18`
+
+Make sure these are installed in your project.
+
+## Basic Setup
+
+Import the CSS and components in your application:
+
+```tsx
+// In your app entrypoint (e.g., main.tsx, _app.tsx, app/layout.tsx)
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import { Button, TextInput, Dialog } from '@designgreat/lib-web-ui'
+
+function Example() {
+  return (
+    <>
+      <Button variant="primary">Create account</Button>
+      <TextInput label="Email" type="email" placeholder="you@example.com" />
+    </>
+  )
+}
+```
+
+:::important
+The distributed CSS contains component styles, token variables, and Tailwind utilities. If your build tool tree-shakes CSS per entry (e.g. Next.js), ensure the import executes on every page where components are rendered.
+:::
+
+## Integration with Existing Tailwind Projects
+
+If your project already uses Tailwind, add our CSS to your existing Tailwind entrypoint:
+
+```css
+/* global.css or your main Tailwind file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Include lib-web-ui tokens + utilities */
+@import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
+```
+
+Tailwind processes the imported file with your config, so theme variables, utilities, and component styles coexist with your own styles. Keep the import **after** your `@tailwind` directives if you emit Tailwind resets locally.
+
+## CSS Tree-Shaking Configuration
+
+If using a CSS purging tool (like PurgeCSS), ensure it doesn't remove the library's classes. Add to your purge safelist or exclude the library CSS from purging:
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './node_modules/@designgreat/lib-web-ui/**/*.js']
+}
+```
+
+## Next Steps
+
+- [Configure theming](./theming.mdx)
+- [Setup fonts](./font-setup.mdx)
+- [Explore Tailwind utilities](./tailwind-utilities.mdx)
+

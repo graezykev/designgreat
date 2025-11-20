@@ -1,0 +1,8 @@
+{
+  "label": "TextInput",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "text-input/index"
+  }
+}

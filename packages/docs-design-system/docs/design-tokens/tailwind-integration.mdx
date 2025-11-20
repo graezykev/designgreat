@@ -1,0 +1,127 @@
+---
+sidebar_position: 6
+---
+
+# Tailwind CSS Integration
+
+Tailwind CSS v4 favors authoring theme data in CSS. You can generate a theme layer with the design token helpers and import it alongside the Tailwind entry point.
+
+## Generate Theme CSS
+
+Create a script to generate Tailwind-compatible theme CSS:
+
+```typescript
+// scripts/generate-tailwind-theme.ts
+import { writeFileSync } from 'node:fs'
+import { createThemeStyles, getThemeClassName } from '@designgreat/design-token-support'
+
+const rootCss = createThemeStyles('light', { selector: ':root', indent: 2 })
+const darkCss = createThemeStyles('dark', {
+  selector: `.${getThemeClassName('dark')}`,
+  indent: 2
+})
+
+writeFileSync('src/styles/designgreat-theme.css', `@layer theme {\n${rootCss}\n\n${darkCss}\n}\n`)
+```
+
+## Import in Tailwind
+
+```css
+/* src/styles/tailwind.css */
+@import 'tailwindcss';
+@import './designgreat-theme.css';
+
+@custom-variant theme-dark (&:where(.dg-theme-dark &));
+```
+
+## Using Design Tokens in Utilities
+
+With the CSS layer in place, utilities can directly reference token values:
+
+```tsx
+<div className="bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-body)]">
+  Content
+</div>
+```
+
+## Custom Variant Example
+
+The `@custom-variant` allows you to create responsive dark mode utilities:
+
+```tsx
+<div className="bg-white theme-dark:bg-gray-900">
+  Adapts to theme
+</div>
+```
+
+## Alternative: Tailwind v3 Configuration
+
+For Tailwind v3, you can extend the theme in your config:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        // Reference design token variables
+        'dg-primary': 'var(--dg-color-primary-500)',
+        'dg-secondary': 'var(--dg-color-secondary-500)',
+        'dg-background': 'var(--dg-color-background-default)',
+        'dg-text': 'var(--dg-color-text-body)'
+      },
+      spacing: {
+        // Reference spacing tokens
+        'dg-1': 'var(--dg-spacing-1)',
+        'dg-2': 'var(--dg-spacing-2)',
+        'dg-4': 'var(--dg-spacing-4)',
+        'dg-8': 'var(--dg-spacing-8)',
+        'dg-11': 'var(--dg-spacing-11)'
+      }
+    }
+  }
+}
+```
+
+Then use them as regular Tailwind utilities:
+
+```tsx
+<div className="bg-dg-background text-dg-text p-dg-11">
+  Content with design tokens
+</div>
+```
+
+## JavaScript-Driven Theming
+
+The helper package continues to offer utilities for JS-driven theming or SSR workflows:
+
+```typescript
+import {
+  createCssVariableMap,
+  getThemeClassName,
+  createThemeConfig
+} from '@designgreat/design-token-support'
+
+// Get CSS variable map for inline styles
+const theme = createThemeConfig('dark')
+const cssVars = createCssVariableMap(theme.tokens)
+
+// Use in React inline styles
+<div style={{ backgroundColor: cssVars['--dg-color-background-default'] }}>
+  Content
+</div>
+```
+
+## Benefits
+
+- ✅ Design tokens work with Tailwind utilities
+- ✅ Automatic theme switching support
+- ✅ Type-safe token access in JavaScript
+- ✅ Compatible with both Tailwind v3 and v4
+
+## Next Steps
+
+- See [CSS Integration](./css-integration.mdx) for general CSS usage
+- Learn about [Theme Switching](./theme-switching.mdx)
+- Check [Runtime APIs](./api/runtime-apis.mdx) for programmatic access
+

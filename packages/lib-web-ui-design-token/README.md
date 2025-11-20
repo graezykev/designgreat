@@ -5,7 +5,7 @@ the Style Dictionary build pipeline (light/dark themes, CSS/JS outputs), and the
 that downstream packages consume.
 
 > **For usage and consumption guides**, see
-> [`docs/design-system/design-tokens.md`](../../docs/design-system/design-tokens.md).
+> [Design Tokens usage guide](https://graezykev.github.io/designgreat/docs/design-tokens/overview).
 
 ## Architecture
 
@@ -320,5 +320,5 @@ import '@designgreat/lib-web-ui-design-token/font'
 
 Bundlers (Vite, Webpack, etc.) will automatically resolve the relative font paths from the CSS.
 
-See [`docs/design-system/design-tokens.md`](../../docs/design-system/design-tokens.md) for usage
-examples and integration guides.
+See [Design Tokens usage guide](https://graezykev.github.io/designgreat/docs/design-tokens/overview)
+for usage examples and integration guides.

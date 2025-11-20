@@ -1084,12 +1084,10 @@ export const light = {
     "rtl": "rtl"
   },
   "font-face": {
-    "zh": "custom_chinese_font",
     "roboto": "Roboto"
   },
   "font-family": {
-    "primary": "Roboto",
-    "zh": "custom_chinese_font"
+    "primary": "Roboto"
   },
   "font-style": {
     "normal": "normal",
@@ -2309,12 +2307,10 @@ export const dark = {
     "rtl": "rtl"
   },
   "font-face": {
-    "zh": "custom_chinese_font",
     "roboto": "Roboto"
   },
   "font-family": {
-    "primary": "Roboto",
-    "zh": "custom_chinese_font"
+    "primary": "Roboto"
   },
   "font-style": {
     "normal": "normal",

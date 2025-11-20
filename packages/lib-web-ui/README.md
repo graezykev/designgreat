@@ -4,7 +4,7 @@ React component library built with design tokens from `@designgreat/lib-web-ui-d
 Components consume shared design token variables and component styles emitted during the build step.
 
 **Looking to use this library?** See the
-[Web Components usage guide](/docs/design-system/web-components.md).
+[Component Library Usage Guide](https://graezykev.github.io/designgreat/components/guides/overview).
 
 ## Package Overview
 
@@ -416,7 +416,8 @@ import '@designgreat/lib-web-ui-design-token/font'
 />
 ```
 
-See the [Web Components usage guide](/docs/design-system/web-components.md#font-setup) for details.
+See the [Font Setup guide](https://graezykev.github.io/designgreat/components/guides/font-setup) for
+details.
 
 ## Publishing
 
@@ -526,8 +527,10 @@ pnpm --filter @designgreat/lib-web-ui generate:theme
 
 ## Related Documentation
 
-- [Web Components Usage Guide](/docs/design-system/web-components.md) – How to consume this library
-- [Design Tokens Guide](/docs/design-system/design-tokens.md) – Understanding design tokens
+- [Component Library Usage Guide](https://graezykev.github.io/designgreat/components/guides/overview)
+  – How to consume this library
+- [Design Tokens Guide](https://graezykev.github.io/designgreat/docs/design-tokens/overview) –
+  Understanding design tokens
 - [Storybook Development](./STORYBOOK.md) – Detailed Storybook workflow
 - [Design Token Package](/packages/lib-web-ui-design-token/README.md) – Token architecture
 

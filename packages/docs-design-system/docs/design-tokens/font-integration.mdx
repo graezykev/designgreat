@@ -1,0 +1,257 @@
+---
+sidebar_position: 5
+---
+
+# Font Integration
+
+The `@designgreat/lib-web-ui-design-token/font` export includes comprehensive **Roboto** font files with `@font-face` declarations.
+
+Example from `font-face.css`:
+
+```css
+@font-face {
+  font-family: 'Roboto';
+  src: url('./Roboto-latin-regular-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, /* ... */;
+}
+```
+
+## What's Included
+
+The package currently provides **Roboto** as the only font family, with comprehensive coverage:
+
+### Font Weights & Styles
+
+- **100 (Thin)** - Normal & Italic
+- **300 (Light)** - Normal & Italic  
+- **400 (Regular)** - Normal & Italic
+- **500 (Medium)** - Normal & Italic
+- **700 (Bold)** - Normal & Italic
+- **900 (Black)** - Normal & Italic
+
+### Unicode Ranges
+
+The `unicode-range` property tells the browser which characters this font file covers, enabling smart loading.
+
+- **Latin** - Basic Latin characters (most common)
+- **Latin Extended** - Extended Latin characters
+- **Greek** - Greek alphabet
+- **Greek Extended** - Ancient Greek characters
+- **Cyrillic** - Cyrillic alphabet
+- **Cyrillic Extended** - Extended Cyrillic characters
+- **Vietnamese** - Vietnamese characters
+- **Math** - Mathematical symbols
+- **Symbols** - Special symbols
+
+#### How Subsetting Optimizes Performance
+
+The font files use **unicode-range subsetting** to optimize loading:
+
+- **On-demand loading** - Browsers only download font subsets for characters actually used on the page
+- **Priority loading** - Latin subset loads first (most common in English content)
+- **Automatic fallback** - Other subsets load on-demand when needed
+- **Reduced initial load** - Significantly reduces initial page load time
+
+### File Format
+
+Each font variant is provided as `.woff2` (Web Open Font Format 2):
+
+- **Modern and efficient** - Smallest file size with best compression
+- **Wide browser support** - Supported by all modern browsers (Chrome 36+, Firefox 39+, Safari 12+, Edge 14+)
+- **Single format** - Simplified distribution and maintenance
+
+**Total: 108 .woff2 font files** covering all weight/style/subset combinations
+
+:::info Alternative Formats
+If you need other formats (`.woff`, `.ttf`, `.otf`) for legacy browser support, you can:
+- Use [Google Fonts](https://fonts.google.com/specimen/Roboto) which provides all formats
+- Convert the `.woff2` files using font conversion tools
+- Host alternative formats separately for older browsers
+:::
+
+Only `.woff2` format is included, optimized for modern browsers.
+
+## For Most Applications
+
+**For React, Vue, Angular with Vite/Webpack**, simply import the font package:
+
+```typescript
+// In your main.ts or App.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+```
+
+Bundlers automatically:
+1. Parse the CSS and find font file references
+2. Copy the font files to your output directory
+3. Rewrite the paths in the CSS to point to the copied files
+4. Include everything in your production bundle
+
+## Using Roboto Font
+
+Once you've loaded the font files, you can apply Roboto to your application.
+
+### Automatic Application (Design System Components)
+
+The design system automatically applies Roboto through CSS variables:
+
+```css
+/* This is already set in the design token CSS */
+:root {
+  --dg-typography-font-family-base: 'Roboto', sans-serif;
+}
+
+body {
+  font-family: var(--dg-typography-font-family-base);
+}
+```
+
+All design system components use these CSS variables, so Roboto is applied automatically when you use `@designgreat/lib-web-ui` components.
+
+### Manual Application
+
+To apply Roboto to your custom elements:
+
+```css
+/* Use the design token variable */
+.my-component {
+  font-family: var(--dg-typography-font-family-base);
+}
+
+/* Or reference Roboto directly */
+.my-component {
+  font-family: 'Roboto', sans-serif;
+}
+```
+
+### In Your Application Root
+
+For a typical application, apply Roboto to the body element:
+
+```css
+/* global.css or app.css */
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+    'Helvetica Neue', Arial, sans-serif;
+}
+```
+
+Or using the design token variable:
+
+```css
+body {
+  font-family: var(--dg-typography-font-family-base);
+}
+```
+
+### With Specific Weights
+
+Apply different font weights using standard CSS:
+
+```css
+.heading {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
+.body-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+.light-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300; /* Light */
+}
+```
+
+Available weights:
+- `100` - Thin
+- `300` - Light
+- `400` - Regular (default)
+- `500` - Medium
+- `700` - Bold
+- `900` - Black
+
+## For Static Site Generators
+
+**For Docusaurus, Astro, and similar static site generators**, you may need to copy the font directory manually.
+
+### Copy Script Example
+
+```javascript
+// scripts/copy-fonts.js
+import { cpSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const fontSource = resolve(
+  __dirname,
+  '../node_modules/@designgreat/lib-web-ui-design-token/dist/font'
+)
+const fontTarget = resolve(__dirname, '../static/font')
+
+cpSync(fontSource, fontTarget, { recursive: true })
+console.log('✓ Fonts copied to static/font/')
+```
+
+### Docusaurus Configuration
+
+Then reference the CSS in your site configuration:
+
+```typescript
+// docusaurus.config.ts
+const baseUrl = '/your-site/'
+
+export default {
+  // ...
+  stylesheets: [`${baseUrl}font/font-face.css`]
+}
+```
+
+## Using a Different Font
+
+If you want to use a different font family instead of Roboto, override the CSS variable:
+
+```css
+:root {
+  --dg-typography-font-family-base: 'Your Font Family', sans-serif;
+}
+```
+
+Then provide your own font loading mechanism (Google Fonts, self-hosted, etc.).
+
+## Troubleshooting
+
+### Fonts Not Loading
+
+If fonts aren't loading properly:
+
+1. **Check the Network tab** in browser DevTools to see if font files are 404ing
+2. **Verify the font import** comes before any components that use fonts
+3. **Check bundler configuration** - Ensure your bundler supports font file imports
+4. **For SSG** - Verify the font files are in the correct static directory
+
+### Font Paths Are Wrong
+
+If font paths are incorrect in production:
+
+1. Check your bundler's **public path configuration**
+2. For SSG, verify the **baseUrl** is correct in your config
+3. Make sure font files are being **copied to the correct output directory**
+
+### Only Some Weights Loading
+
+If only certain font weights load:
+
+1. Check if you're using the correct weight values (100, 300, 400, 500, 700, 900)
+2. Verify all font files were copied (should be 108 files)
+3. Check browser console for specific file load errors
+
+## Related
+
+- [CSS Integration](./css-integration.mdx) - How to import CSS
+- [Component Library Font Setup](https://graezykev.github.io/designgreat/components/guides/font-setup) - Font setup for the component library
+

@@ -1,0 +1,133 @@
+---
+sidebar_position: 4
+---
+
+# Tailwind Utilities
+
+The library includes Tailwind utilities that map directly to design tokens, allowing you to build custom UIs using the design system.
+
+## Overview
+
+All utility classes are generated from design tokens and resolve to CSS variables. This means they automatically respond to theme changes (`dg-theme-light` / `dg-theme-dark`).
+
+## Example Usage
+
+```tsx
+<div className="bg-color-background-card p-spacing-11 rounded-md">
+  <h2 className="text-color-text-heading font-typography-heading-h2-font-weight">Custom Card</h2>
+  <p className="text-color-text-body mt-spacing-4">Build with design tokens</p>
+</div>
+```
+
+## Token Naming Convention
+
+Utilities follow the design token tree structure:
+
+### Colors
+
+**Background colors:** `bg-color-{category}-{element}-{state}`
+
+```tsx
+<div className="bg-color-background-button-default">Button background</div>
+<div className="bg-color-background-card">Card background</div>
+```
+
+**Text colors:** `text-color-{category}-{element}`
+
+```tsx
+<p className="text-color-text-heading">Heading text</p>
+<p className="text-color-text-body">Body text</p>
+```
+
+### Spacing
+
+**Padding:** `p-spacing-{number}`, `px-spacing-{number}`, `py-spacing-{number}`, etc.
+
+```tsx
+<div className="p-spacing-11">Padding using token 11</div>
+<div className="px-spacing-8 py-spacing-4">Different horizontal and vertical padding</div>
+```
+
+**Margin:** `m-spacing-{number}`, `mx-spacing-{number}`, `my-spacing-{number}`, etc.
+
+```tsx
+<div className="m-spacing-11">Margin using token 11</div>
+<div className="mt-spacing-4 mb-spacing-8">Top and bottom margins</div>
+```
+
+### Typography
+
+**Font weight:** `font-typography-{element}-{property}`
+
+```tsx
+<h1 className="font-typography-heading-h1-font-weight">Heading with token weight</h1>
+<h2 className="font-typography-heading-h2-font-weight">Subheading</h2>
+```
+
+## Benefits
+
+### Theme-Aware
+
+All utilities automatically respond to theme changes:
+
+```tsx
+// Text color changes automatically when theme switches
+<p className="text-color-text-body">This text adapts to theme</p>
+```
+
+### No Verbose Syntax
+
+Instead of writing `bg-[var(--dg-color-background-card)]`, you can use the cleaner `bg-color-background-card`.
+
+### Design System Consistency
+
+Using token utilities ensures your custom components follow the same design system as the library components.
+
+## Available Tokens
+
+To see all available design tokens, refer to:
+
+- [Design Tokens Guide](/docs/design-tokens/overview)
+- Design token package: `@designgreat/lib-web-ui-design-token`
+
+## Building Custom Components
+
+You can combine utility classes with the library's components:
+
+```tsx
+import { Button } from '@designgreat/lib-web-ui'
+
+function CustomCard() {
+  return (
+    <div className="bg-color-background-card p-spacing-11 rounded-lg shadow-md">
+      <h3 className="text-color-text-heading font-typography-heading-h3-font-weight mb-spacing-4">
+        Card Title
+      </h3>
+      <p className="text-color-text-body mb-spacing-8">Card description text</p>
+      <Button variant="primary">Action</Button>
+    </div>
+  )
+}
+```
+
+## Advanced: Extending Tailwind Config
+
+If you want to use these tokens in your own Tailwind configuration, you can reference the design token package:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        // Reference design token variables
+        primary: 'var(--dg-color-primary-500)',
+        secondary: 'var(--dg-color-secondary-500)'
+      }
+    }
+  }
+}
+```
+
+For more details on the token architecture, see the [Design Tokens Guide](/docs/design-tokens/overview).
+
