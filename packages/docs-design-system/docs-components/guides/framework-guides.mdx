@@ -1,0 +1,209 @@
+---
+sidebar_position: 5
+---
+
+# Framework-Specific Guides
+
+This guide provides setup instructions for popular React frameworks.
+
+## Next.js
+
+### App Router (Next.js 13+)
+
+Import styles in your root layout:
+
+```tsx
+// app/layout.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="dg-theme-light">{children}</body>
+    </html>
+  )
+}
+```
+
+### Pages Router (Next.js 12 and earlier)
+
+Import styles in your `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import type { AppProps } from 'next/app'
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <div className="dg-theme-light">
+      <Component {...pageProps} />
+    </div>
+  )
+}
+```
+
+### Important Notes for Next.js
+
+- Import CSS in `layout.tsx` or `_app.tsx` to ensure it loads on all pages
+- If using the App Router, the CSS is automatically optimized
+- For server components, ensure client-only features (like Dialog) are wrapped in client components
+
+## Vite
+
+Import in your main entry:
+
+```tsx
+// src/main.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+
+createRoot(document.getElementById('root')!).render(<App />)
+```
+
+### Vite Configuration
+
+No special configuration needed. Vite handles CSS imports automatically.
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()]
+})
+```
+
+## Create React App
+
+Import in your index file:
+
+```tsx
+// src/index.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+
+const root = ReactDOM.createRoot(document.getElementById('root')!)
+root.render(<App />)
+```
+
+### Important Notes for CRA
+
+- CSS imports are processed by webpack automatically
+- No additional configuration needed for basic usage
+- If customizing webpack config (via CRACO or eject), ensure CSS loaders are configured
+
+## Remix
+
+Import styles in your root route:
+
+```tsx
+// app/root.tsx
+import type { LinksFunction } from '@remix-run/node'
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+
+import libWebUiStyles from '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: libWebUiStyles }]
+
+export default function App() {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body className="dg-theme-light">
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  )
+}
+```
+
+For fonts, you'll need to add them separately through the public directory or CDN.
+
+## Astro
+
+For Astro with React islands:
+
+```astro
+---
+// src/layouts/Layout.astro
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My Site</title>
+  </head>
+  <body class="dg-theme-light">
+    <slot />
+  </body>
+</html>
+```
+
+### Astro Configuration
+
+Ensure React integration is installed:
+
+```bash
+pnpm astro add react
+```
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import react from '@astrojs/react'
+
+export default defineConfig({
+  integrations: [react()]
+})
+```
+
+## TypeScript Support
+
+All frameworks work with TypeScript out of the box. The package includes full TypeScript definitions:
+
+```tsx
+import type { ButtonProps, TextInputProps } from '@designgreat/lib-web-ui'
+
+const customButton: ButtonProps = {
+  variant: 'primary',
+  onClick: () => console.log('clicked')
+}
+```
+
+## Troubleshooting
+
+If you encounter issues with any framework:
+
+1. Ensure CSS is imported before components are used
+2. Check that peer dependencies (`react`, `react-dom`) are installed
+3. Verify the import path is correct for your bundler
+4. See the [Troubleshooting Guide](./troubleshooting.mdx) for common issues
+
+## Need Help?
+
+If your framework isn't listed or you need help with setup, please check:
+
+- [Installation Guide](./installation.mdx)
+- [Troubleshooting Guide](./troubleshooting.mdx)
+- [GitHub Issues](https://github.com/graezykev/designgreat/issues)
+

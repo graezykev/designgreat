@@ -1,0 +1,203 @@
+---
+sidebar_position: 6
+---
+
+# Troubleshooting
+
+Common issues and solutions when using `@designgreat/lib-web-ui`.
+
+## Components Don't Have Styles
+
+**Problem:** Components render but have no styling.
+
+**Solution:** Ensure you've imported the CSS in your application entrypoint:
+
+```tsx
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+```
+
+If using a framework with code splitting (like Next.js), make sure the CSS is imported in a location that loads on all pages (e.g., `app/layout.tsx` or `pages/_app.tsx`).
+
+## Theme Isn't Applied
+
+**Problem:** Components always show light theme colors, even when dark theme class is applied.
+
+**Solution:** Wrap your app with a theme class:
+
+```tsx
+<div className="dg-theme-dark">{/* Your app */}</div>
+```
+
+Or use the theme helper:
+
+```tsx
+import { createThemeConfig } from '@designgreat/design-token-support'
+
+const darkTheme = createThemeConfig('dark')
+
+<div className={darkTheme.className}>{/* Your app */}</div>
+```
+
+**Additional checks:**
+- Verify the theme class is applied to an ancestor element of your components
+- Check that the CSS file is loaded before components render
+- Inspect the element in browser DevTools to confirm the class is present
+
+## Fonts Don't Load
+
+**Problem:** Text renders in fallback font, not Roboto.
+
+**Solution:** Import the font CSS:
+
+```tsx
+import '@designgreat/lib-web-ui-design-token/font'
+```
+
+Or use an alternative font loading method (see [Font Setup](./font-setup.mdx)).
+
+**Additional checks:**
+- Verify font files are accessible (check Network tab in DevTools)
+- Ensure font import comes before component CSS import
+- Check that your bundler supports font file imports
+
+## TypeScript Errors
+
+**Problem:** TypeScript can't find type definitions.
+
+**Solution:** The package includes built-in types. Ensure `@designgreat/lib-web-ui` is in your `package.json` dependencies and run:
+
+```bash
+pnpm install
+```
+
+**Additional checks:**
+- Verify your `tsconfig.json` has `"moduleResolution": "node"` or `"bundler"`
+- Check that node_modules is not excluded from TypeScript
+- Try deleting `node_modules` and reinstalling
+
+## CSS Purging/Tree-Shaking Issues
+
+**Problem:** Some styles are missing in production.
+
+**Solution:** If using a CSS purging tool (like PurgeCSS), ensure it doesn't remove the library's classes. Add to your Tailwind config:
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './node_modules/@designgreat/lib-web-ui/**/*.js']
+}
+```
+
+**Additional checks:**
+- Disable purging temporarily to verify this is the issue
+- Check your build tool's CSS optimization settings
+- Consider adding library classes to a safelist
+
+## Components Don't Respond to Props
+
+**Problem:** Passing props to components doesn't change behavior or appearance.
+
+**Solution:** Verify you're using correct prop names and values:
+
+```tsx
+// ✅ Correct
+<Button variant="primary" loading={true}>Submit</Button>
+
+// ❌ Incorrect
+<Button type="primary" isLoading={true}>Submit</Button>
+```
+
+Check the component documentation for valid prop names and types:
+- [Button](../button/)
+- [TextInput](../text-input/)
+- [Dialog](../dialog/)
+
+## Dialog Doesn't Close
+
+**Problem:** Dialog appears but won't close when clicking overlay or close button.
+
+**Solution:** Ensure you're properly managing the `open` state:
+
+```tsx
+const [isOpen, setIsOpen] = useState(false)
+
+<Dialog open={isOpen} onOpenChange={setIsOpen}>
+  {/* Dialog content */}
+</Dialog>
+```
+
+**Additional checks:**
+- Verify `onOpenChange` is passed and updates state
+- Check that event handlers aren't prevented with `stopPropagation()`
+- Ensure no JavaScript errors are occurring
+
+## SSR/Hydration Errors
+
+**Problem:** Errors about mismatched HTML or hydration failures in Next.js/other SSR frameworks.
+
+**Solution:** Some components (like Dialog) use portals and may need client-side rendering:
+
+```tsx
+'use client' // Add this at the top of the file in Next.js App Router
+
+import { Dialog } from '@designgreat/lib-web-ui'
+// ... rest of your component
+```
+
+## Module Resolution Errors
+
+**Problem:** Build fails with "Cannot find module '@designgreat/lib-web-ui'" or similar.
+
+**Solution:**
+
+1. Verify the package is installed:
+   ```bash
+   pnpm list @designgreat/lib-web-ui
+   ```
+
+2. Ensure it's in your `package.json` dependencies
+
+3. Try removing and reinstalling:
+   ```bash
+   pnpm remove @designgreat/lib-web-ui
+   pnpm add @designgreat/lib-web-ui
+   ```
+
+## Build Performance Issues
+
+**Problem:** Build is slow after adding the library.
+
+**Solution:**
+
+1. Ensure CSS is imported only once (not in multiple files)
+2. Consider using tree-shaking if your bundler supports it
+3. Check that you're not importing from deep paths unnecessarily
+
+## Storybook Issues
+
+**Problem:** Components look different in Storybook vs your app.
+
+**Solution:**
+
+1. Ensure you've imported the CSS in your Storybook preview:
+   ```tsx
+   // .storybook/preview.tsx
+   import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+   ```
+
+2. Apply the same theme class in your Storybook decorator
+3. Match any custom CSS you have in your application
+
+## Still Having Issues?
+
+If you're still experiencing problems:
+
+1. Check the [GitHub Issues](https://github.com/graezykev/designgreat/issues) for known issues
+2. Review the [Installation Guide](./installation.mdx) to ensure proper setup
+3. Check the [Framework-Specific Guides](./framework-guides.mdx) for framework-specific tips
+4. Open a new issue with:
+   - Your framework and version
+   - Steps to reproduce
+   - Expected vs actual behavior
+   - Browser console errors (if any)
+

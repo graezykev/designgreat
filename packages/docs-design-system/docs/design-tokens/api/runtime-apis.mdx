@@ -1,0 +1,127 @@
+---
+sidebar_position: 2
+---
+
+# Runtime APIs
+
+The TypeScript runtime exposes strongly typed helpers for listing themes, cloning overrides, and performing integrity checks.
+
+## Core APIs
+
+### From `@designgreat/lib-web-ui-design-token`
+
+```typescript
+import {
+  DEFAULT_THEME,
+  themes,
+  getThemeTokens,
+  createTheme,
+  listThemeNames
+} from '@designgreat/lib-web-ui-design-token'
+
+// Enumerate available themes
+const ids = listThemeNames()
+
+// Access flattened token payloads
+const lightTheme = getThemeTokens('light')
+const background = lightTheme.color.background.DEFAULT
+
+// Deep-merge overrides into an existing theme
+const highContrast = createTheme(DEFAULT_THEME, {
+  color: { background: { DEFAULT: '#F5F5F5' } }
+})
+
+console.log(ids, background, highContrast.color.background.DEFAULT)
+```
+
+## Helper APIs
+
+### From `@designgreat/design-token-support`
+
+Complementary helpers for CSS-variable generation:
+
+```typescript
+import {
+  createThemeConfig,
+  createCssVariableMap,
+  createThemeStyles
+} from '@designgreat/design-token-support'
+
+const lightConfig = createThemeConfig('light')
+const cssVars = createCssVariableMap(lightConfig.tokens)
+const stylesheet = createThemeStyles('light')
+
+console.log(lightConfig.className) // "dg-theme-light"
+console.log(cssVars['--dg-color-background-default'])
+console.log(stylesheet.slice(0, 60))
+```
+
+## Available Functions
+
+### `listThemeNames()`
+
+Returns an array of available theme names.
+
+```typescript
+const themes = listThemeNames() // ['light', 'dark']
+```
+
+### `getThemeTokens(themeName)`
+
+Get all tokens for a specific theme as a flattened object.
+
+```typescript
+const lightTokens = getThemeTokens('light')
+console.log(lightTokens.color.background.DEFAULT)
+```
+
+### `createTheme(baseTheme, overrides)`
+
+Create a new theme by deep-merging overrides into a base theme.
+
+```typescript
+const customTheme = createTheme(DEFAULT_THEME, {
+  color: {
+    primary: {
+      500: '#FF0000'
+    }
+  }
+})
+```
+
+### `createThemeConfig(themeName)`
+
+Create a theme configuration object with tokens and metadata.
+
+```typescript
+const config = createThemeConfig('dark')
+console.log(config.className) // "dg-theme-dark"
+console.log(config.tokens) // Full token object
+```
+
+### `createCssVariableMap(tokens)`
+
+Convert token object to CSS variable map.
+
+```typescript
+const cssVars = createCssVariableMap(tokens)
+// { '--dg-color-primary-500': '#007bff', ... }
+```
+
+### `createThemeStyles(themeName, options)`
+
+Generate CSS stylesheet string for a theme.
+
+```typescript
+const css = createThemeStyles('light', {
+  selector: ':root',
+  indent: 2
+})
+```
+
+## Next Steps
+
+- Learn about [CSS Integration](../css-integration.mdx)
+- Understand [Theme Switching](../theme-switching.mdx)
+- See [TypeScript Types](./typescript.mdx)
+

@@ -4,20 +4,6 @@ const { thin, light, regular, medium, bold, black } = tokens['font-weight']
 
 export default {
   'font-face': {
-    zh: {
-      value: 'custom_chinese_font',
-      type: 'fontFace',
-      attributes: {
-        fonts: {
-          zhs: {
-            'font-style': ['normal', 'italic'],
-          },
-          zht: {
-            'font-weight': { thin: thin.value, light: light.value, regular: regular.value, medium: medium.value, bold: bold.value, black: black.value }
-          }
-        }
-      }
-    },
     roboto: {
       value: 'Roboto',
       type: 'fontFace',

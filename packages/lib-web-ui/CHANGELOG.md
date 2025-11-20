@@ -161,7 +161,8 @@
 ### Patch Changes
 
 - da249d2: Refactor documentation and update font consumption to use new architecture
-  - Moved usage/consumption documentation from README.md to docs/design-system/web-components.md
+  - Moved usage/consumption documentation from README.md to docs-design-system/web-components.md
+    (now migrated to docs-design-system/docs-components)
   - Restructured README.md to focus on architecture, development workflows, and build processes
   - Updated cross-references between documentation files
   - Fixed ESLint errors in code examples by making them complete, valid TypeScript/TSX

@@ -143,7 +143,7 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'button/index',
+          docId: 'guides/overview',
           docsPluginId: 'components',
           position: 'left',
           label: 'Components'
