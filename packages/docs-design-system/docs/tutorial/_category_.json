@@ -1,9 +1,9 @@
 {
-  "label": "Design Tokens",
+  "label": "Tutorial",
   "position": 1,
   "collapsed": true,
   "link": {
     "type": "doc",
-    "id": "design-tokens/overview"
+    "id": "tutorial/overview"
   }
 }

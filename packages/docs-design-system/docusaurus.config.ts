@@ -112,6 +112,7 @@ const config: Config = {
   ],
 
   themes: [
+    '@docusaurus/theme-mermaid',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
@@ -122,6 +123,10 @@ const config: Config = {
       }
     ]
   ],
+
+  markdown: {
+    mermaid: true
+  },
 
   themeConfig: {
     image: 'img/social-card.png',
@@ -139,7 +144,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Docs'
+          label: 'Design Tokens'
         },
         {
           type: 'doc',
@@ -169,8 +174,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorials',
-              to: '/docs/category/tutorial---basics'
+              label: 'Design Tokens',
+              to: '/docs/tutorial/overview'
             }
           ]
         },

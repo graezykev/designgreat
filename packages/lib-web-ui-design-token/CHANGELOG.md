@@ -24,7 +24,7 @@
 - 5d57854: Update documentation links to point to new Docusaurus structure
   - Updated README links from local markdown files to published Docusaurus URLs
   - Changed design tokens usage guide link to point to
-    `https://graezykev.github.io/designgreat/docs/design-tokens/overview`
+    `https://graezykev.github.io/designgreat/docs/tutorial/overview`
   - Updated all references to design tokens documentation to use new structure
 
   **Related PR:** [#28](https://github.com/graezykev/designgreat/pull/28)

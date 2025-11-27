@@ -1,0 +1,302 @@
+---
+sidebar_position: 2
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+
+# Background Shortcuts
+
+Background color shortcuts provide ready-to-use tokens for backgrounds. These high-level shortcuts abstract the complexity of the underlying color system and ensure consistent styling across your application.
+
+## Background Colors
+
+Background color shortcuts provide semantic, theme-aware colors for various background use cases.
+
+### Neutral Backgrounds
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-boldest)'}}></div> | <CopyableCode>color.background.boldest</CopyableCode> | <CopyableCode>--dg-color-background-boldest</CopyableCode> | `{color.accent.neutral.dull}` | Boldest background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bolder)'}}></div> | <CopyableCode>color.background.bolder</CopyableCode> | <CopyableCode>--dg-color-background-bolder</CopyableCode> | `{color.accent.neutral.duller}` | Bolder background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bold)'}}></div> | <CopyableCode>color.background.bold</CopyableCode> | <CopyableCode>--dg-color-background-bold</CopyableCode> | `{color.accent.neutral.dullest}` | Bold background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-default)'}}></div> | <CopyableCode bold>color.background.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-default</CopyableCode> | `{color.accent.neutral.silent}` | Default background |
+
+### Neutral Background Token Table
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-boldest)'}}></div> | <CopyableCode>color.background.boldest</CopyableCode> | <CopyableCode>--dg-color-background-boldest</CopyableCode> | `{color.accent.neutral.dull}` | Darkest backgrounds, high contrast |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bolder)'}}></div> | <CopyableCode>color.background.bolder</CopyableCode> | <CopyableCode>--dg-color-background-bolder</CopyableCode> | `{color.accent.neutral.duller}` | Dark backgrounds |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bold)'}}></div> | <CopyableCode>color.background.bold</CopyableCode> | <CopyableCode>--dg-color-background-bold</CopyableCode> | `{color.accent.neutral.dullest}` | Medium-dark backgrounds |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-default)'}}></div> | <CopyableCode bold>color.background.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-background-default</CopyableCode> | `{color.accent.neutral.silent}` | Default page/card background |
+
+### Semantic Backgrounds
+
+Semantic backgrounds use the lightest shades of semantic colors for alert boxes, banners, and notifications.
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-default)'}}></div> | <CopyableCode bold>color.background.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-information-default</CopyableCode> | `{color.semantic.info.lowest}` | Information background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-default)'}}></div> | <CopyableCode bold>color.background.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-discover-default</CopyableCode> | `{color.semantic.new.lowest}` | New feature background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-default)'}}></div> | <CopyableCode bold>color.background.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-success-default</CopyableCode> | `{color.semantic.success.lowest}` | Success message background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-default)'}}></div> | <CopyableCode bold>color.background.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-warning-default</CopyableCode> | `{color.semantic.warning.lowest}` | Warning message background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-default)'}}></div> | <CopyableCode bold>color.background.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-error-default</CopyableCode> | `{color.semantic.error.lowest}` | Error message background |
+
+### Bold Semantic Backgrounds
+
+For stronger emphasis, use bold semantic backgrounds with inverse text:
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-bold)'}}></div> | <CopyableCode>color.background.information.bold</CopyableCode> | <CopyableCode>--dg-color-background-information-bold</CopyableCode> | `{color.semantic.info.DEFAULT}` | Bold blue background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-bold)'}}></div> | <CopyableCode>color.background.discover.bold</CopyableCode> | <CopyableCode>--dg-color-background-discover-bold</CopyableCode> | `{color.semantic.new.DEFAULT}` | Bold purple background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-bold)'}}></div> | <CopyableCode>color.background.success.bold</CopyableCode> | <CopyableCode>--dg-color-background-success-bold</CopyableCode> | `{color.semantic.success.DEFAULT}` | Bold green background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-bold)'}}></div> | <CopyableCode>color.background.warning.bold</CopyableCode> | <CopyableCode>--dg-color-background-warning-bold</CopyableCode> | `{color.semantic.warning.DEFAULT}` | Bold orange background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-bold)'}}></div> | <CopyableCode>color.background.error.bold</CopyableCode> | <CopyableCode>--dg-color-background-error-bold</CopyableCode> | `{color.semantic.error.DEFAULT}` | Bold red background |
+
+## Usage Examples
+
+### Page Layout
+
+```css
+/* Main page background */
+body {
+  background-color: var(--dg-color-background-default);
+}
+
+/* Card or panel */
+.card {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--dg-color-background-bold);
+}
+
+/* Header */
+.header {
+  background-color: var(--dg-color-background-bolder);
+  border-bottom: 1px solid var(--dg-color-alpha-neutral-3);
+}
+```
+
+### Alert Components
+
+```css
+/* Info alert */
+.alert-info {
+  background-color: var(--dg-color-background-information-default);
+  border-left: 4px solid var(--dg-color-semantic-info-default);
+}
+
+/* Success alert */
+.alert-success {
+  background-color: var(--dg-color-background-success-default);
+  border-left: 4px solid var(--dg-color-semantic-success-default);
+}
+
+/* Warning alert */
+.alert-warning {
+  background-color: var(--dg-color-background-warning-default);
+  border-left: 4px solid var(--dg-color-semantic-warning-default);
+}
+
+/* Error alert */
+.alert-error {
+  background-color: var(--dg-color-background-error-default);
+  border-left: 4px solid var(--dg-color-semantic-error-default);
+}
+```
+
+### Badge Components
+
+```css
+/* Subtle badges */
+.badge-info {
+  background-color: var(--dg-color-semantic-info-lowest);
+  color: var(--dg-color-semantic-info-bold);
+  border: 1px solid var(--dg-color-semantic-info-default);
+}
+
+/* Bold badges */
+.badge-success-bold {
+  background-color: var(--dg-color-background-success-bold);
+  color: var(--dg-color-text-success-bold);
+}
+
+.badge-error-bold {
+  background-color: var(--dg-color-background-error-bold);
+  color: var(--dg-color-text-error-bold);
+}
+```
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-web-ui-design-token'
+
+// Background styles
+const backgrounds = {
+  page: tokens.color.background.DEFAULT,
+  card: tokens.color.background.DEFAULT,
+  sidebar: tokens.color.background.bold,
+  header: tokens.color.background.bolder,
+  success: tokens.color.background.success.DEFAULT,
+  error: tokens.color.background.error.DEFAULT
+}
+
+// Component example
+function Alert({ type, children }) {
+  const bgColor = {
+    info: tokens.color.background.information.DEFAULT,
+    success: tokens.color.background.success.DEFAULT,
+    warning: tokens.color.background.warning.DEFAULT,
+    error: tokens.color.background.error.DEFAULT
+  }[type]
+
+  return (
+    <div style={{ 
+      backgroundColor: bgColor,
+      padding: '16px',
+      borderRadius: '4px'
+    }}>
+      {children}
+    </div>
+  )
+}
+```
+
+## Complete Token Reference
+
+### All Background Tokens
+
+| Category |  | Token | CSS Variable | Reference |
+|----------|--|-------|--------------|-----------|
+| **Neutral** | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-boldest)'}}></div> | <CopyableCode>color.background.boldest</CopyableCode> | <CopyableCode>--dg-color-background-boldest</CopyableCode> | `{color.accent.neutral.dull}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bolder)'}}></div> | <CopyableCode>color.background.bolder</CopyableCode> | <CopyableCode>--dg-color-background-bolder</CopyableCode> | `{color.accent.neutral.duller}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bold)'}}></div> | <CopyableCode>color.background.bold</CopyableCode> | <CopyableCode>--dg-color-background-bold</CopyableCode> | `{color.accent.neutral.dullest}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-default)'}}></div> | <CopyableCode bold>color.background.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-default</CopyableCode> | `{color.accent.neutral.silent}` |
+| **Semantic** | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-default)'}}></div> | <CopyableCode bold>color.background.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-information-default</CopyableCode> | `{color.semantic.info.lowest}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-default)'}}></div> | <CopyableCode bold>color.background.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-discover-default</CopyableCode> | `{color.semantic.new.lowest}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-default)'}}></div> | <CopyableCode bold>color.background.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-success-default</CopyableCode> | `{color.semantic.success.lowest}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-default)'}}></div> | <CopyableCode bold>color.background.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-warning-default</CopyableCode> | `{color.semantic.warning.lowest}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-default)'}}></div> | <CopyableCode bold>color.background.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-error-default</CopyableCode> | `{color.semantic.error.lowest}` |
+| **Semantic Bold** | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-bold)'}}></div> | <CopyableCode>color.background.information.bold</CopyableCode> | <CopyableCode>--dg-color-background-information-bold</CopyableCode> | `{color.semantic.info.DEFAULT}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-bold)'}}></div> | <CopyableCode>color.background.discover.bold</CopyableCode> | <CopyableCode>--dg-color-background-discover-bold</CopyableCode> | `{color.semantic.new.DEFAULT}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-bold)'}}></div> | <CopyableCode>color.background.success.bold</CopyableCode> | <CopyableCode>--dg-color-background-success-bold</CopyableCode> | `{color.semantic.success.DEFAULT}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-bold)'}}></div> | <CopyableCode>color.background.warning.bold</CopyableCode> | <CopyableCode>--dg-color-background-warning-bold</CopyableCode> | `{color.semantic.warning.DEFAULT}` |
+| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-bold)'}}></div> | <CopyableCode>color.background.error.bold</CopyableCode> | <CopyableCode>--dg-color-background-error-bold</CopyableCode> | `{color.semantic.error.DEFAULT}` |
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `color.background.DEFAULT` for main content areas
+- Use `color.background.bold/bolder/boldest` for sidebars and navigation
+- Use semantic backgrounds for alerts and notifications
+- Layer backgrounds for depth and hierarchy
+
+### ❌ Don't
+
+- Use multiple background colors in the same content area without purpose
+- Use semantic backgrounds for non-semantic content
+- Create custom background colors outside the token system
+- Use high-contrast backgrounds without considering text legibility
+- Forget to test backgrounds in both light and dark themes
+
+## Accessibility
+
+### Background-Text Contrast
+
+Always ensure sufficient contrast between backgrounds and text:
+
+| Background | Recommended Text Color | Contrast |
+|------------|----------------------|----------|
+| `{color.accent.neutral.DEFAULT}` | `{color.text.DEFAULT}` | ≥ 4.5:1 ✅ |
+| `{color.accent.neutral.bold}` | `{color.text.DEFAULT}` or `{color.text.inverse}` | ≥ 4.5:1 ✅ |
+| `{color.background.success.DEFAULT}` | `{color.text.success}` | ≥ 4.5:1 ✅ |
+| `{color.background.success.bold}` | `{color.text.success.bold}` (inverse) | ≥ 4.5:1 ✅ |
+
+### Testing
+
+Always test background-text combinations:
+- ✅ In light and dark themes
+- ✅ With color blindness simulators
+- ✅ Using automated contrast checkers
+- ✅ With real content and various text sizes
+
+## Background Layering
+
+Create depth by layering different background levels:
+
+```
+┌─────────────────────────────────────┐
+│ background.DEFAULT (Page)           │
+│  ┌─────────────────────────────┐   │
+│  │ background.bold (Sidebar)   │   │
+│  │                             │   │
+│  └─────────────────────────────┘   │
+│  ┌─────────────────────────────┐   │
+│  │ background.DEFAULT (Card)   │   │
+│  │  ┌─────────────────────┐    │   │
+│  │  │ alpha-neutral-1     │    │   │
+│  │  │ (Hover state)       │    │   │
+│  │  └─────────────────────┘    │   │
+│  └─────────────────────────────┘   │
+└─────────────────────────────────────┘
+```
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-web-ui-design-token/src/tokens/color/shortcut/
+  └── background.js    # Background color shortcuts
+```
+
+### Token Structure
+
+```javascript
+{
+  color: {
+    background: {
+      boldest: { value: '{color.accent.neutral.dull}', type: 'color' },
+      bolder: { value: '{color.accent.neutral.duller}', type: 'color' },
+      bold: { value: '{color.accent.neutral.dullest}', type: 'color' },
+      DEFAULT: { value: '{color.accent.neutral.silent}', type: 'color' },
+      information: {
+        DEFAULT: { value: '{color.semantic.info.lowest}', type: 'color' },
+        bold: { value: '{color.semantic.info.DEFAULT}', type: 'color' }
+      },
+      discover: {
+        DEFAULT: { value: '{color.semantic.new.lowest}', type: 'color' },
+        bold: { value: '{color.semantic.new.DEFAULT}', type: 'color' }
+      },
+      success: {
+        DEFAULT: { value: '{color.semantic.success.lowest}', type: 'color' },
+        bold: { value: '{color.semantic.success.DEFAULT}', type: 'color' }
+      },
+      warning: {
+        DEFAULT: { value: '{color.semantic.warning.lowest}', type: 'color' },
+        bold: { value: '{color.semantic.warning.DEFAULT}', type: 'color' }
+      },
+      error: {
+        DEFAULT: { value: '{color.semantic.error.lowest}', type: 'color' },
+        bold: { value: '{color.semantic.error.DEFAULT}', type: 'color' }
+      }
+    }
+  }
+}
+```
+
+## Related Topics
+
+- [Text Shortcuts](./text) - Pairing text with backgrounds
+- [Alpha Colors](../alpha-colors) - Using alpha for borders and shadows
+- [Semantic Colors](../semantic-colors) - Semantic background sources
+- [Accent Colors](../accent-colors) - Neutral background sources
+
