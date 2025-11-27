@@ -1,0 +1,381 @@
+---
+sidebar_position: 3
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+
+# Border Shortcuts
+
+Border shortcuts provide recommended patterns for creating consistent,theme-aware borders across your application.
+
+## Overview
+
+Border shortcuts are not currently defined as explicit tokens in the system. Instead, use the following recommended patterns with alpha colors and semantic colors for theme-aware borders.
+
+### Key Characteristics
+
+- **Alpha-based**: Use alpha colors for subtle, theme-aware borders
+- **Semantic support**: Use semantic colors for borders with meaning
+- **Consistent patterns**: Follow established patterns for predictable behavior
+
+## Recommended Border Color Patterns
+
+### Neutral Borders
+
+Use alpha colors for default borders that work in both light and dark themes:
+
+```css
+/* Default border */
+border: 1px solid var(--dg-color-alpha-neutral-3);
+
+/* Subtle border */
+border: 1px solid var(--dg-color-alpha-neutral-2);
+
+/* Prominent border */
+border: 1px solid var(--dg-color-alpha-neutral-4);
+
+/* Very subtle border */
+border: 1px solid var(--dg-color-alpha-neutral-1);
+
+/* Strong border */
+border: 1px solid var(--dg-color-alpha-neutral-5);
+```
+
+### Semantic Borders
+
+Use semantic colors for borders that convey meaning:
+
+```css
+/* Error border */
+border: 1px solid var(--dg-color-semantic-error-default);
+
+/* Success border */
+border: 1px solid var(--dg-color-semantic-success-default);
+
+/* Warning border */
+border: 1px solid var(--dg-color-semantic-warning-default);
+
+/* Info border */
+border: 1px solid var(--dg-color-semantic-info-default);
+```
+
+:::tip
+Use alpha colors for borders to create subtle, theme-aware dividers that work in both light and dark modes.
+:::
+
+## Usage Examples
+
+### Form Elements
+
+```css
+/* Input */
+.input {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  color: var(--dg-color-text-default);
+}
+
+.input:hover {
+  border-color: var(--dg-color-alpha-neutral-4);
+}
+
+.input:focus {
+  border-color: var(--dg-color-primary-default);
+  box-shadow: 0 0 0 3px var(--dg-color-primary-focus-shadow);
+}
+
+/* Input states */
+.input-success {
+  border-color: var(--dg-color-semantic-success-default);
+}
+
+.input-success:focus {
+  box-shadow: 0 0 0 3px var(--dg-color-semantic-success-lowest);
+}
+
+.input-error {
+  border-color: var(--dg-color-semantic-error-default);
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 3px var(--dg-color-semantic-error-lowest);
+}
+```
+
+### Cards and Containers
+
+```css
+/* Card with subtle border */
+.card {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
+}
+
+/* Card with prominent border */
+.card-outlined {
+  border: 2px solid var(--dg-color-alpha-neutral-4);
+}
+
+/* Card with semantic border */
+.card-info {
+  border-left: 4px solid var(--dg-color-semantic-info-default);
+}
+
+.card-success {
+  border-left: 4px solid var(--dg-color-semantic-success-default);
+}
+
+.card-warning {
+  border-left: 4px solid var(--dg-color-semantic-warning-default);
+}
+
+.card-error {
+  border-left: 4px solid var(--dg-color-semantic-error-default);
+}
+```
+
+### Buttons
+
+```css
+/* Outline button */
+.button-outline {
+  background-color: transparent;
+  border: 1px solid var(--dg-color-primary-default);
+  color: var(--dg-color-primary-default);
+}
+
+.button-outline:hover {
+  background-color: var(--dg-color-primary-subtler);
+  border-color: var(--dg-color-primary-bold);
+}
+
+/* Secondary outline button */
+.button-outline-secondary {
+  border: 1px solid var(--dg-color-secondary-default);
+  color: var(--dg-color-secondary-default);
+}
+```
+
+### Tables
+
+```css
+/* Table */
+.table {
+  background-color: var(--dg-color-background-default);
+}
+
+/* Table header */
+.table thead {
+  background-color: var(--dg-color-background-bold);
+  border-bottom: 2px solid var(--dg-color-alpha-neutral-4);
+}
+
+/* Table row */
+.table tbody tr {
+  border-bottom: 1px solid var(--dg-color-alpha-neutral-2);
+}
+
+.table tbody tr:hover {
+  background-color: var(--dg-color-alpha-neutral-1);
+}
+```
+
+### Dividers
+
+```css
+/* Horizontal divider */
+.divider-horizontal {
+  border-top: 1px solid var(--dg-color-alpha-neutral-3);
+  margin: 16px 0;
+}
+
+/* Vertical divider */
+.divider-vertical {
+  border-left: 1px solid var(--dg-color-alpha-neutral-3);
+  height: 100%;
+}
+
+/* Strong divider */
+.divider-strong {
+  border-top: 2px solid var(--dg-color-alpha-neutral-4);
+}
+```
+
+### Modals and Overlays
+
+```css
+/* Modal content */
+.modal-content {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  box-shadow: 
+    0 4px 16px var(--dg-color-alpha-neutral-4),
+    0 8px 32px var(--dg-color-alpha-neutral-5);
+}
+
+/* Modal header */
+.modal-header {
+  border-bottom: 1px solid var(--dg-color-alpha-neutral-3);
+}
+
+/* Modal footer */
+.modal-footer {
+  background-color: var(--dg-color-background-bold);
+  border-top: 1px solid var(--dg-color-alpha-neutral-3);
+}
+```
+
+### Dropdown Menus
+
+```css
+/* Dropdown container */
+.dropdown-menu {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
+}
+
+/* Dropdown divider */
+.dropdown-divider {
+  border-top: 1px solid var(--dg-color-alpha-neutral-2);
+}
+```
+
+## Border Width Patterns
+
+### Standard Widths
+
+```css
+/* Subtle border */
+border-width: 1px;
+
+/* Standard border */
+border-width: 1px;
+
+/* Medium border */
+border-width: 2px;
+
+/* Thick border */
+border-width: 3px;
+
+/* Extra thick border */
+border-width: 4px;
+```
+
+### Accent Borders
+
+Use thicker borders on one side for visual accent:
+
+```css
+/* Left accent */
+.card-accent-left {
+  border-left: 4px solid var(--dg-color-primary-default);
+}
+
+/* Top accent */
+.card-accent-top {
+  border-top: 4px solid var(--dg-color-primary-default);
+}
+
+/* Bottom accent */
+.card-accent-bottom {
+  border-bottom: 4px solid var(--dg-color-primary-default);
+}
+```
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `alpha-neutral-3` for most default borders
+- Use `alpha-neutral-2` for subtle dividers
+- Use `alpha-neutral-4` for prominent borders
+- Use semantic colors for borders with meaning
+- Test border visibility in both light and dark themes
+
+### ❌ Don't
+
+- Create custom border colors outside the token system
+- Use hardcoded opacity values
+- Mix border color patterns inconsistently
+- Use semantic colors for non-semantic borders
+- Forget to consider hover and focus states
+
+## Accessibility
+
+### Focus Indicators
+
+Always provide visible focus indicators using borders or outlines:
+
+```css
+/* Accessible focus indicator */
+.interactive-element:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+}
+
+/* Alternative: Border-based focus */
+.button:focus {
+  border: 2px solid var(--dg-color-primary-default);
+}
+```
+
+### Contrast Requirements
+
+Ensure borders meet WCAG contrast standards:
+- **UI components and borders**: Minimum 3:1 contrast ratio with adjacent colors
+- Test border visibility in both light and dark themes
+- Consider using thicker borders (2px+) for better visibility
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-web-ui-design-token/src/tokens/color/shortcut/
+  └── border.js    # Border color shortcuts (coming soon)
+```
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-web-ui-design-token'
+
+// Border styles
+const borders = {
+  default: `1px solid ${tokens.color.alpha.neutral[3]}`,
+  subtle: `1px solid ${tokens.color.alpha.neutral[2]}`,
+  prominent: `1px solid ${tokens.color.alpha.neutral[4]}`,
+  error: `1px solid ${tokens.color.semantic.error.DEFAULT}`,
+  success: `1px solid ${tokens.color.semantic.success.DEFAULT}`,
+}
+
+// Component example
+function Card({ variant = 'default', children }) {
+  const borderStyle = {
+    default: borders.default,
+    error: borders.error,
+    success: borders.success,
+  }[variant]
+
+  return (
+    <div style={{ 
+      border: borderStyle,
+      padding: '16px',
+      borderRadius: '4px'
+    }}>
+      {children}
+    </div>
+  )
+}
+```
+
+## Related Topics
+
+- [Alpha Colors](../alpha-colors) - Foundation for neutral borders
+- [Semantic Colors](../semantic-colors) - Borders with meaning
+- [Background Shortcuts](./background) - Pairing borders with backgrounds
+- [Shadow Shortcuts](./shadow) - Combining borders with shadows
+

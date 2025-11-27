@@ -8,7 +8,11 @@ export default {
         ...tokens.color.accent.purple
       },
       'info': {
-        ...tokens2.color.primary
+        ...tokens.color.accent.blue,
+        blur: {
+          value: '{color.primary.blur}',
+          type: 'color'
+        }
       },
       'success': {
         ...tokens.color.accent.green

@@ -1,0 +1,470 @@
+---
+sidebar_position: 4
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+
+# Shadow Shortcuts
+
+Shadow shortcuts provide recommended patterns for creating consistent, theme-aware shadows and elevation across your application.
+
+## Overview
+
+Shadow shortcuts are not currently defined as explicit tokens in the system. Instead, use alpha colors to create shadows that automatically adapt to light and dark themes.
+
+### Key Characteristics
+
+- **Alpha-based**: Use alpha colors for theme-aware shadows
+- **Elevation system**: Different shadow levels indicate elevation
+- **Performance**: Optimize shadow complexity for performance
+- **Consistency**: Follow established patterns for predictable depth
+
+## Recommended Shadow Patterns
+
+### Basic Shadows
+
+Use alpha colors to create shadows at different elevations:
+
+```css
+/* Subtle shadow (elevation 1) */
+box-shadow: 0 1px 3px var(--dg-color-alpha-neutral-3);
+
+/* Medium shadow (elevation 2) */
+box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-4);
+
+/* Strong shadow (elevation 3) */
+box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-5);
+
+/* Very strong shadow (elevation 4) */
+box-shadow: 0 8px 24px var(--dg-color-alpha-neutral-5);
+```
+
+### Multi-Layer Shadows
+
+Combine multiple shadow layers for depth and realism:
+
+```css
+/* Card elevation */
+box-shadow: 
+  0 1px 3px var(--dg-color-alpha-neutral-3),
+  0 4px 12px var(--dg-color-alpha-neutral-4);
+
+/* Modal elevation */
+box-shadow: 
+  0 4px 16px var(--dg-color-alpha-neutral-4),
+  0 8px 32px var(--dg-color-alpha-neutral-5);
+
+/* Floating element */
+box-shadow:
+  0 2px 8px var(--dg-color-alpha-neutral-3),
+  0 8px 24px var(--dg-color-alpha-neutral-4),
+  0 16px 48px var(--dg-color-alpha-neutral-5);
+```
+
+## Elevation System
+
+### Elevation Levels
+
+The design system uses 5 elevation levels:
+
+| Level | Use Case | Shadow Pattern |
+|-------|----------|----------------|
+| **0** | Flat elements | No shadow |
+| **1** | Subtle cards, tiles | `0 1px 3px alpha-neutral-3` |
+| **2** | Cards, buttons (raised) | `0 2px 8px alpha-neutral-4` |
+| **3** | Dropdowns, popovers | `0 4px 16px alpha-neutral-5` |
+| **4** | Modals, dialogs | `0 8px 24px alpha-neutral-5` |
+
+### Elevation Guidelines
+
+```css
+/* Level 0: Flat (no shadow) */
+.element-flat {
+  box-shadow: none;
+}
+
+/* Level 1: Subtle */
+.element-subtle {
+  box-shadow: 0 1px 3px var(--dg-color-alpha-neutral-3);
+}
+
+/* Level 2: Raised */
+.element-raised {
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-4);
+}
+
+/* Level 3: Floating */
+.element-floating {
+  box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-5);
+}
+
+/* Level 4: Overlay */
+.element-overlay {
+  box-shadow: 0 8px 24px var(--dg-color-alpha-neutral-5);
+}
+```
+
+## Usage Examples
+
+### Cards
+
+```css
+/* Default card */
+.card {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
+}
+
+/* Card hover state */
+.card:hover {
+  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
+}
+
+/* Card with strong elevation */
+.card-elevated {
+  box-shadow: 
+    0 1px 3px var(--dg-color-alpha-neutral-3),
+    0 4px 16px var(--dg-color-alpha-neutral-4);
+}
+```
+
+### Buttons
+
+```css
+/* Raised button */
+.button-raised {
+  background-color: var(--dg-color-primary-default);
+  box-shadow: 0 2px 4px var(--dg-color-alpha-neutral-4);
+}
+
+.button-raised:hover {
+  box-shadow: 0 4px 8px var(--dg-color-alpha-neutral-4);
+}
+
+.button-raised:active {
+  box-shadow: 0 1px 2px var(--dg-color-alpha-neutral-3);
+}
+
+/* Floating action button */
+.button-fab {
+  box-shadow: 
+    0 4px 8px var(--dg-color-alpha-neutral-4),
+    0 8px 16px var(--dg-color-alpha-neutral-5);
+}
+
+.button-fab:hover {
+  box-shadow: 
+    0 6px 12px var(--dg-color-alpha-neutral-4),
+    0 12px 24px var(--dg-color-alpha-neutral-5);
+}
+```
+
+### Modals and Overlays
+
+```css
+/* Modal backdrop */
+.modal-backdrop {
+  background-color: var(--dg-color-alpha-neutral-5);
+}
+
+/* Modal content */
+.modal-content {
+  background-color: var(--dg-color-background-default);
+  box-shadow: 
+    0 4px 16px var(--dg-color-alpha-neutral-4),
+    0 8px 32px var(--dg-color-alpha-neutral-5);
+}
+
+/* Dialog with maximum elevation */
+.dialog-critical {
+  box-shadow:
+    0 8px 24px var(--dg-color-alpha-neutral-4),
+    0 16px 48px var(--dg-color-alpha-neutral-5);
+}
+```
+
+### Dropdown Menus
+
+```css
+/* Dropdown menu */
+.dropdown-menu {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
+}
+
+/* Nested dropdown (higher elevation) */
+.dropdown-menu .dropdown-submenu {
+  box-shadow: 0 6px 16px var(--dg-color-alpha-neutral-4);
+}
+```
+
+### Tooltips and Popovers
+
+```css
+/* Tooltip */
+.tooltip {
+  background-color: var(--dg-color-background-boldest);
+  color: var(--dg-color-text-inverse);
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-5);
+}
+
+/* Popover */
+.popover {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  box-shadow: 
+    0 4px 12px var(--dg-color-alpha-neutral-4),
+    0 8px 24px var(--dg-color-alpha-neutral-5);
+}
+```
+
+### App Bars and Navigation
+
+```css
+/* App bar with subtle shadow */
+.app-bar {
+  background-color: var(--dg-color-background-default);
+  box-shadow: 0 1px 4px var(--dg-color-alpha-neutral-3);
+}
+
+/* App bar on scroll (elevated) */
+.app-bar.scrolled {
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-4);
+}
+```
+
+## Focus Shadows
+
+Use shadows for focus indicators alongside borders:
+
+```css
+/* Focus with shadow */
+.input:focus {
+  border-color: var(--dg-color-primary-default);
+  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+}
+
+/* Button focus */
+.button:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+}
+
+/* Semantic focus shadows */
+.input-error:focus {
+  border-color: var(--dg-color-semantic-error-default);
+  box-shadow: 0 0 0 4px var(--dg-color-semantic-error-lowest);
+}
+
+.input-success:focus {
+  border-color: var(--dg-color-semantic-success-default);
+  box-shadow: 0 0 0 4px var(--dg-color-semantic-success-lowest);
+}
+```
+
+## Inner Shadows
+
+Use inset shadows for depth effects:
+
+```css
+/* Inset shadow for pressed state */
+.button:active {
+  box-shadow: inset 0 2px 4px var(--dg-color-alpha-neutral-4);
+}
+
+/* Input with inner shadow */
+.input {
+  box-shadow: inset 0 1px 2px var(--dg-color-alpha-neutral-2);
+}
+
+/* Well or sunken element */
+.well {
+  background-color: var(--dg-color-background-bold);
+  box-shadow: inset 0 2px 4px var(--dg-color-alpha-neutral-3);
+}
+```
+
+## Animation and Transitions
+
+Animate shadows for hover and active states:
+
+```css
+/* Smooth shadow transition */
+.card {
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
+  transition: box-shadow 200ms ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-4);
+}
+
+/* Button with shadow animation */
+.button {
+  box-shadow: 0 2px 4px var(--dg-color-alpha-neutral-4);
+  transition: 
+    box-shadow 150ms ease-in-out,
+    transform 150ms ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 0 4px 8px var(--dg-color-alpha-neutral-4);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  box-shadow: 0 1px 2px var(--dg-color-alpha-neutral-3);
+  transform: translateY(0);
+}
+```
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `alpha-neutral-3` for subtle shadows
+- Use `alpha-neutral-4` for medium shadows
+- Use `alpha-neutral-5` for strong shadows
+- Layer multiple shadows for realistic depth
+- Animate shadows on hover for interactive feedback
+- Use consistent shadow patterns across the application
+
+### ❌ Don't
+
+- Create custom shadow colors outside alpha colors
+- Use too many shadow layers (performance impact)
+- Mix shadow patterns inconsistently
+- Use shadows on every element (reduces impact)
+- Forget to test shadows in both light and dark themes
+- Use overly large blur radius values
+
+## Performance Considerations
+
+### Optimize Shadow Rendering
+
+```css
+/* Good: Reasonable blur radius */
+box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-4);
+
+/* Caution: Large blur radius (expensive) */
+box-shadow: 0 4px 64px var(--dg-color-alpha-neutral-4);
+
+/* Good: Limited shadow layers */
+box-shadow: 
+  0 1px 3px var(--dg-color-alpha-neutral-3),
+  0 4px 12px var(--dg-color-alpha-neutral-4);
+
+/* Avoid: Too many layers (expensive) */
+box-shadow:
+  0 1px 2px var(--dg-color-alpha-neutral-2),
+  0 2px 4px var(--dg-color-alpha-neutral-3),
+  0 4px 8px var(--dg-color-alpha-neutral-4),
+  0 8px 16px var(--dg-color-alpha-neutral-5);
+```
+
+### Use `will-change` for Animated Shadows
+
+```css
+.card {
+  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
+  transition: box-shadow 200ms ease-in-out;
+  will-change: box-shadow;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-4);
+}
+
+/* Remove will-change after animation */
+.card:not(:hover) {
+  will-change: auto;
+}
+```
+
+## Accessibility
+
+### Focus Indicators
+
+Shadows can supplement (but not replace) focus indicators:
+
+```css
+/* Accessible: Border + shadow for focus */
+.interactive-element:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+}
+
+/* Not recommended: Shadow only */
+.button:focus {
+  box-shadow: 0 0 0 4px var(--dg-color-primary-default);
+  /* Missing outline */
+}
+```
+
+### High Contrast Mode
+
+Test shadows in high contrast mode - they may be removed:
+
+```css
+@media (prefers-contrast: high) {
+  .card {
+    /* Shadows may be removed, ensure border exists */
+    border: 1px solid var(--dg-color-alpha-neutral-4);
+  }
+}
+```
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-web-ui-design-token/src/tokens/color/shortcut/
+  └── shadow.js    # Shadow color shortcuts
+```
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-web-ui-design-token'
+
+// Shadow styles
+const shadows = {
+  subtle: `0 1px 3px ${tokens.color.alpha.neutral[3]}`,
+  medium: `0 2px 8px ${tokens.color.alpha.neutral[4]}`,
+  strong: `0 4px 16px ${tokens.color.alpha.neutral[5]}`,
+  card: `0 1px 3px ${tokens.color.alpha.neutral[3]}, 0 4px 12px ${tokens.color.alpha.neutral[4]}`,
+  modal: `0 4px 16px ${tokens.color.alpha.neutral[4]}, 0 8px 32px ${tokens.color.alpha.neutral[5]}`
+}
+
+// Component example
+function Card({ elevation = 'medium', children }) {
+  const shadowStyle = {
+    subtle: shadows.subtle,
+    medium: shadows.medium,
+    strong: shadows.strong,
+  }[elevation]
+
+  return (
+    <div style={{ 
+      boxShadow: shadowStyle,
+      padding: '16px',
+      borderRadius: '4px'
+    }}>
+      {children}
+    </div>
+  )
+}
+```
+
+## Related Topics
+
+- [Alpha Colors](../alpha-colors) - Foundation for shadows
+- [Background Shortcuts](./background) - Pairing shadows with backgrounds
+- [Border Shortcuts](./border) - Combining borders with shadows
+- [Interactive State Shortcuts](./interactive-state) - Shadows in different states
+

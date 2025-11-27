@@ -25,7 +25,8 @@
     "*.config.ts",
     "*.config.js",
     "*.config.cjs",
-    "*.config.mjs"
+    "*.config.mjs",
+    "packages/docs-design-system/audit-color-docs.ts"
   ],
   "exclude": ["packages/docs-design-system/**/*"]
 }

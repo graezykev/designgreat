@@ -6,7 +6,7 @@ packages.
 
 ## Documentation
 
-### 📘 [Design Tokens Integration Guide](https://graezykev.github.io/designgreat/docs/design-tokens/overview)
+### 📘 [Design Tokens Integration Guide](https://graezykev.github.io/designgreat/docs/tutorial/overview)
 
 **For consuming design tokens in your application** - Complete guide covering installation, CSS
 integration, theme switching, fonts, Tailwind integration, and API reference.

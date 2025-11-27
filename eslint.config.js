@@ -37,7 +37,8 @@ const config = [
       'packages/docs-design-system/.docusaurus/**',
       'packages/docs-design-system/build/**',
       'packages/docs-design-system/docs-contributing/**/*.mdx',
-      'packages/docs-design-system/docs/design-tokens/**/*.mdx',
+      'packages/docs-design-system/docs/tutorial/**/*.mdx',
+      'packages/docs-design-system/docs/colors/**/*.mdx',
       'packages/docs-design-system/docs-components/**/*.mdx'
     ]
   },
@@ -66,6 +67,16 @@ const config = [
     name: 'designgreat/docs-eslint-guide-ignore',
     // This doc contains many code examples that are intentionally incomplete/illustrative
     ignores: ['docs/eslint-configuration-guide.md']
+  },
+  {
+    name: 'designgreat/progress-logs-ignore',
+    // Progress logs are historical documentation that don't need linting
+    ignores: ['docs/progress-logs/**/*.md']
+  },
+  {
+    name: 'designgreat/audit-scripts-ignore',
+    // Audit scripts are utility tools that don't need strict linting
+    ignores: ['packages/docs-design-system/audit-color-docs.ts']
   }
 ]
 

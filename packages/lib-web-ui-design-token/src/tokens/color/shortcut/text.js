@@ -50,40 +50,54 @@ export default {
         }
       },
       information: {
-        value: '{color.semantic.info.DEFAULT}',
-        type: 'color'
+        DEFAULT: {
+          value: '{color.semantic.info.DEFAULT}',
+          type: 'color'
+        },
+        bold: {
+          value: '{color.semantic.info.bolder}',
+          type: 'color'
+        }
       },
       discover: {
-        value: '{color.semantic.new.DEFAULT}',
-        type: 'color'
+        DEFAULT: {
+          value: '{color.semantic.new.DEFAULT}',
+          type: 'color'
+        },
+        bold: {
+          value: '{color.semantic.new.bolder}',
+          type: 'color'
+        }
       },
       success: {
-        value: '{color.semantic.success.DEFAULT}',
-        type: 'color'
+        DEFAULT: {
+          value: '{color.semantic.success.DEFAULT}',
+          type: 'color'
+        },
+        bold: {
+          value: '{color.semantic.success.bolder}',
+          type: 'color'
+        }
       },
       warning: {
-        value: '{color.semantic.warning.DEFAULT}',
-        type: 'color'
+        DEFAULT: {
+          value: '{color.semantic.warning.DEFAULT}',
+          type: 'color'
+        },
+        bold: {
+          value: '{color.semantic.warning.bolder}',
+          type: 'color'
+        }
       },
       error: {
-        value: '{color.semantic.error.DEFAULT}',
-        type: 'color'
-      },
-      'discover.bold': {
-        value: '{color.text.inverse}',
-        type: 'color'
-      },
-      'success.bold': {
-        value: '{color.text.inverse}',
-        type: 'color'
-      },
-      'warning.bold': {
-        value: '{color.text.inverse}',
-        type: 'color'
-      },
-      'error.bold': {
-        value: '{color.text.inverse}',
-        type: 'color'
+        DEFAULT: {
+          value: '{color.semantic.error.DEFAULT}',
+          type: 'color'
+        },
+        bold: {
+          value: '{color.semantic.error.bolder}',
+          type: 'color'
+        }
       }
     }
   }

@@ -1,0 +1,452 @@
+---
+sidebar_position: 1
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+
+# Text Shortcuts
+
+Text color shortcuts provide semantic, ready-to-use color tokens for all text elements in your application. They abstract away the complexity of the underlying color system and make it easy to maintain consistent text styling.
+
+## Overview
+
+Text shortcuts are high-level tokens that map to accent, primary, and semantic colors, providing intuitive names for common text use cases.
+
+### Key Characteristics
+
+- **Semantic naming**: Names describe purpose, not appearance
+- **Theme-aware**: Automatically adapt to light/dark themes
+- **Consistent hierarchy**: Clear emphasis levels
+- **Ready to use**: No need to reference lower-level tokens
+
+## Neutral Text Colors
+
+Neutral text colors are used for standard text content, providing multiple emphasis levels for visual hierarchy.
+
+### Text Emphasis Levels
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-inverse)'}}>Text</div> | <CopyableCode>color.text.inverse</CopyableCode> | <CopyableCode>--dg-color-text-inverse</CopyableCode> | `{color.accent.neutral.silent}` | Inverse text (for dark backgrounds) |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-bold)'}}>Text</div> | <CopyableCode>color.text.bold</CopyableCode> | <CopyableCode>--dg-color-text-bold</CopyableCode> | `{color.accent.neutral.bold}` | High emphasis text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-default)'}}>Text</div> | <CopyableCode bold>color.text.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-default</CopyableCode> | `{color.accent.neutral.DEFAULT}` | Default body text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtle)'}}>Text</div> | <CopyableCode>color.text.subtle</CopyableCode> | <CopyableCode>--dg-color-text-subtle</CopyableCode> | `{color.accent.neutral.subtle}` | Subtle text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtler)'}}>Text</div> | <CopyableCode>color.text.subtler</CopyableCode> | <CopyableCode>--dg-color-text-subtler</CopyableCode> | `{color.accent.neutral.subtler}` | More subtle text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtlest)'}}>Text</div> | <CopyableCode>color.text.subtlest</CopyableCode> | <CopyableCode>--dg-color-text-subtlest</CopyableCode> | `{color.accent.neutral.subtlest}` | Most subtle text |
+
+### Neutral Text Token Table
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-inverse)'}}>Text</div> | <CopyableCode>color.text.inverse</CopyableCode> | <CopyableCode>--dg-color-text-inverse</CopyableCode> | `{color.accent.neutral.silent}` | Text on dark/colored backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-bold)'}}>Text</div> | <CopyableCode>color.text.bold</CopyableCode> | <CopyableCode>--dg-color-text-bold</CopyableCode> | `{color.accent.neutral.bold}` | Headings, high-emphasis text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-default)'}}>Text</div> | <CopyableCode bold>color.text.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-default</CopyableCode> | `{color.accent.neutral.DEFAULT}` | Standard body text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtle)'}}>Text</div> | <CopyableCode>color.text.subtle</CopyableCode> | <CopyableCode>--dg-color-text-subtle</CopyableCode> | `{color.accent.neutral.subtle}` | Secondary text, captions |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtler)'}}>Text</div> | <CopyableCode>color.text.subtler</CopyableCode> | <CopyableCode>--dg-color-text-subtler</CopyableCode> | `{color.accent.neutral.subtler}` | Tertiary text, placeholders |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtlest)'}}>Text</div> | <CopyableCode>color.text.subtlest</CopyableCode> | <CopyableCode>--dg-color-text-subtlest</CopyableCode> | `{color.accent.neutral.subtlest}` | Disabled text, very low emphasis |
+
+## Link Colors
+
+Link colors provide a consistent appearance for interactive text elements.
+
+### Link Token
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|-------------|
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-link-default)'}}>Text</div> | <CopyableCode bold>color.text.link.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-link-default</CopyableCode> | `{color.primary.DEFAULT}` | Default link color |
+
+:::tip
+For link states (hover, visited, active), use the primary color state tokens:
+- Hover: `color.primary.hover.DEFAULT`
+- Visited: `color.primary.visited.DEFAULT`
+- Active: `color.primary.active.DEFAULT`
+:::
+
+## Navigation Text Colors
+
+Navigation text colors provide a three-level hierarchy for navigation elements.
+
+### Navigation Hierarchy
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-nav-default</CopyableCode> | `{color.text.DEFAULT}` | Primary navigation text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.secondary.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-nav-secondary-default</CopyableCode> | `{color.text.subtle}` | Secondary navigation |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.tertiary.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-nav-tertiary-default</CopyableCode> | `{color.text.subtler}` | Tertiary navigation |
+
+## Semantic Text Colors
+
+Semantic text colors map to semantic colors for conveying meaning and system states.
+
+### Semantic Color Tokens
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-information-default)'}}>Text</div> | <CopyableCode>color.text.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-information-default</CopyableCode> | `{color.semantic.info.DEFAULT}` | Informational text |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-discover-default)'}}>Text</div> | <CopyableCode>color.text.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-discover-default</CopyableCode> | `{color.semantic.new.DEFAULT}` | New features, discovery |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-success-default)'}}>Text</div> | <CopyableCode>color.text.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-success-default</CopyableCode> | `{color.semantic.success.DEFAULT}` | Success messages |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-warning-default)'}}>Text</div> | <CopyableCode>color.text.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-warning-default</CopyableCode> | `{color.semantic.warning.DEFAULT}` | Warning messages |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-error-default)'}}>Text</div> | <CopyableCode>color.text.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-error-default</CopyableCode> | `{color.semantic.error.DEFAULT}` | Error messages |
+
+### Bold Semantic Text Colors
+
+For text on colored semantic backgrounds, use bold variants:
+
+|  | Token | CSS Variable | Reference | Use Case |
+|--|-------|--------------|-----------|----------|
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-information-default)', color: 'var(--dg-color-text-information-bold)'}}>Text</div> | <CopyableCode>color.text.information.bold</CopyableCode> | <CopyableCode>--dg-color-text-information-bold</CopyableCode> | `{color.semantic.info.bolder}` | Text on blue backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-discover-default)', color: 'var(--dg-color-text-discover-bold)'}}>Text</div> | <CopyableCode>color.text.discover.bold</CopyableCode> | <CopyableCode>--dg-color-text-discover-bold</CopyableCode> | `{color.semantic.new.bolder}` | Text on purple backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-success-default)', color: 'var(--dg-color-text-success-bold)'}}>Text</div> | <CopyableCode>color.text.success.bold</CopyableCode> | <CopyableCode>--dg-color-text-success-bold</CopyableCode> | `{color.semantic.success.bolder}` | Text on green backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-warning-default)', color: 'var(--dg-color-text-warning-bold)'}}>Text</div> | <CopyableCode>color.text.warning.bold</CopyableCode> | <CopyableCode>--dg-color-text-warning-bold</CopyableCode> | `{color.semantic.warning.bolder}` | Text on orange backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-error-default)', color: 'var(--dg-color-text-error-bold)'}}>Text</div> | <CopyableCode>color.text.error.bold</CopyableCode> | <CopyableCode>--dg-color-text-error-bold</CopyableCode> | `{color.semantic.error.bolder}` | Text on red backgrounds |
+
+## Usage Examples
+
+### Typography Hierarchy
+
+```css
+/* Page heading */
+h1 {
+  color: var(--dg-color-text-bold);
+  font-size: 2.5rem;
+}
+
+/* Section heading */
+h2 {
+  color: var(--dg-color-text-bold);
+  font-size: 2rem;
+}
+
+/* Body text */
+p {
+  color: var(--dg-color-text-default);
+  font-size: 1rem;
+}
+
+/* Caption or helper text */
+.caption {
+  color: var(--dg-color-text-subtle);
+  font-size: 0.875rem;
+}
+
+/* Placeholder text */
+::placeholder {
+  color: var(--dg-color-text-subtler);
+}
+
+/* Disabled text */
+.disabled-text {
+  color: var(--dg-color-text-subtlest);
+}
+```
+
+### Links
+
+```css
+/* Default link */
+a {
+  color: var(--dg-color-text-link-default);
+  text-decoration: underline;
+}
+
+/* Link states using primary tokens */
+a:hover {
+  color: var(--dg-color-primary-hover-default);
+}
+
+a:visited {
+  color: var(--dg-color-primary-visited-default);
+}
+
+a:active {
+  color: var(--dg-color-primary-active-default);
+}
+```
+
+### Navigation
+
+```css
+/* Primary navigation */
+.nav-primary a {
+  color: var(--dg-color-text-nav-default);
+  font-weight: 600;
+}
+
+/* Secondary navigation */
+.nav-secondary a {
+  color: var(--dg-color-text-nav-secondary-default);
+  font-weight: 500;
+}
+
+/* Tertiary/breadcrumb navigation */
+.breadcrumb a {
+  color: var(--dg-color-text-nav-tertiary-default);
+  font-weight: 400;
+}
+```
+
+### Semantic Messages
+
+```css
+/* Success message */
+.message-success {
+  color: var(--dg-color-text-success-default);
+}
+
+/* Warning message */
+.message-warning {
+  color: var(--dg-color-text-warning-default);
+}
+
+/* Error message */
+.message-error {
+  color: var(--dg-color-text-error-default);
+}
+
+/* Info message */
+.message-info {
+  color: var(--dg-color-text-information-default);
+}
+```
+
+### Badges with Bold Text
+
+```css
+/* Success badge with bold text */
+.badge-success {
+  background-color: var(--dg-color-semantic-success-default);
+  color: var(--dg-color-text-success-bold);
+}
+
+/* Error badge with bold text */
+.badge-error {
+  background-color: var(--dg-color-semantic-error-default);
+  color: var(--dg-color-text-error-bold);
+}
+```
+
+### Form Elements
+
+```css
+/* Label */
+.form-label {
+  color: var(--dg-color-text-default);
+  font-weight: 500;
+}
+
+/* Helper text */
+.form-helper {
+  color: var(--dg-color-text-subtle);
+  font-size: 0.875rem;
+}
+
+/* Error message */
+.form-error {
+  color: var(--dg-color-text-error-default);
+  font-size: 0.875rem;
+}
+
+/* Success message */
+.form-success {
+  color: var(--dg-color-text-success-default);
+  font-size: 0.875rem;
+}
+```
+
+### Cards and Containers
+
+```css
+.card {
+  /* Card title */
+  .card-title {
+    color: var(--dg-color-text-bold);
+    font-size: 1.25rem;
+  }
+
+  /* Card body */
+  .card-body {
+    color: var(--dg-color-text-default);
+  }
+
+  /* Card footer/meta */
+  .card-meta {
+    color: var(--dg-color-text-subtler);
+    font-size: 0.875rem;
+  }
+}
+```
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-web-ui-design-token'
+
+// Text styles object
+const textStyles = {
+  heading: { color: tokens.color.text.bold },
+  body: { color: tokens.color.text.DEFAULT },
+  caption: { color: tokens.color.text.subtle },
+  disabled: { color: tokens.color.text.subtlest },
+  link: { color: tokens.color.text.link.DEFAULT },
+  error: { color: tokens.color.text.error },
+  success: { color: tokens.color.text.success }
+}
+
+// Component example
+function Alert({ type, children }) {
+  const textColor = {
+    info: tokens.color.text.information,
+    success: tokens.color.text.success,
+    warning: tokens.color.text.warning,
+    error: tokens.color.text.error
+  }[type]
+
+  return <div style={{ color: textColor }}>{children}</div>
+}
+```
+
+## Text Emphasis Scale
+
+The neutral text colors follow a clear emphasis scale:
+
+```
+inverse    ████████████  (for dark backgrounds)
+bold       ███████████   (highest emphasis)
+DEFAULT    ████████      (standard text)
+subtle     ██████        (secondary text)
+subtler    ████          (tertiary text)
+subtlest   ██            (lowest emphasis)
+```
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `color.text.DEFAULT` for all body text
+- Use `color.text.bold` for headings and high-emphasis text
+- Use `color.text.subtle` and `color.text.subtler` for supporting text
+- Use `color.text.inverse` for text on dark/colored backgrounds
+- Use semantic text colors for feedback messages
+- Use `color.text.link` for all interactive text links
+
+### ❌ Don't
+
+- Use multiple text colors in the same paragraph
+- Use semantic colors for non-semantic content
+- Use `color.text.subtlest` for important information
+- Rely solely on color to convey meaning (use icons, weight, size)
+- Override text colors with custom values
+
+## Accessibility
+
+### Contrast Requirements
+
+All text color shortcuts meet WCAG AA standards when used on appropriate backgrounds:
+
+| Text Color | Background | Contrast Ratio | WCAG Level |
+|------------|------------|----------------|------------|
+| `{color.text.bold}` | `{color.background.DEFAULT}` | ≥ 7:1 | AAA |
+| `{color.text.DEFAULT}` | `{color.background.DEFAULT}` | ≥ 4.5:1 | AA |
+| `{color.text.subtle}` | `{color.background.DEFAULT}` | ≥ 4.5:1 | AA |
+| `{color.text.inverse}` | Dark backgrounds | ≥ 4.5:1 | AA |
+
+:::warning
+`color.text.subtler` and `color.text.subtlest` may not meet WCAG AA standards for small text. Use these only for:
+- Large text (18px+ or 14px+ bold)
+- Non-essential content
+- Supplementary information
+:::
+
+### Best Practices
+
+```css
+/* ✅ Good: Sufficient contrast for body text */
+.text {
+  color: var(--dg-color-text-default);
+}
+
+/* ⚠️ Caution: Only for large or non-essential text */
+.metadata {
+  color: var(--dg-color-text-subtler);
+  font-size: 14px;
+}
+
+/* ❌ Bad: Insufficient contrast for important text */
+.important-message {
+  color: var(--dg-color-text-subtlest); /* Don't do this */
+}
+```
+
+### Testing
+
+Always test text colors:
+- ✅ Against your background colors
+- ✅ In both light and dark themes
+- ✅ With color blindness simulators
+- ✅ Using automated contrast checkers
+
+## Complete Token Reference
+
+### All Text Tokens
+
+| Category |  | Token | CSS Variable | Reference |
+|----------|--|-------|--------------|-----------|
+| **Neutral** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-inverse)'}}>Text</div> | <CopyableCode>color.text.inverse</CopyableCode> | <CopyableCode>--dg-color-text-inverse</CopyableCode> | `{color.accent.neutral.silent}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-bold)'}}>Text</div> | <CopyableCode>color.text.bold</CopyableCode> | <CopyableCode>--dg-color-text-bold</CopyableCode> | `{color.accent.neutral.bold}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-default)'}}>Text</div> | <CopyableCode bold>color.text.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-default</CopyableCode> | `{color.accent.neutral.DEFAULT}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtle)'}}>Text</div> | <CopyableCode>color.text.subtle</CopyableCode> | <CopyableCode>--dg-color-text-subtle</CopyableCode> | `{color.accent.neutral.subtle}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtler)'}}>Text</div> | <CopyableCode>color.text.subtler</CopyableCode> | <CopyableCode>--dg-color-text-subtler</CopyableCode> | `{color.accent.neutral.subtler}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtlest)'}}>Text</div> | <CopyableCode>color.text.subtlest</CopyableCode> | <CopyableCode>--dg-color-text-subtlest</CopyableCode> | `{color.accent.neutral.subtlest}` |
+| **Link** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-link-default)'}}>Text</div> | <CopyableCode bold>color.text.link.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-link-default</CopyableCode> | `{color.primary.DEFAULT}` |
+| **Navigation** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-nav-default</CopyableCode> | `{color.text.DEFAULT}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.secondary.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-nav-secondary-default</CopyableCode> | `{color.text.subtle}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.tertiary.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-nav-tertiary-default</CopyableCode> | `{color.text.subtler}` |
+| **Semantic** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-information-default)'}}>Text</div> | <CopyableCode bold>color.text.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-information-default</CopyableCode> | `{color.semantic.info.DEFAULT}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-discover-default)'}}>Text</div> | <CopyableCode bold>color.text.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-discover-default</CopyableCode> | `{color.semantic.new.DEFAULT}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-success-default)'}}>Text</div> | <CopyableCode bold>color.text.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-success-default</CopyableCode> | `{color.semantic.success.DEFAULT}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-warning-default)'}}>Text</div> | <CopyableCode bold>color.text.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-warning-default</CopyableCode> | `{color.semantic.warning.DEFAULT}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-error-default)'}}>Text</div> | <CopyableCode bold>color.text.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-error-default</CopyableCode> | `{color.semantic.error.DEFAULT}` |
+| **Semantic Bold** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-information-default)', color: 'var(--dg-color-text-information-bold)'}}>Text</div> | <CopyableCode>color.text.information.bold</CopyableCode> | <CopyableCode>--dg-color-text-information-bold</CopyableCode> | `{color.semantic.info.bolder}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-discover-default)', color: 'var(--dg-color-text-discover-bold)'}}>Text</div> | <CopyableCode>color.text.discover.bold</CopyableCode> | <CopyableCode>--dg-color-text-discover-bold</CopyableCode> | `{color.semantic.new.bolder}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-success-default)', color: 'var(--dg-color-text-success-bold)'}}>Text</div> | <CopyableCode>color.text.success.bold</CopyableCode> | <CopyableCode>--dg-color-text-success-bold</CopyableCode> | `{color.semantic.success.bolder}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-warning-default)', color: 'var(--dg-color-text-warning-bold)'}}>Text</div> | <CopyableCode>color.text.warning.bold</CopyableCode> | <CopyableCode>--dg-color-text-warning-bold</CopyableCode> | `{color.semantic.warning.bolder}` |
+| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-error-default)', color: 'var(--dg-color-text-error-bold)'}}>Text</div> | <CopyableCode>color.text.error.bold</CopyableCode> | <CopyableCode>--dg-color-text-error-bold</CopyableCode> | `{color.semantic.error.bolder}` |
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-web-ui-design-token/src/tokens/color/shortcut/
+  └── text.js  # All text color shortcuts
+```
+
+### Token Structure
+
+```javascript
+{
+  color: {
+    text: {
+      inverse: { value: '{color.accent.neutral.silent}', type: 'color' },
+      bold: { value: '{color.accent.neutral.bold}', type: 'color' },
+      DEFAULT: { value: '{color.accent.neutral.DEFAULT}', type: 'color' },
+      subtle: { value: '{color.accent.neutral.subtle}', type: 'color' },
+      subtler: { value: '{color.accent.neutral.subtler}', type: 'color' },
+      subtlest: { value: '{color.accent.neutral.subtlest}', type: 'color' },
+      link: {
+        DEFAULT: { value: '{color.primary.DEFAULT}', type: 'color' }
+      },
+      // ... more tokens
+    }
+  }
+}
+```
+
+## Related Topics
+
+- [Accent Colors](../accent-colors) - Understanding neutral accent colors
+- [Primary Colors](../primary-brand-colors) - Link color source
+- [Semantic Colors](../semantic-colors) - Semantic text color sources
+- [Background Shortcuts](./background) - Pairing text with backgrounds
+- [Theme Switching](/docs/tutorial/theme-switching) - Text colors in different themes
+

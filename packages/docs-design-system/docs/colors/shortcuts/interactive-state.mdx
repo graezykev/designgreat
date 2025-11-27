@@ -1,0 +1,640 @@
+---
+sidebar_position: 5
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+
+# Interactive State Shortcuts
+
+Interactive state shortcuts provide recommended patterns for styling interactive elements across different states (hover, active, focus, disabled, etc.).
+
+## Overview
+
+Interactive state colors are primarily defined at the primary color level. For other elements, apply similar patterns using accent and semantic colors.
+
+### Key States
+
+- **Default**: Resting state of the element
+- **Hover**: Mouse cursor over the element
+- **Active**: Element is being clicked/pressed
+- **Focus**: Element has keyboard focus
+- **Disabled**: Element is non-interactive
+- **Selected/Activated**: Element is in selected or activated state
+- **Visited**: Link has been visited (links only)
+
+## Button State Patterns
+
+### Primary Buttons
+
+```css
+/* Using primary colors */
+.button-primary {
+  background-color: var(--dg-color-primary-default);
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: var(--dg-color-primary-hover-default);
+  /* or directly: var(--dg-color-primary-bold) */
+}
+
+.button-primary:active {
+  background-color: var(--dg-color-primary-active-default);
+  /* or directly: var(--dg-color-primary-subtle) */
+}
+
+.button-primary:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+}
+
+.button-primary:disabled {
+  background-color: var(--dg-color-primary-disabled-default);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+```
+
+### Secondary Buttons
+
+```css
+/* Using secondary colors */
+.button-secondary {
+  background-color: var(--dg-color-secondary-default);
+  color: white;
+}
+
+.button-secondary:hover {
+  background-color: var(--dg-color-secondary-bold);
+}
+
+.button-secondary:active {
+  background-color: var(--dg-color-secondary-subtle);
+}
+
+.button-secondary:focus {
+  outline: 2px solid var(--dg-color-secondary-default);
+  outline-offset: 2px;
+}
+
+.button-secondary:disabled {
+  background-color: var(--dg-color-secondary-blur);
+  opacity: 0.6;
+}
+```
+
+### Outline Buttons
+
+```css
+/* Outline button states */
+.button-outline {
+  background-color: transparent;
+  border: 1px solid var(--dg-color-primary-default);
+  color: var(--dg-color-primary-default);
+}
+
+.button-outline:hover {
+  background-color: var(--dg-color-primary-subtler);
+  border-color: var(--dg-color-primary-bold);
+}
+
+.button-outline:active {
+  background-color: var(--dg-color-primary-subtle);
+}
+
+.button-outline:disabled {
+  border-color: var(--dg-color-primary-blur);
+  color: var(--dg-color-primary-blur);
+  opacity: 0.6;
+}
+```
+
+### Ghost/Text Buttons
+
+```css
+/* Ghost button states */
+.button-ghost {
+  background-color: transparent;
+  color: var(--dg-color-primary-default);
+}
+
+.button-ghost:hover {
+  background-color: var(--dg-color-alpha-neutral-2);
+}
+
+.button-ghost:active {
+  background-color: var(--dg-color-alpha-neutral-3);
+}
+
+.button-ghost:disabled {
+  color: var(--dg-color-text-subtlest);
+  opacity: 0.6;
+}
+```
+
+## Link State Patterns
+
+```css
+/* Default link */
+a {
+  color: var(--dg-color-text-link-default);
+  text-decoration: underline;
+}
+
+/* Visited state */
+a:visited {
+  color: var(--dg-color-primary-visited-default);
+}
+
+/* Hover state */
+a:hover {
+  color: var(--dg-color-primary-hover-default);
+  text-decoration-thickness: 2px;
+}
+
+/* Active state */
+a:active {
+  color: var(--dg-color-primary-active-default);
+}
+
+/* Focus state */
+a:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+```
+
+## Input State Patterns
+
+### Text Inputs
+
+```css
+/* Input */
+.input {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  color: var(--dg-color-text-default);
+}
+
+.input:hover {
+  border-color: var(--dg-color-alpha-neutral-4);
+}
+
+.input:focus {
+  border-color: var(--dg-color-primary-default);
+  box-shadow: 0 0 0 3px var(--dg-color-primary-focus-shadow);
+  outline: none;
+}
+
+.input:disabled {
+  background-color: var(--dg-color-background-bold);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+}
+
+/* Input with placeholder */
+.input::placeholder {
+  color: var(--dg-color-text-subtler);
+}
+```
+
+### Input Validation States
+
+```css
+/* Success state */
+.input-success {
+  border-color: var(--dg-color-semantic-success-default);
+}
+
+.input-success:focus {
+  border-color: var(--dg-color-semantic-success-default);
+  box-shadow: 0 0 0 3px var(--dg-color-semantic-success-lowest);
+}
+
+/* Error state */
+.input-error {
+  border-color: var(--dg-color-semantic-error-default);
+}
+
+.input-error:focus {
+  border-color: var(--dg-color-semantic-error-default);
+  box-shadow: 0 0 0 3px var(--dg-color-semantic-error-lowest);
+}
+
+/* Warning state */
+.input-warning {
+  border-color: var(--dg-color-semantic-warning-default);
+}
+
+.input-warning:focus {
+  border-color: var(--dg-color-semantic-warning-default);
+  box-shadow: 0 0 0 3px var(--dg-color-semantic-warning-lowest);
+}
+```
+
+## Toggle/Checkbox State Patterns
+
+```css
+/* Checkbox */
+.checkbox {
+  border: 2px solid var(--dg-color-alpha-neutral-4);
+  background-color: var(--dg-color-background-default);
+}
+
+.checkbox:hover {
+  border-color: var(--dg-color-primary-default);
+}
+
+.checkbox:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+}
+
+/* Checked state */
+.checkbox:checked {
+  background-color: var(--dg-color-primary-checked-default);
+  border-color: var(--dg-color-primary-checked-default);
+}
+
+.checkbox:checked:hover {
+  background-color: var(--dg-color-primary-bold);
+}
+
+.checkbox:disabled {
+  background-color: var(--dg-color-background-bold);
+  border-color: var(--dg-color-alpha-neutral-3);
+  opacity: 0.6;
+}
+
+/* Toggle switch */
+.toggle-switch {
+  background-color: var(--dg-color-alpha-neutral-4);
+}
+
+.toggle-switch:hover {
+  background-color: var(--dg-color-alpha-neutral-5);
+}
+
+.toggle-switch.checked {
+  background-color: var(--dg-color-primary-checked-default);
+}
+
+.toggle-switch.checked:hover {
+  background-color: var(--dg-color-primary-bold);
+}
+```
+
+## Card and Container State Patterns
+
+```css
+/* Interactive card */
+.card-interactive {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+  transition: 
+    background-color 200ms ease-in-out,
+    box-shadow 200ms ease-in-out;
+}
+
+.card-interactive:hover {
+  background-color: var(--dg-color-alpha-neutral-1);
+  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
+  cursor: pointer;
+}
+
+.card-interactive:active {
+  background-color: var(--dg-color-alpha-neutral-2);
+  box-shadow: 0 2px 4px var(--dg-color-alpha-neutral-3);
+}
+
+/* Selected card */
+.card-interactive.selected {
+  border-color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-primary-subtler);
+}
+```
+
+## List Item State Patterns
+
+```css
+/* List item */
+.list-item {
+  background-color: transparent;
+  transition: background-color 150ms ease-in-out;
+}
+
+.list-item:hover {
+  background-color: var(--dg-color-alpha-neutral-2);
+  cursor: pointer;
+}
+
+.list-item:active {
+  background-color: var(--dg-color-alpha-neutral-3);
+}
+
+.list-item:focus {
+  outline: 2px solid var(--dg-color-primary-default);
+  outline-offset: -2px;
+}
+
+/* Selected list item */
+.list-item.selected {
+  background-color: var(--dg-color-primary-subtler);
+  color: var(--dg-color-primary-bold);
+}
+
+.list-item.selected:hover {
+  background-color: var(--dg-color-primary-subtler);
+}
+
+/* Disabled list item */
+.list-item.disabled {
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+```
+
+## Navigation State Patterns
+
+```css
+/* Navigation item */
+.nav-item {
+  color: var(--dg-color-text-nav-default);
+}
+
+.nav-item:hover {
+  background-color: var(--dg-color-alpha-neutral-2);
+  color: var(--dg-color-primary-default);
+}
+
+/* Active/current navigation item */
+.nav-item.active {
+  background-color: var(--dg-color-primary-subtler);
+  color: var(--dg-color-primary-default);
+  font-weight: 600;
+}
+
+/* Dropdown trigger */
+.dropdown-trigger[aria-expanded="true"] {
+  background-color: var(--dg-color-primary-opened-bg);
+  color: var(--dg-color-primary-opened-default);
+}
+```
+
+## Tab State Patterns
+
+```css
+/* Tab */
+.tab {
+  color: var(--dg-color-text-subtle);
+  border-bottom: 2px solid transparent;
+  transition: 
+    color 150ms ease-in-out,
+    border-color 150ms ease-in-out;
+}
+
+.tab:hover {
+  color: var(--dg-color-text-default);
+  background-color: var(--dg-color-alpha-neutral-1);
+}
+
+/* Selected tab */
+.tab.selected {
+  color: var(--dg-color-primary-default);
+  border-bottom-color: var(--dg-color-primary-default);
+  font-weight: 600;
+}
+
+.tab:disabled {
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+```
+
+## Badge and Tag State Patterns
+
+```css
+/* Interactive badge */
+.badge-interactive {
+  background-color: var(--dg-color-alpha-neutral-3);
+  color: var(--dg-color-text-default);
+}
+
+.badge-interactive:hover {
+  background-color: var(--dg-color-alpha-neutral-4);
+  cursor: pointer;
+}
+
+.badge-interactive:active {
+  background-color: var(--dg-color-alpha-neutral-5);
+}
+
+/* Removable tag */
+.tag {
+  background-color: var(--dg-color-primary-subtler);
+  color: var(--dg-color-primary-bold);
+}
+
+.tag .remove-button:hover {
+  background-color: var(--dg-color-primary-subtle);
+  color: var(--dg-color-primary-bold);
+}
+```
+
+## Loading State Patterns
+
+```css
+/* Loading button */
+.button-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.button-loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--dg-color-text-inverse);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  background-color: var(--dg-color-alpha-neutral-4);
+  pointer-events: all;
+  cursor: wait;
+}
+```
+
+## Transition Patterns
+
+### Smooth Transitions
+
+```css
+/* Standard transition duration */
+.interactive-element {
+  transition: 
+    background-color 200ms ease-in-out,
+    color 200ms ease-in-out,
+    border-color 200ms ease-in-out;
+}
+
+/* Fast transition for immediate feedback */
+.button {
+  transition: 
+    background-color 150ms ease-in-out,
+    transform 150ms ease-in-out;
+}
+
+/* Slow transition for subtle effects */
+.card {
+  transition: box-shadow 300ms ease-in-out;
+}
+```
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Provide clear visual feedback for all interactive states
+- Use consistent transition durations across similar elements
+- Ensure disabled states are visually distinct
+- Always provide accessible focus indicators
+- Test all states in both light and dark themes
+- Use pointer cursor for interactive elements
+
+### ❌ Don't
+
+- Skip hover or focus states on interactive elements
+- Use only color to indicate state (add icons, labels, etc.)
+- Make transitions too slow (> 400ms for most interactions)
+- Forget to disable pointer events on disabled elements
+- Use :active styles without :hover styles
+- Ignore keyboard focus states
+
+## Accessibility
+
+### Focus Management
+
+```css
+/* Visible focus for keyboard users */
+.interactive:focus-visible {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+}
+
+/* Hide focus for mouse users (optional) */
+.interactive:focus:not(:focus-visible) {
+  outline: none;
+}
+```
+
+### Disabled State
+
+```css
+/* Properly disabled element */
+.button:disabled {
+  background-color: var(--dg-color-primary-disabled-default);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Disabled link */
+a[aria-disabled="true"] {
+  color: var(--dg-color-text-subtlest);
+  pointer-events: none;
+  text-decoration: none;
+}
+```
+
+### Reduced Motion
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-web-ui-design-token/src/tokens/color/
+  ├── primary.js       # Interactive state tokens
+  ├── shortcut/state.js     # State-specific shortcuts (coming soon)
+  └── shortcut/interaction.js  # Interaction shortcuts (coming soon)
+```
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-web-ui-design-token'
+
+// Button state styles
+const buttonStates = {
+  default: {
+    backgroundColor: tokens.color.primary.DEFAULT,
+    color: 'white'
+  },
+  hover: {
+    backgroundColor: tokens.color.primary.hover.DEFAULT
+  },
+  active: {
+    backgroundColor: tokens.color.primary.active.DEFAULT
+  },
+  disabled: {
+    backgroundColor: tokens.color.primary.disabled.DEFAULT,
+    opacity: 0.6,
+    cursor: 'not-allowed'
+  }
+}
+
+// Component with state management
+function Button({ disabled, children, ...props }) {
+  const [isHovered, setIsHovered] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+
+  const getStyles = () => {
+    if (disabled) return buttonStates.disabled
+    if (isActive) return buttonStates.active
+    if (isHovered) return buttonStates.hover
+    return buttonStates.default
+  }
+
+  return (
+    <button
+      {...props}
+      disabled={disabled}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onMouseDown={() => setIsActive(true)}
+      onMouseUp={() => setIsActive(false)}
+      style={getStyles()}
+    >
+      {children}
+    </button>
+  )
+}
+```
+
+## Related Topics
+
+- [Primary Colors](../primary-brand-colors) - Primary interactive state tokens
+- [Text Shortcuts](./text) - Text colors in different states
+- [Background Shortcuts](./background) - Background colors in different states
+- [Shadow Shortcuts](./shadow) - Shadows in different states
+

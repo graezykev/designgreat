@@ -126,3 +126,39 @@
 .table-of-contents__link--active code {
   color: var(--dg-color-primary-default);
 }
+
+/* Color demo block styling for documentation */
+.color-demo {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--dg-color-border-default);
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Larger color demo block for backgrounds and text with content */
+.color-demo-lg {
+  width: 60px;
+  height: 40px;
+  border: 1px solid var(--dg-color-border-default);
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* For text color demos with actual text content */
+.color-demo-text {
+  width: 60px;
+  height: 40px;
+  border: 1px solid var(--dg-color-border-default);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  /* Text color should be set inline via the 'color' style attribute
+     to demonstrate the actual text color token being documented */
+}
