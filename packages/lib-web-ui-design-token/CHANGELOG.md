@@ -1,5 +1,32 @@
 # @designgreat/lib-web-ui-design-token
 
+## 0.4.6
+
+### Patch Changes
+
+- 81e67b6: Minor token adjustments and theme improvements
+
+  ## Changes
+
+  ### Token Adjustments
+  - Updated semantic color token references for better consistency
+  - Refined text and background shortcut token mappings
+  - Improved theme variable generation for better theme switching
+
+  ### Generated Themes
+  - Regenerated theme TypeScript definitions with improved type safety
+  - Enhanced theme variable mappings for semantic colors
+
+  ### Documentation
+  - Updated README and CHANGELOG links to reflect new documentation structure
+    (`/docs/design-tokens/` → `/docs/tutorial/`)
+
+  These are non-breaking refinements that improve token consistency and documentation accessibility.
+
+  **Related PR:** [#34](https://github.com/graezykev/designgreat/pull/34)
+
+  **Author:** @chunman-yeung
+
 ## 0.4.5
 
 ### Patch Changes

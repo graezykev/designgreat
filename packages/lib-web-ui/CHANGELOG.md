@@ -1,5 +1,29 @@
 # @designgreat/lib-web-ui
 
+## 0.5.7
+
+### Patch Changes
+
+- 81e67b6: Theme CSS improvements and refinements
+
+  ## Changes
+
+  ### Theme Styling
+  - Updated `designgreat-theme.css` with improved CSS variable organization
+  - Enhanced theme switching styles for better visual consistency
+  - Refined component theme application
+
+  These changes improve the visual consistency of the design system components across light and dark
+  themes.
+
+  **Related PR:** [#34](https://github.com/graezykev/designgreat/pull/34)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [81e67b6]
+  - @designgreat/lib-web-ui-design-token@0.4.6
+  - @designgreat/design-token-support@0.2.9
+
 ## 0.5.6
 
 ### Patch Changes
