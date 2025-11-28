@@ -1,6 +1,6 @@
 {
   "name": "@designgreat/lib-web-ui-design-token",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "private": false,
   "publishConfig": {
     "access": "public"
