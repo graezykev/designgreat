@@ -1,5 +1,19 @@
 # @designgreat/lib-web-ui-design-token
 
+## 0.5.1
+
+### Patch Changes
+
+- b2e07b8: **Update README documentation links to match new URL structure**
+  - Updated Design Token Guides link: `/docs/tutorial/overview` → `/design-token/guides/overview`
+  - Updated Design Token Development Guides link: `/contributing/design-tokens-development/overview`
+    → `/contributing/design-token-development/overview`
+  - Changed "Development Guide" to "Development Guides" (plural noun)
+
+  **Related PR:** [#36](https://github.com/graezykev/designgreat/pull/36)
+
+  **Author:** @chunman-yeung
+
 ## 0.5.0
 
 ### Minor Changes
