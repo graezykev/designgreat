@@ -51,7 +51,9 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
+          path: 'docs-design-token',
+          routeBasePath: 'design-token',
+          sidebarPath: './sidebars-design-token.ts',
           editUrl:
             `https://github.com/${organizationName}/${projectName}/tree/main/packages/docs-design-system/`
         },
@@ -79,9 +81,9 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'components',
-        path: 'docs-components',
-        routeBasePath: 'components',
-        sidebarPath: './sidebars-components.ts',
+        path: 'docs-web-component',
+        routeBasePath: 'web-component',
+        sidebarPath: './sidebars-web-component.ts',
         editUrl:
           `https://github.com/${organizationName}/${projectName}/tree/main/packages/docs-design-system/`
       }
@@ -119,7 +121,8 @@ const config: Config = {
         hashed: true,
         language: ['en'],
         highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true
+        explicitSearchResultPath: true,
+        docsDir: 'docs-design-token'
       }
     ]
   ],
@@ -142,16 +145,16 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'designTokenSidebar',
           position: 'left',
-          label: 'Design Tokens'
+          label: 'Design Token'
         },
         {
           type: 'doc',
           docId: 'guides/overview',
           docsPluginId: 'components',
           position: 'left',
-          label: 'Components'
+          label: 'Web Component'
         },
         {
           type: 'doc',
@@ -171,28 +174,28 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Design Token',
           items: [
             {
-              label: 'Design Tokens',
-              to: '/docs/tutorial/overview'
+              label: 'Design Token',
+              to: '/design-token/guides/overview'
             }
           ]
         },
         {
-          title: 'Components',
+          title: 'Web Component',
           items: [
             {
               label: 'Button',
-              to: '/components/button'
+              to: '/web-component/button'
             },
             {
               label: 'Dialog',
-              to: '/components/dialog'
+              to: '/web-component/dialog'
             },
             {
               label: 'TextInput',
-              to: '/components/text-input'
+              to: '/web-component/text-input'
             }
           ]
         },

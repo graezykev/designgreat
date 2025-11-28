@@ -1,0 +1,11 @@
+{
+  "label": "Shortcuts",
+  "position": 8,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Color Shortcuts",
+    "description": "High-level, semantic color shortcuts for common use cases. These tokens abstract the complexity of the color system and make it easy to maintain consistent styling.",
+    "keywords": ["shortcuts", "text", "background", "border", "shadow", "interactive"]
+  }
+}

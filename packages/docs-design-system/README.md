@@ -9,7 +9,7 @@ Documentation hub for the DesignGreat design system.
 ## 📖 Contributing
 
 For detailed information about developing and contributing to this documentation site, see the
-[Contributing to Documentation](https://graezykev.github.io/designgreat/contributing/documentation-site/overview)
+[Contributing to Documentation](https://graezykev.github.io/designgreat/contributing/documentation-site-development/overview)
 guide.
 
 ## 🔗 Additional Resources

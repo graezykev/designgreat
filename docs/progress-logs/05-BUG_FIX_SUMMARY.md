@@ -21,7 +21,7 @@ Instead of the expected:
 
 ### Documentation Bug
 
-**File:** `packages/docs-design-system/docs/colors/accent-colors.mdx`  
+**File:** `packages/docs-design-system/docs-design-token/colors/accent-colors.mdx`  
 **Line:** 292
 
 **Issue:** Malformed CSS variable syntax - missing opening parenthesis after `var`
@@ -195,7 +195,7 @@ properties.
 
 ## 🔄 Related Files Modified
 
-1. `packages/docs-design-system/docs/colors/accent-colors.mdx` - Fixed typo
+1. `packages/docs-design-system/docs-design-token/colors/accent-colors.mdx` - Fixed typo
 2. `audit-color-docs.mjs` - Added CHECK 2.5 and CHECK 10.5
 3. `BUG_FIX_SUMMARY.md` - This document
 

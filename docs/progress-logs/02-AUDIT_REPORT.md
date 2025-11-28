@@ -6,10 +6,10 @@
 
 ## Executive Summary
 
-The color documentation in `packages/docs-design-system/docs/colors/` has been thoroughly audited.
-All documentation files are structurally sound with **no critical errors or data inconsistencies**.
-The audit found 5 warnings related to shorthand range notation that could be expanded for better
-documentation clarity.
+The color documentation in `packages/docs-design-system/docs-design-token/colors/` has been
+thoroughly audited. All documentation files are structurally sound with **no critical errors or data
+inconsistencies**. The audit found 5 warnings related to shorthand range notation that could be
+expanded for better documentation clarity.
 
 ## Audit Scope
 
