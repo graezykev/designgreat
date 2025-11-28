@@ -1,9 +1,6 @@
-import { getThemeClassName } from '@designgreat/design-token-support'
-import { light } from '@designgreat/lib-web-ui-design-token'
+import { THEME_CLASSES, light } from '@designgreat/lib-web-ui-design-token'
 import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
-
-const DARK_THEME_CLASS = getThemeClassName('dark')
 
 type TailwindPluginApi = {
   addVariant: (
@@ -12,16 +9,17 @@ type TailwindPluginApi = {
   ) => void
 }
 
-const colorUtilities = flattenColorVars(light.color, ['color'])
-const spacingScale = flattenTokenValues(light.spacing, ['spacing'])
-const fontSizeScale = flattenTokenValues(light.size?.font ?? {}, ['size', 'font'])
-const fontFamilyScale = flattenTokenValues(light['font-family'] ?? {}, ['font-family'])
-const fontWeightScale = flattenTokenValues(light['font-weight'] ?? {}, ['font-weight'])
-const lineHeightScale = flattenTokenValues(light.number?.['line-height'] ?? {}, ['number', 'line-height'])
-const letterSpacingScale = flattenTokenValues(light['letter-spacing'] ?? {}, ['letter-spacing'])
+// Access tokens via dg namespace
+const colorUtilities = flattenColorVars(light.dg.color, ['color'])
+const spacingScale = flattenTokenValues(light.dg.spacing, ['spacing'])
+const fontSizeScale = flattenTokenValues(light.dg.size?.font ?? {}, ['size', 'font'])
+const fontFamilyScale = flattenTokenValues(light.dg['font-family'] ?? {}, ['font-family'])
+const fontWeightScale = flattenTokenValues(light.dg['font-weight'] ?? {}, ['font-weight'])
+const lineHeightScale = flattenTokenValues(light.dg.number?.['line-height'] ?? {}, ['number', 'line-height'])
+const letterSpacingScale = flattenTokenValues(light.dg['letter-spacing'] ?? {}, ['letter-spacing'])
 
 const addThemeVariant = ({ addVariant }: TailwindPluginApi): void => {
-  addVariant('theme-dark', `&:where(.${DARK_THEME_CLASS} &)` as const)
+  addVariant('theme-dark', `&:where(.${THEME_CLASSES.dark} &)` as const)
 }
 
 const config: Config = {

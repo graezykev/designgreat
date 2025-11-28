@@ -4,7 +4,14 @@
  * work well for content-centric websites.
  */
 
+/* Import lib-web-ui CSS (tokens + components) */
 @import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
+
+/* Note: Fonts are loaded via the copy-fonts script
+ * which copies them to static/font/. They are available at runtime
+ * via the /font/ URL path, but we skip @font-face declarations here
+ * to avoid webpack resolution issues during build.
+ * Roboto is available via CSS variable fallback to system fonts. */
 
 /* Apply design token theme classes to work with Docusaurus theme system */
 /* The lib-web-ui.css now has the correct order: :root (light) first, then .dg-theme-dark */

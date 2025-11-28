@@ -111,12 +111,11 @@ import '@designgreat/lib-web-ui-design-token/css/dark'
 
 ```typescript
 // Correct setup
-import '@designgreat/lib-web-ui-design-token/css/light'
-import '@designgreat/lib-web-ui-design-token/css/dark'
-import { setTheme } from '@designgreat/design-token-support'
+import '@designgreat/lib-web-ui-design-token/css'
 
-// Apply theme
-setTheme('dark')
+// Apply theme by adding class
+const DARK_THEME_CLASS = 'dg-theme-dark'
+document.body.classList.add(DARK_THEME_CLASS)
 ```
 
 ### TypeScript Errors in Consumer Apps

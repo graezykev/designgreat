@@ -136,10 +136,10 @@ To see your changes in action:
 After token changes, rebuild downstream packages to ensure compatibility:
 
 ```bash
-# Build design token support package
-pnpm --filter @designgreat/design-token-support build
+# Build component library that depends on design tokens
+pnpm --filter @designgreat/lib-web-ui build
 
-# Build component library
+# Build documentation site
 pnpm --filter @designgreat/lib-web-ui build
 
 # Build documentation site

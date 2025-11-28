@@ -15,17 +15,51 @@ The light theme attaches to `:root` by default, so all components use light them
 - `light` – Default light theme
 - `dark` – Dark theme
 
-## Applying a Theme
+## Theme Utilities
 
-Theme classes are generated from `@designgreat/lib-web-ui-design-token`. Apply a theme by wrapping your content with the theme class:
+The design token package provides helper functions for theme management:
 
 ```tsx
-import { createThemeConfig } from '@designgreat/design-token-support'
+import {
+  getThemeClassName,
+  applyTheme,
+  isThemeApplied,
+  getOppositeTheme,
+  THEME_CLASSES,
+  THEME_SELECTORS
+} from '@designgreat/lib-web-ui-design-token'
 
-const darkTheme = createThemeConfig('dark')
+// Get CSS class name for a theme
+getThemeClassName('dark')  // 'dg-theme-dark'
+getThemeClassName('light') // '' (light uses :root)
+
+// Apply theme to an element
+applyTheme(document.documentElement, 'dark')
+
+// Check if a theme is applied
+isThemeApplied(document.documentElement, 'dark') // true/false
+
+// Get the opposite theme
+getOppositeTheme('dark') // 'light'
+
+// Direct access to class names
+THEME_CLASSES.dark  // 'dg-theme-dark'
+THEME_CLASSES.light // ''
+```
+
+## Applying a Theme
+
+Apply a theme by wrapping your content with the theme class:
+
+```tsx
+import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
 
 export function App() {
-  return <div className={darkTheme.className}>{/* Application content */}</div>
+  return (
+    <div className={getThemeClassName('dark')}>
+      {/* Application content */}
+    </div>
+  )
 }
 ```
 
@@ -35,37 +69,44 @@ For runtime theme switching, use state to manage the active theme:
 
 ```tsx
 import { useState } from 'react'
-import { createThemeConfig } from '@designgreat/design-token-support'
-
-const lightTheme = createThemeConfig('light')
-const darkTheme = createThemeConfig('dark')
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
 
 export function App() {
-  const [isDark, setIsDark] = useState(false)
-  const currentTheme = isDark ? darkTheme : lightTheme
+  const [theme, setTheme] = useState<ThemeName>('light')
+
+  const toggleTheme = () => {
+    setTheme(current => current === 'dark' ? 'light' : 'dark')
+  }
 
   return (
-    <div className={currentTheme.className}>
-      <button onClick={() => setIsDark(!isDark)}>Toggle Theme</button>
+    <div className={getThemeClassName(theme)}>
+      <button onClick={toggleTheme}>Toggle Theme</button>
       {/* Application content */}
     </div>
   )
 }
 ```
 
-## Theme Classes
+## Programmatic Theme Application
 
-You can also directly use the generated theme classes:
+For applying themes directly to the DOM:
 
 ```tsx
-export function App() {
-  return <div className="dg-theme-dark">{/* Application content */}</div>
-}
+import { applyTheme } from '@designgreat/lib-web-ui-design-token'
+
+// Apply dark theme to the document
+applyTheme(document.documentElement, 'dark')
+
+// Switch to light theme
+applyTheme(document.documentElement, 'light')
 ```
 
-Available class names:
-- `dg-theme-light` - Light theme (default)
-- `dg-theme-dark` - Dark theme
+## Theme Classes Reference
+
+| Theme | Class Name | CSS Selector |
+|-------|------------|--------------|
+| Light | (none) | `:root` |
+| Dark | `dg-theme-dark` | `.dg-theme-dark` |
 
 ## How Themes Work
 
@@ -76,4 +117,3 @@ For more details on design tokens and theme architecture, see the [Design Tokens
 ## Troubleshooting
 
 If themes aren't working, see the [Troubleshooting Guide](./troubleshooting.mdx#theme-isnt-applied).
-

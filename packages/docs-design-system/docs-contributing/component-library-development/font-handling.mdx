@@ -5,16 +5,44 @@ description: Font loading strategy and best practices
 
 # Font Handling
 
-This page explains the font loading strategy and how fonts are handled in the component library.
+This page explains the font loading strategy and architectural decisions for the component library.
 
-## Why No Fonts in Library CSS?
+## Why Fonts Are Not Bundled
 
-The library CSS intentionally **excludes** fonts to:
+The `@designgreat/lib-web-ui` library **intentionally does NOT bundle fonts** in its distributable CSS. This design decision provides several benefits:
 
-- **Avoid font conflicts** - No conflicts with existing applications
-- **Consumer choice** - Allow consumers to choose font loading strategy
-- **Reduced bundle size** - Applications using different fonts don't download unused fonts
-- **Performance optimization** - Enable better performance optimization (preload, async, etc.)
+### For Consumers
+
+- ✅ **Smaller bundle size** - Apps using custom fonts don't download unused Roboto files
+- ✅ **Flexibility** - Choose your own font loading strategy (CDN, self-hosted, etc.)
+- ✅ **No conflicts** - Avoids font loading conflicts with existing applications
+- ✅ **Performance control** - Consumers can optimize font loading (preload, async, subsetting)
+
+### For the Library
+
+- ✅ **Clean separation** - Design tokens package owns fonts, UI library owns components
+- ✅ **Decoupled architecture** - Font changes don't trigger UI library rebuilds
+- ✅ **Better tree-shaking** - Bundlers can optimize imports
+
+## Import Chain Overview
+
+Understanding the library's CSS architecture:
+
+```
+Consumer App
+  ├─> @designgreat/lib-web-ui-design-token/font (optional)
+  └─> @designgreat/lib-web-ui
+       └─> src/index.ts
+            └─> styles/index.css
+                 ├─> @designgreat/lib-web-ui-design-token/css (tokens)
+                 └─> tailwind.css
+                      ├─> @tailwind utilities
+                      └─> components.css
+```
+
+**Key Point**: Fonts are **NOT** in this chain. They must be imported separately by the consumer.
+
+---
 
 ## What the Library CSS Includes
 
@@ -33,11 +61,17 @@ The CSS **does** include:
 
 Storybook **does** load fonts for preview purposes:
 
-- Fonts are copied from `lib-web-ui-design-token/dist/font/` to `public/assets/fonts/`
-- `font-face.css` is imported in `.storybook/preview.tsx`
-- `font-family` is applied dynamically via React `useEffect` in `ThemeDecorator`
+```typescript
+// .storybook/preview.tsx
+import '@designgreat/lib-web-ui-design-token/font' // Fonts for preview
+import '../src/styles/index.css'                    // Library styles
+```
 
-**Important:** This happens **only** for Storybook, not in the published library.
+**Import Chain:**
+1. `font` - Loads `@font-face` declarations + font files
+2. `styles/index.css` - Loads design tokens + Tailwind + components
+
+**Important:** Fonts are imported **only** in Storybook preview, not in the published library.
 
 ## Consumer Font Options
 
@@ -68,56 +102,59 @@ The library uses CSS variables for font families defined in design tokens:
 
 ```css
 /* From design tokens */
---dg-font-family-sans: 'Roboto', sans-serif;
---dg-font-family-mono: 'Roboto Mono', monospace;
+--dg-font-family-primary: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
 ```
 
 Components reference these variables:
 
 ```css
 .button {
-  font-family: var(--dg-font-family-sans);
+  font-family: var(--dg-font-family-primary);
 }
 ```
 
-## Storybook Font Copy Process
+## Library Import Chain
 
-The Storybook dev server automatically copies fonts:
+The library's CSS architecture ensures fonts are NOT bundled:
 
-```bash
-pnpm --filter @designgreat/lib-web-ui storybook
+```
+src/index.ts
+  └─> styles/index.css
+       ├─> @designgreat/lib-web-ui-design-token/css  (tokens only)
+       └─> tailwind.css
+            ├─> @tailwind utilities
+            └─> components.css
+
+❌ Fonts are NOT imported here
 ```
 
-**What happens:**
-1. Fonts are copied from `../lib-web-ui-design-token/dist/font/` to `public/assets/fonts/`
-2. Font-face CSS is imported in preview
-3. Fonts are available for all stories
+**Storybook adds fonts separately:**
 
-If fonts don't load, manually copy them:
-
-```bash
-cd packages/lib-web-ui
-cp -r ../lib-web-ui-design-token/dist/font/* public/assets/fonts/
+```
+.storybook/preview.tsx
+  ├─> @designgreat/lib-web-ui-design-token/font  (fonts - Storybook only)
+  └─> ../src/styles/index.css                     (library CSS)
 ```
 
 ## Best Practices
 
 ### For Library Development
 
-- Don't add `@font-face` to component styles
-- Use CSS variables for font families
-- Test components in Storybook with fonts loaded
-- Ensure fonts are in `.gitignore` for `public/assets/fonts/`
+- ✅ Import fonts **only** in Storybook preview (`.storybook/preview.tsx`)
+- ✅ Never import fonts in `src/` files (keeps library clean)
+- ❌ Don't add `@font-face` to component styles
+- ✅ Use CSS variables for font families: `var(--dg-font-family-primary)`
+- ✅ Test components in Storybook with fonts loaded
 
 ### For Library Consumers
 
-- Choose your font loading strategy
+- Choose your font loading strategy (see [Font Setup Guide](/components/guides/font-setup))
 - Preload fonts for better performance:
 
 ```html
 <link
   rel="preload"
-  href="/path/to/font.woff2"
+  href="/fonts/Roboto-Regular.woff2"
   as="font"
   type="font/woff2"
   crossorigin
@@ -125,7 +162,7 @@ cp -r ../lib-web-ui-design-token/dist/font/* public/assets/fonts/
 ```
 
 - Consider font subsetting for smaller file sizes
-- Use `font-display: swap` for better UX
+- Use `font-display: swap` for better UX (included by default in design token fonts)
 
 ## Troubleshooting
 

@@ -23,3 +23,7 @@ for (const theme of themes) {
   // eslint-disable-next-line no-await-in-loop
   await sd.buildAllPlatforms()
 }
+
+// Generate combined CSS file after both themes are built
+await import('./post-build-combine-css.js')
+

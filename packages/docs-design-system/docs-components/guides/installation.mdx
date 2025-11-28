@@ -21,11 +21,19 @@ Make sure these are installed in your project.
 
 ## Basic Setup
 
-Import the CSS and components in your application:
+Import the library and components in your application:
 
 ```tsx
 // In your app entrypoint (e.g., main.tsx, _app.tsx, app/layout.tsx)
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+
+// Option 1: With fonts (recommended)
+import '@designgreat/lib-web-ui-design-token/font' // Loads Roboto font
+import '@designgreat/lib-web-ui'                    // Includes tokens + styles
+
+// Option 2: Without fonts (if using custom fonts)
+import '@designgreat/lib-web-ui'                    // Includes tokens + styles only
+
+// Import and use components
 import { Button, TextInput, Dialog } from '@designgreat/lib-web-ui'
 
 function Example() {
@@ -38,8 +46,19 @@ function Example() {
 }
 ```
 
-:::important
-The distributed CSS contains component styles, token variables, and Tailwind utilities. If your build tool tree-shakes CSS per entry (e.g. Next.js), ensure the import executes on every page where components are rendered.
+:::important Font Loading
+**Fonts are NOT bundled** with the library. You have two options:
+1. ✅ **Import from design tokens** (recommended): `import '@designgreat/lib-web-ui-design-token/font'`
+2. 🔧 **Use your own fonts**: See the [Font Setup Guide](./font-setup.mdx)
+:::
+
+:::tip What Gets Imported
+The `@designgreat/lib-web-ui` import includes:
+- ✅ Design tokens (CSS variables for light/dark themes)
+- ✅ Tailwind utilities (no resets - safe for existing projects)
+- ✅ Component styles
+
+It does **NOT** include fonts to keep the bundle clean.
 :::
 
 ## Integration with Existing Tailwind Projects

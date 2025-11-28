@@ -4,42 +4,30 @@ sidebar_position: 6
 
 # Tailwind CSS Integration
 
-Tailwind CSS v4 favors authoring theme data in CSS. You can generate a theme layer with the design token helpers and import it alongside the Tailwind entry point.
+Tailwind CSS v4 favors authoring theme data in CSS. You can import the design token CSS directly alongside the Tailwind entry point.
 
-## Generate Theme CSS
+## Import Design Token CSS
 
-Create a script to generate Tailwind-compatible theme CSS:
-
-```typescript
-// scripts/generate-tailwind-theme.ts
-import { writeFileSync } from 'node:fs'
-import { createThemeStyles, getThemeClassName } from '@designgreat/design-token-support'
-
-const rootCss = createThemeStyles('light', { selector: ':root', indent: 2 })
-const darkCss = createThemeStyles('dark', {
-  selector: `.${getThemeClassName('dark')}`,
-  indent: 2
-})
-
-writeFileSync('src/styles/designgreat-theme.css', `@layer theme {\n${rootCss}\n\n${darkCss}\n}\n`)
-```
-
-## Import in Tailwind
+Simply import the combined CSS that includes both light and dark themes:
 
 ```css
 /* src/styles/tailwind.css */
 @import 'tailwindcss';
-@import './designgreat-theme.css';
+@import '@designgreat/lib-web-ui-design-token/css';
 
-@custom-variant theme-dark (&:where(.dg-theme-dark &));
+@custom-variant theme-dark (&:where(.dg-theme-dark, .dg-theme-dark *));
 ```
+
+This imports:
+- `:root` with light theme variables
+- `.dg-theme-dark` with dark theme variables
 
 ## Using Design Tokens in Utilities
 
-With the CSS layer in place, utilities can directly reference token values:
+With the CSS imported, utilities can directly reference token values:
 
 ```tsx
-<div className="bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-body)]">
+<div className="bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-default)]">
   Content
 </div>
 ```
@@ -93,23 +81,28 @@ Then use them as regular Tailwind utilities:
 
 ## JavaScript-Driven Theming
 
-The helper package continues to offer utilities for JS-driven theming or SSR workflows:
+You can also access tokens programmatically and use theme utilities:
 
 ```typescript
 import {
-  createCssVariableMap,
+  themes,
+  applyTheme,
   getThemeClassName,
-  createThemeConfig
-} from '@designgreat/design-token-support'
+  THEME_CLASSES
+} from '@designgreat/lib-web-ui-design-token'
 
-// Get CSS variable map for inline styles
-const theme = createThemeConfig('dark')
-const cssVars = createCssVariableMap(theme.tokens)
+// Access token values
+const darkTokens = themes.dark
+const bgColor = darkTokens.dg.color.background.default
 
-// Use in React inline styles
-<div style={{ backgroundColor: cssVars['--dg-color-background-default'] }}>
-  Content
-</div>
+// Apply theme using utility function
+applyTheme(document.body, 'dark')
+
+// Or use the class name directly
+document.body.className = getThemeClassName('dark')
+
+// Or access the constant
+document.body.className = THEME_CLASSES.dark
 ```
 
 ## Benefits

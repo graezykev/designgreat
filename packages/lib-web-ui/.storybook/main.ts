@@ -11,6 +11,9 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag'
   },
+  core: {
+    disableTelemetry: true // Added to prevent interactive telemetry prompts
+  },
   async viteFinal(config) {
     const base = process.env.STORYBOOK_BASE_PATH ?? '/'
 

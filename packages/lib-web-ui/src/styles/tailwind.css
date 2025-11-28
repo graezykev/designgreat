@@ -1,4 +1,12 @@
-@import './designgreat-theme.css';
+/**
+ * Tailwind CSS utilities + component styles
+ * 
+ * Note: We only include @tailwind utilities (not base or components)
+ * to avoid unwanted CSS resets that could conflict with consuming applications.
+ */
+
+/* Component-specific styles (built with Tailwind) */
 @import './components.css';
 
+/* Tailwind utilities only */
 @tailwind utilities;

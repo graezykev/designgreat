@@ -10,20 +10,6 @@ Install the design token package using pnpm (or npm/yarn):
 pnpm add @designgreat/lib-web-ui-design-token
 ```
 
-## Additional Package
-
-For theme switching and CSS generation helpers, you may also want to install:
-
-```bash
-pnpm add @designgreat/design-token-support
-```
-
-This support package provides utilities for:
-- Creating theme configurations
-- Generating CSS variable maps
-- Creating theme stylesheets
-- Getting theme class names
-
 ## Package Exports
 
 The package provides the following exports for easy consumption:
@@ -31,10 +17,32 @@ The package provides the following exports for easy consumption:
 ### Main Export
 
 ```typescript
-import { ... } from '@designgreat/lib-web-ui-design-token'
+import {
+  // Theme utilities
+  getThemeClassName,
+  getThemeSelector,
+  applyTheme,
+  isThemeApplied,
+  getOppositeTheme,
+  THEME_CLASSES,
+  THEME_SELECTORS,
+  
+  // Token access
+  themes,
+  light,
+  dark,
+  createTheme,
+  getThemeTokens,
+  listThemeNames,
+  
+  // Types
+  type ThemeName,
+  type ThemeToken,
+  type ThemeOverrides
+} from '@designgreat/lib-web-ui-design-token'
 ```
 
-TypeScript runtime APIs including theme management and token access.
+TypeScript runtime APIs including theme management utilities and token access.
 
 ### Font Export
 
@@ -62,8 +70,14 @@ Light theme CSS variables.
 
 Dark theme CSS variables.
 
-:::warning
-Both `light` and `dark` CSS files use `:root` selector. **Do not import both** or they will conflict. For theme switching support, use the `@designgreat/design-token-support` package instead.
+:::info Combined Import
+For theme switching support, import the combined CSS file that includes both light (`:root`) and dark (`.dg-theme-dark`) themes:
+
+```css
+@import '@designgreat/lib-web-ui-design-token/css';
+```
+
+This is the recommended approach for applications that need theme switching.
 :::
 
 ### Export Summary

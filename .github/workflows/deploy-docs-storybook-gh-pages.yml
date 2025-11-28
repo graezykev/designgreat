@@ -116,7 +116,6 @@ jobs:
         if: steps.strategy.outputs.should_deploy == 'true'
         run: |
           pnpm --filter @designgreat/lib-web-ui-design-token run build
-          pnpm --filter @designgreat/design-token-support run build
 
       # ============================================
       # BUILD DOCUSAURUS (if needed)

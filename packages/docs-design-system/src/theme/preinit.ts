@@ -25,11 +25,13 @@ function initializeThemeSync(): void {
     const targetClass = getThemeClassName(theme)
     const oppositeClass = getOppositeThemeClassName(theme)
 
-    // Remove opposite theme class
-    html.classList.remove(oppositeClass)
+    // Remove opposite theme class (if not empty)
+    if (oppositeClass) {
+      html.classList.remove(oppositeClass)
+    }
 
-    // Add target class if not present
-    if (!html.classList.contains(targetClass)) {
+    // Add target class if not present (and not empty - light theme uses :root)
+    if (targetClass && !html.classList.contains(targetClass)) {
       html.classList.add(targetClass)
 
       if (process.env.NODE_ENV === 'development') {
@@ -59,7 +61,8 @@ function initializeThemeSync(): void {
         const theme = html.getAttribute(DOCUSAURUS_THEME_ATTR) as ThemeMode | undefined
         const targetClass = getThemeClassName(theme)
 
-        if (!html.classList.contains(targetClass)) {
+        // Only restore if targetClass is not empty (light theme uses :root, no class needed)
+        if (targetClass && !html.classList.contains(targetClass)) {
           if (process.env.NODE_ENV === 'development') {
             console.debug('[Theme Pre-init]', { action: 'restored', class: targetClass })
           }

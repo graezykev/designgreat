@@ -23,8 +23,14 @@ const darkTokensModule = await import(
 const lightTokens = extractTokenValue(asRecord(lightTokensModule.default))
 const darkTokens = extractTokenValue(asRecord(darkTokensModule.default))
 
-const light = lightTokens
-const dark = darkTokens
+// Wrap in namespace structure
+const light = {
+  dg: lightTokens
+}
+
+const dark = {
+  dg: darkTokens
+}
 
 await mkdir(generatedDir, { recursive: true })
 

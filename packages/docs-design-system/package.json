@@ -7,7 +7,7 @@
   },
   "scripts": {
     "docusaurus": "docusaurus",
-    "copy:fonts": "tsx ./scripts/copy-fonts.mts",
+    "copy:fonts": "tsx ./scripts/copy-fonts.ts",
     "dev": "pnpm run copy:fonts && docusaurus start",
     "start": "pnpm run dev",
     "build": "pnpm run copy:fonts && docusaurus build",
@@ -21,7 +21,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@designgreat/design-token-support": "workspace:*",
     "@designgreat/lib-web-ui": "workspace:*",
     "@designgreat/lib-web-ui-design-token": "workspace:*",
     "@docusaurus/core": "3.9.2",

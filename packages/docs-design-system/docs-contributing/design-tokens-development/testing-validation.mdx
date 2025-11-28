@@ -158,9 +158,8 @@ This runs TypeScript compiler without emitting files:
 After token changes, test dependent packages:
 
 ```bash
-# Test design token support package
-pnpm --filter @designgreat/design-token-support test
-pnpm --filter @designgreat/design-token-support build
+# Test design token package
+pnpm --filter @designgreat/lib-web-ui-design-token build
 
 # Test component library
 pnpm --filter @designgreat/lib-web-ui build
@@ -175,11 +174,12 @@ pnpm --filter @designgreat/docs-design-system build
 Test that CSS variables are correctly generated:
 
 ```bash
-# Build design-token-support package
-pnpm --filter @designgreat/design-token-support build
+# Check generated CSS files
+cat packages/lib-web-ui-design-token/dist/css/light/variables.css
+cat packages/lib-web-ui-design-token/dist/css/dark/variables.css
 
-# Check output
-cat packages/shared/design-token-support/dist/index.js
+# Check TypeScript exports
+cat packages/lib-web-ui-design-token/src/generated/themes.ts
 ```
 
 ### Visual Regression Testing

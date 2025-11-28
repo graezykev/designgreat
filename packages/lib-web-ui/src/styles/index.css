@@ -1,0 +1,17 @@
+/**
+ * Main stylesheet for @designgreat/lib-web-ui
+ * 
+ * Import chain:
+ * 1. Design tokens (CSS variables for theming)
+ * 2. Tailwind utilities + component styles
+ * 
+ * Note: Fonts are NOT included here to keep the bundle clean.
+ * Consumers must import fonts separately:
+ * import '@designgreat/lib-web-ui-design-token/font'
+ */
+
+/* Design Tokens - Light (:root) and Dark (.dg-theme-dark) themes */
+@import '@designgreat/lib-web-ui-design-token/css';
+
+/* Tailwind utilities + component styles */
+@import './tailwind.css';

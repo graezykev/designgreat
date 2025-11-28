@@ -22,11 +22,10 @@
   },
   "scripts": {
     "clean": "rm -rf dist coverage tsconfig*.tsbuildinfo storybook-static public",
-    "generate:theme": "tsx ./scripts/generate-theme-css.ts",
-    "build": "pnpm run clean && pnpm run generate:theme && tsc -p tsconfig.build.json && vite build && pnpm run storybook:build",
-    "dev": "pnpm run generate:theme && vite dev",
-    "storybook": "pnpm run generate:theme && storybook dev -p 6006",
-    "storybook:build": "pnpm run generate:theme && storybook build",
+    "build": "pnpm run clean && tsc -p tsconfig.build.json && vite build && STORYBOOK_DISABLE_TELEMETRY=1 pnpm run storybook:build",
+    "dev": "vite dev",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "pnpm exec eslint . --max-warnings 0",
     "test": "TS_NODE_PROJECT=tsconfig.jest.config.json NODE_OPTIONS=--loader=ts-node/esm JEST_SKIP_WATCHMAN=1 jest --runInBand --config jest.config.ts",
@@ -36,7 +35,6 @@
     "prepublishOnly": "if [ \"$CI\" != \"true\" ]; then pnpm run build; fi"
   },
   "dependencies": {
-    "@designgreat/design-token-support": "workspace:*",
     "@designgreat/lib-web-ui-design-token": "workspace:*",
     "clsx": "^2.1.0"
   },

@@ -48,7 +48,6 @@ consistency.
 ### Shared Utilities
 
 - `@designgreat/shared`: Cross-cutting utilities (logging, metrics, domain DTOs).
-- `@designgreat/design-token-support`: Utilities and fixtures for theme CSS variables and docs.
 - `@designgreat/eslint-config`: Flat-config ESLint presets for base, React, and Node environments.
 
 ## Infrastructure

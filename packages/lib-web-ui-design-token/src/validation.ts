@@ -6,7 +6,8 @@ export type TokenValidationError = {
   path: string[]
 }
 
-const REQUIRED_THEME_KEYS = ['color', 'spacing', 'typography', 'shadow']
+// Required keys under the 'dg' namespace
+const REQUIRED_DG_KEYS = ['color', 'spacing', 'typography', 'shadow']
 
 export function runTokenIntegrityChecks(): TokenValidationError[] {
   const errors: TokenValidationError[] = []
@@ -32,24 +33,36 @@ export function runTokenIntegrityChecks(): TokenValidationError[] {
       continue
     }
 
-    for (const key of REQUIRED_THEME_KEYS) {
-      if (!(key in theme)) {
+    // Check for 'dg' namespace
+    const dgNamespace = theme.dg
+    if (!dgNamespace || typeof dgNamespace !== 'object') {
+      errors.push({
+        code: 'missing_dg_namespace',
+        message: `Theme "${themeName}" is missing required "dg" namespace`,
+        path: ['themes', themeName, 'dg']
+      })
+      continue
+    }
+
+    // Check required keys under dg namespace
+    for (const key of REQUIRED_DG_KEYS) {
+      if (!(key in (dgNamespace as Record<string, unknown>))) {
         errors.push({
           code: 'missing_theme_section',
-          message: `Theme "${themeName}" is missing required section "${key}"`,
-          path: ['themes', themeName, key]
+          message: `Theme "${themeName}" is missing required section "dg.${key}"`,
+          path: ['themes', themeName, 'dg', key]
         })
       }
     }
 
-    const colorSection = theme.color
+    const colorSection = (dgNamespace as Record<string, unknown>).color
     if (colorSection && typeof colorSection === 'object') {
       const colorKeys = Object.keys(colorSection as Record<string, unknown>)
       if (colorKeys.length === 0) {
         errors.push({
           code: 'empty_color_palette',
           message: `Theme "${themeName}" has an empty color palette`,
-          path: ['themes', themeName, 'color']
+          path: ['themes', themeName, 'dg', 'color']
         })
       }
     }

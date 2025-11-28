@@ -10,9 +10,9 @@ import {
 import { assertTokenIntegrity, runTokenIntegrityChecks } from '../validation.js'
 
 describe('design tokens public api', () => {
-  it('exposes light and dark theme dictionaries', () => {
-    expect(designTokens.themes.light.color.accent.blue.DEFAULT).toBe('#0055cc')
-    expect(designTokens.themes.dark.color.accent.blue.DEFAULT).toBe('#599eff')
+  it('exposes light and dark theme dictionaries with dg namespace', () => {
+    expect(designTokens.themes.light.dg.color.accent.blue.DEFAULT).toBe('#0055cc')
+    expect(designTokens.themes.dark.dg.color.accent.blue.DEFAULT).toBe('#599eff')
   })
 
   it('lists available themes in a frozen array', () => {
@@ -27,21 +27,23 @@ describe('design tokens public api', () => {
 
     expect(theme).not.toBe(getThemeTokens(DEFAULT_THEME))
     expect(theme).not.toBe(getThemeTokens(DEFAULT_THEME))
-    expect(theme.color).not.toBe(getThemeTokens(DEFAULT_THEME).color)
-    expect(theme.color.accent.blue.DEFAULT).toBe('#0055cc')
+    expect(theme.dg).not.toBe(getThemeTokens(DEFAULT_THEME).dg)
+    expect(theme.dg.color.accent.blue.DEFAULT).toBe('#0055cc')
   })
 
   it('allows overriding nested properties when creating a theme', () => {
     const theme = createTheme(DEFAULT_THEME, {
-      color: {
-        background: {
-          DEFAULT: '#f0f0f0'
+      dg: {
+        color: {
+          background: {
+            DEFAULT: '#f0f0f0'
+          }
         }
       }
     })
 
-    expect(theme.color.background.DEFAULT).toBe('#f0f0f0')
-    expect(getThemeTokens(DEFAULT_THEME).color.background.DEFAULT).toBe('#ffffff')
+    expect(theme.dg.color.background.DEFAULT).toBe('#f0f0f0')
+    expect(getThemeTokens(DEFAULT_THEME).dg.color.background.DEFAULT).toBe('#ffffff')
   })
 
   it('throws when requesting an unknown theme', () => {

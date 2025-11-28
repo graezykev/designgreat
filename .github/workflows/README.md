@@ -145,7 +145,6 @@ version management and automated changelog generation.
    - Publishes changed packages to NPM
    - Configured packages:
      - `@designgreat/lib-web-ui-design-token`
-     - `@designgreat/design-token-support`
      - `@designgreat/lib-web-ui`
      - `@designgreat/docs-design-system`
 

@@ -3,14 +3,6 @@ import userEvent from '@testing-library/user-event'
 
 import { CodeDemoToggle } from './CodeDemoToggle'
 
-jest.mock(
-  '@designgreat/design-token-support',
-  () => ({
-    getThemeClassName: () => 'dg-theme-dark'
-  }),
-  { virtual: true }
-)
-
 type Callback = MutationCallback
 
 type ObserverRecord = {

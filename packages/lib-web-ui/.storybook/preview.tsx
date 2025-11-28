@@ -1,37 +1,43 @@
-import { createThemeConfig, getThemeClassName } from '@designgreat/design-token-support'
+import {
+  applyTheme,
+  getThemeClassName,
+  type ThemeName
+} from '@designgreat/lib-web-ui-design-token'
+import '@designgreat/lib-web-ui-design-token/font'
 import type { Decorator, Preview } from '@storybook/react'
 import { useEffect } from 'react'
 
-// Import font-face definitions for Storybook
-import '@designgreat/lib-web-ui-design-token/font'
-import '../src/styles/tailwind.css'
+import '../src/styles/index.css'
 
-const LIGHT_THEME = createThemeConfig('light', { selector: ':root' })
-const DARK_THEME = createThemeConfig('dark', {
-  selector: `.${getThemeClassName('dark')}`
-})
+/**
+ * Storybook Preview Configuration
+ *
+ * Import chain:
+ * 1. Fonts (optional for Storybook preview, not bundled in lib)
+ * 2. Library styles (tokens + Tailwind + components)
+ */
 
 const THEMES = {
-  light: LIGHT_THEME,
-  dark: DARK_THEME
+  light: { className: getThemeClassName('light') },
+  dark: { className: getThemeClassName('dark') }
 } as const
 
 const ThemeDecorator: Decorator = (Story, context) => {
-  const themeName = (context.globals.theme as keyof typeof THEMES) ?? 'light'
-  const theme = THEMES[themeName] ?? LIGHT_THEME
+  const themeName = (context.globals.theme as ThemeName) ?? 'light'
+  const theme = THEMES[themeName] ?? THEMES.light
   const themeClassName: string = theme.className
 
   useEffect(() => {
-    const classNames: string[] = Object.values(THEMES).map(({ className }) => className)
-
     const html = document.documentElement
     const { body } = document
     const root = document.getElementById('storybook-root')
     const main = document.querySelector<HTMLElement>('.sb-show-main')
 
+    // Apply theme using the centralized utility
+    applyTheme(html, themeName)
+    applyTheme(body, themeName)
+
     for (const target of [html, body]) {
-      target.classList.remove(...classNames)
-      target.classList.add(themeClassName)
       target.style.height = '100%'
       target.style.overflow = 'hidden'
       target.style.margin = '0'
@@ -72,7 +78,7 @@ const ThemeDecorator: Decorator = (Story, context) => {
         main.style.margin = ''
       }
     }
-  }, [theme, themeClassName])
+  }, [themeName, themeClassName])
 
   return (
     <div

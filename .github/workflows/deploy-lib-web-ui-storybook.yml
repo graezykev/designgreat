@@ -75,7 +75,6 @@ jobs:
         if: steps.changes.outputs.changed == 'true'
         run: |
           pnpm --filter @designgreat/lib-web-ui-design-token run build
-          pnpm --filter @designgreat/design-token-support run build
 
       - name: Build lib-web-ui Storybook
         if: steps.changes.outputs.changed == 'true'
