@@ -53,10 +53,10 @@ module.exports = {
     extend: {
       colors: {
         // Reference design token variables
-        'dg-primary': 'var(--dg-color-primary-500)',
-        'dg-secondary': 'var(--dg-color-secondary-500)',
+        'dg-primary': 'var(--dg-color-primary-default)',
+        'dg-secondary': 'var(--dg-color-secondary-default)',
         'dg-background': 'var(--dg-color-background-default)',
-        'dg-text': 'var(--dg-color-text-body)'
+        'dg-text': 'var(--dg-color-text-default)'
       },
       spacing: {
         // Reference spacing tokens
@@ -93,10 +93,10 @@ import {
 
 // Access token values
 const darkTokens = themes.dark
-const bgColor = darkTokens.dg.color.background.default
+const bgColor = darkTokens.dg.color.background.DEFAULT
 
 // Apply theme using utility function
-applyTheme(document.body, 'dark')
+applyTheme(document.documentElement, 'dark')
 
 // Or use the class name directly
 document.body.className = getThemeClassName('dark')
@@ -114,7 +114,7 @@ document.body.className = THEME_CLASSES.dark
 
 ## Next Steps
 
-- See [CSS Integration](./css-integration.mdx) for general CSS usage
-- Learn about [Theme Switching](./theme-switching.mdx)
-- Check [Runtime APIs](./api/runtime-apis.mdx) for programmatic access
+- Learn about [CSS Integration](./css-integration.mdx) for general CSS usage
+- See [Theme Switching](./theme-switching.mdx) for dynamic theme changes
+- Explore [API Reference](./api/typescript.mdx) for TypeScript types and runtime utilities
 

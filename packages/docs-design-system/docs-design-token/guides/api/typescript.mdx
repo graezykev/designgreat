@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # TypeScript Types
@@ -37,7 +37,7 @@ import {
 
 function setTheme(themeName: ThemeName) {
   // Option 1: Use applyTheme utility
-  applyTheme(document.body, themeName)
+  applyTheme(document.documentElement, themeName)
 
   // Option 2: Use getThemeClassName
   document.body.className = getThemeClassName(themeName)
@@ -51,10 +51,10 @@ The full token structure for a theme. This represents the complete shape of all 
 ```typescript
 const tokens: ThemeToken = getThemeTokens('light')
 
-// Access tokens with full type safety
-const primaryColor = tokens.color.primary[500]
-const spacing = tokens.spacing[11]
-const fontSize = tokens.typography.fontSize.body
+// Access tokens with full type safety (all under .dg namespace)
+const primaryColor = tokens.dg.color.primary.DEFAULT
+const spacing = tokens.dg.spacing.px16
+const fontSize = tokens.dg.size.font.body
 ```
 
 ### `ThemeOverrides`
@@ -63,13 +63,15 @@ Partial theme structure for `createTheme()`. Use this when you want to override 
 
 ```typescript
 const overrides: ThemeOverrides = {
-  color: {
-    primary: {
-      500: '#FF0000'
+  dg: {
+    color: {
+      primary: {
+        DEFAULT: '#FF0000'
+      }
+    },
+    spacing: {
+      px16: '2rem'
     }
-  },
-  spacing: {
-    11: '2rem'
   }
 }
 
@@ -87,8 +89,8 @@ import { themes } from '@designgreat/lib-web-ui-design-token'
 const lightTokens = themes.light
 
 // ✅ TypeScript knows all available tokens via .dg namespace
-const bgColor = lightTokens.dg.color.background.default
-const textColor = lightTokens.dg.color.text.default
+const bgColor = lightTokens.dg.color.background.DEFAULT
+const textColor = lightTokens.dg.color.text.DEFAULT
 const spacing = lightTokens.dg.spacing.px16
 
 // ❌ TypeScript will error on invalid paths
@@ -119,7 +121,7 @@ import { themes } from '@designgreat/lib-web-ui-design-token'
 const theme = themes.light
 
 // You get autocomplete for all token properties
-console.log(theme.dg.color.primary.default) // ✅ Autocomplete works
+console.log(theme.dg.color.primary.DEFAULT) // ✅ Autocomplete works
 console.log(theme.dg.spacing.px16) // ✅ Full type safety
 ```
 
@@ -159,7 +161,7 @@ const customTokens: CustomThemeToken = {
 
 ## Next Steps
 
-- See [Theme Switching](../theme-switching.mdx) for practical usage
-- Learn about [CSS Integration](../css-integration.mdx)
-- Check the [Package README](https://github.com/graezykev/designgreat/tree/main/packages/lib-web-ui-design-token/README.md) for more details
+- See [Runtime APIs](./runtime-apis.mdx) for theme utilities and token access functions
+- Learn about [Theme Switching](../theme-switching.mdx) for practical usage
+- Explore [CSS Integration](../css-integration.mdx) for styling options
 

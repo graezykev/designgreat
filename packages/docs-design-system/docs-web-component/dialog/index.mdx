@@ -54,3 +54,24 @@ import {
 - Focus restoration on close
 - Body scroll lock when open
 
+## Troubleshooting
+
+### Dialog Doesn't Close
+
+**Problem:** Dialog appears but won't close when clicking overlay or close button.
+
+**Solution:** Ensure you're properly managing the `open` state:
+
+```tsx
+const [isOpen, setIsOpen] = useState(false)
+
+<Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+  {/* Dialog content */}
+</Dialog>
+```
+
+**Additional checks:**
+- Verify `onClose` is passed and updates state
+- Check that event handlers aren't prevented with `stopPropagation()`
+- Ensure no JavaScript errors are occurring
+

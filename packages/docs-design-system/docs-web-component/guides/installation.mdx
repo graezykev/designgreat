@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Installation
 
+:::tip Only Need Design Tokens?
+If you only need CSS variables and theme utilities without React components, see the [Design Token Installation Guide](/design-token/guides/installation).
+:::
+
 ## Package Installation
 
 Install the component library using pnpm (or npm/yarn):
@@ -27,11 +31,11 @@ Import the library and components in your application:
 // In your app entrypoint (e.g., main.tsx, _app.tsx, app/layout.tsx)
 
 // Option 1: With fonts (recommended)
-import '@designgreat/lib-web-ui-design-token/font' // Loads Roboto font
-import '@designgreat/lib-web-ui'                    // Includes tokens + styles
+import '@designgreat/lib-web-ui-design-token/font'   // Loads Roboto font
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css' // Includes tokens + styles
 
 // Option 2: Without fonts (if using custom fonts)
-import '@designgreat/lib-web-ui'                    // Includes tokens + styles only
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css' // Includes tokens + styles only
 
 // Import and use components
 import { Button, TextInput, Dialog } from '@designgreat/lib-web-ui'
@@ -53,7 +57,7 @@ function Example() {
 :::
 
 :::tip What Gets Imported
-The `@designgreat/lib-web-ui` import includes:
+The `@designgreat/lib-web-ui/dist/lib-web-ui.css` import includes:
 - ✅ Design tokens (CSS variables for light/dark themes)
 - ✅ Tailwind utilities (no resets - safe for existing projects)
 - ✅ Component styles
@@ -88,9 +92,51 @@ module.exports = {
 }
 ```
 
+## Troubleshooting
+
+### Components Don't Have Styles
+
+**Problem:** Components render but have no styling.
+
+**Solution:** Ensure you've imported the CSS in your application entrypoint:
+
+```tsx
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+```
+
+If using a framework with code splitting (like Next.js), make sure the import is in a location that loads on all pages (e.g., `app/layout.tsx` or `pages/_app.tsx`).
+
+### TypeScript Errors
+
+**Problem:** TypeScript can't find type definitions.
+
+**Solution:** The package includes built-in types. Ensure `@designgreat/lib-web-ui` is in your `package.json` dependencies and run:
+
+```bash
+pnpm install
+```
+
+**Additional checks:**
+- Verify your `tsconfig.json` has `"moduleResolution": "node"` or `"bundler"`
+- Try deleting `node_modules` and reinstalling
+
+### Module Resolution Errors
+
+**Problem:** Build fails with "Cannot find module '@designgreat/lib-web-ui'".
+
+**Solution:**
+
+1. Verify the package is installed: `pnpm list @designgreat/lib-web-ui`
+2. Ensure it's in your `package.json` dependencies
+3. Try removing and reinstalling:
+   ```bash
+   pnpm remove @designgreat/lib-web-ui
+   pnpm add @designgreat/lib-web-ui
+   ```
+
 ## Next Steps
 
-- [Configure theming](./theming.mdx)
-- [Setup fonts](./font-setup.mdx)
-- [Explore Tailwind utilities](./tailwind-utilities.mdx)
+- Learn about [Theming](./theming.mdx) for light/dark mode support
+- See [Font Setup](./font-setup.mdx) for font configuration
+- Explore [Tailwind Utilities](./tailwind-utilities.mdx) for utility classes
 

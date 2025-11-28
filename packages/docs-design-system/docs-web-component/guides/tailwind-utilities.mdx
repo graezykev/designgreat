@@ -6,6 +6,10 @@ sidebar_position: 4
 
 The library includes Tailwind utilities that map directly to design tokens, allowing you to build custom UIs using the design system.
 
+:::tip Tailwind Setup
+For setting up Tailwind with design tokens (CSS imports, custom variants, configuration), see the [Design Token Tailwind Integration Guide](/design-token/guides/tailwind-integration). This page covers **using** the pre-built utility classes.
+:::
+
 ## Overview
 
 All utility classes are generated from design tokens and resolve to CSS variables. This means they automatically respond to theme changes (`dg-theme-light` / `dg-theme-dark`).
@@ -112,7 +116,9 @@ function CustomCard() {
 
 ## Advanced: Extending Tailwind Config
 
-If you want to use these tokens in your own Tailwind configuration, you can reference the design token package:
+For comprehensive Tailwind setup including CSS imports, custom variants, and Tailwind v3/v4 configuration, see the [Design Token Tailwind Integration Guide](/design-token/guides/tailwind-integration).
+
+Quick example for Tailwind v3:
 
 ```js
 // tailwind.config.js
@@ -121,13 +127,31 @@ module.exports = {
     extend: {
       colors: {
         // Reference design token variables
-        primary: 'var(--dg-color-primary-500)',
-        secondary: 'var(--dg-color-secondary-500)'
+        primary: 'var(--dg-color-primary-default)',
+        secondary: 'var(--dg-color-secondary-default)'
       }
     }
   }
 }
 ```
 
-For more details on the token architecture, see the [Design Token Guides](/design-token/guides/overview).
+## Troubleshooting
+
+### CSS Purging/Tree-Shaking Issues
+
+**Problem:** Some styles are missing in production.
+
+**Solution:** If using a CSS purging tool (like PurgeCSS), ensure it doesn't remove the library's classes. Add to your Tailwind config:
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './node_modules/@designgreat/lib-web-ui/**/*.js']
+}
+```
+
+**Additional checks:**
+- Disable purging temporarily to verify this is the issue
+- Check your build tool's CSS optimization settings
+- Consider adding library classes to a safelist
 
