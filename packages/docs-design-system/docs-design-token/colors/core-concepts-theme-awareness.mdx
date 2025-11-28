@@ -136,6 +136,12 @@ flowchart LR
 |---|---------|---------|---------|---------|---------|---------|---------|---------|---------|----------|----------|----------|
 | **grey / neutral** | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-1)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-2)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-3)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-4)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-5)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-6)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-7)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-8)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-9)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-10)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-11)'}}></div> | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-12)'}}></div> |
 
+:::info Grey vs Neutral
+**`grey`** and **`neutral`** have identical values. `neutral` is a semantic alias for `grey`, making it interchangeable in your code. Use whichever name fits your context:
+- `color.accent.grey.5` = `color.accent.neutral.5` (same color)
+- Shortcut tokens (like `color.text`, `color.background`) use `neutral` internally
+:::
+
 #### **Warm Colors (10 levels each)**
 
 |  | Level 1 | Level 2 | Level 3 | Level 4 | Level 5 | Level 6 | Level 7 | Level 8 | Level 9 | Level 10 |

@@ -192,18 +192,40 @@ const customButton: ButtonProps = {
 
 ## Troubleshooting
 
+### General Framework Issues
+
 If you encounter issues with any framework:
 
 1. Ensure CSS is imported before components are used
 2. Check that peer dependencies (`react`, `react-dom`) are installed
 3. Verify the import path is correct for your bundler
-4. See the [Troubleshooting Guide](./troubleshooting.mdx) for common issues
+
+### SSR/Hydration Errors
+
+**Problem:** Errors about mismatched HTML or hydration failures in Next.js/other SSR frameworks.
+
+**Solution:** Some components (like Dialog) use portals and may need client-side rendering:
+
+```tsx
+'use client' // Add this at the top of the file in Next.js App Router
+
+import { Dialog } from '@designgreat/lib-web-ui'
+// ... rest of your component
+```
+
+### Build Performance Issues
+
+**Problem:** Build is slow after adding the library.
+
+**Solution:**
+1. Ensure CSS is imported only once (not in multiple files)
+2. Consider using tree-shaking if your bundler supports it
+3. Check that you're not importing from deep paths unnecessarily
 
 ## Need Help?
 
-If your framework isn't listed or you need help with setup, please check:
+If your framework isn't listed or you need help with setup:
 
 - [Installation Guide](./installation.mdx)
-- [Troubleshooting Guide](./troubleshooting.mdx)
 - [GitHub Issues](https://github.com/graezykev/designgreat/issues)
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Runtime APIs
@@ -78,9 +78,9 @@ const lightTokens = themes.light // or use the named export: light
 const darkTokens = themes.dark   // or use the named export: dark
 
 // All tokens are under the .dg namespace
-const backgroundColor = lightTokens.dg.color.background.default
+const backgroundColor = lightTokens.dg.color.background.DEFAULT
 const spacing = lightTokens.dg.spacing.px16
-const primaryColor = darkTokens.dg.color.primary.default
+const primaryColor = darkTokens.dg.color.primary.DEFAULT
 
 console.log(backgroundColor, spacing, primaryColor)
 ```
@@ -105,8 +105,8 @@ Direct access to specific themes:
 import { light, dark } from '@designgreat/lib-web-ui-design-token'
 
 // Use directly without going through themes object
-const lightBg = light.dg.color.background.default
-const darkBg = dark.dg.color.background.default
+const lightBg = light.dg.color.background.DEFAULT
+const darkBg = dark.dg.color.background.DEFAULT
 ```
 
 ## Usage Examples
@@ -119,15 +119,15 @@ import { themes } from '@designgreat/lib-web-ui-design-token'
 const lightTheme = themes.light
 
 // Primary colors
-const primary = lightTheme.dg.color.primary.default
-const primaryHover = lightTheme.dg.color.primary.hover.default
+const primary = lightTheme.dg.color.primary.DEFAULT
+const primaryHover = lightTheme.dg.color.primary.hover.DEFAULT
 
 // Background colors
-const bg = lightTheme.dg.color.background.default
+const bg = lightTheme.dg.color.background.DEFAULT
 const bgBold = lightTheme.dg.color.background.bold
 
 // Text colors
-const textDefault = lightTheme.dg.color.text.default
+const textDefault = lightTheme.dg.color.text.DEFAULT
 const textSubtle = lightTheme.dg.color.text.subtle
 ```
 
@@ -156,7 +156,7 @@ import { themes, getThemeClassName } from '@designgreat/lib-web-ui-design-token'
 function getThemeColor(themeName: ThemeName) {
   const theme = themes[themeName]
   // TypeScript provides autocomplete for theme.dg properties
-  return theme.dg.color.background.default
+  return theme.dg.color.background.DEFAULT
 }
 
 function applyThemeToDocument(themeName: ThemeName) {
@@ -167,6 +167,6 @@ function applyThemeToDocument(themeName: ThemeName) {
 
 ## Next Steps
 
-- Learn about [CSS Integration](../css-integration.mdx)
-- Understand [Theme Switching](../theme-switching.mdx)
-- See [TypeScript Types](./typescript.mdx)
+- See [TypeScript Types](./typescript.mdx) for type definitions and interfaces
+- Learn about [Theme Switching](../theme-switching.mdx) for dynamic theme changes
+- Explore [CSS Integration](../css-integration.mdx) for styling options
