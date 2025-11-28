@@ -29,9 +29,18 @@ type ThemeName = 'light' | 'dark'
 Use this when you need to specify a theme name:
 
 ```typescript
-function applyTheme(themeName: ThemeName) {
-  const theme = createThemeConfig(themeName)
-  // ...
+import {
+  applyTheme,
+  getThemeClassName,
+  type ThemeName
+} from '@designgreat/lib-web-ui-design-token'
+
+function setTheme(themeName: ThemeName) {
+  // Option 1: Use applyTheme utility
+  applyTheme(document.body, themeName)
+
+  // Option 2: Use getThemeClassName
+  document.body.className = getThemeClassName(themeName)
 }
 ```
 
@@ -72,17 +81,18 @@ const customTheme = createTheme(DEFAULT_THEME, overrides)
 When working with tokens, TypeScript provides autocomplete and type checking:
 
 ```typescript
-import { getThemeTokens } from '@designgreat/lib-web-ui-design-token'
+import { themes } from '@designgreat/lib-web-ui-design-token'
 
-const theme = getThemeTokens('light')
+// Access tokens from the themes object with namespace
+const lightTokens = themes.light
 
-// ✅ TypeScript knows all available tokens
-const bgColor = theme.color.background.DEFAULT
-const textColor = theme.color.text.body
-const spacing = theme.spacing[11]
+// ✅ TypeScript knows all available tokens via .dg namespace
+const bgColor = lightTokens.dg.color.background.default
+const textColor = lightTokens.dg.color.text.default
+const spacing = lightTokens.dg.spacing.px16
 
 // ❌ TypeScript will error on invalid paths
-const invalid = theme.color.background.nonexistent // Error!
+const invalid = lightTokens.dg.color.background.nonexistent // Error!
 ```
 
 ## Generic Type Parameters
@@ -91,27 +101,26 @@ Some functions accept generic type parameters for additional type safety:
 
 ```typescript
 import type { ThemeToken } from '@designgreat/lib-web-ui-design-token'
-import { createCssVariableMap } from '@designgreat/design-token-support'
 
 function generateStyles<T extends Partial<ThemeToken>>(tokens: T) {
-  const cssVars = createCssVariableMap(tokens)
-  return cssVars
+  // Process tokens with full type safety
+  return tokens
 }
 ```
 
 ## Type Inference
 
-TypeScript can often infer types automatically:
+TypeScript can infer types automatically from the themes object:
 
 ```typescript
-import { createThemeConfig } from '@designgreat/design-token-support'
+import { themes } from '@designgreat/lib-web-ui-design-token'
 
-// TypeScript infers the return type
-const theme = createThemeConfig('light')
+// TypeScript infers the structure
+const theme = themes.light
 
-// You get autocomplete for className, tokens, etc.
-console.log(theme.className) // ✅ Autocomplete works
-console.log(theme.tokens.color.primary[500]) // ✅ Full type safety
+// You get autocomplete for all token properties
+console.log(theme.dg.color.primary.default) // ✅ Autocomplete works
+console.log(theme.dg.spacing.px16) // ✅ Full type safety
 ```
 
 ## Extending Types
@@ -150,7 +159,7 @@ const customTokens: CustomThemeToken = {
 
 ## Next Steps
 
-- See [Runtime APIs](./runtime-apis.mdx) for using these types
+- See [Theme Switching](../theme-switching.mdx) for practical usage
 - Learn about [CSS Integration](../css-integration.mdx)
 - Check the [Package README](https://github.com/graezykev/designgreat/tree/main/packages/lib-web-ui-design-token/README.md) for more details
 

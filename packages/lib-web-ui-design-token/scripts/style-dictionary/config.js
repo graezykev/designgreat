@@ -30,6 +30,9 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
   // Only generate font-face.css and copy assets for the first theme (light)
   const isFirstTheme = theme === 'light'
 
+  // Determine CSS selector based on theme
+  const cssSelector = theme === 'dark' ? '.dg-theme-dark' : ':root'
+
   return {
     source: [
       `${resolve(srcRoot, 'tokens')}/**/*.json`,
@@ -76,7 +79,7 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
           'conic-gradient/shorthand'
         ],
         buildPath: `${resolve(distRoot, 'css', theme)}/`,
-        prefix: 'token',
+        prefix: 'dg',
         files: [
           {
             destination: 'variables.scss',
@@ -84,7 +87,10 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
           },
           {
             destination: 'variables.css',
-            format: 'css/variables'
+            format: 'css/variables-themed',
+            options: {
+              selector: cssSelector
+            }
           }
         ],
         actions: []
@@ -233,6 +239,21 @@ function registerBaseFormats(StyleDictionary) {
   if (BASE_FORMATS_REGISTERED.has(StyleDictionary)) {
     return
   }
+
+  // Custom CSS format with theme-specific selectors
+  StyleDictionary.registerFormat({
+    name: 'css/variables-themed',
+    format({ dictionary, options }) {
+      const selector = options.selector || ':root'
+
+      const variables = dictionary.allTokens
+        .map(token => `  --${token.name}: ${token.value};`)
+        .join('\n')
+
+      const header = '/**\n * Do not edit directly, this file was auto-generated.\n */\n'
+      return `${header}\n${selector} {\n${variables}\n}\n`
+    }
+  })
 
   StyleDictionary.registerFormat({
     name: 'css/font-face',

@@ -5,6 +5,19 @@ export { light, dark, themes, assertTokenIntegrity, runTokenIntegrityChecks }
 export type { ThemeName } from './generated/themes.js'
 export type { TokenValidationError } from './validation.js'
 
+// Theme utilities - single source of truth for theme class names and selectors
+export {
+  THEME_CLASS_PREFIX,
+  THEME_CLASSES,
+  THEME_SELECTORS,
+  LIGHT_THEME_SELECTOR,
+  getThemeClassName,
+  getThemeSelector,
+  getOppositeTheme,
+  isThemeApplied,
+  applyTheme
+} from './theme-utils.js'
+
 export type ThemeToken<Name extends ThemeName = ThemeName> = typeof themes[Name]
 
 export const DEFAULT_THEME: ThemeName = 'light'

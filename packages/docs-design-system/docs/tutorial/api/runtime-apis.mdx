@@ -4,119 +4,165 @@ sidebar_position: 1
 
 # Runtime APIs
 
-The TypeScript runtime exposes strongly typed helpers for listing themes, cloning overrides, and performing integrity checks.
+The TypeScript runtime exposes strongly typed helpers for accessing design tokens and managing themes.
 
-## Core APIs
+## Theme Utilities
+
+### Theme Class Management
+
+```typescript
+import {
+  getThemeClassName,
+  getThemeSelector,
+  applyTheme,
+  isThemeApplied,
+  getOppositeTheme,
+  THEME_CLASSES,
+  THEME_SELECTORS
+} from '@designgreat/lib-web-ui-design-token'
+
+// Get CSS class name for a theme
+getThemeClassName('dark')  // 'dg-theme-dark'
+getThemeClassName('light') // '' (light uses :root, no class needed)
+
+// Get CSS selector for a theme
+getThemeSelector('dark')  // '.dg-theme-dark'
+getThemeSelector('light') // ':root'
+
+// Apply theme to an element
+applyTheme(document.documentElement, 'dark')
+
+// Check if a theme is applied
+isThemeApplied(document.documentElement, 'dark') // true/false
+
+// Get the opposite theme
+getOppositeTheme('dark') // 'light'
+
+// Direct access to constants
+THEME_CLASSES.dark  // 'dg-theme-dark'
+THEME_CLASSES.light // ''
+THEME_SELECTORS.dark  // '.dg-theme-dark'
+THEME_SELECTORS.light // ':root'
+```
+
+### API Reference
+
+| Function | Parameters | Returns | Description |
+|----------|------------|---------|-------------|
+| `getThemeClassName` | `theme: ThemeName` | `string` | CSS class name for the theme |
+| `getThemeSelector` | `theme: ThemeName` | `string` | CSS selector for the theme |
+| `applyTheme` | `element: Element, theme: ThemeName` | `void` | Applies theme class to element |
+| `isThemeApplied` | `element: Element, theme: ThemeName` | `boolean` | Checks if theme is applied |
+| `getOppositeTheme` | `theme: ThemeName` | `ThemeName` | Returns opposite theme name |
+
+| Constant | Type | Description |
+|----------|------|-------------|
+| `THEME_CLASSES` | `{ light: '', dark: 'dg-theme-dark' }` | Theme class names |
+| `THEME_SELECTORS` | `{ light: ':root', dark: '.dg-theme-dark' }` | CSS selectors |
+| `THEME_CLASS_PREFIX` | `'dg-theme'` | Prefix used for theme classes |
+| `LIGHT_THEME_SELECTOR` | `':root'` | CSS selector for light theme |
+
+## Token Access
 
 ### From `@designgreat/lib-web-ui-design-token`
 
 ```typescript
 import {
-  DEFAULT_THEME,
   themes,
-  getThemeTokens,
-  createTheme,
-  listThemeNames
+  light,
+  dark
 } from '@designgreat/lib-web-ui-design-token'
 
-// Enumerate available themes
-const ids = listThemeNames()
+// Access theme tokens directly
+const lightTokens = themes.light // or use the named export: light
+const darkTokens = themes.dark   // or use the named export: dark
 
-// Access flattened token payloads
-const lightTheme = getThemeTokens('light')
-const background = lightTheme.color.background.DEFAULT
+// All tokens are under the .dg namespace
+const backgroundColor = lightTokens.dg.color.background.default
+const spacing = lightTokens.dg.spacing.px16
+const primaryColor = darkTokens.dg.color.primary.default
 
-// Deep-merge overrides into an existing theme
-const highContrast = createTheme(DEFAULT_THEME, {
-  color: { background: { DEFAULT: '#F5F5F5' } }
-})
-
-console.log(ids, background, highContrast.color.background.DEFAULT)
+console.log(backgroundColor, spacing, primaryColor)
 ```
 
-## Helper APIs
+## Available Exports
 
-### From `@designgreat/design-token-support`
+### `themes` Object
 
-Complementary helpers for CSS-variable generation:
+An object containing all available themes:
 
 ```typescript
-import {
-  createThemeConfig,
-  createCssVariableMap,
-  createThemeStyles
-} from '@designgreat/design-token-support'
+import { themes } from '@designgreat/lib-web-ui-design-token'
 
-const lightConfig = createThemeConfig('light')
-const cssVars = createCssVariableMap(lightConfig.tokens)
-const stylesheet = createThemeStyles('light')
-
-console.log(lightConfig.className) // "dg-theme-light"
-console.log(cssVars['--dg-color-background-default'])
-console.log(stylesheet.slice(0, 60))
+const allThemes = themes // { light: {...}, dark: {...} }
 ```
 
-## Available Functions
+### Named Theme Exports
 
-### `listThemeNames()`
-
-Returns an array of available theme names.
+Direct access to specific themes:
 
 ```typescript
-const themes = listThemeNames() // ['light', 'dark']
+import { light, dark } from '@designgreat/lib-web-ui-design-token'
+
+// Use directly without going through themes object
+const lightBg = light.dg.color.background.default
+const darkBg = dark.dg.color.background.default
 ```
 
-### `getThemeTokens(themeName)`
+## Usage Examples
 
-Get all tokens for a specific theme as a flattened object.
+### Accessing Color Tokens
 
 ```typescript
-const lightTokens = getThemeTokens('light')
-console.log(lightTokens.color.background.DEFAULT)
+import { themes } from '@designgreat/lib-web-ui-design-token'
+
+const lightTheme = themes.light
+
+// Primary colors
+const primary = lightTheme.dg.color.primary.default
+const primaryHover = lightTheme.dg.color.primary.hover.default
+
+// Background colors
+const bg = lightTheme.dg.color.background.default
+const bgBold = lightTheme.dg.color.background.bold
+
+// Text colors
+const textDefault = lightTheme.dg.color.text.default
+const textSubtle = lightTheme.dg.color.text.subtle
 ```
 
-### `createTheme(baseTheme, overrides)`
-
-Create a new theme by deep-merging overrides into a base theme.
+### Accessing Spacing Tokens
 
 ```typescript
-const customTheme = createTheme(DEFAULT_THEME, {
-  color: {
-    primary: {
-      500: '#FF0000'
-    }
-  }
-})
+import { light } from '@designgreat/lib-web-ui-design-token'
+
+// All spacing values
+const spacing = light.dg.spacing
+
+console.log(spacing.px4)   // 0.25rem
+console.log(spacing.px8)   // 0.5rem
+console.log(spacing.px16)  // 1rem
+console.log(spacing.px24)  // 1.5rem
 ```
 
-### `createThemeConfig(themeName)`
+## Type Safety
 
-Create a theme configuration object with tokens and metadata.
-
-```typescript
-const config = createThemeConfig('dark')
-console.log(config.className) // "dg-theme-dark"
-console.log(config.tokens) // Full token object
-```
-
-### `createCssVariableMap(tokens)`
-
-Convert token object to CSS variable map.
+All tokens have full TypeScript support for autocomplete and type checking:
 
 ```typescript
-const cssVars = createCssVariableMap(tokens)
-// { '--dg-color-primary-500': '#007bff', ... }
-```
+import type { ThemeName } from '@designgreat/lib-web-ui-design-token'
+import { themes, getThemeClassName } from '@designgreat/lib-web-ui-design-token'
 
-### `createThemeStyles(themeName, options)`
+function getThemeColor(themeName: ThemeName) {
+  const theme = themes[themeName]
+  // TypeScript provides autocomplete for theme.dg properties
+  return theme.dg.color.background.default
+}
 
-Generate CSS stylesheet string for a theme.
-
-```typescript
-const css = createThemeStyles('light', {
-  selector: ':root',
-  indent: 2
-})
+function applyThemeToDocument(themeName: ThemeName) {
+  // Type-safe theme class name
+  document.body.className = getThemeClassName(themeName)
+}
 ```
 
 ## Next Steps
@@ -124,4 +170,3 @@ const css = createThemeStyles('light', {
 - Learn about [CSS Integration](../css-integration.mdx)
 - Understand [Theme Switching](../theme-switching.mdx)
 - See [TypeScript Types](./typescript.mdx)
-

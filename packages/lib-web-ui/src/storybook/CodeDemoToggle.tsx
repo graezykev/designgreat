@@ -1,8 +1,6 @@
 /* eslint-disable react/no-danger */
-import { getThemeClassName } from '@designgreat/design-token-support'
+import { isThemeApplied } from '@designgreat/lib-web-ui-design-token'
 import { useCallback, useEffect, useMemo, useState, useTransition, type CSSProperties, type ReactNode } from 'react'
-
-const DARK_THEME_CLASS = getThemeClassName('dark')
 
 const useIsDarkTheme = () => {
   const getInitial = () => {
@@ -11,7 +9,7 @@ const useIsDarkTheme = () => {
       return window.matchMedia('(prefers-color-scheme: dark)').matches
     }
 
-    return document.body.classList.contains(DARK_THEME_CLASS)
+    return isThemeApplied(document.body, 'dark')
   }
 
   const [isDark, setIsDark] = useState(getInitial)
@@ -19,7 +17,7 @@ const useIsDarkTheme = () => {
   useEffect(() => {
     if (typeof document === 'undefined') return
 
-    const update = () => { setIsDark(document.body.classList.contains(DARK_THEME_CLASS)) }
+    const update = () => { setIsDark(isThemeApplied(document.body, 'dark')) }
     const observer = new MutationObserver(update)
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] })
     return () => { observer.disconnect() }

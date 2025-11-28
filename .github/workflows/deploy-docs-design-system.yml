@@ -71,7 +71,6 @@ jobs:
         if: steps.doc_changes.outputs.doc_changed == 'true'
         run: |
           pnpm --filter @designgreat/lib-web-ui-design-token run build
-          pnpm --filter @designgreat/design-token-support run build
 
       - name: Build component library (dependency for docs CSS)
         if: steps.doc_changes.outputs.doc_changed == 'true'

@@ -27,22 +27,41 @@ dist/
 
 ## CSS Bundling Strategy
 
-The distributed CSS (`dist/lib-web-ui.css`) is intentionally **clean** and does not include:
+### Import Chain
 
-- ❌ `@font-face` declarations
-- ❌ Default `font-family` rules on `body` or `html`
+The library uses a clean, semantic import chain:
+
+```
+src/index.ts
+  └─> styles/index.css (single CSS entry point)
+       ├─> @designgreat/lib-web-ui-design-token/css (design tokens)
+       └─> tailwind.css
+            ├─> @tailwind utilities (NO base, NO components)
+            └─> components.css (component styles)
+```
+
+### What's Included
+
+The distributed CSS (`dist/lib-web-ui.css`) includes:
+
+- ✅ Design token CSS variables (`:root` for light, `.dg-theme-dark` for dark)
+- ✅ Tailwind utilities only (no resets to avoid conflicts)
+- ✅ Component-specific styles
+
+### What's Excluded
+
+The distributed CSS intentionally **excludes**:
+
+- ❌ `@font-face` declarations (fonts must be imported separately)
+- ❌ Tailwind base layer (no CSS resets)
+- ❌ Tailwind components layer (no unwanted utility classes)
 
 This allows consumers to:
 
 - Load fonts independently (from `@designgreat/lib-web-ui-design-token/font` or via CDN)
-- Integrate seamlessly with existing projects without font conflicts
+- Integrate seamlessly with existing projects without CSS reset conflicts
 - Control font loading strategy (preload, async, etc.)
-
-The CSS **does** include:
-
-- ✅ Design token CSS variables (color, spacing, typography values)
-- ✅ Tailwind utilities (generated from token values)
-- ✅ Component-specific styles
+- Avoid duplicate CSS when already using Tailwind
 
 ### Theme CSS Order
 
@@ -79,11 +98,8 @@ This ordering ensures that when the `.dg-theme-dark` class is applied to the `<h
 ```
 packages/lib-web-ui/
 ├── .storybook/              # Storybook configuration
-│   ├── main.ts              # Vite + addon config
-│   ├── preview.tsx          # Global decorators (theme switching)
-│   └── theme.ts             # Storybook UI theme
-├── public/                  # Static assets for Storybook
-│   └── assets/fonts/        # Copied from lib-web-ui-design-token (gitignored)
+│   ├── main.ts              # Vite + addons + telemetry config
+│   └── preview.tsx          # Global decorators + font import
 ├── src/
 │   ├── components/          # React components
 │   │   ├── Button/
@@ -92,16 +108,13 @@ packages/lib-web-ui/
 │   │   │   └── Button.stories.tsx
 │   │   ├── TextInput/
 │   │   └── Dialog/
-│   ├── styles/
-│   │   ├── tailwind.css     # Main Tailwind entrypoint
-│   │   ├── designgreat-theme.css  # Generated theme CSS (committed)
-│   │   └── components/      # Component-specific styles
-│   │       ├── button.css
-│   │       ├── textinput.css
-│   │       └── dialog.css
+│   ├── styles/              # CSS architecture
+│   │   ├── index.css        # Main entry (tokens + tailwind)
+│   │   ├── tailwind.css     # Tailwind utilities + components
+│   │   └── components.css   # Component-specific styles
+│   ├── storybook/           # Storybook utilities
+│   │   └── CodeDemoToggle.tsx
 │   └── index.ts             # Package entry point
-├── scripts/
-│   └── generate-theme.ts    # Theme CSS generation script
 ├── tailwind.config.ts       # Tailwind configuration (token-aware)
 ├── vite.config.ts           # Vite build configuration
 ├── vitest.config.ts         # Vitest test configuration
@@ -114,7 +127,6 @@ packages/lib-web-ui/
 ┌───────────────────────────┐
 │  pnpm build pipeline      │
 │  • clean                  │
-│  • generate:theme         │ ← Regenerate design tokens
 │  • tsc -p tsconfig.build  │ ← Type check and emit .d.ts
 │  • vite build (ESM/CJS)   │ ← Bundle components and CSS
 │  • storybook build        │ ← Build static Storybook site
@@ -122,9 +134,14 @@ packages/lib-web-ui/
                │
                ▼
 ┌───────────────────────────┐
-│  Published package        │ ← Clean CSS without font dependencies
+│  Published package        │
+│  • Clean CSS              │ ← No fonts, no Tailwind resets
+│  • ESM + CJS modules      │
+│  • TypeScript types       │
 └───────────────────────────┘
 ```
+
+**Key Point**: The `generate:theme` step has been **removed**. Design tokens are now directly imported from `@designgreat/lib-web-ui-design-token`.
 
 ## Next Steps
 

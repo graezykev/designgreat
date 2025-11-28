@@ -15,8 +15,11 @@
     },
     "./font": "./dist/font/font-face.css",
     "./font/*": "./dist/font/*",
+    "./css": "./dist/css/combined.css",
     "./css/light": "./dist/css/light/variables.css",
-    "./css/dark": "./dist/css/dark/variables.css"
+    "./css/dark": "./dist/css/dark/variables.css",
+    "./scss/light": "./dist/css/light/variables.scss",
+    "./scss/dark": "./dist/css/dark/variables.scss"
   },
   "files": [
     "dist"
@@ -25,7 +28,7 @@
     "build": "pnpm run clean && pnpm run build:tokens && tsc -p tsconfig.build.json && pnpm run copy:tokens",
     "build:tokens": "node ./scripts/style-dictionary/prebuild-download-fonts.js && node ./scripts/style-dictionary/build-style-dictionary.js && node ./scripts/style-dictionary/post-build-export.js",
     "watch": "pnpm run build:tokens",
-    "copy:tokens": "node ./scripts/copy-tokens.mjs",
+    "copy:tokens": "tsx ./scripts/copy-tokens.ts",
     "typecheck": "pnpm run build:tokens && tsc --noEmit -p tsconfig.json",
     "validate": "pnpm exec tsx src/run-validation.ts",
     "lint": "pnpm exec eslint . --max-warnings 0",

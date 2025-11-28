@@ -26,7 +26,6 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
-        '@designgreat/design-token-support',
         '@designgreat/lib-web-ui-design-token',
         'clsx'
       ],

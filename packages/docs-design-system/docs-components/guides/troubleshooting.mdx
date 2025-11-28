@@ -22,26 +22,23 @@ If using a framework with code splitting (like Next.js), make sure the CSS is im
 
 **Problem:** Components always show light theme colors, even when dark theme class is applied.
 
-**Solution:** Wrap your app with a theme class:
+**Solution:** Use the theme utilities from the design token package:
 
 ```tsx
-<div className="dg-theme-dark">{/* Your app */}</div>
-```
+import { getThemeClassName, applyTheme } from '@designgreat/lib-web-ui-design-token'
 
-Or use the theme helper:
+// Option 1: Use getThemeClassName with a wrapper
+<div className={getThemeClassName('dark')}>{/* Your app */}</div>
 
-```tsx
-import { createThemeConfig } from '@designgreat/design-token-support'
-
-const darkTheme = createThemeConfig('dark')
-
-<div className={darkTheme.className}>{/* Your app */}</div>
+// Option 2: Apply theme programmatically
+applyTheme(document.documentElement, 'dark')
 ```
 
 **Additional checks:**
 - Verify the theme class is applied to an ancestor element of your components
 - Check that the CSS file is loaded before components render
 - Inspect the element in browser DevTools to confirm the class is present
+- Use `isThemeApplied(element, 'dark')` to verify the theme is correctly applied
 
 ## Fonts Don't Load
 

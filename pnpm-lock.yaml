@@ -196,9 +196,6 @@ importers:
 
   packages/docs-design-system:
     dependencies:
-      '@designgreat/design-token-support':
-        specifier: workspace:*
-        version: link:../shared/design-token-support
       '@designgreat/lib-web-ui':
         specifier: workspace:*
         version: link:../lib-web-ui
@@ -248,9 +245,6 @@ importers:
 
   packages/lib-web-ui:
     dependencies:
-      '@designgreat/design-token-support':
-        specifier: workspace:*
-        version: link:../shared/design-token-support
       '@designgreat/lib-web-ui-design-token':
         specifier: workspace:*
         version: link:../lib-web-ui-design-token
@@ -310,12 +304,6 @@ importers:
       style-dictionary:
         specifier: ^5.1.1
         version: 5.1.1
-
-  packages/shared/design-token-support:
-    dependencies:
-      '@designgreat/lib-web-ui-design-token':
-        specifier: workspace:*
-        version: link:../../lib-web-ui-design-token
 
   packages/shared/eslint-config:
     dependencies:

@@ -7,13 +7,14 @@ const packageRoot = resolve(__dirname, '..')
 const sourceDir = resolve(packageRoot, 'src/tokens')
 const destinationDir = resolve(packageRoot, 'dist/tokens')
 
-async function copyTokens() {
+async function copyTokens(): Promise<void> {
   await rm(destinationDir, { recursive: true, force: true })
   await mkdir(destinationDir, { recursive: true })
   await cp(sourceDir, destinationDir, { recursive: true })
 }
 
-copyTokens().catch((error) => {
+copyTokens().catch((error: unknown) => {
   console.error('[copy:tokens] Failed to copy token sources:', error)
   process.exitCode = 1
 })
+
