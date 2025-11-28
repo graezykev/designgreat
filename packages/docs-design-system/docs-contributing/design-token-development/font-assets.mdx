@@ -1,0 +1,294 @@
+---
+sidebar_position: 4
+description: Font asset architecture, formats, and optimization strategy
+---
+
+# Font Assets
+
+This page explains the technical architecture and design decisions for font assets in the design token package.
+
+## Architecture Overview
+
+The `@designgreat/lib-web-ui-design-token` package owns and distributes font assets:
+
+```
+lib-web-ui-design-token/
+├── dist/font/
+│   ├── font-face.css        # @font-face declarations
+│   └── *.woff2               # 108 font files
+└── package.json exports:
+    "/font" → "./dist/font/font-face.css"
+```
+
+### Why Design Tokens Own Fonts
+
+Fonts are treated as **design assets** (like colors and spacing) because:
+- ✅ Typography is a core design decision
+- ✅ Font files are versioned with design tokens
+- ✅ Consistent font loading across all consumers
+- ✅ Single source of truth for visual design
+
+---
+
+## Font Format Strategy
+
+### Why Only WOFF2?
+
+We **only include `.woff2`** format for these reasons:
+
+#### Technical Benefits
+- **Best compression** - 30% smaller than woff, 50%+ smaller than ttf/otf
+- **Modern standard** - Designed specifically for web use
+- **Browser support** - All modern browsers (Chrome 36+, Firefox 39+, Safari 12+, Edge 14+)
+- **Simplified maintenance** - Single format to manage
+
+#### Browser Coverage
+```
+Chrome 36+   (2014) ✅
+Firefox 39+  (2015) ✅
+Safari 12+   (2018) ✅
+Edge 14+     (2015) ✅
+Mobile       (2016+) ✅
+```
+
+**Coverage**: ~98% of global browser usage
+
+#### Legacy Browser Strategy
+
+For IE11 or older browsers, consumers can:
+1. Use Google Fonts (provides all formats)
+2. Convert woff2 to woff/ttf using font conversion tools
+3. Provide fallback fonts via CSS
+
+**Design Decision**: Prioritize modern web over legacy compatibility.
+
+---
+
+## Unicode Range Subsetting
+
+### What is Subsetting?
+
+Each font file is split by **unicode range** (character sets), enabling:
+
+- **On-demand loading** - Browser only downloads subsets for characters actually used
+- **Priority loading** - Latin loads first (most common), others on-demand
+- **Automatic fallback** - Seamless fallback for missing characters
+- **Performance** - Significantly reduces initial page load
+
+### Included Subsets
+
+| Subset | Unicode Range | Characters | Priority |
+|--------|---------------|------------|----------|
+| **Latin** | U+0000-00FF | A-Z, 0-9, common symbols | High |
+| **Latin Extended** | U+0100-024F | Accented characters | Medium |
+| **Greek** | U+0370-03FF | Greek alphabet | Low |
+| **Greek Extended** | U+1F00-1FFF | Ancient Greek | Low |
+| **Cyrillic** | U+0400-04FF | Cyrillic alphabet | Low |
+| **Cyrillic Extended** | U+0500-052F | Extended Cyrillic | Low |
+| **Vietnamese** | U+1EA0-1EFF | Vietnamese characters | Low |
+
+### Example
+
+```css
+@font-face {
+  font-family: 'Roboto';
+  src: url('./Roboto-latin-regular-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, 
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, 
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./Roboto-greek-regular-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, 
+    U+03A3-03FF;
+}
+```
+
+**How it works:**
+1. Browser requests Regular weight
+2. Sees two `@font-face` rules with same family/weight
+3. Checks page content - finds only Latin characters
+4. **Only downloads `Roboto-latin-regular-normal.woff2`** (~12 KB)
+5. If Greek characters appear later, downloads Greek subset on-demand
+
+**Performance Impact**: For English-only pages, only ~15-20% of total font files are downloaded.
+
+---
+
+## Font Files Inventory
+
+### Total Files
+
+**108 .woff2 files** covering:
+- 6 weights × 2 styles (normal/italic) = 12 variants
+- 9 unicode subsets per variant
+- = 108 files
+
+### File Naming Convention
+
+```
+Roboto-{subset}-{weight}-{style}.woff2
+
+Examples:
+- Roboto-latin-regular-normal.woff2      (Latin, 400, Normal)
+- Roboto-latin-bold-italic.woff2         (Latin, 700, Italic)
+- Roboto-greek-medium-normal.woff2       (Greek, 500, Normal)
+```
+
+### File Sizes
+
+Typical sizes per file:
+- Latin: ~10-15 KB
+- Latin Extended: ~8-12 KB  
+- Greek/Cyrillic: ~5-8 KB
+- Other subsets: ~3-6 KB
+
+**Total package size**: ~1.5 MB uncompressed (~400-500 KB gzipped)
+
+---
+
+## Distribution Strategy
+
+### Package Exports
+
+```json
+{
+  "exports": {
+    "./font": "./dist/font/font-face.css"
+  }
+}
+```
+
+### What Consumers Get
+
+When importing `@designgreat/lib-web-ui-design-token/font`:
+
+1. **CSS file** - `font-face.css` with 108 `@font-face` declarations
+2. **Font files** - Resolved via relative paths: `url('./Roboto-*.woff2')`
+3. **Bundler processing** - Modern bundlers (Vite, Webpack) automatically:
+   - Copy font files to output directory
+   - Rewrite paths in CSS
+   - Apply proper content-type headers
+
+---
+
+## Why Not Bundle in Component Library?
+
+The `@designgreat/lib-web-ui` component library does **NOT** include fonts for these reasons:
+
+### For Consumers
+- ✅ Smaller bundle (~1.5 MB saved if using custom fonts)
+- ✅ Flexibility in font loading strategy
+- ✅ No conflicts with existing font loading
+- ✅ Better performance control (preload, async, subsetting)
+
+### For Architecture
+- ✅ Clean separation - tokens package owns fonts, UI library owns components
+- ✅ Decoupled builds - font changes don't trigger UI rebuilds
+- ✅ Better tree-shaking
+
+See [Web Component Font Handling](/contributing/web-component-development/font-handling) for implementation details.
+
+---
+
+## Build Process
+
+### Font Source
+
+Fonts are downloaded during build from Google Fonts API:
+
+```javascript
+// scripts/style-dictionary/prebuild-download-fonts.js
+const FONT_API_URL = 'https://google-webfonts-helper.herokuapp.com/api/fonts/roboto'
+```
+
+### Build Steps
+
+1. **Download** - Fetch font metadata and files from API
+2. **Generate** - Create `font-face.css` with proper paths
+3. **Copy** - Copy font files to `dist/font/`
+4. **Verify** - Check all 108 files are present
+
+### Output Structure
+
+```
+dist/font/
+├── font-face.css                          # All @font-face declarations
+├── Roboto-latin-thin-normal.woff2
+├── Roboto-latin-thin-italic.woff2
+├── Roboto-latin-light-normal.woff2
+├── ... (108 total files)
+└── Roboto-vietnamese-black-italic.woff2
+```
+
+---
+
+## Alternative Formats
+
+### For Legacy Browsers
+
+If you need `.woff`, `.ttf`, or `.otf` formats:
+
+**Option 1**: Use Google Fonts CDN (provides all formats automatically)
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+```
+
+**Option 2**: Convert fonts using tools
+
+```bash
+# Using fonttools
+pip install fonttools brotli
+pyftsubset Roboto-Regular.woff2 --output-file=Roboto-Regular.woff --flavor=woff
+```
+
+**Option 3**: Download from Google Fonts manually
+
+Visit [google-webfonts-helper](https://gwfh.mranftl.com/fonts/roboto) for all formats.
+
+---
+
+## Performance Considerations
+
+### Browser Font Loading
+
+Modern browsers use this strategy:
+1. Parse CSS, discover `@font-face` rules
+2. Match rules based on `unicode-range`
+3. Download only matched fonts
+4. Apply fonts when downloaded
+
+### Optimization Tips
+
+**1. Preload Critical Fonts**
+```html
+<link rel="preload" href="/fonts/Roboto-latin-regular-normal.woff2" as="font" type="font/woff2" crossorigin />
+```
+
+**2. Use font-display: swap** (already included)
+```css
+font-display: swap; /* Show fallback fonts immediately */
+```
+
+**3. Subset Further**
+For production, consider creating custom subsets with only characters you use:
+
+```bash
+npx glyphhanger --subset="Roboto-Regular.woff2" --formats=woff2 --whitelist="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+```
+
+---
+
+## Related Resources
+
+- [Font Integration (User Guide)](/design-token/guides/font-integration) - How to use fonts
+- [Build System](/contributing/design-token-development/build-system) - Font download process
+- [Development Workflow](/contributing/design-token-development/development-workflow) - Working with fonts during development
+

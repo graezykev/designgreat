@@ -134,7 +134,7 @@ To verify the changes:
 
 ```bash
 # Check last 3 sections of each file
-cd packages/docs-design-system/docs/colors
+cd packages/docs-design-system/docs-design-token/colors
 for file in *.mdx shortcuts/*.mdx; do
   echo "=== $file ==="
   grep -n "^## " "$file" | tail -3

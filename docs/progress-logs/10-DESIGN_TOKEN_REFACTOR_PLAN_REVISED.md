@@ -488,7 +488,7 @@ export function createCssVariableMap(
 
 #### 4.1 Update CSS Integration Guide
 
-**File:** `packages/docs-design-system/docs/tutorial/css-integration.mdx`
+**File:** `packages/docs-design-system/docs-design-token/guides/css-integration.mdx`
 
 ````mdx
 ---

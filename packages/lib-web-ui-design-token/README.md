@@ -6,12 +6,12 @@ runtime for downstream packages.
 
 ## Documentation
 
-### 📘 [Design Tokens Integration Guide](https://graezykev.github.io/designgreat/docs/tutorial/overview)
+### 📘 [Design Token Guides](https://graezykev.github.io/designgreat/design-token/guides/overview)
 
 **For consuming design tokens in your application** - Complete guide covering installation, CSS
 integration, theme switching, fonts, Tailwind integration, and API reference.
 
-### 🛠️ [Design Tokens Development Guide](https://graezykev.github.io/designgreat/contributing/design-tokens-development/overview)
+### 🛠️ [Design Token Development Guides](https://graezykev.github.io/designgreat/contributing/design-token-development/overview)
 
 **For contributing to this package** - Complete guide covering architecture, token authoring, build
 system, development workflow, testing, and troubleshooting.

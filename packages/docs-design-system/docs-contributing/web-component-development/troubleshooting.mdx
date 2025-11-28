@@ -1,0 +1,175 @@
+---
+sidebar_position: 7
+description: Common issues and solutions for component library development
+---
+
+# Troubleshooting
+
+This guide covers common issues and their solutions when working with the component library.
+
+## Theme CSS Not Updating
+
+**Problem:** Changes to design tokens don't appear in Storybook or dev server.
+
+**Solution:** Regenerate theme CSS:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui generate:theme
+```
+
+Or rebuild the design token package:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui-design-token build
+```
+
+## Storybook Fonts Missing
+
+**Problem:** Fonts don't load in Storybook.
+
+**Solution:** Ensure fonts are copied before starting Storybook. This happens automatically with:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui storybook
+```
+
+If fonts are still missing, manually copy them:
+
+```bash
+cd packages/lib-web-ui
+cp -r ../lib-web-ui-design-token/dist/font/* public/assets/fonts/
+```
+
+## Tailwind Utilities Not Generated
+
+**Problem:** Utility classes don't work in components or stories.
+
+**Solution:** Ensure Tailwind is processing the correct files. Check `tailwind.config.ts`:
+
+```typescript
+// tailwind.config.ts
+content: [
+  './src/**/*.{js,jsx,ts,tsx}',
+  './.storybook/**/*.{js,jsx,ts,tsx}'
+]
+```
+
+Restart the dev server to regenerate utilities.
+
+## TypeScript Build Errors
+
+**Problem:** TypeScript fails to compile after token regeneration.
+
+**Solution:** Ensure generated files are present:
+
+```bash
+ls -la src/styles/designgreat-theme.css
+```
+
+If missing, run:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui generate:theme
+```
+
+## Test Failures
+
+**Problem:** Tests fail after component or token changes.
+
+**Solution:**
+
+1. Run tests in watch mode to see detailed errors:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui test -- --watch
+```
+
+2. Update snapshots if needed:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui test -- -u
+```
+
+## Theme Desync in Storybook
+
+**Problem:** Toggling light/dark theme in Storybook does nothing.
+
+**Solution:** Ensure the preview iframe body contains the expected `dg-theme-*` class. Re-running the dev server typically fixes it:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui storybook
+```
+
+## Token Mismatch
+
+**Problem:** Tailwind refuses to emit a new token class.
+
+**Solution:** Clear Tailwind cache and regenerate:
+
+```bash
+rm -rf node_modules/.cache
+pnpm --filter @designgreat/lib-web-ui generate:theme
+pnpm --filter @designgreat/lib-web-ui dev
+```
+
+## Story Fails to Load
+
+**Problem:** Story doesn't render in Storybook.
+
+**Solution:** Check the browser console for async import errors. Storybook surfaces stack traces pointing to the offending story file.
+
+Common causes:
+- Syntax errors in story file
+- Missing imports
+- Invalid component props
+- Circular dependencies
+
+## Hot Reload Not Working
+
+**Problem:** Changes to components or stories don't hot reload.
+
+**Solution:**
+
+1. Check that files are covered by Tailwind `content` globs
+2. Restart the dev server
+3. Clear browser cache (Cmd+Shift+R)
+
+## Build Errors
+
+**Problem:** Build fails with errors.
+
+**Solution:**
+
+1. Clean build artifacts:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui run clean
+```
+
+2. Regenerate tokens:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui generate:theme
+```
+
+3. Run full build:
+
+```bash
+pnpm --filter @designgreat/lib-web-ui build
+```
+
+## Getting Help
+
+If you encounter an issue not covered here:
+
+1. Check the [Storybook documentation](https://storybook.js.org/docs)
+2. Review the [monorepo contributing guide](https://github.com/graezykev/designgreat/blob/main/docs/CONTRIBUTING.md)
+3. Search existing [GitHub issues](https://github.com/graezykev/designgreat/issues)
+4. Ask in team chat or open a new issue
+
+## Related Resources
+
+- [Storybook Workflow](./storybook-workflow) – Development workflow
+- [Architecture](./architecture) – Package structure
+- [Get Started](./get-started) – Setup instructions
+

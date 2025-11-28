@@ -23,7 +23,7 @@ documentation embedded this crucial information within the accent-colors.mdx pag
 
 ### 1. Created New Document
 
-**File:** `/packages/docs-design-system/docs/colors/theme-aware-colors.mdx`  
+**File:** `/packages/docs-design-system/docs-design-token/colors/theme-aware-colors.mdx`  
 **Position:** `sidebar_position: 9` (after all color types, before shortcuts)
 
 **Structure:**
@@ -84,7 +84,7 @@ comprehensive guide]
 
 ### 3. Updated theme-switching.mdx
 
-**File:** `/packages/docs-design-system/docs/design-tokens/theme-switching.mdx`
+**File:** `/packages/docs-design-system/docs-design-token/guides/theme-switching.mdx`
 
 **Added:** Cross-reference tip box after "How Theme Switching Works" section
 
@@ -107,7 +107,7 @@ switches)
 - [Base Colors](./base-colors)
 - [Alpha Colors](./alpha-colors)
 - [Primary Colors](./primary-brand-colors)
-- [Theme Switching](/docs/design-tokens/theme-switching)
+- [Theme Switching](/design-token/guides/theme-switching)
 ```
 
 **After:**
@@ -117,7 +117,7 @@ switches)
 - [Base Colors](./base-colors)
 - [Alpha Colors](./alpha-colors)
 - [Primary Colors](./primary-brand-colors)
-- [Theme Switching Implementation](/docs/design-tokens/theme-switching)
+- [Theme Switching Implementation](/design-token/guides/theme-switching)
 ```
 
 ## Content Enhancements
@@ -340,11 +340,11 @@ Potential additions to theme-aware-colors.mdx:
 ## Files Modified
 
 1. **Created:**
-   - `/packages/docs-design-system/docs/colors/theme-aware-colors.mdx` (new)
+   - `/packages/docs-design-system/docs-design-token/colors/theme-aware-colors.mdx` (new)
 
 2. **Modified:**
-   - `/packages/docs-design-system/docs/colors/accent-colors.mdx`
-   - `/packages/docs-design-system/docs/design-tokens/theme-switching.mdx`
+   - `/packages/docs-design-system/docs-design-token/colors/accent-colors.mdx`
+   - `/packages/docs-design-system/docs-design-token/guides/theme-switching.mdx`
 
 3. **Documentation:**
    - `/THEME_AWARE_COLORS_ENHANCEMENT.md` (this document)

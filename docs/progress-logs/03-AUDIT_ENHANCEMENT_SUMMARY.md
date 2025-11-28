@@ -94,7 +94,7 @@ The script now validates across the entire pipeline:
 
 - **Token Definitions** (lib-web-ui-design-token/src/tokens/)
 - **CSS Output** (lib-web-ui/dist/lib-web-ui.css)
-- **Documentation** (docs-design-system/docs/colors/)
+- **Documentation** (docs-design-system/docs-design-token/colors/)
 
 ### Intelligent Validation Logic
 

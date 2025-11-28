@@ -1,0 +1,180 @@
+---
+sidebar_position: 3
+---
+
+# Theme Switching
+
+Apply theme classes to switch between light and dark modes dynamically.
+
+## Using Theme Utilities
+
+The design token package provides helper functions for theme management:
+
+```tsx
+import { useState } from 'react'
+import {
+  getThemeClassName,
+  applyTheme,
+  isThemeApplied,
+  THEME_CLASSES
+} from '@designgreat/lib-web-ui-design-token'
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+  const themeClass = getThemeClassName(isDark ? 'dark' : 'light')
+
+  return (
+    <div className={themeClass}>
+      <button onClick={() => setIsDark(!isDark)}>
+        Toggle Theme
+      </button>
+      {/* Application content */}
+    </div>
+  )
+}
+```
+
+## Available Theme Utilities
+
+| Export | Type | Description |
+|--------|------|-------------|
+| `getThemeClassName(theme)` | Function | Returns CSS class for a theme (`''` for light, `'dg-theme-dark'` for dark) |
+| `getThemeSelector(theme)` | Function | Returns CSS selector (`:root` for light, `.dg-theme-dark` for dark) |
+| `applyTheme(element, theme)` | Function | Applies theme class to an element |
+| `isThemeApplied(element, theme)` | Function | Checks if a theme is applied to an element |
+| `getOppositeTheme(theme)` | Function | Returns the opposite theme name |
+| `THEME_CLASSES` | Object | Direct access to theme class names |
+| `THEME_SELECTORS` | Object | Direct access to CSS selectors |
+
+## Direct Class Name Usage
+
+For simple use cases, you can use the `THEME_CLASSES` constant directly:
+
+```typescript
+import { THEME_CLASSES } from '@designgreat/lib-web-ui-design-token'
+
+// Apply dark theme
+document.body.className = THEME_CLASSES.dark // 'dg-theme-dark'
+
+// Apply light theme (uses :root, no class needed)
+document.body.className = THEME_CLASSES.light // ''
+```
+
+## Applying Themes Programmatically
+
+Use the `applyTheme` utility for cleaner code:
+
+```typescript
+import { applyTheme } from '@designgreat/lib-web-ui-design-token'
+
+// Apply dark theme
+applyTheme(document.documentElement, 'dark')
+
+// Switch back to light theme
+applyTheme(document.documentElement, 'light')
+```
+
+## Checking Current Theme
+
+Use `isThemeApplied` to check which theme is active:
+
+```typescript
+import { isThemeApplied } from '@designgreat/lib-web-ui-design-token'
+
+if (isThemeApplied(document.documentElement, 'dark')) {
+  console.log('Dark theme is active')
+}
+```
+
+## Respecting System Preferences
+
+You can detect and respect the user's system color scheme preference:
+
+```tsx
+import { useState, useEffect } from 'react'
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+function App() {
+  const [theme, setTheme] = useState<ThemeName>(() => {
+    // Check system preference on mount
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
+
+  useEffect(() => {
+    // Listen for system preference changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleChange = (e: MediaQueryListEvent) => {
+      setTheme(e.matches ? 'dark' : 'light')
+    }
+    
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  return <div className={getThemeClassName(theme)}>{/* Your app */}</div>
+}
+```
+
+## Persisting Theme Selection
+
+To persist the user's theme choice:
+
+```tsx
+import { useState, useEffect } from 'react'
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+function App() {
+  const [theme, setTheme] = useState<ThemeName>(() => {
+    // Load from localStorage or default to system preference
+    const saved = localStorage.getItem('theme') as ThemeName | null
+    if (saved === 'dark' || saved === 'light') return saved
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
+
+  useEffect(() => {
+    // Save to localStorage whenever it changes
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
+
+  return (
+    <div className={getThemeClassName(theme)}>
+      <button onClick={toggleTheme}>
+        Toggle Theme
+      </button>
+      {/* Your app */}
+    </div>
+  )
+}
+```
+
+## How Theme Switching Works
+
+Themes work by switching CSS variable values. All components and styles use CSS variables like `var(--dg-color-background-default)`, which automatically update when a theme class is applied to an ancestor element.
+
+The generated CSS looks like this:
+
+```css
+:root {
+  --dg-color-background-default: #ffffff;
+  /* ... more light theme variables */
+}
+
+.dg-theme-dark {
+  --dg-color-background-default: #1a1a1a;
+  /* ... more dark theme variables */
+}
+```
+
+When you apply `.dg-theme-dark` to a parent element, all descendants automatically use the dark theme values.
+
+:::tip Learn More About Color Theming
+To understand **which colors switch** and **which stay fixed** between themes, and **why** this design matters, see [Core Concepts & Theme-Awareness](../colors/core-concepts-theme-awareness).
+:::
+
+## Next Steps
+
+- Learn about [CSS Integration](./css-integration.mdx) options
+- Check [Tailwind CSS Integration](./tailwind-integration.mdx) for utility classes
+- Explore design token [TypeScript APIs](./api/typescript.mdx)

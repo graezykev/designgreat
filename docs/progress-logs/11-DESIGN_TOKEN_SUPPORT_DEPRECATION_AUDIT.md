@@ -84,34 +84,34 @@ external: ['@designgreat/design-token-support', ...]
 
 ### User-Facing Docs (Critical)
 
-1. **packages/docs-design-system/docs/tutorial/theme-switching.mdx**
+1. **packages/docs-design-system/docs-design-token/guides/theme-switching.mdx**
    - 5 references to `createThemeConfig` and `getThemeClassName`
    - Shows users how to use the package
    - **Action:** Rewrite to show direct CSS import approach
 
-2. **packages/docs-design-system/docs/tutorial/tailwind-integration.mdx**
+2. **packages/docs-design-system/docs-design-token/guides/tailwind-integration.mdx**
    - 2 references to theme generation utilities
    - **Action:** Update to show new approach without generation
 
-3. **packages/docs-design-system/docs-components/guides/theming.mdx**
+3. **packages/docs-design-system/docs-web-component/guides/theming.mdx**
    - 2 references to `createThemeConfig`
    - **Action:** Update to use direct CSS approach
 
 ### Developer Docs (Important)
 
-4. **packages/docs-design-system/docs/tutorial/installation.mdx**
+4. **packages/docs-design-system/docs-design-token/guides/installation.mdx**
    - May have package installation instructions
    - **Action:** Verify and update
 
-5. **packages/docs-design-system/docs/tutorial/api/typescript.mdx**
+5. **packages/docs-design-system/docs-design-token/guides/api/typescript.mdx**
    - May reference types from the package
    - **Action:** Update to reference lib-web-ui-design-token
 
-6. **packages/docs-design-system/docs/tutorial/api/runtime-apis.mdx**
+6. **packages/docs-design-system/docs-design-token/guides/api/runtime-apis.mdx**
    - API documentation
    - **Action:** Update to new API
 
-7. **packages/docs-design-system/docs-components/guides/troubleshooting.mdx**
+7. **packages/docs-design-system/docs-web-component/guides/troubleshooting.mdx**
    - Troubleshooting guide
    - **Action:** Update common issues
 

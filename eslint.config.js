@@ -37,9 +37,9 @@ const config = [
       'packages/docs-design-system/.docusaurus/**',
       'packages/docs-design-system/build/**',
       'packages/docs-design-system/docs-contributing/**/*.mdx',
-      'packages/docs-design-system/docs/tutorial/**/*.mdx',
-      'packages/docs-design-system/docs/colors/**/*.mdx',
-      'packages/docs-design-system/docs-components/**/*.mdx'
+      'packages/docs-design-system/docs-design-token/guides/**/*.mdx',
+      'packages/docs-design-system/docs-design-token/colors/**/*.mdx',
+      'packages/docs-design-system/docs-web-component/**/*.mdx'
     ]
   },
   {

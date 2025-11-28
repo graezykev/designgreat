@@ -3,7 +3,7 @@
 ## Summary
 
 This document catalogs findings from the comprehensive manual audit of color documentation in
-`packages/docs-design-system/docs/colors/`.
+`packages/docs-design-system/docs-design-token/colors/`.
 
 ## Understanding Based on Investigation
 
@@ -18,7 +18,7 @@ This document catalogs findings from the comprehensive manual audit of color doc
    - Alpha tokens get hex8 format (e.g., `#599effb3` where `b3` = 70% opacity)
    - Theme-aware: `:root` for light, `.dg-theme-dark` for dark
 
-3. **Documentation** (docs-design-system/docs/colors/)
+3. **Documentation** (docs-design-system/docs-design-token/colors/)
    - Tables display Token names, CSS Variables, References, and metadata
    - Should match both token definitions AND CSS output
 

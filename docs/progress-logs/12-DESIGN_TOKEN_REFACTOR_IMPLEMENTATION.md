@@ -377,7 +377,7 @@ If issues arise, you can rollback by:
 - `packages/lib-web-ui/src/index.ts`
 - `packages/lib-web-ui/tailwind.config.ts`
 - `packages/lib-web-ui/package.json`
-- `packages/docs-design-system/docs/tutorial/css-integration.mdx`
+- `packages/docs-design-system/docs-design-token/guides/css-integration.mdx`
 
 ### Created (3 files)
 

@@ -1,0 +1,389 @@
+---
+sidebar_position: 8
+description: Common issues and solutions
+---
+
+# Troubleshooting
+
+This guide covers common issues and their solutions when working with the design tokens package.
+
+## Build Issues
+
+### Roboto Download Warnings
+
+**Symptom:** Warnings during build about failed font downloads
+
+```
+⚠ Warning: Failed to download Roboto fonts
+Network request failed: ENOTFOUND fonts.googleapis.com
+```
+
+**Solution:** Safe to ignore when running offline. Rerun the build once network access is available to populate `dist/font/`. The build will succeed but fonts won't be embedded.
+
+**Workaround:** If you have fonts cached in `assets/fonts/`, the build will use those instead.
+
+### Stale Generated Types
+
+**Symptom:** TypeScript errors about missing token properties
+
+```
+Property 'newColor' does not exist on type 'ColorTokens'.
+```
+
+**Solution:** Run `pnpm run build:tokens` to regenerate `src/generated/themes.ts` after editing files in `src/tokens/`.
+
+**Why it happens:** The TypeScript runtime uses `src/generated/themes.ts` for type definitions. If you add new tokens but don't rebuild, TypeScript doesn't know about them yet.
+
+### Style Dictionary Build Errors
+
+**Symptom:** Build fails with Style Dictionary errors
+
+```
+Error: Token reference not found: {color.nonexistent.value}
+```
+
+**Solution:**
+
+1. Check token files for syntax errors
+2. Verify all token references use valid paths
+3. Ensure custom transforms don't conflict
+4. Run `pnpm run clean && pnpm run build` to start fresh
+
+**Common causes:**
+
+- Typos in token references
+- Circular dependencies between tokens
+- Missing token files in `src/tokens/`
+- Malformed JavaScript objects
+
+### Font Assets Not Copied
+
+**Symptom:** Fonts are missing in `dist/font/`
+
+```
+dist/font/ is empty or missing font files
+```
+
+**Solution:** The `post-build-export.js` script copies fonts from `assets/fonts/` to `dist/font/`. Ensure the source `assets/fonts/` directory exists and contains the downloaded font files. If empty, the `prebuild-download-fonts.js` script should populate it during build.
+
+**Steps to fix:**
+
+```bash
+# Remove old fonts
+rm -rf assets/fonts/ dist/font/
+
+# Rebuild with fresh font download
+pnpm run build
+```
+
+## Runtime Issues
+
+### Missing CSS Variables in Downstream Apps
+
+**Symptom:** CSS variables are undefined at runtime
+
+```javascript
+// In browser console
+getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
+// Returns: "" (empty string)
+```
+
+**Solution:** Ensure `pnpm run build` has completed successfully so `dist/index.js` and the theme-specific CSS bundles exist before publishing or linking the package. Check that downstream apps import the correct CSS files.
+
+**Required imports:**
+
+```typescript
+// In your app
+import '@designgreat/lib-web-ui-design-token/css/light'
+// or
+import '@designgreat/lib-web-ui-design-token/css/dark'
+```
+
+### Theme Switching Not Working
+
+**Symptom:** Calling `setTheme()` doesn't update styles
+
+**Solution:**
+
+1. Verify CSS variables are imported
+2. Check that theme class is applied to root element
+3. Ensure dark theme CSS is also imported
+
+```typescript
+// Correct setup
+import '@designgreat/lib-web-ui-design-token/css'
+
+// Apply theme by adding class
+const DARK_THEME_CLASS = 'dg-theme-dark'
+document.body.classList.add(DARK_THEME_CLASS)
+```
+
+### TypeScript Errors in Consumer Apps
+
+**Symptom:** Type errors when using tokens
+
+```
+Cannot find module '@designgreat/lib-web-ui-design-token' or its corresponding type declarations.
+```
+
+**Solution:**
+
+1. Ensure package is installed: `pnpm add @designgreat/lib-web-ui-design-token`
+2. Check that `dist/index.d.ts` exists in the package
+3. Rebuild the design token package: `pnpm --filter @designgreat/lib-web-ui-design-token build`
+4. Clear TypeScript cache: `rm -rf node_modules/.cache/`
+
+## Token Authoring Issues
+
+### Circular Reference Errors
+
+**Symptom:** Build fails with circular reference error
+
+```
+Error: Circular reference detected: color.primary -> color.accent -> color.primary
+```
+
+**Solution:** Remove circular dependencies in token references. Each token should reference other tokens without creating loops.
+
+**Example fix:**
+
+```javascript
+// ❌ Bad: Circular reference
+// color/primary.js
+export default {
+  color: {
+    primary: { value: '{color.accent.blue}' }
+  }
+}
+
+// color/accent.js  
+export default {
+  color: {
+    accent: {
+      blue: { value: '{color.primary}' }  // Circular!
+    }
+  }
+}
+
+// ✅ Good: One-way reference
+// color/base.js
+export default {
+  color: {
+    base: {
+      blue: { value: '#3B82F6' }
+    }
+  }
+}
+
+// color/primary.js
+export default {
+  color: {
+    primary: { value: '{color.base.blue}' }
+  }
+}
+```
+
+### Token Not Found Errors
+
+**Symptom:** Build fails with "token not found" error
+
+```
+Error: Reference not found: {color.missing.value}
+```
+
+**Solution:**
+
+1. Check for typos in token references
+2. Verify the referenced token exists
+3. Ensure the file with the token is exported
+
+**Debugging steps:**
+
+```bash
+# Search for the token definition
+grep -r "missing:" src/tokens/
+
+# Check file exports
+cat src/tokens/color/missing.js
+```
+
+### Malformed Token Objects
+
+**Symptom:** Build succeeds but tokens have unexpected values
+
+**Solution:** Verify token structure follows Style Dictionary format:
+
+```javascript
+// ✅ Correct format
+export default {
+  color: {
+    primary: {
+      value: '#3B82F6'  // Value property is required
+    }
+  }
+}
+
+// ❌ Wrong format
+export default {
+  color: {
+    primary: '#3B82F6'  // Missing value property
+  }
+}
+```
+
+## Validation Issues
+
+### Validation Script Failures
+
+**Symptom:** `pnpm run validate` fails
+
+```
+Token validation failed:
+  - Missing section "typography" in theme "dark"
+```
+
+**Solution:**
+
+1. Check that all required sections exist in theme objects
+2. Verify token structure is complete
+3. Rebuild tokens: `pnpm run build:tokens`
+
+**Required sections:**
+
+- `color`
+- `typography`
+- `size`
+- `shadow`
+- `transition`
+- `gradient`
+
+### Theme Mismatch Errors
+
+**Symptom:** Light and dark themes have different token structures
+
+**Solution:** Ensure both themes define the same tokens. Use `$light` and `$dark` suffixes for theme-specific values:
+
+```javascript
+export default {
+  color: {
+    background: {
+      value: '#FFFFFF',    // Light theme value
+      $dark: '#1A1A1A'     // Dark theme override
+    }
+  }
+}
+```
+
+## Integration Issues
+
+### Downstream Package Build Failures
+
+**Symptom:** Component library fails to build after token changes
+
+```
+Error: Cannot find module '@designgreat/lib-web-ui-design-token/css/light'
+```
+
+**Solution:**
+
+1. Rebuild design token package: `pnpm --filter @designgreat/lib-web-ui-design-token build`
+2. Clear node_modules cache: `pnpm install --force`
+3. Rebuild dependent packages
+
+### Storybook Not Showing Updates
+
+**Symptom:** Storybook doesn't reflect token changes
+
+**Solution:**
+
+1. Rebuild tokens: `pnpm --filter @designgreat/lib-web-ui-design-token build`
+2. Rebuild component library: `pnpm --filter @designgreat/lib-web-ui build`
+3. Restart Storybook: `pnpm --filter @designgreat/lib-web-ui run storybook`
+4. Hard refresh browser (Cmd+Shift+R)
+
+## Performance Issues
+
+### Slow Build Times
+
+**Symptom:** Build takes longer than expected
+
+**Solution:**
+
+1. Use `pnpm run watch` for development instead of full builds
+2. Skip font download if already cached
+3. Use incremental builds when possible
+
+**Performance tips:**
+
+```bash
+# Quick iteration (skips TypeScript compilation)
+pnpm run build:tokens
+
+# Full build (includes everything)
+pnpm run build
+```
+
+### Large Bundle Sizes
+
+**Symptom:** Generated files are unexpectedly large
+
+**Solution:**
+
+1. Check for duplicate tokens
+2. Verify custom transforms aren't expanding tokens unnecessarily
+3. Use tree-shaking in consumer apps
+
+## Debugging Techniques
+
+### Enable Debug Logging
+
+```bash
+# Style Dictionary debug output
+DEBUG=style-dictionary:* pnpm run build:tokens
+
+# Verbose build output
+pnpm run build -- --verbose
+```
+
+### Inspect Generated Files
+
+```bash
+# View generated themes
+cat src/generated/themes.ts | less
+
+# Check CSS variables
+cat dist/css/light/variables.css | grep --color 'primary'
+
+# View TypeScript definitions
+cat dist/index.d.ts | less
+```
+
+### Test in Isolation
+
+```bash
+# Test only token generation
+pnpm run build:tokens
+
+# Test only TypeScript compilation
+pnpm run typecheck
+
+# Test only validation
+pnpm run validate
+```
+
+## Getting Help
+
+If you encounter an issue not covered here:
+
+1. Check the [Style Dictionary documentation](https://amzn.github.io/style-dictionary/)
+2. Review [monorepo contributing guide](https://github.com/graezykev/designgreat/blob/main/docs/CONTRIBUTING.md)
+3. Search existing [GitHub issues](https://github.com/graezykev/designgreat/issues)
+4. Ask in team chat or open a new issue
+
+## Related Resources
+
+- [Development Workflow](./development-workflow)
+- [Build System](./build-system)
+- [Testing & Validation](./testing-validation)
+- [Token Authoring](./token-authoring)
+

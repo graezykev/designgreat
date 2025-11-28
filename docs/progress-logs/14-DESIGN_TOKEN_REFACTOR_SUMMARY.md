@@ -80,7 +80,7 @@ files: [
 
 ### 2️⃣ Documentation Updates
 
-**File:** `packages/docs-design-system/docs/tutorial/css-integration.mdx`
+**File:** `packages/docs-design-system/docs-design-token/guides/css-integration.mdx`
 
 ```diff
 body {
@@ -141,7 +141,7 @@ These already work correctly:
 ### Code Changes
 
 1. `packages/lib-web-ui-design-token/scripts/style-dictionary/config.js` - Main config
-2. `packages/docs-design-system/docs/tutorial/css-integration.mdx` - Doc update
+2. `packages/docs-design-system/docs-design-token/guides/css-integration.mdx` - Doc update
 
 ### Generated Files (Will Change)
 
@@ -203,4 +203,5 @@ These already work correctly:
 
 ---
 
-**Full Details:** See [REFACTOR_PLAN.md](./REFACTOR_PLAN.md)
+**Full Details:** See
+[10-DESIGN_TOKEN_REFACTOR_PLAN_REVISED.md](./10-DESIGN_TOKEN_REFACTOR_PLAN_REVISED.md)

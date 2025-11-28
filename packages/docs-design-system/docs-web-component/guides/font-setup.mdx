@@ -1,0 +1,293 @@
+---
+sidebar_position: 3
+---
+
+# Font Setup
+
+Fonts are **not included** in the `@designgreat/lib-web-ui` component library. This gives you flexibility to choose your own font loading strategy.
+
+:::tip Why aren't fonts included?
+For architectural details and design decisions, see [Font Handling in Contributing Docs](/contributing/web-component-development/font-handling).
+:::
+
+---
+
+## Option 1: Import from Design Token Package (Recommended)
+
+Import fonts from the design token package in your application entry point:
+
+```tsx
+// In your app entry point (e.g., main.tsx, _app.tsx, app/layout.tsx)
+
+// 1. Import fonts first
+import '@designgreat/lib-web-ui-design-token/font'
+
+// 2. Then import component library
+import '@designgreat/lib-web-ui'
+```
+
+**This is recommended because:**
+- Font files are versioned with design tokens
+- Includes all necessary font variants and unicode ranges
+- Uses optimized font formats
+- Zero configuration required
+
+---
+
+## Option 2: Use Your Own Font Loading
+
+If you prefer to manage fonts yourself, skip the font import and use your own method:
+
+```tsx
+// Only import the component library
+import '@designgreat/lib-web-ui'
+```
+
+Then load fonts using one of these methods:
+
+### Via Google Fonts CDN
+
+Add to your HTML `<head>`:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+  rel="stylesheet"
+/>
+```
+
+**Pros**: Easy to implement, Google's CDN is fast and globally distributed  
+**Cons**: External dependency, privacy considerations
+
+### Self-Hosted Fonts
+
+Download and host fonts yourself:
+
+```css
+/* In your global CSS file */
+@font-face {
+  font-family: 'Roboto';
+  src: 
+    url('/fonts/Roboto-Regular.woff2') format('woff2'),
+    url('/fonts/Roboto-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: 
+    url('/fonts/Roboto-Medium.woff2') format('woff2'),
+    url('/fonts/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: 
+    url('/fonts/Roboto-Bold.woff2') format('woff2'),
+    url('/fonts/Roboto-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Add more @font-face rules for other weights/styles as needed */
+```
+
+**Pros**: Full control, no external dependencies, better privacy  
+**Cons**: More setup, need to manage font files
+
+---
+
+## Using a Different Font
+
+To use a different font family entirely:
+
+### Step 1: Load Your Font
+
+Use any method above to load your preferred font.
+
+### Step 2: Override the CSS Variable
+
+```css
+:root {
+  --dg-font-family-primary: 'Your Font', sans-serif;
+}
+
+/* Or for both light and dark themes */
+:root,
+.dg-theme-dark {
+  --dg-font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+```
+
+**Popular alternatives:**
+- **Inter** - Modern, highly legible
+- **Open Sans** - Neutral, professional
+- **System fonts** - Native look, best performance
+
+---
+
+## Font Performance Optimization
+
+### Preload Critical Fonts
+
+For better performance, preload the most critical font files:
+
+```html
+<link
+  rel="preload"
+  href="/fonts/Roboto-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+```
+
+### Use `font-display: swap`
+
+This is included by default in the design token font CSS. It shows fallback fonts immediately while custom fonts load:
+
+```css
+@font-face {
+  font-family: 'Roboto';
+  /* ... */
+  font-display: swap; /* ✓ Prevents invisible text */
+}
+```
+
+### Subset Fonts
+
+For production, consider subsetting fonts to include only the characters you need:
+
+```bash
+# Example using glyphhanger
+npx glyphhanger --subset="Roboto-Regular.ttf" --formats=woff2,woff
+```
+
+---
+
+## Framework-Specific Examples
+
+### React (Vite)
+
+```tsx
+// src/main.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+
+createRoot(document.getElementById('root')!).render(<App />)
+```
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+### Next.js (Pages Router)
+
+```tsx
+// pages/_app.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui'
+import type { AppProps } from 'next/app'
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />
+}
+```
+
+### Remix
+
+```tsx
+// app/root.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui'
+import { Links, LiveReload, Meta, Outlet, Scripts } from '@remix-run/react'
+
+export default function App() {
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  )
+}
+```
+
+---
+
+## Troubleshooting
+
+### Fonts Don't Appear
+
+**Problem**: Text renders in fallback fonts, not Roboto.
+
+**Solutions**:
+1. ✅ Verify font import comes **before** library import
+2. ✅ Check browser Network tab - font files should load (`.woff2`, `.woff`, etc.)
+3. ✅ Clear browser cache and rebuild your app
+4. ✅ Check console for CORS errors (if loading from CDN)
+
+### Font Files 404 Error
+
+**Problem**: Browser shows 404 errors for font files.
+
+**Solutions**:
+1. ✅ Ensure `@designgreat/lib-web-ui-design-token` is installed
+2. ✅ For self-hosted fonts, verify file paths match your directory structure
+3. ✅ Check that your bundler processes font files correctly
+
+### Fonts Flash Unstyled
+
+**Problem**: Text briefly appears in fallback font before switching to Roboto.
+
+**This is normal!** The `font-display: swap` strategy prevents invisible text (FOIT) by showing fallback fonts immediately. To minimize the flash:
+
+1. ✅ Preload critical fonts (see [Font Performance Optimization](#font-performance-optimization))
+2. ✅ Use similar system fonts as fallbacks
+3. ✅ Consider using `font-display: optional` for non-critical fonts
+
+### Wrong Font Weight
+
+**Problem**: All text appears in Regular weight, even when Bold should be used.
+
+**Solutions**:
+1. ✅ Ensure you've loaded all required font weights (300, 400, 500, 700)
+2. ✅ Check if you're overriding `font-weight` in custom CSS
+3. ✅ Verify design token CSS is loaded (contains `--dg-font-family-primary`)
+
+---
+
+## Related Resources
+
+- [Installation Guide](./installation.mdx) - Getting started with the component library
+- [Theming Guide](./theming.mdx) - Theme configuration and customization
+- [Font Integration (Design Token)](/design-token/guides/font-integration) - Deep dive into font assets
+

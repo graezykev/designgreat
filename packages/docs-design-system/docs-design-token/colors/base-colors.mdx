@@ -1,0 +1,92 @@
+---
+sidebar_position: 2
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+
+# Base Colors
+
+Base colors are the foundational color palette of the Design Great system. These colors are **fixed and not changeable by themes**. All other colors in the system are derived from these base colors.
+
+## Overview
+
+Base colors serve as the core reference points for the entire color system. They are carefully selected to provide a consistent visual language across all themes and contexts.
+
+### Key Characteristics
+
+- **Theme-independent**: Base colors remain constant across light and dark themes
+- **Reference colors**: All accent, semantic, and other colors derive from these base colors
+- **Raw values**: These are the only colors with hardcoded hex values in the system
+
+## Color Categories
+
+### Grey (Neutral Base)
+
+The grey color serves as the foundation for all neutral/achromatic colors in the system.
+
+|  | Token | CSS Variable | Hex | Use Case |
+|--|-------|--------------|-----|-------------|
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-grey)'}}></div> | <CopyableCode>color.base.grey</CopyableCode> | <CopyableCode>--dg-color-base-grey</CopyableCode> | `#1d1d1f` | Base grey color used for neutral accent gradients |
+
+:::info
+The base grey color is primarily used as a reference for generating neutral accent color gradients. It's rarely used directly in application code.
+:::
+
+### Saturated Colors
+
+Saturated colors provide vibrant hues for accent colors, semantic meanings, and interactive elements.
+
+|  | Token | CSS Variable | Hex | Use Case |
+|--|-------|--------------|-----|-------------|
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-red)'}}></div> | <CopyableCode>color.base.red</CopyableCode> | <CopyableCode>--dg-color-base-red</CopyableCode> | `#AE2E24` | Base red color for error states and red accents |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-orange)'}}></div> | <CopyableCode>color.base.orange</CopyableCode> | <CopyableCode>--dg-color-base-orange</CopyableCode> | `#A54800` | Base orange color for warning states |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-yellow)'}}></div> | <CopyableCode>color.base.yellow</CopyableCode> | <CopyableCode>--dg-color-base-yellow</CopyableCode> | `#7F5F01` | Base yellow color for caution and attention |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-green)'}}></div> | <CopyableCode>color.base.green</CopyableCode> | <CopyableCode>--dg-color-base-green</CopyableCode> | `#216E4E` | Base green color for success states |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-teal)'}}></div> | <CopyableCode>color.base.teal</CopyableCode> | <CopyableCode>--dg-color-base-teal</CopyableCode> | `#206A83` | Base teal color for secondary actions |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-blue)'}}></div> | <CopyableCode>color.base.blue</CopyableCode> | <CopyableCode>--dg-color-base-blue</CopyableCode> | `#0055CC` | Base blue color for primary/brand colors |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-purple)'}}></div> | <CopyableCode>color.base.purple</CopyableCode> | <CopyableCode>--dg-color-base-purple</CopyableCode> | `#5E4DB2` | Base purple color for discovery and new features |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-magenta)'}}></div> | <CopyableCode>color.base.magenta</CopyableCode> | <CopyableCode>--dg-color-base-magenta</CopyableCode> | `#943D73` | Base magenta color for tertiary actions |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-lime)'}}></div> | <CopyableCode>color.base.lime</CopyableCode> | <CopyableCode>--dg-color-base-lime</CopyableCode> | `#4C6B1F` | Base lime color for quartus actions |
+
+## Color Derivation
+
+Base colors are used to generate:
+
+1. **Accent Colors**: Gradient scales from each base color (see [Accent Colors](./accent-colors))
+2. **Primary Colors**: Reference to base blue (see [Primary Colors](./primary-brand-colors))
+3. **Semantic Colors**: Map to specific base colors for meaning (see [Semantic Colors](./semantic-colors))
+4. **Secondary/Tertiary/Quartus**: Reference to teal, magenta, and lime respectively
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use base colors as references in token definitions
+- Rely on base colors for generating theme-aware accent colors
+- Reference base colors in documentation and design specifications
+
+### ❌ Don't
+
+- Use base colors directly in application code
+- Modify base color values without updating the entire design system
+- Create custom colors that don't derive from base colors
+
+## Technical Details
+
+### Token Structure
+
+Base colors are defined in the design token package at:
+
+```
+packages/lib-web-ui-design-token/src/tokens/color/base/
+  ├── grey.js       # Neutral base color
+  └── saturated.js  # All saturated base colors
+```
+
+## Related Topics
+
+- [Accent Colors](./accent-colors) - Learn how accent colors derive from base colors
+- [Theme Switching](/design-token/guides/theme-switching) - Understand how themes work with colors
+- [CSS Integration](/design-token/guides/css-integration) - Using color tokens in CSS
+
+

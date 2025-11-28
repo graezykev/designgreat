@@ -1,0 +1,9 @@
+{
+  "label": "Web Component Development",
+  "position": 4,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "web-component-development/overview"
+  }
+}
