@@ -43,7 +43,7 @@ jobs:
           else
             base_ref=$(git rev-list --max-parents=0 HEAD)
           fi
-          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/docs-design-system/|^packages/lib-web-ui/|^packages/lib-design-token/|^\.github/workflows/deploy-(docs-design-system|docs-storybook-gh-pages)\.yml$'; then
+          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/docs-design-system/|^packages/lib-web-component/|^packages/lib-design-token/|^\.github/workflows/deploy-(docs-design-system|docs-storybook-gh-pages)\.yml$'; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "📚 Docs changes detected"
           else
@@ -51,7 +51,7 @@ jobs:
             echo "📚 No docs changes detected"
           fi
 
-      - name: Detect lib-web-ui related changes
+      - name: Detect lib-web-component related changes
         id: storybook_changes
         run: |
           set -eo pipefail
@@ -60,7 +60,7 @@ jobs:
           else
             base_ref=$(git rev-list --max-parents=0 HEAD)
           fi
-          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/lib-web-ui/|^packages/lib-design-token/|^\.github/workflows/deploy-(lib-web-ui-storybook|docs-storybook-gh-pages)\.yml$'; then
+          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/lib-web-component/|^packages/lib-design-token/|^\.github/workflows/deploy-(lib-web-component-storybook|docs-storybook-gh-pages)\.yml$'; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "📦 Storybook changes detected"
           else
@@ -116,7 +116,7 @@ jobs:
       # ============================================
       - name: Build component library (dependency for docs CSS)
         if: steps.strategy.outputs.should_deploy == 'true'
-        run: pnpm --filter @designgreat/lib-web-ui build
+        run: pnpm --filter @designgreat/lib-web-component build
 
       - name: Build Docusaurus site
         if: steps.strategy.outputs.should_deploy == 'true'
@@ -130,19 +130,19 @@ jobs:
       - name: Build Storybook site
         if: steps.strategy.outputs.should_deploy == 'true'
         env:
-          STORYBOOK_BASE_PATH: /designgreat/lib-web-ui/
+          STORYBOOK_BASE_PATH: /designgreat/lib-web-component/
         run: |
           echo "📦 Building Storybook..."
-          pnpm --filter @designgreat/lib-web-ui storybook:build
+          pnpm --filter @designgreat/lib-web-component storybook:build
 
       - name: Relocate Storybook output to subdirectory
         if: steps.strategy.outputs.should_deploy == 'true'
         run: |
           set -euo pipefail
-          echo "📦 Relocating Storybook to /lib-web-ui/ subdirectory..."
-          tmp_dir="packages/lib-web-ui/storybook-temp"
-          final_dir="packages/lib-web-ui/storybook-static/lib-web-ui"
-          mv packages/lib-web-ui/storybook-static "$tmp_dir"
+          echo "📦 Relocating Storybook to /lib-web-component/ subdirectory..."
+          tmp_dir="packages/lib-web-component/storybook-temp"
+          final_dir="packages/lib-web-component/storybook-static/lib-web-component"
+          mv packages/lib-web-component/storybook-static "$tmp_dir"
           mkdir -p "$final_dir"
           shopt -s dotglob
           mv "$tmp_dir"/* "$final_dir"/
@@ -163,9 +163,9 @@ jobs:
           echo "  📚 Copying Docusaurus to root..."
           cp -r packages/docs-design-system/build/* final-site/
 
-          echo "  📦 Copying Storybook to /lib-web-ui/..."
-          mkdir -p final-site/lib-web-ui
-          cp -r packages/lib-web-ui/storybook-static/lib-web-ui/* final-site/lib-web-ui/
+          echo "  📦 Copying Storybook to /lib-web-component/..."
+          mkdir -p final-site/lib-web-component
+          cp -r packages/lib-web-component/storybook-static/lib-web-component/* final-site/lib-web-component/
 
           echo "✅ Merge completed"
 
@@ -186,11 +186,11 @@ jobs:
           echo "  ✅ Docusaurus site present"
 
           # Verify Storybook
-          if [ ! -d "final-site/lib-web-ui" ]; then
+          if [ ! -d "final-site/lib-web-component" ]; then
             echo "❌ ERROR: Storybook directory not found!"
             exit 1
           fi
-          if [ ! -f "final-site/lib-web-ui/index.html" ]; then
+          if [ ! -f "final-site/lib-web-component/index.html" ]; then
             echo "❌ ERROR: Storybook index.html not found!"
             exit 1
           fi

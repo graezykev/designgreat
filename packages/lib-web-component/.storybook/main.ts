@@ -38,7 +38,7 @@ const config: StorybookConfig = {
         ...(config.resolve ?? {}),
         alias: {
           ...(config.resolve?.alias ?? {}),
-          '@designgreat/lib-web-ui': path.resolve(__dirname, '../src')
+          '@designgreat/lib-web-component': path.resolve(__dirname, '../src')
         }
       },
       optimizeDeps,

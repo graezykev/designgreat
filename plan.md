@@ -49,8 +49,8 @@ Create the following structure:
 /
 ├── packages/
 │   ├── lib-design-token/
-│   ├── lib-web-ui/
-│   ├── lib-web-ui-website/
+│   ├── lib-web-component/
+│   ├── lib-web-component-website/
 │   ├── app-web-pc-core/
 │   ├── app-web-pc-client/
 │   ├── app-web-mobile-core/
@@ -159,7 +159,7 @@ Create the React component library with development and testing infrastructure.
 
 ### Tasks
 
-#### 3.1 UI Library Package Setup (`lib-web-ui`)
+#### 3.1 UI Library Package Setup (`lib-web-component`)
 
 - Initialize package with TypeScript
 - Install React, React DOM, and peer dependencies
@@ -220,7 +220,7 @@ Each component should include:
 
 #### 3.6 GitHub Actions - NPM Publishing
 
-Create reusable workflow for `lib-web-ui`:
+Create reusable workflow for `lib-web-component`:
 
 - Trigger on push to `main` when package changes
 - Run lint, test, and build
@@ -246,7 +246,7 @@ Create documentation website and set up automated publishing pipelines.
 
 ### Tasks
 
-#### 4.1 Documentation Website (`lib-web-ui-website`)
+#### 4.1 Documentation Website (`lib-web-component-website`)
 
 - Initialize Docusaurus (v3) project
 - Configure with TypeScript support
@@ -276,7 +276,7 @@ Create documentation for each component including:
 
 #### 4.4 GitHub Actions - Documentation Deployment
 
-Create workflow for `lib-web-ui-website`:
+Create workflow for `lib-web-component-website`:
 
 - Trigger on push to `main` when package changes
 - Build Docusaurus site

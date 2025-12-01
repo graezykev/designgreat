@@ -45,7 +45,7 @@ const __dirname = path.dirname(__filename)
 // Configuration
 const CONFIG = {
   docsDir: path.join(__dirname, 'docs/colors'),
-  cssPath: path.join(__dirname, '../lib-web-ui/dist/lib-web-ui.css'),
+  cssPath: path.join(__dirname, '../lib-web-component/dist/lib-web-component.css'),
   tokensDir: path.join(__dirname, '../lib-design-token/src/tokens/color'),
   files: [
     'base-colors.mdx',

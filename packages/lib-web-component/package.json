@@ -1,5 +1,5 @@
 {
-  "name": "@designgreat/lib-web-ui",
+  "name": "@designgreat/lib-web-component",
   "version": "0.6.2",
   "private": false,
   "publishConfig": {
@@ -9,14 +9,14 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/packages/lib-web-ui/src/index.cjs",
-  "module": "./dist/packages/lib-web-ui/src/index.mjs",
+  "main": "./dist/packages/lib-web-component/src/index.cjs",
+  "module": "./dist/packages/lib-web-component/src/index.mjs",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/packages/lib-web-ui/src/index.mjs",
-      "require": "./dist/packages/lib-web-ui/src/index.cjs"
+      "import": "./dist/packages/lib-web-component/src/index.mjs",
+      "require": "./dist/packages/lib-web-component/src/index.cjs"
     },
     "./dist/*": "./dist/*"
   },

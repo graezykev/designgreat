@@ -21,7 +21,7 @@ libraries, frontend applications, and backend services with a single developer e
 /
 ├─ .github/workflows/          # CI workflows (to be populated)
 ├─ packages/                   # Workspace packages
-│  ├─ lib-web-ui-*             # UI libraries and design tokens
+│  ├─ lib-web-component-*             # UI libraries and design tokens
 │  ├─ app-web-*                # Web applications (React)
 │  ├─ app-service-*            # Node and serverless services
 │  └─ shared/                  # Shared utilities + eslint config package

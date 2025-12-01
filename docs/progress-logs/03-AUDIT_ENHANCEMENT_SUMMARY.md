@@ -4,7 +4,7 @@
 
 ### 1. Comprehensive Investigation ✅
 
-- Explored the monorepo structure (lib-design-token, lib-web-ui, docs-design-system)
+- Explored the monorepo structure (lib-design-token, lib-web-component, docs-design-system)
 - Understood token definition → CSS generation → documentation pipeline
 - Identified relationships between token references, CSS variables, and documentation tables
 
@@ -93,7 +93,7 @@ Added 5 new comprehensive checks:
 The script now validates across the entire pipeline:
 
 - **Token Definitions** (lib-design-token/src/tokens/)
-- **CSS Output** (lib-web-ui/dist/lib-web-ui.css)
+- **CSS Output** (lib-web-component/dist/lib-web-component.css)
 - **Documentation** (docs-design-system/docs-design-token/colors/)
 
 ### Intelligent Validation Logic

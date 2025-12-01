@@ -7,7 +7,7 @@ This document outlines the comprehensive refactoring plan to:
 1. Change CSS variable prefix from `--token-` to `--dg-`
 2. Change SCSS variable prefix from `$token-` to `$dg-`
 3. Use `.dark` selector for dark theme instead of `:root`
-4. Make lib-web-ui consume CSS directly from lib-design-token
+4. Make lib-web-component consume CSS directly from lib-design-token
 5. Update all documentation and dependents
 
 ## Current State Analysis
@@ -47,7 +47,7 @@ This document outlines the comprehensive refactoring plan to:
 
 - `src/theme.ts` - Theme generation utilities
 
-### Package: `lib-web-ui`
+### Package: `lib-web-component`
 
 **Current Behavior:**
 
@@ -68,7 +68,7 @@ This document outlines the comprehensive refactoring plan to:
 
 **Current Behavior:**
 
-- Imports `lib-web-ui.css` which contains the generated theme
+- Imports `lib-web-component.css` which contains the generated theme
 - Maps Docusaurus Infima variables to `--dg-` tokens
 - Documentation mentions both `--token-` (old) and `--dg-` (new) prefixes
 
@@ -90,7 +90,7 @@ The current system has **two parallel approaches**:
 2. **Design Token Support (new, correct):**
    - `design-token-support` wraps tokens and generates `--dg-` prefix
    - Light theme uses `:root`, dark theme uses `.dg-theme-dark`
-   - Used by `lib-web-ui` and works correctly
+   - Used by `lib-web-component` and works correctly
 
 **Issue:** The direct CSS output from `lib-design-token` is outdated and conflicts with the newer
 `design-token-support` approach.
@@ -106,8 +106,8 @@ The current system has **two parallel approaches**:
 
 ### Secondary Goals
 
-1. Make `lib-web-ui` optionally consume CSS directly from `lib-design-token`
-2. Remove redundant theme generation in `lib-web-ui` (or keep as optional)
+1. Make `lib-web-component` optionally consume CSS directly from `lib-design-token`
+2. Remove redundant theme generation in `lib-web-component` (or keep as optional)
 3. Ensure all component examples use correct variables
 
 ## Detailed Refactoring Steps
@@ -197,11 +197,11 @@ StyleDictionary.registerFormat({
 SCSS variables don't use selectors, but we should ensure they're properly prefixed. The current
 setup should work once prefix is changed to 'dg'.
 
-### Phase 2: Update lib-web-ui
+### Phase 2: Update lib-web-component
 
 #### 2.1 Add Direct CSS Import Option
 
-**File:** `packages/lib-web-ui/package.json`
+**File:** `packages/lib-web-component/package.json`
 
 **Changes:**
 
@@ -213,14 +213,14 @@ setup should work once prefix is changed to 'dg'.
 
 #### 2.2 Update Generation Script
 
-**File:** `packages/lib-web-ui/scripts/generate-theme-css.ts`
+**File:** `packages/lib-web-component/scripts/generate-theme-css.ts`
 
 No changes needed - already uses `design-token-support` which will pick up the new prefix
 automatically.
 
 #### 2.3 Update Tailwind Config
 
-**File:** `packages/lib-web-ui/tailwind.config.ts`
+**File:** `packages/lib-web-component/tailwind.config.ts`
 
 Should work as-is since it reads from the JS/TS exports (not affected by CSS prefix). However,
 verify the color resolution logic.
@@ -297,7 +297,7 @@ Check these generated files:
 - `packages/lib-design-token/dist/css/light/variables.css` - Should have `:root` with `--dg-`
 - `packages/lib-design-token/dist/css/dark/variables.css` - Should have `.dark` with `--dg-`
 - `packages/lib-design-token/dist/css/dark/variables.scss` - Should have `$dg-`
-- `packages/lib-web-ui/src/styles/designgreat-theme.css` - Should remain unchanged
+- `packages/lib-web-component/src/styles/designgreat-theme.css` - Should remain unchanged
 
 #### 4.3 Test Theme Switching
 
@@ -319,7 +319,7 @@ Check these generated files:
 **Files:**
 
 - `packages/lib-design-token/README.md`
-- `packages/lib-web-ui/README.md`
+- `packages/lib-web-component/README.md`
 
 Add notes about:
 
@@ -359,7 +359,7 @@ Create migration guide for external users:
 Update changelog files for:
 
 - `packages/lib-design-token/CHANGELOG.md`
-- `packages/lib-web-ui/CHANGELOG.md`
+- `packages/lib-web-component/CHANGELOG.md`
 - `packages/shared/design-token-support/CHANGELOG.md`
 
 ## Implementation Order
@@ -393,18 +393,18 @@ Update changelog files for:
 - `design-token-support` already uses `--dg-` prefix
 - No changes needed
 
-### For lib-web-ui Users
+### For lib-web-component Users
 
 **Non-breaking:**
 
-- `lib-web-ui` already uses `--dg-` prefix via `design-token-support`
+- `lib-web-component` already uses `--dg-` prefix via `design-token-support`
 - No changes needed
 
 ## Risk Assessment
 
 ### Low Risk
 
-- ✅ lib-web-ui components (already use `--dg-`)
+- ✅ lib-web-component components (already use `--dg-`)
 - ✅ docs site styling (already use `--dg-`)
 - ✅ design-token-support package (already generates `--dg-`)
 
@@ -431,7 +431,7 @@ If issues arise:
 ### Optional Future Enhancements
 
 1. **Consolidate theme generation:**
-   - Consider if lib-web-ui should use direct CSS import instead of generating
+   - Consider if lib-web-component should use direct CSS import instead of generating
    - Would reduce build complexity
 
 2. **Add CSS custom property fallbacks:**
@@ -446,7 +446,7 @@ If issues arise:
 ## Timeline Estimate
 
 - Phase 1: 2-3 hours (config changes, testing)
-- Phase 2: 1-2 hours (lib-web-ui updates)
+- Phase 2: 1-2 hours (lib-web-component updates)
 - Phase 3: 2-3 hours (documentation updates)
 - Phase 4: 2-3 hours (testing)
 - Phase 5: 1-2 hours (migration docs)
@@ -477,14 +477,14 @@ If issues arise:
    - **Recommendation:** No, clean break with migration guide
    - The internal usage is already using `--dg-`, so impact is minimal
 
-4. **lib-web-ui consumption:** Should lib-web-ui switch to direct CSS import?
+4. **lib-web-component consumption:** Should lib-web-component switch to direct CSS import?
    - **Recommendation:** Keep current approach (more flexible)
    - Document both options
 
 ## Dependencies
 
 - None external
-- Internal: Changes to lib-design-token affect lib-web-ui and docs
+- Internal: Changes to lib-design-token affect lib-web-component and docs
 
 ## Stakeholders
 

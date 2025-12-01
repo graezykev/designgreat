@@ -54,7 +54,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@designgreat/lib-web-ui': resolvePath('src')
+      '@designgreat/lib-web-component': resolvePath('src')
     }
   }
 })

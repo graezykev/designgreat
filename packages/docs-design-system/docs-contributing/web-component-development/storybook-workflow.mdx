@@ -16,7 +16,7 @@ This guide captures the end-to-end workflow for developing and debugging Storybo
 ## Running Storybook During Development
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui storybook
+pnpm --filter @designgreat/lib-web-component storybook
 ```
 
 Storybook starts on `http://localhost:6006`. Use the **Theme** toolbar toggle (sun/moon icon) to switch between light and dark palettes. Stories render inside `dg-theme-*` wrappers, so Tailwind token utilities update instantly when the theme changes.
@@ -34,7 +34,7 @@ Every interactive story should use the shared toggle from `src/storybook/CodeDem
 import { withCodeDemo } from '../../storybook/CodeDemoToggle'
 
 const CODE_SNIPPETS = {
-  primary: `import { Button } from '@designgreat/lib-web-ui'
+  primary: `import { Button } from '@designgreat/lib-web-component'
 
 export function PrimaryCTA() {
   return <Button variant="primary">CTA Button</Button>
@@ -77,10 +77,10 @@ export const Primary: Story = {
 
 ```bash
 # Lint JSX, Storybook, and accessibility issues
-pnpm --filter @designgreat/lib-web-ui lint
+pnpm --filter @designgreat/lib-web-component lint
 
 # Optional snapshot/interaction tests
-pnpm --filter @designgreat/lib-web-ui storybook test --watch
+pnpm --filter @designgreat/lib-web-component storybook test --watch
 ```
 
 Components should rely on Jest + React Testing Library for behavioral coverage; Storybook is for documentation and visual QA.
@@ -88,7 +88,7 @@ Components should rely on Jest + React Testing Library for behavioral coverage; 
 ## Building Storybook
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui storybook:build
+pnpm --filter @designgreat/lib-web-component storybook:build
 ```
 
 Artifacts land in `storybook-static/` and can be uploaded to QA hosts (Netlify, Pages, etc.). Run this before handoffs to product/design teams.

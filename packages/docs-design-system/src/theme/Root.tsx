@@ -14,7 +14,7 @@ type RootProps = {
 
 /**
  * Root component to sync Docusaurus theme with design token theme classes.
- * Docusaurus uses [data-theme='dark'] attribute, lib-web-ui uses .dg-theme-dark class.
+ * Docusaurus uses [data-theme='dark'] attribute, lib-web-component uses .dg-theme-dark class.
  */
 export default function Root({ children }: RootProps): ReactNode {
   useEffect(() => {

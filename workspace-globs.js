@@ -1,6 +1,6 @@
 export const reactWorkspaceGlobs = [
   'packages/lib-design-token/**/*.{js,jsx,ts,tsx}',
-  'packages/lib-web-ui/**/*.{js,jsx,ts,tsx}',
+  'packages/lib-web-component/**/*.{js,jsx,ts,tsx}',
   'packages/docs-design-system/src/**/*.{js,jsx,ts,tsx}',
   'packages/docs-design-system/*.{ts,tsx}',
   'packages/app-web-*/**/*.{js,jsx,ts,tsx}'

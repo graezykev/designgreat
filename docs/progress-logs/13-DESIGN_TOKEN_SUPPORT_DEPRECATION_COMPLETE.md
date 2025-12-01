@@ -4,7 +4,7 @@
 
 ### Files Modified (9 files)
 
-#### 1. **packages/lib-web-ui**
+#### 1. **packages/lib-web-component**
 
 - ✅ `src/storybook/CodeDemoToggle.tsx` - Removed import, hardcoded class
 - ✅ `src/storybook/CodeDemoToggle.test.tsx` - Removed mock
@@ -35,7 +35,7 @@
 
 ### What Works Now
 
-1. ✅ `lib-web-ui` no longer depends on `design-token-support`
+1. ✅ `lib-web-component` no longer depends on `design-token-support`
 2. ✅ `docs-design-system` no longer depends on `design-token-support`
 3. ✅ Theme class `.dg-theme-dark` is hardcoded everywhere
 4. ✅ All TypeScript path mappings updated
@@ -99,7 +99,7 @@ pnpm run build  # Should work now
 
 ## 🎯 What Users Should Do Now
 
-### If Using `lib-web-ui`
+### If Using `lib-web-component`
 
 ✅ **No action needed** - Already uses direct CSS import
 

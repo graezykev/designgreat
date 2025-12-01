@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       package_name:
-        description: 'Package name to deprecate (e.g., @designgreat/lib-web-ui-website)'
+        description: 'Package name to deprecate (e.g., @designgreat/lib-web-component-website)'
         required: true
         type: string
       deprecation_message:

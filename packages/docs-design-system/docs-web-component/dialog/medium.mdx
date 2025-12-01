@@ -5,8 +5,8 @@ sidebar_position: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { useState } from 'react';
-import { Button } from '@designgreat/lib-web-ui';
-import { Dialog, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogDescription } from '@designgreat/lib-web-ui';
+import { Button } from '@designgreat/lib-web-component';
+import { Dialog, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogDescription } from '@designgreat/lib-web-component';
 
 # Medium Dialog
 
@@ -51,7 +51,7 @@ export function MediumDialogExample() {
   <TabItem value="code" label="Code">
     ```tsx
     import { useState } from 'react'
-    import { Button } from '@designgreat/lib-web-ui'
+    import { Button } from '@designgreat/lib-web-component'
     import {
       Dialog,
       DialogHeader,
@@ -59,7 +59,7 @@ export function MediumDialogExample() {
       DialogFooter,
       DialogTitle,
       DialogDescription
-    } from '@designgreat/lib-web-ui'
+    } from '@designgreat/lib-web-component'
 
     function MediumDialogExample() {
       const [open, setOpen] = useState(false)

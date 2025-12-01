@@ -145,7 +145,7 @@ version management and automated changelog generation.
    - Publishes changed packages to NPM
    - Configured packages:
      - `@designgreat/lib-design-token`
-     - `@designgreat/lib-web-ui`
+     - `@designgreat/lib-web-component`
      - `@designgreat/docs-design-system`
 
 **Secrets Required:**
@@ -180,7 +180,7 @@ component library to GitHub Pages. Prevents race conditions and content loss.
 **Deployment Strategy:**
 
 - **Root (`/`)**: Docusaurus documentation site
-- **Subdirectory (`/lib-web-ui/`)**: Storybook component library
+- **Subdirectory (`/lib-web-component/`)**: Storybook component library
 
 **Smart Deployment Modes:**
 
@@ -205,9 +205,9 @@ component library to GitHub Pages. Prevents race conditions and content loss.
 
 **Change Detection:**
 
-- **Docs:** `packages/docs-design-system/`, `packages/lib-web-ui/`, `packages/lib-design-token/`,
-  workflow files
-- **Storybook:** `packages/lib-web-ui/`, `packages/lib-design-token/`, workflow files
+- **Docs:** `packages/docs-design-system/`, `packages/lib-web-component/`,
+  `packages/lib-design-token/`, workflow files
+- **Storybook:** `packages/lib-web-component/`, `packages/lib-design-token/`, workflow files
 
 **Benefits:**
 
@@ -288,7 +288,7 @@ from the monorepo.
 
 **Manual Trigger Inputs:**
 
-- `package_name` (required) - Full package name (e.g., `@designgreat/lib-web-ui-website`)
+- `package_name` (required) - Full package name (e.g., `@designgreat/lib-web-component-website`)
 - `deprecation_message` (required) - Custom deprecation message
   - Default: "This package is no longer maintained. Please remove it from your dependencies."
 
@@ -327,7 +327,7 @@ from the monorepo.
 
 ### deploy-docs-design-system.yml (DEPRECATED)
 
-### deploy-lib-web-ui-storybook.yml (DEPRECATED)
+### deploy-lib-web-component-storybook.yml (DEPRECATED)
 
 **Status:** 🔴 Deprecated (triggers disabled)  
 **Replacement:** `deploy-docs-storybook-gh-pages.yml`
@@ -439,11 +439,11 @@ Some workflow steps can be tested locally:
 pnpm exec changeset
 
 # Test package builds
-pnpm --filter @designgreat/lib-web-ui build
+pnpm --filter @designgreat/lib-web-component build
 
 # Test documentation builds
 pnpm --filter @designgreat/docs-design-system build
-pnpm --filter @designgreat/lib-web-ui storybook:build
+pnpm --filter @designgreat/lib-web-component storybook:build
 ```
 
 ### Testing in CI

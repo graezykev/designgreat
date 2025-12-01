@@ -26,8 +26,8 @@ Monorepo using PNPM workspaces + Turborepo
 │ └── workflows/
 ├── packages/
 │ ├── lib-design-token/
-│ ├── lib-web-ui/
-│ ├── lib-web-ui-website/
+│ ├── lib-web-component/
+│ ├── lib-web-component-website/
 │ ├── app-web-pc-core/
 │ ├── app-web-pc-client/
 │ ├── app-web-mobile-core/

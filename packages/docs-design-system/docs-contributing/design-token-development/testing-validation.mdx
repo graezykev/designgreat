@@ -162,8 +162,8 @@ After token changes, test dependent packages:
 pnpm --filter @designgreat/lib-design-token build
 
 # Test component library
-pnpm --filter @designgreat/lib-web-ui build
-pnpm --filter @designgreat/lib-web-ui test
+pnpm --filter @designgreat/lib-web-component build
+pnpm --filter @designgreat/lib-web-component test
 
 # Test documentation site
 pnpm --filter @designgreat/docs-design-system build
@@ -189,10 +189,10 @@ Use Storybook to verify visual changes:
 ```bash
 # Build tokens and component library
 pnpm --filter @designgreat/lib-design-token build
-pnpm --filter @designgreat/lib-web-ui build
+pnpm --filter @designgreat/lib-web-component build
 
 # Start Storybook
-pnpm --filter @designgreat/lib-web-ui run storybook
+pnpm --filter @designgreat/lib-web-component run storybook
 ```
 
 Compare component renders before and after token changes.

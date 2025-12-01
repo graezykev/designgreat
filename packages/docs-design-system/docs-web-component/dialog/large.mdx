@@ -5,8 +5,8 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { useState } from 'react';
-import { Button } from '@designgreat/lib-web-ui';
-import { Dialog, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogDescription } from '@designgreat/lib-web-ui';
+import { Button } from '@designgreat/lib-web-component';
+import { Dialog, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogDescription } from '@designgreat/lib-web-component';
 
 # Large Dialog
 
@@ -53,7 +53,7 @@ export function LargeDialogExample() {
   <TabItem value="code" label="Code">
     ```tsx
     import { useState } from 'react'
-    import { Button } from '@designgreat/lib-web-ui'
+    import { Button } from '@designgreat/lib-web-component'
     import {
       Dialog,
       DialogHeader,
@@ -61,7 +61,7 @@ export function LargeDialogExample() {
       DialogFooter,
       DialogTitle,
       DialogDescription
-    } from '@designgreat/lib-web-ui'
+    } from '@designgreat/lib-web-component'
 
     function LargeDialogExample() {
       const [open, setOpen] = useState(false)

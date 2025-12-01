@@ -1,4 +1,4 @@
-# @designgreat/lib-web-ui
+# @designgreat/lib-web-component
 
 Designgreat's React component library built with design tokens, Tailwind CSS utilities, and custom
 component styles. This package provides React components with full TypeScript support and

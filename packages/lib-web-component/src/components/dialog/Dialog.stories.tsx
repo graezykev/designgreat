@@ -28,7 +28,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle
-} from '@designgreat/lib-web-ui'
+} from '@designgreat/lib-web-component'
 
 export function DialogExample() {
   const [open, setOpen] = useState(true)

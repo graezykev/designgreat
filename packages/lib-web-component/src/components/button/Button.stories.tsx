@@ -5,22 +5,22 @@ import { Button, type ButtonProps } from './Button'
 import { withCodeDemo } from '../../storybook/CodeDemoToggle'
 
 const CODE_SNIPPETS = {
-  primary: `import { Button } from '@designgreat/lib-web-ui'
+  primary: `import { Button } from '@designgreat/lib-web-component'
 
 export function PrimaryCTA() {
   return <Button variant="primary" size="md">CTA Button</Button>
 }`,
-  secondary: `import { Button } from '@designgreat/lib-web-ui'
+  secondary: `import { Button } from '@designgreat/lib-web-component'
 
 export function SecondaryCTA() {
   return <Button variant="secondary">Secondary action</Button>
 }`,
-  outline: `import { Button } from '@designgreat/lib-web-ui'
+  outline: `import { Button } from '@designgreat/lib-web-component'
 
 export function OutlineCTA() {
   return <Button variant="outline">Outline action</Button>
 }`,
-  withIcons: `import { Button } from '@designgreat/lib-web-ui'
+  withIcons: `import { Button } from '@designgreat/lib-web-component'
 import { FiSettings, FiArrowRight } from 'react-icons/fi'
 
 export function SettingsCTA() {
@@ -30,7 +30,7 @@ export function SettingsCTA() {
     </Button>
   )
 }`,
-  loading: `import { Button } from '@designgreat/lib-web-ui'
+  loading: `import { Button } from '@designgreat/lib-web-component'
 
 export function LoadingCTA() {
   return (

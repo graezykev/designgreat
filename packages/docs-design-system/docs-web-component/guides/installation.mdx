@@ -5,7 +5,7 @@ sidebar_position: 2
 # Installation
 
 :::tip TL;DR
-`pnpm add @designgreat/lib-web-ui` → import CSS + fonts → use `<Button>`, `<TextInput>`, `<Dialog>`.
+`pnpm add @designgreat/lib-web-component` → import CSS + fonts → use `<Button>`, `<TextInput>`, `<Dialog>`.
 :::
 
 :::info Only Need Design Tokens?
@@ -15,7 +15,7 @@ If you only need CSS variables and theme utilities without React components, see
 ## Install
 
 ```bash
-pnpm add @designgreat/lib-web-ui
+pnpm add @designgreat/lib-web-component
 ```
 
 **Peer dependencies:** `react ^18`, `react-dom ^18`
@@ -26,9 +26,9 @@ pnpm add @designgreat/lib-web-ui
 // In your app entrypoint (main.tsx, _app.tsx, app/layout.tsx)
 
 import '@designgreat/lib-design-token/font'   // Fonts (optional)
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css' // Styles + tokens
+import '@designgreat/lib-web-component/dist/lib-web-component.css' // Styles + tokens
 
-import { Button, TextInput, Dialog } from '@designgreat/lib-web-ui'
+import { Button, TextInput, Dialog } from '@designgreat/lib-web-component'
 
 function Example() {
   return (
@@ -61,7 +61,7 @@ If your project already uses Tailwind, add the CSS after your directives:
 @tailwind components;
 @tailwind utilities;
 
-@import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
+@import '@designgreat/lib-web-component/dist/lib-web-component.css';
 ```
 
 Add to your content config for tree-shaking:
@@ -71,7 +71,7 @@ Add to your content config for tree-shaking:
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@designgreat/lib-web-ui/**/*.js'
+    './node_modules/@designgreat/lib-web-component/**/*.js'
   ]
 }
 ```
@@ -85,7 +85,7 @@ module.exports = {
 **Solution:** Ensure you've imported the CSS:
 
 ```tsx
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import '@designgreat/lib-web-component/dist/lib-web-component.css'
 ```
 
 For frameworks with code splitting (Next.js), make sure the import is in `app/layout.tsx` or `pages/_app.tsx`.
@@ -103,7 +103,7 @@ For frameworks with code splitting (Next.js), make sure the import is in `app/la
 **Solution:** Verify the package is installed:
 
 ```bash
-pnpm list @designgreat/lib-web-ui
+pnpm list @designgreat/lib-web-component
 ```
 
 ---

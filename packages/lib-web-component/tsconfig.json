@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "types": ["node", "jest"],
     "paths": {
-      "@designgreat/lib-web-ui": ["./src"],
-      "@designgreat/lib-web-ui/*": ["./src/*"]
+      "@designgreat/lib-web-component": ["./src"],
+      "@designgreat/lib-web-component/*": ["./src/*"]
     }
   },
   "include": [

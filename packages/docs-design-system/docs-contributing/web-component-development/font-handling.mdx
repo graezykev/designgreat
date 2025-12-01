@@ -9,7 +9,7 @@ This page explains the font loading strategy and architectural decisions for the
 
 ## Why Fonts Are Not Bundled
 
-The `@designgreat/lib-web-ui` library **intentionally does NOT bundle fonts** in its distributable CSS. This design decision provides several benefits:
+The `@designgreat/lib-web-component` library **intentionally does NOT bundle fonts** in its distributable CSS. This design decision provides several benefits:
 
 ### For Consumers
 
@@ -31,7 +31,7 @@ Understanding the library's CSS architecture:
 ```
 Consumer App
   ├─> @designgreat/lib-design-token/font (optional)
-  └─> @designgreat/lib-web-ui
+  └─> @designgreat/lib-web-component
        └─> src/index.ts
             └─> styles/index.css
                  ├─> @designgreat/lib-design-token/css (tokens)
@@ -46,7 +46,7 @@ Consumer App
 
 ## What the Library CSS Includes
 
-The distributed CSS (`dist/lib-web-ui.css`) does **NOT** include:
+The distributed CSS (`dist/lib-web-component.css`) does **NOT** include:
 
 - ❌ `@font-face` declarations
 - ❌ Default `font-family` rules on `body` or `html`

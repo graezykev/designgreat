@@ -14,7 +14,7 @@ This guide covers common issues and their solutions when working with the compon
 **Solution:** Regenerate theme CSS:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui generate:theme
+pnpm --filter @designgreat/lib-web-component generate:theme
 ```
 
 Or rebuild the design token package:
@@ -30,13 +30,13 @@ pnpm --filter @designgreat/lib-design-token build
 **Solution:** Ensure fonts are copied before starting Storybook. This happens automatically with:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui storybook
+pnpm --filter @designgreat/lib-web-component storybook
 ```
 
 If fonts are still missing, manually copy them:
 
 ```bash
-cd packages/lib-web-ui
+cd packages/lib-web-component
 cp -r ../lib-design-token/dist/font/* public/assets/fonts/
 ```
 
@@ -69,7 +69,7 @@ ls -la src/styles/designgreat-theme.css
 If missing, run:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui generate:theme
+pnpm --filter @designgreat/lib-web-component generate:theme
 ```
 
 ## Test Failures
@@ -81,13 +81,13 @@ pnpm --filter @designgreat/lib-web-ui generate:theme
 1. Run tests in watch mode to see detailed errors:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui test -- --watch
+pnpm --filter @designgreat/lib-web-component test -- --watch
 ```
 
 2. Update snapshots if needed:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui test -- -u
+pnpm --filter @designgreat/lib-web-component test -- -u
 ```
 
 ## Theme Desync in Storybook
@@ -97,7 +97,7 @@ pnpm --filter @designgreat/lib-web-ui test -- -u
 **Solution:** Ensure the preview iframe body contains the expected `dg-theme-*` class. Re-running the dev server typically fixes it:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui storybook
+pnpm --filter @designgreat/lib-web-component storybook
 ```
 
 ## Token Mismatch
@@ -108,8 +108,8 @@ pnpm --filter @designgreat/lib-web-ui storybook
 
 ```bash
 rm -rf node_modules/.cache
-pnpm --filter @designgreat/lib-web-ui generate:theme
-pnpm --filter @designgreat/lib-web-ui dev
+pnpm --filter @designgreat/lib-web-component generate:theme
+pnpm --filter @designgreat/lib-web-component dev
 ```
 
 ## Story Fails to Load
@@ -143,19 +143,19 @@ Common causes:
 1. Clean build artifacts:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui run clean
+pnpm --filter @designgreat/lib-web-component run clean
 ```
 
 2. Regenerate tokens:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui generate:theme
+pnpm --filter @designgreat/lib-web-component generate:theme
 ```
 
 3. Run full build:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui build
+pnpm --filter @designgreat/lib-web-component build
 ```
 
 ## Getting Help

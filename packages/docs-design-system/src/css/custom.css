@@ -4,8 +4,8 @@
  * work well for content-centric websites.
  */
 
-/* Import lib-web-ui CSS (tokens + components) */
-@import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
+/* Import lib-web-component CSS (tokens + components) */
+@import '@designgreat/lib-web-component/dist/lib-web-component.css';
 
 /* Note: Fonts are loaded via the copy-fonts script
  * which copies them to static/font/. They are available at runtime
@@ -14,7 +14,7 @@
  * Roboto is available via CSS variable fallback to system fonts. */
 
 /* Apply design token theme classes to work with Docusaurus theme system */
-/* The lib-web-ui.css now has the correct order: :root (light) first, then .dg-theme-dark */
+/* The lib-web-component.css now has the correct order: :root (light) first, then .dg-theme-dark */
 /* The Root.tsx component syncs .dg-theme-dark class with Docusaurus's [data-theme='dark'] */
 
 /* Map Infima variables to Design Tokens for Light Theme */

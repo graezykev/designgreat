@@ -73,7 +73,7 @@ GitHub Pages (before)          Deploy Docs (no merge)        GitHub Pages (after
 │ /                 │                                      │ /                 │
 │ ├─ index.html     │          ┌──────────────┐          │ ├─ index.html     │
 │ ├─ docs/          │   ────▶  │ Overwrites   │  ────▶   │ ├─ docs/          │
-│ └─ lib-web-ui/    │          │ EVERYTHING   │          │ └─ ❌ lib-web-ui/ │
+│ └─ lib-web-component/    │          │ EVERYTHING   │          │ └─ ❌ lib-web-component/ │
 │    └─ index.html  │          └──────────────┘          │    DELETED! ⚠️     │
 └───────────────────┘                                      └───────────────────┘
      Both exist                                                 Storybook LOST!
@@ -97,7 +97,7 @@ GitHub Pages (before)          Deploy Docs (no merge)        GitHub Pages (after
 Version & Publish → deploy-docs-design-system.yml → GitHub Pages
                                                      (overwrites everything!)
 
-                 → deploy-lib-web-ui-storybook.yml → GitHub Pages
+                 → deploy-lib-web-component-storybook.yml → GitHub Pages
                                                      (tries to merge, but race condition)
 
 Problems:
@@ -147,7 +147,7 @@ Benefits:
 #### 🔴 DEPRECATED: Old Workflows
 
 - `deploy-docs-design-system.yml` - triggers disabled
-- `deploy-lib-web-ui-storybook.yml` - triggers disabled
+- `deploy-lib-web-component-storybook.yml` - triggers disabled
 - Both kept for reference and emergency manual use only
 
 ---
@@ -156,9 +156,9 @@ Benefits:
 
 ### 1. Change Detection
 
-- **Docs:** Monitors `packages/docs-design-system/`, `packages/lib-web-ui/`,
+- **Docs:** Monitors `packages/docs-design-system/`, `packages/lib-web-component/`,
   `packages/lib-design-token/`
-- **Storybook:** Monitors `packages/lib-web-ui/`, `packages/lib-design-token/`
+- **Storybook:** Monitors `packages/lib-web-component/`, `packages/lib-design-token/`
 - Also watches workflow file changes
 
 ### 2. Smart Building
@@ -167,7 +167,7 @@ Benefits:
 # Shared setup (pnpm, node, dependencies) runs once
 # Then conditional builds:
 - Build Docusaurus (if docs changed)
-- Build Storybook (if lib-web-ui changed)
+- Build Storybook (if lib-web-component changed)
 - Skip what didn't change
 ```
 
@@ -180,12 +180,12 @@ if mode=both:
 elif mode=docs_only:
   # Download existing site
   # Build docs → replace root
-  # Preserve /lib-web-ui/ from existing
+  # Preserve /lib-web-component/ from existing
 
 elif mode=storybook_only:
   # Download existing site
   # Preserve root (docs) from existing
-  # Build Storybook → replace /lib-web-ui/
+  # Build Storybook → replace /lib-web-component/
 
 elif mode=none:
   # Skip deployment
@@ -211,7 +211,7 @@ GitHub Pages Root (graezykev.github.io/designgreat/)
 ├── assets/                 ← Docusaurus assets
 ├── css/                    ← Docusaurus styles
 ├── js/                     ← Docusaurus scripts
-└── lib-web-ui/             ← Storybook (subdirectory)
+└── lib-web-component/             ← Storybook (subdirectory)
     ├── index.html          ← Storybook entry
     ├── assets/             ← Storybook assets
     └── ...                 ← Storybook files
@@ -275,15 +275,15 @@ Before merging to main, test these scenarios:
 
 - [ ] **Test 1:** Make docs-only changes
   - Expected: Builds docs, preserves Storybook
-  - URL: Check both root and `/lib-web-ui/` work
+  - URL: Check both root and `/lib-web-component/` work
 
-- [ ] **Test 2:** Make lib-web-ui-only changes
+- [ ] **Test 2:** Make lib-web-component-only changes
   - Expected: Builds Storybook, preserves docs
-  - URL: Check both root and `/lib-web-ui/` work
+  - URL: Check both root and `/lib-web-component/` work
 
 - [ ] **Test 3:** Make changes to both
   - Expected: Builds both fresh (fastest path)
-  - URL: Check both root and `/lib-web-ui/` work
+  - URL: Check both root and `/lib-web-component/` work
 
 - [ ] **Test 4:** Make unrelated changes (other packages)
   - Expected: Skips deployment entirely
@@ -345,7 +345,7 @@ After verifying the new workflow works for ~2-3 weeks:
 ```bash
 # Optionally remove deprecated workflows entirely:
 rm .github/workflows/deploy-docs-design-system.yml
-rm .github/workflows/deploy-lib-web-ui-storybook.yml
+rm .github/workflows/deploy-lib-web-component-storybook.yml
 ```
 
 ### Configuration Changes

@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@designgreat/lib-web-ui": ["./src"],
-      "@designgreat/lib-web-ui/*": ["./src/*"]
+      "@designgreat/lib-web-component": ["./src"],
+      "@designgreat/lib-web-component/*": ["./src/*"]
     },
     "rootDir": "src",
     "outDir": "dist/types",

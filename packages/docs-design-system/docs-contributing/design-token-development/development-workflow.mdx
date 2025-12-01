@@ -120,13 +120,13 @@ To see your changes in action:
 2. Build dependent packages:
 
    ```bash
-   pnpm --filter @designgreat/lib-web-ui build
+   pnpm --filter @designgreat/lib-web-component build
    ```
 
 3. Start Storybook:
 
    ```bash
-   pnpm --filter @designgreat/lib-web-ui run storybook
+   pnpm --filter @designgreat/lib-web-component run storybook
    ```
 
 4. View components with updated tokens at `http://localhost:6006`
@@ -137,10 +137,10 @@ After token changes, rebuild downstream packages to ensure compatibility:
 
 ```bash
 # Build component library that depends on design tokens
-pnpm --filter @designgreat/lib-web-ui build
+pnpm --filter @designgreat/lib-web-component build
 
 # Build documentation site
-pnpm --filter @designgreat/lib-web-ui build
+pnpm --filter @designgreat/lib-web-component build
 
 # Build documentation site
 pnpm --filter @designgreat/docs-design-system build

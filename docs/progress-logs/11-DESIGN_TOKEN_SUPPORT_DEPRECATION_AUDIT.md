@@ -18,7 +18,7 @@ These files are **documentation only** and don't need changes:
 6. ✅ `docs/ARCHITECTURE.md` - Architecture documentation
 7. ✅ `packages/shared/design-token-support/package.json` - The package itself
 8. ✅ `packages/shared/design-token-support/CHANGELOG.md` - Package changelog
-9. ✅ `packages/lib-web-ui/CHANGELOG.md` - Historical reference
+9. ✅ `packages/lib-web-component/CHANGELOG.md` - Historical reference
 10. ✅ `packages/docs-design-system/CHANGELOG.md` - Historical reference
 11. ✅ `pnpm-lock.yaml` - Will update when we reinstall
 12. ✅ `packages/lib-design-token/scripts/style-dictionary/prebuild-download-fonts.js` - Comment
@@ -48,7 +48,7 @@ import { getThemeClassName, type ThemeName } from '@designgreat/design-token-sup
 
 **Action:** MUST FIX - Replace with hardcoded values
 
-### 3. **packages/lib-web-ui/vite.config.ts**
+### 3. **packages/lib-web-component/vite.config.ts**
 
 **Issue:** Listed as external dependency
 
@@ -58,7 +58,7 @@ external: ['@designgreat/design-token-support', ...]
 
 **Action:** REMOVE from externals array
 
-### 4. **packages/lib-web-ui/jest.config.ts**
+### 4. **packages/lib-web-component/jest.config.ts**
 
 **Issue:** Module name mapper
 
@@ -127,11 +127,11 @@ external: ['@designgreat/design-token-support', ...]
 
 ### Priority 1: Fix Code That Breaks Build
 
-1. ✅ **lib-web-ui/src/storybook/CodeDemoToggle.tsx** - FIXED
-2. ✅ **lib-web-ui/src/storybook/CodeDemoToggle.test.tsx** - FIXED
+1. ✅ **lib-web-component/src/storybook/CodeDemoToggle.tsx** - FIXED
+2. ✅ **lib-web-component/src/storybook/CodeDemoToggle.test.tsx** - FIXED
 3. ⚠️ **docs-design-system/src/theme/constants.ts** - NEEDS FIX
-4. ⚠️ **lib-web-ui/vite.config.ts** - NEEDS FIX
-5. ⚠️ **lib-web-ui/jest.config.ts** - NEEDS FIX
+4. ⚠️ **lib-web-component/vite.config.ts** - NEEDS FIX
+5. ⚠️ **lib-web-component/jest.config.ts** - NEEDS FIX
 6. ⚠️ **tsconfig.base.json** - NEEDS FIX
 
 ### Priority 2: Remove from package.json

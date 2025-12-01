@@ -15,7 +15,7 @@ Transform the design token system to use consistent naming and proper theme sele
 
 ### ✅ Already Using `--dg-` Prefix (Good!)
 
-- ✓ `lib-web-ui` components
+- ✓ `lib-web-component` components
 - ✓ `docs-design-system` site
 - ✓ `design-token-support` package
 - ✓ Tailwind configuration
@@ -95,8 +95,8 @@ body {
 
 These already work correctly:
 
-- ✓ `lib-web-ui` components
-- ✓ `lib-web-ui/tailwind.config.ts`
+- ✓ `lib-web-component` components
+- ✓ `lib-web-component/tailwind.config.ts`
 - ✓ `docs-design-system/src/css/custom.css`
 - ✓ All color documentation files
 
@@ -107,7 +107,7 @@ These already work correctly:
 | User Type                        | Impact      | Action Required                     |
 | -------------------------------- | ----------- | ----------------------------------- |
 | **Using `design-token-support`** | ✅ None     | No action needed                    |
-| **Using `lib-web-ui`**           | ✅ None     | No action needed                    |
+| **Using `lib-web-component`**    | ✅ None     | No action needed                    |
 | **Direct CSS import**            | ❌ Breaking | Search/replace `--token-` → `--dg-` |
 
 ### Risk Level: **LOW** 🟢
@@ -151,8 +151,8 @@ These already work correctly:
 
 ### No Changes Needed
 
-- `packages/lib-web-ui/src/styles/designgreat-theme.css` (already correct)
-- `packages/lib-web-ui/tailwind.config.ts` (already correct)
+- `packages/lib-web-component/src/styles/designgreat-theme.css` (already correct)
+- `packages/lib-web-component/tailwind.config.ts` (already correct)
 - `packages/docs-design-system/src/css/custom.css` (already correct)
 
 ## 🤔 Decisions to Make
@@ -175,7 +175,7 @@ These already work correctly:
 
 **Recommendation:** Clean break with migration guide
 
-### Q3: lib-web-ui consumption?
+### Q3: lib-web-component consumption?
 
 **Options:**
 

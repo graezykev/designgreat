@@ -1,7 +1,7 @@
 import type { Config } from 'jest'
 
 const config: Config = {
-  displayName: '@designgreat/lib-web-ui',
+  displayName: '@designgreat/lib-web-component',
   preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],

@@ -1,7 +1,7 @@
 # ⚠️ DEPRECATED: This workflow has been replaced by deploy-docs-storybook-gh-pages.yml
 # The unified workflow prevents race conditions and ensures atomic deployments
 # This file is kept for reference but should not be triggered
-name: Deploy lib-web-ui Storybook (DEPRECATED)
+name: Deploy lib-web-component Storybook (DEPRECATED)
 
 # Trigger disabled - now handled by deploy-docs-storybook-gh-pages.yml
 # on:
@@ -39,7 +39,7 @@ jobs:
           ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
 
-      - name: Detect lib-web-ui related changes
+      - name: Detect lib-web-component related changes
         id: changes
         run: |
           set -eo pipefail
@@ -48,7 +48,7 @@ jobs:
           else
             base_ref=$(git rev-list --max-parents=0 HEAD)
           fi
-          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/lib-web-ui/|^packages/lib-design-token/|^\.github/workflows/deploy-lib-web-ui-storybook\.yml$'; then
+          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/lib-web-component/|^packages/lib-design-token/|^\.github/workflows/deploy-lib-web-component-storybook\.yml$'; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -76,19 +76,19 @@ jobs:
         run: |
           pnpm --filter @designgreat/lib-design-token run build
 
-      - name: Build lib-web-ui Storybook
+      - name: Build lib-web-component Storybook
         if: steps.changes.outputs.changed == 'true'
         env:
-          STORYBOOK_BASE_PATH: /designgreat/lib-web-ui/
-        run: pnpm --filter @designgreat/lib-web-ui storybook:build
+          STORYBOOK_BASE_PATH: /designgreat/lib-web-component/
+        run: pnpm --filter @designgreat/lib-web-component storybook:build
 
       - name: Relocate Storybook output
         if: steps.changes.outputs.changed == 'true'
         run: |
           set -euo pipefail
-          tmp_dir="packages/lib-web-ui/storybook-temp"
-          final_dir="packages/lib-web-ui/storybook-static/lib-web-ui"
-          mv packages/lib-web-ui/storybook-static "$tmp_dir"
+          tmp_dir="packages/lib-web-component/storybook-temp"
+          final_dir="packages/lib-web-component/storybook-static/lib-web-component"
+          mv packages/lib-web-component/storybook-static "$tmp_dir"
           mkdir -p "$final_dir"
           shopt -s dotglob
           mv "$tmp_dir"/* "$final_dir"/
@@ -98,9 +98,9 @@ jobs:
       - name: Verify static build output
         if: steps.changes.outputs.changed == 'true'
         run: |
-          test -d packages/lib-web-ui/storybook-static
-          test -d packages/lib-web-ui/storybook-static/lib-web-ui
-          test -f packages/lib-web-ui/storybook-static/lib-web-ui/index.html
+          test -d packages/lib-web-component/storybook-static
+          test -d packages/lib-web-component/storybook-static/lib-web-component
+          test -f packages/lib-web-component/storybook-static/lib-web-component/index.html
 
       - name: Download current GitHub Pages site
         if: steps.changes.outputs.changed == 'true'
@@ -145,15 +145,15 @@ jobs:
             echo "No existing site to merge - deploying Storybook only"
           fi
 
-          # Ensure lib-web-ui directory exists and copy Storybook content
-          echo "Adding Storybook content to /lib-web-ui..."
-          mkdir -p final-site/lib-web-ui
-          cp -r packages/lib-web-ui/storybook-static/lib-web-ui/* final-site/lib-web-ui/
+          # Ensure lib-web-component directory exists and copy Storybook content
+          echo "Adding Storybook content to /lib-web-component..."
+          mkdir -p final-site/lib-web-component
+          cp -r packages/lib-web-component/storybook-static/lib-web-component/* final-site/lib-web-component/
 
           # Verify the merge
           echo "Verifying merged content..."
           ls -la final-site/
-          test -f final-site/lib-web-ui/index.html
+          test -f final-site/lib-web-component/index.html
           echo "Merge completed successfully"
 
       - name: Upload Pages artifact
@@ -164,7 +164,7 @@ jobs:
 
       - name: Skip deployment (no relevant changes)
         if: steps.changes.outputs.changed != 'true'
-        run: echo "No lib-web-ui changes detected, skipping Storybook deployment."
+        run: echo "No lib-web-component changes detected, skipping Storybook deployment."
 
   deploy:
     name: Deploy to GitHub Pages

@@ -125,7 +125,7 @@ jobs:
       - name: Build dependent packages
         run: |
           pnpm --filter @designgreat/lib-design-token run build
-          pnpm --filter @designgreat/lib-web-ui run build
+          pnpm --filter @designgreat/lib-web-component run build
 
       - name: Publish packages
         run: pnpm exec changeset publish

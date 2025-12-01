@@ -20,7 +20,7 @@ Import styles in your root layout:
 ```tsx
 // app/layout.tsx
 import '@designgreat/lib-design-token/font'
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import '@designgreat/lib-web-component/dist/lib-web-component.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -38,7 +38,7 @@ Import styles in your `_app.tsx`:
 ```tsx
 // pages/_app.tsx
 import '@designgreat/lib-design-token/font'
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import '@designgreat/lib-web-component/dist/lib-web-component.css'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -63,7 +63,7 @@ Import in your main entry:
 ```tsx
 // src/main.tsx
 import '@designgreat/lib-design-token/font'
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import '@designgreat/lib-web-component/dist/lib-web-component.css'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 
@@ -91,7 +91,7 @@ Import in your index file:
 ```tsx
 // src/index.tsx
 import '@designgreat/lib-design-token/font'
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import '@designgreat/lib-web-component/dist/lib-web-component.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
@@ -115,7 +115,7 @@ Import styles in your root route:
 import type { LinksFunction } from '@remix-run/node'
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 
-import libWebUiStyles from '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import libWebUiStyles from '@designgreat/lib-web-component/dist/lib-web-component.css'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: libWebUiStyles }]
 
@@ -149,7 +149,7 @@ For Astro with React islands:
 ---
 // src/layouts/Layout.astro
 import '@designgreat/lib-design-token/font'
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+import '@designgreat/lib-web-component/dist/lib-web-component.css'
 ---
 
 <html lang="en">
@@ -187,7 +187,7 @@ export default defineConfig({
 All frameworks work with TypeScript out of the box. The package includes full TypeScript definitions:
 
 ```tsx
-import type { ButtonProps, TextInputProps } from '@designgreat/lib-web-ui'
+import type { ButtonProps, TextInputProps } from '@designgreat/lib-web-component'
 
 const customButton: ButtonProps = {
   variant: 'primary',
@@ -214,7 +214,7 @@ If you encounter issues with any framework:
 ```tsx
 'use client' // Add this at the top of the file in Next.js App Router
 
-import { Dialog } from '@designgreat/lib-web-ui'
+import { Dialog } from '@designgreat/lib-web-component'
 // ... rest of your component
 ```
 
