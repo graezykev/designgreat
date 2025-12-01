@@ -120,7 +120,7 @@ For shortcut files that were missing "Technical Details" sections, we added:
 Shows where the token definitions live in the codebase:
 
 ```
-packages/lib-web-ui-design-token/src/tokens/color/shortcut/
+packages/lib-design-token/src/tokens/color/shortcut/
   └── [filename].js
 ```
 

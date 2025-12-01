@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const fontSource = resolve(
   __dirname,
-  '../node_modules/@designgreat/lib-web-ui-design-token/dist/font'
+  '../node_modules/@designgreat/lib-design-token/dist/font'
 )
 const staticDir = resolve(__dirname, '../static')
 const fontTarget = resolve(staticDir, 'font')

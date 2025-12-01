@@ -24,7 +24,7 @@ export function resolveStyleDictionaryModule(specifier) {
     return String(requireFromPackage.resolve(specifier))
   } catch (error) {
     throw new Error(
-      `Failed to resolve "${specifier}". Ensure it is declared in @designgreat/lib-web-ui-design-token/package.json.\nOriginal error: ${
+      `Failed to resolve "${specifier}". Ensure it is declared in @designgreat/lib-design-token/package.json.\nOriginal error: ${
         error instanceof Error ? error.message : String(error)
       }`
     )

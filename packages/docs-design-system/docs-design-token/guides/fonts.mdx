@@ -5,7 +5,7 @@ sidebar_position: 5
 # Fonts
 
 :::tip TL;DR
-`import '@designgreat/lib-web-ui-design-token/font'` — that's it. Roboto is now available.
+`import '@designgreat/lib-design-token/font'` — that's it. Roboto is now available.
 :::
 
 The design token package includes **Roboto** font files so you don't need a CDN or external dependencies.
@@ -18,8 +18,8 @@ Import fonts in your app's entry file:
 
 ```tsx
 // main.tsx, app/layout.tsx, or _app.tsx
-import '@designgreat/lib-web-ui-design-token/font'
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/font'
+import '@designgreat/lib-design-token/css'
 ```
 
 Use in your styles:
@@ -56,7 +56,7 @@ Then skip the font import:
 
 ```tsx
 // No font import needed
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/css'
 ```
 
 ---
@@ -82,8 +82,8 @@ Each weight includes both **normal** and **italic** styles.
 
 ```tsx
 // src/main.tsx
-import '@designgreat/lib-web-ui-design-token/font'
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/font'
+import '@designgreat/lib-design-token/css'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 
@@ -94,8 +94,8 @@ createRoot(document.getElementById('root')!).render(<App />)
 
 ```tsx
 // app/layout.tsx
-import '@designgreat/lib-web-ui-design-token/font'
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/font'
+import '@designgreat/lib-design-token/css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -110,8 +110,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ```tsx
 // pages/_app.tsx
-import '@designgreat/lib-web-ui-design-token/font'
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/font'
+import '@designgreat/lib-design-token/css'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -123,8 +123,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
 ```tsx
 // app/root.tsx
-import '@designgreat/lib-web-ui-design-token/font'
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/font'
+import '@designgreat/lib-design-token/css'
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react'
 
 export default function App() {
@@ -154,10 +154,10 @@ export default function App() {
 
 ```tsx
 // Skip this import
-// import '@designgreat/lib-web-ui-design-token/font'
+// import '@designgreat/lib-design-token/font'
 
 // Only import tokens
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/css'
 ```
 
 ### Step 2: Load Your Font
@@ -212,7 +212,7 @@ import { fileURLToPath } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const fontSource = resolve(
   __dirname,
-  '../node_modules/@designgreat/lib-web-ui-design-token/dist/font'
+  '../node_modules/@designgreat/lib-design-token/dist/font'
 )
 const fontTarget = resolve(__dirname, '../static/font')
 

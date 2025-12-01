@@ -9,7 +9,7 @@ import {
   getThemeClassName as getTokenThemeClassName,
   getOppositeTheme,
   type ThemeName
-} from '@designgreat/lib-web-ui-design-token'
+} from '@designgreat/lib-design-token'
 
 export const DOCUSAURUS_THEME_ATTR = 'data-theme'
 

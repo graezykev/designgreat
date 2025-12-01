@@ -9,7 +9,7 @@ provides next steps for testing.
 
 ## ✅ Completed Changes
 
-### Phase 1: lib-web-ui-design-token
+### Phase 1: lib-design-token
 
 **Modified Files:**
 
@@ -176,7 +176,7 @@ pnpm run build
 **Verify these commands succeed:**
 
 - [ ] `pnpm install` completes
-- [ ] `lib-web-ui-design-token` builds
+- [ ] `lib-design-token` builds
 - [ ] `lib-web-ui` builds
 - [ ] `docs-design-system` builds
 - [ ] No TypeScript errors
@@ -186,12 +186,12 @@ pnpm run build
 
 ## 🔍 What Changed (User Perspective)
 
-### For lib-web-ui-design-token Users
+### For lib-design-token Users
 
 **Before:**
 
 ```css
-@import '@designgreat/lib-web-ui-design-token/css/light';
+@import '@designgreat/lib-design-token/css/light';
 
 :root {
   --token-color-background-default: #fff;
@@ -201,7 +201,7 @@ pnpm run build
 **After:**
 
 ```css
-@import '@designgreat/lib-web-ui-design-token/css';
+@import '@designgreat/lib-design-token/css';
 
 :root {
   --dg-color-background-default: #fff;
@@ -234,7 +234,7 @@ const bg = light.dg.color.background.default
 
 **After:**
 
-- lib-web-ui imports CSS directly from `lib-web-ui-design-token`
+- lib-web-ui imports CSS directly from `lib-design-token`
 - Simpler build process
 - Faster builds
 - No intermediate generation step
@@ -277,7 +277,7 @@ const bg = light.dg.color.background.default
 The new approach uses:
 
 ```css
-@import '@designgreat/lib-web-ui-design-token/css';
+@import '@designgreat/lib-design-token/css';
 ```
 
 **Potential Issues:**
@@ -289,7 +289,7 @@ The new approach uses:
 **Fallback:** If CSS imports don't work, you can import in JavaScript:
 
 ```typescript
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/css'
 ```
 
 ### TypeScript Namespace
@@ -347,7 +347,7 @@ If issues arise, you can rollback by:
 1. **Revert Git Changes:**
 
    ```bash
-   git checkout main -- packages/lib-web-ui-design-token
+   git checkout main -- packages/lib-design-token
    git checkout main -- packages/lib-web-ui
    ```
 
@@ -370,10 +370,10 @@ If issues arise, you can rollback by:
 
 ### Modified (14 files)
 
-- `packages/lib-web-ui-design-token/scripts/style-dictionary/config.js`
-- `packages/lib-web-ui-design-token/scripts/style-dictionary/build-style-dictionary.js`
-- `packages/lib-web-ui-design-token/scripts/style-dictionary/post-build-export.js`
-- `packages/lib-web-ui-design-token/package.json`
+- `packages/lib-design-token/scripts/style-dictionary/config.js`
+- `packages/lib-design-token/scripts/style-dictionary/build-style-dictionary.js`
+- `packages/lib-design-token/scripts/style-dictionary/post-build-export.js`
+- `packages/lib-design-token/package.json`
 - `packages/lib-web-ui/src/index.ts`
 - `packages/lib-web-ui/tailwind.config.ts`
 - `packages/lib-web-ui/package.json`
@@ -381,7 +381,7 @@ If issues arise, you can rollback by:
 
 ### Created (3 files)
 
-- `packages/lib-web-ui-design-token/scripts/style-dictionary/post-build-combine-css.js`
+- `packages/lib-design-token/scripts/style-dictionary/post-build-combine-css.js`
 - `packages/lib-web-ui/src/styles/index.css`
 - `test-refactor.sh`
 
@@ -401,7 +401,7 @@ If issues arise, you can rollback by:
 
 ## ✨ Benefits Achieved
 
-1. **Decoupling**: `lib-web-ui-design-token` is now truly standalone
+1. **Decoupling**: `lib-design-token` is now truly standalone
 2. **Simplicity**: `lib-web-ui` has simpler build process
 3. **Consistency**: Unified `--dg-` prefix across all outputs
 4. **Proper Theming**: Dark theme uses class selector instead of `:root`

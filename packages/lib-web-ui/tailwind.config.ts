@@ -1,4 +1,4 @@
-import { THEME_CLASSES, light } from '@designgreat/lib-web-ui-design-token'
+import { THEME_CLASSES, light } from '@designgreat/lib-design-token'
 import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 

@@ -15,7 +15,7 @@ React Native uses a JavaScript-based styling system, not CSS. The design token p
 ## Installation
 
 ```bash
-pnpm add @designgreat/lib-web-ui-design-token
+pnpm add @designgreat/lib-design-token
 ```
 
 :::note Fonts
@@ -30,7 +30,7 @@ Access tokens directly from the JavaScript exports:
 
 ```tsx
 import { StyleSheet } from 'react-native'
-import { themes } from '@designgreat/lib-web-ui-design-token'
+import { themes } from '@designgreat/lib-design-token'
 
 const t = themes.light // or themes.dark
 
@@ -72,7 +72,7 @@ Create a theme context to enable dynamic theme switching:
 ```tsx
 // theme/ThemeContext.tsx
 import { createContext, useContext, useState, useMemo, type ReactNode } from 'react'
-import { themes, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+import { themes, type ThemeName } from '@designgreat/lib-design-token'
 
 type ThemeContextValue = {
   theme: ThemeName
@@ -257,7 +257,7 @@ function MyScreen() {
 Access any token via the `themes` object:
 
 ```tsx
-import { themes } from '@designgreat/lib-web-ui-design-token'
+import { themes } from '@designgreat/lib-design-token'
 
 const t = themes.light // or themes.dark
 
@@ -294,7 +294,7 @@ export function parseSpacing(remValue: string | number): number {
 }
 
 // Usage
-import { themes } from '@designgreat/lib-web-ui-design-token'
+import { themes } from '@designgreat/lib-design-token'
 
 const spacing = parseSpacing(themes.light.dg.spacing.px16) // 16
 ```
@@ -372,7 +372,7 @@ React to system appearance changes:
 
 ```tsx
 import { useColorScheme } from 'react-native'
-import { themes, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+import { themes, type ThemeName } from '@designgreat/lib-design-token'
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const systemColorScheme = useColorScheme()

@@ -25,7 +25,7 @@ Tailwind v4 uses CSS-first configuration. Import design tokens directly:
 ```css
 /* src/styles/tailwind.css */
 @import 'tailwindcss';
-@import '@designgreat/lib-web-ui-design-token/css';
+@import '@designgreat/lib-design-token/css';
 
 /* Optional: custom variant for theme-aware utilities */
 @custom-variant theme-dark (&:where(.dg-theme-dark, .dg-theme-dark *));
@@ -44,7 +44,7 @@ For Tailwind v3, import the CSS and optionally extend your config:
 @tailwind components;
 @tailwind utilities;
 
-@import '@designgreat/lib-web-ui-design-token/css';
+@import '@designgreat/lib-design-token/css';
 ```
 
 **2. Extend config (optional):**
@@ -207,7 +207,7 @@ With the `@custom-variant` defined, create theme-responsive utilities:
 Access tokens programmatically for dynamic styling:
 
 ```typescript
-import { themes, applyTheme } from '@designgreat/lib-web-ui-design-token'
+import { themes, applyTheme } from '@designgreat/lib-design-token'
 
 // Get token values
 const primaryColor = themes.light.dg.color.primary.DEFAULT

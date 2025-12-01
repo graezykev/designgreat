@@ -157,8 +157,8 @@ Benefits:
 ### 1. Change Detection
 
 - **Docs:** Monitors `packages/docs-design-system/`, `packages/lib-web-ui/`,
-  `packages/lib-web-ui-design-token/`
-- **Storybook:** Monitors `packages/lib-web-ui/`, `packages/lib-web-ui-design-token/`
+  `packages/lib-design-token/`
+- **Storybook:** Monitors `packages/lib-web-ui/`, `packages/lib-design-token/`
 - Also watches workflow file changes
 
 ### 2. Smart Building

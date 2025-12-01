@@ -9,10 +9,10 @@ This page explains the technical architecture and design decisions for font asse
 
 ## Architecture Overview
 
-The `@designgreat/lib-web-ui-design-token` package owns and distributes font assets:
+The `@designgreat/lib-design-token` package owns and distributes font assets:
 
 ```
-lib-web-ui-design-token/
+lib-design-token/
 ├── dist/font/
 │   ├── font-face.css        # @font-face declarations
 │   └── *.woff2               # 108 font files
@@ -167,7 +167,7 @@ Typical sizes per file:
 
 ### What Consumers Get
 
-When importing `@designgreat/lib-web-ui-design-token/font`:
+When importing `@designgreat/lib-design-token/font`:
 
 1. **CSS file** - `font-face.css` with 108 `@font-face` declarations
 2. **Font files** - Resolved via relative paths: `url('./Roboto-*.woff2')`

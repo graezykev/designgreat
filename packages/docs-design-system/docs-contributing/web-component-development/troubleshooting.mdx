@@ -20,7 +20,7 @@ pnpm --filter @designgreat/lib-web-ui generate:theme
 Or rebuild the design token package:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token build
+pnpm --filter @designgreat/lib-design-token build
 ```
 
 ## Storybook Fonts Missing
@@ -37,7 +37,7 @@ If fonts are still missing, manually copy them:
 
 ```bash
 cd packages/lib-web-ui
-cp -r ../lib-web-ui-design-token/dist/font/* public/assets/fonts/
+cp -r ../lib-design-token/dist/font/* public/assets/fonts/
 ```
 
 ## Tailwind Utilities Not Generated

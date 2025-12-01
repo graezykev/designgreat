@@ -16,11 +16,11 @@ this monorepo. It focuses on package boundaries, runtime targets, and shared too
 
 ### UI Libraries
 
-| Package                                | Purpose                                                     | Runtime                   |
-| -------------------------------------- | ----------------------------------------------------------- | ------------------------- |
-| `@designgreat/lib-web-ui-design-token` | Design token source of truth exported as TypeScript modules | Library (Node + browsers) |
-| `@designgreat/lib-web-ui`              | Shared UI primitives (React components, hooks)              | Browser (React)           |
-| `@designgreat/docs-design-system`      | Marketing site components and composition helpers           | Browser (React)           |
+| Package                           | Purpose                                                     | Runtime                   |
+| --------------------------------- | ----------------------------------------------------------- | ------------------------- |
+| `@designgreat/lib-design-token`   | Design token source of truth exported as TypeScript modules | Library (Node + browsers) |
+| `@designgreat/lib-web-ui`         | Shared UI primitives (React components, hooks)              | Browser (React)           |
+| `@designgreat/docs-design-system` | Marketing site components and composition helpers           | Browser (React)           |
 
 ### Web Applications
 

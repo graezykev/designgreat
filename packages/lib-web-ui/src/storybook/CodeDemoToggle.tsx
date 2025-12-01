@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import { isThemeApplied } from '@designgreat/lib-web-ui-design-token'
+import { isThemeApplied } from '@designgreat/lib-design-token'
 import { useCallback, useEffect, useMemo, useState, useTransition, type CSSProperties, type ReactNode } from 'react'
 
 const useIsDarkTheme = () => {

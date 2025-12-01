@@ -35,7 +35,7 @@
     "prepublishOnly": "if [ \"$CI\" != \"true\" ]; then pnpm run build; fi"
   },
   "dependencies": {
-    "@designgreat/lib-web-ui-design-token": "workspace:*",
+    "@designgreat/lib-design-token": "workspace:*",
     "clsx": "^2.1.0"
   },
   "peerDependencies": {

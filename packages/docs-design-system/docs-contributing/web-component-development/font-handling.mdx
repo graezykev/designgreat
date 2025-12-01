@@ -30,11 +30,11 @@ Understanding the library's CSS architecture:
 
 ```
 Consumer App
-  ├─> @designgreat/lib-web-ui-design-token/font (optional)
+  ├─> @designgreat/lib-design-token/font (optional)
   └─> @designgreat/lib-web-ui
        └─> src/index.ts
             └─> styles/index.css
-                 ├─> @designgreat/lib-web-ui-design-token/css (tokens)
+                 ├─> @designgreat/lib-design-token/css (tokens)
                  └─> tailwind.css
                       ├─> @tailwind utilities
                       └─> components.css
@@ -63,7 +63,7 @@ Storybook **does** load fonts for preview purposes:
 
 ```typescript
 // .storybook/preview.tsx
-import '@designgreat/lib-web-ui-design-token/font' // Fonts for preview
+import '@designgreat/lib-design-token/font' // Fonts for preview
 import '../src/styles/index.css'                    // Library styles
 ```
 
@@ -80,7 +80,7 @@ Consumers can load fonts in two ways:
 ### Option 1: Import from Design Token Package
 
 ```tsx
-import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-design-token/font'
 ```
 
 This imports the complete font-face CSS with all font files.
@@ -120,7 +120,7 @@ The library's CSS architecture ensures fonts are NOT bundled:
 ```
 src/index.ts
   └─> styles/index.css
-       ├─> @designgreat/lib-web-ui-design-token/css  (tokens only)
+       ├─> @designgreat/lib-design-token/css  (tokens only)
        └─> tailwind.css
             ├─> @tailwind utilities
             └─> components.css
@@ -132,7 +132,7 @@ src/index.ts
 
 ```
 .storybook/preview.tsx
-  ├─> @designgreat/lib-web-ui-design-token/font  (fonts - Storybook only)
+  ├─> @designgreat/lib-design-token/font  (fonts - Storybook only)
   └─> ../src/styles/index.css                     (library CSS)
 ```
 

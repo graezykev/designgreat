@@ -48,7 +48,7 @@ Create the following structure:
 ```
 /
 ├── packages/
-│   ├── lib-web-ui-design-token/
+│   ├── lib-design-token/
 │   ├── lib-web-ui/
 │   ├── lib-web-ui-website/
 │   ├── app-web-pc-core/
@@ -111,7 +111,7 @@ Build the design token system and establish the foundation for the UI component 
 
 ### Tasks
 
-#### 2.1 Design Token Package (`lib-web-ui-design-token`)
+#### 2.1 Design Token Package (`lib-design-token`)
 
 - Initialize package with TypeScript
 - Install Style Dictionary v5
@@ -168,7 +168,7 @@ Create the React component library with development and testing infrastructure.
   - Named exports: `import { Button } from '@designgreat/web-ui'`
   - Path exports: `import Button from '@designgreat/web-ui/button'`
 - Configure `package.json` exports field for proper module resolution
-- Integrate design tokens from `lib-web-ui-design-token`
+- Integrate design tokens from `lib-design-token`
 - Set up TailwindCSS with design token integration
 
 #### 3.2 Component Development

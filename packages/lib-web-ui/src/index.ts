@@ -7,7 +7,7 @@
  * - Component styles
  *
  * Note: Fonts are NOT bundled. Consumers should import separately:
- * import '@designgreat/lib-web-ui-design-token/font'
+ * import '@designgreat/lib-design-token/font'
  */
 
 import './styles/index.css'

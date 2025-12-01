@@ -144,7 +144,7 @@ version management and automated changelog generation.
    - Builds all packages with dependencies
    - Publishes changed packages to NPM
    - Configured packages:
-     - `@designgreat/lib-web-ui-design-token`
+     - `@designgreat/lib-design-token`
      - `@designgreat/lib-web-ui`
      - `@designgreat/docs-design-system`
 
@@ -205,9 +205,9 @@ component library to GitHub Pages. Prevents race conditions and content loss.
 
 **Change Detection:**
 
-- **Docs:** `packages/docs-design-system/`, `packages/lib-web-ui/`,
-  `packages/lib-web-ui-design-token/`, workflow files
-- **Storybook:** `packages/lib-web-ui/`, `packages/lib-web-ui-design-token/`, workflow files
+- **Docs:** `packages/docs-design-system/`, `packages/lib-web-ui/`, `packages/lib-design-token/`,
+  workflow files
+- **Storybook:** `packages/lib-web-ui/`, `packages/lib-design-token/`, workflow files
 
 **Benefits:**
 

@@ -4,7 +4,7 @@
 
 **Decouple packages for independent use:**
 
-- `lib-web-ui-design-token` → Standalone, production-ready design token package
+- `lib-design-token` → Standalone, production-ready design token package
 - `lib-web-ui` → UI components that directly import from design tokens
 - Users can choose: tokens only OR tokens + components
 
@@ -23,11 +23,11 @@
 
 ## 📋 Implementation Plan
 
-### Phase 1: lib-web-ui-design-token (Make it Standalone-Ready)
+### Phase 1: lib-design-token (Make it Standalone-Ready)
 
 #### 1.1 Update Style Dictionary Config
 
-**File:** `packages/lib-web-ui-design-token/scripts/style-dictionary/config.js`
+**File:** `packages/lib-design-token/scripts/style-dictionary/config.js`
 
 **Changes:**
 
@@ -195,7 +195,7 @@ export default function getStyleDictionaryConfig(theme, StyleDictionary) {
 
 #### 1.2 Update JSTS Exports to Use Namespace
 
-**File:** `packages/lib-web-ui-design-token/scripts/style-dictionary/post-build-export.js`
+**File:** `packages/lib-design-token/scripts/style-dictionary/post-build-export.js`
 
 **Changes:**
 
@@ -238,7 +238,7 @@ export const light = {
 
 #### 1.3 Update Package Exports
 
-**File:** `packages/lib-web-ui-design-token/package.json`
+**File:** `packages/lib-design-token/package.json`
 
 Verify exports are correct:
 
@@ -262,7 +262,7 @@ Verify exports are correct:
 
 **Optional:** Add a combined CSS file for convenience:
 
-**New File:** `packages/lib-web-ui-design-token/scripts/style-dictionary/post-build-combine-css.js`
+**New File:** `packages/lib-design-token/scripts/style-dictionary/post-build-combine-css.js`
 
 ```javascript
 import { readFile, writeFile } from 'node:fs/promises'
@@ -328,7 +328,7 @@ Or deprecate with a comment explaining it's no longer needed.
 ```json
 {
   "dependencies": {
-    "@designgreat/lib-web-ui-design-token": "workspace:*"
+    "@designgreat/lib-design-token": "workspace:*"
     // Remove design-token-support if not needed elsewhere
   }
 }
@@ -352,14 +352,14 @@ Create a new CSS entry that imports design tokens:
  */
 
 /* Design Tokens - Light and Dark themes */
-@import '@designgreat/lib-web-ui-design-token/css/light';
-@import '@designgreat/lib-web-ui-design-token/css/dark';
+@import '@designgreat/lib-design-token/css/light';
+@import '@designgreat/lib-design-token/css/dark';
 
 /* OR use combined file */
-/* @import '@designgreat/lib-web-ui-design-token/css'; */
+/* @import '@designgreat/lib-design-token/css'; */
 
 /* Fonts */
-@import '@designgreat/lib-web-ui-design-token/font';
+@import '@designgreat/lib-design-token/font';
 
 /* Component styles would go here */
 ```
@@ -411,7 +411,7 @@ This is no longer needed since we're importing directly.
 
 ```typescript
 import { getThemeClassName } from '@designgreat/design-token-support'
-import { light } from '@designgreat/lib-web-ui-design-token'
+import { light } from '@designgreat/lib-design-token'
 ```
 
 **Options:**
@@ -422,7 +422,7 @@ import { light } from '@designgreat/lib-web-ui-design-token'
 **Recommended update:**
 
 ```typescript
-import { light } from '@designgreat/lib-web-ui-design-token'
+import { light } from '@designgreat/lib-design-token'
 import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 
@@ -449,7 +449,7 @@ const spacingScale = flattenTokenValues(light.dg.spacing, ['spacing'])
 
 **B. Deprecate it** (simplify architecture)
 
-- Users import CSS directly from `lib-web-ui-design-token`
+- Users import CSS directly from `lib-design-token`
 - Less abstraction, clearer dependencies
 
 **Recommendation:** Keep it minimal, update to work with new namespace structure.
@@ -500,7 +500,7 @@ sidebar_position: 3
 ## Installation
 
 ```bash
-npm install @designgreat/lib-web-ui-design-token
+npm install @designgreat/lib-design-token
 ```
 ````
 
@@ -510,14 +510,14 @@ Import the design tokens CSS in your application:
 
 ```css
 /* Import both light and dark themes */
-@import '@designgreat/lib-web-ui-design-token/css/light';
-@import '@designgreat/lib-web-ui-design-token/css/dark';
+@import '@designgreat/lib-design-token/css/light';
+@import '@designgreat/lib-design-token/css/dark';
 
 /* OR use the combined file */
-@import '@designgreat/lib-web-ui-design-token/css';
+@import '@designgreat/lib-design-token/css';
 
 /* Import fonts */
-@import '@designgreat/lib-web-ui-design-token/font';
+@import '@designgreat/lib-design-token/font';
 ```
 
 The CSS will be available globally:
@@ -559,7 +559,7 @@ Reference design tokens in your styles:
 For SCSS projects, import the SCSS variables:
 
 ```scss
-@import '@designgreat/lib-web-ui-design-token/scss/light';
+@import '@designgreat/lib-design-token/scss/light';
 
 .my-component {
   background: $dg-color-background-default;
@@ -574,7 +574,7 @@ For SCSS projects, import the SCSS variables:
 Import token objects for programmatic access:
 
 ```typescript
-import { light, dark } from '@designgreat/lib-web-ui-design-token'
+import { light, dark } from '@designgreat/lib-design-token'
 
 // Access tokens via namespace
 const bgColor = light.dg.color.background.default
@@ -637,7 +637,7 @@ pnpm run clean
 pnpm install
 
 # Build in correct order
-cd packages/lib-web-ui-design-token
+cd packages/lib-design-token
 pnpm run build
 
 cd ../lib-web-ui
@@ -704,13 +704,13 @@ Check:
 
 ```bash
 # Design tokens
-packages/lib-web-ui-design-token/dist/css/light/variables.css
-packages/lib-web-ui-design-token/dist/css/dark/variables.css
-packages/lib-web-ui-design-token/dist/css/combined.css
-packages/lib-web-ui-design-token/dist/css/light/variables.scss
-packages/lib-web-ui-design-token/dist/css/dark/variables.scss
-packages/lib-web-ui-design-token/dist/generated/themes.ts
-packages/lib-web-ui-design-token/dist/font/font-face.css
+packages/lib-design-token/dist/css/light/variables.css
+packages/lib-design-token/dist/css/dark/variables.css
+packages/lib-design-token/dist/css/combined.css
+packages/lib-design-token/dist/css/light/variables.scss
+packages/lib-design-token/dist/css/dark/variables.scss
+packages/lib-design-token/dist/generated/themes.ts
+packages/lib-design-token/dist/font/font-face.css
 
 # UI library
 packages/lib-web-ui/dist/lib-web-ui.css
@@ -721,26 +721,26 @@ packages/lib-web-ui/dist/packages/lib-web-ui/src/index.mjs
 
 ```bash
 # Check light theme uses :root
-grep "^:root" packages/lib-web-ui-design-token/dist/css/light/variables.css
+grep "^:root" packages/lib-design-token/dist/css/light/variables.css
 
 # Check dark theme uses .dg-theme-dark
-grep "^\.dg-theme-dark" packages/lib-web-ui-design-token/dist/css/dark/variables.css
+grep "^\.dg-theme-dark" packages/lib-design-token/dist/css/dark/variables.css
 
 # Check all variables use --dg- prefix
-grep -- "--dg-" packages/lib-web-ui-design-token/dist/css/light/variables.css | head -5
+grep -- "--dg-" packages/lib-design-token/dist/css/light/variables.css | head -5
 
 # Check SCSS uses $dg- prefix
-grep -- "\$dg-" packages/lib-web-ui-design-token/dist/css/light/variables.scss | head -5
+grep -- "\$dg-" packages/lib-design-token/dist/css/light/variables.scss | head -5
 
 # Check namespace structure in TypeScript
-grep "dg:" packages/lib-web-ui-design-token/dist/generated/themes.ts
+grep "dg:" packages/lib-design-token/dist/generated/themes.ts
 ```
 
 ---
 
 ## 🚀 Implementation Checklist
 
-### Phase 1: lib-web-ui-design-token
+### Phase 1: lib-design-token
 
 - [ ] Update config.js: change prefix to 'dg'
 - [ ] Add custom CSS format with selectors
@@ -799,20 +799,20 @@ grep "dg:" packages/lib-web-ui-design-token/dist/generated/themes.ts
 
 ## 📊 Expected Outcomes
 
-### lib-web-ui-design-token Becomes Standalone
+### lib-design-token Becomes Standalone
 
 **Users can install and use independently:**
 
 ```bash
-npm install @designgreat/lib-web-ui-design-token
+npm install @designgreat/lib-design-token
 ```
 
 ```css
-@import '@designgreat/lib-web-ui-design-token/css';
+@import '@designgreat/lib-design-token/css';
 ```
 
 ```typescript
-import { light } from '@designgreat/lib-web-ui-design-token'
+import { light } from '@designgreat/lib-design-token'
 const bg = light.dg.color.background.default
 ```
 
@@ -830,21 +830,21 @@ const bg = light.dg.color.background.default
 **Option 1: Design tokens only**
 
 ```bash
-npm install @designgreat/lib-web-ui-design-token
+npm install @designgreat/lib-design-token
 ```
 
 **Option 2: Full UI library (includes tokens)**
 
 ```bash
 npm install @designgreat/lib-web-ui
-# Also gets lib-web-ui-design-token automatically
+# Also gets lib-design-token automatically
 ```
 
 ---
 
 ## 🎯 Success Metrics
 
-- ✅ `lib-web-ui-design-token` builds successfully standalone
+- ✅ `lib-design-token` builds successfully standalone
 - ✅ All CSS uses `--dg-` prefix
 - ✅ Dark theme uses `.dg-theme-dark` selector
 - ✅ JSTS exports use namespace structure

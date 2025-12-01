@@ -50,12 +50,12 @@ section() {
 
 section "Phase 0: Building Packages"
 
-echo -e "${BLUE}Building lib-web-ui-design-token...${NC}"
-cd packages/lib-web-ui-design-token
+echo -e "${BLUE}Building lib-design-token...${NC}"
+cd packages/lib-design-token
 if pnpm run build > /dev/null 2>&1; then
-  echo -e "${GREEN}✓${NC} lib-web-ui-design-token built"
+  echo -e "${GREEN}✓${NC} lib-design-token built"
 else
-  echo -e "${RED}✗ lib-web-ui-design-token build failed - cannot continue${NC}"
+  echo -e "${RED}✗ lib-design-token build failed - cannot continue${NC}"
   exit 1
 fi
 cd ../..
@@ -89,46 +89,46 @@ echo -e "${GREEN}All packages built successfully. Running tests...${NC}"
 
 section "Phase 1: File Existence"
 
-# Check lib-web-ui-design-token outputs
-if [ -f "packages/lib-web-ui-design-token/dist/css/light/variables.css" ]; then
+# Check lib-design-token outputs
+if [ -f "packages/lib-design-token/dist/css/light/variables.css" ]; then
   pass "Light theme CSS exists"
 else
   fail "Light theme CSS missing"
 fi
 
-if [ -f "packages/lib-web-ui-design-token/dist/css/dark/variables.css" ]; then
+if [ -f "packages/lib-design-token/dist/css/dark/variables.css" ]; then
   pass "Dark theme CSS exists"
 else
   fail "Dark theme CSS missing"
 fi
 
-if [ -f "packages/lib-web-ui-design-token/dist/css/combined.css" ]; then
+if [ -f "packages/lib-design-token/dist/css/combined.css" ]; then
   pass "Combined CSS exists"
 else
   fail "Combined CSS missing"
 fi
 
-if [ -f "packages/lib-web-ui-design-token/dist/css/light/variables.scss" ]; then
+if [ -f "packages/lib-design-token/dist/css/light/variables.scss" ]; then
   pass "Light theme SCSS exists"
 else
   fail "Light theme SCSS missing"
 fi
 
-if [ -f "packages/lib-web-ui-design-token/dist/css/dark/variables.scss" ]; then
+if [ -f "packages/lib-design-token/dist/css/dark/variables.scss" ]; then
   pass "Dark theme SCSS exists"
 else
   fail "Dark theme SCSS missing"
 fi
 
 # Check source themes.ts (generated before compilation)
-if [ -f "packages/lib-web-ui-design-token/src/generated/themes.ts" ]; then
+if [ -f "packages/lib-design-token/src/generated/themes.ts" ]; then
   pass "Source themes.ts exists"
 else
   fail "Source themes.ts missing"
 fi
 
 # Check compiled themes.js
-if [ -f "packages/lib-web-ui-design-token/dist/generated/themes.js" ]; then
+if [ -f "packages/lib-design-token/dist/generated/themes.js" ]; then
   pass "Compiled themes.js exists"
 else
   fail "Compiled themes.js missing"
@@ -161,53 +161,53 @@ fi
 section "Phase 2: CSS Variable Naming"
 
 # Check light theme CSS
-if grep -q "^:root" packages/lib-web-ui-design-token/dist/css/light/variables.css 2>/dev/null; then
+if grep -q "^:root" packages/lib-design-token/dist/css/light/variables.css 2>/dev/null; then
   pass "Light theme uses :root selector"
 else
   fail "Light theme doesn't use :root selector"
 fi
 
-if grep -q -- "--dg-color-" packages/lib-web-ui-design-token/dist/css/light/variables.css 2>/dev/null; then
+if grep -q -- "--dg-color-" packages/lib-design-token/dist/css/light/variables.css 2>/dev/null; then
   pass "Light theme CSS uses --dg- prefix"
 else
   fail "Light theme CSS doesn't use --dg- prefix"
 fi
 
-if grep -q -- "--token-" packages/lib-web-ui-design-token/dist/css/light/variables.css 2>/dev/null; then
+if grep -q -- "--token-" packages/lib-design-token/dist/css/light/variables.css 2>/dev/null; then
   fail "Light theme CSS still contains --token- prefix"
 else
   pass "Light theme CSS has no --token- prefix"
 fi
 
 # Check dark theme CSS
-if grep -q "^\.dg-theme-dark" packages/lib-web-ui-design-token/dist/css/dark/variables.css 2>/dev/null; then
+if grep -q "^\.dg-theme-dark" packages/lib-design-token/dist/css/dark/variables.css 2>/dev/null; then
   pass "Dark theme uses .dg-theme-dark selector"
 else
   fail "Dark theme doesn't use .dg-theme-dark selector"
 fi
 
-if grep -q -- "--dg-color-" packages/lib-web-ui-design-token/dist/css/dark/variables.css 2>/dev/null; then
+if grep -q -- "--dg-color-" packages/lib-design-token/dist/css/dark/variables.css 2>/dev/null; then
   pass "Dark theme CSS uses --dg- prefix"
 else
   fail "Dark theme CSS doesn't use --dg- prefix"
 fi
 
 # Check combined CSS has both themes
-if grep -q "^:root" packages/lib-web-ui-design-token/dist/css/combined.css 2>/dev/null && \
-   grep -q "^\.dg-theme-dark" packages/lib-web-ui-design-token/dist/css/combined.css 2>/dev/null; then
+if grep -q "^:root" packages/lib-design-token/dist/css/combined.css 2>/dev/null && \
+   grep -q "^\.dg-theme-dark" packages/lib-design-token/dist/css/combined.css 2>/dev/null; then
   pass "Combined CSS contains both :root and .dg-theme-dark"
 else
   fail "Combined CSS missing theme selectors"
 fi
 
 # Check SCSS
-if grep -q -- "\$dg-color-" packages/lib-web-ui-design-token/dist/css/light/variables.scss 2>/dev/null; then
+if grep -q -- "\$dg-color-" packages/lib-design-token/dist/css/light/variables.scss 2>/dev/null; then
   pass "SCSS uses \$dg- prefix"
 else
   fail "SCSS doesn't use \$dg- prefix"
 fi
 
-if grep -q -- "\$token-" packages/lib-web-ui-design-token/dist/css/light/variables.scss 2>/dev/null; then
+if grep -q -- "\$token-" packages/lib-design-token/dist/css/light/variables.scss 2>/dev/null; then
   fail "SCSS still contains \$token- prefix"
 else
   pass "SCSS has no \$token- prefix"
@@ -220,73 +220,73 @@ fi
 section "Phase 3: TypeScript Export Structure"
 
 # Check source file for proper export syntax
-if grep -q 'export const light' packages/lib-web-ui-design-token/src/generated/themes.ts 2>/dev/null; then
+if grep -q 'export const light' packages/lib-design-token/src/generated/themes.ts 2>/dev/null; then
   pass "Source exports 'light' theme"
 else
   fail "Source missing 'light' export"
 fi
 
-if grep -q 'export const dark' packages/lib-web-ui-design-token/src/generated/themes.ts 2>/dev/null; then
+if grep -q 'export const dark' packages/lib-design-token/src/generated/themes.ts 2>/dev/null; then
   pass "Source exports 'dark' theme"
 else
   fail "Source missing 'dark' export"
 fi
 
-if grep -q 'export const themes' packages/lib-web-ui-design-token/src/generated/themes.ts 2>/dev/null; then
+if grep -q 'export const themes' packages/lib-design-token/src/generated/themes.ts 2>/dev/null; then
   pass "Source exports 'themes' object"
 else
   fail "Source missing 'themes' export"
 fi
 
 # Check for dg namespace structure in source
-if grep -q '"dg":' packages/lib-web-ui-design-token/src/generated/themes.ts 2>/dev/null || \
-   grep -q 'dg:' packages/lib-web-ui-design-token/src/generated/themes.ts 2>/dev/null; then
+if grep -q '"dg":' packages/lib-design-token/src/generated/themes.ts 2>/dev/null || \
+   grep -q 'dg:' packages/lib-design-token/src/generated/themes.ts 2>/dev/null; then
   pass "Source uses 'dg' namespace structure"
 else
   fail "Source missing 'dg' namespace structure"
 fi
 
 # Check compiled output
-if grep -q "dg" packages/lib-web-ui-design-token/dist/generated/themes.js 2>/dev/null; then
+if grep -q "dg" packages/lib-design-token/dist/generated/themes.js 2>/dev/null; then
   pass "Compiled JS contains 'dg' namespace"
 else
   fail "Compiled JS missing 'dg' namespace"
 fi
 
 # Check theme-utils.ts exists and exports
-if [ -f "packages/lib-web-ui-design-token/src/theme-utils.ts" ]; then
+if [ -f "packages/lib-design-token/src/theme-utils.ts" ]; then
   pass "theme-utils.ts exists"
 else
   fail "theme-utils.ts missing"
 fi
 
 # Check theme utilities are exported from index.ts
-if grep -q "getThemeClassName" packages/lib-web-ui-design-token/src/index.ts 2>/dev/null; then
+if grep -q "getThemeClassName" packages/lib-design-token/src/index.ts 2>/dev/null; then
   pass "index.ts exports getThemeClassName"
 else
   fail "index.ts missing getThemeClassName export"
 fi
 
-if grep -q "applyTheme" packages/lib-web-ui-design-token/src/index.ts 2>/dev/null; then
+if grep -q "applyTheme" packages/lib-design-token/src/index.ts 2>/dev/null; then
   pass "index.ts exports applyTheme"
 else
   fail "index.ts missing applyTheme export"
 fi
 
-if grep -q "THEME_CLASSES" packages/lib-web-ui-design-token/src/index.ts 2>/dev/null; then
+if grep -q "THEME_CLASSES" packages/lib-design-token/src/index.ts 2>/dev/null; then
   pass "index.ts exports THEME_CLASSES"
 else
   fail "index.ts missing THEME_CLASSES export"
 fi
 
-if grep -q "isThemeApplied" packages/lib-web-ui-design-token/src/index.ts 2>/dev/null; then
+if grep -q "isThemeApplied" packages/lib-design-token/src/index.ts 2>/dev/null; then
   pass "index.ts exports isThemeApplied"
 else
   fail "index.ts missing isThemeApplied export"
 fi
 
 # Check compiled theme-utils exists
-if [ -f "packages/lib-web-ui-design-token/dist/theme-utils.js" ]; then
+if [ -f "packages/lib-design-token/dist/theme-utils.js" ]; then
   pass "Compiled theme-utils.js exists"
 else
   fail "Compiled theme-utils.js missing"
@@ -298,29 +298,29 @@ fi
 
 section "Phase 4: Package Configuration"
 
-# Check lib-web-ui-design-token package.json exports
-if grep -q '"./css": "./dist/css/combined.css"' packages/lib-web-ui-design-token/package.json 2>/dev/null; then
-  pass "lib-web-ui-design-token exports combined CSS at ./css"
+# Check lib-design-token package.json exports
+if grep -q '"./css": "./dist/css/combined.css"' packages/lib-design-token/package.json 2>/dev/null; then
+  pass "lib-design-token exports combined CSS at ./css"
 else
-  fail "lib-web-ui-design-token doesn't export combined CSS"
+  fail "lib-design-token doesn't export combined CSS"
 fi
 
-if grep -q '"./css/light": "./dist/css/light/variables.css"' packages/lib-web-ui-design-token/package.json 2>/dev/null; then
-  pass "lib-web-ui-design-token exports light CSS"
+if grep -q '"./css/light": "./dist/css/light/variables.css"' packages/lib-design-token/package.json 2>/dev/null; then
+  pass "lib-design-token exports light CSS"
 else
-  fail "lib-web-ui-design-token doesn't export light CSS"
+  fail "lib-design-token doesn't export light CSS"
 fi
 
-if grep -q '"./css/dark": "./dist/css/dark/variables.css"' packages/lib-web-ui-design-token/package.json 2>/dev/null; then
-  pass "lib-web-ui-design-token exports dark CSS"
+if grep -q '"./css/dark": "./dist/css/dark/variables.css"' packages/lib-design-token/package.json 2>/dev/null; then
+  pass "lib-design-token exports dark CSS"
 else
-  fail "lib-web-ui-design-token doesn't export dark CSS"
+  fail "lib-design-token doesn't export dark CSS"
 fi
 
-if grep -q '"./scss/light": "./dist/css/light/variables.scss"' packages/lib-web-ui-design-token/package.json 2>/dev/null; then
-  pass "lib-web-ui-design-token exports SCSS"
+if grep -q '"./scss/light": "./dist/css/light/variables.scss"' packages/lib-design-token/package.json 2>/dev/null; then
+  pass "lib-design-token exports SCSS"
 else
-  fail "lib-web-ui-design-token doesn't export SCSS"
+  fail "lib-design-token doesn't export SCSS"
 fi
 
 # Check lib-web-ui package.json
@@ -364,21 +364,21 @@ fi
 section "Phase 5: Code Quality"
 
 # Check lib-web-ui imports design tokens correctly
-if grep -q "@designgreat/lib-web-ui-design-token/css" packages/lib-web-ui/src/styles/index.css 2>/dev/null; then
+if grep -q "@designgreat/lib-design-token/css" packages/lib-web-ui/src/styles/index.css 2>/dev/null; then
   pass "lib-web-ui imports design tokens CSS"
 else
   fail "lib-web-ui doesn't import design tokens CSS"
 fi
 
 # Check Storybook preview imports (either directly or via index.css)
-if grep -q "@designgreat/lib-web-ui-design-token/css" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null || \
+if grep -q "@designgreat/lib-design-token/css" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null || \
    grep -q "src/styles/index.css" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null; then
   pass "Storybook preview imports design tokens CSS (directly or via index.css)"
 else
   fail "Storybook preview doesn't import design tokens CSS"
 fi
 
-if grep -q "@designgreat/lib-web-ui-design-token/font" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null; then
+if grep -q "@designgreat/lib-design-token/font" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null; then
   pass "Storybook preview imports fonts"
 else
   fail "Storybook preview doesn't import fonts"
@@ -420,7 +420,7 @@ fi
 
 # Check docs-design-system uses theme utilities from design token package
 if grep -q "getThemeClassName as getTokenThemeClassName" packages/docs-design-system/src/theme/constants.ts 2>/dev/null || \
-   grep -q "from '@designgreat/lib-web-ui-design-token'" packages/docs-design-system/src/theme/constants.ts 2>/dev/null; then
+   grep -q "from '@designgreat/lib-design-token'" packages/docs-design-system/src/theme/constants.ts 2>/dev/null; then
   pass "docs-design-system imports theme utils from design token package"
 else
   fail "docs-design-system doesn't import theme utils from design token package"
@@ -547,27 +547,27 @@ fi
 
 section "Phase 7: Quality Checks"
 
-echo -e "${BLUE}Running lib-web-ui-design-token quality checks...${NC}"
-cd packages/lib-web-ui-design-token
+echo -e "${BLUE}Running lib-design-token quality checks...${NC}"
+cd packages/lib-design-token
 if pnpm run lint > /dev/null 2>&1; then
-  pass "lib-web-ui-design-token lint"
+  pass "lib-design-token lint"
 else
-  fail "lib-web-ui-design-token lint failed"
+  fail "lib-design-token lint failed"
 fi
 if pnpm run typecheck > /dev/null 2>&1; then
-  pass "lib-web-ui-design-token typecheck"
+  pass "lib-design-token typecheck"
 else
-  fail "lib-web-ui-design-token typecheck failed"
+  fail "lib-design-token typecheck failed"
 fi
 if pnpm run validate > /dev/null 2>&1; then
-  pass "lib-web-ui-design-token validate"
+  pass "lib-design-token validate"
 else
-  fail "lib-web-ui-design-token validate failed"
+  fail "lib-design-token validate failed"
 fi
 if pnpm run test > /dev/null 2>&1; then
-  pass "lib-web-ui-design-token test"
+  pass "lib-design-token test"
 else
-  fail "lib-web-ui-design-token test failed"
+  fail "lib-design-token test failed"
 fi
 cd ../..
 
