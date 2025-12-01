@@ -25,31 +25,38 @@ jobs:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Detect deleted packages
+      - name: Detect deleted and renamed packages
         id: detect
         run: |
-          echo "Checking for deleted packages..."
+          echo "Checking for deleted or renamed packages..."
 
-          # Get list of deleted package.json files
+          # Get list of deleted package.json files (D = deleted)
           DELETED_PACKAGES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'packages/.*/package.json' || true)
 
-          if [ -z "$DELETED_PACKAGES" ]; then
-            echo "No packages were deleted"
+          # Get list of renamed package.json files (R = renamed)
+          # Format: "old_path -> new_path" - we need the old_path
+          RENAMED_PACKAGES=$(git diff --name-status --diff-filter=R HEAD~1 HEAD | grep 'packages/.*/package.json' | awk '{print $2}' || true)
+
+          # Combine both lists
+          ALL_OLD_PACKAGES=$(echo -e "${DELETED_PACKAGES}\n${RENAMED_PACKAGES}" | grep -v '^$' || true)
+
+          if [ -z "$ALL_OLD_PACKAGES" ]; then
+            echo "No packages were deleted or renamed"
             echo "has_deletions=false" >> $GITHUB_OUTPUT
             exit 0
           fi
 
           echo "has_deletions=true" >> $GITHUB_OUTPUT
 
-          # Extract package names from deleted package.json files
+          # Extract package names from deleted/renamed package.json files
           PACKAGE_NAMES=""
-          for pkg_file in $DELETED_PACKAGES; do
+          for pkg_file in $ALL_OLD_PACKAGES; do
             # Get the package.json content from previous commit
             PACKAGE_NAME=$(git show HEAD~1:$pkg_file | jq -r '.name' 2>/dev/null || echo "")
             IS_PRIVATE=$(git show HEAD~1:$pkg_file | jq -r '.private' 2>/dev/null || echo "false")
             
             if [ -n "$PACKAGE_NAME" ] && [ "$IS_PRIVATE" != "true" ]; then
-              echo "Found deleted package: $PACKAGE_NAME"
+              echo "Found package to deprecate: $PACKAGE_NAME (from $pkg_file)"
               PACKAGE_NAMES="${PACKAGE_NAMES}${PACKAGE_NAME},"
             fi
           done
@@ -60,7 +67,7 @@ jobs:
           echo "package_names=$PACKAGE_NAMES" >> $GITHUB_OUTPUT
           echo "Packages to deprecate: $PACKAGE_NAMES"
 
-      - name: Deprecate deleted packages
+      - name: Deprecate packages
         if: steps.detect.outputs.has_deletions == 'true' && steps.detect.outputs.package_names != ''
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -85,7 +92,7 @@ jobs:
         run: |
           echo "## Auto-Deprecation Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "The following packages were deleted and have been deprecated on NPM:" >> $GITHUB_STEP_SUMMARY
+          echo "The following packages were deleted or renamed and have been deprecated on NPM:" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           IFS=',' read -ra PACKAGES <<< "${{ steps.detect.outputs.package_names }}"
