@@ -1,12 +1,13 @@
 ---
 sidebar_position: 0
+sidebar_label: Overview
 ---
 
 # Web Component Guides
 
 This guide explains how to consume the `@designgreat/lib-web-ui` React component library in your application.
 
-:::note Terminology
+:::info Terminology
 Despite the name "Web Components", this library provides **React components**, not browser-native [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). The name refers to components designed for web applications.
 :::
 
@@ -14,24 +15,45 @@ Despite the name "Web Components", this library provides **React components**, n
 
 The components in this library are pre-built React UI primitives (Button, TextInput, Dialog) that implement the Design Great design system. They provide consistent styling, accessibility features, and theme support out of the box.
 
-## Package Overview
+## Package Exports
 
 `@designgreat/lib-web-ui` provides:
 
-- **React Components** — Button, TextInput, Dialog with full TypeScript support
-- **Design Tokens** — CSS variables from `@designgreat/lib-web-ui-design-token`
-- **Tailwind Utilities** — Token-aware utility classes for custom UIs
-- **Component Styles** — Pre-built styles with automatic theme support
-- **TypeScript Definitions** — Fully typed component props and events
+| Export | Import Path | What You Get |
+|--------|-------------|--------------|
+| **React Components** | `@designgreat/lib-web-ui` | Button, TextInput, Dialog |
+| **Component Styles** | `@designgreat/.../lib-web-ui.css` | Pre-built styles + design tokens + Tailwind utilities |
+
+:::info Fonts Required Separately
+Fonts are **not included** in this package. Import from the design token package:
+```tsx
+import '@designgreat/lib-web-ui-design-token/font'
+```
+See the [Fonts guide](./fonts) for setup details.
+:::
 
 ## Key Features
 
-- ✅ Built-in theme support (light/dark)
-- ✅ Accessibility features (ARIA, keyboard navigation)
-- ✅ TypeScript definitions with IntelliSense
-- ✅ Tailwind CSS integration for customization
-- ✅ Design token utilities for consistent styling
-- ✅ Framework agnostic (works with Next.js, Vite, CRA, etc.)
+- ✅ **Light & dark themes** — Components auto-adapt to theme class
+- ✅ **Accessible** — ARIA attributes, keyboard navigation built-in
+- ✅ **Type-safe** — Full TypeScript definitions with IntelliSense
+- ✅ **Tailwind ready** — Token-aware utility classes included
+- ✅ **Framework agnostic** — Works with Next.js, Vite, CRA, Remix, Astro
+
+---
+
+## Learning Path
+
+| Time | Goal | Guide |
+|------|------|-------|
+| **2 min** | Get it working | [Quick Start](./quick-start) |
+| **5 min** | Full setup | [Installation](./installation) |
+| **5 min** | Add dark mode | [Theming](./theming) |
+| **5 min** | Set up fonts | [Fonts](./fonts) |
+| **10 min** | Custom styling | [Tailwind](./tailwind) |
+| **Reference** | Framework setup | [Frameworks](./frameworks) |
+
+---
 
 ## In This Section
 
@@ -39,9 +61,14 @@ import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
 
+---
+
 ## Related Resources
 
 - [Design Token Guides](/design-token/guides/overview) — How to consume design tokens directly
+- [Button Component](/web-component/button) — Button variants and props
+- [TextInput Component](/web-component/text-input) — Form input with validation states
+- [Dialog Component](/web-component/dialog) — Modal dialog patterns
 
 ## Contributing
 

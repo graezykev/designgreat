@@ -1,0 +1,96 @@
+---
+sidebar_position: 1
+---
+
+# Quick Start
+
+Get a React component working in **2 minutes**.
+
+## 1. Install
+
+```bash
+pnpm add @designgreat/lib-web-ui
+```
+
+## 2. Import
+
+Add this to your app's entry file:
+
+```tsx
+// main.tsx, app/layout.tsx, or _app.tsx
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+```
+
+## 3. Use
+
+Import and use components:
+
+```tsx
+import { Button } from '@designgreat/lib-web-ui'
+
+function App() {
+  return (
+    <Button variant="primary" onClick={() => alert('It works!')}>
+      Click me
+    </Button>
+  )
+}
+```
+
+**That's it!** You now have:
+- ✅ Styled React components (Button, TextInput, Dialog)
+- ✅ Light & dark theme support
+- ✅ Design token CSS variables
+
+For custom fonts, see [Fonts](./fonts).
+
+---
+
+## Add Dark Mode
+
+Wrap your app and toggle the theme class:
+
+```tsx
+import { useState } from 'react'
+import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+import { Button } from '@designgreat/lib-web-ui'
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <div className={getThemeClassName(isDark ? 'dark' : 'light')}>
+      <Button variant="primary" onClick={() => setIsDark(!isDark)}>
+        {isDark ? '☀️ Light' : '🌙 Dark'}
+      </Button>
+    </div>
+  )
+}
+```
+
+---
+
+## Available Components
+
+| Component | Description |
+|-----------|-------------|
+| `Button` | Primary, secondary, outline variants |
+| `TextInput` | Text input with label, error, success states |
+| `Dialog` | Modal dialog with customizable content |
+
+```tsx
+import { Button, TextInput, Dialog } from '@designgreat/lib-web-ui'
+```
+
+---
+
+## Next Steps
+
+| Your Goal | Guide |
+|-----------|-------|
+| Full setup with troubleshooting | [Installation](./installation) |
+| Implement theme switching | [Theming](./theming) |
+| Use custom fonts | [Fonts](./fonts) |
+| Build custom UIs with tokens | [Tailwind](./tailwind) |
+| Framework-specific setup | [Frameworks](./frameworks) |
+

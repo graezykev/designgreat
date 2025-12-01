@@ -86,13 +86,15 @@ Integration documentation helps consumers understand and use a package. Use this
 
 - **Feature 1** — Description
 - **Feature 2** — Description
-- **Feature 3** — Description
 
 ## Key Features
 
-- ✅ Feature with benefit
-- ✅ Feature with benefit
-- ✅ Feature with benefit
+- ✅ **Feature name** — Benefit description
+- ✅ **Feature name** — Benefit description
+
+## Learning Path (Optional)
+
+{Table with Time, Goal, Guide columns — see Format Options below}
 
 ## In This Section
 
@@ -102,14 +104,22 @@ import DocCardList from '@theme/DocCardList';
 
 ## Related Resources
 
-- [Link to related integration guide](/path) — Brief description
-- [Link to development guide](/path) — For contributors
-- [Package README](url) — Package overview
+- [Link](/path) — Brief description
 
 ## Contributing
 
 To contribute to this package, see the [{Package} Development Guides](/contributing/path).
+
+## Next Steps
+
+{Table, bullets, or plain text — see Format Options below}
 ```
+
+:::tip Alternative Formats
+See [Format Options](#format-options) below for:
+- **Package Exports** table format (for packages with multiple import paths)
+- **Learning Path** table format (for guides with 5+ sub-pages)
+:::
 
 ### Section Guidelines
 
@@ -118,11 +128,98 @@ To contribute to this package, see the [{Package} Development Guides](/contribut
 | Title | ✅ | "`{Package Name}` Guides" |
 | Intro paragraph | ✅ | One sentence explaining the guide's purpose |
 | What Are X? | ✅ | Explain core concept for newcomers |
-| Package Overview | ✅ | Bulleted list of what the package provides |
-| Key Features | ✅ | Checklist of benefits with emoji checkmarks |
+| Package Overview/Exports | ✅ | What the package provides (bullet list or table) |
+| Key Features | ✅ | Checklist with **bold labels** and benefit descriptions |
+| Learning Path | ⚪ Optional | Ordered guide navigation for docs with 5+ sub-pages |
 | In This Section | ✅ | DocCardList showing child pages |
 | Related Resources | ✅ | Links to related guides and external resources |
 | Contributing | ✅ | Single link to development guide |
+| Next Steps | ✅ | Guided navigation to next relevant topics |
+
+### Format Options
+
+#### Package Overview vs Package Exports
+
+Use the format that best fits your content:
+
+| Format | Heading | When to Use |
+|--------|---------|-------------|
+| **Bullet list** | "Package Overview" | General capabilities, no specific import paths |
+| **Table** | "Package Exports" | Multiple distinct import paths (CSS, JS, fonts, etc.) |
+
+**Example: Package Exports table**
+
+| Export | Import Path | Use Case |
+|--------|-------------|----------|
+| **CSS Variables** | `@pkg/css` | Web styling with `var(--dg-*)` |
+| **TypeScript APIs** | `@pkg` | Runtime token access |
+| **Font Assets** | `@pkg/font` | Self-hosted fonts |
+
+#### Key Features Format
+
+Use **bold labels** followed by descriptions for scannability:
+
+```markdown
+- ✅ **Light & dark themes** — Built-in, ready to use
+- ✅ **Type-safe** — Full IntelliSense for all token paths
+- ✅ **React Native compatible** — JS exports work in StyleSheet
+```
+
+#### Learning Path (Optional)
+
+Include when your guide section has **5 or more sub-pages** to help users navigate:
+
+- Use time estimates for tutorials (e.g., "2 min", "10 min")
+- Use "Reference" for lookup-style documentation
+- Order from beginner to advanced
+
+**Example: Learning Path table**
+
+| Time | Goal | Guide |
+|------|------|-------|
+| **2 min** | Get started | Quick Start |
+| **5 min** | Learn basics | Basic Usage |
+| **10 min** | Add theming | Theming |
+| **Reference** | Look up APIs | API Reference |
+
+*Note: In actual docs, the Guide column contains relative links like `[Quick Start](./quick-start)`.*
+
+#### Next Steps Format
+
+End each guide page with a "Next Steps" section. Use the format that matches the context:
+
+| Context | Format | Example |
+|---------|--------|---------|
+| **Quick Start** | Table | Multiple paths for users to choose |
+| **Single next step** | Plain text | `Continue with [X](./x) to learn...` |
+| **Multiple options** | Bullets | List of 2-4 related links |
+
+**Example: Table (Quick Start only)**
+
+> ## Next Steps
+>
+> | Your Goal | Guide |
+> |-----------|-------|
+> | Full setup | Installation |
+> | Add theming | Theming |
+
+**Example: Plain text (single next step)**
+
+```markdown
+## Next Steps
+
+Continue with [Basic Usage](./basic-usage) to learn how to use design tokens in your styles.
+```
+
+**Example: Bullets (multiple options)**
+
+```markdown
+## Next Steps
+
+- Learn about [Theming](./theming) for light/dark mode support
+- See [Fonts](./fonts) for font configuration
+- Explore [Tailwind](./tailwind) for utility classes
+```
 
 ---
 
@@ -167,6 +264,10 @@ import DocCardList from '@theme/DocCardList';
 
 - [Integration Guides](/path) — How to consume this package
 - [Related Package Development](/path) — Related contributor guide
+
+## Next Steps
+
+{Bullets or plain text — see Integration Docs Format Options for examples}
 ````
 
 ### Section Guidelines
@@ -180,6 +281,7 @@ import DocCardList from '@theme/DocCardList';
 | Package Location | ✅ | Filesystem path to the package |
 | In This Section | ✅ | DocCardList showing child pages |
 | Related Documentation | ✅ | Links to integration guide and related dev guides |
+| Next Steps | ✅ | Guided navigation to next relevant topics |
 
 ---
 
@@ -189,14 +291,16 @@ Use these exact headings for consistency:
 
 ### Integration Docs
 
-| Concept | Heading | ❌ Avoid |
-|---------|---------|----------|
-| Core concept explanation | "What Are `{Concept}`?" | "What is X", "About X" |
-| Package capabilities | "Package Overview" | "What's Included", "About This Package" |
-| Benefits list | "Key Features" | "Features", "Highlights" |
-| Child page navigation | "In This Section" | "Quick Links", "What You'll Find Here" |
-| External links | "Related Resources" | "Related Documentation", "See Also" |
-| Contributor callout | "Contributing" | "Contributing to X", "For Developers" |
+| Concept | Heading | Alternative | ❌ Avoid |
+|---------|---------|-------------|----------|
+| Core concept explanation | "What Are `{Concept}`?" | — | "What is X", "About X" |
+| Package capabilities | "Package Overview" | "Package Exports" (for import paths) | "What's Included", "About This Package" |
+| Benefits list | "Key Features" | — | "Features", "Highlights" |
+| Guided navigation | "Learning Path" | — | "Getting Started", "Tutorial Order" |
+| Child page navigation | "In This Section" | — | "Quick Links", "What You'll Find Here" |
+| External links | "Related Resources" | — | "Related Documentation", "See Also" |
+| Contributor callout | "Contributing" | — | "Contributing to X", "For Developers" |
+| Page continuation | "Next Steps" | — | "What's Next", "Continue Reading" |
 
 ### Development Docs
 
@@ -207,6 +311,7 @@ Use these exact headings for consistency:
 | Filesystem location | "Package Location" | "Where to Find" |
 | Child page navigation | "In This Section" | "Quick Links", "What You'll Find Here" |
 | Links to other docs | "Related Documentation" | "Related Resources", "Need Help?" |
+| Page continuation | "Next Steps" | "What's Next", "Continue Reading" |
 
 ---
 

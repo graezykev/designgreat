@@ -1,0 +1,458 @@
+---
+sidebar_position: 7
+---
+
+# React Native Integration
+
+:::tip TL;DR
+Use the JavaScript token exports (`themes.light`, `themes.dark`) directly in StyleSheet — CSS variables don't work in React Native.
+:::
+
+React Native uses a JavaScript-based styling system, not CSS. The design token package provides JavaScript objects that work perfectly with React Native's `StyleSheet.create()`.
+
+---
+
+## Installation
+
+```bash
+pnpm add @designgreat/lib-web-ui-design-token
+```
+
+:::note Fonts
+React Native handles fonts differently. Skip the `/font` import and use [expo-font](https://docs.expo.dev/versions/latest/sdk/font/) or link fonts manually in your native project.
+:::
+
+---
+
+## Quick Start
+
+Access tokens directly from the JavaScript exports:
+
+```tsx
+import { StyleSheet } from 'react-native'
+import { themes } from '@designgreat/lib-web-ui-design-token'
+
+const t = themes.light // or themes.dark
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: t.dg.color.background.DEFAULT,
+    padding: 16, // or parse t.dg.spacing.px16
+  },
+  title: {
+    color: t.dg.color.text.bold,
+    fontSize: 24,
+    fontWeight: '700',
+  },
+  text: {
+    color: t.dg.color.text.DEFAULT,
+    fontSize: 16,
+  },
+  button: {
+    backgroundColor: t.dg.color.primary.DEFAULT,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+  },
+  buttonText: {
+    color: t.dg.color.text.inverse,
+    fontWeight: '600',
+  },
+})
+```
+
+---
+
+## Theme Provider Pattern
+
+Create a theme context to enable dynamic theme switching:
+
+### 1. Create Theme Context
+
+```tsx
+// theme/ThemeContext.tsx
+import { createContext, useContext, useState, useMemo, type ReactNode } from 'react'
+import { themes, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+type ThemeContextValue = {
+  theme: ThemeName
+  tokens: typeof themes.light
+  setTheme: (theme: ThemeName) => void
+  toggleTheme: () => void
+}
+
+const ThemeContext = createContext<ThemeContextValue | null>(null)
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<ThemeName>('light')
+  
+  const value = useMemo(() => ({
+    theme,
+    tokens: themes[theme],
+    setTheme,
+    toggleTheme: () => setTheme(t => t === 'light' ? 'dark' : 'light'),
+  }), [theme])
+
+  return (
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
+  )
+}
+
+export function useTheme() {
+  const context = useContext(ThemeContext)
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider')
+  }
+  return context
+}
+```
+
+### 2. Wrap Your App
+
+```tsx
+// App.tsx
+import { ThemeProvider } from './theme/ThemeContext'
+import { HomeScreen } from './screens/HomeScreen'
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <HomeScreen />
+    </ThemeProvider>
+  )
+}
+```
+
+### 3. Use in Components
+
+```tsx
+// screens/HomeScreen.tsx
+import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { useTheme } from '../theme/ThemeContext'
+
+export function HomeScreen() {
+  const { tokens: t, theme, toggleTheme } = useTheme()
+
+  return (
+    <View style={[styles.container, { backgroundColor: t.dg.color.background.DEFAULT }]}>
+      <Text style={[styles.title, { color: t.dg.color.text.bold }]}>
+        Current Theme: {theme}
+      </Text>
+      
+      <Pressable 
+        onPress={toggleTheme}
+        style={[styles.button, { backgroundColor: t.dg.color.primary.DEFAULT }]}
+      >
+        <Text style={[styles.buttonText, { color: t.dg.color.text.inverse }]}>
+          Toggle Theme
+        </Text>
+      </Pressable>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 24,
+  },
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+})
+```
+
+---
+
+## Styled Components Pattern
+
+For cleaner code, create pre-styled components:
+
+```tsx
+// components/ThemedComponents.tsx
+import { View, Text, Pressable, type ViewProps, type TextProps, type PressableProps } from 'react-native'
+import { useTheme } from '../theme/ThemeContext'
+
+export function ThemedView({ style, ...props }: ViewProps) {
+  const { tokens: t } = useTheme()
+  return (
+    <View 
+      style={[{ backgroundColor: t.dg.color.background.DEFAULT }, style]} 
+      {...props} 
+    />
+  )
+}
+
+export function ThemedText({ style, variant = 'body', ...props }: TextProps & { variant?: 'body' | 'title' | 'subtle' }) {
+  const { tokens: t } = useTheme()
+  
+  const variantStyles = {
+    body: { color: t.dg.color.text.DEFAULT, fontSize: 16 },
+    title: { color: t.dg.color.text.bold, fontSize: 24, fontWeight: '700' as const },
+    subtle: { color: t.dg.color.text.subtle, fontSize: 14 },
+  }
+  
+  return <Text style={[variantStyles[variant], style]} {...props} />
+}
+
+export function PrimaryButton({ style, children, ...props }: PressableProps & { children: string }) {
+  const { tokens: t } = useTheme()
+  
+  return (
+    <Pressable 
+      style={[
+        {
+          backgroundColor: t.dg.color.primary.DEFAULT,
+          paddingVertical: 12,
+          paddingHorizontal: 24,
+          borderRadius: 12,
+        },
+        style as any,
+      ]} 
+      {...props}
+    >
+      <Text style={{ color: t.dg.color.text.inverse, fontWeight: '600', textAlign: 'center' }}>
+        {children}
+      </Text>
+    </Pressable>
+  )
+}
+```
+
+Usage:
+
+```tsx
+import { ThemedView, ThemedText, PrimaryButton } from './components/ThemedComponents'
+
+function MyScreen() {
+  return (
+    <ThemedView style={{ flex: 1, padding: 24 }}>
+      <ThemedText variant="title">Welcome</ThemedText>
+      <ThemedText variant="body">This is themed content.</ThemedText>
+      <PrimaryButton onPress={() => {}}>Get Started</PrimaryButton>
+    </ThemedView>
+  )
+}
+```
+
+---
+
+## Token Reference
+
+Access any token via the `themes` object:
+
+```tsx
+import { themes } from '@designgreat/lib-web-ui-design-token'
+
+const t = themes.light // or themes.dark
+
+// Colors
+t.dg.color.background.DEFAULT      // "#ffffff" / "#0c0c0d"
+t.dg.color.text.DEFAULT            // "#1d1d1f" / "#e8e8e9"
+t.dg.color.text.subtle             // "#333336" / "#d0d0d3"
+t.dg.color.primary.DEFAULT         // "#0055cc" / "#599eff"
+t.dg.color.semantic.error.DEFAULT  // "#ae2e24" / "#e38078"
+t.dg.color.semantic.success.DEFAULT// "#216e4e" / "#68d2a6"
+t.dg.color.border.DEFAULT          // with alpha
+
+// Spacing (as rem strings - may need parsing)
+t.dg.spacing.px8   // "0.5rem"
+t.dg.spacing.px16  // "1rem"
+t.dg.spacing.px24  // "1.5rem"
+```
+
+### Parsing Spacing Values
+
+Token spacing values are in `rem` strings. Convert to numbers for React Native:
+
+```tsx
+// utils/spacing.ts
+const BASE_FONT_SIZE = 16 // 1rem = 16px
+
+export function parseSpacing(remValue: string | number): number {
+  if (typeof remValue === 'number') return remValue
+  const match = remValue.match(/^([\d.]+)rem$/)
+  if (match) {
+    return parseFloat(match[1]) * BASE_FONT_SIZE
+  }
+  return parseFloat(remValue) || 0
+}
+
+// Usage
+import { themes } from '@designgreat/lib-web-ui-design-token'
+
+const spacing = parseSpacing(themes.light.dg.spacing.px16) // 16
+```
+
+Or create a spacing scale:
+
+```tsx
+// theme/spacing.ts
+export const spacing = {
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
+  xxl: 48,
+} as const
+```
+
+---
+
+## Persist Theme Preference
+
+Use AsyncStorage to persist the user's theme choice:
+
+```tsx
+// theme/ThemeContext.tsx
+import { useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+const THEME_KEY = '@theme'
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<ThemeName>('light')
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Load saved theme on mount
+  useEffect(() => {
+    AsyncStorage.getItem(THEME_KEY).then(saved => {
+      if (saved === 'dark' || saved === 'light') {
+        setTheme(saved)
+      }
+      setIsLoading(false)
+    })
+  }, [])
+
+  // Save theme when it changes
+  useEffect(() => {
+    if (!isLoading) {
+      AsyncStorage.setItem(THEME_KEY, theme)
+    }
+  }, [theme, isLoading])
+
+  const value = useMemo(() => ({
+    theme,
+    tokens: themes[theme],
+    setTheme,
+    toggleTheme: () => setTheme(t => t === 'light' ? 'dark' : 'light'),
+  }), [theme])
+
+  if (isLoading) return null // or splash screen
+
+  return (
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
+  )
+}
+```
+
+---
+
+## System Theme Detection
+
+React to system appearance changes:
+
+```tsx
+import { useColorScheme } from 'react-native'
+import { themes, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const systemColorScheme = useColorScheme()
+  const [userPreference, setUserPreference] = useState<ThemeName | 'system'>('system')
+
+  const theme: ThemeName = userPreference === 'system' 
+    ? (systemColorScheme ?? 'light')
+    : userPreference
+
+  const value = useMemo(() => ({
+    theme,
+    tokens: themes[theme],
+    userPreference,
+    setUserPreference,
+  }), [theme, userPreference])
+
+  return (
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
+  )
+}
+```
+
+---
+
+## Font Setup
+
+React Native requires fonts to be linked in the native project. The design token package's web fonts won't work directly.
+
+### Expo
+
+```tsx
+// App.tsx
+import { useFonts } from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
+import { useEffect } from 'react'
+
+SplashScreen.preventAutoHideAsync()
+
+export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
+    'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
+  })
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded])
+
+  if (!fontsLoaded) return null
+
+  return <ThemeProvider>...</ThemeProvider>
+}
+```
+
+### Bare React Native
+
+1. Place fonts in `android/app/src/main/assets/fonts/` and `ios/YourApp/Fonts/`
+2. Add to `Info.plist` (iOS) and rebuild
+
+---
+
+## Differences from Web
+
+| Feature | Web | React Native |
+|---------|-----|--------------|
+| Styling | CSS variables | JavaScript objects |
+| Fonts | `@font-face` import | Native linking |
+| Theme switching | CSS class toggle | Context re-render |
+| Spacing | CSS rem values | Numeric pixels |
+| Shadows | CSS `box-shadow` | `shadowColor`, `elevation` |
+
+---
+
+## Next Steps
+
+- See [API Reference](./api/reference) for all available tokens
+- Explore [Color Tokens](/design-token/colors/core-concepts-theme-awareness) to understand the color system
+

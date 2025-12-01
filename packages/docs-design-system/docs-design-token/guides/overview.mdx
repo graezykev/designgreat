@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+sidebar_label: Overview
 ---
 
 # Design Token Guides
@@ -10,23 +11,41 @@ This guide explains how to consume design tokens from `@designgreat/lib-web-ui-d
 
 Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. They're used in place of hard-coded values to ensure consistency and maintainability across your application.
 
-## Package Overview
+## Package Exports
 
-`@designgreat/lib-web-ui-design-token` provides:
+`@designgreat/lib-web-ui-design-token` provides four types of outputs:
 
-- **TypeScript Runtime APIs** — Strongly typed helpers for themes and tokens
-- **CSS Variables** — Generated CSS with theme variables for light and dark modes
-- **Font Assets** — Font-face definitions and font files (Roboto family)
-- **Theme Support** — Light and dark themes with runtime switching utilities
+| Export | Import Path | Use Case |
+|--------|-------------|----------|
+| **CSS Variables** | `@designgreat/.../css` | Web styling with `var(--dg-*)` |
+| **SCSS Variables** | `@designgreat/.../scss/light` | SCSS projects with `$dg-*` |
+| **TypeScript APIs** | `@designgreat/lib-web-ui-design-token` | Runtime token access, theme switching |
+| **Font Assets** | `@designgreat/.../font` | Self-hosted Roboto font files |
 
 ## Key Features
 
-- ✅ Built-in light and dark themes
-- ✅ CSS, SCSS, and JavaScript/TypeScript outputs
-- ✅ Type-safe token access with full IntelliSense
-- ✅ Runtime theme switching utilities
-- ✅ Self-contained font assets (no CDN required)
-- ✅ Framework agnostic (works with Next.js, Vite, CRA, etc.)
+- ✅ **Light & dark themes** — Built-in, ready to use
+- ✅ **Type-safe** — Full IntelliSense for all token paths
+- ✅ **Framework agnostic** — Works with React, Vue, Next.js, Vite, Remix, etc.
+- ✅ **React Native compatible** — JS token objects work directly in StyleSheet
+- ✅ **Self-contained fonts** — No CDN required, fonts bundled in package
+
+---
+
+## Learning Path
+
+| Time | Goal | Guide |
+|------|------|-------|
+| **2 min** | Get it working | [Quick Start](./quick-start) |
+| **5 min** | Understand package exports | [Installation](./installation) |
+| **5 min** | Use CSS variables | [Basic Usage](./basic-usage) |
+| **10 min** | Add dark mode | [Theming](./theming) |
+| **10 min** | Set up fonts | [Fonts](./fonts) |
+| **15 min** | Use with Tailwind | [Tailwind Integration](./tailwind) |
+| **15 min** | Use with React Native | [React Native Integration](./react-native) |
+| **Reference** | Look up APIs | [API Reference](./api/reference) |
+
+---
 
 ## In This Section
 
@@ -34,9 +53,12 @@ import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
 
+---
+
 ## Related Resources
 
 - [Web Component Guides](/web-component/guides/overview) — Using React components with design tokens
+- [Color Token Reference](/design-token/colors/core-concepts-theme-awareness) — Understanding the color system
 
 ## Contributing
 

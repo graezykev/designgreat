@@ -1,0 +1,384 @@
+---
+sidebar_position: 1
+sidebar_label: API Reference
+---
+
+# API Reference
+
+:::tip TL;DR
+Import `themes` for token values, use `getThemeClassName()` or `applyTheme()` for theme switching.
+:::
+
+This page documents all TypeScript exports from `@designgreat/lib-web-ui-design-token`.
+
+---
+
+## Quick Reference
+
+```typescript
+import {
+  // Most commonly used
+  themes,              // Access token values: themes.light, themes.dark
+  getThemeClassName,   // Get CSS class for a theme
+  applyTheme,          // Apply theme to an element
+  
+  // Types
+  type ThemeName,      // 'light' | 'dark'
+} from '@designgreat/lib-web-ui-design-token'
+```
+
+---
+
+## Token Access
+
+### `themes` Object
+
+The main way to access token values programmatically:
+
+```typescript
+import { themes } from '@designgreat/lib-web-ui-design-token'
+
+// Access light theme tokens
+const lightBg = themes.light.dg.color.background.DEFAULT    // "#ffffff"
+const lightText = themes.light.dg.color.text.DEFAULT        // "#1d1d1f"
+
+// Access dark theme tokens
+const darkBg = themes.dark.dg.color.background.DEFAULT      // "#0c0c0d"
+const darkText = themes.dark.dg.color.text.DEFAULT          // "#e8e8e9"
+
+// Spacing
+const spacing = themes.light.dg.spacing.px16                // "1rem"
+
+// Typography
+const fontFamily = themes.light.dg['font-family'].primary   // "Roboto"
+```
+
+### Named Exports: `light` & `dark`
+
+Direct access to specific themes:
+
+```typescript
+import { light, dark } from '@designgreat/lib-web-ui-design-token'
+
+const primaryLight = light.dg.color.primary.DEFAULT  // "#0055cc"
+const primaryDark = dark.dg.color.primary.DEFAULT    // "#599eff"
+```
+
+### `getThemeTokens(theme)`
+
+Get tokens for a specific theme by name:
+
+```typescript
+import { getThemeTokens } from '@designgreat/lib-web-ui-design-token'
+
+const tokens = getThemeTokens('light')
+const bgColor = tokens.dg.color.background.DEFAULT
+```
+
+### `listThemeNames()`
+
+Get array of available theme names:
+
+```typescript
+import { listThemeNames } from '@designgreat/lib-web-ui-design-token'
+
+const themes = listThemeNames()  // ['dark', 'light']
+```
+
+### `createTheme(base, overrides)`
+
+Create a custom theme with token overrides:
+
+```typescript
+import { createTheme } from '@designgreat/lib-web-ui-design-token'
+
+const customTheme = createTheme('light', {
+  dg: {
+    color: {
+      primary: {
+        DEFAULT: '#FF0000'  // Override primary color
+      }
+    }
+  }
+})
+```
+
+---
+
+## Theme Utilities
+
+### `getThemeClassName(theme)`
+
+Returns the CSS class name for a theme:
+
+```typescript
+import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+
+getThemeClassName('light')  // '' (light uses :root, no class needed)
+getThemeClassName('dark')   // 'dg-theme-dark'
+```
+
+**Usage in React:**
+
+```tsx
+function App() {
+  const [isDark, setIsDark] = useState(false)
+  
+  return (
+    <div className={getThemeClassName(isDark ? 'dark' : 'light')}>
+      {/* Your app */}
+    </div>
+  )
+}
+```
+
+### `applyTheme(element, theme)`
+
+Applies the theme class to an element:
+
+```typescript
+import { applyTheme } from '@designgreat/lib-web-ui-design-token'
+
+// Apply dark theme to document
+applyTheme(document.documentElement, 'dark')
+
+// Switch back to light
+applyTheme(document.documentElement, 'light')
+```
+
+### `isThemeApplied(element, theme)`
+
+Checks if a theme is currently applied:
+
+```typescript
+import { isThemeApplied } from '@designgreat/lib-web-ui-design-token'
+
+if (isThemeApplied(document.documentElement, 'dark')) {
+  console.log('Dark theme is active')
+}
+```
+
+### `getThemeSelector(theme)`
+
+Returns the CSS selector for a theme:
+
+```typescript
+import { getThemeSelector } from '@designgreat/lib-web-ui-design-token'
+
+getThemeSelector('light')  // ':root'
+getThemeSelector('dark')   // '.dg-theme-dark'
+```
+
+### `getOppositeTheme(theme)`
+
+Returns the opposite theme name:
+
+```typescript
+import { getOppositeTheme } from '@designgreat/lib-web-ui-design-token'
+
+getOppositeTheme('light')  // 'dark'
+getOppositeTheme('dark')   // 'light'
+```
+
+---
+
+## Constants
+
+### `THEME_CLASSES`
+
+Object containing theme class names:
+
+```typescript
+import { THEME_CLASSES } from '@designgreat/lib-web-ui-design-token'
+
+THEME_CLASSES.light  // ''
+THEME_CLASSES.dark   // 'dg-theme-dark'
+```
+
+### `THEME_SELECTORS`
+
+Object containing CSS selectors:
+
+```typescript
+import { THEME_SELECTORS } from '@designgreat/lib-web-ui-design-token'
+
+THEME_SELECTORS.light  // ':root'
+THEME_SELECTORS.dark   // '.dg-theme-dark'
+```
+
+### `THEME_CLASS_PREFIX`
+
+The prefix used for theme classes:
+
+```typescript
+import { THEME_CLASS_PREFIX } from '@designgreat/lib-web-ui-design-token'
+
+THEME_CLASS_PREFIX  // 'dg-theme'
+```
+
+### `LIGHT_THEME_SELECTOR`
+
+CSS selector for the light theme:
+
+```typescript
+import { LIGHT_THEME_SELECTOR } from '@designgreat/lib-web-ui-design-token'
+
+LIGHT_THEME_SELECTOR  // ':root'
+```
+
+### `DEFAULT_THEME`
+
+The default theme name:
+
+```typescript
+import { DEFAULT_THEME } from '@designgreat/lib-web-ui-design-token'
+
+DEFAULT_THEME  // 'light'
+```
+
+---
+
+## TypeScript Types
+
+### `ThemeName`
+
+Union type of available theme names:
+
+```typescript
+import type { ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+// ThemeName = 'light' | 'dark'
+
+function setTheme(name: ThemeName) {
+  applyTheme(document.documentElement, name)
+}
+```
+
+### `ThemeToken`
+
+The full token structure for a theme:
+
+```typescript
+import type { ThemeToken } from '@designgreat/lib-web-ui-design-token'
+
+function processTheme(tokens: ThemeToken) {
+  // TypeScript knows all available properties
+  console.log(tokens.dg.color.primary.DEFAULT)
+}
+```
+
+### `ThemeOverrides`
+
+Partial structure for `createTheme()` overrides:
+
+```typescript
+import type { ThemeOverrides } from '@designgreat/lib-web-ui-design-token'
+
+const overrides: ThemeOverrides = {
+  dg: {
+    color: {
+      primary: {
+        DEFAULT: '#custom-color'
+      }
+    }
+  }
+}
+```
+
+---
+
+## Complete API Table
+
+### Functions
+
+| Function | Parameters | Returns | Description |
+|----------|------------|---------|-------------|
+| `getThemeClassName` | `theme: ThemeName` | `string` | CSS class name for theme |
+| `getThemeSelector` | `theme: ThemeName` | `string` | CSS selector for theme |
+| `applyTheme` | `element: Element, theme: ThemeName` | `void` | Apply theme to element |
+| `isThemeApplied` | `element: Element, theme: ThemeName` | `boolean` | Check if theme is active |
+| `getOppositeTheme` | `theme: ThemeName` | `ThemeName` | Get opposite theme |
+| `getThemeTokens` | `theme: ThemeName` | `ThemeToken` | Get tokens for theme |
+| `listThemeNames` | — | `ThemeName[]` | Get all theme names |
+| `createTheme` | `base: ThemeName, overrides?: ThemeOverrides` | `ThemeToken` | Create custom theme |
+
+### Constants
+
+| Constant | Type | Value |
+|----------|------|-------|
+| `themes` | `{ light: ThemeToken, dark: ThemeToken }` | All theme tokens |
+| `light` | `ThemeToken` | Light theme tokens |
+| `dark` | `ThemeToken` | Dark theme tokens |
+| `THEME_CLASSES` | `{ light: '', dark: 'dg-theme-dark' }` | Class names |
+| `THEME_SELECTORS` | `{ light: ':root', dark: '.dg-theme-dark' }` | CSS selectors |
+| `THEME_CLASS_PREFIX` | `'dg-theme'` | Class prefix |
+| `LIGHT_THEME_SELECTOR` | `':root'` | Light selector |
+| `DEFAULT_THEME` | `'light'` | Default theme |
+
+### Types
+
+| Type | Definition | Use Case |
+|------|------------|----------|
+| `ThemeName` | `'light' \| 'dark'` | Theme parameters |
+| `ThemeToken` | Full token structure | Token access |
+| `ThemeOverrides` | `DeepPartial<ThemeToken>` | Custom themes |
+
+---
+
+## Usage Examples
+
+### Theme Toggle Component
+
+```tsx
+import { useState } from 'react'
+import { 
+  getThemeClassName, 
+  type ThemeName 
+} from '@designgreat/lib-web-ui-design-token'
+
+function ThemeToggle() {
+  const [theme, setTheme] = useState<ThemeName>('light')
+  
+  return (
+    <div className={getThemeClassName(theme)}>
+      <button onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>
+        Current: {theme}
+      </button>
+    </div>
+  )
+}
+```
+
+### Dynamic Styling
+
+```tsx
+import { themes } from '@designgreat/lib-web-ui-design-token'
+
+function DynamicBox({ isDark }: { isDark: boolean }) {
+  const t = isDark ? themes.dark : themes.light
+  
+  return (
+    <div style={{
+      backgroundColor: t.dg.color.background.DEFAULT,
+      color: t.dg.color.text.DEFAULT,
+      padding: t.dg.spacing.px16
+    }}>
+      Dynamic content
+    </div>
+  )
+}
+```
+
+### Theme-Aware Utility
+
+```typescript
+import { themes, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+function getContrastColor(theme: ThemeName, isError: boolean) {
+  const t = themes[theme]
+  return isError 
+    ? t.dg.color.semantic.error.DEFAULT 
+    : t.dg.color.text.DEFAULT
+}
+```
+

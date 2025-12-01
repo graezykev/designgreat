@@ -107,7 +107,7 @@ switches)
 - [Base Colors](./base-colors)
 - [Alpha Colors](./alpha-colors)
 - [Primary Colors](./primary-brand-colors)
-- [Theme Switching](/design-token/guides/theme-switching)
+- [Theming](/design-token/guides/theming)
 ```
 
 **After:**
@@ -117,7 +117,7 @@ switches)
 - [Base Colors](./base-colors)
 - [Alpha Colors](./alpha-colors)
 - [Primary Colors](./primary-brand-colors)
-- [Theme Switching Implementation](/design-token/guides/theme-switching)
+- [Theming](/design-token/guides/theming)
 ```
 
 ## Content Enhancements

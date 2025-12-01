@@ -1,0 +1,255 @@
+---
+sidebar_position: 4
+---
+
+# Theming
+
+:::tip TL;DR
+Light theme = `:root` (default). Dark theme = add `.dg-theme-dark` class to any ancestor element.
+:::
+
+---
+
+## How Theme Switching Works
+
+Design tokens use CSS variables that are defined differently for each theme:
+
+```css
+/* Light theme (default) */
+:root {
+  --dg-color-background-default: #ffffff;
+  --dg-color-text-default: #1d1d1f;
+  /* ... */
+}
+
+/* Dark theme (when class is applied) */
+.dg-theme-dark {
+  --dg-color-background-default: #0c0c0d;
+  --dg-color-text-default: #e8e8e9;
+  /* ... */
+}
+```
+
+When you apply `.dg-theme-dark` to an element, all its descendants automatically use dark theme values — **no code changes needed** in your component styles.
+
+---
+
+## Quick Implementation
+
+### Option 1: React State
+
+```tsx
+import { useState } from 'react'
+import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <div className={getThemeClassName(isDark ? 'dark' : 'light')}>
+      <button onClick={() => setIsDark(!isDark)}>
+        {isDark ? '☀️ Light' : '🌙 Dark'}
+      </button>
+      {/* Your app content */}
+    </div>
+  )
+}
+```
+
+### Option 2: Direct Class Manipulation
+
+```typescript
+import { THEME_CLASSES } from '@designgreat/lib-web-ui-design-token'
+
+// Apply dark theme
+document.documentElement.classList.add(THEME_CLASSES.dark)
+
+// Apply light theme (remove dark class)
+document.documentElement.classList.remove(THEME_CLASSES.dark)
+```
+
+### Option 3: Using `applyTheme` Utility
+
+```typescript
+import { applyTheme } from '@designgreat/lib-web-ui-design-token'
+
+// Apply to document root
+applyTheme(document.documentElement, 'dark')
+applyTheme(document.documentElement, 'light')
+```
+
+---
+
+## Common Recipes
+
+### Respect System Preference
+
+Automatically match the user's OS color scheme:
+
+```tsx
+import { useState, useEffect } from 'react'
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+function App() {
+  const [theme, setTheme] = useState<ThemeName>(() => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches 
+      ? 'dark' 
+      : 'light'
+  })
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleChange = (e: MediaQueryListEvent) => {
+      setTheme(e.matches ? 'dark' : 'light')
+    }
+    
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  return (
+    <div className={getThemeClassName(theme)}>
+      {/* Your app */}
+    </div>
+  )
+}
+```
+
+### Persist User Preference
+
+Save the user's theme choice to localStorage:
+
+```tsx
+import { useState, useEffect } from 'react'
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+
+function App() {
+  const [theme, setTheme] = useState<ThemeName>(() => {
+    // Check localStorage first, then system preference
+    const saved = localStorage.getItem('theme') as ThemeName | null
+    if (saved === 'dark' || saved === 'light') return saved
+    return window.matchMedia('(prefers-color-scheme: dark)').matches 
+      ? 'dark' 
+      : 'light'
+  })
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
+
+  return (
+    <div className={getThemeClassName(theme)}>
+      <button onClick={toggleTheme}>
+        Toggle Theme
+      </button>
+      {/* Your app */}
+    </div>
+  )
+}
+```
+
+### Server-Side Rendering (SSR)
+
+For SSR frameworks like Next.js, prevent flash of wrong theme:
+
+```tsx
+// app/layout.tsx (Next.js App Router)
+import { cookies } from 'next/headers'
+import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = cookies()
+  const theme = cookieStore.get('theme')?.value === 'dark' ? 'dark' : 'light'
+
+  return (
+    <html lang="en" className={getThemeClassName(theme)}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+---
+
+## Theme Utilities Reference
+
+<details>
+<summary>**View all theme utilities**</summary>
+
+### Functions
+
+| Function | Parameters | Returns | Description |
+|----------|------------|---------|-------------|
+| `getThemeClassName(theme)` | `ThemeName` | `string` | Returns `''` for light, `'dg-theme-dark'` for dark |
+| `getThemeSelector(theme)` | `ThemeName` | `string` | Returns `:root` for light, `.dg-theme-dark` for dark |
+| `applyTheme(element, theme)` | `Element, ThemeName` | `void` | Adds/removes theme class on element |
+| `isThemeApplied(element, theme)` | `Element, ThemeName` | `boolean` | Checks if theme class is present |
+| `getOppositeTheme(theme)` | `ThemeName` | `ThemeName` | Returns `'light'` ↔ `'dark'` |
+
+### Constants
+
+| Constant | Value | Description |
+|----------|-------|-------------|
+| `THEME_CLASSES.light` | `''` | Light theme uses `:root`, no class |
+| `THEME_CLASSES.dark` | `'dg-theme-dark'` | Dark theme class name |
+| `THEME_SELECTORS.light` | `':root'` | CSS selector for light theme |
+| `THEME_SELECTORS.dark` | `'.dg-theme-dark'` | CSS selector for dark theme |
+| `THEME_CLASS_PREFIX` | `'dg-theme'` | Prefix used for theme classes |
+
+### Usage Example
+
+```typescript
+import {
+  getThemeClassName,
+  applyTheme,
+  isThemeApplied,
+  getOppositeTheme,
+  THEME_CLASSES
+} from '@designgreat/lib-web-ui-design-token'
+
+// Get class name
+const darkClass = getThemeClassName('dark')  // 'dg-theme-dark'
+
+// Apply to element
+applyTheme(document.body, 'dark')
+
+// Check current theme
+if (isThemeApplied(document.body, 'dark')) {
+  console.log('Dark mode active')
+}
+
+// Toggle
+const current = isThemeApplied(document.body, 'dark') ? 'dark' : 'light'
+applyTheme(document.body, getOppositeTheme(current))
+```
+
+</details>
+
+---
+
+## Theme-Aware Color System
+
+Not all colors change between themes. Understanding this helps you use the right tokens:
+
+| Category | Behavior | Example |
+|----------|----------|---------|
+| **Base colors** | Fixed (same in both themes) | `--dg-color-base-blue` |
+| **Accent colors (numbered)** | Fixed gradient scale | `--dg-color-accent-blue-5` |
+| **Accent colors (semantic)** | Theme-aware aliases | `--dg-color-accent-blue-DEFAULT` |
+| **Primary/Secondary** | Theme-aware | `--dg-color-primary-DEFAULT` |
+| **Background/Text/Border** | Theme-aware | `--dg-color-background-default` |
+
+:::tip Deep Dive
+For a complete explanation of the color system and theme-awareness, see [Core Concepts & Theme-Awareness](/design-token/colors/core-concepts-theme-awareness).
+:::
+
+---
+
+## Next Steps
+
+Continue with [Fonts](./fonts) to learn about font integration options.
+

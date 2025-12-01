@@ -1,0 +1,224 @@
+---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Tailwind Integration
+
+:::tip TL;DR
+Import design token CSS alongside Tailwind → use `var(--dg-*)` in arbitrary values or extend your config.
+:::
+
+Design tokens work seamlessly with Tailwind CSS. Choose the approach that fits your Tailwind version.
+
+---
+
+## Setup
+
+<Tabs>
+<TabItem value="v4" label="Tailwind v4" default>
+
+Tailwind v4 uses CSS-first configuration. Import design tokens directly:
+
+```css
+/* src/styles/tailwind.css */
+@import 'tailwindcss';
+@import '@designgreat/lib-web-ui-design-token/css';
+
+/* Optional: custom variant for theme-aware utilities */
+@custom-variant theme-dark (&:where(.dg-theme-dark, .dg-theme-dark *));
+```
+
+</TabItem>
+<TabItem value="v3" label="Tailwind v3">
+
+For Tailwind v3, import the CSS and optionally extend your config:
+
+**1. Import CSS:**
+
+```css
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@designgreat/lib-web-ui-design-token/css';
+```
+
+**2. Extend config (optional):**
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'dg-primary': 'var(--dg-color-primary-DEFAULT)',
+        'dg-secondary': 'var(--dg-color-secondary-DEFAULT)',
+        'dg-background': 'var(--dg-color-background-default)',
+        'dg-text': 'var(--dg-color-text-default)',
+        'dg-error': 'var(--dg-color-semantic-error-DEFAULT)',
+        'dg-success': 'var(--dg-color-semantic-success-DEFAULT)',
+      },
+      spacing: {
+        'dg-4': 'var(--dg-spacing-px4)',
+        'dg-8': 'var(--dg-spacing-px8)',
+        'dg-12': 'var(--dg-spacing-px12)',
+        'dg-16': 'var(--dg-spacing-px16)',
+        'dg-24': 'var(--dg-spacing-px24)',
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Using Design Tokens
+
+### With Arbitrary Values
+
+Reference any token using Tailwind's arbitrary value syntax:
+
+```tsx
+<div className="bg-[var(--dg-color-background-default)] text-[var(--dg-color-text-default)]">
+  <button className="bg-[var(--dg-color-primary-DEFAULT)] px-[var(--dg-spacing-px16)]">
+    Click me
+  </button>
+</div>
+```
+
+### With Extended Config (v3)
+
+If you extended your Tailwind config, use the custom utilities:
+
+```tsx
+<div className="bg-dg-background text-dg-text">
+  <button className="bg-dg-primary p-dg-16">
+    Click me
+  </button>
+</div>
+```
+
+### Theme-Aware Utilities (v4)
+
+With the `@custom-variant` defined, create theme-responsive utilities:
+
+```tsx
+<div className="bg-white theme-dark:bg-gray-900">
+  Adapts to theme
+</div>
+```
+
+---
+
+## Common Patterns
+
+### Card Component
+
+```tsx
+<div className="
+  bg-[var(--dg-color-background-default)]
+  border border-[var(--dg-color-border-default)]
+  rounded-lg
+  p-[var(--dg-spacing-px16)]
+  shadow-sm
+">
+  <h3 className="text-[var(--dg-color-text-bold)] font-semibold">
+    Card Title
+  </h3>
+  <p className="text-[var(--dg-color-text-subtle)] mt-[var(--dg-spacing-px8)]">
+    Card description
+  </p>
+</div>
+```
+
+### Button Variants
+
+```tsx
+{/* Primary */}
+<button className="
+  bg-[var(--dg-color-primary-DEFAULT)]
+  text-[var(--dg-color-text-inverse)]
+  hover:bg-[var(--dg-color-primary-hover-DEFAULT)]
+  px-[var(--dg-spacing-px16)]
+  py-[var(--dg-spacing-px8)]
+  rounded-lg
+">
+  Primary
+</button>
+
+{/* Secondary */}
+<button className="
+  bg-[var(--dg-color-background-bold)]
+  text-[var(--dg-color-text-default)]
+  border border-[var(--dg-color-border-default)]
+  px-[var(--dg-spacing-px16)]
+  py-[var(--dg-spacing-px8)]
+  rounded-lg
+">
+  Secondary
+</button>
+```
+
+### Alert/Status Messages
+
+```tsx
+{/* Success */}
+<div className="
+  bg-[var(--dg-color-background-success-DEFAULT)]
+  text-[var(--dg-color-text-success-DEFAULT)]
+  p-[var(--dg-spacing-px12)]
+  rounded-md
+">
+  Operation successful
+</div>
+
+{/* Error */}
+<div className="
+  bg-[var(--dg-color-background-error-DEFAULT)]
+  text-[var(--dg-color-text-error-DEFAULT)]
+  p-[var(--dg-spacing-px12)]
+  rounded-md
+">
+  Something went wrong
+</div>
+```
+
+---
+
+## When to Use What
+
+| Approach | Best For |
+|----------|----------|
+| **Arbitrary values** `var(--dg-*)` | One-off usage, prototyping, full token access |
+| **Extended config** | Frequently-used tokens, shorter class names |
+| **Raw CSS variables** | Complex components, CSS-in-JS |
+
+---
+
+## JavaScript Access
+
+Access tokens programmatically for dynamic styling:
+
+```typescript
+import { themes, applyTheme } from '@designgreat/lib-web-ui-design-token'
+
+// Get token values
+const primaryColor = themes.light.dg.color.primary.DEFAULT
+
+// Apply theme
+applyTheme(document.documentElement, 'dark')
+```
+
+---
+
+## Next Steps
+
+See [API Reference](./api/reference) for full TypeScript APIs, or explore [Color Tokens](/design-token/colors/core-concepts-theme-awareness) to understand the color system.
+

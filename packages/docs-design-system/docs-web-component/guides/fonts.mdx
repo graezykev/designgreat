@@ -1,0 +1,53 @@
+---
+sidebar_position: 4
+---
+
+# Fonts
+
+:::tip TL;DR
+`import '@designgreat/lib-web-ui-design-token/font'` before the component CSS — that's it.
+:::
+
+Fonts are **not included** in `@designgreat/lib-web-ui`. Import them from the design token package.
+
+## Quick Start
+
+```tsx
+// In your app entry point (main.tsx, app/layout.tsx, _app.tsx)
+
+// 1. Import fonts first
+import '@designgreat/lib-web-ui-design-token/font'
+
+// 2. Then import component library
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
+```
+
+That's it! To apply the font to your app, add this to your global CSS:
+
+```css
+body {
+  font-family: var(--dg-font-family-primary);
+}
+```
+
+Components inherit the font from their parent elements.
+
+---
+
+## Learn More
+
+For comprehensive font documentation, see the [Design Token Fonts Guide](/design-token/guides/fonts):
+
+- Alternative: Google Fonts CDN
+- All available font weights (100–900)
+- Framework-specific examples (Vite, Next.js, Remix)
+- Using a different font family
+- Static site generator setup (Docusaurus, Astro)
+- Troubleshooting font loading issues
+
+---
+
+## Next Steps
+
+- [Tailwind](./tailwind) — Custom styling with design tokens
+- [Frameworks](./frameworks) — Framework-specific setup
