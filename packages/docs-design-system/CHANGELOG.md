@@ -1,5 +1,18 @@
 # @designgreat/docs-design-system
 
+## 0.6.4
+
+### Patch Changes
+
+- 313db8e: Updated dependency from `@designgreat/lib-web-ui` to `@designgreat/lib-web-component`.
+
+  **Related PR:** [#40](https://github.com/graezykev/designgreat/pull/40)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [313db8e]
+  - @designgreat/lib-web-component@0.6.3
+
 ## 0.6.3
 
 ### Patch Changes
