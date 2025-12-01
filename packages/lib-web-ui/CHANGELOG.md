@@ -1,5 +1,21 @@
 # @designgreat/lib-web-ui
 
+## 0.6.2
+
+### Patch Changes
+
+- 18b8d82: Updated dependency from `@designgreat/lib-web-ui-design-token` to
+  `@designgreat/lib-design-token`.
+
+  No API changes - this is an internal dependency update following the design token package rename.
+
+  **Related PR:** [#39](https://github.com/graezykev/designgreat/pull/39)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [18b8d82]
+  - @designgreat/lib-design-token@0.5.2
+
 ## 0.6.1
 
 ### Patch Changes

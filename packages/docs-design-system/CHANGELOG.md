@@ -1,5 +1,23 @@
 # @designgreat/docs-design-system
 
+## 0.6.3
+
+### Patch Changes
+
+- 18b8d82: Updated dependency from `@designgreat/lib-web-ui-design-token` to
+  `@designgreat/lib-design-token`.
+
+  Also fixed React 19 type compatibility issues in homepage components.
+
+  **Related PR:** [#39](https://github.com/graezykev/designgreat/pull/39)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [18b8d82]
+- Updated dependencies [18b8d82]
+  - @designgreat/lib-design-token@0.5.2
+  - @designgreat/lib-web-ui@0.6.2
+
 ## 0.6.2
 
 ### Patch Changes
