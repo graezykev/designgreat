@@ -74,18 +74,12 @@ jobs:
           docs_changed="${{ steps.docs_changes.outputs.changed }}"
           storybook_changed="${{ steps.storybook_changes.outputs.changed }}"
 
-          if [ "$docs_changed" = "true" ] && [ "$storybook_changed" = "true" ]; then
+          # Always build both sites to ensure consistency
+          # The wget-based preservation approach is unreliable for SPAs like Storybook
+          if [ "$docs_changed" = "true" ] || [ "$storybook_changed" = "true" ]; then
             echo "mode=both" >> "$GITHUB_OUTPUT"
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-            echo "🚀 Strategy: Build and deploy BOTH sites"
-          elif [ "$docs_changed" = "true" ]; then
-            echo "mode=docs_only" >> "$GITHUB_OUTPUT"
-            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-            echo "🚀 Strategy: Build docs, preserve existing Storybook"
-          elif [ "$storybook_changed" = "true" ]; then
-            echo "mode=storybook_only" >> "$GITHUB_OUTPUT"
-            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-            echo "🚀 Strategy: Build Storybook, preserve existing docs"
+            echo "🚀 Strategy: Build and deploy BOTH sites (ensures consistency)"
           else
             echo "mode=none" >> "$GITHUB_OUTPUT"
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
@@ -118,27 +112,23 @@ jobs:
           pnpm --filter @designgreat/lib-web-ui-design-token run build
 
       # ============================================
-      # BUILD DOCUSAURUS (if needed)
+      # BUILD DOCUSAURUS
       # ============================================
       - name: Build component library (dependency for docs CSS)
-        if: steps.strategy.outputs.should_deploy == 'true' && (steps.strategy.outputs.mode == 'both' || steps.strategy.outputs.mode == 'docs_only')
+        if: steps.strategy.outputs.should_deploy == 'true'
         run: pnpm --filter @designgreat/lib-web-ui build
 
       - name: Build Docusaurus site
-        if: steps.strategy.outputs.should_deploy == 'true' && (steps.strategy.outputs.mode == 'both' || steps.strategy.outputs.mode == 'docs_only')
+        if: steps.strategy.outputs.should_deploy == 'true'
         run: |
           echo "📚 Building Docusaurus documentation..."
           pnpm --filter @designgreat/docs-design-system build
 
       # ============================================
-      # BUILD STORYBOOK (if needed)
+      # BUILD STORYBOOK
       # ============================================
-      - name: Build lib-web-ui (for Storybook)
-        if: steps.strategy.outputs.should_deploy == 'true' && steps.strategy.outputs.mode == 'storybook_only'
-        run: pnpm --filter @designgreat/lib-web-ui build
-
       - name: Build Storybook site
-        if: steps.strategy.outputs.should_deploy == 'true' && (steps.strategy.outputs.mode == 'both' || steps.strategy.outputs.mode == 'storybook_only')
+        if: steps.strategy.outputs.should_deploy == 'true'
         env:
           STORYBOOK_BASE_PATH: /designgreat/lib-web-ui/
         run: |
@@ -146,7 +136,7 @@ jobs:
           pnpm --filter @designgreat/lib-web-ui storybook:build
 
       - name: Relocate Storybook output to subdirectory
-        if: steps.strategy.outputs.should_deploy == 'true' && (steps.strategy.outputs.mode == 'both' || steps.strategy.outputs.mode == 'storybook_only')
+        if: steps.strategy.outputs.should_deploy == 'true'
         run: |
           set -euo pipefail
           echo "📦 Relocating Storybook to /lib-web-ui/ subdirectory..."
@@ -160,38 +150,6 @@ jobs:
           rmdir "$tmp_dir"
 
       # ============================================
-      # DOWNLOAD EXISTING SITE (if partial update)
-      # ============================================
-      - name: Download existing GitHub Pages site
-        if: steps.strategy.outputs.should_deploy == 'true' && steps.strategy.outputs.mode != 'both'
-        continue-on-error: true
-        run: |
-          set +e
-          echo "🌐 Downloading existing GitHub Pages site for preservation..."
-          wget \
-            --recursive \
-            --no-parent \
-            --no-host-directories \
-            --directory-prefix=existing-site \
-            --cut-dirs=1 \
-            --page-requisites \
-            --adjust-extension \
-            --convert-links \
-            --timeout=10 \
-            --tries=3 \
-            --reject "*.js.map" \
-            https://graezykev.github.io/designgreat/ 2>&1 | tee wget.log || true
-
-          # Check if download was successful
-          if [ -d "existing-site" ] && [ "$(ls -A existing-site 2>/dev/null)" ]; then
-            echo "✅ Successfully downloaded existing site"
-            echo "SITE_EXISTS=true" >> $GITHUB_ENV
-          else
-            echo "⚠️  No existing site found or download failed - will deploy fresh"
-            echo "SITE_EXISTS=false" >> $GITHUB_ENV
-          fi
-
-      # ============================================
       # MERGE SITES
       # ============================================
       - name: Merge Docusaurus and Storybook into final deployment directory
@@ -200,45 +158,14 @@ jobs:
           set -euo pipefail
           mkdir -p final-site
 
-          mode="${{ steps.strategy.outputs.mode }}"
-          echo "🔀 Merging sites (mode: $mode)..."
+          echo "🔀 Merging freshly built sites..."
 
-          if [ "$mode" = "both" ]; then
-            # Both sites built fresh - simple copy
-            echo "  📚 Copying fresh Docusaurus to root..."
-            cp -r packages/docs-design-system/build/* final-site/
-            
-            echo "  📦 Copying fresh Storybook to /lib-web-ui/..."
-            mkdir -p final-site/lib-web-ui
-            cp -r packages/lib-web-ui/storybook-static/lib-web-ui/* final-site/lib-web-ui/
-            
-          elif [ "$mode" = "docs_only" ]; then
-            # Docs built fresh, preserve existing Storybook
-            echo "  📚 Copying fresh Docusaurus to root..."
-            cp -r packages/docs-design-system/build/* final-site/
-            
-            if [ "$SITE_EXISTS" = "true" ] && [ -d "existing-site/lib-web-ui" ]; then
-              echo "  📦 Preserving existing Storybook from /lib-web-ui/..."
-              mkdir -p final-site/lib-web-ui
-              cp -r existing-site/lib-web-ui/* final-site/lib-web-ui/ || true
-            else
-              echo "  ⚠️  No existing Storybook found to preserve"
-            fi
-            
-          elif [ "$mode" = "storybook_only" ]; then
-            # Storybook built fresh, preserve existing docs
-            if [ "$SITE_EXISTS" = "true" ] && [ -d "existing-site" ]; then
-              echo "  📚 Preserving existing Docusaurus from root..."
-              # Copy everything from existing site first
-              cp -r existing-site/* final-site/ || true
-            else
-              echo "  ⚠️  No existing docs found to preserve"
-            fi
-            
-            echo "  📦 Copying fresh Storybook to /lib-web-ui/..."
-            mkdir -p final-site/lib-web-ui
-            cp -r packages/lib-web-ui/storybook-static/lib-web-ui/* final-site/lib-web-ui/
-          fi
+          echo "  📚 Copying Docusaurus to root..."
+          cp -r packages/docs-design-system/build/* final-site/
+
+          echo "  📦 Copying Storybook to /lib-web-ui/..."
+          mkdir -p final-site/lib-web-ui
+          cp -r packages/lib-web-ui/storybook-static/lib-web-ui/* final-site/lib-web-ui/
 
           echo "✅ Merge completed"
 
@@ -251,30 +178,25 @@ jobs:
           echo "🔍 Verifying final site structure..."
           ls -la final-site/
 
-          mode="${{ steps.strategy.outputs.mode }}"
-
-          # Check what should exist based on mode
-          if [ "$mode" = "both" ] || [ "$mode" = "docs_only" ]; then
-            if [ ! -f "final-site/index.html" ]; then
-              echo "❌ ERROR: Docusaurus index.html not found!"
-              exit 1
-            fi
-            echo "  ✅ Docusaurus site present"
+          # Verify Docusaurus
+          if [ ! -f "final-site/index.html" ]; then
+            echo "❌ ERROR: Docusaurus index.html not found!"
+            exit 1
           fi
+          echo "  ✅ Docusaurus site present"
 
-          if [ "$mode" = "both" ] || [ "$mode" = "storybook_only" ]; then
-            if [ ! -d "final-site/lib-web-ui" ]; then
-              echo "❌ ERROR: Storybook directory not found!"
-              exit 1
-            fi
-            if [ ! -f "final-site/lib-web-ui/index.html" ]; then
-              echo "❌ ERROR: Storybook index.html not found!"
-              exit 1
-            fi
-            echo "  ✅ Storybook site present"
+          # Verify Storybook
+          if [ ! -d "final-site/lib-web-ui" ]; then
+            echo "❌ ERROR: Storybook directory not found!"
+            exit 1
           fi
+          if [ ! -f "final-site/lib-web-ui/index.html" ]; then
+            echo "❌ ERROR: Storybook index.html not found!"
+            exit 1
+          fi
+          echo "  ✅ Storybook site present"
 
-          echo "✅ Verification passed"
+          echo "✅ Verification passed - both sites ready for deployment"
 
       - name: Upload Pages artifact
         if: steps.strategy.outputs.should_deploy == 'true'
