@@ -1,101 +1,126 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Installation
 
-:::tip Using React Components?
-If you want to use pre-built React components (Button, Dialog, TextInput), see the [Web Component Installation Guide](/web-component/guides/installation) instead. This page covers the design token package only.
+:::tip TL;DR
+`pnpm add @designgreat/lib-web-ui-design-token` → import CSS + fonts → use `var(--dg-*)` variables.
 :::
 
-Install the design token package using pnpm (or npm/yarn):
+## Install the Package
 
 ```bash
 pnpm add @designgreat/lib-web-ui-design-token
 ```
 
-## Package Exports
+Or with npm/yarn:
 
-The package provides the following exports for easy consumption:
-
-### Main Export
-
-```typescript
-import {
-  // Theme utilities
-  getThemeClassName,
-  getThemeSelector,
-  applyTheme,
-  isThemeApplied,
-  getOppositeTheme,
-  THEME_CLASSES,
-  THEME_SELECTORS,
-  
-  // Token access
-  themes,
-  light,
-  dark,
-  createTheme,
-  getThemeTokens,
-  listThemeNames,
-  
-  // Types
-  type ThemeName,
-  type ThemeToken,
-  type ThemeOverrides
-} from '@designgreat/lib-web-ui-design-token'
+```bash
+npm install @designgreat/lib-web-ui-design-token
+yarn add @designgreat/lib-web-ui-design-token
 ```
 
-TypeScript runtime APIs including theme management utilities and token access.
+:::tip Using React Components?
+If you want pre-built React components (Button, Dialog, TextInput), see the [Web Component Installation Guide](/web-component/guides/installation) instead. That package includes design tokens automatically.
+:::
+
+---
+
+## What You Get
+
+The package provides three main exports:
+
+| Export | What It Provides | Import |
+|--------|------------------|--------|
+| **CSS Variables** | Light & dark theme tokens | `@import '@.../css'` |
+| **Fonts** | Roboto font files + @font-face | `import '@.../font'` |
+| **TypeScript APIs** | Runtime token access & theme utilities | `import { ... } from '@...'` |
+
+---
+
+## Recommended Setup
+
+Add these imports to your app's entry file (e.g., `main.tsx`, `app/layout.tsx`):
+
+```tsx
+// 1. Import fonts (optional but recommended)
+import '@designgreat/lib-web-ui-design-token/font'
+
+// 2. Import CSS variables (required)
+import '@designgreat/lib-web-ui-design-token/css'
+```
+
+That's the minimum setup! Now you can use design tokens in your CSS:
+
+```css
+.my-element {
+  background: var(--dg-color-background-default);
+  color: var(--dg-color-text-default);
+}
+```
+
+---
+
+## Package Exports Reference
+
+<details>
+<summary>**View all available exports**</summary>
+
+### CSS Exports
+
+```css
+/* Combined: both light (:root) and dark (.dg-theme-dark) themes */
+@import '@designgreat/lib-web-ui-design-token/css';
+
+/* Or import themes separately */
+@import '@designgreat/lib-web-ui-design-token/css/light';
+@import '@designgreat/lib-web-ui-design-token/css/dark';
+
+/* SCSS variables (theme-specific) */
+@import '@designgreat/lib-web-ui-design-token/scss/light';
+@import '@designgreat/lib-web-ui-design-token/scss/dark';
+```
 
 ### Font Export
 
 ```typescript
+// Includes @font-face definitions + bundled .woff2 files
 import '@designgreat/lib-web-ui-design-token/font'
 ```
 
-Font-face definitions and font files (self-contained). This import includes both the CSS and the actual font files.
+### TypeScript/JavaScript Exports
 
-### CSS Theme Exports
-
-#### Light Theme
-
-```css
-@import '@designgreat/lib-web-ui-design-token/css/light';
+```typescript
+import {
+  // Theme utilities
+  getThemeClassName,    // Get CSS class name for a theme
+  getThemeSelector,     // Get CSS selector for a theme
+  applyTheme,           // Apply theme to an element
+  isThemeApplied,       // Check if theme is active
+  getOppositeTheme,     // Get opposite theme name
+  THEME_CLASSES,        // { light: '', dark: 'dg-theme-dark' }
+  THEME_SELECTORS,      // { light: ':root', dark: '.dg-theme-dark' }
+  
+  // Token access
+  themes,               // { light: {...}, dark: {...} }
+  light,                // Light theme tokens
+  dark,                 // Dark theme tokens
+  createTheme,          // Create custom theme with overrides
+  getThemeTokens,       // Get tokens for a specific theme
+  listThemeNames,       // Get array of theme names
+  
+  // Types
+  type ThemeName,       // 'light' | 'dark'
+  type ThemeToken,      // Full token structure
+  type ThemeOverrides   // Partial structure for overrides
+} from '@designgreat/lib-web-ui-design-token'
 ```
 
-Light theme CSS variables.
+</details>
 
-#### Dark Theme
-
-```css
-@import '@designgreat/lib-web-ui-design-token/css/dark';
-```
-
-Dark theme CSS variables.
-
-:::info Combined Import
-For theme switching support, import the combined CSS file that includes both light (`:root`) and dark (`.dg-theme-dark`) themes:
-
-```css
-@import '@designgreat/lib-web-ui-design-token/css';
-```
-
-This is the recommended approach for applications that need theme switching.
-:::
-
-### Export Summary
-
-| Export | Purpose | Usage |
-|--------|---------|-------|
-| Main package | TypeScript APIs | Runtime token access |
-| `/font` | Font assets | Font-face + font files |
-| `/css/light` | Light theme | Single theme CSS |
-| `/css/dark` | Dark theme | Single theme CSS |
+---
 
 ## Next Steps
 
-- Learn about [CSS Integration](./css-integration.mdx) for styling with design tokens
-- See [API Reference](./api/typescript.mdx) for TypeScript types and runtime utilities
-- Explore [Font Integration](./font-integration.mdx) for font setup
-
+Continue with [Basic Usage](./basic-usage) to learn how to use design tokens in your styles.

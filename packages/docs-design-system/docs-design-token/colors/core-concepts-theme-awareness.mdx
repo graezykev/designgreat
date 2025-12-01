@@ -857,18 +857,18 @@ All descendants inherit theme variables automatically:
 
 ### Color System Documentation
 
-- [Accent Colors](./accent-colors.mdx) - Gradient palette and semantic aliases
-- [Base Colors](./base-colors.mdx) - Foundation seed colors
-- [Primary & Brand Colors](./primary-brand-colors.mdx) - Theme-aware brand colors
-- [Semantic Colors](./semantic-colors.mdx) - Contextual colors that adapt
-- [Shortcut: Text Colors](./shortcuts/text.mdx) - Ready-to-use text colors
-- [Shortcut: Background Colors](./shortcuts/background.mdx) - Ready-to-use backgrounds
+- [Accent Colors](./accent-colors) - Gradient palette and semantic aliases
+- [Base Colors](./base-colors) - Foundation seed colors
+- [Primary & Brand Colors](./primary-brand-colors) - Theme-aware brand colors
+- [Semantic Colors](./semantic-colors) - Contextual colors that adapt
+- [Shortcut: Text Colors](./shortcuts/text) - Ready-to-use text colors
+- [Shortcut: Background Colors](./shortcuts/background) - Ready-to-use backgrounds
 
 ### Implementation Guides
 
-- [Theme Switching Implementation](../guides/theme-switching.mdx) - Toggle themes programmatically
-- [CSS Integration](../guides/css-integration.mdx) - How themes are generated
-- [Tailwind Integration](../guides/tailwind-integration.mdx) - Using with Tailwind CSS
+- [Theming Guide](../guides/theming) - Toggle themes programmatically
+- [Basic Usage](../guides/basic-usage) - How themes are generated
+- [Tailwind Integration](../guides/tailwind) - Using with Tailwind CSS
 
 ---
 
@@ -878,11 +878,11 @@ All descendants inherit theme variables automatically:
 
 | Category | Behavior | Examples | Use Case |
 |----------|----------|----------|----------|
-| **[Base Colors](./base-colors.mdx)** | ✅ Always Fixed | `base.blue`, `base.red`, `base.grey` | Brand identity, logos |
-| **[Fixed Gradient Levels](./accent-colors.mdx)** | ✅ Always Fixed | `grey.1-12`, `blue.1-10`, `red.1-10` | Data viz, consistent colors |
-| **[Semantic Aliases](./accent-colors.mdx)** | 🔄 Theme-Switchable | `bold`, `DEFAULT`, `subtle`, `low`, `dull`, `silent` | UI text, backgrounds, borders |
-| **[Primary/Brand Colors](./primary-brand-colors.mdx)** | 🔄 Theme-Switchable | `primary.DEFAULT`, `brand.emphasis` | Buttons, interactive elements |
-| **[Semantic Colors](./semantic-colors.mdx)** | 🔄 Theme-Switchable | `semantic.info`, `semantic.success` | Alerts, feedback messages |
+| **[Base Colors](./base-colors)** | ✅ Always Fixed | `base.blue`, `base.red`, `base.grey` | Brand identity, logos |
+| **[Fixed Gradient Levels](./accent-colors)** | ✅ Always Fixed | `grey.1-12`, `blue.1-10`, `red.1-10` | Data viz, consistent colors |
+| **[Semantic Aliases](./accent-colors)** | 🔄 Theme-Switchable | `bold`, `DEFAULT`, `subtle`, `low`, `dull`, `silent` | UI text, backgrounds, borders |
+| **[Primary/Brand Colors](./primary-brand-colors)** | 🔄 Theme-Switchable | `primary.DEFAULT`, `brand.emphasis` | Buttons, interactive elements |
+| **[Semantic Colors](./semantic-colors)** | 🔄 Theme-Switchable | `semantic.info`, `semantic.success` | Alerts, feedback messages |
 
 **💡 Rule of Thumb:** If your element needs to adapt to different themes, use switchable tokens (semantic aliases, primary, semantic colors). If it must stay consistent across themes (like logos or data visualizations), use fixed tokens (base colors or numbered gradient levels).
 

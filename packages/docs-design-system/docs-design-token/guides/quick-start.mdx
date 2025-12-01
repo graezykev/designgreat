@@ -1,0 +1,97 @@
+---
+sidebar_position: 1
+---
+
+# Quick Start
+
+Get design tokens working in **2 minutes**.
+
+## 1. Install
+
+```bash
+pnpm add @designgreat/lib-web-ui-design-token
+```
+
+## 2. Import
+
+Add these imports to your app's entry file:
+
+```tsx
+// main.tsx, app/layout.tsx, or _app.tsx
+import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-web-ui-design-token/css'
+```
+
+## 3. Use
+
+Reference design tokens as CSS variables:
+
+```css
+.my-button {
+  background: var(--dg-color-primary-DEFAULT);
+  color: var(--dg-color-text-inverse);
+  padding: var(--dg-spacing-px12) var(--dg-spacing-px24);
+  border-radius: 0.5rem;
+  font-family: var(--dg-font-family-primary);
+}
+```
+
+**That's it!** You now have:
+
+- ✅ Light & dark theme CSS variables
+- ✅ Roboto font family (all weights)
+- ✅ Full design token library
+
+---
+
+## Add Dark Mode
+
+Wrap your app and toggle the theme class:
+
+```tsx
+import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <div className={getThemeClassName(isDark ? 'dark' : 'light')}>
+      <button onClick={() => setIsDark(!isDark)}>
+        Toggle Theme
+      </button>
+      {/* Your app content */}
+    </div>
+  )
+}
+```
+
+---
+
+## Common Tokens
+
+Here are the most frequently used tokens to get you started:
+
+| Purpose | CSS Variable | Light Value |
+|---------|--------------|-------------|
+| Page background | `--dg-color-background-default` | `#ffffff` |
+| Primary text | `--dg-color-text-default` | `#1d1d1f` |
+| Secondary text | `--dg-color-text-subtle` | `#333336` |
+| Primary action | `--dg-color-primary-DEFAULT` | `#0055cc` |
+| Success | `--dg-color-semantic-success-DEFAULT` | `#216e4e` |
+| Error | `--dg-color-semantic-error-DEFAULT` | `#ae2e24` |
+| Base spacing | `--dg-spacing-px16` | `1rem` |
+| Small spacing | `--dg-spacing-px8` | `0.5rem` |
+
+---
+
+## Next Steps
+
+| Your Goal | Guide |
+|-----------|-------|
+| Understand all available exports | [Installation](./installation) |
+| Learn CSS variable patterns | [Basic Usage](./basic-usage) |
+| Implement theme switching | [Theming](./theming) |
+| Integrate with Tailwind CSS | [Tailwind Integration](./tailwind) |
+| Access tokens in JavaScript | [API Reference](./api/reference) |
+| Browse all color tokens | [Colors](/design-token/colors/core-concepts-theme-awareness) |
+

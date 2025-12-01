@@ -1,85 +1,59 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Theming
 
-The library includes built-in support for light and dark themes through CSS variables and theme classes.
-
-:::tip Full Theme Documentation
-For comprehensive theme switching patterns including system preference detection, theme persistence, and all available utilities, see the [Design Token Theme Switching Guide](/design-token/guides/theme-switching).
+:::tip TL;DR
+Components auto-adapt to `.dg-theme-dark` class — no component changes needed.
 :::
+
+The library components automatically respond to theme changes through CSS variables. No component-level changes are needed.
 
 ## Quick Start
 
-The light theme is applied by default. To enable dark theme, wrap your content with the theme class:
-
-```tsx
-import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
-
-export function App() {
-  return (
-    <div className={getThemeClassName('dark')}>
-      {/* Application content */}
-    </div>
-  )
-}
-```
-
-## Available Themes
-
-| Theme | Class Name | CSS Selector |
-|-------|------------|--------------|
-| Light | (none, default) | `:root` |
-| Dark | `dg-theme-dark` | `.dg-theme-dark` |
-
-## Dynamic Theme Switching
-
-For runtime theme switching, use React state to manage the active theme:
-
 ```tsx
 import { useState } from 'react'
-import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+import { Button } from '@designgreat/lib-web-ui'
 
-export function App() {
-  const [theme, setTheme] = useState<ThemeName>('light')
+function App() {
+  const [isDark, setIsDark] = useState(false)
 
   return (
-    <div className={getThemeClassName(theme)}>
-      <button onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
-        Toggle Theme
-      </button>
-      {/* Application content */}
+    <div className={getThemeClassName(isDark ? 'dark' : 'light')}>
+      <Button onClick={() => setIsDark(!isDark)}>
+        {isDark ? '☀️ Light' : '🌙 Dark'}
+      </Button>
+      {/* All components inside auto-adapt to theme */}
     </div>
   )
 }
 ```
 
-## Troubleshooting
+## How It Works
 
-### Theme Isn't Applied
+| Theme | Class | Applied To |
+|-------|-------|------------|
+| Light | (none) | Default via `:root` |
+| Dark | `dg-theme-dark` | Any ancestor element |
 
-**Problem:** Components always show light theme colors, even when dark theme class is applied.
+When `.dg-theme-dark` is applied to an ancestor, all components inside automatically switch to dark theme colors.
 
-**Solution:** Use the theme utilities from the design token package:
-
-```tsx
-import { getThemeClassName, applyTheme } from '@designgreat/lib-web-ui-design-token'
-
-// Option 1: Use getThemeClassName with a wrapper
-<div className={getThemeClassName('dark')}>{/* Your app */}</div>
-
-// Option 2: Apply theme programmatically
-applyTheme(document.documentElement, 'dark')
-```
-
-**Additional checks:**
-- Verify the theme class is applied to an ancestor element of your components
-- Check that the CSS file is loaded before components render
-- Inspect the element in browser DevTools to confirm the class is present
-- Use `isThemeApplied(element, 'dark')` to verify the theme is correctly applied
+---
 
 ## Learn More
 
-- [Theme Switching Guide](/design-token/guides/theme-switching) — Complete API reference, system preferences, persistence
-- [Theme Utilities API](/design-token/guides/api/runtime-apis) — All available theme functions
+For comprehensive theming documentation, see the [Design Token Theming Guide](/design-token/guides/theming):
+
+- System preference detection (`prefers-color-scheme`)
+- Persisting user preference (localStorage)
+- Server-side rendering (Next.js, Remix)
+- All theme utility functions and constants
+
+---
+
+## Next Steps
+
+- [Fonts](./fonts) — Font configuration
+- [Tailwind](./tailwind) — Custom styling with design tokens

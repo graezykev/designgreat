@@ -1,0 +1,166 @@
+---
+sidebar_position: 3
+---
+
+# Basic Usage
+
+:::tip TL;DR
+Import CSS → use `var(--dg-*)` in your styles → colors automatically adapt to light/dark theme.
+:::
+
+This guide covers the most common ways to use design tokens in your application.
+
+---
+
+## Using CSS Variables
+
+After [installing](./installation) and importing the CSS, reference tokens in your styles:
+
+```css
+.card {
+  /* Colors */
+  background-color: var(--dg-color-background-default);
+  color: var(--dg-color-text-default);
+  border: 1px solid var(--dg-color-border-default);
+  
+  /* Spacing */
+  padding: var(--dg-spacing-px16);
+  margin-bottom: var(--dg-spacing-px24);
+  
+  /* Typography */
+  font-family: var(--dg-font-family-primary);
+}
+
+.card-title {
+  color: var(--dg-color-text-bold);
+  font-weight: var(--dg-font-weight-bold);
+}
+
+.card-link {
+  color: var(--dg-color-primary-DEFAULT);
+}
+
+.card-link:hover {
+  color: var(--dg-color-primary-hover-DEFAULT);
+}
+```
+
+---
+
+## Token Cheatsheet
+
+### Colors
+
+| Purpose | CSS Variable |
+|---------|--------------|
+| Page background | `--dg-color-background-default` |
+| Elevated surface | `--dg-color-background-bold` |
+| Primary text | `--dg-color-text-default` |
+| Secondary text | `--dg-color-text-subtle` |
+| Muted text | `--dg-color-text-subtler` |
+| Inverted text (on dark bg) | `--dg-color-text-inverse` |
+| Primary action | `--dg-color-primary-DEFAULT` |
+| Primary hover | `--dg-color-primary-hover-DEFAULT` |
+| Border | `--dg-color-border-default` |
+| Subtle border | `--dg-color-border-subtle` |
+
+### Semantic Colors
+
+| Purpose | CSS Variable |
+|---------|--------------|
+| Success | `--dg-color-semantic-success-DEFAULT` |
+| Success background | `--dg-color-background-success-DEFAULT` |
+| Error | `--dg-color-semantic-error-DEFAULT` |
+| Error background | `--dg-color-background-error-DEFAULT` |
+| Warning | `--dg-color-semantic-warning-DEFAULT` |
+| Info | `--dg-color-semantic-info-DEFAULT` |
+
+### Spacing
+
+| Size | CSS Variable | Value |
+|------|--------------|-------|
+| 4px | `--dg-spacing-px4` | `0.25rem` |
+| 8px | `--dg-spacing-px8` | `0.5rem` |
+| 12px | `--dg-spacing-px12` | `0.75rem` |
+| 16px | `--dg-spacing-px16` | `1rem` |
+| 24px | `--dg-spacing-px24` | `1.5rem` |
+| 32px | `--dg-spacing-px32` | `2rem` |
+| 48px | `--dg-spacing-px48` | `3rem` |
+
+### Typography
+
+| Property | CSS Variable |
+|----------|--------------|
+| Font family | `--dg-font-family-primary` |
+| Font size (body) | `--dg-size-font-body` |
+| Font size (small) | `--dg-size-font-s` |
+| Font size (h1) | `--dg-size-font-h1` |
+| Font size (h2) | `--dg-size-font-h2` |
+
+---
+
+## Theme-Aware Styling
+
+Design tokens automatically adapt to the current theme. You don't need conditional logic:
+
+```css
+/* This SAME code works in both light and dark themes */
+.notification {
+  background: var(--dg-color-background-information-DEFAULT);
+  color: var(--dg-color-text-information-DEFAULT);
+  border: 1px solid var(--dg-color-border-information);
+}
+```
+
+When `.dg-theme-dark` is applied to an ancestor, these variables automatically resolve to dark-appropriate values.
+
+:::tip Deep Dive
+To understand which colors change between themes and why, see [Core Concepts & Theme-Awareness](/design-token/colors/core-concepts-theme-awareness).
+:::
+
+---
+
+## SCSS Usage
+
+For SCSS projects, import the SCSS variables:
+
+```scss
+@import '@designgreat/lib-web-ui-design-token/scss/light';
+
+.my-component {
+  background: $dg-color-background-default;
+  color: $dg-color-text-default;
+  padding: $dg-spacing-px16;
+}
+```
+
+:::warning
+SCSS variables are **not theme-aware** — they compile to static values. For theme switching, use CSS variables instead.
+:::
+
+---
+
+## JavaScript/TypeScript Access
+
+Access token values programmatically when needed:
+
+```typescript
+import { themes } from '@designgreat/lib-web-ui-design-token'
+
+// Access any token value
+const primaryColor = themes.light.dg.color.primary.DEFAULT  // "#0055cc"
+const spacing = themes.light.dg.spacing.px16                 // "1rem"
+
+// Compare light vs dark
+const lightBg = themes.light.dg.color.background.DEFAULT    // "#ffffff"
+const darkBg = themes.dark.dg.color.background.DEFAULT      // "#0c0c0d"
+```
+
+For full API documentation, see [API Reference](./api/reference).
+
+---
+
+## Next Steps
+
+Continue with [Theming](./theming) to learn how to implement light/dark mode switching.
+

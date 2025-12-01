@@ -1,5 +1,9 @@
 {
   "label": "API Reference",
-  "position": 6,
-  "collapsed": true
+  "position": 8,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "guides/api/reference"
+  }
 }

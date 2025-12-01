@@ -1,43 +1,33 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Installation
 
-:::tip Only Need Design Tokens?
+:::tip TL;DR
+`pnpm add @designgreat/lib-web-ui` → import CSS + fonts → use `<Button>`, `<TextInput>`, `<Dialog>`.
+:::
+
+:::info Only Need Design Tokens?
 If you only need CSS variables and theme utilities without React components, see the [Design Token Installation Guide](/design-token/guides/installation).
 :::
 
-## Package Installation
-
-Install the component library using pnpm (or npm/yarn):
+## Install
 
 ```bash
 pnpm add @designgreat/lib-web-ui
 ```
 
-**Peer dependencies:**
+**Peer dependencies:** `react ^18`, `react-dom ^18`
 
-- `react` `^18`
-- `react-dom` `^18`
-
-Make sure these are installed in your project.
-
-## Basic Setup
-
-Import the library and components in your application:
+## Setup
 
 ```tsx
-// In your app entrypoint (e.g., main.tsx, _app.tsx, app/layout.tsx)
+// In your app entrypoint (main.tsx, _app.tsx, app/layout.tsx)
 
-// Option 1: With fonts (recommended)
-import '@designgreat/lib-web-ui-design-token/font'   // Loads Roboto font
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css' // Includes tokens + styles
+import '@designgreat/lib-web-ui-design-token/font'   // Fonts (optional)
+import '@designgreat/lib-web-ui/dist/lib-web-ui.css' // Styles + tokens
 
-// Option 2: Without fonts (if using custom fonts)
-import '@designgreat/lib-web-ui/dist/lib-web-ui.css' // Includes tokens + styles only
-
-// Import and use components
 import { Button, TextInput, Dialog } from '@designgreat/lib-web-ui'
 
 function Example() {
@@ -50,45 +40,39 @@ function Example() {
 }
 ```
 
-:::important Font Loading
-**Fonts are NOT bundled** with the library. You have two options:
-1. ✅ **Import from design tokens** (recommended): `import '@designgreat/lib-web-ui-design-token/font'`
-2. 🔧 **Use your own fonts**: See the [Font Setup Guide](./font-setup.mdx)
-:::
-
-:::tip What Gets Imported
-The `@designgreat/lib-web-ui/dist/lib-web-ui.css` import includes:
-- ✅ Design tokens (CSS variables for light/dark themes)
-- ✅ Tailwind utilities (no resets - safe for existing projects)
-- ✅ Component styles
-
-It does **NOT** include fonts to keep the bundle clean.
-:::
-
-## Integration with Existing Tailwind Projects
-
-If your project already uses Tailwind, add our CSS to your existing Tailwind entrypoint:
+Then apply the font to your app:
 
 ```css
-/* global.css or your main Tailwind file */
+body {
+  font-family: var(--dg-font-family-primary);
+}
+```
+
+:::tip What's Included
+The CSS import includes design tokens, Tailwind utilities, and component styles — but **not fonts**. See [Fonts](./fonts) for font options.
+:::
+
+## Tailwind Projects
+
+If your project already uses Tailwind, add the CSS after your directives:
+
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Include lib-web-ui tokens + utilities */
 @import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
 ```
 
-Tailwind processes the imported file with your config, so theme variables, utilities, and component styles coexist with your own styles. Keep the import **after** your `@tailwind` directives if you emit Tailwind resets locally.
-
-## CSS Tree-Shaking Configuration
-
-If using a CSS purging tool (like PurgeCSS), ensure it doesn't remove the library's classes. Add to your purge safelist or exclude the library CSS from purging:
+Add to your content config for tree-shaking:
 
 ```js
 // tailwind.config.js
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './node_modules/@designgreat/lib-web-ui/**/*.js']
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@designgreat/lib-web-ui/**/*.js'
+  ]
 }
 ```
 
@@ -98,45 +82,34 @@ module.exports = {
 
 **Problem:** Components render but have no styling.
 
-**Solution:** Ensure you've imported the CSS in your application entrypoint:
+**Solution:** Ensure you've imported the CSS:
 
 ```tsx
 import '@designgreat/lib-web-ui/dist/lib-web-ui.css'
 ```
 
-If using a framework with code splitting (like Next.js), make sure the import is in a location that loads on all pages (e.g., `app/layout.tsx` or `pages/_app.tsx`).
+For frameworks with code splitting (Next.js), make sure the import is in `app/layout.tsx` or `pages/_app.tsx`.
 
 ### TypeScript Errors
 
 **Problem:** TypeScript can't find type definitions.
 
-**Solution:** The package includes built-in types. Ensure `@designgreat/lib-web-ui` is in your `package.json` dependencies and run:
+**Solution:** Types are included in the package. Run `pnpm install` and verify your `tsconfig.json` has `"moduleResolution": "node"` or `"bundler"`.
+
+### Module Not Found
+
+**Problem:** Build fails with "Cannot find module".
+
+**Solution:** Verify the package is installed:
 
 ```bash
-pnpm install
+pnpm list @designgreat/lib-web-ui
 ```
 
-**Additional checks:**
-- Verify your `tsconfig.json` has `"moduleResolution": "node"` or `"bundler"`
-- Try deleting `node_modules` and reinstalling
-
-### Module Resolution Errors
-
-**Problem:** Build fails with "Cannot find module '@designgreat/lib-web-ui'".
-
-**Solution:**
-
-1. Verify the package is installed: `pnpm list @designgreat/lib-web-ui`
-2. Ensure it's in your `package.json` dependencies
-3. Try removing and reinstalling:
-   ```bash
-   pnpm remove @designgreat/lib-web-ui
-   pnpm add @designgreat/lib-web-ui
-   ```
+---
 
 ## Next Steps
 
-- Learn about [Theming](./theming.mdx) for light/dark mode support
-- See [Font Setup](./font-setup.mdx) for font configuration
-- Explore [Tailwind Utilities](./tailwind-utilities.mdx) for utility classes
-
+- [Theming](./theming) — Light/dark mode support
+- [Fonts](./fonts) — Font configuration options
+- [Tailwind](./tailwind) — Using utility classes
