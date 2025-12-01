@@ -110,7 +110,7 @@ Developer creates PR
 ┌──────────────────────┐
 │ Merge                │
 │ - New docs → root    │
-│ - Keep /lib-web-ui/  │
+│ - Keep /lib-web-component/  │
 └──────────┬───────────┘
            │
            ▼
@@ -145,7 +145,7 @@ Developer creates PR
 ┌──────────────────────┐
 │ Merge                │
 │ - Keep root (docs)   │
-│ - New → /lib-web-ui/ │
+│ - New → /lib-web-component/ │
 └──────────┬───────────┘
            │
            ▼
@@ -189,7 +189,7 @@ https://graezykev.github.io/designgreat/
 ├─ css/ ───────────────────┤
 └─ js/ ────────────────────┘
 │
-└─ lib-web-ui/ ────────────┐
+└─ lib-web-component/ ────────────┐
    ├─ index.html ──────────┤
    ├─ assets/ ─────────────┼─► Storybook (Subdirectory)
    ├─ iframe.html ─────────┤
@@ -199,7 +199,7 @@ https://graezykev.github.io/designgreat/
 **URLs:**
 
 - Docs: `https://graezykev.github.io/designgreat/`
-- Storybook: `https://graezykev.github.io/designgreat/lib-web-ui/`
+- Storybook: `https://graezykev.github.io/designgreat/lib-web-component/`
 
 ---
 

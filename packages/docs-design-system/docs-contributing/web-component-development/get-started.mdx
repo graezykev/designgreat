@@ -36,7 +36,7 @@ pnpm install
 The component library package is located at:
 
 ```
-packages/lib-web-ui/
+packages/lib-web-component/
 ```
 
 ## Development Commands
@@ -46,7 +46,7 @@ packages/lib-web-ui/
 Start Storybook development server (recommended):
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui storybook
+pnpm --filter @designgreat/lib-web-component storybook
 ```
 
 Opens at `http://localhost:6006`
@@ -63,13 +63,13 @@ Opens at `http://localhost:6006`
 Component development without Storybook:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui dev
+pnpm --filter @designgreat/lib-web-component dev
 ```
 
 Regenerate theme CSS:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui generate:theme
+pnpm --filter @designgreat/lib-web-component generate:theme
 ```
 
 ## Lint
@@ -77,7 +77,7 @@ pnpm --filter @designgreat/lib-web-ui generate:theme
 Lint the component library code:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui lint
+pnpm --filter @designgreat/lib-web-component lint
 ```
 
 ## Typecheck
@@ -85,7 +85,7 @@ pnpm --filter @designgreat/lib-web-ui lint
 Type check without emitting files:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui typecheck
+pnpm --filter @designgreat/lib-web-component typecheck
 ```
 
 ## Test and Validate
@@ -95,19 +95,19 @@ pnpm --filter @designgreat/lib-web-ui typecheck
 Run Vitest tests:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui test
+pnpm --filter @designgreat/lib-web-component test
 ```
 
 Watch mode:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui test -- --watch
+pnpm --filter @designgreat/lib-web-component test -- --watch
 ```
 
 Coverage:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui test -- --coverage
+pnpm --filter @designgreat/lib-web-component test -- --coverage
 ```
 
 ## Build
@@ -115,7 +115,7 @@ pnpm --filter @designgreat/lib-web-ui test -- --coverage
 Full production build:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui build
+pnpm --filter @designgreat/lib-web-component build
 ```
 
 This runs the complete pipeline:
@@ -132,7 +132,7 @@ This runs the complete pipeline:
 ### Build Storybook Only
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui storybook:build
+pnpm --filter @designgreat/lib-web-component storybook:build
 ```
 
 ## Next Steps

@@ -5,7 +5,7 @@ import { TextInput, type TextInputProps } from './TextInput'
 import { withCodeDemo } from '../../storybook/CodeDemoToggle'
 
 const TEXT_INPUT_SNIPPETS = {
-  default: `import { TextInput } from '@designgreat/lib-web-ui'
+  default: `import { TextInput } from '@designgreat/lib-web-component'
 
 export function EmailField() {
   return (
@@ -16,7 +16,7 @@ export function EmailField() {
     />
   )
 }`,
-  withDescription: `import { TextInput } from '@designgreat/lib-web-ui'
+  withDescription: `import { TextInput } from '@designgreat/lib-web-component'
 
 export function EmailField() {
   return (
@@ -27,7 +27,7 @@ export function EmailField() {
     />
   )
 }`,
-  withError: `import { TextInput } from '@designgreat/lib-web-ui'
+  withError: `import { TextInput } from '@designgreat/lib-web-component'
 
 export function EmailField() {
   return (
@@ -38,7 +38,7 @@ export function EmailField() {
     />
   )
 }`,
-  withSuccess: `import { TextInput } from '@designgreat/lib-web-ui'
+  withSuccess: `import { TextInput } from '@designgreat/lib-web-component'
 
 export function EmailField() {
   return (
@@ -50,7 +50,7 @@ export function EmailField() {
     />
   )
 }`,
-  disabled: `import { TextInput } from '@designgreat/lib-web-ui'
+  disabled: `import { TextInput } from '@designgreat/lib-web-component'
 
 export function EmailField() {
   return (
@@ -62,7 +62,7 @@ export function EmailField() {
     />
   )
 }`,
-  withIcons: `import { TextInput } from '@designgreat/lib-web-ui'
+  withIcons: `import { TextInput } from '@designgreat/lib-web-component'
 import { FiMail, FiUser } from 'react-icons/fi'
 
 export function EmailField() {

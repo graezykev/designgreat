@@ -15,13 +15,13 @@ This directory contains GitHub Actions workflows for automatically deprecating N
 1. Go to Actions → "Deprecate NPM Package"
 2. Click "Run workflow"
 3. Enter:
-   - **Package name:** e.g., `@designgreat/lib-web-ui-website`
+   - **Package name:** e.g., `@designgreat/lib-web-component-website`
    - **Deprecation message:** Custom message users will see
 
 **Example:**
 
 ```
-Package: @designgreat/lib-web-ui-website
+Package: @designgreat/lib-web-component-website
 Message: This package has been removed and is no longer maintained.
 ```
 
@@ -83,17 +83,17 @@ The workflows use:
 
 ### Example 1: Manually Deprecate a Package
 
-When you decide to remove `@designgreat/lib-web-ui-website`:
+When you decide to remove `@designgreat/lib-web-component-website`:
 
 1. **First, trigger the deprecation workflow:**
    - Actions → "Deprecate NPM Package" → Run workflow
-   - Package: `@designgreat/lib-web-ui-website`
-   - Message: "This package has been merged into @designgreat/lib-web-ui"
+   - Package: `@designgreat/lib-web-component-website`
+   - Message: "This package has been merged into @designgreat/lib-web-component"
 
 2. **Then, remove from monorepo:**
    ```bash
-   git rm -rf packages/lib-web-ui-website
-   git commit -m "chore: remove lib-web-ui-website package"
+   git rm -rf packages/lib-web-component-website
+   git commit -m "chore: remove lib-web-component-website package"
    git push
    ```
 
@@ -103,11 +103,11 @@ Simply delete the package and push:
 
 ```bash
 # Delete the package
-rm -rf packages/lib-web-ui-website
+rm -rf packages/lib-web-component-website
 
 # Commit and push
 git add -A
-git commit -m "chore: remove lib-web-ui-website package"
+git commit -m "chore: remove lib-web-component-website package"
 git push origin main
 ```
 
@@ -124,7 +124,7 @@ After deprecation, verify with:
 
 ```bash
 # Check deprecation status
-npm view @designgreat/lib-web-ui-website
+npm view @designgreat/lib-web-component-website
 
 # Output should include:
 # deprecated: '⚠️ This package has been removed...'
@@ -150,9 +150,9 @@ npm view @designgreat/lib-web-ui-website
 
 ### Deprecation Message Guidelines
 
-**Good messages:** ✅ "This package is no longer maintained. Use @designgreat/lib-web-ui instead."
-✅ "Merged into @designgreat/lib-web-ui. See migration guide: [link]" ✅ "This package has been
-removed from the monorepo. Please uninstall it."
+**Good messages:** ✅ "This package is no longer maintained. Use @designgreat/lib-web-component
+instead." ✅ "Merged into @designgreat/lib-web-component. See migration guide: [link]" ✅ "This
+package has been removed from the monorepo. Please uninstall it."
 
 **Bad messages:** ❌ "Deprecated" (no context) ❌ "Don't use this" (no alternative) ❌ "Old package"
 (unclear)

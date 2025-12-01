@@ -54,7 +54,7 @@ const config = [
     files: ['packages/**/.storybook/**/*'],
     languageOptions: {
       parserOptions: {
-        project: [fileURLToPath(new URL('./packages/lib-web-ui/tsconfig.json', import.meta.url))],
+        project: [fileURLToPath(new URL('./packages/lib-web-component/tsconfig.json', import.meta.url))],
         tsconfigRootDir: repoRoot
       }
     }

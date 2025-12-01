@@ -119,7 +119,7 @@ The audit script now verifies the complete pipeline:
 
 ```mermaid
 graph LR
-    A[Token Definition<br/>src/tokens/] --> B[CSS Output<br/>dist/lib-web-ui.css]
+    A[Token Definition<br/>src/tokens/] --> B[CSS Output<br/>dist/lib-web-component.css]
     B --> C[Documentation<br/>docs/colors/]
     D[Audit Script] -.validates.-> A
     D -.validates.-> B

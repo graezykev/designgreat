@@ -5,7 +5,7 @@ description: Package structure, build pipeline, and design philosophy
 
 # Architecture
 
-This page explains the architecture and design decisions of the `@designgreat/lib-web-ui` component library.
+This page explains the architecture and design decisions of the `@designgreat/lib-web-component` component library.
 
 ## Package Overview
 
@@ -15,7 +15,7 @@ The component library provides React components built with design tokens, Tailwi
 
 ```
 dist/
-├── lib-web-ui.css           # Complete CSS bundle (tokens + utilities + components)
+├── lib-web-component.css           # Complete CSS bundle (tokens + utilities + components)
 ├── index.js                 # ESM entry point
 ├── index.cjs                # CommonJS entry point
 ├── index.d.ts               # TypeScript definitions
@@ -42,7 +42,7 @@ src/index.ts
 
 ### What's Included
 
-The distributed CSS (`dist/lib-web-ui.css`) includes:
+The distributed CSS (`dist/lib-web-component.css`) includes:
 
 - ✅ Design token CSS variables (`:root` for light, `.dg-theme-dark` for dark)
 - ✅ Tailwind utilities only (no resets to avoid conflicts)
@@ -76,7 +76,7 @@ This ordering ensures that when the `.dg-theme-dark` class is applied to the `<h
 
 ```
 ┌────────────────────────────────────┐
-│  @designgreat/lib-web-ui-design-   │
+│  @designgreat/lib-web-component-design-   │
 │  token (Design Tokens)             │
 │  • CSS variables (colors, spacing) │
 │  • Typography values               │
@@ -85,7 +85,7 @@ This ordering ensures that when the `.dg-theme-dark` class is applied to the `<h
                │ consumed by
                ▼
 ┌────────────────────────────────────┐
-│  @designgreat/lib-web-ui           │
+│  @designgreat/lib-web-component           │
 │  (Component Library)               │
 │  • React components                │
 │  • Tailwind config (token-aware)   │
@@ -96,7 +96,7 @@ This ordering ensures that when the `.dg-theme-dark` class is applied to the `<h
 ## Project Structure
 
 ```
-packages/lib-web-ui/
+packages/lib-web-component/
 ├── .storybook/              # Storybook configuration
 │   ├── main.ts              # Vite + addons + telemetry config
 │   └── preview.tsx          # Global decorators + font import

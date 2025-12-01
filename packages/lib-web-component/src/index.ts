@@ -1,5 +1,5 @@
 /**
- * Main entry point for @designgreat/lib-web-ui
+ * Main entry point for @designgreat/lib-web-component
  *
  * Imports styles/index.css which includes:
  * - Design tokens (CSS variables)

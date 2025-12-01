@@ -11,16 +11,17 @@ It was supposed to be a simple refactoring task. The kind of thing you knock out
 feel good about. Maybe grab a coffee afterward, feeling productive.
 
 The developer had a monorepo with a design system. Two main packages: `lib-design-token` (the design
-tokens - colors, spacing, typography, all the visual DNA of the system) and `lib-web-ui` (the UI
-components - buttons, inputs, dialogs, the actual stuff users see and interact with). There was also
-a third package lurking in the shadows called `design-token-support` that provided helper utilities,
-but we'll get to that nightmare later. Oh, we'll definitely get to that.
+tokens - colors, spacing, typography, all the visual DNA of the system) and `lib-web-component` (the
+UI components - buttons, inputs, dialogs, the actual stuff users see and interact with). There was
+also a third package lurking in the shadows called `design-token-support` that provided helper
+utilities, but we'll get to that nightmare later. Oh, we'll definitely get to that.
 
 The ask was straightforward:
 
-> "I want to decouple lib-design-token and lib-web-ui. The design token package should be
-> standalone - users should be able to use it by itself. When someone uses lib-web-ui, they're also
-> using the tokens, but they could also decide to use just the tokens without the components."
+> "I want to decouple lib-design-token and lib-web-component. The design token package should be
+> standalone - users should be able to use it by itself. When someone uses lib-web-component,
+> they're also using the tokens, but they could also decide to use just the tokens without the
+> components."
 
 Made sense. Clean architecture. Single responsibility. The kind of refactoring that makes codebases
 better. Good stuff.
@@ -32,8 +33,8 @@ The specific changes needed:
 - Change the dark theme selector from `:root` to `.dg-theme-dark` (class-based theming is more
   flexible)
 - Update the JavaScript/TypeScript exports to use a `dg` namespace (consistency across all formats)
-- Make `lib-web-ui` consume CSS directly from the design token package instead of generating its own
-  (the whole point - decoupling)
+- Make `lib-web-component` consume CSS directly from the design token package instead of generating
+  its own (the whole point - decoupling)
 
 Should take maybe an hour or two, right? Update some configs, change some strings, update some
 imports. Standard refactoring stuff.
@@ -74,9 +75,9 @@ The developer made their choices quickly and decisively:
 I even asked clarifying questions! I was being so thorough! I wanted to make sure I understood the
 requirements completely before diving in. The developer explained their vision clearly:
 
-> "The reason I want to refactor is that I want to decouple lib-design-token and lib-web-ui.
-> lib-design-token comes as a dependency for lib-web-ui, but lib-design-token can also be used
-> independently."
+> "The reason I want to refactor is that I want to decouple lib-design-token and lib-web-component.
+> lib-design-token comes as a dependency for lib-web-component, but lib-design-token can also be
+> used independently."
 
 Perfect. Crystal clear. The design token package should be the foundation that can stand alone. The
 component library builds on top of it but doesn't own it. Users can choose: tokens only, or tokens
@@ -93,7 +94,7 @@ have saved hours of work later.
 In my initial analysis, I noticed there was a third package called
 `@designgreat/design-token-support`. It lived in `packages/shared/design-token-support`. It provided
 helper functions like `getThemeClassName()`, `createThemeConfig()`, and `createCssVariableMap()`.
-Both `lib-web-ui` and `docs-design-system` depended on it.
+Both `lib-web-component` and `docs-design-system` depended on it.
 
 My plan mentioned it briefly, almost as an afterthought: "Update all related docs, dependants,
 eslint/ts configurations, etc."
@@ -163,8 +164,8 @@ The first crack in my confidence appeared. I pushed forward anyway.
 
 ### The Deleted File That Wasn't Deleted
 
-After fixing the CSS prefix, I moved on to `lib-web-ui`. The plan was simple: remove the old theme
-generation mechanism, import tokens directly from the design token package.
+After fixing the CSS prefix, I moved on to `lib-web-component`. The plan was simple: remove the old
+theme generation mechanism, import tokens directly from the design token package.
 
 The component library had been generating its own theme CSS file using a script called
 `generate-theme-css.ts`. This script would read from `design-token-support`, process the tokens, and
@@ -179,7 +180,7 @@ Clean. Surgical. Let's build.
 
 ```
 [vite] Internal server error: Unable to resolve `@import "./designgreat-theme.css"`
-from /packages/lib-web-ui/src/styles/tailwind.css
+from /packages/lib-web-component/src/styles/tailwind.css
 ```
 
 **Error #2: Import of Deleted File**
@@ -196,7 +197,7 @@ work was still ahead.
 ### The design-token-support Hydra
 
 Now came the real challenge. I needed to remove the dependency on
-`@designgreat/design-token-support` from `lib-web-ui`. This package had been providing theme
+`@designgreat/design-token-support` from `lib-web-component`. This package had been providing theme
 utilities - functions to get theme class names, create theme configurations, work with CSS variables
 programmatically.
 
@@ -223,7 +224,7 @@ design-token-support. Removed it.
 Found it in the test file for `CodeDemoToggle.tsx`. There was a `jest.mock` call mocking the
 design-token-support module. Removed it.
 
-Okay, surely that's all of them in lib-web-ui. Let me check docs-design-system.
+Okay, surely that's all of them in lib-web-component. Let me check docs-design-system.
 
 Found references in `src/theme/constants.ts`. This file was re-exporting utilities from
 design-token-support for use throughout the documentation site. Fixed it.
@@ -275,12 +276,12 @@ It would come back to haunt me. Oh, it would definitely come back to haunt me.
 
 ### The Build That Wouldn't End
 
-After updating all the imports I could find (or so I thought), I tried to build `lib-web-ui`. This
-package includes a Storybook build as part of its build process - it generates a static Storybook
-site that gets deployed for documentation and visual testing.
+After updating all the imports I could find (or so I thought), I tried to build `lib-web-component`.
+This package includes a Storybook build as part of its build process - it generates a static
+Storybook site that gets deployed for documentation and visual testing.
 
 ```
-Building lib-web-ui...
+Building lib-web-component...
 ```
 
 The terminal showed some output. Vite was bundling. TypeScript was compiling. Then the Storybook
@@ -718,8 +719,8 @@ cd packages/lib-design-token
 pnpm run build
 cd ../..
 
-echo "Building lib-web-ui..."
-cd packages/lib-web-ui
+echo "Building lib-web-component..."
+cd packages/lib-web-component
 pnpm run build
 cd ../..
 
@@ -758,8 +759,8 @@ pnpm run validate
 pnpm run test
 cd ../..
 
-echo "Running lib-web-ui quality checks..."
-cd packages/lib-web-ui
+echo "Running lib-web-component quality checks..."
+cd packages/lib-web-component
 pnpm run lint
 pnpm run typecheck
 pnpm run test
@@ -1088,7 +1089,7 @@ Just when I thought we were done, the developer asked about GitHub workflows:
 
 I checked. Sure enough, several workflow files referenced `design-token-support`:
 
-- `deploy-lib-web-ui-storybook.yml` - deploys Storybook to GitHub Pages
+- `deploy-lib-web-component-storybook.yml` - deploys Storybook to GitHub Pages
 - `deploy-docs-storybook-gh-pages.yml` - deploys documentation Storybook
 - `deploy-docs-design-system.yml` - deploys the documentation site
 - `version-publish-packages.yml` - handles versioning and npm publishing
@@ -1100,7 +1101,7 @@ Each workflow had a build step that built design-token-support before building o
   run: |
     pnpm --filter @designgreat/design-token-support run build
     pnpm --filter @designgreat/lib-design-token run build
-    pnpm --filter @designgreat/lib-web-ui run build
+    pnpm --filter @designgreat/lib-web-component run build
 ```
 
 The package didn't exist anymore. The build step would fail. CI would break. Deployments would fail.
@@ -1136,7 +1137,7 @@ updates - I ran the test script one more time:
   Phase 0: Building Packages
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Building lib-design-token... ✓
-Building lib-web-ui... ✓
+Building lib-web-component... ✓
 Building docs-design-system... ✓
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1272,7 +1273,7 @@ But it should have taken maybe two hours, three at most.
 
 - **Time spent**: Almost a full work day (~8 hours)
 - **Files modified**: 50+
-- **Packages affected**: 3 (lib-design-token, lib-web-ui, docs-design-system)
+- **Packages affected**: 3 (lib-design-token, lib-web-component, docs-design-system)
 - **Packages deleted**: 1 (design-token-support)
 - **Build errors encountered**: 15+
 - **Times documentation was updated**: 4+ passes

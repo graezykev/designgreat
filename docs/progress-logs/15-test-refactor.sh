@@ -60,12 +60,12 @@ else
 fi
 cd ../..
 
-echo -e "${BLUE}Building lib-web-ui...${NC}"
-cd packages/lib-web-ui
+echo -e "${BLUE}Building lib-web-component...${NC}"
+cd packages/lib-web-component
 if pnpm run build > /dev/null 2>&1; then
-  echo -e "${GREEN}✓${NC} lib-web-ui built"
+  echo -e "${GREEN}✓${NC} lib-web-component built"
 else
-  echo -e "${RED}✗ lib-web-ui build failed - cannot continue${NC}"
+  echo -e "${RED}✗ lib-web-component build failed - cannot continue${NC}"
   exit 1
 fi
 cd ../..
@@ -134,21 +134,21 @@ else
   fail "Compiled themes.js missing"
 fi
 
-# Check lib-web-ui outputs
-if [ -f "packages/lib-web-ui/src/styles/index.css" ]; then
-  pass "lib-web-ui CSS entry point exists"
+# Check lib-web-component outputs
+if [ -f "packages/lib-web-component/src/styles/index.css" ]; then
+  pass "lib-web-component CSS entry point exists"
 else
-  fail "lib-web-ui CSS entry point missing"
+  fail "lib-web-component CSS entry point missing"
 fi
 
 # Check old files are removed
-if [ ! -f "packages/lib-web-ui/src/styles/designgreat-theme.css" ]; then
+if [ ! -f "packages/lib-web-component/src/styles/designgreat-theme.css" ]; then
   pass "Old generated theme file removed"
 else
   fail "Old generated theme file still exists (should be removed)"
 fi
 
-if [ ! -f "packages/lib-web-ui/scripts/generate-theme-css.ts" ]; then
+if [ ! -f "packages/lib-web-component/scripts/generate-theme-css.ts" ]; then
   pass "Old generation script removed"
 else
   fail "Old generation script still exists (should be removed)"
@@ -323,17 +323,17 @@ else
   fail "lib-design-token doesn't export SCSS"
 fi
 
-# Check lib-web-ui package.json
-if ! grep -q "generate:theme" packages/lib-web-ui/package.json 2>/dev/null; then
-  pass "lib-web-ui removed generate:theme script"
+# Check lib-web-component package.json
+if ! grep -q "generate:theme" packages/lib-web-component/package.json 2>/dev/null; then
+  pass "lib-web-component removed generate:theme script"
 else
-  fail "lib-web-ui still has generate:theme script"
+  fail "lib-web-component still has generate:theme script"
 fi
 
-if ! grep -q "@designgreat/design-token-support" packages/lib-web-ui/package.json 2>/dev/null; then
-  pass "lib-web-ui removed design-token-support dependency"
+if ! grep -q "@designgreat/design-token-support" packages/lib-web-component/package.json 2>/dev/null; then
+  pass "lib-web-component removed design-token-support dependency"
 else
-  fail "lib-web-ui still depends on design-token-support"
+  fail "lib-web-component still depends on design-token-support"
 fi
 
 # Check docs-design-system package.json
@@ -363,56 +363,56 @@ fi
 
 section "Phase 5: Code Quality"
 
-# Check lib-web-ui imports design tokens correctly
-if grep -q "@designgreat/lib-design-token/css" packages/lib-web-ui/src/styles/index.css 2>/dev/null; then
-  pass "lib-web-ui imports design tokens CSS"
+# Check lib-web-component imports design tokens correctly
+if grep -q "@designgreat/lib-design-token/css" packages/lib-web-component/src/styles/index.css 2>/dev/null; then
+  pass "lib-web-component imports design tokens CSS"
 else
-  fail "lib-web-ui doesn't import design tokens CSS"
+  fail "lib-web-component doesn't import design tokens CSS"
 fi
 
 # Check Storybook preview imports (either directly or via index.css)
-if grep -q "@designgreat/lib-design-token/css" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null || \
-   grep -q "src/styles/index.css" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null; then
+if grep -q "@designgreat/lib-design-token/css" packages/lib-web-component/.storybook/preview.tsx 2>/dev/null || \
+   grep -q "src/styles/index.css" packages/lib-web-component/.storybook/preview.tsx 2>/dev/null; then
   pass "Storybook preview imports design tokens CSS (directly or via index.css)"
 else
   fail "Storybook preview doesn't import design tokens CSS"
 fi
 
-if grep -q "@designgreat/lib-design-token/font" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null; then
+if grep -q "@designgreat/lib-design-token/font" packages/lib-web-component/.storybook/preview.tsx 2>/dev/null; then
   pass "Storybook preview imports fonts"
 else
   fail "Storybook preview doesn't import fonts"
 fi
 
 # Check Storybook uses theme utilities from design token package
-if grep -q "getThemeClassName" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null; then
+if grep -q "getThemeClassName" packages/lib-web-component/.storybook/preview.tsx 2>/dev/null; then
   pass "Storybook uses getThemeClassName from design token package"
 else
   fail "Storybook doesn't use getThemeClassName"
 fi
 
-if grep -q "applyTheme" packages/lib-web-ui/.storybook/preview.tsx 2>/dev/null; then
+if grep -q "applyTheme" packages/lib-web-component/.storybook/preview.tsx 2>/dev/null; then
   pass "Storybook uses applyTheme from design token package"
 else
   fail "Storybook doesn't use applyTheme"
 fi
 
 # Check CodeDemoToggle uses theme utilities
-if grep -q "isThemeApplied" packages/lib-web-ui/src/storybook/CodeDemoToggle.tsx 2>/dev/null; then
+if grep -q "isThemeApplied" packages/lib-web-component/src/storybook/CodeDemoToggle.tsx 2>/dev/null; then
   pass "CodeDemoToggle uses isThemeApplied from design token package"
 else
   fail "CodeDemoToggle doesn't use isThemeApplied"
 fi
 
 # Check tailwind.config.ts uses THEME_CLASSES constant
-if grep -q "THEME_CLASSES" packages/lib-web-ui/tailwind.config.ts 2>/dev/null; then
+if grep -q "THEME_CLASSES" packages/lib-web-component/tailwind.config.ts 2>/dev/null; then
   pass "Tailwind config uses THEME_CLASSES constant"
 else
   fail "Tailwind config doesn't use THEME_CLASSES constant"
 fi
 
 # Check tailwind.config.ts uses dg namespace for tokens
-if grep -q "light.dg" packages/lib-web-ui/tailwind.config.ts 2>/dev/null; then
+if grep -q "light.dg" packages/lib-web-component/tailwind.config.ts 2>/dev/null; then
   pass "Tailwind config accesses tokens via dg namespace"
 else
   fail "Tailwind config doesn't use dg namespace"
@@ -571,22 +571,22 @@ else
 fi
 cd ../..
 
-echo -e "${BLUE}Running lib-web-ui quality checks...${NC}"
-cd packages/lib-web-ui
+echo -e "${BLUE}Running lib-web-component quality checks...${NC}"
+cd packages/lib-web-component
 if pnpm run lint > /dev/null 2>&1; then
-  pass "lib-web-ui lint"
+  pass "lib-web-component lint"
 else
-  fail "lib-web-ui lint failed"
+  fail "lib-web-component lint failed"
 fi
 if pnpm run typecheck > /dev/null 2>&1; then
-  pass "lib-web-ui typecheck"
+  pass "lib-web-component typecheck"
 else
-  fail "lib-web-ui typecheck failed"
+  fail "lib-web-component typecheck failed"
 fi
 if pnpm run test > /dev/null 2>&1; then
-  pass "lib-web-ui test"
+  pass "lib-web-component test"
 else
-  fail "lib-web-ui test failed"
+  fail "lib-web-component test failed"
 fi
 cd ../..
 
@@ -631,7 +631,7 @@ if [ $TESTS_FAILED -eq 0 ]; then
   echo "Next steps:"
   echo "1. Run visual tests: cd packages/docs-design-system && pnpm start"
   echo "2. Test theme switching manually"
-  echo "3. Run Storybook: cd packages/lib-web-ui && pnpm storybook"
+  echo "3. Run Storybook: cd packages/lib-web-component && pnpm storybook"
   exit 0
 else
   echo -e "${RED}✗ Some tests failed. Please review the output above.${NC}"

@@ -30,7 +30,7 @@ pnpm lint
 pnpm lint:fix
 
 # Lint specific package
-pnpm --filter @designgreat/lib-web-ui lint
+pnpm --filter @designgreat/lib-web-component lint
 ```
 
 ### Syncing ESLint Dependencies
@@ -630,7 +630,7 @@ export default [
 
 ```bash
 # Test specific package first
-pnpm --filter @designgreat/lib-web-ui lint
+pnpm --filter @designgreat/lib-web-component lint
 
 # Then test all
 pnpm lint

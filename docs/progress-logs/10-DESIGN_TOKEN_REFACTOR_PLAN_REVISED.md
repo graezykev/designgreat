@@ -5,7 +5,7 @@
 **Decouple packages for independent use:**
 
 - `lib-design-token` → Standalone, production-ready design token package
-- `lib-web-ui` → UI components that directly import from design tokens
+- `lib-web-component` → UI components that directly import from design tokens
 - Users can choose: tokens only OR tokens + components
 
 ## ✅ Confirmed Decisions
@@ -13,7 +13,7 @@
 1. **Dark theme class:** `.dg-theme-dark` (namespaced)
 2. **JSTS naming:** Namespace object structure
 3. **Backward compatibility:** Clean break (no migration guide needed)
-4. **lib-web-ui consumption:** Direct CSS import from design tokens
+4. **lib-web-component consumption:** Direct CSS import from design tokens
 5. **SCSS variables:** Keep as plain variables
 6. **Documentation:** Update everything
 7. **Implementation:** Batch (all changes at once)
@@ -293,17 +293,17 @@ await import('./post-build-combine-css.js')
 
 ---
 
-### Phase 2: Update lib-web-ui (Consume Directly)
+### Phase 2: Update lib-web-component (Consume Directly)
 
 #### 2.1 Remove Theme Generation Script
 
-**Delete:** `packages/lib-web-ui/scripts/generate-theme-css.ts`
+**Delete:** `packages/lib-web-component/scripts/generate-theme-css.ts`
 
 Or deprecate with a comment explaining it's no longer needed.
 
 #### 2.2 Update package.json
 
-**File:** `packages/lib-web-ui/package.json`
+**File:** `packages/lib-web-component/package.json`
 
 **Remove from scripts:**
 
@@ -341,13 +341,13 @@ Or deprecate with a comment explaining it's no longer needed.
 
 #### 2.3 Create Main CSS Entry Point
 
-**File:** `packages/lib-web-ui/src/styles/index.css`
+**File:** `packages/lib-web-component/src/styles/index.css`
 
 Create a new CSS entry that imports design tokens:
 
 ```css
 /**
- * Main stylesheet for @designgreat/lib-web-ui
+ * Main stylesheet for @designgreat/lib-web-component
  * Imports design tokens and component styles
  */
 
@@ -366,7 +366,7 @@ Create a new CSS entry that imports design tokens:
 
 #### 2.4 Update Vite Config
 
-**File:** `packages/lib-web-ui/vite.config.ts`
+**File:** `packages/lib-web-component/vite.config.ts`
 
 Ensure CSS is bundled correctly:
 
@@ -384,7 +384,7 @@ export default defineConfig({
         // Preserve CSS imports
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css') {
-            return 'lib-web-ui.css'
+            return 'lib-web-component.css'
           }
           return assetInfo.name
         }
@@ -399,13 +399,13 @@ export default defineConfig({
 
 #### 2.5 Delete Generated File
 
-**Delete:** `packages/lib-web-ui/src/styles/designgreat-theme.css`
+**Delete:** `packages/lib-web-component/src/styles/designgreat-theme.css`
 
 This is no longer needed since we're importing directly.
 
 #### 2.6 Update Tailwind Config
 
-**File:** `packages/lib-web-ui/tailwind.config.ts`
+**File:** `packages/lib-web-component/tailwind.config.ts`
 
 **Check if design-token-support is used:**
 
@@ -613,10 +613,10 @@ Search and replace in all `.mdx` files:
 
 **File:** `packages/docs-design-system/src/css/custom.css`
 
-Verify it imports from `lib-web-ui`:
+Verify it imports from `lib-web-component`:
 
 ```css
-@import '@designgreat/lib-web-ui/dist/lib-web-ui.css';
+@import '@designgreat/lib-web-component/dist/lib-web-component.css';
 
 /* This now includes design tokens directly */
 ````
@@ -640,7 +640,7 @@ pnpm install
 cd packages/lib-design-token
 pnpm run build
 
-cd ../lib-web-ui
+cd ../lib-web-component
 pnpm run build
 
 cd ../docs-design-system
@@ -662,7 +662,7 @@ echo "✓ All builds succeeded"
 
 **Storybook:**
 
-1. Run `pnpm run storybook` in lib-web-ui
+1. Run `pnpm run storybook` in lib-web-component
 2. Test all component stories
 3. Toggle dark mode
 4. Verify colors, spacing, typography
@@ -713,8 +713,8 @@ packages/lib-design-token/dist/generated/themes.ts
 packages/lib-design-token/dist/font/font-face.css
 
 # UI library
-packages/lib-web-ui/dist/lib-web-ui.css
-packages/lib-web-ui/dist/packages/lib-web-ui/src/index.mjs
+packages/lib-web-component/dist/lib-web-component.css
+packages/lib-web-component/dist/packages/lib-web-component/src/index.mjs
 ```
 
 **Verify content:**
@@ -750,7 +750,7 @@ grep "dg:" packages/lib-design-token/dist/generated/themes.ts
 - [ ] Update package.json exports
 - [ ] Run build and verify outputs
 
-### Phase 2: lib-web-ui
+### Phase 2: lib-web-component
 
 - [ ] Remove/deprecate generate-theme-css.ts script
 - [ ] Update package.json scripts
@@ -816,7 +816,7 @@ import { light } from '@designgreat/lib-design-token'
 const bg = light.dg.color.background.default
 ```
 
-### lib-web-ui Becomes Simpler
+### lib-web-component Becomes Simpler
 
 **Cleaner dependency chain:**
 
@@ -836,7 +836,7 @@ npm install @designgreat/lib-design-token
 **Option 2: Full UI library (includes tokens)**
 
 ```bash
-npm install @designgreat/lib-web-ui
+npm install @designgreat/lib-web-component
 # Also gets lib-design-token automatically
 ```
 
@@ -848,7 +848,7 @@ npm install @designgreat/lib-web-ui
 - ✅ All CSS uses `--dg-` prefix
 - ✅ Dark theme uses `.dg-theme-dark` selector
 - ✅ JSTS exports use namespace structure
-- ✅ `lib-web-ui` imports CSS directly
+- ✅ `lib-web-component` imports CSS directly
 - ✅ All tests pass
 - ✅ Docs site renders correctly
 - ✅ Storybook works correctly

@@ -45,7 +45,7 @@ dist/generated/themes.ts         → { dg: {...} }
 
 ---
 
-### Phase 2: lib-web-ui
+### Phase 2: lib-web-component
 
 **Modified Files:**
 
@@ -131,7 +131,7 @@ pnpm start
 #### 2. Storybook
 
 ```bash
-cd packages/lib-web-ui
+cd packages/lib-web-component
 pnpm storybook
 ```
 
@@ -177,7 +177,7 @@ pnpm run build
 
 - [ ] `pnpm install` completes
 - [ ] `lib-design-token` builds
-- [ ] `lib-web-ui` builds
+- [ ] `lib-web-component` builds
 - [ ] `docs-design-system` builds
 - [ ] No TypeScript errors
 - [ ] No linting errors
@@ -224,17 +224,17 @@ const bg = light.dg.color.background.default
 
 ---
 
-### For lib-web-ui Users
+### For lib-web-component Users
 
 **Before:**
 
-- lib-web-ui generated its own theme CSS
+- lib-web-component generated its own theme CSS
 - Depended on `design-token-support`
 - Had a `generate:theme` build step
 
 **After:**
 
-- lib-web-ui imports CSS directly from `lib-design-token`
+- lib-web-component imports CSS directly from `lib-design-token`
 - Simpler build process
 - Faster builds
 - No intermediate generation step
@@ -348,7 +348,7 @@ If issues arise, you can rollback by:
 
    ```bash
    git checkout main -- packages/lib-design-token
-   git checkout main -- packages/lib-web-ui
+   git checkout main -- packages/lib-web-component
    ```
 
 2. **Rebuild:**
@@ -360,7 +360,7 @@ If issues arise, you can rollback by:
 
 3. **Restore Dependencies:**
    ```bash
-   cd packages/lib-web-ui
+   cd packages/lib-web-component
    pnpm add @designgreat/design-token-support
    ```
 
@@ -374,21 +374,21 @@ If issues arise, you can rollback by:
 - `packages/lib-design-token/scripts/style-dictionary/build-style-dictionary.js`
 - `packages/lib-design-token/scripts/style-dictionary/post-build-export.js`
 - `packages/lib-design-token/package.json`
-- `packages/lib-web-ui/src/index.ts`
-- `packages/lib-web-ui/tailwind.config.ts`
-- `packages/lib-web-ui/package.json`
+- `packages/lib-web-component/src/index.ts`
+- `packages/lib-web-component/tailwind.config.ts`
+- `packages/lib-web-component/package.json`
 - `packages/docs-design-system/docs-design-token/guides/css-integration.mdx`
 
 ### Created (3 files)
 
 - `packages/lib-design-token/scripts/style-dictionary/post-build-combine-css.js`
-- `packages/lib-web-ui/src/styles/index.css`
+- `packages/lib-web-component/src/styles/index.css`
 - `test-refactor.sh`
 
 ### Deleted (2 files)
 
-- `packages/lib-web-ui/src/styles/designgreat-theme.css`
-- `packages/lib-web-ui/scripts/generate-theme-css.ts`
+- `packages/lib-web-component/src/styles/designgreat-theme.css`
+- `packages/lib-web-component/scripts/generate-theme-css.ts`
 
 ### Documentation Plans
 
@@ -402,7 +402,7 @@ If issues arise, you can rollback by:
 ## ✨ Benefits Achieved
 
 1. **Decoupling**: `lib-design-token` is now truly standalone
-2. **Simplicity**: `lib-web-ui` has simpler build process
+2. **Simplicity**: `lib-web-component` has simpler build process
 3. **Consistency**: Unified `--dg-` prefix across all outputs
 4. **Proper Theming**: Dark theme uses class selector instead of `:root`
 5. **Better DX**: Combined CSS file for easy import

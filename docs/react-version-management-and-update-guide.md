@@ -38,7 +38,7 @@ $ pnpm check:react-versions --sync
 🔧 Syncing peerDependencies to match catalog...
   🔧 Updating react: ^18.3.1 → ^19.0.0
   🔧 Updating react-dom: ^18.3.1 → ^19.0.0
-✅ Synced: packages/lib-web-ui/package.json
+✅ Synced: packages/lib-web-component/package.json
 ✨ Synced 1 file(s) successfully!
 
 
@@ -59,9 +59,9 @@ $ git commit -m "chore: update React to v19.0.0"
 │ Location                  │ How Updated                         │
 ├───────────────────────────┼─────────────────────────────────────┤
 │ Root devDependencies      │ ✅ Auto (catalog:)                  │
-│ lib-web-ui devDependencies│ ✅ Auto (catalog:)                  │
+│ lib-web-component devDependencies│ ✅ Auto (catalog:)                  │
 │ docs-design-system deps   │ ✅ Auto (catalog:)                  │
-│ lib-web-ui peerDeps       │ 🔧 Semi-auto (--sync command)       │
+│ lib-web-component peerDeps       │ 🔧 Semi-auto (--sync command)       │
 └───────────────────────────┴─────────────────────────────────────┘
 ```
 
@@ -88,7 +88,7 @@ $ git commit -m "chore: update React to v19.0.0"
         │                      │                  │
         ▼                      ▼                  ▼
 ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
-│ lib-web-ui   │   │ docs-design  │   │ Root         │
+│ lib-web-component   │   │ docs-design  │   │ Root         │
 │ (Library)    │   │ -system      │   │ (Workspace)  │
 │              │   │ (App)        │   │              │
 │ peerDeps:    │   │              │   │ devDeps:     │
@@ -134,7 +134,7 @@ catalog:
 │ Solution: Our script syncs them automatically! ✨               │
 └─────────────────────────────────────────────────────────────────┘
 
-lib-web-ui/package.json:
+lib-web-component/package.json:
 {
   "peerDependencies": {
     "react": "^18.3.1"     ◄─── Synced by --sync command
@@ -230,7 +230,7 @@ pnpm check:react-versions
   package.json
     🔧 devDependencies      react     : catalog:
 
-  packages/lib-web-ui/package.json
+  packages/lib-web-component/package.json
     🔧 devDependencies      react     : catalog:
     👥 peerDependencies     react     : ^18.3.1
 
@@ -392,7 +392,8 @@ This will prevent version drift by failing the build if React versions are incon
 
 - [`pnpm-workspace.yaml`](../pnpm-workspace.yaml) - Edit catalog here!
 - [`scripts/check-react-versions.ts`](../scripts/check-react-versions.ts) - Validation script
-- [`packages/lib-web-ui/package.json`](../packages/lib-web-ui/package.json) - Library example
+- [`packages/lib-web-component/package.json`](../packages/lib-web-component/package.json) - Library
+  example
 - [`packages/docs-design-system/package.json`](../packages/docs-design-system/package.json) - App
   example
 

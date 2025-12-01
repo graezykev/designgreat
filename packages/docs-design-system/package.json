@@ -21,7 +21,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@designgreat/lib-web-ui": "workspace:*",
+    "@designgreat/lib-web-component": "workspace:*",
     "@designgreat/lib-design-token": "workspace:*",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-content-docs": "3.9.2",

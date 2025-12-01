@@ -13,7 +13,7 @@ This document catalogs findings from the comprehensive manual audit of color doc
    - Define tokens with references like `{color.base.grey}`
    - Include metadata like `attributes: { alpha: 0.7 }`
 
-2. **CSS Generation** (lib-web-ui/dist/lib-web-ui.css)
+2. **CSS Generation** (lib-web-component/dist/lib-web-component.css)
    - Converts tokens to actual CSS variables
    - Alpha tokens get hex8 format (e.g., `#599effb3` where `b3` = 70% opacity)
    - Theme-aware: `:root` for light, `.dg-theme-dark` for dark
