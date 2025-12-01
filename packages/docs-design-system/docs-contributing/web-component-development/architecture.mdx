@@ -34,7 +34,7 @@ The library uses a clean, semantic import chain:
 ```
 src/index.ts
   └─> styles/index.css (single CSS entry point)
-       ├─> @designgreat/lib-web-ui-design-token/css (design tokens)
+       ├─> @designgreat/lib-design-token/css (design tokens)
        └─> tailwind.css
             ├─> @tailwind utilities (NO base, NO components)
             └─> components.css (component styles)
@@ -58,7 +58,7 @@ The distributed CSS intentionally **excludes**:
 
 This allows consumers to:
 
-- Load fonts independently (from `@designgreat/lib-web-ui-design-token/font` or via CDN)
+- Load fonts independently (from `@designgreat/lib-design-token/font` or via CDN)
 - Integrate seamlessly with existing projects without CSS reset conflicts
 - Control font loading strategy (preload, async, etc.)
 - Avoid duplicate CSS when already using Tailwind
@@ -141,7 +141,7 @@ packages/lib-web-ui/
 └───────────────────────────┘
 ```
 
-**Key Point**: The `generate:theme` step has been **removed**. Design tokens are now directly imported from `@designgreat/lib-web-ui-design-token`.
+**Key Point**: The `generate:theme` step has been **removed**. Design tokens are now directly imported from `@designgreat/lib-design-token`.
 
 ## Next Steps
 

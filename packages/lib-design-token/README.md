@@ -1,4 +1,4 @@
-# @designgreat/lib-web-ui-design-token
+# @designgreat/lib-design-token
 
 Designgreat's source of truth for UI design tokens. This package provides token authoring, Style
 Dictionary build pipeline (light/dark themes, CSS/JS outputs), theme utilities, and TypeScript

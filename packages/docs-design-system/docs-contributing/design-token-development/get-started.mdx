@@ -35,7 +35,7 @@ pnpm install
 The design token package is located at:
 
 ```
-packages/lib-web-ui-design-token/
+packages/lib-design-token/
 ```
 
 ## Development Commands
@@ -45,7 +45,7 @@ packages/lib-web-ui-design-token/
 Rebuild automatically on changes (best for active development):
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run watch
+pnpm --filter @designgreat/lib-design-token run watch
 ```
 
 ### Other Development Commands
@@ -53,13 +53,13 @@ pnpm --filter @designgreat/lib-web-ui-design-token run watch
 Build tokens only (quick build, just the token pipeline):
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run build:tokens
+pnpm --filter @designgreat/lib-design-token run build:tokens
 ```
 
 Full build (includes font download, Style Dictionary, TypeScript compilation):
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run build
+pnpm --filter @designgreat/lib-design-token run build
 ```
 
 ## Lint
@@ -67,7 +67,7 @@ pnpm --filter @designgreat/lib-web-ui-design-token run build
 Lint the TypeScript runtime and build scripts:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run lint
+pnpm --filter @designgreat/lib-design-token run lint
 ```
 
 ## Typecheck
@@ -75,7 +75,7 @@ pnpm --filter @designgreat/lib-web-ui-design-token run lint
 Type check without emitting files:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run typecheck
+pnpm --filter @designgreat/lib-design-token run typecheck
 ```
 
 ## Test and Validate
@@ -85,7 +85,7 @@ pnpm --filter @designgreat/lib-web-ui-design-token run typecheck
 Run the Vitest suite for runtime helpers and validation utilities:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run test
+pnpm --filter @designgreat/lib-design-token run test
 ```
 
 ### Validate Token Integrity
@@ -93,7 +93,7 @@ pnpm --filter @designgreat/lib-web-ui-design-token run test
 Execute integrity checks for generated themes:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run validate
+pnpm --filter @designgreat/lib-design-token run validate
 ```
 
 ## Build
@@ -101,7 +101,7 @@ pnpm --filter @designgreat/lib-web-ui-design-token run validate
 Full production build:
 
 ```bash
-pnpm --filter @designgreat/lib-web-ui-design-token run build
+pnpm --filter @designgreat/lib-design-token run build
 ```
 
 This runs the complete pipeline:

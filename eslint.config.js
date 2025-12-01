@@ -25,10 +25,10 @@ const config = [
   {
     name: 'designgreat/design-token-generated-ignore',
     ignores: [
-      'packages/lib-web-ui-design-token/src/generated/**',
-      'packages/lib-web-ui-design-token/src/tokens/**',
-      'packages/lib-web-ui-design-token/assets/**',
-      'packages/lib-web-ui-design-token/dist/jsts/**'
+      'packages/lib-design-token/src/generated/**',
+      'packages/lib-design-token/src/tokens/**',
+      'packages/lib-design-token/assets/**',
+      'packages/lib-design-token/dist/jsts/**'
     ]
   },
   {

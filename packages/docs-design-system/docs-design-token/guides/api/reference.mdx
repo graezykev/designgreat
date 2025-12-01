@@ -9,7 +9,7 @@ sidebar_label: API Reference
 Import `themes` for token values, use `getThemeClassName()` or `applyTheme()` for theme switching.
 :::
 
-This page documents all TypeScript exports from `@designgreat/lib-web-ui-design-token`.
+This page documents all TypeScript exports from `@designgreat/lib-design-token`.
 
 ---
 
@@ -24,7 +24,7 @@ import {
   
   // Types
   type ThemeName,      // 'light' | 'dark'
-} from '@designgreat/lib-web-ui-design-token'
+} from '@designgreat/lib-design-token'
 ```
 
 ---
@@ -36,7 +36,7 @@ import {
 The main way to access token values programmatically:
 
 ```typescript
-import { themes } from '@designgreat/lib-web-ui-design-token'
+import { themes } from '@designgreat/lib-design-token'
 
 // Access light theme tokens
 const lightBg = themes.light.dg.color.background.DEFAULT    // "#ffffff"
@@ -58,7 +58,7 @@ const fontFamily = themes.light.dg['font-family'].primary   // "Roboto"
 Direct access to specific themes:
 
 ```typescript
-import { light, dark } from '@designgreat/lib-web-ui-design-token'
+import { light, dark } from '@designgreat/lib-design-token'
 
 const primaryLight = light.dg.color.primary.DEFAULT  // "#0055cc"
 const primaryDark = dark.dg.color.primary.DEFAULT    // "#599eff"
@@ -69,7 +69,7 @@ const primaryDark = dark.dg.color.primary.DEFAULT    // "#599eff"
 Get tokens for a specific theme by name:
 
 ```typescript
-import { getThemeTokens } from '@designgreat/lib-web-ui-design-token'
+import { getThemeTokens } from '@designgreat/lib-design-token'
 
 const tokens = getThemeTokens('light')
 const bgColor = tokens.dg.color.background.DEFAULT
@@ -80,7 +80,7 @@ const bgColor = tokens.dg.color.background.DEFAULT
 Get array of available theme names:
 
 ```typescript
-import { listThemeNames } from '@designgreat/lib-web-ui-design-token'
+import { listThemeNames } from '@designgreat/lib-design-token'
 
 const themes = listThemeNames()  // ['dark', 'light']
 ```
@@ -90,7 +90,7 @@ const themes = listThemeNames()  // ['dark', 'light']
 Create a custom theme with token overrides:
 
 ```typescript
-import { createTheme } from '@designgreat/lib-web-ui-design-token'
+import { createTheme } from '@designgreat/lib-design-token'
 
 const customTheme = createTheme('light', {
   dg: {
@@ -112,7 +112,7 @@ const customTheme = createTheme('light', {
 Returns the CSS class name for a theme:
 
 ```typescript
-import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+import { getThemeClassName } from '@designgreat/lib-design-token'
 
 getThemeClassName('light')  // '' (light uses :root, no class needed)
 getThemeClassName('dark')   // 'dg-theme-dark'
@@ -137,7 +137,7 @@ function App() {
 Applies the theme class to an element:
 
 ```typescript
-import { applyTheme } from '@designgreat/lib-web-ui-design-token'
+import { applyTheme } from '@designgreat/lib-design-token'
 
 // Apply dark theme to document
 applyTheme(document.documentElement, 'dark')
@@ -151,7 +151,7 @@ applyTheme(document.documentElement, 'light')
 Checks if a theme is currently applied:
 
 ```typescript
-import { isThemeApplied } from '@designgreat/lib-web-ui-design-token'
+import { isThemeApplied } from '@designgreat/lib-design-token'
 
 if (isThemeApplied(document.documentElement, 'dark')) {
   console.log('Dark theme is active')
@@ -163,7 +163,7 @@ if (isThemeApplied(document.documentElement, 'dark')) {
 Returns the CSS selector for a theme:
 
 ```typescript
-import { getThemeSelector } from '@designgreat/lib-web-ui-design-token'
+import { getThemeSelector } from '@designgreat/lib-design-token'
 
 getThemeSelector('light')  // ':root'
 getThemeSelector('dark')   // '.dg-theme-dark'
@@ -174,7 +174,7 @@ getThemeSelector('dark')   // '.dg-theme-dark'
 Returns the opposite theme name:
 
 ```typescript
-import { getOppositeTheme } from '@designgreat/lib-web-ui-design-token'
+import { getOppositeTheme } from '@designgreat/lib-design-token'
 
 getOppositeTheme('light')  // 'dark'
 getOppositeTheme('dark')   // 'light'
@@ -189,7 +189,7 @@ getOppositeTheme('dark')   // 'light'
 Object containing theme class names:
 
 ```typescript
-import { THEME_CLASSES } from '@designgreat/lib-web-ui-design-token'
+import { THEME_CLASSES } from '@designgreat/lib-design-token'
 
 THEME_CLASSES.light  // ''
 THEME_CLASSES.dark   // 'dg-theme-dark'
@@ -200,7 +200,7 @@ THEME_CLASSES.dark   // 'dg-theme-dark'
 Object containing CSS selectors:
 
 ```typescript
-import { THEME_SELECTORS } from '@designgreat/lib-web-ui-design-token'
+import { THEME_SELECTORS } from '@designgreat/lib-design-token'
 
 THEME_SELECTORS.light  // ':root'
 THEME_SELECTORS.dark   // '.dg-theme-dark'
@@ -211,7 +211,7 @@ THEME_SELECTORS.dark   // '.dg-theme-dark'
 The prefix used for theme classes:
 
 ```typescript
-import { THEME_CLASS_PREFIX } from '@designgreat/lib-web-ui-design-token'
+import { THEME_CLASS_PREFIX } from '@designgreat/lib-design-token'
 
 THEME_CLASS_PREFIX  // 'dg-theme'
 ```
@@ -221,7 +221,7 @@ THEME_CLASS_PREFIX  // 'dg-theme'
 CSS selector for the light theme:
 
 ```typescript
-import { LIGHT_THEME_SELECTOR } from '@designgreat/lib-web-ui-design-token'
+import { LIGHT_THEME_SELECTOR } from '@designgreat/lib-design-token'
 
 LIGHT_THEME_SELECTOR  // ':root'
 ```
@@ -231,7 +231,7 @@ LIGHT_THEME_SELECTOR  // ':root'
 The default theme name:
 
 ```typescript
-import { DEFAULT_THEME } from '@designgreat/lib-web-ui-design-token'
+import { DEFAULT_THEME } from '@designgreat/lib-design-token'
 
 DEFAULT_THEME  // 'light'
 ```
@@ -245,7 +245,7 @@ DEFAULT_THEME  // 'light'
 Union type of available theme names:
 
 ```typescript
-import type { ThemeName } from '@designgreat/lib-web-ui-design-token'
+import type { ThemeName } from '@designgreat/lib-design-token'
 
 // ThemeName = 'light' | 'dark'
 
@@ -259,7 +259,7 @@ function setTheme(name: ThemeName) {
 The full token structure for a theme:
 
 ```typescript
-import type { ThemeToken } from '@designgreat/lib-web-ui-design-token'
+import type { ThemeToken } from '@designgreat/lib-design-token'
 
 function processTheme(tokens: ThemeToken) {
   // TypeScript knows all available properties
@@ -272,7 +272,7 @@ function processTheme(tokens: ThemeToken) {
 Partial structure for `createTheme()` overrides:
 
 ```typescript
-import type { ThemeOverrides } from '@designgreat/lib-web-ui-design-token'
+import type { ThemeOverrides } from '@designgreat/lib-design-token'
 
 const overrides: ThemeOverrides = {
   dg: {
@@ -334,7 +334,7 @@ import { useState } from 'react'
 import { 
   getThemeClassName, 
   type ThemeName 
-} from '@designgreat/lib-web-ui-design-token'
+} from '@designgreat/lib-design-token'
 
 function ThemeToggle() {
   const [theme, setTheme] = useState<ThemeName>('light')
@@ -352,7 +352,7 @@ function ThemeToggle() {
 ### Dynamic Styling
 
 ```tsx
-import { themes } from '@designgreat/lib-web-ui-design-token'
+import { themes } from '@designgreat/lib-design-token'
 
 function DynamicBox({ isDark }: { isDark: boolean }) {
   const t = isDark ? themes.dark : themes.light
@@ -372,7 +372,7 @@ function DynamicBox({ isDark }: { isDark: boolean }) {
 ### Theme-Aware Utility
 
 ```typescript
-import { themes, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+import { themes, type ThemeName } from '@designgreat/lib-design-token'
 
 function getContrastColor(theme: ThemeName, isError: boolean) {
   const t = themes[theme]

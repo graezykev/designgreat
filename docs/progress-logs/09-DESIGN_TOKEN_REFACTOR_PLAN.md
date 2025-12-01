@@ -7,12 +7,12 @@ This document outlines the comprehensive refactoring plan to:
 1. Change CSS variable prefix from `--token-` to `--dg-`
 2. Change SCSS variable prefix from `$token-` to `$dg-`
 3. Use `.dark` selector for dark theme instead of `:root`
-4. Make lib-web-ui consume CSS directly from lib-web-ui-design-token
+4. Make lib-web-ui consume CSS directly from lib-design-token
 5. Update all documentation and dependents
 
 ## Current State Analysis
 
-### Package: `lib-web-ui-design-token`
+### Package: `lib-design-token`
 
 **Current Behavior:**
 
@@ -38,7 +38,7 @@ This document outlines the comprehensive refactoring plan to:
 
 **Current Behavior:**
 
-- Wraps `lib-web-ui-design-token` and provides theme utilities
+- Wraps `lib-design-token` and provides theme utilities
 - Uses `dg` prefix by default (`DEFAULT_PREFIX = 'dg'` in theme.ts line 13)
 - Generates CSS variables with `--dg-` prefix via `createCssVariableMap`
 - Generates theme class names like `dg-theme-dark`
@@ -83,7 +83,7 @@ This document outlines the comprehensive refactoring plan to:
 The current system has **two parallel approaches**:
 
 1. **Direct CSS Import (old, inconsistent):**
-   - `lib-web-ui-design-token` generates CSS with `--token-` prefix
+   - `lib-design-token` generates CSS with `--token-` prefix
    - Both themes use `:root` selector (causes conflicts!)
    - Documented in `css-integration.mdx` Option 2
 
@@ -92,32 +92,31 @@ The current system has **two parallel approaches**:
    - Light theme uses `:root`, dark theme uses `.dg-theme-dark`
    - Used by `lib-web-ui` and works correctly
 
-**Issue:** The direct CSS output from `lib-web-ui-design-token` is outdated and conflicts with the
-newer `design-token-support` approach.
+**Issue:** The direct CSS output from `lib-design-token` is outdated and conflicts with the newer
+`design-token-support` approach.
 
 ## Refactoring Goals
 
 ### Primary Goals
 
-1. **Unify token naming:** Make `lib-web-ui-design-token` generate `--dg-` prefix by default
+1. **Unify token naming:** Make `lib-design-token` generate `--dg-` prefix by default
 2. **Fix dark theme selector:** Change dark theme CSS from `:root` to `.dark` or `.dg-theme-dark`
-3. **Simplify consumption:** Allow direct CSS import from `lib-web-ui-design-token` with proper
-   selectors
+3. **Simplify consumption:** Allow direct CSS import from `lib-design-token` with proper selectors
 4. **Update documentation:** Reflect the unified approach across all docs
 
 ### Secondary Goals
 
-1. Make `lib-web-ui` optionally consume CSS directly from `lib-web-ui-design-token`
+1. Make `lib-web-ui` optionally consume CSS directly from `lib-design-token`
 2. Remove redundant theme generation in `lib-web-ui` (or keep as optional)
 3. Ensure all component examples use correct variables
 
 ## Detailed Refactoring Steps
 
-### Phase 1: Update lib-web-ui-design-token Generation
+### Phase 1: Update lib-design-token Generation
 
 #### 1.1 Update Style Dictionary Config
 
-**File:** `packages/lib-web-ui-design-token/scripts/style-dictionary/config.js`
+**File:** `packages/lib-design-token/scripts/style-dictionary/config.js`
 
 **Changes:**
 
@@ -137,7 +136,7 @@ css: {
 
 #### 1.2 Add Dark Theme Selector
 
-**File:** `packages/lib-web-ui-design-token/scripts/style-dictionary/config.js`
+**File:** `packages/lib-design-token/scripts/style-dictionary/config.js`
 
 **Approach:** We need to make Style Dictionary generate different selectors for different themes.
 
@@ -241,12 +240,12 @@ verify the color resolution logic.
 
 ```css
 /* Import font-face definitions (once, shared across all themes) */
-@import '@designgreat/lib-web-ui-design-token/font';
+@import '@designgreat/lib-design-token/font';
 
 /* Import ONE theme's variables */
-@import '@designgreat/lib-web-ui-design-token/css/light';
+@import '@designgreat/lib-design-token/css/light';
 /* OR */
-@import '@designgreat/lib-web-ui-design-token/css/dark';
+@import '@designgreat/lib-design-token/css/dark';
 
 body {
   background: var(--dg-color-background-default); /* Changed from --token- */
@@ -295,9 +294,9 @@ pnpm run build
 
 Check these generated files:
 
-- `packages/lib-web-ui-design-token/dist/css/light/variables.css` - Should have `:root` with `--dg-`
-- `packages/lib-web-ui-design-token/dist/css/dark/variables.css` - Should have `.dark` with `--dg-`
-- `packages/lib-web-ui-design-token/dist/css/dark/variables.scss` - Should have `$dg-`
+- `packages/lib-design-token/dist/css/light/variables.css` - Should have `:root` with `--dg-`
+- `packages/lib-design-token/dist/css/dark/variables.css` - Should have `.dark` with `--dg-`
+- `packages/lib-design-token/dist/css/dark/variables.scss` - Should have `$dg-`
 - `packages/lib-web-ui/src/styles/designgreat-theme.css` - Should remain unchanged
 
 #### 4.3 Test Theme Switching
@@ -319,7 +318,7 @@ Check these generated files:
 
 **Files:**
 
-- `packages/lib-web-ui-design-token/README.md`
+- `packages/lib-design-token/README.md`
 - `packages/lib-web-ui/README.md`
 
 Add notes about:
@@ -359,7 +358,7 @@ Create migration guide for external users:
 
 Update changelog files for:
 
-- `packages/lib-web-ui-design-token/CHANGELOG.md`
+- `packages/lib-design-token/CHANGELOG.md`
 - `packages/lib-web-ui/CHANGELOG.md`
 - `packages/shared/design-token-support/CHANGELOG.md`
 
@@ -367,7 +366,7 @@ Update changelog files for:
 
 1. **Phase 1.1** - Update CSS prefix in Style Dictionary config
 2. **Phase 1.2** - Add dark theme selector support
-3. **Phase 1.3** - Rebuild and verify lib-web-ui-design-token outputs
+3. **Phase 1.3** - Rebuild and verify lib-design-token outputs
 4. **Phase 3.1** - Update CSS integration documentation
 5. **Phase 3.2** - Update all color documentation
 6. **Phase 4** - Full testing and verification
@@ -423,7 +422,7 @@ Update changelog files for:
 If issues arise:
 
 1. Revert changes to `config.js`
-2. Rebuild lib-web-ui-design-token
+2. Rebuild lib-design-token
 3. Keep old prefix `token` for one more release
 4. Add deprecation warnings
 
@@ -485,7 +484,7 @@ If issues arise:
 ## Dependencies
 
 - None external
-- Internal: Changes to lib-web-ui-design-token affect lib-web-ui and docs
+- Internal: Changes to lib-design-token affect lib-web-ui and docs
 
 ## Stakeholders
 

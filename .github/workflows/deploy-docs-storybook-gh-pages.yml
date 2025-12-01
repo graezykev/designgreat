@@ -43,7 +43,7 @@ jobs:
           else
             base_ref=$(git rev-list --max-parents=0 HEAD)
           fi
-          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/docs-design-system/|^packages/lib-web-ui/|^packages/lib-web-ui-design-token/|^\.github/workflows/deploy-(docs-design-system|docs-storybook-gh-pages)\.yml$'; then
+          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/docs-design-system/|^packages/lib-web-ui/|^packages/lib-design-token/|^\.github/workflows/deploy-(docs-design-system|docs-storybook-gh-pages)\.yml$'; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "📚 Docs changes detected"
           else
@@ -60,7 +60,7 @@ jobs:
           else
             base_ref=$(git rev-list --max-parents=0 HEAD)
           fi
-          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/lib-web-ui/|^packages/lib-web-ui-design-token/|^\.github/workflows/deploy-(lib-web-ui-storybook|docs-storybook-gh-pages)\.yml$'; then
+          if git diff --name-only "$base_ref" HEAD | grep -E '^packages/lib-web-ui/|^packages/lib-design-token/|^\.github/workflows/deploy-(lib-web-ui-storybook|docs-storybook-gh-pages)\.yml$'; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "📦 Storybook changes detected"
           else
@@ -109,7 +109,7 @@ jobs:
       - name: Build shared dependencies
         if: steps.strategy.outputs.should_deploy == 'true'
         run: |
-          pnpm --filter @designgreat/lib-web-ui-design-token run build
+          pnpm --filter @designgreat/lib-design-token run build
 
       # ============================================
       # BUILD DOCUSAURUS

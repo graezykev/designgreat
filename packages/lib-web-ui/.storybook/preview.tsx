@@ -2,8 +2,8 @@ import {
   applyTheme,
   getThemeClassName,
   type ThemeName
-} from '@designgreat/lib-web-ui-design-token'
-import '@designgreat/lib-web-ui-design-token/font'
+} from '@designgreat/lib-design-token'
+import '@designgreat/lib-design-token/font'
 import type { Decorator, Preview } from '@storybook/react'
 import { useEffect } from 'react'
 

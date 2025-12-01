@@ -46,7 +46,7 @@ const __dirname = path.dirname(__filename)
 const CONFIG = {
   docsDir: path.join(__dirname, 'docs/colors'),
   cssPath: path.join(__dirname, '../lib-web-ui/dist/lib-web-ui.css'),
-  tokensDir: path.join(__dirname, '../lib-web-ui-design-token/src/tokens/color'),
+  tokensDir: path.join(__dirname, '../lib-design-token/src/tokens/color'),
   files: [
     'base-colors.mdx',
     'accent-colors.mdx',
@@ -123,23 +123,23 @@ async function loadAllTokens() {
     borderTokens,
     shadowTokens
   ] = await Promise.all([
-    import('../lib-web-ui-design-token/dist/tokens/color/base/grey.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/base/saturated.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/accent/grey.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/accent/neutral.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/accent/saturated.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/alpha/grey.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/alpha/neutral.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/brand.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/primary.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/secondary.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/tertiary.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/quartus.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/semantic.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/shortcut/text.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/shortcut/background.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/shortcut/border.js'),
-    import('../lib-web-ui-design-token/dist/tokens/color/shortcut/shadow.js')
+    import('../lib-design-token/dist/tokens/color/base/grey.js'),
+    import('../lib-design-token/dist/tokens/color/base/saturated.js'),
+    import('../lib-design-token/dist/tokens/color/accent/grey.js'),
+    import('../lib-design-token/dist/tokens/color/accent/neutral.js'),
+    import('../lib-design-token/dist/tokens/color/accent/saturated.js'),
+    import('../lib-design-token/dist/tokens/color/alpha/grey.js'),
+    import('../lib-design-token/dist/tokens/color/alpha/neutral.js'),
+    import('../lib-design-token/dist/tokens/color/brand.js'),
+    import('../lib-design-token/dist/tokens/color/primary.js'),
+    import('../lib-design-token/dist/tokens/color/secondary.js'),
+    import('../lib-design-token/dist/tokens/color/tertiary.js'),
+    import('../lib-design-token/dist/tokens/color/quartus.js'),
+    import('../lib-design-token/dist/tokens/color/semantic.js'),
+    import('../lib-design-token/dist/tokens/color/shortcut/text.js'),
+    import('../lib-design-token/dist/tokens/color/shortcut/background.js'),
+    import('../lib-design-token/dist/tokens/color/shortcut/border.js'),
+    import('../lib-design-token/dist/tokens/color/shortcut/shadow.js')
   ])
 
   // Build token paths from all imported modules

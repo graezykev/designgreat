@@ -7,11 +7,11 @@
  * 
  * Note: Fonts are NOT included here to keep the bundle clean.
  * Consumers must import fonts separately:
- * import '@designgreat/lib-web-ui-design-token/font'
+ * import '@designgreat/lib-design-token/font'
  */
 
 /* Design Tokens - Light (:root) and Dark (.dg-theme-dark) themes */
-@import '@designgreat/lib-web-ui-design-token/css';
+@import '@designgreat/lib-design-token/css';
 
 /* Tailwind utilities + component styles */
 @import './tailwind.css';

@@ -159,7 +159,7 @@ After token changes, test dependent packages:
 
 ```bash
 # Test design token package
-pnpm --filter @designgreat/lib-web-ui-design-token build
+pnpm --filter @designgreat/lib-design-token build
 
 # Test component library
 pnpm --filter @designgreat/lib-web-ui build
@@ -175,11 +175,11 @@ Test that CSS variables are correctly generated:
 
 ```bash
 # Check generated CSS files
-cat packages/lib-web-ui-design-token/dist/css/light/variables.css
-cat packages/lib-web-ui-design-token/dist/css/dark/variables.css
+cat packages/lib-design-token/dist/css/light/variables.css
+cat packages/lib-design-token/dist/css/dark/variables.css
 
 # Check TypeScript exports
-cat packages/lib-web-ui-design-token/src/generated/themes.ts
+cat packages/lib-design-token/src/generated/themes.ts
 ```
 
 ### Visual Regression Testing
@@ -188,7 +188,7 @@ Use Storybook to verify visual changes:
 
 ```bash
 # Build tokens and component library
-pnpm --filter @designgreat/lib-web-ui-design-token build
+pnpm --filter @designgreat/lib-design-token build
 pnpm --filter @designgreat/lib-web-ui build
 
 # Start Storybook
@@ -219,9 +219,9 @@ Set up git hooks to run checks before committing:
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm --filter @designgreat/lib-web-ui-design-token run lint
-pnpm --filter @designgreat/lib-web-ui-design-token run test
-pnpm --filter @designgreat/lib-web-ui-design-token run validate
+pnpm --filter @designgreat/lib-design-token run lint
+pnpm --filter @designgreat/lib-design-token run test
+pnpm --filter @designgreat/lib-design-token run validate
 ```
 
 ## Quality Gates

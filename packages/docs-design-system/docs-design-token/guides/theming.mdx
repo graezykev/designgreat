@@ -40,7 +40,7 @@ When you apply `.dg-theme-dark` to an element, all its descendants automatically
 
 ```tsx
 import { useState } from 'react'
-import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+import { getThemeClassName } from '@designgreat/lib-design-token'
 
 function App() {
   const [isDark, setIsDark] = useState(false)
@@ -59,7 +59,7 @@ function App() {
 ### Option 2: Direct Class Manipulation
 
 ```typescript
-import { THEME_CLASSES } from '@designgreat/lib-web-ui-design-token'
+import { THEME_CLASSES } from '@designgreat/lib-design-token'
 
 // Apply dark theme
 document.documentElement.classList.add(THEME_CLASSES.dark)
@@ -71,7 +71,7 @@ document.documentElement.classList.remove(THEME_CLASSES.dark)
 ### Option 3: Using `applyTheme` Utility
 
 ```typescript
-import { applyTheme } from '@designgreat/lib-web-ui-design-token'
+import { applyTheme } from '@designgreat/lib-design-token'
 
 // Apply to document root
 applyTheme(document.documentElement, 'dark')
@@ -88,7 +88,7 @@ Automatically match the user's OS color scheme:
 
 ```tsx
 import { useState, useEffect } from 'react'
-import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-design-token'
 
 function App() {
   const [theme, setTheme] = useState<ThemeName>(() => {
@@ -121,7 +121,7 @@ Save the user's theme choice to localStorage:
 
 ```tsx
 import { useState, useEffect } from 'react'
-import { getThemeClassName, type ThemeName } from '@designgreat/lib-web-ui-design-token'
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-design-token'
 
 function App() {
   const [theme, setTheme] = useState<ThemeName>(() => {
@@ -159,7 +159,7 @@ For SSR frameworks like Next.js, prevent flash of wrong theme:
 ```tsx
 // app/layout.tsx (Next.js App Router)
 import { cookies } from 'next/headers'
-import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+import { getThemeClassName } from '@designgreat/lib-design-token'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = cookies()
@@ -209,7 +209,7 @@ import {
   isThemeApplied,
   getOppositeTheme,
   THEME_CLASSES
-} from '@designgreat/lib-web-ui-design-token'
+} from '@designgreat/lib-design-token'
 
 // Get class name
 const darkClass = getThemeClassName('dark')  // 'dg-theme-dark'

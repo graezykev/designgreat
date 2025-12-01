@@ -1,6 +1,6 @@
 import Heading from '@theme/Heading'
 import clsx from 'clsx'
-import type { ReactNode } from 'react'
+import type { ComponentType, ReactNode } from 'react'
 
 import SvgMountain from '@site/static/img/undraw_docusaurus_mountain.svg'
 import SvgReact from '@site/static/img/undraw_docusaurus_react.svg'
@@ -8,16 +8,19 @@ import SvgTree from '@site/static/img/undraw_docusaurus_tree.svg'
 
 import styles from './styles.module.css'
 
+// Type workaround for Docusaurus SVG imports with React 19 types
+type SvgComponent = ComponentType<{ className?: string; role?: string }>
+
 type FeatureItem = {
   readonly title: string;
-  readonly Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  readonly Svg: SvgComponent;
   readonly description: ReactNode;
 }
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Easy to Use',
-    Svg: SvgMountain,
+    Svg: SvgMountain as SvgComponent,
     description: (
       <>
         Docusaurus was designed from the ground up to be easily installed and
@@ -27,7 +30,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Focus on What Matters',
-    Svg: SvgTree,
+    Svg: SvgTree as SvgComponent,
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
@@ -37,7 +40,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Powered by React',
-    Svg: SvgReact,
+    Svg: SvgReact as SvgComponent,
     description: (
       <>
         Extend or customize your website layout by reusing React. Docusaurus can

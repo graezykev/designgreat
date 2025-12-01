@@ -22,17 +22,17 @@ Transform the design token system to use consistent naming and proper theme sele
 
 ### ❌ Still Using `--token-` Prefix (Needs Fix)
 
-- ✗ `lib-web-ui-design-token` raw CSS output
+- ✗ `lib-design-token` raw CSS output
 - ✗ Documentation examples (Option 2 in css-integration.mdx)
 
 ### 🔍 Key Finding
 
 **The system has two parallel approaches:**
 
-1. **Old/Direct:** `lib-web-ui-design-token` → CSS files → Direct import
+1. **Old/Direct:** `lib-design-token` → CSS files → Direct import
    - Uses `--token-` prefix ❌
    - Both themes use `:root` (conflicts!) ❌
-2. **New/Wrapped:** `lib-web-ui-design-token` → `design-token-support` → Generated CSS
+2. **New/Wrapped:** `lib-design-token` → `design-token-support` → Generated CSS
    - Uses `--dg-` prefix ✅
    - Proper selectors (`:root`, `.dg-theme-dark`) ✅
 
@@ -41,9 +41,9 @@ generation.
 
 ## 🔨 Changes Required
 
-### 1️⃣ lib-web-ui-design-token (Source)
+### 1️⃣ lib-design-token (Source)
 
-**File:** `packages/lib-web-ui-design-token/scripts/style-dictionary/config.js`
+**File:** `packages/lib-design-token/scripts/style-dictionary/config.js`
 
 ```diff
 css: {
@@ -140,14 +140,14 @@ These already work correctly:
 
 ### Code Changes
 
-1. `packages/lib-web-ui-design-token/scripts/style-dictionary/config.js` - Main config
+1. `packages/lib-design-token/scripts/style-dictionary/config.js` - Main config
 2. `packages/docs-design-system/docs-design-token/guides/css-integration.mdx` - Doc update
 
 ### Generated Files (Will Change)
 
-- `packages/lib-web-ui-design-token/dist/css/light/variables.css`
-- `packages/lib-web-ui-design-token/dist/css/dark/variables.css`
-- `packages/lib-web-ui-design-token/dist/css/dark/variables.scss`
+- `packages/lib-design-token/dist/css/light/variables.css`
+- `packages/lib-design-token/dist/css/dark/variables.css`
+- `packages/lib-design-token/dist/css/dark/variables.scss`
 
 ### No Changes Needed
 

@@ -360,7 +360,7 @@ For a comprehensive explanation of theme-aware colors, including visual examples
 ### Using in TypeScript/JavaScript
 
 ```typescript
-import { tokens } from '@designgreat/lib-web-ui-design-token'
+import { tokens } from '@designgreat/lib-design-token'
 
 // Access accent colors
 const primaryColor = tokens.color.accent.blue.DEFAULT
@@ -387,7 +387,7 @@ const subtleBackground = tokens.color.accent.neutral.silent
 ### File Structure
 
 ```
-packages/lib-web-ui-design-token/src/tokens/color/accent/
+packages/lib-design-token/src/tokens/color/accent/
   ├── grey.js       # Grey accent gradients (12 levels)
   ├── neutral.js    # Alias to grey
   └── saturated.js  # All saturated color gradients (10 levels each)
@@ -411,7 +411,7 @@ const gradientConfig = {
 ```
 
 :::info Implementation
-The gradient generation is implemented in [`color-gradient.js`](https://github.com/graezykev/designgreat/blob/main/packages/lib-web-ui-design-token/scripts/style-dictionary/color-gradient.js) using the `generateColorShades` function.
+The gradient generation is implemented in [`color-gradient.js`](https://github.com/graezykev/designgreat/blob/main/packages/lib-design-token/scripts/style-dictionary/color-gradient.js) using the `generateColorShades` function.
 :::
 
 ### Theme Switching Via Aliases

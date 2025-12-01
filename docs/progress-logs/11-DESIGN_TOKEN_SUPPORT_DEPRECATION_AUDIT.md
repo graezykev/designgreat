@@ -21,8 +21,8 @@ These files are **documentation only** and don't need changes:
 9. ✅ `packages/lib-web-ui/CHANGELOG.md` - Historical reference
 10. ✅ `packages/docs-design-system/CHANGELOG.md` - Historical reference
 11. ✅ `pnpm-lock.yaml` - Will update when we reinstall
-12. ✅ `packages/lib-web-ui-design-token/scripts/style-dictionary/prebuild-download-fonts.js` -
-    Comment only
+12. ✅ `packages/lib-design-token/scripts/style-dictionary/prebuild-download-fonts.js` - Comment
+    only
 
 ---
 
@@ -105,7 +105,7 @@ external: ['@designgreat/design-token-support', ...]
 
 5. **packages/docs-design-system/docs-design-token/guides/api/typescript.mdx**
    - May reference types from the package
-   - **Action:** Update to reference lib-web-ui-design-token
+   - **Action:** Update to reference lib-design-token
 
 6. **packages/docs-design-system/docs-design-token/guides/api/runtime-apis.mdx**
    - API documentation

@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@designgreat/lib-web-ui": "workspace:*",
-    "@designgreat/lib-web-ui-design-token": "workspace:*",
+    "@designgreat/lib-design-token": "workspace:*",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-content-docs": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",

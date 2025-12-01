@@ -103,7 +103,7 @@ pnpm run build  # Should work now
 
 ✅ **No action needed** - Already uses direct CSS import
 
-### If Using `lib-web-ui-design-token`
+### If Using `lib-design-token`
 
 ✅ **No action needed** - Package now exports proper CSS with `--dg-` prefix
 
@@ -117,14 +117,14 @@ import { createThemeConfig } from '@designgreat/design-token-support'
 const theme = createThemeConfig('light')
 
 // NEW
-import { light } from '@designgreat/lib-web-ui-design-token'
+import { light } from '@designgreat/lib-design-token'
 const theme = light.dg // Access via namespace
 ```
 
 ```css
 /* OLD - Don't use this anymore */
 @import generated CSS from design-token-support /* NEW - Direct import */ @import
-  '@designgreat/lib-web-ui-design-token/css';
+  '@designgreat/lib-design-token/css';
 ```
 
 ---

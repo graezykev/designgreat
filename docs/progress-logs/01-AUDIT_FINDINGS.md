@@ -9,7 +9,7 @@ This document catalogs findings from the comprehensive manual audit of color doc
 
 ### Token → CSS → Docs Relationship
 
-1. **Token Definitions** (lib-web-ui-design-token/src/tokens/color/)
+1. **Token Definitions** (lib-design-token/src/tokens/color/)
    - Define tokens with references like `{color.base.grey}`
    - Include metadata like `attributes: { alpha: 0.7 }`
 

@@ -94,9 +94,9 @@ getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
 
 ```typescript
 // In your app
-import '@designgreat/lib-web-ui-design-token/css/light'
+import '@designgreat/lib-design-token/css/light'
 // or
-import '@designgreat/lib-web-ui-design-token/css/dark'
+import '@designgreat/lib-design-token/css/dark'
 ```
 
 ### Theme Switching Not Working
@@ -111,7 +111,7 @@ import '@designgreat/lib-web-ui-design-token/css/dark'
 
 ```typescript
 // Correct setup
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/css'
 
 // Apply theme by adding class
 const DARK_THEME_CLASS = 'dg-theme-dark'
@@ -123,14 +123,14 @@ document.body.classList.add(DARK_THEME_CLASS)
 **Symptom:** Type errors when using tokens
 
 ```
-Cannot find module '@designgreat/lib-web-ui-design-token' or its corresponding type declarations.
+Cannot find module '@designgreat/lib-design-token' or its corresponding type declarations.
 ```
 
 **Solution:**
 
-1. Ensure package is installed: `pnpm add @designgreat/lib-web-ui-design-token`
+1. Ensure package is installed: `pnpm add @designgreat/lib-design-token`
 2. Check that `dist/index.d.ts` exists in the package
-3. Rebuild the design token package: `pnpm --filter @designgreat/lib-web-ui-design-token build`
+3. Rebuild the design token package: `pnpm --filter @designgreat/lib-design-token build`
 4. Clear TypeScript cache: `rm -rf node_modules/.cache/`
 
 ## Token Authoring Issues
@@ -281,12 +281,12 @@ export default {
 **Symptom:** Component library fails to build after token changes
 
 ```
-Error: Cannot find module '@designgreat/lib-web-ui-design-token/css/light'
+Error: Cannot find module '@designgreat/lib-design-token/css/light'
 ```
 
 **Solution:**
 
-1. Rebuild design token package: `pnpm --filter @designgreat/lib-web-ui-design-token build`
+1. Rebuild design token package: `pnpm --filter @designgreat/lib-design-token build`
 2. Clear node_modules cache: `pnpm install --force`
 3. Rebuild dependent packages
 
@@ -296,7 +296,7 @@ Error: Cannot find module '@designgreat/lib-web-ui-design-token/css/light'
 
 **Solution:**
 
-1. Rebuild tokens: `pnpm --filter @designgreat/lib-web-ui-design-token build`
+1. Rebuild tokens: `pnpm --filter @designgreat/lib-design-token build`
 2. Rebuild component library: `pnpm --filter @designgreat/lib-web-ui build`
 3. Restart Storybook: `pnpm --filter @designgreat/lib-web-ui run storybook`
 4. Hard refresh browser (Cmd+Shift+R)

@@ -125,7 +125,7 @@ To understand which colors change between themes and why, see [Core Concepts & T
 For SCSS projects, import the SCSS variables:
 
 ```scss
-@import '@designgreat/lib-web-ui-design-token/scss/light';
+@import '@designgreat/lib-design-token/scss/light';
 
 .my-component {
   background: $dg-color-background-default;
@@ -145,7 +145,7 @@ SCSS variables are **not theme-aware** — they compile to static values. For th
 Access token values programmatically when needed:
 
 ```typescript
-import { themes } from '@designgreat/lib-web-ui-design-token'
+import { themes } from '@designgreat/lib-design-token'
 
 // Access any token value
 const primaryColor = themes.light.dg.color.primary.DEFAULT  // "#0055cc"

@@ -10,15 +10,15 @@ along the way._
 It was supposed to be a simple refactoring task. The kind of thing you knock out before lunch and
 feel good about. Maybe grab a coffee afterward, feeling productive.
 
-The developer had a monorepo with a design system. Two main packages: `lib-web-ui-design-token` (the
-design tokens - colors, spacing, typography, all the visual DNA of the system) and `lib-web-ui` (the
-UI components - buttons, inputs, dialogs, the actual stuff users see and interact with). There was
-also a third package lurking in the shadows called `design-token-support` that provided helper
-utilities, but we'll get to that nightmare later. Oh, we'll definitely get to that.
+The developer had a monorepo with a design system. Two main packages: `lib-design-token` (the design
+tokens - colors, spacing, typography, all the visual DNA of the system) and `lib-web-ui` (the UI
+components - buttons, inputs, dialogs, the actual stuff users see and interact with). There was also
+a third package lurking in the shadows called `design-token-support` that provided helper utilities,
+but we'll get to that nightmare later. Oh, we'll definitely get to that.
 
 The ask was straightforward:
 
-> "I want to decouple lib-web-ui-design-token and lib-web-ui. The design token package should be
+> "I want to decouple lib-design-token and lib-web-ui. The design token package should be
 > standalone - users should be able to use it by itself. When someone uses lib-web-ui, they're also
 > using the tokens, but they could also decide to use just the tokens without the components."
 
@@ -74,9 +74,9 @@ The developer made their choices quickly and decisively:
 I even asked clarifying questions! I was being so thorough! I wanted to make sure I understood the
 requirements completely before diving in. The developer explained their vision clearly:
 
-> "The reason I want to refactor is that I want to decouple lib-web-ui-design-token and lib-web-ui.
-> lib-web-ui-design-token comes as a dependency for lib-web-ui, but lib-web-ui-design-token can also
-> be used independently."
+> "The reason I want to refactor is that I want to decouple lib-design-token and lib-web-ui.
+> lib-design-token comes as a dependency for lib-web-ui, but lib-design-token can also be used
+> independently."
 
 Perfect. Crystal clear. The design token package should be the foundation that can stand alone. The
 component library builds on top of it but doesn't own it. Users can choose: tokens only, or tokens
@@ -117,8 +117,8 @@ Spoiler: It was a lot. And it was that bad.
 ### First Blood: The CSS Prefix
 
 With the plan approved, I dove into the code. First stop: the Style Dictionary configuration in
-`lib-web-ui-design-token`. This is where the magic happens - where JSON token definitions get
-transformed into CSS, SCSS, JavaScript, and TypeScript outputs.
+`lib-design-token`. This is where the magic happens - where JSON token definitions get transformed
+into CSS, SCSS, JavaScript, and TypeScript outputs.
 
 I updated the configuration. Changed the prefix from `token` to `dg`. Created a custom format for
 themed CSS output that would use `:root` for light theme and `.dg-theme-dark` for dark theme.
@@ -129,7 +129,7 @@ exports to expose all the new entry points.
 Feeling good. Making progress. The code changes looked clean. Time to build.
 
 ```
-Building lib-web-ui-design-token...
+Building lib-design-token...
 ```
 
 Build succeeded! Great! Let me just check the output to make sure everything looks right...
@@ -397,8 +397,8 @@ weren't being defined. The components that relied on those variables had nothing
 I needed to add explicit imports for the design token CSS:
 
 ```typescript
-import '@designgreat/lib-web-ui-design-token/css'
-import '@designgreat/lib-web-ui-design-token/font'
+import '@designgreat/lib-design-token/css'
+import '@designgreat/lib-design-token/font'
 ```
 
 The first import loads the CSS custom properties - all the `--dg-color-*`, `--dg-spacing-*`
@@ -713,8 +713,8 @@ I added a "Phase 0" that builds all packages before running tests:
 ```bash
 section "Phase 0: Building Packages"
 
-echo "Building lib-web-ui-design-token..."
-cd packages/lib-web-ui-design-token
+echo "Building lib-design-token..."
+cd packages/lib-design-token
 pnpm run build
 cd ../..
 
@@ -750,8 +750,8 @@ I added a "Phase 7" for quality checks:
 ```bash
 section "Phase 7: Quality Checks"
 
-echo "Running lib-web-ui-design-token quality checks..."
-cd packages/lib-web-ui-design-token
+echo "Running lib-design-token quality checks..."
+cd packages/lib-design-token
 pnpm run lint
 pnpm run typecheck
 pnpm run validate
@@ -891,7 +891,7 @@ But the developer spotted the problem:
 > "As we deprecate @designgreat/design-token-support, the usage of getThemeClassName() to generate
 > theme classes has been changed to hardcoding of dg-theme-dark, etc., but the hardcoding or literal
 > usage is still not elegant. I think we still need a helper function like the previous
-> getThemeClassName() from lib-web-ui-design-token instead of hardcoding. What do you think?"
+> getThemeClassName() from lib-design-token instead of hardcoding. What do you think?"
 
 **Error #13: Hardcoding Instead of Abstraction**
 
@@ -981,7 +981,7 @@ document.body.className = DARK_THEME_CLASS
 Now needed to show:
 
 ```typescript
-import { applyTheme } from '@designgreat/lib-web-ui-design-token'
+import { applyTheme } from '@designgreat/lib-design-token'
 applyTheme(document.body, 'dark')
 ```
 
@@ -1011,7 +1011,7 @@ After adding the theme utilities and updating all the imports, I ran lint. It fa
 failed.
 
 ```
-error  `@designgreat/lib-web-ui-design-token` import should occur before type import of `@storybook/react`
+error  `@designgreat/lib-design-token` import should occur before type import of `@storybook/react`
 error  'THEME_CLASSES' is defined but never used
 ```
 
@@ -1022,8 +1022,8 @@ instead. The import was still there, unused, taking up space, confusing readers.
 
 Second, my import order was wrong. The linter had rules about import ordering - external packages
 first, then internal packages, then relative imports. I had them mixed up. The
-`@designgreat/lib-web-ui-design-token` import was after the `@storybook/react` type import when it
-should have been before.
+`@designgreat/lib-design-token` import was after the `@storybook/react` type import when it should
+have been before.
 
 Small things. Nitpicky things. But the linter enforces consistency, and consistency matters in a
 codebase that multiple people work on.
@@ -1099,7 +1099,7 @@ Each workflow had a build step that built design-token-support before building o
 - name: Build dependencies
   run: |
     pnpm --filter @designgreat/design-token-support run build
-    pnpm --filter @designgreat/lib-web-ui-design-token run build
+    pnpm --filter @designgreat/lib-design-token run build
     pnpm --filter @designgreat/lib-web-ui run build
 ```
 
@@ -1135,7 +1135,7 @@ updates - I ran the test script one more time:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   Phase 0: Building Packages
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Building lib-web-ui-design-token... ✓
+Building lib-design-token... ✓
 Building lib-web-ui... ✓
 Building docs-design-system... ✓
 
@@ -1272,7 +1272,7 @@ But it should have taken maybe two hours, three at most.
 
 - **Time spent**: Almost a full work day (~8 hours)
 - **Files modified**: 50+
-- **Packages affected**: 3 (lib-web-ui-design-token, lib-web-ui, docs-design-system)
+- **Packages affected**: 3 (lib-design-token, lib-web-ui, docs-design-system)
 - **Packages deleted**: 1 (design-token-support)
 - **Build errors encountered**: 15+
 - **Times documentation was updated**: 4+ passes
@@ -1295,9 +1295,9 @@ incomplete review, each "oops, I missed that" moment. They had to repeatedly che
 out things I'd missed, and guide me toward better solutions. They had to ask the obvious questions I
 should have asked myself.
 
-The end result is good: a cleaner architecture with `lib-web-ui-design-token` as a standalone
-package, proper helper utilities for theme management, comprehensive documentation, and a thorough
-test script. The codebase is better for this refactor.
+The end result is good: a cleaner architecture with `lib-design-token` as a standalone package,
+proper helper utilities for theme management, comprehensive documentation, and a thorough test
+script. The codebase is better for this refactor.
 
 But the journey there was far more painful than it needed to be. Far more time-consuming. Far more
 frustrating for everyone involved.

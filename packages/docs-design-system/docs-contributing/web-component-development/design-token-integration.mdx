@@ -11,7 +11,7 @@ This page explains how the component library integrates with design tokens.
 
 ```
 ┌────────────────────────────────┐
-│ lib-web-ui-design-token build  │ ← Design token package
+│ lib-design-token build  │ ← Design token package
 │ • Style Dictionary processes   │
 │   token JSON files             │
 │ • Generates CSS variables      │
@@ -21,7 +21,7 @@ This page explains how the component library integrates with design tokens.
 ┌────────────────────────────────┐
 │ lib-web-ui generate:theme      │ ← This package
 │ • Reads generated CSS from     │
-│   lib-web-ui-design-token      │
+│   lib-design-token      │
 │ • Combines into single file    │
 │ • Emits to src/styles/         │
 │ • Order: light (:root) first,  │
@@ -71,11 +71,11 @@ This allows using design tokens directly in utility classes:
 
 ## Regenerating Tokens
 
-During development, you may need to regenerate tokens after changes to `lib-web-ui-design-token`:
+During development, you may need to regenerate tokens after changes to `lib-design-token`:
 
 ```bash
 # From monorepo root
-pnpm --filter @designgreat/lib-web-ui-design-token build
+pnpm --filter @designgreat/lib-design-token build
 pnpm --filter @designgreat/lib-web-ui generate:theme
 ```
 

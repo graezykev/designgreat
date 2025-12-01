@@ -9,7 +9,7 @@ Get design tokens working in **2 minutes**.
 ## 1. Install
 
 ```bash
-pnpm add @designgreat/lib-web-ui-design-token
+pnpm add @designgreat/lib-design-token
 ```
 
 ## 2. Import
@@ -18,8 +18,8 @@ Add these imports to your app's entry file:
 
 ```tsx
 // main.tsx, app/layout.tsx, or _app.tsx
-import '@designgreat/lib-web-ui-design-token/font'
-import '@designgreat/lib-web-ui-design-token/css'
+import '@designgreat/lib-design-token/font'
+import '@designgreat/lib-design-token/css'
 ```
 
 ## 3. Use
@@ -49,7 +49,7 @@ Reference design tokens as CSS variables:
 Wrap your app and toggle the theme class:
 
 ```tsx
-import { getThemeClassName } from '@designgreat/lib-web-ui-design-token'
+import { getThemeClassName } from '@designgreat/lib-design-token'
 
 function App() {
   const [isDark, setIsDark] = useState(false)
