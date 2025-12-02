@@ -1,0 +1,17 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Favicon - Corporate pixel grid - Design Great -->
+  <!-- Simplified for small sizes with stronger contrast -->
+  <!-- Row 1 -->
+  <rect x="2" y="2" width="8" height="8" rx="1.5" fill="#0055cc"/>
+  <rect x="12" y="2" width="8" height="8" rx="1.5" fill="#0055cc" fill-opacity="0.55"/>
+  <rect x="22" y="2" width="8" height="8" rx="1.5" fill="#0055cc" fill-opacity="0.25"/>
+  <!-- Row 2 -->
+  <rect x="2" y="12" width="8" height="8" rx="1.5" fill="#0055cc" fill-opacity="0.55"/>
+  <rect x="12" y="12" width="8" height="8" rx="1.5" fill="#0055cc"/>
+  <rect x="22" y="12" width="8" height="8" rx="1.5" fill="#0055cc" fill-opacity="0.55"/>
+  <!-- Row 3 -->
+  <rect x="2" y="22" width="8" height="8" rx="1.5" fill="#0055cc" fill-opacity="0.25"/>
+  <rect x="12" y="22" width="8" height="8" rx="1.5" fill="#0055cc" fill-opacity="0.55"/>
+  <rect x="22" y="22" width="8" height="8" rx="1.5" fill="#0055cc"/>
+</svg>
+
