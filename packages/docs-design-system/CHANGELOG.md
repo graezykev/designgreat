@@ -1,5 +1,25 @@
 # @designgreat/docs-design-system
 
+## 0.6.5
+
+### Patch Changes
+
+- 48e599a: Fixed missing active navbar link highlight color. Added `--ifm-navbar-link-active-color`
+  CSS variable and `.navbar__link--active` styling to properly highlight the current page in
+  navigation.
+
+  **Related PR:** [#41](https://github.com/graezykev/designgreat/pull/41)
+
+  **Author:** @chunman-yeung
+
+- 48e599a: Updated Tailwind integration docs to recommend importing library CSS before
+  `@tailwind utilities`. This ensures consumer utility classes can override library component styles
+  as expected.
+
+  **Related PR:** [#41](https://github.com/graezykev/designgreat/pull/41)
+
+  **Author:** @chunman-yeung
+
 ## 0.6.4
 
 ### Patch Changes
