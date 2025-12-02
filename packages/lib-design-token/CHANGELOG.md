@@ -1,4 +1,4 @@
-# @designgreat/lib-web-ui-design-token
+# @designgreat/lib-design-token
 
 ## 0.5.2
 
