@@ -1,17 +1,21 @@
 /**
  * Main stylesheet for @designgreat/lib-web-component
  * 
- * Import chain:
- * 1. Design tokens (CSS variables for theming)
- * 2. Tailwind utilities + component styles
+ * CSS Layers (lowest to highest priority):
+ * 1. dg-tokens    - Design tokens (CSS variables)
+ * 2. dg-components - Component styles (Button, Dialog, etc.)
+ * 3. (unlayered)  - Tailwind utilities (highest priority, can override everything)
  * 
  * Note: Fonts are NOT included here to keep the bundle clean.
  * Consumers must import fonts separately:
  * import '@designgreat/lib-design-token/font'
  */
 
-/* Design Tokens - Light (:root) and Dark (.dg-theme-dark) themes */
-@import '@designgreat/lib-design-token/css';
+/* Declare layer order - earlier = lower priority */
+@layer dg-tokens, dg-components;
 
-/* Tailwind utilities + component styles */
+/* Design Tokens - Light (:root) and Dark (.dg-theme-dark) themes */
+@import '@designgreat/lib-design-token/css' layer(dg-tokens);
+
+/* Component styles (layered) + Tailwind utilities (unlayered) */
 @import './tailwind.css';

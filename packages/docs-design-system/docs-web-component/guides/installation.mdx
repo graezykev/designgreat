@@ -54,24 +54,90 @@ The CSS import includes design tokens, Tailwind utilities, and component styles 
 
 ## Tailwind Projects
 
-If your project already uses Tailwind, import the library CSS **before** `@tailwind utilities`:
+The library uses [CSS Cascade Layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for predictable styling:
+
+```
+Layer Priority (lowest → highest):
+┌─────────────────┐
+│ dg-tokens       │  Design tokens (CSS variables)
+├─────────────────┤
+│ dg-components   │  Component styles (Button, Dialog, etc.)
+├─────────────────┤
+│ (unlayered)     │  Tailwind utilities — always wins
+└─────────────────┘
+```
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="v4" label="Tailwind v4" default>
+
+Tailwind v4 uses native CSS layers. Declare layer order explicitly for seamless integration:
+
+```css
+/* Declare layer order — library layers + Tailwind layers */
+@layer dg-tokens, dg-components, base, components, utilities, app-overrides;
+
+@import '@designgreat/lib-web-component/dist/lib-web-component.css';
+@import "tailwindcss";
+
+/* Optional: custom overrides layer */
+@layer app-overrides {
+  .dg-btn--primary {
+    border-radius: 9999px;
+  }
+}
+```
+
+:::tip Why Layer Order Matters in v4
+Tailwind v4's `base`, `components`, and `utilities` are real CSS layers. By declaring the full order upfront, you control exactly how library styles, Tailwind styles, and your overrides interact.
+:::
+
+</TabItem>
+<TabItem value="v3" label="Tailwind v3">
+
+Import the library CSS **before** `@tailwind utilities`:
 
 ```css
 @tailwind base;
 @tailwind components;
 
-/* Import library CSS here — before utilities */
+/* Library CSS — layered, can be overridden by utilities */
 @import '@designgreat/lib-web-component/dist/lib-web-component.css';
 
 @tailwind utilities;
 ```
 
-:::info Why This Order?
+**With explicit layer control** (for custom overrides):
+
+```css
+/* Declare all layers upfront — order determines priority */
+@layer dg-tokens, dg-components, app-overrides;
+
+@tailwind base;
+@tailwind components;
+
+@import '@designgreat/lib-web-component/dist/lib-web-component.css';
+
+@tailwind utilities;
+
+/* Your custom overrides in a dedicated layer */
+@layer app-overrides {
+  .dg-btn--primary {
+    border-radius: 9999px;
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 This ensures your utility classes can override library component styles:
+
 ```jsx
 <Button className="bg-red-500 rounded-none">Custom styled</Button>
 ```
-:::
 
 Add to your content config for tree-shaking:
 

@@ -7,29 +7,27 @@ description: Design token integration and CSS generation
 
 This page explains how the component library integrates with design tokens.
 
-## Token Generation Flow
+## Token Integration Flow
 
 ```
 ┌────────────────────────────────┐
-│ lib-design-token build  │ ← Design token package
+│ @designgreat/lib-design-token  │ ← Design token package
 │ • Style Dictionary processes   │
 │   token JSON files             │
 │ • Generates CSS variables      │
+│ • Exports via /css entry point │
 └───────────────┬────────────────┘
-                │
+                │ @import ... layer(dg-tokens)
                 ▼
 ┌────────────────────────────────┐
-│ lib-web-component generate:theme│ ← This package
-│ • Reads generated CSS from     │
-│   lib-design-token      │
-│ • Combines into single file    │
-│ • Emits to src/styles/         │
-│ • Order: light (:root) first,  │
-│   then dark (.dg-theme-dark)   │
+│ @designgreat/lib-web-component │ ← This package
+│ • Imports tokens directly      │
+│ • Wraps in @layer dg-tokens    │
+│ • No generation step needed    │
 └────────────────────────────────┘
 ```
 
-**Important:** The theme generation script (`scripts/generate-theme-css.ts`) explicitly orders themes as `['light', 'dark']` to ensure proper CSS cascade.
+**Key Point:** Tokens are imported directly from `@designgreat/lib-design-token/css` and wrapped in the `dg-tokens` CSS layer. No local generation script is needed.
 
 ## Tailwind Configuration
 
@@ -69,34 +67,36 @@ This allows using design tokens directly in utility classes:
 - ✅ **Type-safe** - Via Tailwind IntelliSense
 - ✅ **JIT optimization** - Only used utilities are generated
 
-## Regenerating Tokens
+## Rebuilding After Token Changes
 
-During development, you may need to regenerate tokens after changes to `lib-design-token`:
+When design tokens are updated in `lib-design-token`, rebuild to see the changes:
 
 ```bash
 # From monorepo root
 pnpm --filter @designgreat/lib-design-token build
-pnpm --filter @designgreat/lib-web-component generate:theme
+pnpm --filter @designgreat/lib-web-component build
 ```
 
-Or use the dev workflow which handles this automatically:
+Or use the dev workflow which handles hot-reloading:
 
 ```bash
 pnpm --filter @designgreat/lib-web-component dev
 ```
 
-## Token File Location
+## CSS Layer Architecture
 
-Generated theme CSS is committed to the repository for convenience:
+Tokens are imported into the `dg-tokens` layer in `src/styles/index.css`:
 
+```css
+@layer dg-tokens, dg-components;
+
+@import '@designgreat/lib-design-token/css' layer(dg-tokens);
 ```
-src/styles/designgreat-theme.css
-```
 
-This allows:
-- Local iteration without rebuilding tokens
-- CI/CD to work without design token build
-- Faster development workflow
+This ensures:
+- Tokens have lower priority than component styles
+- Component styles have lower priority than utility classes
+- Consumers can override styles predictably
 
 ## Next Steps
 
