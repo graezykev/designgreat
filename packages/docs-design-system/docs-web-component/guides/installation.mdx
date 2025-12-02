@@ -54,15 +54,24 @@ The CSS import includes design tokens, Tailwind utilities, and component styles 
 
 ## Tailwind Projects
 
-If your project already uses Tailwind, add the CSS after your directives:
+If your project already uses Tailwind, import the library CSS **before** `@tailwind utilities`:
 
 ```css
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
+/* Import library CSS here — before utilities */
 @import '@designgreat/lib-web-component/dist/lib-web-component.css';
+
+@tailwind utilities;
 ```
+
+:::info Why This Order?
+This ensures your utility classes can override library component styles:
+```jsx
+<Button className="bg-red-500 rounded-none">Custom styled</Button>
+```
+:::
 
 Add to your content config for tree-shaking:
 

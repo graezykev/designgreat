@@ -52,6 +52,7 @@
   --ifm-navbar-background-color: var(--dg-color-background-default);
   --ifm-navbar-link-color: var(--dg-color-text-nav-default);
   --ifm-navbar-link-hover-color: var(--dg-color-text-nav-tertiary-interaction-hover);
+  --ifm-navbar-link-active-color: var(--dg-color-primary-default);
 
   /* Footer */
   --ifm-footer-background-color: var(--dg-color-background-bold);
@@ -132,6 +133,12 @@
 
 .table-of-contents__link--active code {
   color: var(--dg-color-primary-default);
+}
+
+/* Active navbar link styling */
+.navbar__link--active {
+  color: var(--dg-color-primary-default);
+  font-weight: 600;
 }
 
 /* Color demo block styling for documentation */
