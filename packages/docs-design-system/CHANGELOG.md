@@ -1,5 +1,12 @@
 # @designgreat/docs-design-system
 
+## 0.6.7
+
+### Patch Changes
+
+- Updated dependencies [278f847]
+  - @designgreat/lib-web-component@0.7.1
+
 ## 0.6.6
 
 ### Patch Changes
