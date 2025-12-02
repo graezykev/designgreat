@@ -1,4 +1,4 @@
-# @designgreat/lib-web-ui
+# @designgreat/lib-web-component
 
 ## 0.7.1
 
