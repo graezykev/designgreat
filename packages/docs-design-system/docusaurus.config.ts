@@ -11,7 +11,7 @@ const baseUrl = `/${projectName}/`
 const config: Config = {
   title: 'Design Great Docs',
   tagline: 'Documentation hub for the Design System (@designgreat)',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -132,15 +132,16 @@ const config: Config = {
   },
 
   themeConfig: {
-    image: 'img/social-card.png',
+    image: 'img/logo.svg',
     colorMode: {
       respectPrefersColorScheme: true
     },
     navbar: {
-      title: 'Design Great',
+      // Logo and title are rendered by custom src/theme/Logo component
+      title: '',
       logo: {
-        alt: 'Designgreat Logo',
-        src: 'img/logo.svg'
+        alt: 'Design Great Logo',
+        src: 'img/logo.svg' // Fallback, custom component overrides this
       },
       items: [
         {
@@ -228,6 +229,26 @@ const config: Config = {
 
   stylesheets: [
     `${baseUrl}font/font-face.css`
+  ],
+
+  headTags: [
+    // Apple Touch Icon
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        href: `${baseUrl}img/logo.svg`
+      }
+    },
+    // Fallback favicon for older browsers
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: `${baseUrl}img/favicon.ico`
+      }
+    }
   ]
 }
 
