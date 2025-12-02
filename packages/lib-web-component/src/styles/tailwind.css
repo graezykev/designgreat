@@ -1,12 +1,16 @@
 /**
  * Tailwind CSS utilities + component styles
  * 
+ * Layer structure:
+ * - components.css → wrapped in @layer dg-components (can be overridden)
+ * - @tailwind utilities → unlayered (highest priority, always wins)
+ * 
  * Note: We only include @tailwind utilities (not base or components)
  * to avoid unwanted CSS resets that could conflict with consuming applications.
  */
 
-/* Component-specific styles (built with Tailwind) */
-@import './components.css';
+/* Component-specific styles - wrapped in layer for lower specificity */
+@import './components.css' layer(dg-components);
 
-/* Tailwind utilities only */
+/* Tailwind utilities - unlayered so they can override everything */
 @tailwind utilities;

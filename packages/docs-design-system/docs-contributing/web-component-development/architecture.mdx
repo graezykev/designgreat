@@ -27,26 +27,49 @@ dist/
 
 ## CSS Bundling Strategy
 
-### Import Chain
+### CSS Cascade Layers
 
-The library uses a clean, semantic import chain:
+The library uses [CSS Cascade Layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for predictable styling and easy overrides:
+
+```
+Layer Priority (lowest → highest):
+┌─────────────────┐
+│ dg-tokens       │  Design tokens (CSS variables)
+├─────────────────┤
+│ dg-components   │  Component styles (Button, Dialog, etc.)
+├─────────────────┤
+│ (unlayered)     │  Tailwind utilities — always wins
+└─────────────────┘
+```
+
+This architecture ensures:
+- **Consumer utilities override library styles** — `<Button className="bg-red-500">` works as expected
+- **Predictable cascade** — Layer order is explicit, not dependent on import order
+- **Tailwind v3 & v4 compatible** — Works with both versions
+
+### Import Chain
 
 ```
 src/index.ts
-  └─> styles/index.css (single CSS entry point)
-       ├─> @designgreat/lib-design-token/css (design tokens)
+  └─> styles/index.css
+       │
+       ├─> @layer dg-tokens, dg-components;     ← Layer order declaration
+       │
+       ├─> @designgreat/lib-design-token/css    ← Wrapped in @layer dg-tokens
+       │
        └─> tailwind.css
-            ├─> @tailwind utilities (NO base, NO components)
-            └─> components.css (component styles)
+            ├─> components.css                  ← Wrapped in @layer dg-components
+            └─> @tailwind utilities             ← Unlayered (highest priority)
 ```
 
 ### What's Included
 
 The distributed CSS (`dist/lib-web-component.css`) includes:
 
-- ✅ Design token CSS variables (`:root` for light, `.dg-theme-dark` for dark)
-- ✅ Tailwind utilities only (no resets to avoid conflicts)
-- ✅ Component-specific styles
+- ✅ `@layer` declarations for cascade control
+- ✅ Design token CSS variables (`:root` for light, `.dg-theme-dark` for dark) — in `dg-tokens` layer
+- ✅ Component-specific styles — in `dg-components` layer
+- ✅ Tailwind utilities only — unlayered for maximum override priority
 
 ### What's Excluded
 
@@ -62,6 +85,7 @@ This allows consumers to:
 - Integrate seamlessly with existing projects without CSS reset conflicts
 - Control font loading strategy (preload, async, etc.)
 - Avoid duplicate CSS when already using Tailwind
+- Override component styles with utility classes or custom layers
 
 ### Theme CSS Order
 
@@ -76,8 +100,8 @@ This ordering ensures that when the `.dg-theme-dark` class is applied to the `<h
 
 ```
 ┌────────────────────────────────────┐
-│  @designgreat/lib-web-component-design-   │
-│  token (Design Tokens)             │
+│  @designgreat/lib-design-token     │
+│  (Design Tokens)                   │
 │  • CSS variables (colors, spacing) │
 │  • Typography values               │
 │  • Font files + font-face.css      │
@@ -85,9 +109,10 @@ This ordering ensures that when the `.dg-theme-dark` class is applied to the `<h
                │ consumed by
                ▼
 ┌────────────────────────────────────┐
-│  @designgreat/lib-web-component           │
+│  @designgreat/lib-web-component    │
 │  (Component Library)               │
 │  • React components                │
+│  • CSS layers (dg-tokens, dg-components)
 │  • Tailwind config (token-aware)   │
 │  • Component styles                │
 └────────────────────────────────────┘
@@ -108,9 +133,9 @@ packages/lib-web-component/
 │   │   │   └── Button.stories.tsx
 │   │   ├── TextInput/
 │   │   └── Dialog/
-│   ├── styles/              # CSS architecture
-│   │   ├── index.css        # Main entry (tokens + tailwind)
-│   │   ├── tailwind.css     # Tailwind utilities + components
+│   ├── styles/              # CSS architecture (with @layer)
+│   │   ├── index.css        # Layer order + token import
+│   │   ├── tailwind.css     # Components layer + utilities
 │   │   └── components.css   # Component-specific styles
 │   ├── storybook/           # Storybook utilities
 │   │   └── CodeDemoToggle.tsx
