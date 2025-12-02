@@ -1,5 +1,28 @@
 # @designgreat/lib-web-ui
 
+## 0.7.0
+
+### Minor Changes
+
+- 9cbdd54: Added CSS Cascade Layers for predictable styling and easier consumer overrides.
+
+  **New layer architecture:**
+  - `dg-tokens` — Design tokens (lowest priority)
+  - `dg-components` — Component styles
+  - Unlayered utilities — Tailwind utilities (highest priority)
+
+  **Benefits:**
+  - Consumer utility classes like `<Button className="bg-red-500">` now reliably override component
+    styles
+  - Works with both Tailwind v3 and v4
+  - Explicit cascade control regardless of import order
+
+  **Migration:** No breaking changes. Existing consumers will benefit automatically.
+
+  **Related PR:** [#42](https://github.com/graezykev/designgreat/pull/42)
+
+  **Author:** @chunman-yeung
+
 ## 0.6.3
 
 ### Patch Changes

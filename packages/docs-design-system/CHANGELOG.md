@@ -1,5 +1,23 @@
 # @designgreat/docs-design-system
 
+## 0.6.6
+
+### Patch Changes
+
+- 9cbdd54: Updated Tailwind integration documentation:
+  - Added separate tabs for Tailwind v3 and v4 setup instructions
+  - Documented CSS Cascade Layers architecture
+  - Added explicit layer control examples for custom overrides
+  - Updated contributing docs (architecture, design-token-integration) to reflect new layer
+    structure
+
+  **Related PR:** [#42](https://github.com/graezykev/designgreat/pull/42)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [9cbdd54]
+  - @designgreat/lib-web-component@0.7.0
+
 ## 0.6.5
 
 ### Patch Changes
