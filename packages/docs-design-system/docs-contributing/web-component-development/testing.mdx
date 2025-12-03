@@ -1,0 +1,201 @@
+---
+sidebar_position: 6
+description: Testing strategies and quality assurance
+---
+
+# Testing
+
+This guide covers testing strategies and quality assurance for the component library.
+
+## Testing Overview
+
+The component library uses multiple layers of testing:
+
+1. **Unit Tests** — Component behavior with Jest + React Testing Library
+2. **Visual Testing** — Storybook for visual verification
+3. **Type Checking** — TypeScript compilation
+4. **Linting** — Code quality with ESLint
+
+---
+
+## Running Tests
+
+### All Tests
+
+```bash
+pnpm --filter @designgreat/lib-web-component test
+```
+
+### Watch Mode
+
+```bash
+pnpm --filter @designgreat/lib-web-component test -- --watch
+```
+
+### Coverage Report
+
+```bash
+pnpm --filter @designgreat/lib-web-component test -- --coverage
+```
+
+---
+
+## Test Framework
+
+The package uses [Jest](https://jestjs.io/) with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/):
+
+```typescript
+// src/components/Button/Button.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react'
+import { Button } from './Button'
+
+describe('Button', () => {
+  it('renders children correctly', () => {
+    render(<Button>Click me</Button>)
+    expect(screen.getByText('Click me')).toBeInTheDocument()
+  })
+
+  it('calls onClick when clicked', () => {
+    const handleClick = jest.fn()
+    render(<Button onClick={handleClick}>Click</Button>)
+    
+    fireEvent.click(screen.getByRole('button'))
+    expect(handleClick).toHaveBeenCalledTimes(1)
+  })
+
+  it('applies variant class correctly', () => {
+    render(<Button variant="primary">Primary</Button>)
+    expect(screen.getByRole('button')).toHaveClass('dg-btn--primary')
+  })
+})
+```
+
+---
+
+## Test File Structure
+
+Each component has a co-located test file:
+
+```
+src/components/
+├── Button/
+│   ├── Button.tsx
+│   ├── Button.test.tsx      ← Unit tests
+│   └── Button.stories.tsx   ← Storybook stories
+├── TextInput/
+│   ├── TextInput.tsx
+│   ├── TextInput.test.tsx
+│   └── TextInput.stories.tsx
+└── Dialog/
+    ├── Dialog.tsx
+    ├── Dialog.test.tsx
+    └── Dialog.stories.tsx
+```
+
+---
+
+## Writing Component Tests
+
+### What to Test
+
+| Category | Examples |
+|----------|----------|
+| **Rendering** | Component renders, children display correctly |
+| **Props** | Variants, sizes, disabled states apply correctly |
+| **Interactions** | Click handlers, form submissions, keyboard events |
+| **Accessibility** | ARIA attributes, focus management, screen reader text |
+
+### Testing Variants
+
+```typescript
+describe('Button variants', () => {
+  it.each(['primary', 'secondary', 'outline'] as const)(
+    'renders %s variant correctly',
+    (variant) => {
+      render(<Button variant={variant}>Test</Button>)
+      expect(screen.getByRole('button')).toHaveClass(`dg-btn--${variant}`)
+    }
+  )
+})
+```
+
+### Testing Accessibility
+
+```typescript
+describe('Button accessibility', () => {
+  it('has correct role', () => {
+    render(<Button>Click</Button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+
+  it('supports aria-label', () => {
+    render(<Button aria-label="Close dialog">×</Button>)
+    expect(screen.getByLabelText('Close dialog')).toBeInTheDocument()
+  })
+
+  it('is focusable', () => {
+    render(<Button>Focus me</Button>)
+    const button = screen.getByRole('button')
+    button.focus()
+    expect(button).toHaveFocus()
+  })
+})
+```
+
+---
+
+## Visual Testing with Storybook
+
+Use Storybook for visual verification alongside unit tests:
+
+```bash
+pnpm --filter @designgreat/lib-web-component storybook
+```
+
+### When to Use Each
+
+| Approach | Best For |
+|----------|----------|
+| **Jest + RTL** | Behavior, interactions, accessibility |
+| **Storybook** | Visual appearance, design review, documentation |
+
+See [Storybook Workflow](./storybook-workflow) for visual testing details.
+
+---
+
+## Type Checking
+
+### Run Type Check
+
+```bash
+pnpm --filter @designgreat/lib-web-component typecheck
+```
+
+### Type Safety Benefits
+
+- Catches prop type errors at compile time
+- Ensures component APIs match TypeScript definitions
+- Validates imports and exports
+
+---
+
+## Quality Gates
+
+Run all checks before committing:
+
+```bash
+pnpm --filter @designgreat/lib-web-component lint && \
+pnpm --filter @designgreat/lib-web-component test && \
+pnpm --filter @designgreat/lib-web-component typecheck
+```
+
+For CI pipeline and publishing checks, see [Publishing](./publishing).
+
+---
+
+## Next Steps
+
+- See [Storybook Workflow](./storybook-workflow) for visual testing
+- Review [Troubleshooting](./troubleshooting) for common issues
+- Check [Publishing](./publishing) for release process
+

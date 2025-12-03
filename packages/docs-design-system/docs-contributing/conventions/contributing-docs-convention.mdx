@@ -1,0 +1,266 @@
+---
+sidebar_position: 1
+sidebar_label: Contributing Docs
+description: Documentation conventions for contributor development guides
+---
+
+# Contributing Docs Convention
+
+This guide establishes conventions for writing **contributing documentation** — guides that help developers **contribute** to a package.
+
+## Scope
+
+| Aspect | Description |
+|--------|-------------|
+| **Purpose** | How to _contribute_ to a package |
+| **Audience** | Package developers (contributors to the codebase) |
+| **Location** | `/contributing/[package]-development/` |
+| **Focus** | Setup, architecture, workflows, testing |
+
+---
+
+## Folder Structure
+
+### Standard Folders
+
+```
+docs-contributing/
+├── index.mdx                          # Contributing overview
+├── conventions/                       # Documentation conventions
+│   ├── integration-docs-convention.mdx
+│   └── contributing-docs-convention.mdx
+├── design-token-development/          # Package-specific guides
+│   ├── overview.mdx
+│   ├── get-started.mdx
+│   ├── architecture.mdx
+│   └── ...
+└── web-component-development/
+    ├── overview.mdx
+    ├── get-started.mdx
+    ├── architecture.mdx
+    └── ...
+```
+
+### Standard File Order (Progressive)
+
+| Position | File | Purpose | User Journey |
+|----------|------|---------|--------------|
+| 0 | overview.mdx | What & Why | "What is this package?" |
+| 1 | get-started.mdx | Quick setup | "How do I set up?" |
+| 2 | architecture.mdx | How it works | "How is it structured?" |
+| 3 | `[core-dev-workflow]`.mdx | Main dev activity | "How do I work day-to-day?" |
+| 4 | `[specialized]`.mdx | Deep dive | "What about advanced topics?" |
+| 5 | `[build, integration]`.mdx | Build & integration | "How are artifacts generated?" |
+| 6 | `[testing, quality, checking]`.mdx | Testing & quality | "How do I test?" |
+| 7 | `[release, publish, deploy]`.mdx | Release & deployment | "How do I release?" |
+| 8 | troubleshooting.mdx | Debug | "Something's wrong" |
+
+:::note Flexibility
+This is a **guideline**, not strict rules. Adapt based on package needs:
+
+- **Skip files** — Not every package needs `architecture.mdx` or `troubleshooting.mdx`
+- **Merge files** — Combine related topics (e.g., `quality-check-build-deploy.mdx`)
+- **Separate files** - For more complex explanation you can have both `testing.mdx` and `quality.mdx`, etc.
+- **Add files** — Insert specialized docs where they make sense
+- **Reorder** — Adjust positions if it improves the user journey
+
+The goal is a **logical, progressive flow** — not rigid conformity.
+:::
+
+### Package-Specific Files
+
+| Position | design-token-development | web-component-development |
+|----------|--------------------------|---------------------------|
+| 3 | token-authoring.mdx | storybook-workflow.mdx |
+| 4 | font-assets.mdx | font-handling.mdx |
+| 5 | build-system.mdx | design-token-integration.mdx |
+| 6 | testing-validation.mdx | testing.mdx |
+| 7 | publishing.mdx | publishing.mdx |
+| 8 | troubleshooting.mdx | troubleshooting.mdx |
+
+---
+
+## URL Naming
+
+| Element | Convention | Example |
+|---------|------------|---------|
+| Folder | `[package]-development/` | `/contributing/design-token-development/` |
+| Files | lowercase, hyphenated | `get-started`, `token-authoring` |
+| Sidebar ID | `contributingSidebar` | — |
+
+### Naming Rules
+
+- ✅ Use `[package]-development` for folder names
+- ✅ Use lowercase with hyphens for file names
+- ✅ Match file names to content focus
+- ❌ Avoid generic names (`guide.mdx`, `docs.mdx`)
+
+---
+
+## Page Structure
+
+### Overview Page Template
+
+```text
+# [Package Name] Development
+
+[One-sentence description of what this section covers.]
+
+## About This Package
+
+[Package name] is [brief description]. This package provides:
+
+- **Capability 1** — Description
+- **Capability 2** — Description
+- **Capability 3** — Description
+
+## For Consumers vs Contributors
+
+This section is for **contributors working on the package itself**. 
+If you want to **use** this package in your application, 
+see the [[Package] Integration Guides](/path).
+
+## In This Section
+
+[DocCardList component here]
+
+## Related Documentation
+
+- [Integration Guides](/path) — How to consume this package
+- [Related Package Development](/path) — Related contributor guide
+
+## Next Steps
+
+[Bullets guiding to first steps]
+```
+
+### Required Sections
+
+| Section | Required | Purpose |
+|---------|----------|---------|
+| Title | ✅ | "`[Package Name]` Development" |
+| Intro paragraph | ✅ | One sentence explaining scope |
+| About This Package | ✅ | What the package owns and provides |
+| For Consumers vs Contributors | ✅ | Disambiguation with integration link |
+| In This Section | ✅ | DocCardList |
+| Related Documentation | ✅ | Links to integration guide |
+| Next Steps | ✅ | Navigation to get-started |
+
+---
+
+## Section Headings
+
+Use these exact headings for consistency:
+
+| Concept | Heading | ❌ Avoid |
+|---------|---------|----------|
+| Package description | "About This Package" | "Package Overview" |
+| Audience disambiguation | "For Consumers vs Contributors" | "For Users vs Developers" |
+| Child pages | "In This Section" | "Quick Links" |
+| External links | "Related Documentation" | "Related Resources" |
+| Page continuation | "Next Steps" | "What's Next" |
+
+---
+
+## Common Page Types
+
+### get-started.mdx
+
+| Section | Content |
+|---------|---------|
+| Prerequisites | Link to shared setup |
+| Package Location | Filesystem path to the package |
+| Development Commands | Dev server, watch mode (no lint/test) |
+| Next Steps | Link to architecture, workflow, testing |
+
+:::note
+Lint, typecheck, and test commands belong in **testing.mdx** (position 7), not get-started.
+:::
+
+### architecture.mdx
+
+| Section | Content |
+|---------|---------|
+| Project Structure | Directory tree with descriptions |
+| Key Files | Important files explained |
+| Data Flow | How data moves through the system |
+| Design Decisions | Why things are the way they are |
+| Next Steps | Link to core workflow |
+
+### publishing.mdx
+
+| Section | Content |
+|---------|---------|
+| Before Opening a PR | Checklist: build, local checks, update docs, create changeset |
+| CI Pipeline | On Every PR (mermaid + table), On Merge to Main (mermaid), workflow file links |
+| Package Distribution | For npm packages: exports table, published files |
+| Deployment | For non-npm (e.g., docs site): deployment targets, features |
+| Next Steps | Links to changeset workflow, testing, troubleshooting |
+
+:::note
+- **npm packages** use "Package Distribution" (exports, published files)
+- **Non-npm packages** (like docs site) use "Deployment" (GitHub Pages, etc.)
+- Always include mermaid diagrams for CI pipelines
+- Always link to workflow files with 📄 prefix
+:::
+
+### troubleshooting.mdx
+
+| Section | Content |
+|---------|---------|
+| Common Issues | Problem → Solution pairs |
+| Debug Commands | Useful diagnostic commands |
+| Getting Help | Where to ask questions |
+| Next Steps | Links to related docs |
+
+---
+
+## Singular vs Plural
+
+**The noun (subject) determines singular/plural; modifiers stay singular.**
+
+| Example | Modifier | Noun | Result |
+|---------|----------|------|--------|
+| Design Token Development | Design Token | Development (uncountable) | ✅ Singular noun |
+| Font Assets | Font | Assets (multiple) | ✅ Plural noun |
+| Testing | — | Testing (uncountable) | ✅ Singular noun |
+
+---
+
+## Cross-Linking
+
+### Link to Integration Guides
+
+Always include in overview pages:
+
+```markdown
+## For Consumers vs Contributors
+
+This section is for **contributors**. To **use** this package, see the [[Package] Integration Guides](/path).
+```
+
+### Link to Shared Setup
+
+In get-started pages:
+
+```markdown
+:::info Initial Setup
+Complete the [shared setup steps](/contributing#getting-started) first.
+:::
+```
+
+### Link Between Contributing Series
+
+```markdown
+## Related Documentation
+
+- [Design Token Development](/contributing/design-token-development/overview)
+- [Web Component Development](/contributing/web-component-development/overview)
+```
+
+---
+
+## Example
+
+See: [Design Token Development](/contributing/design-token-development/overview)
+

@@ -46,71 +46,10 @@ Component development without Storybook:
 pnpm --filter @designgreat/lib-web-component dev
 ```
 
-## Lint
-
-Lint the component library code:
-
-```bash
-pnpm --filter @designgreat/lib-web-component lint
-```
-
-## Typecheck
-
-Type check without emitting files:
-
-```bash
-pnpm --filter @designgreat/lib-web-component typecheck
-```
-
-## Test and Validate
-
-### Run Tests
-
-Run Jest tests:
-
-```bash
-pnpm --filter @designgreat/lib-web-component test
-```
-
-Watch mode:
-
-```bash
-pnpm --filter @designgreat/lib-web-component test -- --watch
-```
-
-Coverage:
-
-```bash
-pnpm --filter @designgreat/lib-web-component test -- --coverage
-```
-
-## Build
-
-Full production build:
-
-```bash
-pnpm --filter @designgreat/lib-web-component build
-```
-
-This runs the complete pipeline:
-1. Clean previous build artifacts
-2. Type check and emit `.d.ts` files
-3. Bundle components (ESM + CJS) and CSS with Vite
-4. Build static Storybook site
-
-**Build artifacts:**
-- `dist/` – Published package artifacts
-- `storybook-static/` – Deployable Storybook site
-
-### Build Storybook Only
-
-```bash
-pnpm --filter @designgreat/lib-web-component storybook:build
-```
-
 ## Next Steps
 
 - Learn about [Architecture](./architecture) to understand the package structure
 - Follow the [Storybook Workflow](./storybook-workflow) for component development
+- See [Testing](./testing) for quality checks and testing strategies
 - Review [Troubleshooting](./troubleshooting) for common issues
 

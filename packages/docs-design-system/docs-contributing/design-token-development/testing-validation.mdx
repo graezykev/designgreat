@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 description: Quality gates and testing strategies
 ---
 
@@ -197,165 +197,19 @@ pnpm --filter @designgreat/lib-web-component run storybook
 
 Compare component renders before and after token changes.
 
-## Continuous Integration
-
-### CI Pipeline
-
-The monorepo CI runs these checks:
-
-1. Install dependencies (`pnpm install`)
-2. Build all packages (`pnpm run build`)
-3. Run linting (`pnpm run lint`)
-4. Run tests (`pnpm run test`)
-5. Run validation (`pnpm run validate`)
-6. Type check (`pnpm run typecheck`)
-
-### Pre-commit Hooks
-
-Set up git hooks to run checks before committing:
-
-```bash
-# .husky/pre-commit
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-pnpm --filter @designgreat/lib-design-token run lint
-pnpm --filter @designgreat/lib-design-token run test
-pnpm --filter @designgreat/lib-design-token run validate
-```
-
 ## Quality Gates
 
-### Before Committing
-
-Ensure all checks pass:
+Run all checks before committing:
 
 ```bash
-pnpm run lint && \
-pnpm run test && \
-pnpm run typecheck && \
-pnpm run validate
+pnpm run lint && pnpm run test && pnpm run typecheck && pnpm run validate
 ```
 
-### Before Publishing
-
-Additional checks before publishing:
-
-```bash
-# Full build
-pnpm run build
-
-# Verify exports
-node -e "console.log(require('./dist/index.js'))"
-
-# Check package size
-npm pack --dry-run
-
-# Test in example app
-pnpm --filter example-app build
-```
-
-## Common Test Scenarios
-
-### Test Theme Switching
-
-```typescript
-import { getThemeTokens } from '../index'
-
-describe('theme switching', () => {
-  it('should have different colors for light and dark themes', () => {
-    const light = getThemeTokens('light')
-    const dark = getThemeTokens('dark')
-    
-    expect(light.color.background.primary)
-      .not.toBe(dark.color.background.primary)
-  })
-})
-```
-
-### Test Token References
-
-```typescript
-describe('token references', () => {
-  it('should resolve color references correctly', () => {
-    const tokens = getThemeTokens('light')
-    
-    // Verify references are resolved
-    expect(tokens.color.background.primary).toMatch(/^#[0-9A-F]{6}$/i)
-  })
-})
-```
-
-### Test Custom Transforms
-
-```typescript
-describe('alpha transform', () => {
-  it('should apply alpha transparency', () => {
-    const tokens = getThemeTokens('light')
-    
-    // Check that alpha is applied
-    expect(tokens.color.primary.translucent).toContain('rgba')
-  })
-})
-```
-
-## Debugging Test Failures
-
-### View Test Output
-
-```bash
-# Run tests with verbose output
-pnpm run test -- --reporter=verbose
-```
-
-### Debug Specific Test
-
-```bash
-# Run single test file
-pnpm run test src/__tests__/runtime.test.ts
-
-# Run specific test case
-pnpm run test -- -t "should return light theme tokens"
-```
-
-### Inspect Generated Files
-
-When tests fail, check generated files:
-
-```bash
-# View generated themes
-cat src/generated/themes.ts
-
-# View CSS output
-cat dist/css/light/variables.css
-
-# View JS output
-cat dist/jsts/light/variables.js
-```
-
-## Performance Testing
-
-### Build Performance
-
-```bash
-# Time the build
-time pnpm run build:tokens
-```
-
-### Bundle Size Analysis
-
-```bash
-# Check dist size
-du -sh dist/
-
-# Check individual outputs
-ls -lh dist/css/light/
-ls -lh dist/font/
-```
+For publishing checks, see [Publishing](./publishing).
 
 ## Next Steps
 
 - Review [Troubleshooting](./troubleshooting) for common issues
-- Learn about the [Development Workflow](./development-workflow)
+- See [Publishing](./publishing) for Git workflow and PR process
 - Understand the [Build System](./build-system)
 

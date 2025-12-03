@@ -1,33 +1,16 @@
 ---
 sidebar_position: 1
 sidebar_label: Get Started
-description: Clone, install, and run the documentation site locally
+description: Set up the documentation site for local development
 ---
 
 # Get Started
 
 Get the documentation site running locally on your machine.
 
-## Prerequisites
-
-- **Node.js** 22 or higher
-- **PNPM** 9 or higher
-- **Git**
-
-## Clone the Repository
-
-```bash
-git clone https://github.com/graezykev/designgreat.git
-cd designgreat
-```
-
-## Installation
-
-Install all dependencies from the monorepo root:
-
-```bash
-pnpm install
-```
+:::info Initial Setup
+Complete the [shared setup steps](/contributing#getting-started) first (clone, install, build).
+:::
 
 ## Package Location
 
@@ -37,11 +20,7 @@ The documentation site package is located at:
 packages/docs-design-system/
 ```
 
-## Development Commands
-
-### Local Development
-
-Start the development server:
+## Start Development Server
 
 ```bash
 pnpm --filter @designgreat/docs-design-system dev
@@ -54,56 +33,23 @@ This command:
 
 The site will be available at `http://localhost:3000/designgreat/`
 
-### Other Development Commands
+## Verify Setup
 
-Copy font assets to static directory:
+You should see:
+- ✅ Documentation site loads in browser
+- ✅ Changes to `.mdx` files hot reload
+- ✅ No console errors
+
+## Other Commands
+
+Copy font assets to static directory (usually automatic):
 
 ```bash
 pnpm --filter @designgreat/docs-design-system run copy:fonts
 ```
 
-## Lint
+## Next Steps
 
-Lint the documentation site code:
-
-```bash
-pnpm --filter @designgreat/docs-design-system run lint
-```
-
-## Typecheck
-
-Type check the TypeScript files:
-
-```bash
-pnpm --filter @designgreat/docs-design-system run typecheck
-```
-
-## Build
-
-Build the static site:
-
-```bash
-pnpm --filter @designgreat/docs-design-system build
-```
-
-This generates static content into the `build` directory that can be served by any static hosting service.
-
-## Serve Built Site
-
-Preview the production build locally:
-
-```bash
-pnpm --filter @designgreat/docs-design-system serve
-```
-
-## Deployment
-
-The documentation site is automatically deployed to GitHub Pages when changes are merged to `main`. The deployment workflow handles:
-
-- **Automated builds** after successful package publishing
-- **Smart change detection** to only rebuild when necessary
-- **Unified deployment** with Storybook to prevent race conditions
-- **Preservation strategy** to maintain existing content when only one site changes
-
-For detailed deployment configuration, see the [GitHub Actions workflow](https://github.com/graezykev/designgreat/blob/main/.github/workflows/deploy-docs-storybook-gh-pages.yml).
-
+- Learn [Writing Docs](./writing-docs) to create documentation pages
+- Explore [Markdown Features](./markdown-features) for advanced formatting
+- See [Quality Checks](./quality) and [Publishing](./publishing) for builds and deployment

@@ -1,0 +1,199 @@
+---
+sidebar_position: 0
+sidebar_label: Integration Docs
+description: Documentation conventions for integration and usage guides
+---
+
+# Integration Docs Convention
+
+This guide establishes conventions for writing **integration documentation** — guides that help consumers **use** a package in their applications.
+
+## Scope
+
+| Aspect | Description |
+|--------|-------------|
+| **Purpose** | How to _use_ a package |
+| **Audience** | Package consumers (developers integrating the package) |
+| **Location** | `/design-token/`, `/web-component/` |
+| **Focus** | Installation, usage, configuration, APIs |
+
+---
+
+## Folder Structure
+
+### Standard Folders
+
+```
+docs-{package}/
+├── guides/                    # Integration guides (core content)
+│   ├── overview.mdx          # Section overview
+│   ├── quick-start.mdx       # 2-minute getting started
+│   ├── installation.mdx      # Full installation guide
+│   ├── basic-usage.mdx       # Core usage patterns
+│   ├── theming.mdx           # Theme configuration
+│   ├── fonts.mdx             # Font setup
+│   ├── tailwind.mdx          # Tailwind integration
+│   ├── frameworks.mdx        # Framework-specific guides
+│   └── api/                   # API reference
+│       └── reference.mdx
+└── colors/                    # Topic-specific sections (optional)
+    ├── overview.mdx
+    └── ...
+```
+
+### File Order (Progressive)
+
+| Position | File | Purpose | User Journey |
+|----------|------|---------|--------------|
+| 0 | overview.mdx | Section intro | "What can I do?" |
+| 1 | quick-start.mdx | 2-min setup | "Let me try it" |
+| 2 | installation.mdx | Full setup | "I want details" |
+| 3 | basic-usage.mdx | Core patterns | "How do I use it?" |
+| 4 | theming.mdx | Customization | "How do I customize?" |
+| 5 | fonts.mdx | Font setup | "What about fonts?" |
+| 6 | tailwind.mdx | Tailwind | "I use Tailwind" |
+| 7 | frameworks.mdx | Framework guides | "I use Next.js/Remix" |
+| 8+ | api/reference.mdx | API docs | "I need details" |
+
+---
+
+## URL Naming
+
+| Element | Convention | Example |
+|---------|------------|---------|
+| Folder | `guides/` | `/design-token/guides/` |
+| Files | lowercase, hyphenated | `quick-start`, `basic-usage` |
+| Sidebar ID | `guidesSidebar` | Not `tutorialSidebar` |
+
+### Naming Rules
+
+- ✅ Use `guides` (not `tutorial`) for folder names
+- ✅ Use lowercase with hyphens for file names
+- ✅ URL paths match folder structure
+- ❌ Avoid abbreviations (`config` → `configuration`)
+
+---
+
+## Page Structure
+
+### Overview Page Template
+
+```text
+# {Package Name} Guides
+
+{One-sentence description of what these guides cover.}
+
+## What Are {Concept}?
+
+{Brief explanation of the core concept for newcomers. 2-3 sentences.}
+
+## Package Overview
+
+{Package name} provides:
+
+- **Feature 1** — Description
+- **Feature 2** — Description
+
+## Key Features
+
+- ✅ **Feature name** — Benefit description
+- ✅ **Feature name** — Benefit description
+
+## Learning Path (Optional)
+
+{Table with Time, Goal, Guide columns}
+
+## In This Section
+
+{DocCardList component here}
+
+## Contributing
+
+To contribute to this package, see the [{Package} Development Guides](/contributing/path).
+
+## Next Steps
+
+{Bullets or table guiding to next topics}
+```
+
+### Required Sections
+
+| Section | Required | Purpose |
+|---------|----------|---------|
+| Title | ✅ | "`{Package Name}` Guides" |
+| Intro paragraph | ✅ | One sentence explaining the guide's purpose |
+| What Are X? | ✅ | Explain core concept for newcomers |
+| Package Overview | ✅ | What the package provides |
+| Key Features | ✅ | Checklist with **bold labels** |
+| Learning Path | ⚪ Optional | For docs with 5+ sub-pages |
+| In This Section | ✅ | DocCardList |
+| Contributing | ✅ | Link to development guide |
+| Next Steps | ✅ | Navigation to next topics |
+
+---
+
+## Section Headings
+
+Use these exact headings for consistency:
+
+| Concept | Heading | ❌ Avoid |
+|---------|---------|----------|
+| Core concept | "What Are `{Concept}`?" | "What is X", "About X" |
+| Package capabilities | "Package Overview" | "What's Included" |
+| Benefits list | "Key Features" | "Features", "Highlights" |
+| Guided navigation | "Learning Path" | "Tutorial Order" |
+| Child pages | "In This Section" | "Quick Links" |
+| Contributor callout | "Contributing" | "For Developers" |
+| Page continuation | "Next Steps" | "What's Next" |
+
+---
+
+## Format Options
+
+### Key Features Format
+
+Use **bold labels** followed by descriptions:
+
+```markdown
+- ✅ **Light & dark themes** — Built-in, ready to use
+- ✅ **Type-safe** — Full IntelliSense for all token paths
+- ✅ **React Native compatible** — JS exports work in StyleSheet
+```
+
+### Learning Path Table
+
+Include when your section has **5+ sub-pages**:
+
+| Time | Goal | Guide |
+|------|------|-------|
+| **2 min** | Get started | Quick Start |
+| **5 min** | Learn basics | Basic Usage |
+| **10 min** | Add theming | Theming |
+| **Reference** | Look up APIs | API Reference |
+
+### Next Steps Formats
+
+| Context | Format | Example |
+|---------|--------|---------|
+| Quick Start | Table | Multiple paths for users |
+| Single next step | Plain text | `Continue with [X](./x)...` |
+| Multiple options | Bullets | 2-4 related links |
+
+---
+
+## Singular vs Plural
+
+**The noun (subject) determines singular/plural; modifiers stay singular.**
+
+| Example | Modifier | Noun | Result |
+|---------|----------|------|--------|
+| Design Token Guides | Design Token | Guides (multiple) | ✅ Plural noun |
+| Base Colors | Base | Colors (multiple) | ✅ Plural noun |
+| Installation | — | Installation (single) | ✅ Singular noun |
+
+---
+
+## Example
+
+See: [Design Token Guides](/design-token/guides/overview)
+

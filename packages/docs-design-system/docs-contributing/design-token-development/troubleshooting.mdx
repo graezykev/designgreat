@@ -143,44 +143,14 @@ Cannot find module '@designgreat/lib-design-token' or its corresponding type dec
 Error: Circular reference detected: color.primary -> color.accent -> color.primary
 ```
 
-**Solution:** Remove circular dependencies in token references. Each token should reference other tokens without creating loops.
-
-**Example fix:**
+**Solution:** Remove circular dependencies. Use base tokens that don't reference each other:
 
 ```javascript
-// ❌ Bad: Circular reference
-// color/primary.js
-export default {
-  color: {
-    primary: { value: '{color.accent.blue}' }
-  }
-}
+// ✅ Good: Base token with no reference
+color.base.blue = { value: '#3B82F6' }
 
-// color/accent.js  
-export default {
-  color: {
-    accent: {
-      blue: { value: '{color.primary}' }  // Circular!
-    }
-  }
-}
-
-// ✅ Good: One-way reference
-// color/base.js
-export default {
-  color: {
-    base: {
-      blue: { value: '#3B82F6' }
-    }
-  }
-}
-
-// color/primary.js
-export default {
-  color: {
-    primary: { value: '{color.base.blue}' }
-  }
-}
+// ✅ Good: One-way reference to base
+color.primary = { value: '{color.base.blue}' }
 ```
 
 ### Token Not Found Errors
@@ -301,75 +271,29 @@ Error: Cannot find module '@designgreat/lib-design-token/css/light'
 3. Restart Storybook: `pnpm --filter @designgreat/lib-web-component run storybook`
 4. Hard refresh browser (Cmd+Shift+R)
 
-## Performance Issues
+## Debugging Tips
 
-### Slow Build Times
-
-**Symptom:** Build takes longer than expected
-
-**Solution:**
-
-1. Use `pnpm run watch` for development instead of full builds
-2. Skip font download if already cached
-3. Use incremental builds when possible
-
-**Performance tips:**
+### Quick Commands
 
 ```bash
-# Quick iteration (skips TypeScript compilation)
-pnpm run build:tokens
-
-# Full build (includes everything)
-pnpm run build
-```
-
-### Large Bundle Sizes
-
-**Symptom:** Generated files are unexpectedly large
-
-**Solution:**
-
-1. Check for duplicate tokens
-2. Verify custom transforms aren't expanding tokens unnecessarily
-3. Use tree-shaking in consumer apps
-
-## Debugging Techniques
-
-### Enable Debug Logging
-
-```bash
-# Style Dictionary debug output
+# Debug Style Dictionary
 DEBUG=style-dictionary:* pnpm run build:tokens
 
-# Verbose build output
-pnpm run build -- --verbose
-```
-
-### Inspect Generated Files
-
-```bash
-# View generated themes
+# Inspect generated files
 cat src/generated/themes.ts | less
+cat dist/css/light/variables.css | grep 'primary'
 
-# Check CSS variables
-cat dist/css/light/variables.css | grep --color 'primary'
-
-# View TypeScript definitions
-cat dist/index.d.ts | less
+# Test in isolation
+pnpm run build:tokens   # Token generation only
+pnpm run typecheck      # Type check only
+pnpm run validate       # Validation only
 ```
 
-### Test in Isolation
+### Performance
 
-```bash
-# Test only token generation
-pnpm run build:tokens
-
-# Test only TypeScript compilation
-pnpm run typecheck
-
-# Test only validation
-pnpm run validate
-```
+- Use `pnpm run watch` for development (faster iteration)
+- Use `pnpm run build:tokens` for quick builds (skips TypeScript)
+- Check for duplicate tokens if bundle size is large
 
 ## Getting Help
 
@@ -382,7 +306,7 @@ If you encounter an issue not covered here:
 
 ## Next Steps
 
-- [Development Workflow](./development-workflow)
+- [Publishing](./publishing)
 - [Build System](./build-system)
 - [Testing & Validation](./testing-validation)
 - [Token Authoring](./token-authoring)

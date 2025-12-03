@@ -1,18 +1,19 @@
 ---
 sidebar_position: 7
-description: PR process, release, and package distribution
+description: PR process, release, and CI/CD
 ---
 
 # Publishing
 
-This guide covers the pull request process, release procedures, and package distribution for the component library.
+This guide covers the pull request process and release procedures for the design token package.
 
 ## Before Opening a PR
 
-- [ ] Build without errors:
-    - `pnpm --filter=@designgreat/lib-web-component build`
 - [ ] Run local checks:
-    - `pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run coverage`
+    - `pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run validate`
+- [ ] Build and commit generated files (`src/generated/`)
+    - `pnpm --filter=@designgreat/lib-design-token build`
+    - `git add ...` & `git commit ...`
 - [ ] Update documentation (if needed)
 - [ ] [Create changeset](/contributing/changeset-workflow)
 
@@ -25,7 +26,7 @@ This guide covers the pull request process, release procedures, and package dist
 ```mermaid
 flowchart LR
     PR[PR] --> A[Changeset Check]
-    PR --> B[Lint/Type/Test] --> C[Coverage] --> D[Build] --> E[Dry Run]
+    PR --> B[Lint/Type/Test] --> C[Validate] --> D[Build] --> E[Dry Run]
 ```
 
 | Step | Command | Purpose |
@@ -35,8 +36,8 @@ flowchart LR
 | Lint | `pnpm run lint` | Code style checks |
 | Typecheck | `pnpm run typecheck` | TypeScript validation |
 | Test | `pnpm run test` | Run unit tests |
-| Coverage | `pnpm run coverage` | Generate coverage report |
-| Build | `pnpm run build` | Compile, bundle, and build Storybook |
+| Validate | `pnpm run validate` | Token structure validation |
+| Build | `pnpm run build` | Compile and bundle |
 | Changeset Status | `pnpm changeset status` | Verify changeset validity |
 | Publish Dry Run | `pnpm changeset publish --dry-run` | Simulate publish |
 
@@ -49,7 +50,6 @@ flowchart LR
     A[Merge] --> B[changeset version]
     B --> C[Bump Versions] & D[Update Dependents] & E[Update Changelogs]
     C & D & E --> F[Auto Commit] --> G[changeset publish] --> H[npm publish]
-    G --> I[Deploy Storybook]
 ```
 
 📄 Workflow file: [version-publish-packages.yml](https://github.com/graezykev/designgreat/blob/main/.github/workflows/version-publish-packages.yml)
@@ -62,21 +62,22 @@ flowchart LR
 
 | Export | Format | Description |
 |--------|--------|-------------|
-| `.` | ESM/CJS | All React components |
-| `./dist/lib-web-component.css` | CSS | Complete style bundle |
+| `.` | ESM/CJS | Runtime helpers, theme utilities |
+| `./css` | CSS | All theme variables |
+| `./css/light` | CSS | Light theme only |
+| `./css/dark` | CSS | Dark theme only |
+| `./font` | Assets | Font files (WOFF2) |
 
 ### Published Files
 
-- `dist/` — JS, CSS, and TypeScript definitions
+- `dist/` — JS, CSS, fonts, and TypeScript definitions
 - `README.md` — Package documentation
-
-**Not published:** Source files, Storybook, tests, dev configs
 
 ---
 
 ## Next Steps
 
 - Learn the [Changeset Workflow](/contributing/changeset-workflow) for versioning
-- Review [Architecture](./architecture) for package structure
-- See [Testing](./testing) for quality checks
+- Review [Testing & Validation](./testing-validation) for quality checks
 - Check [Troubleshooting](./troubleshooting) for common issues
+

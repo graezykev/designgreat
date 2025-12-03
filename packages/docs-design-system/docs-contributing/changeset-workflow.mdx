@@ -1,0 +1,137 @@
+---
+sidebar_position: 5
+sidebar_label: Changeset Workflow
+description: Changesets workflow for versioning and publishing
+---
+
+# Changeset Workflow
+
+This repository uses [Changesets](https://github.com/changesets/changesets) to manage versioning and releases for all packages.
+
+## Workflow Overview
+
+```
+Personal Branch → Changeset File → PR → CI → Versioning → Publishing
+```
+
+## Step-by-Step
+
+### 1. Create a Changeset
+
+When your branch is ready for release:
+
+```bash
+pnpm changeset
+```
+
+### 2. Select Affected Packages
+
+Choose which packages your changes affect.
+
+### 3. Choose Version Bump
+
+| Change Type | Bump | When to Use |
+|-------------|------|-------------|
+| **Patch** | `0.5.1` → `0.5.2` | Bug fixes, minor updates |
+| **Minor** | `0.5.1` → `0.6.0` | New features, non-breaking additions |
+| **Major** | `0.5.1` → `1.0.0` | Breaking changes |
+
+### 4. Describe the Change
+
+Write a clear, user-facing summary. This becomes part of `CHANGELOG.md`.
+
+**Template:**
+
+```markdown
+[Concise summary of the change - this becomes the changelog header]
+
+**Changes:**
+- Added [feature/fix description]
+- Updated [what was modified]
+- Fixed [bug description]
+
+**Breaking Changes:** (if applicable)
+- [What breaks and how to migrate]
+```
+
+**Example:**
+
+```markdown
+Add loading state to Button component
+
+**Changes:**
+- Added `loading` prop to Button component
+- Added spinner animation when loading
+- Disabled click events during loading state
+```
+
+### 5. Commit and Push
+
+```bash
+git add .changeset/
+git commit -m "chore: add changeset"
+git push
+```
+
+### 6. Open a PR
+
+CI will verify a valid changeset file exists.
+
+---
+
+## What Happens on Merge
+
+When merged to `main`:
+
+1. CI injects PR link and author into the changeset
+2. CI runs `pnpm changeset version`
+   - Bumps versions
+   - Updates `CHANGELOG.md` for each package
+   - Deletes `.changeset/*.md` files
+3. CI commits the changelog(s) to `main`
+4. CI runs `pnpm changeset publish` to publish to npm
+
+---
+
+## Best Practices
+
+### One Changeset Per Logical Change
+
+Split changesets when changes address different concerns:
+
+```
+.changeset/fix-button-accessibility.md
+.changeset/add-button-loading-state.md
+```
+
+Changesets automatically merge entries and take the highest version bump.
+
+### Group Tightly Coupled Changes
+
+Combine into a single changeset when changes are part of the same logical unit.
+
+### Write Clear Summaries
+
+- Focus on **what** and **why**, not how
+- Keep it concise
+- Think "changelog entry"
+
+---
+
+## Breaking Changes
+
+If your changes break existing APIs:
+
+1. Choose **Major** version bump
+2. Document the breaking change clearly in the changeset
+3. Update migration guide if needed
+4. Coordinate with dependent packages
+
+---
+
+## Related Documentation
+
+- [Changesets Documentation](https://github.com/changesets/changesets)
+- [Design Token Publishing](/contributing/design-token-development/publishing)
+- [Web Component Publishing](/contributing/web-component-development/publishing)
+
