@@ -27,25 +27,22 @@ dist/
 
 ## CSS Bundling Strategy
 
-### CSS Cascade Layers
+The library uses [CSS Cascade Layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for predictable styling:
 
-The library uses [CSS Cascade Layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) for predictable styling and easy overrides:
+| Layer | Priority | Contents |
+|-------|----------|----------|
+| `dg-tokens` | Lowest | Design token CSS variables |
+| `dg-components` | Middle | Component styles (Button, Dialog, etc.) |
+| (unlayered) | Highest | Tailwind utilities — always wins |
+
+### Source File Structure
 
 ```
-Layer Priority (lowest → highest):
-┌─────────────────┐
-│ dg-tokens       │  Design tokens (CSS variables)
-├─────────────────┤
-│ dg-components   │  Component styles (Button, Dialog, etc.)
-├─────────────────┤
-│ (unlayered)     │  Tailwind utilities — always wins
-└─────────────────┘
+src/styles/
+├── index.css        # @layer declarations + token import
+├── tailwind.css     # Components layer + @tailwind utilities
+└── components.css   # Component-specific styles
 ```
-
-This architecture ensures:
-- **Consumer utilities override library styles** — `<Button className="bg-red-500">` works as expected
-- **Predictable cascade** — Layer order is explicit, not dependent on import order
-- **Tailwind v3 & v4 compatible** — Works with both versions
 
 ### Import Chain
 
@@ -67,34 +64,30 @@ src/index.ts
 The distributed CSS (`dist/lib-web-component.css`) includes:
 
 - ✅ `@layer` declarations for cascade control
-- ✅ Design token CSS variables (`:root` for light, `.dg-theme-dark` for dark) — in `dg-tokens` layer
-- ✅ Component-specific styles — in `dg-components` layer
-- ✅ Tailwind utilities only — unlayered for maximum override priority
+- ✅ Design token CSS variables (`:root` for light, `.dg-theme-dark` for dark)
+- ✅ Component styles in `dg-components` layer
+- ✅ Tailwind utilities (unlayered for maximum override priority)
 
 ### What's Excluded
 
 The distributed CSS intentionally **excludes**:
 
-- ❌ `@font-face` declarations (fonts must be imported separately)
-- ❌ Tailwind base layer (no CSS resets)
-- ❌ Tailwind components layer (no unwanted utility classes)
+- ❌ `@font-face` declarations — fonts imported separately from `@designgreat/lib-design-token/font`
+- ❌ Tailwind base layer — no CSS resets that might conflict
+- ❌ Tailwind components layer — no unwanted utility classes
 
-This allows consumers to:
+### Why This Matters
 
-- Load fonts independently (from `@designgreat/lib-design-token/font` or via CDN)
-- Integrate seamlessly with existing projects without CSS reset conflicts
+This architecture allows consumers to:
+
+- Load fonts independently (self-hosted or via CDN)
+- Integrate with existing projects without CSS conflicts
+- Override component styles with utility classes: `<Button className="bg-red-500">`
 - Control font loading strategy (preload, async, etc.)
-- Avoid duplicate CSS when already using Tailwind
-- Override component styles with utility classes or custom layers
 
-### Theme CSS Order
-
-The distributed CSS includes both light and dark themes in a specific order to ensure proper CSS cascade:
-
-1. **`:root { ... }`** - Light theme variables (applied by default)
-2. **`.dg-theme-dark { ... }`** - Dark theme variables (override when class is present)
-
-This ordering ensures that when the `.dg-theme-dark` class is applied to the `<html>` element, dark theme variables correctly override the light theme defaults.
+:::tip For Consumers
+See [Installation Guide](/web-component/guides/installation#tailwind-projects) for CSS layer integration with Tailwind v3/v4.
+:::
 
 ## Dependency Flow
 
@@ -142,7 +135,7 @@ packages/lib-web-component/
 │   └── index.ts             # Package entry point
 ├── tailwind.config.ts       # Tailwind configuration (token-aware)
 ├── vite.config.ts           # Vite build configuration
-├── vitest.config.ts         # Vitest test configuration
+├── jest.config.ts           # Jest test configuration
 └── package.json
 ```
 

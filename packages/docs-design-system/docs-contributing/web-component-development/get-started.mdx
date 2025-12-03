@@ -8,28 +8,9 @@ description: Quick setup guide for contributing to the component library
 
 Get started contributing to the component library package quickly.
 
-## Prerequisites
-
-- **Node.js** 22 or higher
-- **PNPM** 9 or higher
-- **Git**
-- **`@designgreat/lib-design-token`** (workspace dependency)
-- Monorepo already cloned and dependencies installed
-
-## Clone the Repository
-
-```bash
-git clone https://github.com/graezykev/designgreat.git
-cd designgreat
-```
-
-## Installation
-
-Install all dependencies from the monorepo root:
-
-```bash
-pnpm install
-```
+:::info Initial Setup
+Complete the [shared setup steps](/contributing#getting-started) first (clone, install, build).
+:::
 
 ## Package Location
 
@@ -52,11 +33,10 @@ pnpm --filter @designgreat/lib-web-component storybook
 Opens at `http://localhost:6006`
 
 **What happens:**
-1. Fonts are copied from `lib-design-token/dist/font/` to `public/assets/fonts/`
-2. Design tokens are regenerated (`generate:theme`)
-3. Vite-powered Storybook server starts
-4. Tailwind JIT generates utilities on-demand
-5. Theme switcher toolbar allows testing light/dark themes
+1. Vite-powered Storybook server starts
+2. Design tokens are imported directly from `@designgreat/lib-design-token`
+3. Tailwind JIT generates utilities on-demand
+4. Theme switcher toolbar allows testing light/dark themes
 
 ### Other Development Commands
 
@@ -64,12 +44,6 @@ Component development without Storybook:
 
 ```bash
 pnpm --filter @designgreat/lib-web-component dev
-```
-
-Regenerate theme CSS:
-
-```bash
-pnpm --filter @designgreat/lib-web-component generate:theme
 ```
 
 ## Lint
@@ -92,7 +66,7 @@ pnpm --filter @designgreat/lib-web-component typecheck
 
 ### Run Tests
 
-Run Vitest tests:
+Run Jest tests:
 
 ```bash
 pnpm --filter @designgreat/lib-web-component test
@@ -120,10 +94,9 @@ pnpm --filter @designgreat/lib-web-component build
 
 This runs the complete pipeline:
 1. Clean previous build artifacts
-2. Regenerate CSS from design tokens
-3. Type check and emit `.d.ts` files
-4. Bundle components (ESM + CJS) and CSS with Vite
-5. Build static Storybook site
+2. Type check and emit `.d.ts` files
+3. Bundle components (ESM + CJS) and CSS with Vite
+4. Build static Storybook site
 
 **Build artifacts:**
 - `dist/` – Published package artifacts

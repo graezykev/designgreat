@@ -10,7 +10,7 @@ This guide captures the end-to-end workflow for developing and debugging Storybo
 ## Prerequisites
 
 - Install dependencies from the repo root: `pnpm install`
-- All Storybook/dev commands regenerate tokens automatically
+- Ensure `@designgreat/lib-design-token` is built (Storybook imports tokens directly)
 - Use a recent Node LTS release to avoid Vite/Storybook warnings
 
 ## Running Storybook During Development
@@ -19,7 +19,7 @@ This guide captures the end-to-end workflow for developing and debugging Storybo
 pnpm --filter @designgreat/lib-web-component storybook
 ```
 
-Storybook starts on `http://localhost:6006`. Use the **Theme** toolbar toggle (sun/moon icon) to switch between light and dark palettes. Stories render inside `dg-theme-*` wrappers, so Tailwind token utilities update instantly when the theme changes.
+Storybook starts on `http://localhost:6006`. Use the **Theme** toolbar toggle (sun/moon icon) to switch between light and dark palettes. Stories render with `.dg-theme-dark` class applied for dark theme (light theme is the default with no class), so Tailwind token utilities update instantly when the theme changes.
 
 ### Hot Reload Expectations
 
@@ -98,7 +98,7 @@ Artifacts land in `storybook-static/` and can be uploaded to QA hosts (Netlify, 
 The `storybook:build` script generates a static site in `storybook-static/` with:
 
 - Bundled component stories
-- Font files copied to `assets/fonts/`
+- Design tokens imported from `@designgreat/lib-design-token`
 - Theme switching functionality
 - Full component documentation
 
@@ -106,8 +106,8 @@ The `storybook:build` script generates a static site in `storybook-static/` with
 
 ## Troubleshooting
 
-- **Theme desync:** If toggling light/dark does nothing, ensure the preview iframe body contains the expected `dg-theme-*` class. Re-running the dev server typically fixes it
-- **Token mismatch:** Re-run `generate:theme` or blow away `node_modules/.cache` if Tailwind refuses to emit a new token class
+- **Theme desync:** If toggling light/dark does nothing, ensure the preview iframe body has `.dg-theme-dark` class when dark theme is selected (light theme has no class). Re-running the dev server typically fixes it
+- **Token mismatch:** Rebuild the design token package (`pnpm --filter @designgreat/lib-design-token build`) or clear `node_modules/.cache` if Tailwind refuses to emit a new token class
 - **Story fails to load:** Check the browser console for async import errors—Storybook surfaces stack traces pointing to the offending story file
 
 ## Next Steps
