@@ -25,7 +25,8 @@ import '@designgreat/lib-web-component/dist/lib-web-component.css'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="dg-theme-light">{children}</body>
+      {/* Light theme is default (no class needed). Add "dg-theme-dark" for dark theme */}
+      <body>{children}</body>
     </html>
   )
 }
@@ -42,11 +43,8 @@ import '@designgreat/lib-web-component/dist/lib-web-component.css'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <div className="dg-theme-light">
-      <Component {...pageProps} />
-    </div>
-  )
+  // Light theme is default. Add "dg-theme-dark" class for dark theme
+  return <Component {...pageProps} />
 }
 ```
 
@@ -128,7 +126,8 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="dg-theme-light">
+      {/* Light theme is default. Add "dg-theme-dark" class for dark theme */}
+      <body>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -158,7 +157,8 @@ import '@designgreat/lib-web-component/dist/lib-web-component.css'
     <meta name="viewport" content="width=device-width" />
     <title>My Site</title>
   </head>
-  <body class="dg-theme-light">
+  <!-- Light theme is default. Add "dg-theme-dark" class for dark theme -->
+  <body>
     <slot />
   </body>
 </html>

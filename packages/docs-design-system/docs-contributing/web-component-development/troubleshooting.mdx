@@ -11,34 +11,37 @@ This guide covers common issues and their solutions when working with the compon
 
 **Problem:** Changes to design tokens don't appear in Storybook or dev server.
 
-**Solution:** Regenerate theme CSS:
-
-```bash
-pnpm --filter @designgreat/lib-web-component generate:theme
-```
-
-Or rebuild the design token package:
+**Solution:** Rebuild the design token package to regenerate CSS variables:
 
 ```bash
 pnpm --filter @designgreat/lib-design-token build
+```
+
+Then restart Storybook:
+
+```bash
+pnpm --filter @designgreat/lib-web-component storybook
 ```
 
 ## Storybook Fonts Missing
 
 **Problem:** Fonts don't load in Storybook.
 
-**Solution:** Ensure fonts are copied before starting Storybook. This happens automatically with:
+**Solution:** Fonts are imported directly from `@designgreat/lib-design-token/font` in Storybook's preview configuration. If fonts are missing:
+
+1. Ensure the design token package is built:
+
+```bash
+pnpm --filter @designgreat/lib-design-token build
+```
+
+2. Restart Storybook:
 
 ```bash
 pnpm --filter @designgreat/lib-web-component storybook
 ```
 
-If fonts are still missing, manually copy them:
-
-```bash
-cd packages/lib-web-component
-cp -r ../lib-design-token/dist/font/* public/assets/fonts/
-```
+3. Check the browser Network tab to verify font files are loading from the correct path.
 
 ## Tailwind Utilities Not Generated
 
@@ -58,18 +61,18 @@ Restart the dev server to regenerate utilities.
 
 ## TypeScript Build Errors
 
-**Problem:** TypeScript fails to compile after token regeneration.
+**Problem:** TypeScript fails to compile.
 
-**Solution:** Ensure generated files are present:
+**Solution:** Ensure the design token package is built (tokens are imported at runtime):
 
 ```bash
-ls -la src/styles/designgreat-theme.css
+pnpm --filter @designgreat/lib-design-token build
 ```
 
-If missing, run:
+Then run type check:
 
 ```bash
-pnpm --filter @designgreat/lib-web-component generate:theme
+pnpm --filter @designgreat/lib-web-component typecheck
 ```
 
 ## Test Failures
@@ -94,7 +97,7 @@ pnpm --filter @designgreat/lib-web-component test -- -u
 
 **Problem:** Toggling light/dark theme in Storybook does nothing.
 
-**Solution:** Ensure the preview iframe body contains the expected `dg-theme-*` class. Re-running the dev server typically fixes it:
+**Solution:** Ensure the preview iframe body has `.dg-theme-dark` class when dark theme is selected (light theme has no class). Re-running the dev server typically fixes it:
 
 ```bash
 pnpm --filter @designgreat/lib-web-component storybook
@@ -104,12 +107,11 @@ pnpm --filter @designgreat/lib-web-component storybook
 
 **Problem:** Tailwind refuses to emit a new token class.
 
-**Solution:** Clear Tailwind cache and regenerate:
+**Solution:** Clear Tailwind cache and restart:
 
 ```bash
 rm -rf node_modules/.cache
-pnpm --filter @designgreat/lib-web-component generate:theme
-pnpm --filter @designgreat/lib-web-component dev
+pnpm --filter @designgreat/lib-web-component storybook
 ```
 
 ## Story Fails to Load
@@ -140,16 +142,16 @@ Common causes:
 
 **Solution:**
 
-1. Clean build artifacts:
+1. Ensure design tokens are built first:
+
+```bash
+pnpm --filter @designgreat/lib-design-token build
+```
+
+2. Clean build artifacts:
 
 ```bash
 pnpm --filter @designgreat/lib-web-component run clean
-```
-
-2. Regenerate tokens:
-
-```bash
-pnpm --filter @designgreat/lib-web-component generate:theme
 ```
 
 3. Run full build:
@@ -167,7 +169,7 @@ If you encounter an issue not covered here:
 3. Search existing [GitHub issues](https://github.com/graezykev/designgreat/issues)
 4. Ask in team chat or open a new issue
 
-## Related Resources
+## Next Steps
 
 - [Storybook Workflow](./storybook-workflow) – Development workflow
 - [Architecture](./architecture) – Package structure
