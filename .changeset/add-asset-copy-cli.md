@@ -24,3 +24,5 @@ npx @designgreat/lib-design-token dg-copy-brand ./public
 - Created `src/cli/` with CLI entries and shared logic in `lib/` subfolder
 - Added `bin` entries in package.json
 - Removed redundant wrapper scripts from `scripts/` folder
+- Updated `prepare` script to always run build (removed CI skip) so CLI is available after
+  `pnpm install`

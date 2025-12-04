@@ -40,7 +40,7 @@
     "lint": "pnpm exec eslint . --max-warnings 0",
     "test": "pnpm exec vitest run",
     "clean": "rm -rf dist src/generated tsconfig*.tsbuildinfo",
-    "prepare": "if [ \"$CI\" != \"true\" ]; then pnpm run build || (echo \"ERROR: This package must be installed without --prod\" && exit 1); fi",
+    "prepare": "pnpm run build || (echo 'ERROR: Build failed. This package must be installed without --prod flag.' && exit 1)",
     "prepublishOnly": "if [ \"$CI\" != \"true\" ]; then pnpm run build; fi"
   },
   "dependencies": {
