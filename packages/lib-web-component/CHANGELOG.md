@@ -1,5 +1,22 @@
 # @designgreat/lib-web-component
 
+## 0.7.2
+
+### Patch Changes
+
+- f38433f: Added custom Storybook branding:
+  - Added `manager.ts` with custom theme (colors, brand title, logo)
+  - Added `manager-head.html` for custom CSS to show logo + title together
+  - Uses shared logo from `@designgreat/lib-design-token`
+  - Added `@storybook/manager-api` and `@storybook/theming` dependencies
+
+  **Related PR:** [#46](https://github.com/graezykev/designgreat/pull/46)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [f38433f]
+  - @designgreat/lib-design-token@0.6.0
+
 ## 0.7.1
 
 ### Patch Changes

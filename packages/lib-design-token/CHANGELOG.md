@@ -1,5 +1,19 @@
 # @designgreat/lib-design-token
 
+## 0.6.0
+
+### Minor Changes
+
+- f38433f: Added brand assets support:
+  - Added `logo.svg` in `assets/brand/` with CSS variable support and fallback color
+  - Added `copy-brand-assets.ts` script for other packages to copy brand assets
+  - Added `./brand/*` export in package.json
+  - Build now copies brand assets to `dist/brand/`
+
+  **Related PR:** [#46](https://github.com/graezykev/designgreat/pull/46)
+
+  **Author:** @chunman-yeung
+
 ## 0.5.2
 
 ### Patch Changes
