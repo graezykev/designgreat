@@ -48,10 +48,10 @@ jobs:
         run: pnpm run test
 
       - name: Coverage (lib-web-component)
-        run: pnpm --filter @designgreat/lib-web-component coverage
+        run: pnpm --filter @designgreat/lib-web-component run coverage
 
       - name: Validate (lib-design-token)
-        run: pnpm --filter @designgreat/lib-design-token validate
+        run: pnpm --filter @designgreat/lib-design-token run validate
 
       - name: Build
         run: pnpm run build

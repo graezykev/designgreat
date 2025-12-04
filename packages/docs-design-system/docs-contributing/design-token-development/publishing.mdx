@@ -12,7 +12,7 @@ This guide covers the pull request process and release procedures for the design
 - [ ] Run local checks:
     - `pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run validate`
 - [ ] Build and commit generated files (`src/generated/`)
-    - `pnpm --filter=@designgreat/lib-design-token build`
+    - `pnpm --filter=@designgreat/lib-design-token run build`
     - `git add ...` & `git commit ...`
 - [ ] Update documentation (if needed)
 - [ ] [Create changeset](/contributing/changeset-workflow)
