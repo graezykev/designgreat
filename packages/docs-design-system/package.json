@@ -5,9 +5,10 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "copy:fonts": "tsx ./scripts/copy-fonts.ts",
-    "dev": "pnpm run copy:fonts && docusaurus start",
+    "copy:brand": "tsx ../lib-design-token/scripts/copy-brand-assets.ts ./static/img",
+    "dev": "pnpm run copy:fonts && pnpm run copy:brand && docusaurus start",
     "start": "pnpm run dev",
-    "build": "pnpm run copy:fonts && docusaurus build",
+    "build": "pnpm run copy:fonts && pnpm run copy:brand && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

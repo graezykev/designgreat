@@ -9,22 +9,15 @@
   height: 28px;
   width: 28px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Theme-adjustable colors - Corporate pixel grid */
-.layerBack {
-  fill: var(--dg-color-primary-default);
-  opacity: 0.3;
-}
-
-.layerMid {
-  fill: var(--dg-color-primary-default);
-  opacity: 0.6;
-}
-
-.layerTop {
-  fill: var(--dg-color-primary-default);
-  opacity: 1;
+/* Style the inlined SVG */
+.logo svg {
+  height: 28px;
+  width: 28px;
 }
 
 .title {
@@ -33,19 +26,7 @@
   color: var(--dg-color-text-bold);
 }
 
-/* Hover effect - subtle corporate feel */
-.logoLink:hover .layerTop {
-  fill: var(--dg-color-primary-hover-default);
-}
-
-.logoLink:hover .layerMid {
-  opacity: 0.75;
-}
-
-.logoLink:hover .layerBack {
-  opacity: 0.45;
-}
-
+/* Hover effect */
 .logoLink:hover .title {
   color: var(--dg-color-primary-default);
 }

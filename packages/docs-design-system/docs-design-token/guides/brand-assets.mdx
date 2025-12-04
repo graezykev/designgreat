@@ -1,0 +1,228 @@
+---
+sidebar_position: 6
+---
+
+# Brand Assets
+
+:::tip TL;DR
+Import `@designgreat/lib-design-token/brand/logo.svg` — a theme-aware logo with fallback color.
+:::
+
+The design token package includes brand assets like the logo, ensuring consistency across your application.
+
+---
+
+## Quick Start
+
+### Option 1: Import as React Component (Recommended)
+
+:::tip Theme Support Built-in
+This method inlines the SVG, so CSS variables work automatically — the logo adapts to your theme!
+:::
+
+For frameworks with SVGR support (Docusaurus, Vite with plugin, Next.js with SVGR):
+
+```tsx
+import Logo from '@designgreat/lib-design-token/brand/logo.svg'
+
+function Header() {
+  return <>
+    <Logo width={180} height={180} />
+    <Logo width={106} height={106} />
+    <Logo width={32} height={32} />
+  </>
+}
+```
+
+**The result:**
+
+import Logo from '@designgreat/lib-design-token/brand/logo.svg'
+
+<Logo width={180} height={180} />
+<Logo width={106} height={106} />
+<Logo width={32} height={32} />
+
+:::tip Try It Yourself
+Toggle this page's theme between light and dark using the theme switcher in the navbar to see the auto adjustable logo!
+:::
+
+### Option 2: Import as URL
+
+With bundlers like Vite or Webpack (no theme support):
+
+```tsx
+import logoUrl from '@designgreat/lib-design-token/brand/logo.svg?url'
+
+function Header() {
+  return <img src={logoUrl} alt="Logo" width={32} height={32} />
+}
+```
+
+### Option 3: Copy to Static Folder
+
+For static sites or when you need the file locally:
+
+```bash
+cp node_modules/@designgreat/lib-design-token/dist/brand/logo.svg ./public/
+```
+
+```html
+<img src="/logo.svg" alt="Logo" width="32" height="32" />
+```
+
+---
+
+## Theme Support
+
+The logo SVG uses **CSS custom properties with fallbacks**, making it theme-aware:
+
+```svg
+<style>
+  .logo-fill { fill: var(--dg-color-primary-default, #0055cc); }
+</style>
+```
+
+**Behavior:**
+| Context | Color Used |
+|---------|------------|
+| Design tokens CSS loaded | Theme color (`--dg-color-primary-default`) |
+| No design tokens | Fallback brand blue (`#0055cc`) |
+
+### Enabling Theme Support
+
+**Option 1 (React component import)** automatically supports themes since the SVG is inlined.
+
+For **Options 2 & 3** (`<img>` tag), the SVG is isolated from your CSS. To enable theme support, fetch and inline the SVG:
+
+```tsx
+function Logo() {
+  const [svg, setSvg] = useState<string>()
+
+  useEffect(() => {
+    fetch('/logo.svg')
+      .then(res => res.text())
+      .then(setSvg)
+  }, [])
+
+  return svg ? (
+    <span dangerouslySetInnerHTML={{ __html: svg }} />
+  ) : (
+    <img src="/logo.svg" alt="Logo" width={32} height={32} />
+  )
+}
+```
+
+:::info Why inline?
+When used as `<img src="...">`, the SVG is rendered in an isolated context without access to your page's CSS variables. Inlining makes it part of the DOM where CSS variables work.
+:::
+
+---
+
+## Framework Examples
+
+### Docusaurus / MDX
+
+```mdx
+import Logo from '@designgreat/lib-design-token/brand/logo.svg'
+
+<Logo width={32} height={32} />
+```
+
+### React (Vite + SVGR)
+
+```tsx
+// With vite-plugin-svgr configured
+import Logo from '@designgreat/lib-design-token/brand/logo.svg?react'
+
+function Header() {
+  return (
+    <header>
+      <Logo width={32} height={32} />
+      <span>My App</span>
+    </header>
+  )
+}
+```
+
+### Next.js (with SVGR)
+
+```tsx
+// With @svgr/webpack configured
+import Logo from '@designgreat/lib-design-token/brand/logo.svg'
+
+export function Header() {
+  return <Logo width={32} height={32} />
+}
+```
+
+### Without SVGR (Static Copy)
+
+For frameworks without SVGR, copy the logo during build:
+
+```typescript
+// scripts/copy-brand.ts
+import { cpSync, mkdirSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const src = resolve(__dirname, '../node_modules/@designgreat/lib-design-token/dist/brand')
+const dest = resolve(__dirname, '../static/brand')
+
+mkdirSync(dest, { recursive: true })
+cpSync(src, dest, { recursive: true })
+console.log('✓ Brand assets copied')
+```
+
+```json
+{
+  "scripts": {
+    "build": "tsx ./scripts/copy-brand.ts && your-build-command"
+  }
+}
+```
+
+---
+
+## Available Assets
+
+| Asset | Path | Description |
+|-------|------|-------------|
+| Logo | `brand/logo.svg` | Primary logo (32×32), theme-aware |
+
+---
+
+## Customization
+
+### Using Your Own Logo
+
+If you need a different logo, simply don't use the brand export:
+
+```tsx
+// Use your own logo instead
+import myLogo from './assets/my-logo.svg'
+
+function Header() {
+  return <img src={myLogo} alt="My Logo" />
+}
+```
+
+### Adjusting Logo Colors
+
+The logo uses CSS custom properties. Override them in your CSS:
+
+```css
+:root {
+  /* Change logo color to match your brand */
+  --dg-color-primary-default: #your-brand-color;
+}
+```
+
+---
+
+## Next Steps
+
+- See [Tailwind Integration](./tailwind) for using tokens with Tailwind CSS
+- Check [Theming](./theming) for dark mode setup
+- View [API Reference](./api/reference) for programmatic token access
+
