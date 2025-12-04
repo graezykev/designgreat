@@ -9,7 +9,7 @@ const theme = create({
 
   // Brand - icon + title (Storybook may show both or just image)
   brandTitle: 'Web Component',
-  brandUrl: 'https://graezykev.github.io/designgreat/web-component/guides/overview',
+  brandUrl: '/designgreat/lib-web-component/',
   brandImage: logoUrl,
   brandTarget: '_blank',
 
