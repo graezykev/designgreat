@@ -109,7 +109,13 @@ The package provides clean exports for consumers:
     "./font": "./dist/font/font-face.css",
     "./font/*": "./dist/font/*",
     "./css/light": "./dist/css/light/variables.css",
-    "./css/dark": "./dist/css/dark/variables.css"
+    "./css/dark": "./dist/css/dark/variables.css",
+    "./brand/*": "./dist/brand/*"
+  },
+  "bin": {
+    "dg-copy-brand": "./dist/cli/copy-brand.js",
+    "dg-copy-fonts": "./dist/cli/copy-fonts.js",
+    "dg-copy-all": "./dist/cli/copy-all.js"
   }
 }
 ```
@@ -122,6 +128,18 @@ import '@designgreat/lib-design-token/font'
 ```
 
 Bundlers (Vite, Webpack, etc.) will automatically resolve the relative font paths from the CSS.
+
+### CLI Commands
+
+The package also exports CLI commands for copying assets:
+
+```bash
+dg-copy-brand ./public      # Copy brand assets
+dg-copy-fonts ./static/font # Copy font assets
+dg-copy-all ./static        # Copy all assets
+```
+
+See [Build System](./build-system#cli-commands) for details.
 
 ## Data Flow
 

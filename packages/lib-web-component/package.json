@@ -22,7 +22,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist coverage tsconfig*.tsbuildinfo storybook-static public",
-    "copy:brand": "tsx ../lib-design-token/scripts/copy-brand-assets.ts ./public",
+    "copy:brand": "dg-copy-brand ./public",
     "build": "pnpm run clean && tsc -p tsconfig.build.json && vite build && STORYBOOK_DISABLE_TELEMETRY=1 pnpm run storybook:build",
     "dev": "vite dev",
     "storybook": "pnpm run copy:brand && storybook dev -p 6006",

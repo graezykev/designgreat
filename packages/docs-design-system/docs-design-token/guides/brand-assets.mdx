@@ -157,27 +157,20 @@ export function Header() {
 
 ### Without SVGR (Static Copy)
 
-For frameworks without SVGR, copy the logo during build:
+For frameworks without SVGR, use the CLI to copy brand assets:
 
-```typescript
-// scripts/copy-brand.ts
-import { cpSync, mkdirSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const src = resolve(__dirname, '../node_modules/@designgreat/lib-design-token/dist/brand')
-const dest = resolve(__dirname, '../static/brand')
-
-mkdirSync(dest, { recursive: true })
-cpSync(src, dest, { recursive: true })
-console.log('✓ Brand assets copied')
+```bash
+npx @designgreat/lib-design-token dg-copy-brand ./public
 ```
+
+Add to your scripts:
 
 ```json
 {
   "scripts": {
-    "build": "tsx ./scripts/copy-brand.ts && your-build-command"
+    "copy:brand": "dg-copy-brand ./public",
+    "dev": "npm run copy:brand && your-dev-command",
+    "build": "npm run copy:brand && your-build-command"
   }
 }
 ```

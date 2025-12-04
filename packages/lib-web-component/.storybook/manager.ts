@@ -11,7 +11,7 @@ const theme = create({
   brandTitle: 'Web Component',
   brandUrl: '/designgreat/lib-web-component/',
   brandImage: logoUrl,
-  brandTarget: '_blank',
+  brandTarget: '_self',
 
   // UI colors
   colorPrimary: '#0055cc',
