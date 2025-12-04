@@ -19,7 +19,8 @@
     "./css/light": "./dist/css/light/variables.css",
     "./css/dark": "./dist/css/dark/variables.css",
     "./scss/light": "./dist/css/light/variables.scss",
-    "./scss/dark": "./dist/css/dark/variables.scss"
+    "./scss/dark": "./dist/css/dark/variables.scss",
+    "./brand/*": "./dist/brand/*"
   },
   "files": [
     "dist"

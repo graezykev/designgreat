@@ -29,12 +29,13 @@ If you want pre-built React components (Button, Dialog, TextInput), see the [Web
 
 ## What You Get
 
-The package provides three main exports:
+The package provides four main exports:
 
 | Export | What It Provides | Import |
 |--------|------------------|--------|
 | **CSS Variables** | Light & dark theme tokens | `@import '@.../css'` |
 | **Fonts** | Roboto font files + @font-face | `import '@.../font'` |
+| **Brand Assets** | Logo SVG (theme-aware) | `@.../brand/logo.svg` |
 | **TypeScript APIs** | Runtime token access & theme utilities | `import { ... } from '@...'` |
 
 ---
@@ -88,6 +89,18 @@ That's the minimum setup! Now you can use design tokens in your CSS:
 // Includes @font-face definitions + bundled .woff2 files
 import '@designgreat/lib-design-token/font'
 ```
+
+### Brand Assets Export
+
+```typescript
+// Logo SVG with CSS variable support (theme-aware)
+// Copy to your public folder or reference directly
+import logoPath from '@designgreat/lib-design-token/brand/logo.svg'
+```
+
+The logo uses CSS custom properties with fallbacks:
+- With design tokens loaded → Uses theme color (`--dg-color-primary-default`)
+- Without design tokens → Falls back to brand blue (`#0055cc`)
 
 ### TypeScript/JavaScript Exports
 

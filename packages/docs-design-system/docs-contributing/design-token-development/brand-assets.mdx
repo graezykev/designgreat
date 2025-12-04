@@ -1,0 +1,170 @@
+---
+sidebar_position: 5
+description: Brand asset architecture and distribution process
+---
+
+# Brand Assets
+
+This page explains the technical architecture for brand assets in the design token package.
+
+:::tip For Consumers
+For usage examples and integration options, see the [Brand Assets Guide](/design-token/guides/brand-assets).
+:::
+
+## Architecture Overview
+
+The `@designgreat/lib-design-token` package owns and distributes brand assets:
+
+```
+lib-design-token/
+├── assets/brand/
+│   └── logo.svg              # Source file
+├── dist/brand/
+│   └── logo.svg              # Built output
+├── scripts/
+│   └── copy-brand-assets.ts  # CLI for other packages
+└── package.json exports:
+    "./brand/*" → "./dist/brand/*"
+```
+
+### Why Design Tokens Own Brand Assets
+
+Brand assets are treated as **design assets** (like colors and fonts):
+
+- ✅ Logo color uses design tokens for theme support
+- ✅ Single source of truth for brand identity
+- ✅ Versioned alongside other design decisions
+- ✅ Consistent branding across all packages
+
+### Consumer Usage Patterns
+
+| Method | Theme Support | Best For |
+|--------|---------------|----------|
+| Import as React component (SVGR) | ✅ Auto | Docusaurus, Vite, Next.js |
+| Fetch & inline SVG | ✅ Manual | Any framework |
+| `<img>` tag | ❌ Fallback color | Static sites, email |
+
+---
+
+## Logo Design
+
+### Theme-Aware SVG
+
+The logo uses **CSS custom properties with fallbacks**:
+
+```svg
+<style>
+  .logo-fill { fill: var(--dg-color-primary-default, #0055cc); }
+</style>
+```
+
+| Context | Color Used |
+|---------|------------|
+| Design tokens CSS loaded | Theme color (`--dg-color-primary-default`) |
+| No design tokens | Fallback brand blue (`#0055cc`) |
+
+### Design Guidelines
+
+| Guideline | Value | Reason |
+|-----------|-------|--------|
+| viewBox | `0 0 32 32` | Consistent sizing |
+| Corner radius | `rx="2"` | Subtle rounded corners |
+| Fill color | `var(--dg-color-primary-default, #0055cc)` | Theme-aware with fallback |
+| Opacity layers | 0.3, 0.6, 1.0 | Visual depth |
+
+---
+
+## Build Process
+
+### Source to Distribution
+
+1. **Source** — `assets/brand/logo.svg` (editable source)
+2. **Copy** — Build script copies to `dist/brand/`
+3. **Export** — `package.json` exports `./brand/*`
+
+### Build Integration
+
+The `copy-tokens.ts` script handles brand assets:
+
+```typescript
+// scripts/copy-tokens.ts
+// Copies assets/brand/* → dist/brand/*
+```
+
+---
+
+## Copy Script
+
+Other packages use `copy-brand-assets.ts` to sync brand assets:
+
+```bash
+# From lib-web-component
+tsx ../lib-design-token/scripts/copy-brand-assets.ts ./public
+
+# From docs-design-system
+tsx ../lib-design-token/scripts/copy-brand-assets.ts ./static/img
+```
+
+### Integration Example
+
+```json
+{
+  "scripts": {
+    "copy:brand": "tsx ../lib-design-token/scripts/copy-brand-assets.ts ./public",
+    "storybook": "pnpm run copy:brand && storybook dev -p 6006"
+  }
+}
+```
+
+---
+
+## Modifying the Logo
+
+### Workflow
+
+1. Edit `assets/brand/logo.svg`
+2. Rebuild: `pnpm --filter=@designgreat/lib-design-token build`
+3. Sync consumers: Run `copy:brand` in each consuming package
+
+### Testing Theme Support
+
+The logo adapts to themes when **inlined** (not as `<img>`).
+
+**Best approach — Import as React component (SVGR):**
+
+```tsx
+// ✅ Theme-aware (inlined automatically)
+import Logo from '@designgreat/lib-design-token/brand/logo.svg'
+
+<Logo width={32} height={32} />
+```
+
+**Alternative — Manual inline:**
+
+```tsx
+// ✅ Theme-aware (manually inlined)
+<span dangerouslySetInnerHTML={{ __html: svgContent }} />
+
+// ❌ Fixed color (img tag - no CSS variable access)
+<img src="/logo.svg" />
+```
+
+:::info
+Frameworks with SVGR support (Docusaurus, Vite + plugin, Next.js + plugin) can import SVG directly as React components, which automatically inlines the SVG and enables theme support.
+:::
+
+---
+
+## Future Improvements
+
+- CLI tool: `npx @designgreat/lib-design-token copy-brand --dest ./public`
+- Additional assets: favicon variants, social images
+- Automated accessibility validation
+
+---
+
+## Next Steps
+
+- [Brand Assets Guide](/design-token/guides/brand-assets) — Consumer usage and options
+- [Build System](./build-system) — Full build pipeline details
+- [Font Assets](./font-assets) — Similar architecture for fonts

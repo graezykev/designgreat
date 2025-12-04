@@ -1,5 +1,6 @@
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import { useEffect, useState } from 'react'
 
 import styles from './styles.module.css'
 
@@ -10,42 +11,50 @@ type LogoProps = {
 
 function Logo({ className, to }: LogoProps): JSX.Element {
   const logoLink = useBaseUrl(to ?? '/')
-  // Use short brand name for navbar, not full site title
+  const logoSrc = useBaseUrl('/img/logo.svg')
   const brandName = 'Design Great'
+  const [svgContent, setSvgContent] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    // Fetch SVG to inline it for CSS variable (theme) support
+    const loadSvg = async (): Promise<void> => {
+      try {
+        const res = await fetch(logoSrc)
+
+        if (!res.ok) return
+
+        const svg = await res.text()
+        setSvgContent(svg)
+      } catch {
+        // Keep using img fallback
+      }
+    }
+
+    void loadSvg()
+  }, [logoSrc])
 
   return (
     // @ts-expect-error - React 18/19 types compatibility issue
     <Link to={logoLink} className={`${styles.logoLink} ${className ?? ''}`}>
-      {/* Inline SVG - Corporate pixel grid design */}
-      <svg
-        className={styles.logo}
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label="Design Great Logo"
-      >
-        {/* 3x3 pixel grid with rounded corners - corporate design aesthetic */}
-        {/* Row 1 */}
-        <rect x="2" y="2" width="8" height="8" rx="2" className={styles.layerTop} />
-        <rect x="12" y="2" width="8" height="8" rx="2" className={styles.layerMid} />
-        <rect x="22" y="2" width="8" height="8" rx="2" className={styles.layerBack} />
-
-        {/* Row 2 */}
-        <rect x="2" y="12" width="8" height="8" rx="2" className={styles.layerMid} />
-        <rect x="12" y="12" width="8" height="8" rx="2" className={styles.layerTop} />
-        <rect x="22" y="12" width="8" height="8" rx="2" className={styles.layerMid} />
-
-        {/* Row 3 */}
-        <rect x="2" y="22" width="8" height="8" rx="2" className={styles.layerBack} />
-        <rect x="12" y="22" width="8" height="8" rx="2" className={styles.layerMid} />
-        <rect x="22" y="22" width="8" height="8" rx="2" className={styles.layerTop} />
-      </svg>
+      {svgContent ? (
+        <span
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: svgContent }}
+          aria-label="Design Great Logo"
+          className={styles.logo}
+        />
+      ) : (
+        <img
+          alt="Design Great Logo"
+          className={styles.logo}
+          height={32}
+          src={logoSrc}
+          width={32}
+        />
+      )}
       <span className={styles.title}>{brandName}</span>
     </Link>
   )
 }
 
 export default Logo
-
