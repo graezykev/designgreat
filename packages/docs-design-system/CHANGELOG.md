@@ -1,5 +1,26 @@
 # @designgreat/docs-design-system
 
+## 0.7.2
+
+### Patch Changes
+
+- 0842345: Updated to use CLI commands for asset copying:
+  - Changed `copy:fonts` and `copy:brand` scripts to use `dg-copy-fonts` and `dg-copy-brand` CLI
+    commands
+  - Updated contributing documentation (brand-assets.mdx, font-assets.mdx, build-system.mdx,
+    architecture.mdx, publishing.mdx)
+  - Updated consumer guides (fonts.mdx, brand-assets.mdx) with CLI usage examples
+  - Deleted local `scripts/copy-fonts.ts` (now using centralized CLI)
+
+  **Related PR:** [#47](https://github.com/graezykev/designgreat/pull/47)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [0842345]
+- Updated dependencies [0842345]
+  - @designgreat/lib-design-token@0.7.0
+  - @designgreat/lib-web-component@0.7.3
+
 ## 0.7.1
 
 ### Patch Changes

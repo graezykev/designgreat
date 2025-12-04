@@ -1,5 +1,19 @@
 # @designgreat/lib-web-component
 
+## 0.7.3
+
+### Patch Changes
+
+- 0842345: Updated `copy:brand` script to use `dg-copy-brand` CLI command instead of tsx wrapper
+  script.
+
+  **Related PR:** [#47](https://github.com/graezykev/designgreat/pull/47)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [0842345]
+  - @designgreat/lib-design-token@0.7.0
+
 ## 0.7.2
 
 ### Patch Changes
