@@ -17,11 +17,15 @@ The `@designgreat/lib-design-token` package owns and distributes font assets:
 
 ```
 lib-design-token/
-├── dist/font/
-│   ├── font-face.css        # @font-face declarations
-│   └── *.woff2               # 108 font files
-└── package.json exports:
-    "/font" → "./dist/font/font-face.css"
+├── dist/
+│   ├── font/
+│   │   ├── font-face.css    # @font-face declarations
+│   │   └── *.woff2          # 108 font files
+│   └── cli/
+│       └── copy-fonts.js    # CLI: dg-copy-fonts
+└── package.json:
+    exports: "/font" → "./dist/font/font-face.css"
+    bin: dg-copy-fonts → "./dist/cli/copy-fonts.js"
 ```
 
 ### Why Design Tokens Own Fonts
@@ -140,6 +144,33 @@ dist/font/
 ├── Roboto-latin-thin-italic.woff2
 ├── ... (108 total files)
 └── Roboto-vietnamese-black-italic.woff2
+```
+
+---
+
+## Copying Font Assets
+
+Use the `dg-copy-fonts` CLI to copy font assets to your project:
+
+```bash
+dg-copy-fonts ./static/font
+```
+
+For external consumers:
+
+```bash
+npx @designgreat/lib-design-token dg-copy-fonts ./static/font
+```
+
+### Integration Example
+
+```json
+{
+  "scripts": {
+    "copy:fonts": "dg-copy-fonts ./static/font",
+    "build": "pnpm run copy:fonts && your-build-command"
+  }
+}
 ```
 
 ---

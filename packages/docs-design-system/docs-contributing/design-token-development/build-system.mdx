@@ -223,6 +223,45 @@ Run `pnpm run build` whenever:
 - Commit generated files to track changes
 - Validate token integrity after build
 
+## CLI Commands
+
+The package exports CLI commands for copying assets to consumer projects:
+
+| Command | Description |
+|---------|-------------|
+| `dg-copy-brand <dest>` | Copy brand assets (logo.svg) |
+| `dg-copy-fonts <dest>` | Copy font assets (font-face.css + woff2 files) |
+| `dg-copy-all <dest>` | Copy all assets (brand + fonts) |
+
+### Usage
+
+```bash
+# Within monorepo (lib-design-token is a dependency)
+dg-copy-brand ./public
+dg-copy-fonts ./static/font
+dg-copy-all ./static
+
+# External consumers (via npx)
+npx @designgreat/lib-design-token dg-copy-brand ./public
+```
+
+### CLI Architecture
+
+```
+src/cli/
+├── copy-brand.ts      # CLI entry (commander)
+├── copy-fonts.ts      # CLI entry (commander)
+├── copy-all.ts        # CLI entry (commander)
+└── lib/
+    ├── copy-brand-assets.ts  # Shared copy logic
+    ├── copy-fonts.ts         # Shared copy logic
+    └── copy-all.ts           # Shared copy logic
+```
+
+The CLI is built with [commander](https://www.npmjs.com/package/commander) and compiled to `dist/cli/`. The `bin` entries in `package.json` make the commands available when the package is installed.
+
+---
+
 ## Debugging Build Issues
 
 ### Enable Verbose Logging

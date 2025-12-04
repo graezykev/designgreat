@@ -19,12 +19,14 @@ The `@designgreat/lib-design-token` package owns and distributes brand assets:
 lib-design-token/
 ├── assets/brand/
 │   └── logo.svg              # Source file
-├── dist/brand/
-│   └── logo.svg              # Built output
-├── scripts/
-│   └── copy-brand-assets.ts  # CLI for other packages
-└── package.json exports:
-    "./brand/*" → "./dist/brand/*"
+├── dist/
+│   ├── brand/
+│   │   └── logo.svg          # Built output
+│   └── cli/
+│       └── copy-brand.js     # CLI: dg-copy-brand
+└── package.json:
+    exports: "./brand/*" → "./dist/brand/*"
+    bin: dg-copy-brand → "./dist/cli/copy-brand.js"
 ```
 
 ### Why Design Tokens Own Brand Assets
@@ -93,16 +95,18 @@ The `copy-tokens.ts` script handles brand assets:
 
 ---
 
-## Copy Script
+## Copying Brand Assets
 
-Other packages use `copy-brand-assets.ts` to sync brand assets:
+Use the `dg-copy-brand` CLI to copy brand assets to your project:
 
 ```bash
-# From lib-web-component
-tsx ../lib-design-token/scripts/copy-brand-assets.ts ./public
+dg-copy-brand ./public
+```
 
-# From docs-design-system
-tsx ../lib-design-token/scripts/copy-brand-assets.ts ./static/img
+For external consumers:
+
+```bash
+npx @designgreat/lib-design-token dg-copy-brand ./public
 ```
 
 ### Integration Example
@@ -110,7 +114,7 @@ tsx ../lib-design-token/scripts/copy-brand-assets.ts ./static/img
 ```json
 {
   "scripts": {
-    "copy:brand": "tsx ../lib-design-token/scripts/copy-brand-assets.ts ./public",
+    "copy:brand": "dg-copy-brand ./public",
     "storybook": "pnpm run copy:brand && storybook dev -p 6006"
   }
 }
@@ -157,7 +161,6 @@ Frameworks with SVGR support (Docusaurus, Vite + plugin, Next.js + plugin) can i
 
 ## Future Improvements
 
-- CLI tool: `npx @designgreat/lib-design-token copy-brand --dest ./public`
 - Additional assets: favicon variants, social images
 - Automated accessibility validation
 

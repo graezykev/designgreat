@@ -198,38 +198,20 @@ import '@designgreat/lib-design-token/css'
 
 ## Static Site Generators
 
-For **Docusaurus, Astro**, and similar SSGs that can't process CSS font imports at build time, copy fonts manually.
+For **Docusaurus, Astro**, and similar SSGs that can't process CSS font imports at build time, use the CLI to copy fonts:
 
-<details>
-<summary>**Font copy script for SSGs**</summary>
-
-```typescript
-// scripts/copy-fonts.ts
-import { cpSync, existsSync, mkdirSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const fontSource = resolve(
-  __dirname,
-  '../node_modules/@designgreat/lib-design-token/dist/font'
-)
-const fontTarget = resolve(__dirname, '../static/font')
-
-if (!existsSync(resolve(__dirname, '../static'))) {
-  mkdirSync(resolve(__dirname, '../static'), { recursive: true })
-}
-
-cpSync(fontSource, fontTarget, { recursive: true })
-console.log('✓ Fonts copied to static/font/')
+```bash
+npx @designgreat/lib-design-token dg-copy-fonts ./static/font
 ```
 
-Add to your build script:
+Add to your scripts:
 
 ```json
 {
   "scripts": {
-    "build": "tsx ./scripts/copy-fonts.ts && your-build-command"
+    "copy:fonts": "dg-copy-fonts ./static/font",
+    "dev": "npm run copy:fonts && your-dev-command",
+    "build": "npm run copy:fonts && your-build-command"
   }
 }
 ```
@@ -242,8 +224,6 @@ export default {
   stylesheets: [`${baseUrl}font/font-face.css`]
 }
 ```
-
-</details>
 
 ---
 

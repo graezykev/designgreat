@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "copy:fonts": "tsx ./scripts/copy-fonts.ts",
-    "copy:brand": "tsx ../lib-design-token/scripts/copy-brand-assets.ts ./static/img",
+    "copy:fonts": "dg-copy-fonts ./static/font",
+    "copy:brand": "dg-copy-brand ./static/img",
     "dev": "pnpm run copy:fonts && pnpm run copy:brand && docusaurus start",
     "start": "pnpm run dev",
     "build": "pnpm run copy:fonts && pnpm run copy:brand && docusaurus build",
