@@ -1,0 +1,42 @@
+---
+sidebar_position: 6
+sidebar_label: Quality Checks
+description: Linting and type checking for the documentation site
+---
+
+# Quality Checks
+
+Code quality tools for the documentation site.
+
+## Lint
+
+Check code style and potential issues:
+
+```bash
+pnpm --filter @designgreat/docs-design-system lint
+```
+
+## Type Check
+
+Validate TypeScript types:
+
+```bash
+pnpm --filter @designgreat/docs-design-system typecheck
+```
+
+## Run All Checks
+
+Before committing, run both:
+
+```bash
+pnpm --filter @designgreat/docs-design-system lint && \
+pnpm --filter @designgreat/docs-design-system typecheck
+```
+
+---
+
+## Next Steps
+
+- See [Publishing](./publishing) for PR and deployment process
+- Review [Writing Docs](./writing-docs) for content guidelines
+

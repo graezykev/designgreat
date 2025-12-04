@@ -39,6 +39,9 @@ effectively.
 - Use `pnpm changeset` to document any change that alters published behavior.
 - Choose the correct semver bump (patch/minor/major) per package.
 - Commit the generated `.changeset/*.md` file with your code.
+- See the
+  [Changeset Workflow guide](https://graezykev.github.io/designgreat/contributing/changeset-workflow)
+  for detailed steps and templates.
 
 ## Linting & Formatting
 

@@ -44,57 +44,10 @@ Full build (includes font download, Style Dictionary, TypeScript compilation):
 pnpm --filter @designgreat/lib-design-token run build
 ```
 
-## Lint
-
-Lint the TypeScript runtime and build scripts:
-
-```bash
-pnpm --filter @designgreat/lib-design-token run lint
-```
-
-## Typecheck
-
-Type check without emitting files:
-
-```bash
-pnpm --filter @designgreat/lib-design-token run typecheck
-```
-
-## Test and Validate
-
-### Run Tests
-
-Run the Vitest suite for runtime helpers and validation utilities:
-
-```bash
-pnpm --filter @designgreat/lib-design-token run test
-```
-
-### Validate Token Integrity
-
-Execute integrity checks for generated themes:
-
-```bash
-pnpm --filter @designgreat/lib-design-token run validate
-```
-
-## Build
-
-Full production build:
-
-```bash
-pnpm --filter @designgreat/lib-design-token run build
-```
-
-This runs the complete pipeline:
-1. Clean (`rm -rf dist src/generated`)
-2. Build tokens (download fonts → Style Dictionary → generate themes.ts)
-3. Compile TypeScript runtime
-4. Copy token sources to dist
-
 ## Next Steps
 
 - Learn about [Architecture](./architecture) to understand the package structure
 - Start with [Token Authoring](./token-authoring) to create or modify tokens
-- Follow the [Development Workflow](./development-workflow) for day-to-day tasks
+- See [Publishing](./publishing) for Git workflow and PR process
+- See [Testing & Validation](./testing-validation) for quality checks
 

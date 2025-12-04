@@ -2,21 +2,42 @@
 sidebar_position: 0
 ---
 
+import DocCardList from '@theme/DocCardList';
+
 # Contributing
 
 Welcome to the Design Great contributor documentation! This section provides guides for working on various parts of the project.
+
+## Choose Your Path
+
+| I want to... | Guide |
+|--------------|-------|
+| Learn **doc conventions** | [Conventions](/contributing/conventions/integration-docs-convention) |
+| Update **documentation** | [Documentation Site Development](/contributing/documentation-site-development/overview) |
+| Work on **design tokens** | [Design Token Development](/contributing/design-token-development/overview) |
+| Build **components** | [Web Component Development](/contributing/web-component-development/overview) |
+
+## In This Section
+
+<DocCardList />
+
+---
 
 ## Getting Started {#getting-started}
 
 All contributions start with the same setup:
 
-### Prerequisites
+<details>
+<summary>**Prerequisites**</summary>
 
 - **Node.js** 22 or higher
 - **PNPM** 9 or higher
 - **Git**
 
-### Clone & Install
+</details>
+
+<details>
+<summary>**Clone & Install**</summary>
 
 ```bash
 git clone https://github.com/graezykev/designgreat.git
@@ -24,33 +45,20 @@ cd designgreat
 pnpm install
 ```
 
-### Build All Packages
+</details>
+
+<details>
+<summary>**Build All Packages**</summary>
 
 ```bash
 pnpm run build
 ```
 
-After this initial setup, proceed to the specific development guide for your area of contribution.
+</details>
+
+After setup, proceed to the specific development guide for your area of contribution.
 
 ---
-
-## Development Guides
-
-### [Documentation Site Development](/contributing/documentation-site-development/overview)
-
-Learn how to work with the Docusaurus documentation site — setup, navigation, sidebars, writing docs, and documentation conventions.
-
-### [Design Token Development](/contributing/design-token-development/overview)
-
-Learn how to contribute to the design token package — architecture, token authoring, build system, and development workflow.
-
-### [Web Component Development](/contributing/web-component-development/overview)
-
-Learn how to contribute to the component library — architecture, Storybook workflow, design token integration, and publishing.
-
-## Documentation Standards
-
-When writing documentation, follow the [Documentation Conventions](/contributing/conventions) guide to ensure consistency across all pages.
 
 ## General Resources
 
