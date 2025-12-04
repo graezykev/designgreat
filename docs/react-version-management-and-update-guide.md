@@ -351,7 +351,7 @@ pnpm install
 **TODO:** Add to your pipeline:
 
 ```yaml
-# .github/workflows/check-pull-request.yml
+# .github/workflows/check-code-quality.yml
 - name: Check React version consistency
   run: pnpm check:react-versions # Fails if mismatched
 ```

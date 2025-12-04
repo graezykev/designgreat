@@ -4,10 +4,16 @@
 
 Refactor and optimize contributing documentation
 
-**CI & Publishing Documentation:**
+**CI Workflows:**
 
-- Created `check-pull-request.yml` workflow for PR validation (lint, typecheck, test, coverage,
-  validate, build, changeset dry-run)
+- Created `check-code-quality.yml` workflow for PR validation (lint, typecheck, test, coverage,
+  validate, build)
+- Enhanced `check-changeset.yml` with full changeset validation
+  (`pnpm changeset status --since=origin/main`)
+- Standardized workflow naming: `check-*` pattern for PR checks
+
+**Publishing Documentation:**
+
 - Standardized publishing docs across all 3 packages with consistent structure:
   - Before Opening a PR (checklist)
   - CI Pipeline (mermaid diagrams + tables + workflow links)
@@ -33,6 +39,6 @@ Refactor and optimize contributing documentation
 **Cleanup:**
 
 - Migrated `docs/changeset/` content to docs site
-- Renamed `ci.yml` to `check-pull-request.yml` for naming consistency
+- Renamed `ci.yml` to `check-code-quality.yml` for naming consistency
 - Updated all references to renamed/deleted files
 - Fixed dead links across monorepo

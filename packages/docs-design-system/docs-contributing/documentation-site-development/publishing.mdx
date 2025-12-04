@@ -25,19 +25,20 @@ This guide covers the pull request process and deployment for the documentation 
 
 ```mermaid
 flowchart LR
-    PR[PR] --> A[Changeset Check]
-    PR --> B[Lint/Typecheck] --> C[Build]
+    PR[PR] --> A[Changeset File Check] --> B[Changeset Validation]
+    PR --> C[Lint/Typecheck] --> D[Build]
 ```
 
 | Step | Command | Purpose |
 |------|---------|---------|
-| Changeset Check | — | Ensures changeset file exists |
+| Changeset File Check | `ls .changeset/*.md` | Ensures changeset file exists (fast fail) |
+| Changeset Validation | `pnpm changeset status` | Validates changeset content |
 | Install | `pnpm install` | Install dependencies |
 | Lint | `pnpm run lint` | Code style checks |
 | Typecheck | `pnpm run typecheck` | TypeScript validation |
 | Build | `pnpm run build` | Build static site |
 
-📄 Workflow files: [check-pull-request.yml](https://github.com/graezykev/designgreat/blob/main/.github/workflows/check-pull-request.yml) · [check-changeset.yml](https://github.com/graezykev/designgreat/blob/main/.github/workflows/check-changeset.yml)
+📄 Workflow files: [check-code-quality.yml](https://github.com/graezykev/designgreat/blob/main/.github/workflows/check-code-quality.yml) · [check-changeset.yml](https://github.com/graezykev/designgreat/blob/main/.github/workflows/check-changeset.yml)
 
 ### On Merge to Main
 

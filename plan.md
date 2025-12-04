@@ -523,7 +523,7 @@ Create Terraform modules for:
 
 Create reusable workflow templates:
 
-**7.3.1 CI Workflow (`.github/workflows/check-pull-request.yml`):**
+**7.3.1 CI Workflow (`.github/workflows/check-code-quality.yml`):**
 
 - Trigger on pull requests
 - Run on affected packages only (Turborepo filtering)

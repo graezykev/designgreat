@@ -47,6 +47,10 @@
 - [ ] Changesets → latest minor (review release notes for GitHub Actions integration)
 - [ ] PNPM → ≥10.x (current workspace default: 9.x)
   - Validate lockfile changes and CI runners
+- [ ] Custom GitHub runners with pre-installed Node.js/pnpm
+  - Reduce CI setup time from ~30s to near-instant
+  - Consider self-hosted runners or GitHub larger runners with caching
+  - Target workflows: `check-changeset.yml`, `check-code-quality.yml`
 
 ## Infrastructure Packages
 
