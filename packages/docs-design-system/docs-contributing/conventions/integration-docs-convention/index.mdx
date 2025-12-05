@@ -17,6 +17,10 @@ This guide establishes conventions for writing **integration documentation** —
 | **Location** | `/design-token/`, `/web-component/` |
 | **Focus** | Installation, usage, configuration, APIs |
 
+### Specialized Conventions
+
+- [Web Component Docs](/contributing/conventions/integration-docs-convention/web-component-docs-convention) — For React component reference pages
+
 ---
 
 ## Folder Structure
@@ -26,34 +30,43 @@ This guide establishes conventions for writing **integration documentation** —
 ```
 docs-{package}/
 ├── guides/                    # Integration guides (core content)
-│   ├── overview.mdx          # Section overview
-│   ├── quick-start.mdx       # 2-minute getting started
-│   ├── installation.mdx      # Full installation guide
-│   ├── basic-usage.mdx       # Core usage patterns
-│   ├── theming.mdx           # Theme configuration
-│   ├── fonts.mdx             # Font setup
-│   ├── tailwind.mdx          # Tailwind integration
-│   ├── frameworks.mdx        # Framework-specific guides
-│   └── api/                   # API reference
+│   ├── overview.mdx
+│   ├── quick-start.mdx
+│   ├── installation.mdx
+│   ├── ...                    # See file order table below
+│   └── api/
 │       └── reference.mdx
-└── colors/                    # Topic-specific sections (optional)
+└── {topic}/                   # Topic-specific sections (optional)
     ├── overview.mdx
     └── ...
 ```
 
-### File Order (Progressive)
+### Standard File Order (Progressive)
 
-| Position | File | Purpose | User Journey |
-|----------|------|---------|--------------|
-| 0 | overview.mdx | Section intro | "What can I do?" |
-| 1 | quick-start.mdx | 2-min setup | "Let me try it" |
-| 2 | installation.mdx | Full setup | "I want details" |
-| 3 | basic-usage.mdx | Core patterns | "How do I use it?" |
-| 4 | theming.mdx | Customization | "How do I customize?" |
-| 5 | fonts.mdx | Font setup | "What about fonts?" |
-| 6 | tailwind.mdx | Tailwind | "I use Tailwind" |
-| 7 | frameworks.mdx | Framework guides | "I use Next.js/Remix" |
-| 8+ | api/reference.mdx | API docs | "I need details" |
+| Pos | Convention | Purpose | User Journey | design-token | web-component |
+|-----|------------|---------|--------------|--------------|---------------|
+| 0 | overview.mdx | Section intro | "What can I do?" | overview.mdx | overview.mdx |
+| 1 | quick-start.mdx | 2-min setup | "Let me try it" | quick-start.mdx | quick-start.mdx |
+| 2 | installation.mdx | Full setup | "I want details" | installation.mdx | installation.mdx |
+| 3 | `[basic-usage]`.mdx | Core patterns | "How do I use it?" | basic-usage.mdx | - |
+| 4 | theming.mdx | Customization | "How do I customize?" | theming.mdx | theming.mdx |
+| 5 | fonts.mdx | Font setup | "What about fonts?" | fonts.mdx | fonts.mdx |
+| 6 | `[specialized]`.mdx | Package-specific | Varies | brand-assets.mdx | - |
+| 7 | tailwind.mdx, `[build-tools]`.mdx | Build tools | "I use X tool" | tailwind.mdx | tailwind.mdx |
+| 8 | `[framework]`.mdx | Web frameworks | "I use Next.js/Remix" | - | frameworks.mdx |
+| 9 | `[runtime/platform]`.mdx | Alt runtimes | "I use React Native" | react-native.mdx | - |
+| 10+ | api/reference.mdx | API docs | "I need details" | api/reference.mdx | - |
+
+:::note Flexibility
+This order works well for most integration guides, but adapt as needed:
+
+- **Skip files** — Not every package needs `tailwind.mdx` or `fonts.mdx`
+- **Merge files** — Combine related topics if they're short
+- **Add files** — Insert package-specific guides where they fit
+- **Reorder** — Adjust if it improves the learning flow
+
+The goal is a **logical progression** from "try it" → "learn it" → "customize it".
+:::
 
 ---
 
@@ -74,9 +87,14 @@ docs-{package}/
 
 ---
 
-## Page Structure
+## Page Templates
 
-### Overview Page Template
+Templates and section guides for common page types.
+
+### overview.mdx
+
+<details>
+<summary>Template</summary>
 
 ```text
 # {Package Name} Guides
@@ -116,7 +134,7 @@ To contribute to this package, see the [{Package} Development Guides](/contribut
 {Bullets or table guiding to next topics}
 ```
 
-### Required Sections
+</details>
 
 | Section | Required | Purpose |
 |---------|----------|---------|
@@ -129,6 +147,26 @@ To contribute to this package, see the [{Package} Development Guides](/contribut
 | In This Section | ✅ | DocCardList |
 | Contributing | ✅ | Link to development guide |
 | Next Steps | ✅ | Navigation to next topics |
+
+### quick-start.mdx
+
+| Section | Content |
+|---------|---------|
+| Introduction | One-liner + time estimate |
+| Install | Package install command |
+| Import | Basic import example |
+| Use | Minimal usage example |
+| Next Steps | Link to installation, basic-usage |
+
+### installation.mdx
+
+| Section | Content |
+|---------|---------|
+| Package Manager | npm/pnpm/yarn commands |
+| Peer Dependencies | Required packages |
+| Configuration | Setup steps |
+| Verification | How to confirm it works |
+| Next Steps | Link to basic-usage, theming |
 
 ---
 
@@ -145,6 +183,18 @@ Use these exact headings for consistency:
 | Child pages | "In This Section" | "Quick Links" |
 | Contributor callout | "Contributing" | "For Developers" |
 | Page continuation | "Next Steps" | "What's Next" |
+
+---
+
+## Singular vs Plural
+
+**The noun (subject) determines singular/plural; modifiers stay singular.**
+
+| Example | Modifier | Noun | Result |
+|---------|----------|------|--------|
+| Design Token Guides | Design Token | Guides (multiple) | ✅ Plural noun |
+| Base Colors | Base | Colors (multiple) | ✅ Plural noun |
+| Installation | — | Installation (single) | ✅ Singular noun |
 
 ---
 
@@ -178,18 +228,6 @@ Include when your section has **5+ sub-pages**:
 | Quick Start | Table | Multiple paths for users |
 | Single next step | Plain text | `Continue with [X](./x)...` |
 | Multiple options | Bullets | 2-4 related links |
-
----
-
-## Singular vs Plural
-
-**The noun (subject) determines singular/plural; modifiers stay singular.**
-
-| Example | Modifier | Noun | Result |
-|---------|----------|------|--------|
-| Design Token Guides | Design Token | Guides (multiple) | ✅ Plural noun |
-| Base Colors | Base | Colors (multiple) | ✅ Plural noun |
-| Installation | — | Installation (single) | ✅ Singular noun |
 
 ---
 

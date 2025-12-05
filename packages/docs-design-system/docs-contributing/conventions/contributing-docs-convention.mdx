@@ -43,40 +43,29 @@ docs-contributing/
 
 ### Standard File Order (Progressive)
 
-| Position | File | Purpose | User Journey |
-|----------|------|---------|--------------|
-| 0 | overview.mdx | What & Why | "What is this package?" |
-| 1 | get-started.mdx | Quick setup | "How do I set up?" |
-| 2 | architecture.mdx | How it works | "How is it structured?" |
-| 3 | `[core-dev-workflow]`.mdx | Main dev activity | "How do I work day-to-day?" |
-| 4 | `[specialized]`.mdx | Deep dive | "What about advanced topics?" |
-| 5 | `[build, integration]`.mdx | Build & integration | "How are artifacts generated?" |
-| 6 | `[testing, quality, checking]`.mdx | Testing & quality | "How do I test?" |
-| 7 | `[release, publish, deploy]`.mdx | Release & deployment | "How do I release?" |
-| 8 | troubleshooting.mdx | Debug | "Something's wrong" |
+| Pos | Convention | Purpose | User Journey | design-token | web-component |
+|-----|------------|---------|--------------|--------------|---------------|
+| 0 | overview.mdx | What & Why | "What is this package?" | overview.mdx | overview.mdx |
+| 1 | get-started.mdx | Quick setup | "How do I set up?" | get-started.mdx | get-started.mdx |
+| 2 | architecture.mdx | How it works | "How is it structured?" | architecture.mdx | architecture.mdx |
+| 3 | `[core-dev-workflow]`.mdx | Main dev activity | "How do I work day-to-day?" | token-authoring.mdx | storybook-workflow.mdx |
+| 4 | `[specialized]`.mdx | Deep dive | "What about advanced topics?" | font-assets.mdx | font-handling.mdx |
+| 5 | `[build, integration]`.mdx | Build & integration | "How are artifacts generated?" | build-system.mdx | design-token-integration.mdx |
+| 6 | `[testing, quality]`.mdx | Testing & quality | "How do I test?" | testing-validation.mdx | testing.mdx |
+| 7 | `[release, publish]`.mdx | Release & deployment | "How do I release?" | publishing.mdx | publishing.mdx |
+| 8 | troubleshooting.mdx | Debug | "Something's wrong" | troubleshooting.mdx | troubleshooting.mdx |
 
 :::note Flexibility
 This is a **guideline**, not strict rules. Adapt based on package needs:
 
 - **Skip files** — Not every package needs `architecture.mdx` or `troubleshooting.mdx`
 - **Merge files** — Combine related topics (e.g., `quality-check-build-deploy.mdx`)
-- **Separate files** - For more complex explanation you can have both `testing.mdx` and `quality.mdx`, etc.
+- **Separate files** — For more complex explanation you can have both `testing.mdx` and `quality.mdx`, etc.
 - **Add files** — Insert specialized docs where they make sense
 - **Reorder** — Adjust positions if it improves the user journey
 
 The goal is a **logical, progressive flow** — not rigid conformity.
 :::
-
-### Package-Specific Files
-
-| Position | design-token-development | web-component-development |
-|----------|--------------------------|---------------------------|
-| 3 | token-authoring.mdx | storybook-workflow.mdx |
-| 4 | font-assets.mdx | font-handling.mdx |
-| 5 | build-system.mdx | design-token-integration.mdx |
-| 6 | testing-validation.mdx | testing.mdx |
-| 7 | publishing.mdx | publishing.mdx |
-| 8 | troubleshooting.mdx | troubleshooting.mdx |
 
 ---
 
@@ -97,9 +86,14 @@ The goal is a **logical, progressive flow** — not rigid conformity.
 
 ---
 
-## Page Structure
+## Page Templates
 
-### Overview Page Template
+Templates and section guides for common page types.
+
+### overview.mdx
+
+<details>
+<summary>Template</summary>
 
 ```text
 # [Package Name] Development
@@ -134,7 +128,7 @@ see the [[Package] Integration Guides](/path).
 [Bullets guiding to first steps]
 ```
 
-### Required Sections
+</details>
 
 | Section | Required | Purpose |
 |---------|----------|---------|
@@ -145,24 +139,6 @@ see the [[Package] Integration Guides](/path).
 | In This Section | ✅ | DocCardList |
 | Related Documentation | ✅ | Links to integration guide |
 | Next Steps | ✅ | Navigation to get-started |
-
----
-
-## Section Headings
-
-Use these exact headings for consistency:
-
-| Concept | Heading | ❌ Avoid |
-|---------|---------|----------|
-| Package description | "About This Package" | "Package Overview" |
-| Audience disambiguation | "For Consumers vs Contributors" | "For Users vs Developers" |
-| Child pages | "In This Section" | "Quick Links" |
-| External links | "Related Documentation" | "Related Resources" |
-| Page continuation | "Next Steps" | "What's Next" |
-
----
-
-## Common Page Types
 
 ### get-started.mdx
 
@@ -212,6 +188,20 @@ Lint, typecheck, and test commands belong in **testing.mdx** (position 7), not g
 | Debug Commands | Useful diagnostic commands |
 | Getting Help | Where to ask questions |
 | Next Steps | Links to related docs |
+
+---
+
+## Section Headings
+
+Use these exact headings for consistency:
+
+| Concept | Heading | ❌ Avoid |
+|---------|---------|----------|
+| Package description | "About This Package" | "Package Overview" |
+| Audience disambiguation | "For Consumers vs Contributors" | "For Users vs Developers" |
+| Child pages | "In This Section" | "Quick Links" |
+| External links | "Related Documentation" | "Related Resources" |
+| Page continuation | "Next Steps" | "What's Next" |
 
 ---
 
