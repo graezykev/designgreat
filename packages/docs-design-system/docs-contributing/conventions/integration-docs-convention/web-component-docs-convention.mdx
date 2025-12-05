@@ -1,0 +1,205 @@
+---
+sidebar_position: 1
+sidebar_label: Web Component Docs
+description: Documentation conventions for Web Component (React) reference pages
+---
+
+# Web Component Docs Convention
+
+This guide establishes conventions for writing **Web Component documentation** — reference pages for React UI components like Button, Dialog, TextInput.
+
+:::info Part of Integration Docs
+Web Component docs are a subset of [Integration Docs](/contributing/conventions/integration-docs-convention) — they're consumer-facing, not contributor-facing.
+:::
+
+## Scope
+
+| Aspect | Description |
+|--------|-------------|
+| **Purpose** | Component API reference and usage examples |
+| **Audience** | Developers using the React component library |
+| **Location** | `/web-component/{component}/` |
+| **Focus** | Props, variants, examples, accessibility |
+
+---
+
+## Folder Structure
+
+Each component gets its own folder with an index page and variant pages:
+
+```
+docs-web-component/
+├── button/
+│   ├── _category_.json        # Sidebar category config
+│   ├── index.mdx              # Component overview (position 0)
+│   ├── primary.mdx            # Variant page (position 1)
+│   ├── secondary.mdx          # Variant page (position 2)
+│   └── outline.mdx            # Variant page (position 3)
+├── dialog/
+│   ├── _category_.json
+│   ├── index.mdx
+│   ├── small.mdx
+│   ├── medium.mdx
+│   └── large.mdx
+└── text-input/
+    ├── _category_.json
+    ├── index.mdx
+    ├── default.mdx
+    ├── success.mdx
+    └── error.mdx
+```
+
+---
+
+## File Order
+
+| Pos | File | Purpose |
+|-----|------|---------|
+| 0 | index.mdx | Component overview, props, accessibility |
+| 1+ | `{variant}`.mdx | Variant-specific examples and guidelines |
+
+---
+
+## Page Templates
+
+### index.mdx (Component Overview)
+
+<details>
+<summary>Template</summary>
+
+```text
+# {Component Name}
+
+{One-sentence description of the component.}
+
+## Overview
+
+{2-3 sentences explaining what the component does and when to use it.}
+
+## Import
+
+{Import statement}
+
+## Props
+
+{Props table with Type, Default, Description}
+
+## Accessibility
+
+{Bullet list of accessibility features}
+```
+
+</details>
+
+| Section | Required | Purpose |
+|---------|----------|---------|
+| Title | ✅ | Component name (singular) |
+| Description | ✅ | One-liner about the component |
+| Overview | ✅ | What it does, when to use |
+| Import | ✅ | How to import |
+| Props | ✅ | Full props table |
+| Accessibility | ✅ | A11y features and considerations |
+
+### `{variant}`.mdx (Variant Page)
+
+<details>
+<summary>Template</summary>
+
+```text
+# {Variant Name}
+
+{One-sentence description of this variant.}
+
+## Basic Example
+
+{Live preview + code tabs}
+
+## With Icons (if applicable)
+
+{Live preview + code tabs}
+
+## Sizes
+
+{Live preview + code tabs}
+
+## States
+
+{Live preview + code tabs}
+
+## Usage Guidelines
+
+### When to Use
+{Bullet list}
+
+### Best Practices
+{Bullet list}
+```
+
+</details>
+
+| Section | Required | Purpose |
+|---------|----------|---------|
+| Title | ✅ | Variant name |
+| Description | ✅ | When to use this variant |
+| Basic Example | ✅ | Simplest usage with preview + code |
+| Variations | ⬜ | Sizes, icons, states (as needed) |
+| Usage Guidelines | ✅ | When to use, best practices |
+
+---
+
+## Example Pattern
+
+Use Docusaurus Tabs for preview + code:
+
+````tsx
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { Button } from '@designgreat/lib-web-component';
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <Button variant="primary">Click me</Button>
+  </TabItem>
+  <TabItem value="code" label="Code">
+    ```tsx
+    <Button variant="primary">Click me</Button>
+    ```
+  </TabItem>
+</Tabs>
+````
+
+---
+
+## Naming Conventions
+
+| Element | Convention | Example |
+|---------|------------|---------|
+| Folder | kebab-case, singular | `button/`, `text-input/` |
+| Index file | `index.mdx` | `button/index.mdx` |
+| Variant file | kebab-case variant name | `primary.mdx`, `outline.mdx` |
+| Title (index) | PascalCase singular | "Button", "TextInput" |
+| Title (variant) | Capitalized | "Primary", "Outline" |
+
+---
+
+## Category Config
+
+Each component folder needs a `_category_.json`:
+
+```json
+{
+  "label": "Button",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Button component variants and usage"
+  }
+}
+```
+
+---
+
+## Example
+
+See: [Button Component](/web-component/button)
+

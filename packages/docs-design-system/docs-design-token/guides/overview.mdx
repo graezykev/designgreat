@@ -13,7 +13,7 @@ Design tokens are the visual design atoms of the design system — specifically,
 
 ## Package Exports
 
-`@designgreat/lib-design-token` provides four types of outputs:
+`@designgreat/lib-design-token` provides five types of outputs:
 
 | Export | Import Path | Use Case |
 |--------|-------------|----------|
@@ -21,14 +21,17 @@ Design tokens are the visual design atoms of the design system — specifically,
 | **SCSS Variables** | `@designgreat/.../scss/light` | SCSS projects with `$dg-*` |
 | **TypeScript APIs** | `@designgreat/lib-design-token` | Runtime token access, theme switching |
 | **Font Assets** | `@designgreat/.../font` | Self-hosted Roboto font files |
+| **Brand Assets** | `@designgreat/.../brand` | Logos, icons, brand imagery |
 
 ## Key Features
 
+- ✅ **Token categories** — Colors, typography, spacing, shadows, and more
 - ✅ **Light & dark themes** — Built-in, ready to use
 - ✅ **Type-safe** — Full IntelliSense for all token paths
 - ✅ **Framework agnostic** — Works with React, Vue, Next.js, Vite, Remix, etc.
 - ✅ **React Native compatible** — JS token objects work directly in StyleSheet
 - ✅ **Self-contained fonts** — No CDN required, fonts bundled in package
+- ✅ **Brand assets included** — Logos and icons bundled
 
 ---
 
@@ -41,6 +44,7 @@ Design tokens are the visual design atoms of the design system — specifically,
 | **5 min** | Use CSS variables | [Basic Usage](./basic-usage) |
 | **10 min** | Add dark mode | [Theming](./theming) |
 | **10 min** | Set up fonts | [Fonts](./fonts) |
+| **5 min** | Use brand assets | [Brand Assets](./brand-assets) |
 | **15 min** | Use with Tailwind | [Tailwind Integration](./tailwind) |
 | **15 min** | Use with React Native | [React Native Integration](./react-native) |
 | **Reference** | Look up APIs | [API Reference](./api/reference) |
@@ -63,3 +67,9 @@ import DocCardList from '@theme/DocCardList';
 ## Contributing
 
 To contribute to the design token package itself, see the [Design Token Development Guides](/contributing/design-token-development/overview).
+
+## Next Steps
+
+- **New to design tokens?** Start with the [Quick Start](./quick-start) guide
+- **Ready to install?** See [Installation](./installation) for full setup
+- **Need colors?** Explore the [Color Token Reference](/design-token/colors/overview)
