@@ -1,5 +1,18 @@
 # @designgreat/docs-design-system
 
+## 0.7.4
+
+### Patch Changes
+
+- ae64b7b: docs(design-token): clean up guides section
+  - Simplified page titles: "Tailwind Integration" → "Tailwind", "React Native Integration" → "React
+    Native"
+  - Fixed api folder sidebar position (8 → 9) to avoid conflict with react-native.mdx
+
+  **Related PR:** [#49](https://github.com/graezykev/designgreat/pull/49)
+
+  **Author:** @chunman-yeung
+
 ## 0.7.3
 
 ### Patch Changes
