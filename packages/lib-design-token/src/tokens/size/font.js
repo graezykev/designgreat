@@ -1,42 +1,48 @@
 export default {
   size: {
     font: {
+      // Base font size (16px)
       base: {
-        value: '{spacing.atomic.DEFAULT}',
+        value: '{spacing.px16}',
         type: 'fontSize',
-        comment: '16px by default'
+        comment: '16px - browser default'
       },
       DEFAULT: {
-        value: '{spacing.atomic.DEFAULT}',
-        type: 'fontSize',
-        comment: '16px by default'
+        value: '{size.font.base}',
+        type: 'fontSize'
       },
+
+      // T-shirt scale for font sizes
       xs: {
-        value: '{spacing.atomic.xs}',
+        value: '{spacing.px12}', // 12px
         type: 'fontSize'
       },
-      s: {
-        value: '{spacing.atomic.s}',
+      sm: {
+        value: '{spacing.px14}', // 14px
         type: 'fontSize'
       },
-      m: {
-        value: '{spacing.atomic.m}',
+      md: {
+        value: '{spacing.px16}', // 16px
         type: 'fontSize'
       },
-      l: {
-        value: '{spacing.atomic.l}',
+      lg: {
+        value: '{spacing.px20}', // 20px
         type: 'fontSize'
       },
       xl: {
-        value: '{spacing.atomic.xl}',
+        value: '{spacing.px24}', // 24px
         type: 'fontSize'
       },
-      xxl: {
-        value: '{spacing.atomic.xxl}',
+      '2xl': {
+        value: '{spacing.px32}', // 32px
         type: 'fontSize'
       },
-      xxxl: {
-        value: '{spacing.atomic.xxxl}',
+      '3xl': {
+        value: '{spacing.px40}', // 40px
+        type: 'fontSize'
+      },
+      '4xl': {
+        value: '{spacing.px48}', // 48px
         type: 'fontSize'
       }
     }

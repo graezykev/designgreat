@@ -87,93 +87,95 @@ graph LR
 
 ## Usage Examples
 
-### Button States
+These primary colors are used throughout the design system. See live demos in these pages:
+
+### Buttons
+
+Primary colors power the main button styles with all interactive states.
+
+→ **See live demos**: [Button State Patterns](./shortcuts/interactive-state#button-interaction-colors) (Primary, Outline, Ghost buttons)
 
 ```css
-/* Primary button */
 .button-primary {
   background-color: var(--dg-color-primary-default);
-  color: white;
+  color: var(--dg-color-text-inverse);
 }
 
 .button-primary:hover {
   background-color: var(--dg-color-primary-hover-default);
-  /* or directly: var(--dg-color-primary-bold) */
-}
-
-.button-primary:active {
-  background-color: var(--dg-color-primary-active-default);
-  /* or directly: var(--dg-color-primary-subtle) */
 }
 
 .button-primary:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
   box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
-}
-
-.button-primary:disabled {
-  background-color: var(--dg-color-primary-disabled-default);
-  opacity: 0.6;
 }
 ```
 
-### Link States
+### Links
+
+Primary colors define link appearance and interactive states.
+
+→ **See live demos**: [Link State Patterns](./shortcuts/interactive-state#link-interaction-colors)
 
 ```css
-/* Link styling */
 a {
   color: var(--dg-color-primary-default);
-}
-
-a:visited {
-  color: var(--dg-color-primary-visited-default);
 }
 
 a:hover {
   color: var(--dg-color-primary-hover-default);
 }
 
-a:active {
-  color: var(--dg-color-primary-active-default);
+a:visited {
+  color: var(--dg-color-primary-visited-default);
 }
 ```
 
-### Toggle/Checkbox States
+### Form Controls
+
+Primary colors are used for checkboxes, toggles, and input focus states.
+
+→ **See live demos**: [Toggle/Checkbox Patterns](./shortcuts/interactive-state#checkbox--radio-colors) | [Input Focus States](./shortcuts/interactive-state#input-interaction-colors)
 
 ```css
-/* Toggle switch */
-.toggle-switch.checked {
+.checkbox:checked {
   background-color: var(--dg-color-primary-checked-default);
+  border-color: var(--dg-color-primary-checked-default);
 }
 
-.toggle-switch.checked .toggle-handle {
-  background-color: white;
+.input:focus {
+  border-color: var(--dg-color-primary-default);
+  box-shadow: var(--dg-shadow-focus);
 }
 ```
 
-### Dropdown States
+### Focus Shadows
+
+The `color.primary.focus.shadow` token powers the focus ring effect.
+
+→ **See live demos**: [Focus Indicators](./shortcuts/shadow#focus-indicators)
 
 ```css
-/* Dropdown trigger */
-.dropdown-trigger[aria-expanded="true"] {
-  background-color: var(--dg-color-primary-opened-bg);
-  color: var(--dg-color-primary-opened-default);
+.interactive-element:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
 }
 ```
+
+### Gradients
+
+Primary colors are combined in gradient tokens for hero sections and buttons.
+
+→ **See live demos**: [Gradient Buttons](../effects/gradients#interactive-gradient-buttons) | [Hero Gradients](../effects/gradients#animated-hero-gradient)
 
 ### TypeScript/JavaScript Usage
 
 ```typescript
 import { tokens } from '@designgreat/lib-design-token'
 
-// Component styling
 const buttonStyles = {
   backgroundColor: tokens.color.primary.DEFAULT,
   '&:hover': {
     backgroundColor: tokens.color.primary.hover.DEFAULT
-  },
-  '&:active': {
-    backgroundColor: tokens.color.primary.active.DEFAULT
   }
 }
 ```
@@ -319,10 +321,12 @@ packages/lib-design-token/src/tokens/color/
 }
 ```
 
-## Related Topics
+## Related
 
-- [Accent Colors](./accent-colors) - Understanding blue accent colors
+- [Interactive State Shortcuts](./shortcuts/interactive-state) - **Live demos** of buttons, links, inputs using primary colors
+- [Shadow Shortcuts](./shortcuts/shadow) - Focus shadows and elevation using primary colors
+- [Accent Colors](./accent-colors) - Understanding the blue accent colors that primary references
 - [Secondary, Tertiary, Quartus Colors](./secondary-tertiary-quartus) - Additional action colors
 - [Semantic Colors](./semantic-colors) - Semantic meanings vs primary actions
-- [Theming](/design-token/guides/theming) - Theming primary colors
+- [Gradients](../effects/gradients) - Gradient buttons and hero sections
 

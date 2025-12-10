@@ -1,0 +1,415 @@
+---
+sidebar_position: 3
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Semantic Scales
+
+Purpose-built spacing scales for common layout patterns. Use these instead of raw pixel values.
+
+## Space Scale
+
+General-purpose spacing for any layout need.
+
+| Token | CSS Variable | Value | Demo |
+|-------|--------------|-------|------|
+| <CopyableCode>spacing.space.none</CopyableCode> | <CopyableCode>--dg-spacing-space-none</CopyableCode> | 0px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-none)'}}></div> |
+| <CopyableCode>spacing.space.2xs</CopyableCode> | <CopyableCode>--dg-spacing-space-2xs</CopyableCode> | 2px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-2xs)'}}></div> |
+| <CopyableCode>spacing.space.xs</CopyableCode> | <CopyableCode>--dg-spacing-space-xs</CopyableCode> | 4px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-xs)'}}></div> |
+| <CopyableCode>spacing.space.sm</CopyableCode> | <CopyableCode>--dg-spacing-space-sm</CopyableCode> | 8px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-sm)'}}></div> |
+| <CopyableCode bold>spacing.space.md</CopyableCode> | <CopyableCode bold>--dg-spacing-space-md</CopyableCode> | 16px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-md)'}}></div> |
+| <CopyableCode>spacing.space.lg</CopyableCode> | <CopyableCode>--dg-spacing-space-lg</CopyableCode> | 24px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-lg)'}}></div> |
+| <CopyableCode>spacing.space.xl</CopyableCode> | <CopyableCode>--dg-spacing-space-xl</CopyableCode> | 32px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-xl)'}}></div> |
+| <CopyableCode>spacing.space.2xl</CopyableCode> | <CopyableCode>--dg-spacing-space-2xl</CopyableCode> | 48px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-2xl)'}}></div> |
+| <CopyableCode>spacing.space.3xl</CopyableCode> | <CopyableCode>--dg-spacing-space-3xl</CopyableCode> | 64px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-space-3xl)'}}></div> |
+
+---
+
+## Gap Scale
+
+Optimized for flex/grid `gap` property between child items.
+
+| Token | CSS Variable | Value | Demo |
+|-------|--------------|-------|------|
+| <CopyableCode>spacing.gap.none</CopyableCode> | <CopyableCode>--dg-spacing-gap-none</CopyableCode> | 0px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-gap-none)'}}></div> |
+| <CopyableCode>spacing.gap.xs</CopyableCode> | <CopyableCode>--dg-spacing-gap-xs</CopyableCode> | 4px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-gap-xs)'}}></div> |
+| <CopyableCode>spacing.gap.sm</CopyableCode> | <CopyableCode>--dg-spacing-gap-sm</CopyableCode> | 8px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-gap-sm)'}}></div> |
+| <CopyableCode bold>spacing.gap.md</CopyableCode> | <CopyableCode bold>--dg-spacing-gap-md</CopyableCode> | 12px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-gap-md)'}}></div> |
+| <CopyableCode>spacing.gap.lg</CopyableCode> | <CopyableCode>--dg-spacing-gap-lg</CopyableCode> | 16px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-gap-lg)'}}></div> |
+| <CopyableCode>spacing.gap.xl</CopyableCode> | <CopyableCode>--dg-spacing-gap-xl</CopyableCode> | 24px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-gap-xl)'}}></div> |
+
+### Gap Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-gap-demo dg-gap-md">
+  <div className="dg-spacing-box dg-box-green"></div>
+  <div className="dg-spacing-box dg-box-green"></div>
+  <div className="dg-spacing-box dg-box-green"></div>
+</div>
+<p className="dg-hint dg-mt-lg">↑ gap: var(--dg-spacing-gap-md)</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-gap-demo dg-gap-md">
+  <div class="dg-spacing-box dg-box-green"></div>
+  <div class="dg-spacing-box dg-box-green"></div>
+  <div class="dg-spacing-box dg-box-green"></div>
+</div>
+```
+
+```css
+.dg-gap-demo {
+  display: flex;
+  padding: var(--dg-spacing-inset-md);
+  background-color: var(--dg-color-background-bold);
+  border-radius: var(--dg-size-border-radius-lg);
+}
+
+.dg-gap-md {
+  gap: var(--dg-spacing-gap-md);
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Inset Scale
+
+For padding inside containers (cards, buttons, modals).
+
+| Token | CSS Variable | Value | Demo |
+|-------|--------------|-------|------|
+| <CopyableCode>spacing.inset.none</CopyableCode> | <CopyableCode>--dg-spacing-inset-none</CopyableCode> | 0px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-inset-none)'}}></div> |
+| <CopyableCode>spacing.inset.xs</CopyableCode> | <CopyableCode>--dg-spacing-inset-xs</CopyableCode> | 8px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-inset-xs)'}}></div> |
+| <CopyableCode>spacing.inset.sm</CopyableCode> | <CopyableCode>--dg-spacing-inset-sm</CopyableCode> | 12px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-inset-sm)'}}></div> |
+| <CopyableCode bold>spacing.inset.md</CopyableCode> | <CopyableCode bold>--dg-spacing-inset-md</CopyableCode> | 16px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-inset-md)'}}></div> |
+| <CopyableCode>spacing.inset.lg</CopyableCode> | <CopyableCode>--dg-spacing-inset-lg</CopyableCode> | 24px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-inset-lg)'}}></div> |
+| <CopyableCode>spacing.inset.xl</CopyableCode> | <CopyableCode>--dg-spacing-inset-xl</CopyableCode> | 32px | <div className="spacing-demo" style={{width: 'var(--dg-spacing-inset-xl)'}}></div> |
+
+### Inset Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-spacing-flex dg-gap-lg dg-flex-wrap">
+  <div>
+    <div className="dg-inset-demo-card dg-inset-xs">
+      <div className="dg-spacing-box-sm dg-box-purple"></div>
+    </div>
+    <p className="dg-label dg-text-center">xs</p>
+  </div>
+  <div>
+    <div className="dg-inset-demo-card dg-inset-md">
+      <div className="dg-spacing-box-sm dg-box-purple"></div>
+    </div>
+    <p className="dg-label dg-text-center">md</p>
+  </div>
+  <div>
+    <div className="dg-inset-demo-card dg-inset-xl">
+      <div className="dg-spacing-box-sm dg-box-purple"></div>
+    </div>
+    <p className="dg-label dg-text-center">xl</p>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-inset-demo-card dg-inset-xs">Content</div>
+<div class="dg-inset-demo-card dg-inset-md">Content</div>
+<div class="dg-inset-demo-card dg-inset-xl">Content</div>
+```
+
+```css
+.dg-inset-demo-card {
+  background-color: var(--dg-color-background-bold);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
+}
+
+.dg-inset-xs { padding: var(--dg-spacing-inset-xs); }
+.dg-inset-md { padding: var(--dg-spacing-inset-md); }
+.dg-inset-xl { padding: var(--dg-spacing-inset-xl); }
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Stack Scale
+
+Vertical spacing between page sections.
+
+| Token | CSS Variable | Value | Use Case |
+|-------|--------------|-------|----------|
+| <CopyableCode>spacing.stack.none</CopyableCode> | <CopyableCode>--dg-spacing-stack-none</CopyableCode> | 0px | No spacing |
+| <CopyableCode>spacing.stack.xs</CopyableCode> | <CopyableCode>--dg-spacing-stack-xs</CopyableCode> | 16px | Tight sections |
+| <CopyableCode>spacing.stack.sm</CopyableCode> | <CopyableCode>--dg-spacing-stack-sm</CopyableCode> | 24px | Related sections |
+| <CopyableCode bold>spacing.stack.md</CopyableCode> | <CopyableCode bold>--dg-spacing-stack-md</CopyableCode> | 40px | Standard sections |
+| <CopyableCode>spacing.stack.lg</CopyableCode> | <CopyableCode>--dg-spacing-stack-lg</CopyableCode> | 64px | Major sections |
+| <CopyableCode>spacing.stack.xl</CopyableCode> | <CopyableCode>--dg-spacing-stack-xl</CopyableCode> | 96px | Hero/page breaks |
+
+### Stack Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-spacing-flex-col">
+  <div className="dg-spacing-section dg-box-orange-low">Section 1</div>
+  <div className="dg-spacing-indicator dg-box-orange" style={{height: 'var(--dg-spacing-stack-md)'}}>stack.md</div>
+  <div className="dg-spacing-section dg-box-orange-low">Section 2</div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<section class="dg-spacing-section dg-stack-md">Section 1</section>
+<section class="dg-spacing-section">Section 2</section>
+```
+
+```css
+.dg-spacing-section {
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-lg);
+}
+
+.dg-stack-md {
+  margin-bottom: var(--dg-spacing-stack-md);
+}
+
+.dg-stack-lg {
+  margin-bottom: var(--dg-spacing-stack-lg);
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Usage Examples
+
+### Card with Inset Padding
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-labeled-row">
+  <div className="dg-labeled-item">
+    <p className="dg-label">inset-sm</p>
+    <div className="dg-inset-demo-card dg-inset-sm">
+      <p className="dg-caption dg-m-0">Card content</p>
+    </div>
+  </div>
+  <div className="dg-labeled-item">
+    <p className="dg-label">inset-md</p>
+    <div className="dg-inset-demo-card dg-inset-md">
+      <p className="dg-caption dg-m-0">Card content</p>
+    </div>
+  </div>
+  <div className="dg-labeled-item">
+    <p className="dg-label">inset-lg</p>
+    <div className="dg-inset-demo-card dg-inset-lg">
+      <p className="dg-caption dg-m-0">Card content</p>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-inset-demo-card dg-inset-sm">Card content</div>
+<div class="dg-inset-demo-card dg-inset-md">Card content</div>
+<div class="dg-inset-demo-card dg-inset-lg">Card content</div>
+```
+
+```css
+.dg-inset-demo-card {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+  border-radius: var(--dg-size-border-radius-lg);
+}
+
+.dg-inset-sm { padding: var(--dg-spacing-inset-sm); /* 12px */ }
+.dg-inset-md { padding: var(--dg-spacing-inset-md); /* 16px */ }
+.dg-inset-lg { padding: var(--dg-spacing-inset-lg); /* 24px */ }
+```
+
+</TabItem>
+</Tabs>
+
+### Flex Container with Gap
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-spacing-flex-col dg-gap-lg">
+  <div>
+    <p className="dg-label">gap-sm (8px)</p>
+    <div className="dg-button-group dg-button-group-tight">
+      <button className="dg-btn dg-btn-primary">Button</button>
+      <button className="dg-btn dg-btn-primary">Button</button>
+      <button className="dg-btn dg-btn-primary">Button</button>
+    </div>
+  </div>
+  <div>
+    <p className="dg-label">gap-md (12px)</p>
+    <div className="dg-button-group dg-button-group-default">
+      <button className="dg-btn dg-btn-gradient-accent">Button</button>
+      <button className="dg-btn dg-btn-gradient-accent">Button</button>
+      <button className="dg-btn dg-btn-gradient-accent">Button</button>
+    </div>
+  </div>
+  <div>
+    <p className="dg-label">gap-lg (16px)</p>
+    <div className="dg-button-group dg-button-group-loose">
+      <button className="dg-btn dg-btn-outline">Button</button>
+      <button className="dg-btn dg-btn-outline">Button</button>
+      <button className="dg-btn dg-btn-outline">Button</button>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-button-group dg-button-group-tight">
+  <button class="dg-btn dg-btn-primary">Button</button>
+  ...
+</div>
+<div class="dg-button-group dg-button-group-default">...</div>
+<div class="dg-button-group dg-button-group-loose">...</div>
+```
+
+```css
+.dg-button-group {
+  display: flex;
+}
+
+.dg-button-group-tight {
+  gap: var(--dg-spacing-gap-sm); /* 8px */
+}
+
+.dg-button-group-default {
+  gap: var(--dg-spacing-gap-md); /* 12px */
+}
+
+.dg-button-group-loose {
+  gap: var(--dg-spacing-gap-lg); /* 16px */
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Page Sections
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-spacing-container">
+  <div className="dg-page-section dg-stack-lg">
+    <p className="dg-section-title">Section 1</p>
+    <p className="dg-caption dg-m-0">margin-bottom: stack-lg (64px)</p>
+  </div>
+  <div className="dg-page-section dg-stack-md">
+    <p className="dg-section-title">Section 2</p>
+    <p className="dg-caption dg-m-0">margin-bottom: stack-md (40px)</p>
+  </div>
+  <div className="dg-page-section">
+    <p className="dg-section-title">Section 3</p>
+    <p className="dg-caption dg-m-0">Last section (no margin)</p>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<section class="dg-page-section dg-stack-lg">Section 1</section>
+<section class="dg-page-section dg-stack-md">Section 2</section>
+<section class="dg-page-section">Section 3</section>
+```
+
+```css
+.dg-page-section {
+  background-color: var(--dg-color-background-default);
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-md);
+}
+
+.dg-stack-lg {
+  margin-bottom: var(--dg-spacing-stack-lg); /* 64px */
+}
+
+.dg-stack-md {
+  margin-bottom: var(--dg-spacing-stack-md); /* 40px */
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use semantic scales for consistent layouts
+- Match scale to use case (`gap` for gaps, `inset` for padding)
+- Use `md` as your default starting point
+
+### ❌ Don't
+
+- Mix pixel values with semantic scales
+- Use `space` when a more specific scale exists
+- Skip sizes (e.g., jumping from `xs` to `xl`)
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-design-token/src/tokens/size/
+  └── index.js  # All spacing tokens (pixel and semantic)
+```
+
+### Token Structure
+
+```javascript
+{
+  spacing: {
+    // Semantic scales reference pixel values
+    space: {
+      none: { value: 0 },
+      xs: { value: '{spacing.px4}' },
+      sm: { value: '{spacing.px8}' },
+      md: { value: '{spacing.px16}' },
+      // ...
+    },
+    gap: { /* Similar structure */ },
+    inset: { /* Similar structure */ },
+    stack: { /* Similar structure */ }
+  }
+}
+```
+
+## Related
+
+- [Pixel Values](./pixel-values) — Foundation spacing reference
+- [Basic Usage](/design-token/guides/basic-usage) — General token usage

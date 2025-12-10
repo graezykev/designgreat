@@ -1,0 +1,212 @@
+---
+sidebar_position: 3
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Easing
+
+Easing tokens define cubic-bezier curves that control how animations accelerate and decelerate. Natural easing makes animations feel more organic and responsive.
+
+## Easing Functions
+
+| Token | CSS Variable | Value | Use Case |
+|-------|--------------|-------|----------|
+| <CopyableCode>cubic-bezier.linear</CopyableCode> | <CopyableCode>--dg-cubic-bezier-linear</CopyableCode> | `cubic-bezier(0, 0, 1, 1)` | Constant speed, progress bars |
+| <CopyableCode>cubic-bezier.ease</CopyableCode> | <CopyableCode>--dg-cubic-bezier-ease</CopyableCode> | `cubic-bezier(0.25, 0.1, 0.25, 1)` | General purpose |
+| <CopyableCode>cubic-bezier.ease-in</CopyableCode> | <CopyableCode>--dg-cubic-bezier-ease-in</CopyableCode> | `cubic-bezier(0.42, 0, 1, 1)` | Exits, elements leaving |
+| <CopyableCode bold>cubic-bezier.ease-out</CopyableCode> | <CopyableCode bold>--dg-cubic-bezier-ease-out</CopyableCode> | `cubic-bezier(0, 0, 0.58, 1)` | Entrances, elements arriving |
+| <CopyableCode>cubic-bezier.ease-in-out</CopyableCode> | <CopyableCode>--dg-cubic-bezier-ease-in-out</CopyableCode> | `cubic-bezier(0.42, 0, 0.58, 1)` | Continuous motion |
+
+## Easing Visualizations
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-easing-grid">
+  <div className="dg-easing-item">
+    <div className="dg-easing-track">
+      <div className="dg-easing-ball dg-easing-ball-linear"></div>
+    </div>
+    <p className="dg-easing-label">Linear</p>
+    <p className="dg-easing-hint">Constant speed</p>
+  </div>
+  <div className="dg-easing-item">
+    <div className="dg-easing-track">
+      <div className="dg-easing-ball dg-easing-ball-ease"></div>
+    </div>
+    <p className="dg-easing-label">Ease</p>
+    <p className="dg-easing-hint">General purpose</p>
+  </div>
+  <div className="dg-easing-item">
+    <div className="dg-easing-track">
+      <div className="dg-easing-ball dg-easing-ball-ease-in"></div>
+    </div>
+    <p className="dg-easing-label">Ease-in</p>
+    <p className="dg-easing-hint">Slow start</p>
+  </div>
+  <div className="dg-easing-item">
+    <div className="dg-easing-track">
+      <div className="dg-easing-ball dg-easing-ball-ease-out"></div>
+    </div>
+    <p className="dg-easing-label">Ease-out ★</p>
+    <p className="dg-easing-hint">Fast start</p>
+  </div>
+  <div className="dg-easing-item">
+    <div className="dg-easing-track">
+      <div className="dg-easing-ball dg-easing-ball-ease-in-out"></div>
+    </div>
+    <p className="dg-easing-label">Ease-in-out</p>
+    <p className="dg-easing-hint">Slow both ends</p>
+  </div>
+</div>
+<p className="dg-hint">↑ Watch how each ball moves differently — Linear is constant, Ease-out ★ starts fast then slows (best for UI)</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-easing-track">
+  <div class="dg-easing-ball dg-easing-ball-linear"></div>
+</div>
+<div class="dg-easing-track">
+  <div class="dg-easing-ball dg-easing-ball-ease-out"></div>
+</div>
+```
+
+```css
+/* Easing track container */
+.dg-easing-track {
+  height: var(--dg-spacing-stack-md);
+  background-color: var(--dg-color-background-bold);
+  border-radius: var(--dg-size-border-radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated ball */
+.dg-easing-ball {
+  position: absolute;
+  top: 50%;
+  width: var(--dg-spacing-space-lg);
+  height: var(--dg-spacing-space-lg);
+  border-radius: var(--dg-size-border-radius-full);
+  transform: translateY(-50%);
+}
+
+/* Each easing variant uses its own animation timing curve */
+.dg-easing-ball-linear {
+  background-color: var(--dg-color-primary-default);
+  animation: easingLinear 2s var(--dg-cubic-bezier-linear) infinite;
+}
+
+.dg-easing-ball-ease-out {
+  background-color: var(--dg-color-accent-blue-default);
+  animation: easingEaseOut 2s var(--dg-cubic-bezier-ease-out) infinite;
+}
+
+/* Keyframes for each easing (same path, different timing) */
+@keyframes easingLinear {
+  0%, 100% { left: var(--dg-spacing-space-sm); }
+  50% { left: calc(100% - var(--dg-spacing-space-lg) - var(--dg-spacing-space-sm)); }
+}
+
+@keyframes easingEaseOut {
+  0%, 100% { left: var(--dg-spacing-space-sm); }
+  50% { left: calc(100% - var(--dg-spacing-space-lg) - var(--dg-spacing-space-sm)); }
+}
+```
+
+</TabItem>
+</Tabs>
+
+## When to Use Each
+
+### ease-out (Recommended Default)
+Best for most UI interactions. Elements arrive quickly and settle smoothly.
+
+```css
+/* Button hover, dropdown open, tooltip appear */
+.button:hover {
+  transform: translateY(-2px);
+  transition: transform 100ms var(--dg-cubic-bezier-ease-out);
+}
+```
+
+### ease-in
+Use when elements are leaving or being dismissed.
+
+```css
+/* Modal closing, element being removed */
+.modal-exit {
+  opacity: 0;
+  transition: opacity 200ms var(--dg-cubic-bezier-ease-in);
+}
+```
+
+### ease-in-out
+Use for continuous or symmetrical animations.
+
+```css
+/* Accordion expand/collapse, tab switching */
+.accordion-content {
+  transition: height 300ms var(--dg-cubic-bezier-ease-in-out);
+}
+```
+
+### linear
+Use for progress indicators or when constant speed is needed.
+
+```css
+/* Progress bar, loading spinner rotation */
+.progress-bar {
+  transition: width 100ms var(--dg-cubic-bezier-linear);
+}
+```
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `ease-out` as your default for most interactions
+- Use `ease-in` when elements are exiting or being dismissed
+- Use `ease-in-out` for symmetrical animations
+- Keep easing consistent within the same interaction
+
+### ❌ Don't
+
+- Use `ease-in` for entrances (feels sluggish)
+- Use `linear` for UI transitions (feels mechanical)
+- Mix different easings in the same animation
+- Create custom curves without clear purpose
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-design-token/src/tokens/
+  └── cubic-bezier.js  # All easing tokens
+```
+
+### Token Structure
+
+```javascript
+{
+  'cubic-bezier': {
+    linear: { value: [0, 0, 1, 1], type: 'cubicBezier' },
+    ease: { value: [0.25, 0.1, 0.25, 1], type: 'cubicBezier' },
+    'ease-in': { value: [0.42, 0, 1, 1], type: 'cubicBezier' },
+    'ease-out': { value: [0, 0, 0.58, 1], type: 'cubicBezier' },
+    'ease-in-out': { value: [0.42, 0, 0.58, 1], type: 'cubicBezier' }
+  }
+}
+```
+
+## Related
+
+- [Duration](./duration) — Animation timing tokens
+- [Transitions](./transitions) — Pre-built transition presets
+

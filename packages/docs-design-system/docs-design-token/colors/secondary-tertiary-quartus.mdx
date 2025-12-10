@@ -93,36 +93,18 @@ All three color sets (secondary, tertiary, quartus) share the same emphasis stru
 
 ## Usage Examples
 
-### Button Group with Hierarchy
+These colors are used for action hierarchy throughout the design system. See live demos in these pages:
+
+### Secondary Buttons
+
+Secondary colors power alternative action buttons with full interactive states.
+
+→ **See live demos**: [Secondary Button Patterns](./shortcuts/interactive-state#secondary-buttons)
 
 ```css
-/* Primary action - most important */
-.button-primary {
-  background-color: var(--dg-color-primary-default);
-}
-
-/* Secondary action - important but not primary */
 .button-secondary {
   background-color: var(--dg-color-secondary-default);
-}
-
-/* Tertiary action - moderate importance */
-.button-tertiary {
-  background-color: var(--dg-color-tertiary-default);
-}
-
-/* Quartus action - least important */
-.button-quartus {
-  background-color: var(--dg-color-quartus-default);
-}
-```
-
-### Interactive States
-
-```css
-/* Secondary button with states */
-.button-secondary {
-  background-color: var(--dg-color-secondary-default);
+  color: var(--dg-color-text-inverse);
 }
 
 .button-secondary:hover {
@@ -135,10 +117,32 @@ All three color sets (secondary, tertiary, quartus) share the same emphasis stru
 
 .button-secondary:disabled {
   background-color: var(--dg-color-secondary-blur);
+  opacity: 0.6;
 }
 ```
 
-### Badges with Different Priorities
+### Button Hierarchy
+
+When you need multiple actions with visual hierarchy, combine primary, secondary, and neutral buttons.
+
+→ **See live demos**: [Button Spacing Examples](../spacing/semantic-scales#flex-container-with-gap)
+
+```css
+/* Primary: most important */
+.button-primary { background-color: var(--dg-color-primary-default); }
+
+/* Secondary: important alternative */
+.button-secondary { background-color: var(--dg-color-secondary-default); }
+
+/* Neutral: dismissive action */
+.button-neutral { background-color: var(--dg-color-background-bold); }
+```
+
+### Badges & Tags
+
+Secondary and tertiary colors can be used for badges that indicate different priority levels.
+
+→ **See live demos**: [Badge Components](./semantic-colors#badges-and-tags) | [Interactive Badges](./shortcuts/interactive-state#badge-and-tag-state-patterns)
 
 ```css
 .badge-secondary {
@@ -150,10 +154,24 @@ All three color sets (secondary, tertiary, quartus) share the same emphasis stru
   background-color: var(--dg-color-tertiary-subtler);
   color: var(--dg-color-tertiary-default);
 }
+```
 
-.badge-quartus {
-  background-color: var(--dg-color-quartus-subtler);
-  color: var(--dg-color-quartus-default);
+### Outline Button Variants
+
+Secondary colors work well for outline-style buttons as alternatives to primary outlines.
+
+→ **See live demos**: [Outline Buttons](./shortcuts/interactive-state#outline-buttons) | [Border Button Examples](./shortcuts/border#buttons)
+
+```css
+.button-secondary-outline {
+  background-color: transparent;
+  border: 2px solid var(--dg-color-secondary-default);
+  color: var(--dg-color-secondary-default);
+}
+
+.button-secondary-outline:hover {
+  background-color: var(--dg-color-secondary-subtler);
+  border-color: var(--dg-color-secondary-bold);
 }
 ```
 
@@ -323,10 +341,11 @@ All three follow the same pattern:
 }
 ```
 
-## Related Topics
+## Related
 
-- [Primary Colors](./primary-brand-colors) - Primary action colors
-- [Accent Colors](./accent-colors) - Understanding accent color gradients
-- [Semantic Colors](./semantic-colors) - Colors with specific meanings
-- [Theming](/design-token/guides/theming) - Theming these color sets
+- [Interactive State Shortcuts](./shortcuts/interactive-state) - **Live demos** of secondary button states
+- [Primary Colors](./primary-brand-colors) - Primary action colors (highest priority)
+- [Accent Colors](./accent-colors) - Understanding teal, magenta, lime accent colors
+- [Semantic Colors](./semantic-colors) - Colors with specific meanings (success, error, etc.)
+- [Border Shortcuts](./shortcuts/border) - Button border examples
 

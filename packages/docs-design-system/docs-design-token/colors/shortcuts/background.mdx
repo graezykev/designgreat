@@ -3,6 +3,8 @@ sidebar_position: 2
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Background Shortcuts
 
@@ -58,80 +60,180 @@ For stronger emphasis, use bold semantic backgrounds with inverse text:
 
 ### Page Layout
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-page-layout">
+  <div className="dg-layout-header">
+    <span className="dg-app-bar-logo">Header</span>
+  </div>
+  <div className="dg-flex dg-gap-md">
+    <div className="dg-layout-sidebar">Sidebar</div>
+    <div className="dg-layout-content">
+      <p className="dg-layout-content-title">Card</p>
+      <p className="dg-layout-content-desc">Default background content area</p>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-page-layout">
+  <div class="dg-layout-header">Header</div>
+  <div class="dg-flex dg-gap-md">
+    <div class="dg-layout-sidebar">Sidebar</div>
+    <div class="dg-layout-content">
+      <p class="dg-layout-content-title">Card</p>
+      <p class="dg-layout-content-desc">Content area</p>
+    </div>
+  </div>
+</div>
+```
+
 ```css
-/* Main page background */
-body {
-  background-color: var(--dg-color-background-default);
-}
-
-/* Card or panel */
-.card {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
-}
-
-/* Sidebar */
-.sidebar {
+.dg-page-layout {
   background-color: var(--dg-color-background-bold);
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-card);
 }
 
-/* Header */
-.header {
+.dg-layout-header {
   background-color: var(--dg-color-background-bolder);
-  border-bottom: 1px solid var(--dg-color-alpha-neutral-3);
+  padding: var(--dg-spacing-inset-sm);
+  border-radius: var(--dg-size-border-radius-lg);
+}
+
+.dg-layout-sidebar {
+  background-color: var(--dg-color-background-boldest);
+  color: var(--dg-color-text-inverse);
+  border-radius: var(--dg-size-border-radius-lg);
+}
+
+.dg-layout-content {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### Alert Components
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex-col dg-gap-sm">
+  <div className="dg-alert dg-alert-info">
+    <span>Info background with semantic text</span>
+  </div>
+  <div className="dg-alert dg-alert-new">
+    <span>Discover background with semantic text</span>
+  </div>
+  <div className="dg-alert dg-alert-success">
+    <span>Success background with semantic text</span>
+  </div>
+  <div className="dg-alert dg-alert-warning">
+    <span>Warning background with semantic text</span>
+  </div>
+  <div className="dg-alert dg-alert-error">
+    <span>Error background with semantic text</span>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-alert dg-alert-info">Info message</div>
+<div class="dg-alert dg-alert-new">Discover message</div>
+<div class="dg-alert dg-alert-success">Success message</div>
+<div class="dg-alert dg-alert-warning">Warning message</div>
+<div class="dg-alert dg-alert-error">Error message</div>
+```
+
 ```css
-/* Info alert */
-.alert-info {
-  background-color: var(--dg-color-background-information-default);
-  border-left: 4px solid var(--dg-color-semantic-info-default);
+.dg-alert {
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-md);
+  border-left: var(--dg-border-width-thick) solid;
 }
 
-/* Success alert */
-.alert-success {
-  background-color: var(--dg-color-background-success-default);
-  border-left: 4px solid var(--dg-color-semantic-success-default);
+.dg-alert-info {
+  background-color: var(--dg-color-semantic-info-lowest);
+  border-color: var(--dg-color-semantic-info-default);
+  color: var(--dg-color-semantic-info-bold);
 }
 
-/* Warning alert */
-.alert-warning {
-  background-color: var(--dg-color-background-warning-default);
-  border-left: 4px solid var(--dg-color-semantic-warning-default);
-}
-
-/* Error alert */
-.alert-error {
-  background-color: var(--dg-color-background-error-default);
-  border-left: 4px solid var(--dg-color-semantic-error-default);
+.dg-alert-success {
+  background-color: var(--dg-color-semantic-success-lowest);
+  border-color: var(--dg-color-semantic-success-default);
+  color: var(--dg-color-semantic-success-bold);
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### Badge Components
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <span className="dg-badge dg-badge-info-bold">Info Bold</span>
+  <span className="dg-badge dg-badge-new">New Bold</span>
+  <span className="dg-badge dg-badge-success-bold">Success Bold</span>
+  <span className="dg-badge dg-badge-warning-bold">Warning Bold</span>
+  <span className="dg-badge dg-badge-error-bold">Error Bold</span>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<span class="dg-badge dg-badge-info-bold">Info</span>
+<span class="dg-badge dg-badge-new">New</span>
+<span class="dg-badge dg-badge-success-bold">Success</span>
+<span class="dg-badge dg-badge-warning-bold">Warning</span>
+<span class="dg-badge dg-badge-error-bold">Error</span>
+```
+
 ```css
-/* Subtle badges */
-.badge-info {
-  background-color: var(--dg-color-semantic-info-lowest);
-  color: var(--dg-color-semantic-info-bold);
-  border: 1px solid var(--dg-color-semantic-info-default);
+.dg-badge {
+  display: inline-block;
+  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-md);
+  border-radius: var(--dg-size-border-radius-badge);
+  font-size: var(--dg-size-font-caption);
+  font-weight: var(--dg-font-weight-semi-bold);
 }
 
-/* Bold badges */
-.badge-success-bold {
-  background-color: var(--dg-color-background-success-bold);
-  color: var(--dg-color-text-success-bold);
+.dg-badge-info-bold {
+  background-color: var(--dg-color-semantic-info-default);
+  color: var(--dg-color-text-inverse);
 }
 
-.badge-error-bold {
-  background-color: var(--dg-color-background-error-bold);
-  color: var(--dg-color-text-error-bold);
+.dg-badge-success-bold {
+  background-color: var(--dg-color-semantic-success-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-warning-bold {
+  background-color: var(--dg-color-semantic-warning-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-error-bold {
+  background-color: var(--dg-color-semantic-error-default);
+  color: var(--dg-color-text-inverse);
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### TypeScript/JavaScript
 
@@ -293,7 +395,7 @@ packages/lib-design-token/src/tokens/color/shortcut/
 }
 ```
 
-## Related Topics
+## Related
 
 - [Text Shortcuts](./text) - Pairing text with backgrounds
 - [Alpha Colors](../alpha-colors) - Using alpha for borders and shadows

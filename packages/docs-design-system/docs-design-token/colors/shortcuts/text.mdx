@@ -3,6 +3,8 @@ sidebar_position: 1
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Text Shortcuts
 
@@ -104,177 +106,416 @@ For text on colored semantic backgrounds, use bold variants:
 
 ### Typography Hierarchy
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-demo-card">
+  <h1 className="dg-heading-primary">Page Heading</h1>
+  <h2 className="dg-heading-secondary">Section Heading</h2>
+  <p className="dg-text-body">This is body text using the default text color. It should be comfortable to read at standard sizes.</p>
+  <p className="dg-text-caption">Caption text uses subtle color for secondary information.</p>
+  <p className="dg-text-placeholder">Subtler text for placeholders and tertiary content.</p>
+  <p className="dg-text-disabled">Subtlest text for disabled or very low emphasis content.</p>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-demo-card">
+  <h1 class="dg-heading-primary">Page Heading</h1>
+  <h2 class="dg-heading-secondary">Section Heading</h2>
+  <p class="dg-text-body">Body text...</p>
+  <p class="dg-text-caption">Caption text...</p>
+  <p class="dg-text-placeholder">Subtler text...</p>
+  <p class="dg-text-disabled">Disabled text...</p>
+</div>
+```
+
 ```css
-/* Page heading */
-h1 {
+.dg-heading-primary {
   color: var(--dg-color-text-bold);
-  font-size: 2.5rem;
+  font-size: var(--dg-size-font-h1);
+  font-weight: var(--dg-font-weight-bold);
 }
 
-/* Section heading */
-h2 {
+.dg-heading-secondary {
   color: var(--dg-color-text-bold);
-  font-size: 2rem;
+  font-size: var(--dg-size-font-h2);
+  font-weight: var(--dg-font-weight-semi-bold);
 }
 
-/* Body text */
-p {
+.dg-text-body {
   color: var(--dg-color-text-default);
-  font-size: 1rem;
+  line-height: var(--dg-line-height-normal);
 }
 
-/* Caption or helper text */
-.caption {
+.dg-text-caption {
   color: var(--dg-color-text-subtle);
-  font-size: 0.875rem;
+  font-size: var(--dg-size-font-caption);
 }
 
-/* Placeholder text */
-::placeholder {
+.dg-text-placeholder {
   color: var(--dg-color-text-subtler);
 }
 
-/* Disabled text */
-.disabled-text {
+.dg-text-disabled {
   color: var(--dg-color-text-subtlest);
 }
 ```
 
+</TabItem>
+</Tabs>
+
 ### Links
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-demo-card dg-demo-card-compact">
+  <p className="dg-text-body">
+    Read more about our <a href="#" className="dg-link">design tokens</a> and how they help maintain consistency across <a href="#" className="dg-link">your application</a>.
+  </p>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<p class="dg-text-body">
+  Read more about our <a href="#" class="dg-link">design tokens</a>...
+</p>
+```
+
 ```css
-/* Default link */
-a {
+.dg-link {
   color: var(--dg-color-text-link-default);
   text-decoration: underline;
 }
 
-/* Link states using primary tokens */
-a:hover {
+.dg-link:hover {
   color: var(--dg-color-primary-hover-default);
 }
-
-a:visited {
-  color: var(--dg-color-primary-visited-default);
-}
-
-a:active {
-  color: var(--dg-color-primary-active-default);
-}
 ```
+
+</TabItem>
+</Tabs>
 
 ### Navigation
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-demo-card dg-demo-card-compact dg-flex-col dg-gap-lg">
+  <div>
+    <p className="dg-text-caption">Primary Navigation</p>
+    <div className="dg-nav">
+      <a href="#" className="dg-nav-primary">Home</a>
+      <a href="#" className="dg-nav-primary">Products</a>
+      <a href="#" className="dg-nav-primary">About</a>
+    </div>
+  </div>
+  <div>
+    <p className="dg-text-caption">Secondary Navigation</p>
+    <div className="dg-nav">
+      <a href="#" className="dg-nav-secondary">Overview</a>
+      <a href="#" className="dg-nav-secondary">Features</a>
+      <a href="#" className="dg-nav-secondary">Pricing</a>
+    </div>
+  </div>
+  <div>
+    <p className="dg-text-caption">Breadcrumb</p>
+    <div className="dg-breadcrumb">
+      <a href="#" className="dg-nav-tertiary">Home</a>
+      <span className="dg-breadcrumb-separator">/</span>
+      <a href="#" className="dg-nav-tertiary">Products</a>
+      <span className="dg-breadcrumb-separator">/</span>
+      <span className="dg-text-body">Item</span>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-nav">
+  <a href="#" class="dg-nav-primary">Home</a>
+  <a href="#" class="dg-nav-primary">Products</a>
+</div>
+
+<div class="dg-nav">
+  <a href="#" class="dg-nav-secondary">Overview</a>
+  <a href="#" class="dg-nav-secondary">Features</a>
+</div>
+
+<div class="dg-breadcrumb">
+  <a href="#" class="dg-nav-tertiary">Home</a>
+  <span class="dg-breadcrumb-separator">/</span>
+  <a href="#" class="dg-nav-tertiary">Products</a>
+  <span class="dg-breadcrumb-separator">/</span>
+  <span>Item</span>
+</div>
+```
+
 ```css
-/* Primary navigation */
-.nav-primary a {
+.dg-nav {
+  display: flex;
+  gap: var(--dg-spacing-gap-lg);
+}
+
+.dg-nav-primary {
   color: var(--dg-color-text-nav-default);
-  font-weight: 600;
+  font-weight: var(--dg-font-weight-semi-bold);
+  text-decoration: none;
 }
 
-/* Secondary navigation */
-.nav-secondary a {
+.dg-nav-secondary {
   color: var(--dg-color-text-nav-secondary-default);
-  font-weight: 500;
+  font-weight: var(--dg-font-weight-medium);
+  text-decoration: none;
 }
 
-/* Tertiary/breadcrumb navigation */
-.breadcrumb a {
+.dg-nav-tertiary {
   color: var(--dg-color-text-nav-tertiary-default);
-  font-weight: 400;
+  font-weight: var(--dg-font-weight-normal);
+  text-decoration: none;
+}
+
+.dg-breadcrumb-separator {
+  color: var(--dg-color-text-subtler);
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### Semantic Messages
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-demo-card dg-demo-card-compact dg-flex-col dg-gap-sm">
+  <p className="dg-message dg-message-info">ℹ️ This is an informational message.</p>
+  <p className="dg-message dg-message-new">✨ New feature available!</p>
+  <p className="dg-message dg-message-success">✓ Your changes have been saved successfully.</p>
+  <p className="dg-message dg-message-warning">⚠️ Please review your input before continuing.</p>
+  <p className="dg-message dg-message-error">✕ An error occurred. Please try again.</p>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<p class="dg-message dg-message-info">ℹ️ Informational message</p>
+<p class="dg-message dg-message-new">✨ New feature available!</p>
+<p class="dg-message dg-message-success">✓ Success message</p>
+<p class="dg-message dg-message-warning">⚠️ Warning message</p>
+<p class="dg-message dg-message-error">✕ Error message</p>
+```
+
 ```css
-/* Success message */
-.message-success {
+.dg-message {
+  display: flex;
+  align-items: center;
+  gap: var(--dg-spacing-space-sm);
+  margin: 0;
+}
+
+.dg-message-info {
+  color: var(--dg-color-text-information-default);
+}
+
+.dg-message-new {
+  color: var(--dg-color-text-discover-default);
+}
+
+.dg-message-success {
   color: var(--dg-color-text-success-default);
 }
 
-/* Warning message */
-.message-warning {
+.dg-message-warning {
   color: var(--dg-color-text-warning-default);
 }
 
-/* Error message */
-.message-error {
+.dg-message-error {
   color: var(--dg-color-text-error-default);
 }
-
-/* Info message */
-.message-info {
-  color: var(--dg-color-text-information-default);
-}
 ```
+
+</TabItem>
+</Tabs>
 
 ### Badges with Bold Text
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <span className="dg-badge dg-badge-success-bold">Success</span>
+  <span className="dg-badge dg-badge-error-bold">Error</span>
+  <span className="dg-badge dg-badge-warning-bold">Warning</span>
+  <span className="dg-badge dg-badge-info-bold">Info</span>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<span class="dg-badge dg-badge-success-bold">Success</span>
+<span class="dg-badge dg-badge-error-bold">Error</span>
+<span class="dg-badge dg-badge-warning-bold">Warning</span>
+<span class="dg-badge dg-badge-info-bold">Info</span>
+```
+
 ```css
-/* Success badge with bold text */
-.badge-success {
-  background-color: var(--dg-color-semantic-success-default);
-  color: var(--dg-color-text-success-bold);
+.dg-badge {
+  display: inline-block;
+  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-md);
+  border-radius: var(--dg-size-border-radius-badge);
+  font-size: var(--dg-size-font-caption);
+  font-weight: var(--dg-font-weight-semi-bold);
 }
 
-/* Error badge with bold text */
-.badge-error {
+.dg-badge-success-bold {
+  background-color: var(--dg-color-semantic-success-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-error-bold {
   background-color: var(--dg-color-semantic-error-default);
-  color: var(--dg-color-text-error-bold);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-warning-bold {
+  background-color: var(--dg-color-semantic-warning-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-info-bold {
+  background-color: var(--dg-color-semantic-info-default);
+  color: var(--dg-color-text-inverse);
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### Form Elements
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-demo-card dg-demo-card-compact dg-flex-col dg-gap-md dg-max-w-xs">
+  <div className="dg-form-group">
+    <label className="dg-form-label">Email Address</label>
+    <input type="text" placeholder="name@example.com" className="dg-input" />
+    <p className="dg-helper-text">We'll never share your email.</p>
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Password</label>
+    <input type="password" value="password" className="dg-input dg-input-error" readOnly />
+    <p className="dg-helper-text dg-helper-text-error">Password must be at least 8 characters.</p>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-form-group">
+  <label class="dg-form-label">Email Address</label>
+  <input type="text" placeholder="name@example.com" class="dg-input" />
+  <p class="dg-helper-text">We'll never share your email.</p>
+</div>
+<div class="dg-form-group">
+  <label class="dg-form-label">Password</label>
+  <input type="password" class="dg-input dg-input-error" />
+  <p class="dg-helper-text dg-helper-text-error">Password must be at least 8 characters.</p>
+</div>
+```
+
 ```css
-/* Label */
-.form-label {
+.dg-form-label {
+  display: block;
   color: var(--dg-color-text-default);
-  font-weight: 500;
+  font-weight: var(--dg-font-weight-medium);
+  margin-bottom: var(--dg-spacing-space-xs);
 }
 
-/* Helper text */
-.form-helper {
+.dg-input {
+  width: 100%;
+  padding: var(--dg-spacing-inset-sm);
+  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+  border-radius: var(--dg-size-border-radius-md);
+}
+
+.dg-input-error {
+  border-color: var(--dg-color-semantic-error-default);
+}
+
+.dg-helper-text {
   color: var(--dg-color-text-subtle);
-  font-size: 0.875rem;
+  font-size: var(--dg-size-font-caption);
 }
 
-/* Error message */
-.form-error {
+.dg-helper-text-error {
   color: var(--dg-color-text-error-default);
-  font-size: 0.875rem;
-}
-
-/* Success message */
-.form-success {
-  color: var(--dg-color-text-success-default);
-  font-size: 0.875rem;
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### Cards and Containers
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-demo-card dg-max-w-xs">
+  <h3 className="dg-demo-card-title">Card Title</h3>
+  <p className="dg-demo-card-body">This is the card body text using the default text color for optimal readability.</p>
+  <p className="dg-demo-card-meta">Posted 2 hours ago • 5 min read</p>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-demo-card">
+  <h3 class="dg-demo-card-title">Card Title</h3>
+  <p class="dg-demo-card-body">Card body text...</p>
+  <p class="dg-demo-card-meta">Posted 2 hours ago</p>
+</div>
+```
+
 ```css
-.card {
-  /* Card title */
-  .card-title {
-    color: var(--dg-color-text-bold);
-    font-size: 1.25rem;
-  }
+.dg-demo-card {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
+  padding: var(--dg-spacing-inset-lg);
+}
 
-  /* Card body */
-  .card-body {
-    color: var(--dg-color-text-default);
-  }
+.dg-demo-card-title {
+  color: var(--dg-color-text-bold);
+  font-size: var(--dg-size-font-lg);
+  font-weight: var(--dg-font-weight-semi-bold);
+}
 
-  /* Card footer/meta */
-  .card-meta {
-    color: var(--dg-color-text-subtler);
-    font-size: 0.875rem;
-  }
+.dg-demo-card-body {
+  color: var(--dg-color-text-default);
+  line-height: var(--dg-line-height-normal);
+}
+
+.dg-demo-card-meta {
+  color: var(--dg-color-text-subtler);
+  font-size: var(--dg-size-font-caption);
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### TypeScript/JavaScript
 
@@ -442,7 +683,7 @@ packages/lib-design-token/src/tokens/color/shortcut/
 }
 ```
 
-## Related Topics
+## Related
 
 - [Accent Colors](../accent-colors) - Understanding neutral accent colors
 - [Primary Colors](../primary-brand-colors) - Link color source

@@ -15,7 +15,7 @@ const spacingScale = flattenTokenValues(light.dg.spacing, ['spacing'])
 const fontSizeScale = flattenTokenValues(light.dg.size?.font ?? {}, ['size', 'font'])
 const fontFamilyScale = flattenTokenValues(light.dg['font-family'] ?? {}, ['font-family'])
 const fontWeightScale = flattenTokenValues(light.dg['font-weight'] ?? {}, ['font-weight'])
-const lineHeightScale = flattenTokenValues(light.dg.number?.['line-height'] ?? {}, ['number', 'line-height'])
+const lineHeightScale = flattenTokenValues(light.dg['line-height'] ?? {}, ['line-height'])
 const letterSpacingScale = flattenTokenValues(light.dg['letter-spacing'] ?? {}, ['letter-spacing'])
 
 const addThemeVariant = ({ addVariant }: TailwindPluginApi): void => {

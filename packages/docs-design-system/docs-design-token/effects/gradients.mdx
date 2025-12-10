@@ -1,0 +1,534 @@
+---
+sidebar_position: 1
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Gradients
+
+Gradient tokens provide pre-defined linear gradients for brand elements, backgrounds, and decorative effects. They ensure consistent gradient usage across your application.
+
+## Available Gradients
+
+| Token | CSS Variable | Direction | Use Case |
+|-------|--------------|-----------|----------|
+| <CopyableCode bold>gradient.brand-primary</CopyableCode> | <CopyableCode>--dg-gradient-brand-primary</CopyableCode> | 135° | CTAs, brand highlights |
+| <CopyableCode>gradient.surface-subtle</CopyableCode> | <CopyableCode>--dg-gradient-surface-subtle</CopyableCode> | 180° | Subtle backgrounds |
+| <CopyableCode>gradient.hero</CopyableCode> | <CopyableCode>--dg-gradient-hero</CopyableCode> | 135° | Hero sections |
+| <CopyableCode>gradient.accent</CopyableCode> | <CopyableCode>--dg-gradient-accent</CopyableCode> | 90° | Badges, highlights |
+| <CopyableCode>gradient.overlay-dark</CopyableCode> | <CopyableCode>--dg-gradient-overlay-dark</CopyableCode> | 180° | Text on images |
+
+## Quick Usage
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-gradient-box-grid">
+  <div className="dg-gradient-box dg-bg-brand-primary">
+    <span className="dg-gradient-box-label dg-gradient-box-label-light">brand-primary</span>
+  </div>
+  <div className="dg-gradient-box dg-bg-surface-subtle dg-gradient-box-bordered">
+    <span className="dg-gradient-box-label dg-gradient-box-label-dark">surface-subtle</span>
+  </div>
+  <div className="dg-gradient-box dg-bg-hero">
+    <span className="dg-gradient-box-label dg-gradient-box-label-dark">hero</span>
+  </div>
+  <div className="dg-gradient-box dg-bg-accent">
+    <span className="dg-gradient-box-label dg-gradient-box-label-light">accent</span>
+  </div>
+  <div className="dg-gradient-box dg-bg-overlay-dark dg-gradient-box-bordered">
+    <span className="dg-gradient-box-label dg-gradient-box-label-dark">overlay-dark</span>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-gradient-box dg-bg-brand-primary">...</div>
+<div class="dg-gradient-box dg-bg-surface-subtle">...</div>
+<div class="dg-gradient-box dg-bg-hero">...</div>
+<div class="dg-gradient-box dg-bg-accent">...</div>
+<div class="dg-gradient-box dg-bg-overlay-dark">...</div>
+```
+
+```css
+.dg-bg-brand-primary { background: var(--dg-gradient-brand-primary); }
+.dg-bg-surface-subtle { background: var(--dg-gradient-surface-subtle); }
+.dg-bg-hero { background: var(--dg-gradient-hero); }
+.dg-bg-accent { background: var(--dg-gradient-accent); }
+.dg-bg-overlay-dark { background: var(--dg-gradient-overlay-dark); }
+```
+
+</TabItem>
+</Tabs>
+
+## Interactive Gradient Buttons
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-btn-container">
+  <button className="dg-btn dg-btn-gradient-primary">Primary CTA</button>
+  <button className="dg-btn dg-btn-gradient-accent">Accent Action</button>
+  <button className="dg-btn dg-btn-gradient-outline">Outline Style</button>
+</div>
+<p className="dg-hint">↑ Hover over buttons to see gradient transitions</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-gradient-primary">Primary CTA</button>
+<button class="dg-btn dg-btn-gradient-accent">Accent Action</button>
+<button class="dg-btn dg-btn-gradient-outline">Outline Style</button>
+```
+
+```css
+/* Base button */
+.dg-btn {
+  padding: var(--dg-spacing-inset-sm) var(--dg-spacing-inset-lg);
+  border-radius: var(--dg-size-border-radius-button);
+  transition: filter var(--dg-duration-normal), transform var(--dg-duration-normal), box-shadow var(--dg-duration-normal);
+}
+
+/* Gradient variants */
+.dg-btn-gradient-primary {
+  background: var(--dg-gradient-brand-primary);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-btn-gradient-primary:hover,
+.dg-btn-gradient-accent:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: var(--dg-shadow-elevation-sm);
+}
+
+.dg-btn-gradient-accent {
+  background: var(--dg-gradient-accent);
+  color: var(--dg-color-text-inverse);
+}
+
+/* Outline with gradient hover */
+.dg-btn-gradient-outline {
+  background: transparent;
+  color: var(--dg-color-primary-default);
+  border: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  transition: background var(--dg-duration-slow), color var(--dg-duration-slow), border-color var(--dg-duration-slow);
+}
+
+.dg-btn-gradient-outline:hover {
+  background: var(--dg-gradient-hero);
+  border-color: var(--dg-color-accent-blue-default);
+  color: var(--dg-color-text-bold);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Animated Hero Gradient
+
+:::tip Multi-color animated gradients
+For animated gradients with 3+ colors, manual gradient construction is appropriate since these require custom color sequences not available as single tokens.
+:::
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-gradient-hero-animated">
+  <h3 className="dg-gradient-hero-title">Welcome to Design Great</h3>
+  <p className="dg-gradient-hero-subtitle">Building beautiful design systems</p>
+</div>
+<p className="dg-hint">↑ Watch the gradient slowly animate</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-gradient-hero-animated">
+  <h3 class="dg-gradient-hero-title">Welcome to Design Great</h3>
+  <p class="dg-gradient-hero-subtitle">Building beautiful design systems</p>
+</div>
+```
+
+```css
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Multi-color animated gradient requires manual construction */
+.dg-gradient-hero-animated {
+  background: linear-gradient(
+    135deg,
+    var(--dg-color-accent-blue-default),
+    var(--dg-color-accent-purple-default),
+    var(--dg-color-accent-teal-default),
+    var(--dg-color-accent-blue-default)
+  );
+  background-size: 300% 300%;
+  border-radius: var(--dg-size-border-radius-xl);
+  animation: gradientShift 8s ease infinite;
+}
+
+.dg-gradient-hero-title {
+  color: var(--dg-color-text-inverse);
+  font-size: var(--dg-size-font-h2);
+  font-weight: var(--dg-font-weight-bold);
+}
+
+.dg-gradient-hero-subtitle {
+  color: var(--dg-color-text-inverse);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Gradient Cards with Hover
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-gradient-card-grid">
+  <div className="dg-gradient-card">
+    <div className="dg-gradient-card-icon">🚀</div>
+    <h4 className="dg-gradient-card-title">Launch Fast</h4>
+    <p className="dg-gradient-card-desc">Ship products quickly with our tokens</p>
+  </div>
+  <div className="dg-gradient-card">
+    <div className="dg-gradient-card-icon">🎨</div>
+    <h4 className="dg-gradient-card-title">Stay Consistent</h4>
+    <p className="dg-gradient-card-desc">Unified design language</p>
+  </div>
+  <div className="dg-gradient-card">
+    <div className="dg-gradient-card-icon">⚡</div>
+    <h4 className="dg-gradient-card-title">Scale Easy</h4>
+    <p className="dg-gradient-card-desc">Grow without design debt</p>
+  </div>
+</div>
+<p className="dg-hint">↑ Hover over cards to see gradient border reveal</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-gradient-card">
+  <div class="dg-gradient-card-icon">🚀</div>
+  <h4 class="dg-gradient-card-title">Launch Fast</h4>
+  <p class="dg-gradient-card-desc">Ship products quickly</p>
+</div>
+```
+
+```css
+.dg-gradient-card {
+  background: var(--dg-color-background-default);
+  border-radius: var(--dg-size-border-radius-card);
+  padding: var(--dg-spacing-inset-lg);
+  transition: transform var(--dg-duration-slow), box-shadow var(--dg-duration-slow);
+}
+
+.dg-gradient-card::before {
+  background: var(--dg-gradient-accent);
+  border-radius: var(--dg-size-border-radius-card);
+  /* mask technique for gradient border */
+  mask: linear-gradient(var(--dg-color-accent-grey-1) 0 0) content-box,
+        linear-gradient(var(--dg-color-accent-grey-1) 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--dg-duration-slow);
+}
+
+.dg-gradient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dg-shadow-elevation-lg);
+}
+
+.dg-gradient-card:hover::before {
+  opacity: 1;
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Gradient Badges & Pills
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-gradient-badges-container">
+  <span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-primary">New Feature</span>
+  <span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-accent">Pro</span>
+  <span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-success">Verified</span>
+  <span className="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hot">🔥 Trending</span>
+  <span className="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hero">Beta</span>
+</div>
+<p className="dg-hint">↑ Hover over badges to see effects</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<!-- Base + gradient marker + radius + color variant -->
+<span class="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-primary">New Feature</span>
+<span class="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-accent">Pro</span>
+<span class="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-success">Verified</span>
+
+<!-- Pill badges -->
+<span class="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hot">🔥 Trending</span>
+<span class="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hero">Beta</span>
+```
+
+```css
+/* Base badge - reusable across all docs */
+.dg-badge {
+  display: inline-block;
+  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-md);
+  font-size: var(--dg-size-font-caption);
+  font-weight: var(--dg-font-weight-medium);
+  transition: transform var(--dg-duration-normal), filter var(--dg-duration-normal);
+}
+
+/* Radius modifiers */
+.dg-badge-rounded { border-radius: var(--dg-size-border-radius-default); }
+.dg-badge-pill { border-radius: var(--dg-size-border-radius-full); }
+
+/* Gradient hover effect */
+.dg-badge-gradient:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Gradient color variants */
+.dg-badge-gradient-primary {
+  background: var(--dg-gradient-brand-primary);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-gradient-accent {
+  background: var(--dg-gradient-accent);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-gradient-success {
+  background: linear-gradient(90deg, var(--dg-color-semantic-success-default), var(--dg-color-accent-teal-default));
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-gradient-hot {
+  background: linear-gradient(90deg, var(--dg-color-accent-orange-default), var(--dg-color-accent-red-default));
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-gradient-hero {
+  background: var(--dg-gradient-hero);
+  color: var(--dg-color-text-bold);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Image Overlay Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-gradient-image-grid">
+  <div className="dg-gradient-image-card">
+    <div className="dg-gradient-image-bg dg-bg-accent"></div>
+    <div className="dg-gradient-image-overlay">
+      <h4 className="dg-gradient-image-title">Featured Article</h4>
+      <p className="dg-gradient-image-subtitle">Learn about design tokens</p>
+    </div>
+  </div>
+  <div className="dg-gradient-image-card">
+    <div className="dg-gradient-image-bg dg-bg-hero"></div>
+    <div className="dg-gradient-image-overlay-top">
+      <span className="dg-gradient-image-badge">PREMIUM</span>
+    </div>
+    <div className="dg-gradient-image-overlay">
+      <h4 className="dg-gradient-image-title">Tutorial Series</h4>
+      <p className="dg-gradient-image-subtitle">Step by step guides</p>
+    </div>
+  </div>
+</div>
+<p className="dg-hint">↑ Hover over cards to see overlay expand</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-gradient-image-card">
+  <div class="dg-gradient-image-bg dg-bg-accent"></div>
+  <div class="dg-gradient-image-overlay">
+    <h4 class="dg-gradient-image-title">Featured Article</h4>
+    <p class="dg-gradient-image-subtitle">Learn about design tokens</p>
+  </div>
+</div>
+```
+
+```css
+.dg-gradient-image-card {
+  position: relative;
+  border-radius: var(--dg-size-border-radius-card);
+  overflow: hidden;
+}
+
+.dg-gradient-image-overlay {
+  background: var(--dg-gradient-overlay-dark);
+  padding: var(--dg-spacing-inset-md);
+  transform: translateY(var(--dg-spacing-space-xs));
+  transition: transform var(--dg-duration-slow);
+}
+
+.dg-gradient-image-card:hover .dg-gradient-image-overlay {
+  transform: translateY(0);
+}
+
+.dg-gradient-image-title {
+  color: var(--dg-color-text-inverse);
+  font-weight: var(--dg-font-weight-semi-bold);
+}
+
+.dg-gradient-image-subtitle {
+  color: var(--dg-color-text-inverse);
+  font-size: var(--dg-size-font-caption);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Gradient Text
+
+:::tip Text gradients
+Gradient text effects typically use 3+ colors for visual impact, requiring manual gradient construction with color tokens.
+:::
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-gradient-text-container">
+  <h2 className="dg-gradient-text">Gradient Headlines</h2>
+  <p className="dg-gradient-text-description">Use gradient text sparingly for maximum impact on headlines and key phrases.</p>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-gradient-text-container">
+  <h2 class="dg-gradient-text">Gradient Headlines</h2>
+  <p class="dg-gradient-text-description">Use gradient text sparingly...</p>
+</div>
+```
+
+```css
+@keyframes gradientText {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+.dg-gradient-text-container {
+  padding: var(--dg-spacing-inset-lg);
+  background-color: var(--dg-color-background-bold);
+  border-radius: var(--dg-size-border-radius-card);
+}
+
+/* Multi-color animated text gradient */
+.dg-gradient-text {
+  font-size: var(--dg-size-font-h1);
+  font-weight: var(--dg-font-weight-xbold);
+  background: linear-gradient(
+    90deg,
+    var(--dg-color-accent-blue-default),
+    var(--dg-color-accent-purple-default),
+    var(--dg-color-accent-teal-default)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: gradientText 3s ease-in-out infinite;
+}
+
+.dg-gradient-text-description {
+  color: var(--dg-color-text-default);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `brand-primary` for important CTAs
+- Use `hero` for large decorative sections
+- Use `overlay-dark` to improve text legibility on images
+- Keep gradient usage minimal and purposeful
+- Add hover transitions for interactive elements
+
+### ❌ Don't
+
+- Overuse gradients (they should be special)
+- Use gradients for small text elements (except headlines)
+- Create custom gradients outside the token system
+- Use gradients where solid colors work fine
+- Apply gradient text to body copy
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-design-token/src/tokens/
+  └── gradient.js  # All gradient tokens
+```
+
+### Token Structure
+
+```javascript
+{
+  gradient: {
+    'brand-primary': {
+      type: 'linear-gradient',
+      value: {
+        angle: 135,
+        colors: [
+          { color: '{color.primary.DEFAULT}', percentage: 0 },
+          { color: '{color.primary.bold}', percentage: 100 }
+        ]
+      }
+    },
+    hero: {
+      type: 'linear-gradient',
+      value: {
+        angle: 135,
+        colors: [
+          { color: '{color.accent.blue.low}', percentage: 0 },
+          { color: '{color.accent.purple.low}', percentage: 100 }
+        ]
+      }
+    },
+    // ...
+  }
+}
+```
+
+## Related
+
+- [Primary Colors](/design-token/colors/primary-brand-colors) — Brand color source
+- [Accent Colors](/design-token/colors/accent-colors) — Gradient color sources
+- [Alpha Colors](/design-token/colors/alpha-colors) — Overlay colors
+- [Transitions](/design-token/motion/transitions) — Animation timing
+

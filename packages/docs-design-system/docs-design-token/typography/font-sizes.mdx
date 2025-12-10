@@ -1,0 +1,175 @@
+---
+sidebar_position: 2
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Font Sizes
+
+Typography size tokens for consistent text hierarchy.
+
+## Semantic Sizes
+
+Named sizes for common text elements.
+
+| Token | CSS Variable | Value | Demo |
+|-------|--------------|-------|------|
+| <CopyableCode>size.font.title</CopyableCode> | <CopyableCode>--dg-size-font-title</CopyableCode> | 40px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-title)', fontWeight: 600}}>Title</span> |
+| <CopyableCode>size.font.h1</CopyableCode> | <CopyableCode>--dg-size-font-h1</CopyableCode> | 32px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-h1)', fontWeight: 600}}>Heading 1</span> |
+| <CopyableCode>size.font.h2</CopyableCode> | <CopyableCode>--dg-size-font-h2</CopyableCode> | 24px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-h2)', fontWeight: 600}}>Heading 2</span> |
+| <CopyableCode>size.font.h3</CopyableCode> | <CopyableCode>--dg-size-font-h3</CopyableCode> | 20px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-h3)', fontWeight: 600}}>Heading 3</span> |
+| <CopyableCode>size.font.h4</CopyableCode> | <CopyableCode>--dg-size-font-h4</CopyableCode> | 16px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-h4)', fontWeight: 600}}>Heading 4</span> |
+| <CopyableCode>size.font.h5</CopyableCode> | <CopyableCode>--dg-size-font-h5</CopyableCode> | 14px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-h5)', fontWeight: 600}}>Heading 5</span> |
+| <CopyableCode>size.font.h6</CopyableCode> | <CopyableCode>--dg-size-font-h6</CopyableCode> | 12px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-h6)', fontWeight: 600}}>Heading 6</span> |
+| <CopyableCode bold>size.font.body</CopyableCode> | <CopyableCode bold>--dg-size-font-body</CopyableCode> | 16px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-body)'}}>Body text</span> |
+| <CopyableCode>size.font.caption</CopyableCode> | <CopyableCode>--dg-size-font-caption</CopyableCode> | 12px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-caption)'}}>Caption text</span> |
+| <CopyableCode>size.font.overline</CopyableCode> | <CopyableCode>--dg-size-font-overline</CopyableCode> | 10px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-overline)', textTransform: 'uppercase', letterSpacing: 'var(--dg-letter-spacing-wider)'}}>Overline</span> |
+| <CopyableCode>size.font.sub</CopyableCode> | <CopyableCode>--dg-size-font-sub</CopyableCode> | 10px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-sub)'}}>Subscript</span> |
+
+---
+
+## T-Shirt Scale
+
+Generic size scale for flexible use.
+
+| Token | CSS Variable | Value | Demo |
+|-------|--------------|-------|------|
+| <CopyableCode>size.font.xs</CopyableCode> | <CopyableCode>--dg-size-font-xs</CopyableCode> | 12px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-xs)'}}>Extra small</span> |
+| <CopyableCode>size.font.sm</CopyableCode> | <CopyableCode>--dg-size-font-sm</CopyableCode> | 14px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-sm)'}}>Small</span> |
+| <CopyableCode bold>size.font.md</CopyableCode> | <CopyableCode bold>--dg-size-font-md</CopyableCode> | 16px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-md)'}}>Medium (default)</span> |
+| <CopyableCode>size.font.lg</CopyableCode> | <CopyableCode>--dg-size-font-lg</CopyableCode> | 20px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-lg)'}}>Large</span> |
+| <CopyableCode>size.font.xl</CopyableCode> | <CopyableCode>--dg-size-font-xl</CopyableCode> | 24px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-xl)'}}>Extra large</span> |
+| <CopyableCode>size.font.2xl</CopyableCode> | <CopyableCode>--dg-size-font-2xl</CopyableCode> | 32px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-2xl)'}}>2X large</span> |
+| <CopyableCode>size.font.3xl</CopyableCode> | <CopyableCode>--dg-size-font-3xl</CopyableCode> | 40px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-3xl)'}}>3X large</span> |
+| <CopyableCode>size.font.4xl</CopyableCode> | <CopyableCode>--dg-size-font-4xl</CopyableCode> | 48px | <span className="typography-demo" style={{fontSize: 'var(--dg-size-font-4xl)'}}>4X large</span> |
+
+---
+
+## Typography Hierarchy Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-typography-card">
+  <p className="dg-title">Page Title</p>
+  <p className="dg-overline">Overline Label</p>
+  <p className="dg-heading-2">Section Heading</p>
+  <p className="dg-body">Body text provides the main content. It should be readable and comfortable at the default size with adequate line height.</p>
+  <p className="dg-caption">Caption: Additional context or metadata</p>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<article class="dg-typography-card">
+  <h1 class="dg-title">Page Title</h1>
+  <span class="dg-overline">Overline Label</span>
+  <h2 class="dg-heading-2">Section Heading</h2>
+  <p class="dg-body">Body text provides the main content...</p>
+  <p class="dg-caption">Caption: Additional context or metadata</p>
+</article>
+```
+
+```css
+.dg-typography-card {
+  padding: var(--dg-spacing-inset-lg);
+  background-color: var(--dg-color-background-bold);
+  border-radius: var(--dg-size-border-radius-lg);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-subtle);
+}
+
+.dg-title {
+  font-size: var(--dg-size-font-title);
+  font-weight: var(--dg-font-weight-bold);
+  line-height: var(--dg-line-height-title);
+}
+
+.dg-overline {
+  font-size: var(--dg-size-font-overline);
+  text-transform: uppercase;
+  letter-spacing: var(--dg-letter-spacing-wider);
+}
+
+.dg-heading-2 {
+  font-size: var(--dg-size-font-h2);
+  font-weight: var(--dg-font-weight-semi-bold);
+  line-height: var(--dg-line-height-h2);
+}
+
+.dg-body {
+  font-size: var(--dg-size-font-body);
+  line-height: var(--dg-line-height-body);
+}
+
+.dg-caption {
+  font-size: var(--dg-size-font-caption);
+  line-height: var(--dg-line-height-caption);
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Usage
+
+```css
+h1 {
+  font-size: var(--dg-size-font-h1);
+}
+
+p {
+  font-size: var(--dg-size-font-body);
+}
+
+.label {
+  font-size: var(--dg-size-font-overline);
+  text-transform: uppercase;
+  letter-spacing: var(--dg-letter-spacing-wider);
+}
+```
+
+---
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use semantic names (`h1`, `body`) for document structure
+- Use t-shirt sizes (`sm`, `lg`) for component variations
+- Pair with appropriate line heights
+
+### ❌ Don't
+
+- Skip heading levels (h1 → h3)
+- Use raw pixel values
+- Mix semantic and t-shirt sizes inconsistently
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-design-token/src/tokens/
+  ├── size/font.js           # Generic font sizes (xs–4xl)
+  └── typography/font-size.js # Semantic font sizes (title, h1–h6, body)
+```
+
+### Token Structure
+
+```javascript
+// Generic sizes
+{ size: { font: { xs: '{spacing.space.sm}', sm: '{spacing.space.md}', ... }}}
+
+// Semantic sizes
+{ size: { font: { title: '{spacing.px40}', h1: '{spacing.px32}', body: '{spacing.px16}', ... }}}
+```
+
+## Related
+
+- [Font Weights](./font-weights) — Text emphasis
+- [Text Spacing](./text-spacing) — Line height and letter spacing

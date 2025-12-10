@@ -3,428 +3,466 @@ sidebar_position: 4
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Shadow Shortcuts
 
-Shadow shortcuts provide recommended patterns for creating consistent, theme-aware shadows and elevation across your application.
+Shadow tokens provide consistent, theme-aware elevation and depth across your application.
 
 ## Overview
 
-Shadow shortcuts are not currently defined as explicit tokens in the system. Instead, use alpha colors to create shadows that automatically adapt to light and dark themes.
+The design system includes pre-defined shadow tokens for common use cases. These tokens automatically adapt between light and dark themes.
 
 ### Key Characteristics
 
-- **Alpha-based**: Use alpha colors for theme-aware shadows
-- **Elevation system**: Different shadow levels indicate elevation
-- **Performance**: Optimize shadow complexity for performance
-- **Consistency**: Follow established patterns for predictable depth
+- **Theme-aware**: Shadow colors adapt to light/dark mode
+- **Elevation system**: Semantic levels from `none` to `xl`
+- **Focus & Inset**: Special shadows for accessibility and depth effects
+- **Performance optimized**: Reasonable blur radius values
 
-## Recommended Shadow Patterns
+## Shadow Tokens
 
-### Basic Shadows
+### Elevation Shadows
 
-Use alpha colors to create shadows at different elevations:
+Use elevation shadows to create visual hierarchy and depth:
 
-```css
-/* Subtle shadow (elevation 1) */
-box-shadow: 0 1px 3px var(--dg-color-alpha-neutral-3);
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `shadow.elevation.none` | `--dg-shadow-elevation-none` | Flat elements, no elevation |
+| `shadow.elevation.sm` | `--dg-shadow-elevation-sm` | Subtle lift - buttons, cards at rest |
+| `shadow.elevation.md` | `--dg-shadow-elevation-md` | Medium elevation - raised cards, dropdowns |
+| `shadow.elevation.lg` | `--dg-shadow-elevation-lg` | High elevation - modals, popovers |
+| `shadow.elevation.xl` | `--dg-shadow-elevation-xl` | Maximum elevation - floating panels, toasts |
 
-/* Medium shadow (elevation 2) */
-box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-4);
+<Tabs>
+<TabItem value="demo" label="Demo" default>
 
-/* Strong shadow (elevation 3) */
-box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-5);
+<div className="dg-flex dg-gap-lg dg-flex-wrap dg-page-layout">
+  <div className="dg-elevation-card dg-elevation-none">
+    <p className="dg-demo-card-title">None</p>
+    <p className="dg-demo-card-meta">Flat</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-sm">
+    <p className="dg-demo-card-title">SM</p>
+    <p className="dg-demo-card-meta">Subtle</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-md">
+    <p className="dg-demo-card-title">MD</p>
+    <p className="dg-demo-card-meta">Raised</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-lg">
+    <p className="dg-demo-card-title">LG</p>
+    <p className="dg-demo-card-meta">Floating</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-xl">
+    <p className="dg-demo-card-title">XL</p>
+    <p className="dg-demo-card-meta">Overlay</p>
+  </div>
+</div>
 
-/* Very strong shadow (elevation 4) */
-box-shadow: 0 8px 24px var(--dg-color-alpha-neutral-5);
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-elevation-card dg-elevation-none">Flat</div>
+<div class="dg-elevation-card dg-elevation-sm">Subtle</div>
+<div class="dg-elevation-card dg-elevation-md">Raised</div>
+<div class="dg-elevation-card dg-elevation-lg">Floating</div>
+<div class="dg-elevation-card dg-elevation-xl">Overlay</div>
 ```
 
-### Multi-Layer Shadows
-
-Combine multiple shadow layers for depth and realism:
-
 ```css
-/* Card elevation */
-box-shadow: 
-  0 1px 3px var(--dg-color-alpha-neutral-3),
-  0 4px 12px var(--dg-color-alpha-neutral-4);
-
-/* Modal elevation */
-box-shadow: 
-  0 4px 16px var(--dg-color-alpha-neutral-4),
-  0 8px 32px var(--dg-color-alpha-neutral-5);
-
-/* Floating element */
-box-shadow:
-  0 2px 8px var(--dg-color-alpha-neutral-3),
-  0 8px 24px var(--dg-color-alpha-neutral-4),
-  0 16px 48px var(--dg-color-alpha-neutral-5);
+.dg-elevation-none { box-shadow: var(--dg-shadow-elevation-none); }
+.dg-elevation-sm { box-shadow: var(--dg-shadow-elevation-sm); }
+.dg-elevation-md { box-shadow: var(--dg-shadow-elevation-md); }
+.dg-elevation-lg { box-shadow: var(--dg-shadow-elevation-lg); }
+.dg-elevation-xl { box-shadow: var(--dg-shadow-elevation-xl); }
 ```
 
-## Elevation System
+</TabItem>
+</Tabs>
 
-### Elevation Levels
+### Focus Shadow
 
-The design system uses 5 elevation levels:
+Use the focus shadow for accessible focus indicators:
 
-| Level | Use Case | Shadow Pattern |
-|-------|----------|----------------|
-| **0** | Flat elements | No shadow |
-| **1** | Subtle cards, tiles | `0 1px 3px alpha-neutral-3` |
-| **2** | Cards, buttons (raised) | `0 2px 8px alpha-neutral-4` |
-| **3** | Dropdowns, popovers | `0 4px 16px alpha-neutral-5` |
-| **4** | Modals, dialogs | `0 8px 24px alpha-neutral-5` |
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `shadow.focus` | `--dg-shadow-focus` | Focus ring for interactive elements |
 
-### Elevation Guidelines
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-lg dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-primary dg-btn-focus">Focused Button</button>
+  <input type="text" value="Focused input" className="dg-input dg-input-focus" readOnly />
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-primary dg-btn-focus">Focused Button</button>
+<input type="text" class="dg-input dg-input-focus" />
+```
 
 ```css
-/* Level 0: Flat (no shadow) */
-.element-flat {
-  box-shadow: none;
+.dg-btn-focus {
+  box-shadow: var(--dg-shadow-focus);
 }
 
-/* Level 1: Subtle */
-.element-subtle {
-  box-shadow: 0 1px 3px var(--dg-color-alpha-neutral-3);
-}
-
-/* Level 2: Raised */
-.element-raised {
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-4);
-}
-
-/* Level 3: Floating */
-.element-floating {
-  box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-5);
-}
-
-/* Level 4: Overlay */
-.element-overlay {
-  box-shadow: 0 8px 24px var(--dg-color-alpha-neutral-5);
+.dg-input-focus {
+  border-color: var(--dg-color-primary-default);
+  box-shadow: var(--dg-shadow-focus);
 }
 ```
+
+</TabItem>
+</Tabs>
+
+### Inset Shadows
+
+Use inset shadows for pressed states and recessed areas:
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `shadow.inset.sm` | `--dg-shadow-inset-sm` | Subtle inset - pressed states, inputs |
+| `shadow.inset.md` | `--dg-shadow-inset-md` | Medium inset - recessed areas |
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-lg dg-flex-wrap dg-items-start">
+  <div className="dg-flex-col dg-gap-xs">
+    <p className="dg-text-caption">Inset SM</p>
+    <button className="dg-btn dg-btn-primary dg-btn-pressed">Pressed Button</button>
+  </div>
+  <div className="dg-flex-col dg-gap-xs">
+    <p className="dg-text-caption">Inset MD</p>
+    <div className="dg-well">Recessed area</div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-primary dg-btn-pressed">Pressed Button</button>
+<div class="dg-well">Recessed area</div>
+```
+
+```css
+.dg-btn-pressed {
+  box-shadow: var(--dg-shadow-inset-sm);
+}
+
+.dg-well {
+  box-shadow: var(--dg-shadow-inset-md);
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Shadow Color
+
+The shadow color token defines the base color used for all shadows:
+
+| Token | CSS Variable | Reference |
+|-------|--------------|-----------|
+| `color.shadow.DEFAULT` | `--dg-color-shadow-default` | `alpha.neutral.4` |
 
 ## Usage Examples
 
-### Cards
+### Cards with Elevation
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-lg dg-flex-wrap">
+  <div className="dg-interactive-card">
+    <p className="dg-demo-card-title">Default Card</p>
+    <p className="dg-demo-card-meta">Hover to elevate</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-lg">
+    <p className="dg-demo-card-title">Elevated Card</p>
+    <p className="dg-demo-card-meta">Using elevation-lg</p>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-interactive-card">Default Card</div>
+<div class="dg-elevation-card dg-elevation-lg">Elevated Card</div>
+```
 
 ```css
-/* Default card */
-.card {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
+.dg-interactive-card {
+  box-shadow: var(--dg-shadow-elevation-sm);
+  transition: var(--dg-transition-all);
 }
 
-/* Card hover state */
-.card:hover {
-  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
+.dg-interactive-card:hover {
+  box-shadow: var(--dg-shadow-elevation-md);
 }
 
-/* Card with strong elevation */
-.card-elevated {
-  box-shadow: 
-    0 1px 3px var(--dg-color-alpha-neutral-3),
-    0 4px 16px var(--dg-color-alpha-neutral-4);
+.dg-elevation-lg {
+  box-shadow: var(--dg-shadow-elevation-lg);
 }
 ```
 
-### Buttons
-
-```css
-/* Raised button */
-.button-raised {
-  background-color: var(--dg-color-primary-default);
-  box-shadow: 0 2px 4px var(--dg-color-alpha-neutral-4);
-}
-
-.button-raised:hover {
-  box-shadow: 0 4px 8px var(--dg-color-alpha-neutral-4);
-}
-
-.button-raised:active {
-  box-shadow: 0 1px 2px var(--dg-color-alpha-neutral-3);
-}
-
-/* Floating action button */
-.button-fab {
-  box-shadow: 
-    0 4px 8px var(--dg-color-alpha-neutral-4),
-    0 8px 16px var(--dg-color-alpha-neutral-5);
-}
-
-.button-fab:hover {
-  box-shadow: 
-    0 6px 12px var(--dg-color-alpha-neutral-4),
-    0 12px 24px var(--dg-color-alpha-neutral-5);
-}
-```
-
-### Modals and Overlays
-
-```css
-/* Modal backdrop */
-.modal-backdrop {
-  background-color: var(--dg-color-alpha-neutral-5);
-}
-
-/* Modal content */
-.modal-content {
-  background-color: var(--dg-color-background-default);
-  box-shadow: 
-    0 4px 16px var(--dg-color-alpha-neutral-4),
-    0 8px 32px var(--dg-color-alpha-neutral-5);
-}
-
-/* Dialog with maximum elevation */
-.dialog-critical {
-  box-shadow:
-    0 8px 24px var(--dg-color-alpha-neutral-4),
-    0 16px 48px var(--dg-color-alpha-neutral-5);
-}
-```
+</TabItem>
+</Tabs>
 
 ### Dropdown Menus
 
-```css
-/* Dropdown menu */
-.dropdown-menu {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
-}
+<Tabs>
+<TabItem value="demo" label="Demo" default>
 
-/* Nested dropdown (higher elevation) */
-.dropdown-menu .dropdown-submenu {
-  box-shadow: 0 6px 16px var(--dg-color-alpha-neutral-4);
+<div className="dg-flex dg-gap-xl dg-items-start">
+  <div className="dg-flex-col dg-gap-xs">
+    <p className="dg-text-caption">Dropdown (elevation-md)</p>
+    <div className="dg-dropdown">
+      <div className="dg-dropdown-item">Option 1</div>
+      <div className="dg-dropdown-item dg-dropdown-item-hover">Option 2</div>
+      <div className="dg-dropdown-item">Option 3</div>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-dropdown">
+  <div class="dg-dropdown-item">Option 1</div>
+  <div class="dg-dropdown-item">Option 2</div>
+</div>
+```
+
+```css
+.dg-dropdown {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
+  box-shadow: var(--dg-shadow-elevation-md);
 }
 ```
 
-### Tooltips and Popovers
+</TabItem>
+</Tabs>
+
+### Modals and Overlays
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-lg dg-items-center">
+  <div className="dg-modal-backdrop">
+    <div className="dg-elevation-card dg-elevation-lg">
+      <p className="dg-demo-card-title">Modal</p>
+      <p className="dg-demo-card-meta">elevation-lg</p>
+    </div>
+  </div>
+  <div className="dg-modal-backdrop">
+    <div className="dg-elevation-card dg-elevation-xl">
+      <p className="dg-demo-card-title">Critical Dialog</p>
+      <p className="dg-demo-card-meta">elevation-xl</p>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-modal-backdrop">
+  <div class="dg-modal dg-elevation-lg">Modal content</div>
+</div>
+<div class="dg-modal dg-elevation-xl">Critical dialog</div>
+```
 
 ```css
-/* Tooltip */
-.tooltip {
+.dg-modal {
+  background-color: var(--dg-color-background-default);
+  border-radius: var(--dg-size-border-radius-card);
+}
+
+/* Standard modal */
+.dg-elevation-lg {
+  box-shadow: var(--dg-shadow-elevation-lg);
+}
+
+/* Critical/Important dialogs */
+.dg-elevation-xl {
+  box-shadow: var(--dg-shadow-elevation-xl);
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Tooltips
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-xl dg-items-end dg-flex-wrap">
+  <div className="dg-flex-col dg-gap-sm dg-items-center">
+    <div className="dg-tooltip">No arrow</div>
+    <p className="dg-text-caption dg-text-subtle">Basic</p>
+  </div>
+  <div className="dg-flex-col dg-gap-sm dg-items-center">
+    <div className="dg-tooltip dg-tooltip-arrow dg-tooltip-top">Arrow down</div>
+    <p className="dg-text-caption dg-text-subtle">Top</p>
+  </div>
+  <div className="dg-flex-col dg-gap-sm dg-items-center">
+    <p className="dg-text-caption dg-text-subtle">Bottom</p>
+    <div className="dg-tooltip dg-tooltip-arrow dg-tooltip-bottom">Arrow up</div>
+  </div>
+  <div className="dg-flex dg-gap-sm dg-items-center">
+    <div className="dg-tooltip dg-tooltip-arrow dg-tooltip-left">Left</div>
+    <p className="dg-text-caption dg-text-subtle">←</p>
+  </div>
+  <div className="dg-flex dg-gap-sm dg-items-center">
+    <p className="dg-text-caption dg-text-subtle">→</p>
+    <div className="dg-tooltip dg-tooltip-arrow dg-tooltip-right">Right</div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<!-- Basic tooltip -->
+<div class="dg-tooltip">Tooltip text</div>
+
+<!-- With arrow (combine: base + arrow + position) -->
+<div class="dg-tooltip dg-tooltip-arrow dg-tooltip-top">Arrow down</div>
+<div class="dg-tooltip dg-tooltip-arrow dg-tooltip-bottom">Arrow up</div>
+<div class="dg-tooltip dg-tooltip-arrow dg-tooltip-left">Arrow right</div>
+<div class="dg-tooltip dg-tooltip-arrow dg-tooltip-right">Arrow left</div>
+```
+
+```css
+.dg-tooltip {
   background-color: var(--dg-color-background-boldest);
   color: var(--dg-color-text-inverse);
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-5);
+  padding: var(--dg-spacing-space-sm) var(--dg-spacing-space-md);
+  border-radius: var(--dg-size-border-radius-md);
+  box-shadow: var(--dg-shadow-elevation-md);
 }
 
-/* Popover */
-.popover {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  box-shadow: 
-    0 4px 12px var(--dg-color-alpha-neutral-4),
-    0 8px 24px var(--dg-color-alpha-neutral-5);
-}
-```
-
-### App Bars and Navigation
-
-```css
-/* App bar with subtle shadow */
-.app-bar {
-  background-color: var(--dg-color-background-default);
-  box-shadow: 0 1px 4px var(--dg-color-alpha-neutral-3);
+/* Arrow (CSS triangle) */
+.dg-tooltip-arrow::after {
+  content: '';
+  position: absolute;
+  border: var(--dg-spacing-space-xs) solid transparent;
 }
 
-/* App bar on scroll (elevated) */
-.app-bar.scrolled {
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-4);
+.dg-tooltip-top::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--dg-color-background-boldest);
 }
 ```
 
-## Focus Shadows
-
-Use shadows for focus indicators alongside borders:
-
-```css
-/* Focus with shadow */
-.input:focus {
-  border-color: var(--dg-color-primary-default);
-  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
-}
-
-/* Button focus */
-.button:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
-}
-
-/* Semantic focus shadows */
-.input-error:focus {
-  border-color: var(--dg-color-semantic-error-default);
-  box-shadow: 0 0 0 4px var(--dg-color-semantic-error-lowest);
-}
-
-.input-success:focus {
-  border-color: var(--dg-color-semantic-success-default);
-  box-shadow: 0 0 0 4px var(--dg-color-semantic-success-lowest);
-}
-```
-
-## Inner Shadows
-
-Use inset shadows for depth effects:
-
-```css
-/* Inset shadow for pressed state */
-.button:active {
-  box-shadow: inset 0 2px 4px var(--dg-color-alpha-neutral-4);
-}
-
-/* Input with inner shadow */
-.input {
-  box-shadow: inset 0 1px 2px var(--dg-color-alpha-neutral-2);
-}
-
-/* Well or sunken element */
-.well {
-  background-color: var(--dg-color-background-bold);
-  box-shadow: inset 0 2px 4px var(--dg-color-alpha-neutral-3);
-}
-```
-
-## Animation and Transitions
-
-Animate shadows for hover and active states:
-
-```css
-/* Smooth shadow transition */
-.card {
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
-  transition: box-shadow 200ms ease-in-out;
-}
-
-.card:hover {
-  box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-4);
-}
-
-/* Button with shadow animation */
-.button {
-  box-shadow: 0 2px 4px var(--dg-color-alpha-neutral-4);
-  transition: 
-    box-shadow 150ms ease-in-out,
-    transform 150ms ease-in-out;
-}
-
-.button:hover {
-  box-shadow: 0 4px 8px var(--dg-color-alpha-neutral-4);
-  transform: translateY(-1px);
-}
-
-.button:active {
-  box-shadow: 0 1px 2px var(--dg-color-alpha-neutral-3);
-  transform: translateY(0);
-}
-```
+</TabItem>
+</Tabs>
 
 ## Usage Guidelines
 
 ### ✅ Do
 
-- Use `alpha-neutral-3` for subtle shadows
-- Use `alpha-neutral-4` for medium shadows
-- Use `alpha-neutral-5` for strong shadows
-- Layer multiple shadows for realistic depth
-- Animate shadows on hover for interactive feedback
-- Use consistent shadow patterns across the application
+- Use shadow tokens (`--dg-shadow-elevation-*`) instead of raw values
+- Match elevation to component importance (higher = more prominent)
+- Use `--dg-shadow-focus` for accessible focus indicators
+- Use `--dg-shadow-inset-*` for pressed/recessed states
+- Animate shadows with transitions for smooth interactions
 
 ### ❌ Don't
 
-- Create custom shadow colors outside alpha colors
-- Use too many shadow layers (performance impact)
-- Mix shadow patterns inconsistently
-- Use shadows on every element (reduces impact)
+- Create custom shadow values outside the token system
+- Use elevation inconsistently (e.g., dropdown with higher elevation than modal)
+- Use shadows on every element (reduces visual impact)
 - Forget to test shadows in both light and dark themes
-- Use overly large blur radius values
-
-## Performance Considerations
-
-### Optimize Shadow Rendering
-
-```css
-/* Good: Reasonable blur radius */
-box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-4);
-
-/* Caution: Large blur radius (expensive) */
-box-shadow: 0 4px 64px var(--dg-color-alpha-neutral-4);
-
-/* Good: Limited shadow layers */
-box-shadow: 
-  0 1px 3px var(--dg-color-alpha-neutral-3),
-  0 4px 12px var(--dg-color-alpha-neutral-4);
-
-/* Avoid: Too many layers (expensive) */
-box-shadow:
-  0 1px 2px var(--dg-color-alpha-neutral-2),
-  0 2px 4px var(--dg-color-alpha-neutral-3),
-  0 4px 8px var(--dg-color-alpha-neutral-4),
-  0 8px 16px var(--dg-color-alpha-neutral-5);
-```
-
-### Use `will-change` for Animated Shadows
-
-```css
-.card {
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
-  transition: box-shadow 200ms ease-in-out;
-  will-change: box-shadow;
-}
-
-.card:hover {
-  box-shadow: 0 4px 16px var(--dg-color-alpha-neutral-4);
-}
-
-/* Remove will-change after animation */
-.card:not(:hover) {
-  will-change: auto;
-}
-```
 
 ## Accessibility
 
 ### Focus Indicators
 
-Shadows can supplement (but not replace) focus indicators:
+Always use the focus shadow token for keyboard navigation:
 
 ```css
-/* Accessible: Border + shadow for focus */
 .interactive-element:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline: 2px solid var(--dg-color-primary-default);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
-}
-
-/* Not recommended: Shadow only */
-.button:focus {
-  box-shadow: 0 0 0 4px var(--dg-color-primary-default);
-  /* Missing outline */
+  box-shadow: var(--dg-shadow-focus);
 }
 ```
 
 ### High Contrast Mode
 
-Test shadows in high contrast mode - they may be removed:
+Ensure components have visible borders as fallback:
 
 ```css
 @media (prefers-contrast: high) {
   .card {
-    /* Shadows may be removed, ensure border exists */
-    border: 1px solid var(--dg-color-alpha-neutral-4);
+    border: var(--dg-border-default);
   }
 }
 ```
 
 ## Technical Details
 
+### Token Structure
+
+```
+shadow/
+├── elevation/
+│   ├── none      → transparent (no shadow)
+│   ├── sm        → subtle lift
+│   ├── md        → medium elevation
+│   ├── lg        → high elevation
+│   └── xl        → maximum elevation
+├── focus         → focus ring
+└── inset/
+    ├── sm        → subtle inset
+    └── md        → medium inset
+```
+
 ### File Structure
 
 ```
-packages/lib-design-token/src/tokens/color/shortcut/
-  └── shadow.js    # Shadow color shortcuts
+packages/lib-design-token/src/tokens/
+├── shadow.js           # Shadow tokens (elevation, focus, inset)
+└── color/shortcut/
+    └── shadow.js       # Shadow color shortcut
+```
+
+### CSS Variables Reference
+
+```css
+/* Elevation shadows */
+--dg-shadow-elevation-none: 0 0 0 transparent;
+--dg-shadow-elevation-sm: 0 1px 2px var(--dg-color-shadow-default);
+--dg-shadow-elevation-md: 0 4px 6px 1px var(--dg-color-shadow-default);
+--dg-shadow-elevation-lg: 0 10px 16px 2px var(--dg-color-shadow-default);
+--dg-shadow-elevation-xl: 0 20px 24px 4px var(--dg-color-shadow-default);
+
+/* Focus shadow */
+--dg-shadow-focus: 0 0 0 2px var(--dg-color-primary-default);
+
+/* Inset shadows */
+--dg-shadow-inset-sm: inset 0 1px 2px var(--dg-color-shadow-default);
+--dg-shadow-inset-md: inset 0 2px 4px var(--dg-color-shadow-default);
+
+/* Shadow color */
+--dg-color-shadow-default: var(--dg-color-alpha-neutral-4);
 ```
 
 ### TypeScript/JavaScript
@@ -432,39 +470,31 @@ packages/lib-design-token/src/tokens/color/shortcut/
 ```typescript
 import { tokens } from '@designgreat/lib-design-token'
 
-// Shadow styles
+// Access shadow tokens
 const shadows = {
-  subtle: `0 1px 3px ${tokens.color.alpha.neutral[3]}`,
-  medium: `0 2px 8px ${tokens.color.alpha.neutral[4]}`,
-  strong: `0 4px 16px ${tokens.color.alpha.neutral[5]}`,
-  card: `0 1px 3px ${tokens.color.alpha.neutral[3]}, 0 4px 12px ${tokens.color.alpha.neutral[4]}`,
-  modal: `0 4px 16px ${tokens.color.alpha.neutral[4]}, 0 8px 32px ${tokens.color.alpha.neutral[5]}`
+  none: tokens.shadow.elevation.none,
+  sm: tokens.shadow.elevation.sm,
+  md: tokens.shadow.elevation.md,
+  lg: tokens.shadow.elevation.lg,
+  xl: tokens.shadow.elevation.xl,
+  focus: tokens.shadow.focus,
+  insetSm: tokens.shadow.inset.sm,
+  insetMd: tokens.shadow.inset.md
 }
 
-// Component example
-function Card({ elevation = 'medium', children }) {
-  const shadowStyle = {
-    subtle: shadows.subtle,
-    medium: shadows.medium,
-    strong: shadows.strong,
-  }[elevation]
-
+// Usage in component
+function Card({ elevation = 'md', children }) {
   return (
-    <div style={{ 
-      boxShadow: shadowStyle,
-      padding: '16px',
-      borderRadius: '4px'
-    }}>
+    <div style={{ boxShadow: `var(--dg-shadow-elevation-${elevation})` }}>
       {children}
     </div>
   )
 }
 ```
 
-## Related Topics
+## Related
 
-- [Alpha Colors](../alpha-colors) - Foundation for shadows
+- [Alpha Colors](../alpha-colors) - Foundation for shadow colors
 - [Background Shortcuts](./background) - Pairing shadows with backgrounds
 - [Border Shortcuts](./border) - Combining borders with shadows
-- [Interactive State Shortcuts](./interactive-state) - Shadows in different states
-
+- [Elevation (Effects)](../../effects/elevation) - Detailed elevation documentation

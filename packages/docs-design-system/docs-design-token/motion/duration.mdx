@@ -1,0 +1,146 @@
+---
+sidebar_position: 2
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Duration
+
+Duration tokens define how long animations and transitions should last. They provide a consistent timing scale that ensures animations feel cohesive across your application.
+
+## Core Duration Scale
+
+| Token | CSS Variable | Value | Use Case |
+|-------|--------------|-------|----------|
+| <CopyableCode>duration.instant</CopyableCode> | <CopyableCode>--dg-duration-instant</CopyableCode> | 0ms | No animation |
+| <CopyableCode>duration.fast</CopyableCode> | <CopyableCode>--dg-duration-fast</CopyableCode> | 100ms | Micro-interactions, hover |
+| <CopyableCode bold>duration.normal</CopyableCode> | <CopyableCode bold>--dg-duration-normal</CopyableCode> | 200ms | Standard transitions |
+| <CopyableCode>duration.slow</CopyableCode> | <CopyableCode>--dg-duration-slow</CopyableCode> | 300ms | Emphasis, page changes |
+| <CopyableCode>duration.slower</CopyableCode> | <CopyableCode>--dg-duration-slower</CopyableCode> | 500ms | Complex animations, modals |
+
+## Semantic Durations
+
+Semantic durations map to specific use cases:
+
+| Token | CSS Variable | Reference | Use Case |
+|-------|--------------|-----------|----------|
+| <CopyableCode>duration.transition.hover</CopyableCode> | <CopyableCode>--dg-duration-transition-hover</CopyableCode> | `{duration.fast}` | Hover state changes |
+| <CopyableCode>duration.transition.focus</CopyableCode> | <CopyableCode>--dg-duration-transition-focus</CopyableCode> | `{duration.fast}` | Focus indicators |
+| <CopyableCode>duration.transition.expand</CopyableCode> | <CopyableCode>--dg-duration-transition-expand</CopyableCode> | `{duration.normal}` | Expanding elements |
+| <CopyableCode>duration.transition.collapse</CopyableCode> | <CopyableCode>--dg-duration-transition-collapse</CopyableCode> | `{duration.normal}` | Collapsing elements |
+| <CopyableCode>duration.transition.fade</CopyableCode> | <CopyableCode>--dg-duration-transition-fade</CopyableCode> | `{duration.normal}` | Fade in/out |
+| <CopyableCode>duration.transition.slide</CopyableCode> | <CopyableCode>--dg-duration-transition-slide</CopyableCode> | `{duration.slow}` | Slide animations |
+| <CopyableCode>duration.transition.modal</CopyableCode> | <CopyableCode>--dg-duration-transition-modal</CopyableCode> | `{duration.slower}` | Modal open/close |
+
+## Interactive Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-motion-container">
+  <div>
+    <p className="dg-motion-section-label">Fast (100ms) - Hover States</p>
+    <button className="dg-btn dg-btn-primary dg-duration-fast">Hover me (fast)</button>
+  </div>
+  <div>
+    <p className="dg-motion-section-label">Normal (200ms) - Standard</p>
+    <div className="dg-motion-card dg-duration-normal">
+      <span>Hover me (normal)</span>
+    </div>
+  </div>
+  <div>
+    <p className="dg-motion-section-label">Slow (300ms) - Emphasis</p>
+    <div className="dg-motion-card dg-elevation-sm dg-duration-slow">
+      <span>Hover me (slow)</span>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-primary dg-duration-fast">Fast transition</button>
+<div class="dg-motion-card dg-duration-normal">Normal transition</div>
+<div class="dg-motion-card dg-duration-slow">Slow transition</div>
+```
+
+```css
+.dg-duration-fast {
+  transition: all var(--dg-duration-fast) var(--dg-cubic-bezier-ease-out);
+}
+.dg-duration-fast:hover {
+  background-color: var(--dg-color-primary-bold);
+  transform: scale(1.02);
+}
+
+.dg-duration-normal {
+  transition: all var(--dg-duration-normal) var(--dg-cubic-bezier-ease-out);
+}
+.dg-duration-normal:hover {
+  background-color: var(--dg-color-alpha-neutral-2);
+  border-color: var(--dg-color-primary-default);
+}
+
+.dg-duration-slow {
+  transition: all var(--dg-duration-slow) var(--dg-cubic-bezier-ease-out);
+}
+.dg-duration-slow:hover {
+  box-shadow: var(--dg-shadow-elevation-xl);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `fast` (100ms) for hover and focus states
+- Use `normal` (200ms) as your default for most transitions
+- Use `slow` (300ms) for important state changes
+- Use `slower` (500ms) sparingly for complex animations
+
+### ❌ Don't
+
+- Use durations longer than 500ms for UI transitions
+- Mix different duration values inconsistently
+- Use `instant` (0ms) when users expect feedback
+- Make loading states feel artificially slow
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-design-token/src/tokens/
+  └── duration.js  # All duration tokens
+```
+
+### Token Structure
+
+```javascript
+{
+  duration: {
+    instant: { value: 0, type: 'time' },
+    fast: { value: 100, type: 'time' },
+    normal: { value: 200, type: 'time' },
+    slow: { value: 300, type: 'time' },
+    slower: { value: 500, type: 'time' },
+    transition: {
+      hover: { value: '{duration.fast}', type: 'time' },
+      // ...
+    }
+  }
+}
+```
+
+## Related
+
+- [Easing](./easing) — Cubic bezier curves
+- [Transitions](./transitions) — Pre-built transition presets
+- [Interactive States](/design-token/colors/shortcuts/interactive-state) — Using duration with states
+
