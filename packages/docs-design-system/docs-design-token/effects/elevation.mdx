@@ -1,0 +1,256 @@
+---
+sidebar_position: 2
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Elevation
+
+Elevation tokens define shadow depths for creating visual hierarchy. They help users understand which elements are closer to them and which are further away.
+
+## Elevation Scale
+
+| Token | CSS Variable | Shadow | Use Case |
+|-------|--------------|--------|----------|
+| <CopyableCode>shadow.elevation.none</CopyableCode> | <CopyableCode>--dg-shadow-elevation-none</CopyableCode> | None | Flat elements |
+| <CopyableCode>shadow.elevation.sm</CopyableCode> | <CopyableCode>--dg-shadow-elevation-sm</CopyableCode> | 0 1px 2px | Subtle lift |
+| <CopyableCode bold>shadow.elevation.md</CopyableCode> | <CopyableCode bold>--dg-shadow-elevation-md</CopyableCode> | 0 4px 6px 1px | Cards, containers |
+| <CopyableCode>shadow.elevation.lg</CopyableCode> | <CopyableCode>--dg-shadow-elevation-lg</CopyableCode> | 0 10px 16px 2px | Dropdowns, popovers |
+| <CopyableCode>shadow.elevation.xl</CopyableCode> | <CopyableCode>--dg-shadow-elevation-xl</CopyableCode> | 0 20px 24px 4px | Modals, dialogs |
+
+## Special Shadows
+
+| Token | CSS Variable | Shadow | Use Case |
+|-------|--------------|--------|----------|
+| <CopyableCode>shadow.focus</CopyableCode> | <CopyableCode>--dg-shadow-focus</CopyableCode> | 0 0 0 2px | Focus rings |
+| <CopyableCode>shadow.inset.sm</CopyableCode> | <CopyableCode>--dg-shadow-inset-sm</CopyableCode> | inset 0 1px 2px | Pressed states |
+| <CopyableCode>shadow.inset.md</CopyableCode> | <CopyableCode>--dg-shadow-inset-md</CopyableCode> | inset 0 2px 4px | Input fields |
+
+## Elevation Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-elevation-container">
+  <div className="dg-elevation-card dg-elevation-none">
+    <p className="dg-elevation-card-title">None</p>
+    <p className="dg-elevation-card-desc">Flat elements</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-sm">
+    <p className="dg-elevation-card-title">Small</p>
+    <p className="dg-elevation-card-desc">Subtle lift</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-md">
+    <p className="dg-elevation-card-title">Medium</p>
+    <p className="dg-elevation-card-desc">Cards</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-lg">
+    <p className="dg-elevation-card-title">Large</p>
+    <p className="dg-elevation-card-desc">Dropdowns</p>
+  </div>
+  <div className="dg-elevation-card dg-elevation-xl">
+    <p className="dg-elevation-card-title">XLarge</p>
+    <p className="dg-elevation-card-desc">Modals</p>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-elevation-card dg-elevation-none">...</div>
+<div class="dg-elevation-card dg-elevation-sm">...</div>
+<div class="dg-elevation-card dg-elevation-md">...</div>
+<div class="dg-elevation-card dg-elevation-lg">...</div>
+<div class="dg-elevation-card dg-elevation-xl">...</div>
+```
+
+```css
+.dg-elevation-card {
+  background-color: var(--dg-color-background-default);
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-lg);
+}
+
+.dg-elevation-none { box-shadow: var(--dg-shadow-elevation-none); }
+.dg-elevation-sm { box-shadow: var(--dg-shadow-elevation-sm); }
+.dg-elevation-md { box-shadow: var(--dg-shadow-elevation-md); }
+.dg-elevation-lg { box-shadow: var(--dg-shadow-elevation-lg); }
+.dg-elevation-xl { box-shadow: var(--dg-shadow-elevation-xl); }
+```
+
+</TabItem>
+</Tabs>
+
+## Focus & Inset Shadows
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-labeled-row">
+  <div className="dg-labeled-item">
+    <p className="dg-label">Focus Ring</p>
+    <button className="dg-btn dg-btn-primary dg-btn-focus">Focused Button</button>
+  </div>
+  <div className="dg-labeled-item">
+    <p className="dg-label">Inset (Pressed)</p>
+    <button className="dg-btn dg-btn-neutral dg-btn-pressed">Pressed Button</button>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-primary">Primary Button</button>
+<button class="dg-btn dg-btn-neutral">Neutral Button</button>
+```
+
+```css
+.dg-btn {
+  padding: var(--dg-spacing-inset-sm) var(--dg-spacing-inset-lg);
+  border-radius: var(--dg-size-border-radius-button);
+}
+
+.dg-btn-primary {
+  background-color: var(--dg-color-primary-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-btn-neutral {
+  background-color: var(--dg-color-background-bold);
+  color: var(--dg-color-text-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+}
+
+.dg-btn:focus {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn:active {
+  box-shadow: var(--dg-shadow-inset-sm);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Elevation Guidelines
+
+| Level | Shadow | Components |
+|-------|--------|------------|
+| 0 | None | Flat backgrounds, dividers |
+| 1 | `sm` | Buttons (resting), cards (flat) |
+| 2 | `md` | Cards, containers, list items |
+| 3 | `lg` | Dropdowns, popovers, tooltips |
+| 4 | `xl` | Modals, dialogs, bottom sheets |
+
+## Interactive Elevation
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-elevation-interactive-container">
+  <div className="dg-elevation-interactive">
+    <p className="dg-elevation-interactive-title">Hover me</p>
+    <p className="dg-elevation-interactive-hint">sm → md</p>
+  </div>
+  <div className="dg-elevation-interactive-lg">
+    <p className="dg-elevation-interactive-title">Hover me</p>
+    <p className="dg-elevation-interactive-hint">md → lg</p>
+  </div>
+</div>
+<p className="dg-hint">↑ Hover over cards to see elevation change</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-elevation-interactive">Hover me (sm → md)</div>
+<div class="dg-elevation-interactive-lg">Hover me (md → lg)</div>
+```
+
+```css
+.dg-elevation-interactive {
+  background-color: var(--dg-color-background-default);
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-lg);
+  box-shadow: var(--dg-shadow-elevation-sm);
+  transition: box-shadow var(--dg-duration-normal) var(--dg-cubic-bezier-ease-out);
+}
+
+.dg-elevation-interactive:hover {
+  box-shadow: var(--dg-shadow-elevation-md);
+}
+
+.dg-elevation-interactive-lg {
+  box-shadow: var(--dg-shadow-elevation-md);
+  transition: box-shadow var(--dg-duration-slow) var(--dg-cubic-bezier-ease-out);
+}
+
+.dg-elevation-interactive-lg:hover {
+  box-shadow: var(--dg-shadow-elevation-lg);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use elevation to indicate interactivity
+- Increase elevation on hover for clickable elements
+- Use `focus` shadow for keyboard focus states
+- Keep elevation consistent within component types
+
+### ❌ Don't
+
+- Use high elevation for static content
+- Mix different elevation levels randomly
+- Skip elevation levels (e.g., sm → xl)
+- Use elevation as the only interactive indicator
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-design-token/src/tokens/
+  └── shadow.js  # All shadow/elevation tokens
+```
+
+### Token Structure
+
+```javascript
+{
+  shadow: {
+    // Elevation scale → --dg-shadow-elevation-*
+    elevation: {
+      none: { type: 'shadow', value: [{ offsetY: 0, blur: 0, color: 'transparent' }] },
+      sm: { type: 'shadow', value: [{ offsetY: '{spacing.px1}', blur: '{spacing.px2}', color: '{color.shadow.DEFAULT}' }] },
+      md: { type: 'shadow', value: [{ offsetY: '{spacing.px4}', blur: '{spacing.px6}', color: '{color.shadow.DEFAULT}' }] },
+      lg: { type: 'shadow', value: [{ offsetY: '{spacing.px10}', blur: '{spacing.px16}', color: '{color.shadow.DEFAULT}' }] },
+      xl: { type: 'shadow', value: [{ offsetY: '{spacing.px20}', blur: '{spacing.px24}', color: '{color.shadow.DEFAULT}' }] }
+    },
+
+    // Focus ring → --dg-shadow-focus
+    focus: { type: 'shadow', value: [{ blur: 0, spread: '{spacing.px2}', color: '{color.primary.DEFAULT}' }] },
+
+    // Inset shadows → --dg-shadow-inset-*
+    inset: {
+      sm: { type: 'shadow', value: [{ offsetY: '{spacing.px1}', blur: '{spacing.px2}', color: '{color.shadow.DEFAULT}', type: 'inset' }] },
+      md: { type: 'shadow', value: [{ offsetY: '{spacing.px2}', blur: '{spacing.px4}', color: '{color.shadow.DEFAULT}', type: 'inset' }] }
+    }
+  }
+}
+```
+
+## Related
+
+- [Shadow Shortcuts](/design-token/colors/shortcuts/shadow) — Shadow color tokens
+- [Transitions](../motion/transitions) — Animate elevation changes
+

@@ -1,0 +1,73 @@
+---
+sidebar_position: 1
+---
+
+# Motion System
+
+The motion system provides consistent animation timing and easing across your application. It includes duration tokens for timing, easing functions for natural movement, and transition presets for common use cases.
+
+## Architecture
+
+```
+Motion Tokens
+├── Duration          → How long animations last
+│   ├── Core Scale    → instant, fast, normal, slow, slower
+│   └── Semantic      → hover, focus, expand, modal
+├── Easing            → How animations accelerate/decelerate
+│   ├── Standard      → linear, ease, ease-in, ease-out, ease-in-out
+│   └── Custom        → Brand-specific curves
+└── Transitions       → Pre-built transition presets
+    ├── all           → General purpose
+    ├── colors        → Color changes
+    ├── opacity       → Fade effects
+    ├── transform     → Scale/move/rotate
+    ├── shadow        → Elevation changes
+    ├── slow          → Modals, page transitions
+    └── slower        → Complex animations
+```
+
+## Quick Reference
+
+| Token Type | CSS Variable Example | Use Case |
+|------------|---------------------|----------|
+| Duration | `--dg-duration-fast` | Animation timing |
+| Easing | `--dg-cubic-bezier-ease-out` | Animation curve |
+| Transition | `--dg-transition-colors` | Pre-built transitions |
+
+## Key Principles
+
+### 1. Purposeful Motion
+Every animation should have a clear purpose—guiding attention, providing feedback, or reinforcing hierarchy.
+
+### 2. Consistent Timing
+Use the duration scale consistently:
+- **Fast (100ms)**: Micro-interactions, hover states
+- **Normal (200ms)**: Standard UI transitions
+- **Slow (300ms)**: Emphasis, page transitions
+- **Slower (500ms)**: Complex animations, modals
+
+### 3. Natural Easing
+Prefer `ease-out` for entrances and `ease-in` for exits. Use `ease-in-out` for continuous animations.
+
+## Usage Example
+
+```css
+.button {
+  background-color: var(--dg-color-primary-default);
+  transition: 
+    background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-out),
+    transform var(--dg-duration-fast) var(--dg-cubic-bezier-ease-out);
+}
+
+.button:hover {
+  background-color: var(--dg-color-primary-bold);
+  transform: translateY(-2px);
+}
+```
+
+## Related
+
+- [Duration](./duration) — Animation timing tokens
+- [Easing](./easing) — Cubic bezier curves
+- [Transitions](./transitions) — Pre-built transition presets
+

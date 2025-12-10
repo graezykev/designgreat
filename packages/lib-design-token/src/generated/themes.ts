@@ -4,6 +4,28 @@
 export const light = {
   "dg": {
     "border": {
+      "width": {
+        "none": 0,
+        "thin": "0.0625rem",
+        "DEFAULT": "0.0625rem",
+        "medium": "0.125rem",
+        "thick": "0.25rem"
+      },
+      "default": {
+        "width": "0.0625rem",
+        "style": "solid",
+        "color": "#1d1d1f7d"
+      },
+      "subtle": {
+        "width": "0.0625rem",
+        "style": "solid",
+        "color": "#1d1d1f4f"
+      },
+      "bold": {
+        "width": "0.0625rem",
+        "style": "solid",
+        "color": "#48484d"
+      },
       "input": {
         "DEFAULT": {
           "width": "0.0625rem",
@@ -14,7 +36,34 @@ export const light = {
           "width": "0.0625rem",
           "style": "solid",
           "color": "#0055cc"
+        },
+        "error": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#ae2e24"
+        },
+        "success": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#216e4e"
         }
+      },
+      "divider": {
+        "DEFAULT": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#1d1d1f4f"
+        },
+        "bold": {
+          "width": "0.125rem",
+          "style": "solid",
+          "color": "#1d1d1f7d"
+        }
+      },
+      "focus": {
+        "width": "0.125rem",
+        "style": "solid",
+        "color": "#0055cc"
       }
     },
     "color": {
@@ -891,20 +940,28 @@ export const light = {
       ]
     },
     "duration": {
-      "a-random-duration-of-time": "2.10s",
+      "instant": "0.00s",
+      "fast": "0.10s",
+      "normal": "0.20s",
+      "DEFAULT": "0.20s",
+      "slow": "0.30s",
+      "slower": "0.50s",
       "transition": {
-        "duration": {
-          "fade-in-out": "1.00s"
-        },
-        "delay": {
-          "fade-in-out": "0.05s"
-        }
+        "hover": "0.10s",
+        "focus": "0.10s",
+        "expand": "0.20s",
+        "collapse": "0.20s",
+        "fade": "0.20s",
+        "slide": "0.30s",
+        "modal": "0.50s"
       }
     },
     "gradient": {
-      "colourful-button": "linear-gradient(0deg)",
-      "radial-bg": "radial-gradient(ellipse farthest-corner at center center)",
-      "conic-bg": "conic-gradient(from 0deg at center center)"
+      "brand-primary": "linear-gradient(135deg, #0055cc, #003c90)",
+      "surface-subtle": "linear-gradient(180deg, #ffffff, #e8e8e9)",
+      "hero": "linear-gradient(135deg, #88baff, #bfb8e0)",
+      "accent": "linear-gradient(90deg, #0055cc, #206a83)",
+      "overlay-dark": "linear-gradient(180deg, transparent, #1d1d1f4f)"
     },
     "number": {
       "elevation": {
@@ -913,90 +970,130 @@ export const light = {
         "raised": 1,
         "overlay": 2,
         "overflow": 3
-      },
-      "line-height": {
-        "body": 1.25,
-        "title": 0.5,
-        "sub": 2,
-        "heading3": 1.2,
-        "heading2": 1.1666666666666667,
-        "heading1": 1.75
       }
     },
     "shadow": {
-      "box": {
-        "highlight": [
+      "elevation": {
+        "none": [
+          {
+            "color": "transparent",
+            "offsetX": 0,
+            "offsetY": 0,
+            "blur": 0,
+            "spread": 0
+          }
+        ],
+        "sm": [
           {
             "color": "#1d1d1f4f",
-            "offsetX": "0.125rem",
-            "offsetY": "0.125rem",
-            "blur": "0.375rem",
+            "offsetX": 0,
+            "offsetY": "0.0625rem",
+            "blur": "0.125rem",
             "spread": 0
-          },
+          }
+        ],
+        "md": [
           {
-            "color": "#0055cc",
-            "offsetX": "0.125rem",
-            "offsetY": "0.125rem",
+            "color": "#1d1d1f4f",
+            "offsetX": 0,
+            "offsetY": "0.25rem",
             "blur": "0.375rem",
-            "spread": 0,
-            "type": "inset"
+            "spread": "0.0625rem"
+          }
+        ],
+        "lg": [
+          {
+            "color": "#1d1d1f4f",
+            "offsetX": 0,
+            "offsetY": "0.625rem",
+            "blur": "1rem",
+            "spread": "0.125rem"
+          }
+        ],
+        "xl": [
+          {
+            "color": "#1d1d1f4f",
+            "offsetX": 0,
+            "offsetY": "1.25rem",
+            "blur": "1.5rem",
+            "spread": "0.25rem"
           }
         ]
       },
-      "text": {
-        "dizzy": [
+      "focus": [
+        {
+          "color": "#0055cc",
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 0,
+          "spread": "0.125rem"
+        }
+      ],
+      "inset": {
+        "sm": [
           {
-            "offsetX": "0.0625rem",
+            "color": "#1d1d1f4f",
+            "offsetX": 0,
             "offsetY": "0.0625rem",
-            "blur": "0.1875rem"
-          },
+            "blur": "0.125rem",
+            "spread": 0,
+            "type": "inset"
+          }
+        ],
+        "md": [
           {
-            "color": "#0055cc",
-            "offsetX": "0.0625rem",
-            "offsetY": "0.0625rem",
-            "blur": "0.1875rem"
+            "color": "#1d1d1f4f",
+            "offsetX": 0,
+            "offsetY": "0.125rem",
+            "blur": "0.25rem",
+            "spread": 0,
+            "type": "inset"
           }
         ]
       }
     },
     "size": {
+      "border-radius": {
+        "none": 0,
+        "sm": "0.125rem",
+        "DEFAULT": "0.25rem",
+        "md": "0.375rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        "full": "9999rem",
+        "button": "0.375rem",
+        "input": "0.375rem",
+        "card": "0.5rem",
+        "modal": "0.75rem",
+        "badge": "9999rem",
+        "avatar": "9999rem",
+        "tooltip": "0.25rem"
+      },
       "font": {
         "base": "1rem",
         "DEFAULT": "1rem",
         "xs": "0.75rem",
-        "s": "0.875rem",
-        "m": "1rem",
-        "l": "1.25rem",
+        "sm": "0.875rem",
+        "md": "1rem",
+        "lg": "1.25rem",
         "xl": "1.5rem",
-        "xxl": "1.75rem",
-        "xxxl": "2rem",
+        "2xl": "2rem",
+        "3xl": "2.5rem",
+        "4xl": "3rem",
         "title": "2.5rem",
         "h1": "2rem",
         "h2": "1.5rem",
-        "h3h4": "1.25rem",
-        "h5": "1rem",
+        "h3": "1.25rem",
+        "h4": "1rem",
+        "h5": "0.875rem",
+        "h6": "0.75rem",
         "body": "1rem",
-        "h6": "0.875rem",
-        "sub": "0.75rem"
+        "caption": "0.75rem",
+        "overline": "0.625rem",
+        "sub": "0.625rem"
       },
-      "shadow": {
-        "box": {
-          "highlight": {
-            "offset-x": "0.125rem",
-            "offset-y": "0.125rem",
-            "blur": "0.375rem",
-            "spread": 0
-          }
-        },
-        "text": {
-          "dizzy": {
-            "offset-x": "0.0625rem",
-            "offset-y": "0.0625rem",
-            "blur": "0.1875rem"
-          }
-        }
-      },
-      "a-random-size": "1rem",
       "border": {
         "input": "0.0625rem"
       }
@@ -1006,12 +1103,12 @@ export const light = {
       "2": "0.0625rem",
       "3": "0.125rem",
       "4": "0.25rem",
-      "5": "0.5rem",
-      "6": "0.625rem",
-      "7": "0.75rem",
-      "8": "0.875rem",
-      "9": "1rem",
-      "10": "1.125rem",
+      "5": "0.375rem",
+      "6": "0.5rem",
+      "7": "0.625rem",
+      "8": "0.75rem",
+      "9": "0.875rem",
+      "10": "1rem",
       "11": "1.25rem",
       "12": "1.5rem",
       "13": "1.75rem",
@@ -1020,26 +1117,19 @@ export const light = {
       "16": "3rem",
       "17": "4rem",
       "18": "5rem",
-      "19": "5.9375rem",
+      "19": "6rem",
       "20": "8rem",
-      "21": "16rem",
-      "22": "23.75rem",
-      "23": "32rem",
-      "24": "1rem",
-      "25": "64rem",
-      "26": "128rem",
       "base": "1rem",
       "px0": 0,
       "px1": "0.0625rem",
       "px2": "0.125rem",
       "px4": "0.25rem",
+      "px6": "0.375rem",
       "px8": "0.5rem",
       "px10": "0.625rem",
       "px12": "0.75rem",
       "px14": "0.875rem",
       "px16": "1rem",
-      "DEFAULT": "1rem",
-      "px18": "1.125rem",
       "px20": "1.25rem",
       "px24": "1.5rem",
       "px28": "1.75rem",
@@ -1048,75 +1138,137 @@ export const light = {
       "px48": "3rem",
       "px64": "4rem",
       "px80": "5rem",
-      "px95": "5.9375rem",
+      "px96": "6rem",
       "px128": "8rem",
-      "px256": "16rem",
-      "px380": "23.75rem",
-      "px512": "32rem",
-      "px760": "1rem",
-      "px1024": "64rem",
-      "px2048": "128rem",
-      "atomic": {
-        "xs": "0.75rem",
-        "s": "0.875rem",
-        "m": "1rem",
+      "space": {
+        "none": 0,
+        "2xs": "0.125rem",
+        "xs": "0.25rem",
+        "sm": "0.5rem",
+        "md": "1rem",
         "DEFAULT": "1rem",
-        "l": "1.25rem",
-        "xl": "1.5rem",
-        "xxl": "1.75rem",
-        "xxxl": "2rem",
-        "xxxxl": "2.5rem",
-        "micro": {
-          "none": 0,
-          "DEFAULT": "0.0625rem",
-          "thick": "0.125rem",
-          "heavy": "0.25rem",
-          "massive": "0.5rem"
-        }
+        "lg": "1.5rem",
+        "xl": "2rem",
+        "2xl": "3rem",
+        "3xl": "4rem"
       },
-      "composite": {
-        "xs": "1.5rem",
-        "s": "2rem",
-        "m": "2.5rem",
+      "gap": {
+        "none": 0,
+        "xs": "0.25rem",
+        "sm": "0.5rem",
+        "md": "0.75rem",
+        "DEFAULT": "0.75rem",
+        "lg": "1rem",
+        "xl": "1.5rem"
+      },
+      "inset": {
+        "none": 0,
+        "xs": "0.5rem",
+        "sm": "0.75rem",
+        "md": "1rem",
+        "DEFAULT": "1rem",
+        "lg": "1.5rem",
+        "xl": "2rem"
+      },
+      "stack": {
+        "none": 0,
+        "xs": "1rem",
+        "sm": "1.5rem",
+        "md": "2.5rem",
         "DEFAULT": "2.5rem",
-        "l": "3rem",
-        "xl": "4rem"
-      },
-      "widget": {
-        "none": 0,
-        "s": "0.25rem",
-        "m": "0.5rem",
-        "l": "0.75rem"
-      },
-      "group": {
-        "none": 0,
-        "s": "1rem",
-        "m": "1.25rem",
-        "l": "1.5rem"
-      },
-      "layout": {
-        "none": 0,
-        "s": "1.25rem",
-        "m": "2.5rem",
-        "l": "5rem"
+        "lg": "4rem",
+        "xl": "6rem"
       }
     },
     "transition": {
-      "fade-in-out": {
+      "all": {
         "property": "all",
-        "duration": "1.00s",
+        "duration": "0.20s",
+        "timingFunction": [
+          0,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "colors": {
+        "property": "color, background-color, border-color",
+        "duration": "0.10s",
+        "timingFunction": [
+          0.25,
+          0.1,
+          0.25,
+          1
+        ],
+        "delay": 0
+      },
+      "opacity": {
+        "property": "opacity",
+        "duration": "0.20s",
         "timingFunction": [
           0.42,
           0,
           0.58,
           1
         ],
-        "delay": "0.05s"
+        "delay": 0
+      },
+      "transform": {
+        "property": "transform",
+        "duration": "0.20s",
+        "timingFunction": [
+          0,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "shadow": {
+        "property": "box-shadow",
+        "duration": "0.20s",
+        "timingFunction": [
+          0.25,
+          0.1,
+          0.25,
+          1
+        ],
+        "delay": 0
+      },
+      "slow": {
+        "property": "all",
+        "duration": "0.30s",
+        "timingFunction": [
+          0.42,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "slower": {
+        "property": "all",
+        "duration": "0.50s",
+        "timingFunction": [
+          0.42,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "none": {
+        "property": "none",
+        "duration": 0,
+        "timingFunction": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "delay": 0
       }
-    },
-    "direction": {
-      "ltr": "ltr",
-      "rtl": "rtl"
     },
     "font-face": {
       "roboto": "Roboto"
@@ -1146,14 +1298,14 @@ export const light = {
         "fontSize": "1rem",
         "fontWeight": 400,
         "fontStyle": "normal",
-        "lineHeight": 1.25
+        "lineHeight": 1.5
       },
       "link": {
         "fontFamily": "Roboto",
         "fontSize": "1rem",
         "fontWeight": 400,
         "fontStyle": "normal",
-        "lineHeight": 1.25,
+        "lineHeight": 1.5,
         "color": "#0055cc"
       },
       "link-hover": {
@@ -1161,26 +1313,47 @@ export const light = {
         "fontSize": "1rem",
         "fontWeight": 400,
         "fontStyle": "normal",
-        "lineHeight": 1.25,
+        "lineHeight": 1.5,
         "color": "#0055cc",
         "textDecoration": "underline"
-      },
-      "list": {
-        "listStyleType": "none",
-        "listStylePosition": "outside",
-        "listStyleImage": "none"
       }
     },
     "letter-spacing": {
-      "large": "0.05rem",
-      "medium": "0.025rem",
+      "tighter": -0.05,
+      "tight": -0.025,
+      "normal": 0,
       "DEFAULT": 0,
-      "compact": "-0.025rem",
-      "tiny": "-0.05rem"
+      "wide": 0.025,
+      "wider": 0.05,
+      "widest": 0.1
     },
     "line-clamp": {
-      "single-line": 1,
-      "2-line": 2
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6
+    },
+    "line-height": {
+      "none": 1,
+      "tight": 1.25,
+      "snug": 1.375,
+      "normal": 1.5,
+      "DEFAULT": 1.5,
+      "relaxed": 1.625,
+      "loose": 2,
+      "title": 1,
+      "h1": 1.25,
+      "h2": 1.25,
+      "h3": 1.375,
+      "h4": 1.375,
+      "h5": 1.5,
+      "h6": 1.5,
+      "body": 1.5,
+      "caption": 1.5,
+      "overline": 1.5,
+      "sub": 1.5
     },
     "list-style": {
       "type": {
@@ -1193,12 +1366,6 @@ export const light = {
       "image": {
         "DEFAULT": "none"
       }
-    },
-    "text-align": {
-      "center": "center",
-      "start": "start",
-      "end": "end",
-      "justify": "justify"
     },
     "text-decoration": {
       "color": {
@@ -1225,37 +1392,6 @@ export const light = {
         "line-through": "line-through",
         "multiple": "line-through underline overline"
       }
-    },
-    "text-indent": {
-      "normal": 0
-    },
-    "text-overflow": {
-      "clip": "clip",
-      "ellipsis": "ellipsis"
-    },
-    "vertical-align": {
-      "100-percent": "100%",
-      "10px": "0.625rem",
-      "DEFAULT": "baseline",
-      "sub": "sub",
-      "super": "super",
-      "text-top": "text-top",
-      "text-bottom": "text-bottom",
-      "top": "top",
-      "bottom": "bottom"
-    },
-    "white-space": {
-      "DEFAULT": "normal",
-      "nowrap": "nowrap",
-      "preserved": "pre",
-      "preserved-wrap": "pre-wrap",
-      "preserved-line": "pre-line",
-      "break-spaces": "break-spaces"
-    },
-    "word-spacing": {
-      "normal": 0,
-      "wide": "1rem",
-      "tight": "-0.5rem"
     }
   }
 } as const
@@ -1263,6 +1399,28 @@ export const light = {
 export const dark = {
   "dg": {
     "border": {
+      "width": {
+        "none": 0,
+        "thin": "0.0625rem",
+        "DEFAULT": "0.0625rem",
+        "medium": "0.125rem",
+        "thick": "0.25rem"
+      },
+      "default": {
+        "width": "0.0625rem",
+        "style": "solid",
+        "color": "#e8e8e97d"
+      },
+      "subtle": {
+        "width": "0.0625rem",
+        "style": "solid",
+        "color": "#e8e8e94f"
+      },
+      "bold": {
+        "width": "0.0625rem",
+        "style": "solid",
+        "color": "#b9b9be"
+      },
       "input": {
         "DEFAULT": {
           "width": "0.0625rem",
@@ -1273,7 +1431,34 @@ export const dark = {
           "width": "0.0625rem",
           "style": "solid",
           "color": "#599eff"
+        },
+        "error": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#e38078"
+        },
+        "success": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#68d2a6"
         }
+      },
+      "divider": {
+        "DEFAULT": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#e8e8e94f"
+        },
+        "bold": {
+          "width": "0.125rem",
+          "style": "solid",
+          "color": "#e8e8e97d"
+        }
+      },
+      "focus": {
+        "width": "0.125rem",
+        "style": "solid",
+        "color": "#599eff"
       }
     },
     "color": {
@@ -2150,20 +2335,28 @@ export const dark = {
       ]
     },
     "duration": {
-      "a-random-duration-of-time": "2.10s",
+      "instant": "0.00s",
+      "fast": "0.10s",
+      "normal": "0.20s",
+      "DEFAULT": "0.20s",
+      "slow": "0.30s",
+      "slower": "0.50s",
       "transition": {
-        "duration": {
-          "fade-in-out": "1.00s"
-        },
-        "delay": {
-          "fade-in-out": "0.05s"
-        }
+        "hover": "0.10s",
+        "focus": "0.10s",
+        "expand": "0.20s",
+        "collapse": "0.20s",
+        "fade": "0.20s",
+        "slide": "0.30s",
+        "modal": "0.50s"
       }
     },
     "gradient": {
-      "colourful-button": "linear-gradient(0deg)",
-      "radial-bg": "radial-gradient(ellipse farthest-corner at center center)",
-      "conic-bg": "conic-gradient(from 0deg at center center)"
+      "brand-primary": "linear-gradient(135deg, #599eff, #88baff)",
+      "surface-subtle": "linear-gradient(180deg, #0c0c0d, #1d1d1f)",
+      "hero": "linear-gradient(135deg, #003c90, #42367d)",
+      "accent": "linear-gradient(90deg, #599eff, #69beda)",
+      "overlay-dark": "linear-gradient(180deg, transparent, #e8e8e94f)"
     },
     "number": {
       "elevation": {
@@ -2172,90 +2365,130 @@ export const dark = {
         "raised": 1,
         "overlay": 2,
         "overflow": 3
-      },
-      "line-height": {
-        "body": 1.25,
-        "title": 0.5,
-        "sub": 2,
-        "heading3": 1.2,
-        "heading2": 1.1666666666666667,
-        "heading1": 1.75
       }
     },
     "shadow": {
-      "box": {
-        "highlight": [
+      "elevation": {
+        "none": [
+          {
+            "color": "transparent",
+            "offsetX": 0,
+            "offsetY": 0,
+            "blur": 0,
+            "spread": 0
+          }
+        ],
+        "sm": [
           {
             "color": "#e8e8e94f",
-            "offsetX": "0.125rem",
-            "offsetY": "0.125rem",
-            "blur": "0.375rem",
+            "offsetX": 0,
+            "offsetY": "0.0625rem",
+            "blur": "0.125rem",
             "spread": 0
-          },
+          }
+        ],
+        "md": [
           {
-            "color": "#0055cc",
-            "offsetX": "0.125rem",
-            "offsetY": "0.125rem",
+            "color": "#e8e8e94f",
+            "offsetX": 0,
+            "offsetY": "0.25rem",
             "blur": "0.375rem",
-            "spread": 0,
-            "type": "inset"
+            "spread": "0.0625rem"
+          }
+        ],
+        "lg": [
+          {
+            "color": "#e8e8e94f",
+            "offsetX": 0,
+            "offsetY": "0.625rem",
+            "blur": "1rem",
+            "spread": "0.125rem"
+          }
+        ],
+        "xl": [
+          {
+            "color": "#e8e8e94f",
+            "offsetX": 0,
+            "offsetY": "1.25rem",
+            "blur": "1.5rem",
+            "spread": "0.25rem"
           }
         ]
       },
-      "text": {
-        "dizzy": [
+      "focus": [
+        {
+          "color": "#599eff",
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 0,
+          "spread": "0.125rem"
+        }
+      ],
+      "inset": {
+        "sm": [
           {
-            "offsetX": "0.0625rem",
+            "color": "#e8e8e94f",
+            "offsetX": 0,
             "offsetY": "0.0625rem",
-            "blur": "0.1875rem"
-          },
+            "blur": "0.125rem",
+            "spread": 0,
+            "type": "inset"
+          }
+        ],
+        "md": [
           {
-            "color": "#0055cc",
-            "offsetX": "0.0625rem",
-            "offsetY": "0.0625rem",
-            "blur": "0.1875rem"
+            "color": "#e8e8e94f",
+            "offsetX": 0,
+            "offsetY": "0.125rem",
+            "blur": "0.25rem",
+            "spread": 0,
+            "type": "inset"
           }
         ]
       }
     },
     "size": {
+      "border-radius": {
+        "none": 0,
+        "sm": "0.125rem",
+        "DEFAULT": "0.25rem",
+        "md": "0.375rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        "full": "9999rem",
+        "button": "0.375rem",
+        "input": "0.375rem",
+        "card": "0.5rem",
+        "modal": "0.75rem",
+        "badge": "9999rem",
+        "avatar": "9999rem",
+        "tooltip": "0.25rem"
+      },
       "font": {
         "base": "1rem",
         "DEFAULT": "1rem",
         "xs": "0.75rem",
-        "s": "0.875rem",
-        "m": "1rem",
-        "l": "1.25rem",
+        "sm": "0.875rem",
+        "md": "1rem",
+        "lg": "1.25rem",
         "xl": "1.5rem",
-        "xxl": "1.75rem",
-        "xxxl": "2rem",
+        "2xl": "2rem",
+        "3xl": "2.5rem",
+        "4xl": "3rem",
         "title": "2.5rem",
         "h1": "2rem",
         "h2": "1.5rem",
-        "h3h4": "1.25rem",
-        "h5": "1rem",
+        "h3": "1.25rem",
+        "h4": "1rem",
+        "h5": "0.875rem",
+        "h6": "0.75rem",
         "body": "1rem",
-        "h6": "0.875rem",
-        "sub": "0.75rem"
+        "caption": "0.75rem",
+        "overline": "0.625rem",
+        "sub": "0.625rem"
       },
-      "shadow": {
-        "box": {
-          "highlight": {
-            "offset-x": "0.125rem",
-            "offset-y": "0.125rem",
-            "blur": "0.375rem",
-            "spread": 0
-          }
-        },
-        "text": {
-          "dizzy": {
-            "offset-x": "0.0625rem",
-            "offset-y": "0.0625rem",
-            "blur": "0.1875rem"
-          }
-        }
-      },
-      "a-random-size": "1rem",
       "border": {
         "input": "0.0625rem"
       }
@@ -2265,12 +2498,12 @@ export const dark = {
       "2": "0.0625rem",
       "3": "0.125rem",
       "4": "0.25rem",
-      "5": "0.5rem",
-      "6": "0.625rem",
-      "7": "0.75rem",
-      "8": "0.875rem",
-      "9": "1rem",
-      "10": "1.125rem",
+      "5": "0.375rem",
+      "6": "0.5rem",
+      "7": "0.625rem",
+      "8": "0.75rem",
+      "9": "0.875rem",
+      "10": "1rem",
       "11": "1.25rem",
       "12": "1.5rem",
       "13": "1.75rem",
@@ -2279,26 +2512,19 @@ export const dark = {
       "16": "3rem",
       "17": "4rem",
       "18": "5rem",
-      "19": "5.9375rem",
+      "19": "6rem",
       "20": "8rem",
-      "21": "16rem",
-      "22": "23.75rem",
-      "23": "32rem",
-      "24": "1rem",
-      "25": "64rem",
-      "26": "128rem",
       "base": "1rem",
       "px0": 0,
       "px1": "0.0625rem",
       "px2": "0.125rem",
       "px4": "0.25rem",
+      "px6": "0.375rem",
       "px8": "0.5rem",
       "px10": "0.625rem",
       "px12": "0.75rem",
       "px14": "0.875rem",
       "px16": "1rem",
-      "DEFAULT": "1rem",
-      "px18": "1.125rem",
       "px20": "1.25rem",
       "px24": "1.5rem",
       "px28": "1.75rem",
@@ -2307,75 +2533,137 @@ export const dark = {
       "px48": "3rem",
       "px64": "4rem",
       "px80": "5rem",
-      "px95": "5.9375rem",
+      "px96": "6rem",
       "px128": "8rem",
-      "px256": "16rem",
-      "px380": "23.75rem",
-      "px512": "32rem",
-      "px760": "1rem",
-      "px1024": "64rem",
-      "px2048": "128rem",
-      "atomic": {
-        "xs": "0.75rem",
-        "s": "0.875rem",
-        "m": "1rem",
+      "space": {
+        "none": 0,
+        "2xs": "0.125rem",
+        "xs": "0.25rem",
+        "sm": "0.5rem",
+        "md": "1rem",
         "DEFAULT": "1rem",
-        "l": "1.25rem",
-        "xl": "1.5rem",
-        "xxl": "1.75rem",
-        "xxxl": "2rem",
-        "xxxxl": "2.5rem",
-        "micro": {
-          "none": 0,
-          "DEFAULT": "0.0625rem",
-          "thick": "0.125rem",
-          "heavy": "0.25rem",
-          "massive": "0.5rem"
-        }
+        "lg": "1.5rem",
+        "xl": "2rem",
+        "2xl": "3rem",
+        "3xl": "4rem"
       },
-      "composite": {
-        "xs": "1.5rem",
-        "s": "2rem",
-        "m": "2.5rem",
+      "gap": {
+        "none": 0,
+        "xs": "0.25rem",
+        "sm": "0.5rem",
+        "md": "0.75rem",
+        "DEFAULT": "0.75rem",
+        "lg": "1rem",
+        "xl": "1.5rem"
+      },
+      "inset": {
+        "none": 0,
+        "xs": "0.5rem",
+        "sm": "0.75rem",
+        "md": "1rem",
+        "DEFAULT": "1rem",
+        "lg": "1.5rem",
+        "xl": "2rem"
+      },
+      "stack": {
+        "none": 0,
+        "xs": "1rem",
+        "sm": "1.5rem",
+        "md": "2.5rem",
         "DEFAULT": "2.5rem",
-        "l": "3rem",
-        "xl": "4rem"
-      },
-      "widget": {
-        "none": 0,
-        "s": "0.25rem",
-        "m": "0.5rem",
-        "l": "0.75rem"
-      },
-      "group": {
-        "none": 0,
-        "s": "1rem",
-        "m": "1.25rem",
-        "l": "1.5rem"
-      },
-      "layout": {
-        "none": 0,
-        "s": "1.25rem",
-        "m": "2.5rem",
-        "l": "5rem"
+        "lg": "4rem",
+        "xl": "6rem"
       }
     },
     "transition": {
-      "fade-in-out": {
+      "all": {
         "property": "all",
-        "duration": "1.00s",
+        "duration": "0.20s",
+        "timingFunction": [
+          0,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "colors": {
+        "property": "color, background-color, border-color",
+        "duration": "0.10s",
+        "timingFunction": [
+          0.25,
+          0.1,
+          0.25,
+          1
+        ],
+        "delay": 0
+      },
+      "opacity": {
+        "property": "opacity",
+        "duration": "0.20s",
         "timingFunction": [
           0.42,
           0,
           0.58,
           1
         ],
-        "delay": "0.05s"
+        "delay": 0
+      },
+      "transform": {
+        "property": "transform",
+        "duration": "0.20s",
+        "timingFunction": [
+          0,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "shadow": {
+        "property": "box-shadow",
+        "duration": "0.20s",
+        "timingFunction": [
+          0.25,
+          0.1,
+          0.25,
+          1
+        ],
+        "delay": 0
+      },
+      "slow": {
+        "property": "all",
+        "duration": "0.30s",
+        "timingFunction": [
+          0.42,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "slower": {
+        "property": "all",
+        "duration": "0.50s",
+        "timingFunction": [
+          0.42,
+          0,
+          0.58,
+          1
+        ],
+        "delay": 0
+      },
+      "none": {
+        "property": "none",
+        "duration": 0,
+        "timingFunction": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "delay": 0
       }
-    },
-    "direction": {
-      "ltr": "ltr",
-      "rtl": "rtl"
     },
     "font-face": {
       "roboto": "Roboto"
@@ -2405,14 +2693,14 @@ export const dark = {
         "fontSize": "1rem",
         "fontWeight": 400,
         "fontStyle": "normal",
-        "lineHeight": 1.25
+        "lineHeight": 1.5
       },
       "link": {
         "fontFamily": "Roboto",
         "fontSize": "1rem",
         "fontWeight": 400,
         "fontStyle": "normal",
-        "lineHeight": 1.25,
+        "lineHeight": 1.5,
         "color": "#599eff"
       },
       "link-hover": {
@@ -2420,26 +2708,47 @@ export const dark = {
         "fontSize": "1rem",
         "fontWeight": 400,
         "fontStyle": "normal",
-        "lineHeight": 1.25,
+        "lineHeight": 1.5,
         "color": "#599eff",
         "textDecoration": "underline"
-      },
-      "list": {
-        "listStyleType": "none",
-        "listStylePosition": "outside",
-        "listStyleImage": "none"
       }
     },
     "letter-spacing": {
-      "large": "0.05rem",
-      "medium": "0.025rem",
+      "tighter": -0.05,
+      "tight": -0.025,
+      "normal": 0,
       "DEFAULT": 0,
-      "compact": "-0.025rem",
-      "tiny": "-0.05rem"
+      "wide": 0.025,
+      "wider": 0.05,
+      "widest": 0.1
     },
     "line-clamp": {
-      "single-line": 1,
-      "2-line": 2
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6
+    },
+    "line-height": {
+      "none": 1,
+      "tight": 1.25,
+      "snug": 1.375,
+      "normal": 1.5,
+      "DEFAULT": 1.5,
+      "relaxed": 1.625,
+      "loose": 2,
+      "title": 1,
+      "h1": 1.25,
+      "h2": 1.25,
+      "h3": 1.375,
+      "h4": 1.375,
+      "h5": 1.5,
+      "h6": 1.5,
+      "body": 1.5,
+      "caption": 1.5,
+      "overline": 1.5,
+      "sub": 1.5
     },
     "list-style": {
       "type": {
@@ -2452,12 +2761,6 @@ export const dark = {
       "image": {
         "DEFAULT": "none"
       }
-    },
-    "text-align": {
-      "center": "center",
-      "start": "start",
-      "end": "end",
-      "justify": "justify"
     },
     "text-decoration": {
       "color": {
@@ -2484,37 +2787,6 @@ export const dark = {
         "line-through": "line-through",
         "multiple": "line-through underline overline"
       }
-    },
-    "text-indent": {
-      "normal": 0
-    },
-    "text-overflow": {
-      "clip": "clip",
-      "ellipsis": "ellipsis"
-    },
-    "vertical-align": {
-      "100-percent": "100%",
-      "10px": "0.625rem",
-      "DEFAULT": "baseline",
-      "sub": "sub",
-      "super": "super",
-      "text-top": "text-top",
-      "text-bottom": "text-bottom",
-      "top": "top",
-      "bottom": "bottom"
-    },
-    "white-space": {
-      "DEFAULT": "normal",
-      "nowrap": "nowrap",
-      "preserved": "pre",
-      "preserved-wrap": "pre-wrap",
-      "preserved-line": "pre-line",
-      "break-spaces": "break-spaces"
-    },
-    "word-spacing": {
-      "normal": 0,
-      "wide": "1rem",
-      "tight": "-0.5rem"
     }
   }
 } as const

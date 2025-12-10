@@ -173,52 +173,6 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Design Token',
-          items: [
-            {
-              label: 'Design Token',
-              to: '/design-token/guides/overview'
-            }
-          ]
-        },
-        {
-          title: 'Web Component',
-          items: [
-            {
-              label: 'Button',
-              to: '/web-component/button'
-            },
-            {
-              label: 'Dialog',
-              to: '/web-component/dialog'
-            },
-            {
-              label: 'TextInput',
-              to: '/web-component/text-input'
-            }
-          ]
-        },
-        {
-          title: 'Contributing',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/contributing'
-            }
-          ]
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: `https://github.com/${organizationName}/${projectName}`
-            }
-          ]
-        }
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} Design Great. Built with Docusaurus.`
     },
     prism: {

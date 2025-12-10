@@ -1,0 +1,236 @@
+---
+sidebar_position: 4
+---
+
+import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Transitions
+
+Transition tokens provide pre-built transition presets that combine property, duration, and easing for common use cases. They simplify applying consistent animations across your application.
+
+## Transition Presets
+
+| Token | CSS Variable | Properties | Duration | Easing |
+|-------|--------------|------------|----------|--------|
+| <CopyableCode bold>transition.all</CopyableCode> | <CopyableCode>--dg-transition-all</CopyableCode> | `all` | 200ms | ease-out |
+| <CopyableCode>transition.colors</CopyableCode> | <CopyableCode>--dg-transition-colors</CopyableCode> | `color, background-color, border-color` | 100ms | ease |
+| <CopyableCode>transition.opacity</CopyableCode> | <CopyableCode>--dg-transition-opacity</CopyableCode> | `opacity` | 200ms | ease-in-out |
+| <CopyableCode>transition.transform</CopyableCode> | <CopyableCode>--dg-transition-transform</CopyableCode> | `transform` | 200ms | ease-out |
+| <CopyableCode>transition.shadow</CopyableCode> | <CopyableCode>--dg-transition-shadow</CopyableCode> | `box-shadow` | 200ms | ease |
+| <CopyableCode>transition.slow</CopyableCode> | <CopyableCode>--dg-transition-slow</CopyableCode> | `all` | 300ms | ease-in-out |
+| <CopyableCode>transition.slower</CopyableCode> | <CopyableCode>--dg-transition-slower</CopyableCode> | `all` | 500ms | ease-in-out |
+| <CopyableCode>transition.none</CopyableCode> | <CopyableCode>--dg-transition-none</CopyableCode> | `none` | 0ms | — |
+
+## Interactive Demo
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-transition-grid">
+  <div className="dg-motion-item">
+    <p className="dg-motion-section-label">transition: colors</p>
+    <button className="dg-btn dg-btn-primary dg-transition-colors">Only color changes</button>
+    <p className="dg-hint">Fast 100ms · Background color only</p>
+  </div>
+  <div className="dg-motion-item">
+    <p className="dg-motion-section-label">transition: transform</p>
+    <button className="dg-btn dg-btn-gradient-accent dg-transition-transform">Lifts up on hover</button>
+    <p className="dg-hint">200ms · translateY(-2px)</p>
+  </div>
+  <div className="dg-motion-item">
+    <p className="dg-motion-section-label">transition: shadow</p>
+    <div className="dg-motion-card dg-transition-shadow">Gains elevation</div>
+    <p className="dg-hint">200ms · box-shadow change</p>
+  </div>
+</div>
+
+<div className="dg-motion-container dg-mt-lg">
+  <div className="dg-motion-row">
+    <div className="dg-motion-item">
+      <p className="dg-motion-section-label">transition: all</p>
+      <div className="dg-motion-card dg-transition-all">
+        <p className="dg-motion-card-title">Multiple props</p>
+        <p className="dg-motion-card-hint">200ms</p>
+      </div>
+      <p className="dg-hint">Background + border change</p>
+    </div>
+    <div className="dg-motion-item">
+      <p className="dg-motion-section-label">transition: slow</p>
+      <div className="dg-motion-card dg-transition-slow">
+        <p className="dg-motion-card-title">Emphasis</p>
+        <p className="dg-motion-card-hint">300ms</p>
+      </div>
+      <p className="dg-hint">Modals, page transitions</p>
+    </div>
+    <div className="dg-motion-item">
+      <p className="dg-motion-section-label">transition: slower</p>
+      <div className="dg-motion-card dg-transition-slower">
+        <p className="dg-motion-card-title">Dramatic</p>
+        <p className="dg-motion-card-hint">500ms</p>
+      </div>
+      <p className="dg-hint">Complex animations, reveals</p>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-primary dg-transition-colors">Colors</button>
+<button class="dg-btn dg-btn-gradient-accent dg-transition-transform">Transform</button>
+<div class="dg-motion-card dg-transition-shadow">Shadow</div>
+<div class="dg-motion-card dg-transition-all">All</div>
+<div class="dg-motion-card dg-transition-slow">Slow</div>
+<div class="dg-motion-card dg-transition-slower">Slower</div>
+```
+
+```css
+/* Colors only (100ms) - fast for hover states */
+.dg-transition-colors {
+  transition: var(--dg-transition-colors);
+}
+.dg-transition-colors:hover {
+  background-color: var(--dg-color-primary-bold);
+}
+
+/* Transform (200ms) - for movement/scale effects */
+.dg-transition-transform {
+  transition: var(--dg-transition-transform);
+}
+.dg-transition-transform:hover {
+  transform: translateY(-2px);
+}
+
+/* Shadow (200ms) - for elevation changes */
+.dg-transition-shadow {
+  transition: var(--dg-transition-shadow);
+}
+.dg-transition-shadow:hover {
+  box-shadow: var(--dg-shadow-elevation-md);
+}
+
+/* All (200ms) - when multiple properties change */
+.dg-transition-all {
+  transition: var(--dg-transition-all);
+}
+.dg-transition-all:hover {
+  background-color: var(--dg-color-alpha-neutral-2);
+  border-color: var(--dg-color-primary-default);
+}
+
+/* Slow (300ms) - for modals, page transitions, emphasis */
+.dg-transition-slow {
+  transition: var(--dg-transition-slow);
+}
+.dg-transition-slow:hover {
+  transform: scale(1.02);
+  box-shadow: var(--dg-shadow-elevation-lg);
+  border-color: var(--dg-color-primary-default);
+}
+
+/* Slower (500ms) - for complex animations, dramatic reveals */
+.dg-transition-slower {
+  transition: var(--dg-transition-slower);
+}
+.dg-transition-slower:hover {
+  transform: scale(1.05);
+  box-shadow: var(--dg-shadow-elevation-xl);
+  border-color: var(--dg-color-primary-default);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Combining Transitions
+
+You can combine multiple transition presets for fine-grained control:
+
+```css
+.interactive-card {
+  transition: 
+    var(--dg-transition-colors),
+    var(--dg-transition-transform),
+    var(--dg-transition-shadow);
+}
+```
+
+Or use `transition.all` for simplicity when multiple properties change:
+
+```css
+.interactive-card {
+  transition: var(--dg-transition-all);
+}
+```
+
+## Usage Guidelines
+
+### ✅ Do
+
+- Use `transition.colors` for simple color changes (faster)
+- Use `transition.all` when multiple properties change
+- Use `transition.slow` for modals and emphasis effects
+- Use `transition.slower` for complex animations and dramatic reveals
+- Use `transition.none` to explicitly disable transitions
+
+### ❌ Don't
+
+- Use `transition.all` when only colors change (less performant)
+- Apply transitions to properties that don't need them
+- Make transitions too slow (users will notice lag)
+- Forget to test transitions on lower-end devices
+
+## Technical Details
+
+### File Structure
+
+```
+packages/lib-design-token/src/tokens/
+  └── transition.js  # All transition presets
+```
+
+### Token Structure
+
+```javascript
+{
+  transition: {
+    all: {
+      type: 'transition',
+      value: {
+        property: 'all',
+        duration: '{duration.normal}',
+        timingFunction: '{cubic-bezier.ease-out}',
+        delay: 0
+      }
+    },
+    slow: {
+      type: 'transition',
+      value: {
+        property: 'all',
+        duration: '{duration.slow}',
+        timingFunction: '{cubic-bezier.ease-in-out}',
+        delay: 0
+      }
+    },
+    slower: {
+      type: 'transition',
+      value: {
+        property: 'all',
+        duration: '{duration.slower}',
+        timingFunction: '{cubic-bezier.ease-in-out}',
+        delay: 0
+      }
+    },
+    // ...
+  }
+}
+```
+
+## Related
+
+- [Duration](./duration) — Animation timing tokens
+- [Easing](./easing) — Cubic bezier curves
+- [Interactive States](/design-token/colors/shortcuts/interactive-state) — State-based styling

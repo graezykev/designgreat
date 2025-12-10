@@ -1,365 +1,320 @@
-// combine & fine tune from:
+// Spacing scale based on modular scale principles
 // https://www.modularscale.com/?16&px&1.125
-// https://www.modularscale.com/?16&px&2
-// https://www.modularscale.com/?95&px&2
 export default {
   spacing: {
-    'base': {
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // Foundation: Pixel values (in rem, assuming 16px base)
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    base: {
       type: 'dimension',
       value: 1
     },
-    'px0': {
+    px0: {
       type: 'dimension',
-      value: 0 / 16 // 0px
+      value: 0 // 0px
     },
-    'px1': {
+    px1: {
       type: 'dimension',
       value: 1 / 16 // 1px
     },
-    'px2': {
+    px2: {
       type: 'dimension',
       value: 2 / 16 // 2px
     },
-    'px4': {
+    px4: {
       type: 'dimension',
       value: 4 / 16 // 4px
     },
-    'px8': {
+    px6: {
+      type: 'dimension',
+      value: 6 / 16 // 6px
+    },
+    px8: {
       type: 'dimension',
       value: 8 / 16 // 8px
     },
-    'px10': {
+    px10: {
       type: 'dimension',
       value: 10 / 16 // 10px
     },
-    'px12': {
+    px12: {
       type: 'dimension',
       value: 12 / 16 // 12px
     },
-    'px14': {
+    px14: {
       type: 'dimension',
       value: 14 / 16 // 14px
     },
-    'px16': {
+    px16: {
       type: 'dimension',
       value: 16 / 16 // 16px
     },
-    DEFAULT: {
-      type: 'dimension',
-      value: '{spacing.px16}'
-    },
-    'px18': {
-      type: 'dimension',
-      value: 18 / 16 // 18px
-    },
-    'px20': {
+    px20: {
       type: 'dimension',
       value: 20 / 16 // 20px
     },
-    'px24': {
+    px24: {
       type: 'dimension',
       value: 24 / 16 // 24px
     },
-    'px28': {
+    px28: {
       type: 'dimension',
       value: 28 / 16 // 28px
     },
-    'px32': {
+    px32: {
       type: 'dimension',
       value: 32 / 16 // 32px
     },
-    'px40': {
+    px40: {
       type: 'dimension',
       value: 40 / 16 // 40px
     },
-    'px48': {
+    px48: {
       type: 'dimension',
       value: 48 / 16 // 48px
     },
-    'px64': {
+    px64: {
       type: 'dimension',
       value: 64 / 16 // 64px
     },
-    'px80': {
+    px80: {
       type: 'dimension',
       value: 80 / 16 // 80px
     },
-    'px95': {
+    px96: {
       type: 'dimension',
-      value: 95 / 16 // 95px
+      value: 96 / 16 // 96px
     },
-    'px128': {
+    px128: {
       type: 'dimension',
       value: 128 / 16 // 128px
     },
-    'px256': {
-      type: 'dimension',
-      value: 256 / 16 // 256px
-    },
-    'px380': {
-      type: 'dimension',
-      value: 380 / 16 // 380px ≈ legacy small devices 375px
-    },
-    'px512': {
-      type: 'dimension',
-      value: 512 / 16 // 512px
-    },
-    'px760': {
-      type: 'dimension',
-      value: 760 / 760 // 760px ≈ medium PC screen 768px
-    },
-    'px1024': {
-      type: 'dimension',
-      value: 1024 / 16 // 1024px ≈ large PC screen 1024px
-    },
-    'px2048': {
-      type: 'dimension',
-      value: 2048 / 16 // 2048px
-    },
 
-    '1': {
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // Numbered scale (1-20) - maps to pixel values
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    1: {
       type: 'dimension',
       value: '{spacing.px0}'
     },
-    '2': {
+    2: {
       type: 'dimension',
       value: '{spacing.px1}'
     },
-    '3': {
+    3: {
       type: 'dimension',
       value: '{spacing.px2}'
     },
-    '4': {
+    4: {
       type: 'dimension',
       value: '{spacing.px4}'
     },
-    '5': {
+    5: {
+      type: 'dimension',
+      value: '{spacing.px6}'
+    },
+    6: {
       type: 'dimension',
       value: '{spacing.px8}'
     },
-    '6': {
+    7: {
       type: 'dimension',
       value: '{spacing.px10}'
     },
-    '7': {
+    8: {
       type: 'dimension',
       value: '{spacing.px12}'
     },
-    '8': {
+    9: {
       type: 'dimension',
       value: '{spacing.px14}'
     },
-    '9': {
+    10: {
       type: 'dimension',
       value: '{spacing.px16}'
     },
-    '10': {
-      type: 'dimension',
-      value: '{spacing.px18}'
-    },
-    '11': {
+    11: {
       type: 'dimension',
       value: '{spacing.px20}'
     },
-    '12': {
+    12: {
       type: 'dimension',
       value: '{spacing.px24}'
     },
-    '13': {
+    13: {
       type: 'dimension',
       value: '{spacing.px28}'
     },
-    '14': {
+    14: {
       type: 'dimension',
       value: '{spacing.px32}'
     },
-    '15': {
+    15: {
       type: 'dimension',
       value: '{spacing.px40}'
     },
-    '16': {
+    16: {
       type: 'dimension',
       value: '{spacing.px48}'
     },
-    '17': {
+    17: {
       type: 'dimension',
       value: '{spacing.px64}'
     },
-    '18': {
+    18: {
       type: 'dimension',
       value: '{spacing.px80}'
     },
-    '19': {
+    19: {
       type: 'dimension',
-      value: '{spacing.px95}'
+      value: '{spacing.px96}'
     },
-    '20': {
+    20: {
       type: 'dimension',
       value: '{spacing.px128}'
     },
-    '21': {
-      type: 'dimension',
-      value: '{spacing.px256}'
-    },
-    '22': {
-      type: 'dimension',
-      value: '{spacing.px380}'
-    },
-    '23': {
-      type: 'dimension',
-      value: '{spacing.px512}'
-    },
-    '24': {
-      type: 'dimension',
-      value: '{spacing.px760}'
-    },
-    '25': {
-      type: 'dimension',
-      value: '{spacing.px1024}'
-    },
-    '26': {
-      type: 'dimension',
-      value: '{spacing.px2048}'
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // Semantic Scales
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    // General-purpose spacing scale
+    space: {
+      none: {
+        type: 'dimension',
+        value: '{spacing.px0}'
+      },
+      '2xs': {
+        type: 'dimension',
+        value: '{spacing.px2}' // 2px - hairline
+      },
+      xs: {
+        type: 'dimension',
+        value: '{spacing.px4}' // 4px - tight
+      },
+      sm: {
+        type: 'dimension',
+        value: '{spacing.px8}' // 8px - compact
+      },
+      md: {
+        type: 'dimension',
+        value: '{spacing.px16}' // 16px - default
+      },
+      DEFAULT: {
+        type: 'dimension',
+        value: '{spacing.space.md}'
+      },
+      lg: {
+        type: 'dimension',
+        value: '{spacing.px24}' // 24px - relaxed
+      },
+      xl: {
+        type: 'dimension',
+        value: '{spacing.px32}' // 32px - loose
+      },
+      '2xl': {
+        type: 'dimension',
+        value: '{spacing.px48}' // 48px - spacious
+      },
+      '3xl': {
+        type: 'dimension',
+        value: '{spacing.px64}' // 64px - roomy
+      }
     },
 
-    atomic: {
+    // For flex/grid gaps
+    gap: {
+      none: {
+        type: 'dimension',
+        value: '{spacing.px0}'
+      },
       xs: {
         type: 'dimension',
-        value: '{spacing.7}'
+        value: '{spacing.px4}' // 4px
       },
-      s: {
+      sm: {
         type: 'dimension',
-        value: '{spacing.8}'
+        value: '{spacing.px8}' // 8px
       },
-      m: {
+      md: {
         type: 'dimension',
-        value: '{spacing.9}'
+        value: '{spacing.px12}' // 12px
       },
       DEFAULT: {
         type: 'dimension',
-        value: '{spacing.DEFAULT}'
+        value: '{spacing.gap.md}'
       },
-      l: {
+      lg: {
         type: 'dimension',
-        value: '{spacing.11}'
+        value: '{spacing.px16}' // 16px
       },
       xl: {
         type: 'dimension',
-        value: '{spacing.12}'
-      },
-      xxl: {
-        type: 'dimension',
-        value: '{spacing.13}'
-      },
-      xxxl: {
-        type: 'dimension',
-        value: '{spacing.14}'
-      },
-      xxxxl: {
-        type: 'dimension',
-        value: '{spacing.15}'
-      },
-      micro: {
-        none: {
-          type: 'dimension',
-          value: '{spacing.1}'
-        },
-        DEFAULT: {
-          type: 'dimension',
-          value: '{spacing.2}'
-        },
-        thick: {
-          type: 'dimension',
-          value: '{spacing.3}'
-        },
-        heavy: {
-          type: 'dimension',
-          value: '{spacing.4}'
-        },
-        massive: {
-          type: 'dimension',
-          value: '{spacing.5}'
-        }
+        value: '{spacing.px24}' // 24px
       }
     },
-    composite: {
+
+    // For padding inside containers
+    inset: {
+      none: {
+        type: 'dimension',
+        value: '{spacing.px0}'
+      },
       xs: {
         type: 'dimension',
-        value: '{spacing.12}'
+        value: '{spacing.px8}' // 8px
       },
-      s: {
+      sm: {
         type: 'dimension',
-        value: '{spacing.14}'
+        value: '{spacing.px12}' // 12px
       },
-      m: {
+      md: {
         type: 'dimension',
-        value: '{spacing.15}'
+        value: '{spacing.px16}' // 16px
       },
       DEFAULT: {
         type: 'dimension',
-        value: '{spacing.composite.m}'
+        value: '{spacing.inset.md}'
       },
-      l: {
+      lg: {
         type: 'dimension',
-        value: '{spacing.16}'
+        value: '{spacing.px24}' // 24px
       },
       xl: {
         type: 'dimension',
-        value: '{spacing.17}'
+        value: '{spacing.px32}' // 32px
       }
     },
-    widget: {
+
+    // Vertical spacing between sections
+    stack: {
       none: {
-        type: 'demension',
-        value: 0
+        type: 'dimension',
+        value: '{spacing.px0}'
       },
-      s: {
-        type: 'demension',
-        value: '{spacing.4}'
+      xs: {
+        type: 'dimension',
+        value: '{spacing.px16}' // 16px
       },
-      m: {
-        type: 'demension',
-        value: '{spacing.5}'
+      sm: {
+        type: 'dimension',
+        value: '{spacing.px24}' // 24px
       },
-      l: {
-        type: 'demension',
-        value: '{spacing.7}'
-      }
-    },
-    group: {
-      none: {
-        type: 'demension',
-        value: 0
+      md: {
+        type: 'dimension',
+        value: '{spacing.px40}' // 40px
       },
-      s: {
-        type: 'demension',
-        value: '{spacing.9}'
+      DEFAULT: {
+        type: 'dimension',
+        value: '{spacing.stack.md}'
       },
-      m: {
-        type: 'demension',
-        value: '{spacing.11}'
+      lg: {
+        type: 'dimension',
+        value: '{spacing.px64}' // 64px
       },
-      l: {
-        type: 'demension',
-        value: '{spacing.12}'
-      }
-    },
-    layout: {
-      none: {
-        type: 'demension',
-        value: 0
-      },
-      s: {
-        type: 'demension',
-        value: '{spacing.11}'
-      },
-      m: {
-        type: 'demension',
-        value: '{spacing.15}'
-      },
-      l: {
-        type: 'demension',
-        value: '{spacing.18}'
+      xl: {
+        type: 'dimension',
+        value: '{spacing.px96}' // 96px
       }
     }
   }

@@ -3,339 +3,547 @@ sidebar_position: 3
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Border Shortcuts
 
-Border shortcuts provide recommended patterns for creating consistent,theme-aware borders across your application.
+Border tokens provide consistent, theme-aware borders across your application. The system includes both complete border shorthand tokens and individual border color tokens.
 
 ## Overview
 
-Border shortcuts are not currently defined as explicit tokens in the system. Instead, use the following recommended patterns with alpha colors and semantic colors for theme-aware borders.
+The design system includes pre-defined border tokens that combine width, style, and color into ready-to-use values. These tokens automatically adapt between light and dark themes.
 
 ### Key Characteristics
 
-- **Alpha-based**: Use alpha colors for subtle, theme-aware borders
-- **Semantic support**: Use semantic colors for borders with meaning
-- **Consistent patterns**: Follow established patterns for predictable behavior
+- **Theme-aware**: Border colors adapt to light/dark mode
+- **Complete shorthand**: Tokens include width, style, and color
+- **Semantic support**: Special borders for inputs, dividers, and focus states
+- **Consistent widths**: Standardized width scale from thin to thick
 
-## Recommended Border Color Patterns
+## Border Tokens
 
-### Neutral Borders
+### Complete Border Shorthands
 
-Use alpha colors for default borders that work in both light and dark themes:
+These tokens provide complete `border` values (width + style + color):
 
-```css
-/* Default border */
-border: 1px solid var(--dg-color-alpha-neutral-3);
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `border.default` | `--dg-border-default` | Standard border for cards, containers |
+| `border.subtle` | `--dg-border-subtle` | Light separation, subtle dividers |
+| `border.bold` | `--dg-border-bold` | Emphasized borders |
 
-/* Subtle border */
-border: 1px solid var(--dg-color-alpha-neutral-2);
+<Tabs>
+<TabItem value="demo" label="Demo" default>
 
-/* Prominent border */
-border: 1px solid var(--dg-color-alpha-neutral-4);
+<div className="dg-flex dg-gap-lg dg-flex-wrap">
+  <div className="dg-elevation-card dg-border-default-demo">
+    <p className="dg-demo-card-title">Default</p>
+    <p className="dg-demo-card-meta">--dg-border-default</p>
+  </div>
+  <div className="dg-elevation-card dg-border-subtle-demo">
+    <p className="dg-demo-card-title">Subtle</p>
+    <p className="dg-demo-card-meta">--dg-border-subtle</p>
+  </div>
+  <div className="dg-elevation-card dg-border-bold-demo">
+    <p className="dg-demo-card-title">Bold</p>
+    <p className="dg-demo-card-meta">--dg-border-bold</p>
+  </div>
+</div>
 
-/* Very subtle border */
-border: 1px solid var(--dg-color-alpha-neutral-1);
+</TabItem>
+<TabItem value="code" label="Code">
 
-/* Strong border */
-border: 1px solid var(--dg-color-alpha-neutral-5);
+```html
+<div class="card-default">Default border</div>
+<div class="card-subtle">Subtle border</div>
+<div class="card-bold">Bold border</div>
 ```
 
-### Semantic Borders
-
-Use semantic colors for borders that convey meaning:
-
 ```css
-/* Error border */
-border: 1px solid var(--dg-color-semantic-error-default);
+.card-default {
+  border: var(--dg-border-default);
+}
 
-/* Success border */
-border: 1px solid var(--dg-color-semantic-success-default);
+.card-subtle {
+  border: var(--dg-border-subtle);
+}
 
-/* Warning border */
-border: 1px solid var(--dg-color-semantic-warning-default);
-
-/* Info border */
-border: 1px solid var(--dg-color-semantic-info-default);
+.card-bold {
+  border: var(--dg-border-bold);
+}
 ```
 
-:::tip
-Use alpha colors for borders to create subtle, theme-aware dividers that work in both light and dark modes.
-:::
+</TabItem>
+</Tabs>
+
+### Input Borders
+
+Specialized borders for form inputs with state variants:
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `border.input.DEFAULT` | `--dg-border-input-default` | Default input border |
+| `border.input.focus` | `--dg-border-input-focus` | Focused input border |
+| `border.input.error` | `--dg-border-input-error` | Error state input border |
+| `border.input.success` | `--dg-border-input-success` | Success state input border |
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex-col dg-gap-md dg-max-w-xs">
+  <div className="dg-form-group">
+    <label className="dg-form-label">Default</label>
+    <input type="text" placeholder="Default input..." className="dg-input" />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Focus</label>
+    <input type="text" value="Focused input" className="dg-input dg-input-focus" readOnly />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Error</label>
+    <input type="text" value="Invalid input" className="dg-input dg-input-error" readOnly />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Success</label>
+    <input type="text" value="Valid input" className="dg-input dg-input-success" readOnly />
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<input type="text" class="dg-input" />
+<input type="text" class="dg-input dg-input-focus" />
+<input type="text" class="dg-input dg-input-error" />
+<input type="text" class="dg-input dg-input-success" />
+```
+
+```css
+.dg-input {
+  border: var(--dg-border-input-default);
+  border-radius: var(--dg-size-border-radius-md);
+  padding: var(--dg-spacing-inset-sm);
+}
+
+.dg-input:focus,
+.dg-input-focus {
+  border: var(--dg-border-input-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-input-error {
+  border: var(--dg-border-input-error);
+}
+
+.dg-input-success {
+  border: var(--dg-border-input-success);
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Divider Borders
+
+Borders for horizontal and vertical dividers:
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `border.divider.DEFAULT` | `--dg-border-divider-default` | Standard divider line |
+| `border.divider.bold` | `--dg-border-divider-bold` | Emphasized divider |
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-demo-card dg-demo-card-compact">
+  <p className="dg-text-body">Content above</p>
+  <div className="dg-divider"></div>
+  <p className="dg-text-body">Content between</p>
+  <div className="dg-divider-strong"></div>
+  <p className="dg-text-body">Content below bold divider</p>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-divider"></div>
+<div class="dg-divider-strong"></div>
+```
+
+```css
+.dg-divider {
+  border-top: var(--dg-border-divider-default);
+  margin: var(--dg-spacing-space-md) 0;
+}
+
+.dg-divider-strong {
+  border-top: var(--dg-border-divider-bold);
+  margin: var(--dg-spacing-space-md) 0;
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Focus Border
+
+Border for keyboard focus indicators:
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `border.focus` | `--dg-border-focus` | Focus ring for keyboard navigation |
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-lg dg-items-center">
+  <button className="dg-btn dg-btn-primary dg-btn-focus">Focused Button</button>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-primary dg-btn-focus">Focused</button>
+```
+
+```css
+.dg-btn-focus {
+  outline: var(--dg-border-focus);
+  outline-offset: 2px;
+  box-shadow: var(--dg-shadow-focus);
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Border Width Tokens
+
+Separate width tokens for custom border compositions:
+
+| Token | CSS Variable | Value | Use Case |
+|-------|--------------|-------|----------|
+| `border.width.none` | `--dg-border-width-none` | 0 | No border |
+| `border.width.thin` | `--dg-border-width-thin` | 1px | Default borders |
+| `border.width.medium` | `--dg-border-width-medium` | 2px | Emphasized borders, focus rings |
+| `border.width.thick` | `--dg-border-width-thick` | 4px | Heavy emphasis, accent borders |
+
+## Border Color Tokens
+
+Separate color tokens for custom border compositions:
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.border.default` | `--dg-color-border-default` | Standard border color |
+| `color.border.subtle` | `--dg-color-border-subtle` | Light borders |
+| `color.border.bold` | `--dg-color-border-bold` | Emphasized borders |
+| `color.border.inverse` | `--dg-color-border-inverse` | Borders on dark backgrounds |
+
+### Semantic Border Colors
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.border.information` | `--dg-color-border-information` | Info state borders |
+| `color.border.success.DEFAULT` | `--dg-color-border-success-default` | Success state borders |
+| `color.border.success.bold` | `--dg-color-border-success-bold` | Bold success borders |
+| `color.border.warning` | `--dg-color-border-warning` | Warning state borders |
+| `color.border.error.DEFAULT` | `--dg-color-border-error-default` | Error state borders |
+| `color.border.error.bold` | `--dg-color-border-error-bold` | Bold error borders |
 
 ## Usage Examples
 
-### Form Elements
-
-```css
-/* Input */
-.input {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  color: var(--dg-color-text-default);
-}
-
-.input:hover {
-  border-color: var(--dg-color-alpha-neutral-4);
-}
-
-.input:focus {
-  border-color: var(--dg-color-primary-default);
-  box-shadow: 0 0 0 3px var(--dg-color-primary-focus-shadow);
-}
-
-/* Input states */
-.input-success {
-  border-color: var(--dg-color-semantic-success-default);
-}
-
-.input-success:focus {
-  box-shadow: 0 0 0 3px var(--dg-color-semantic-success-lowest);
-}
-
-.input-error {
-  border-color: var(--dg-color-semantic-error-default);
-}
-
-.input-error:focus {
-  box-shadow: 0 0 0 3px var(--dg-color-semantic-error-lowest);
-}
-```
-
 ### Cards and Containers
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-grid-2 dg-gap-md">
+  <div className="dg-demo-card dg-demo-card-compact">
+    <p className="dg-demo-card-title">Default Card</p>
+    <p className="dg-demo-card-meta">Subtle border</p>
+  </div>
+  <div className="dg-demo-card dg-demo-card-compact dg-card-outlined">
+    <p className="dg-demo-card-title">Outlined Card</p>
+    <p className="dg-demo-card-meta">Prominent border</p>
+  </div>
+  <div className="dg-demo-card dg-demo-card-compact dg-card-accent-info">
+    <p className="dg-demo-card-title">Info Card</p>
+    <p className="dg-demo-card-meta">Left accent</p>
+  </div>
+  <div className="dg-demo-card dg-demo-card-compact dg-card-accent-success">
+    <p className="dg-demo-card-title">Success Card</p>
+    <p className="dg-demo-card-meta">Left accent</p>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-demo-card">Default Card</div>
+<div class="dg-demo-card dg-card-outlined">Outlined Card</div>
+<div class="dg-demo-card dg-card-accent-info">Info Card</div>
+<div class="dg-demo-card dg-card-accent-success">Success Card</div>
+```
+
 ```css
-/* Card with subtle border */
-.card {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  box-shadow: 0 2px 8px var(--dg-color-alpha-neutral-3);
+.dg-demo-card {
+  border: var(--dg-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
 }
 
-/* Card with prominent border */
-.card-outlined {
-  border: 2px solid var(--dg-color-alpha-neutral-4);
+.dg-card-outlined {
+  border-width: var(--dg-border-width-medium);
 }
 
-/* Card with semantic border */
-.card-info {
-  border-left: 4px solid var(--dg-color-semantic-info-default);
+.dg-card-accent-info {
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-semantic-info-default);
 }
 
-.card-success {
-  border-left: 4px solid var(--dg-color-semantic-success-default);
-}
-
-.card-warning {
-  border-left: 4px solid var(--dg-color-semantic-warning-default);
-}
-
-.card-error {
-  border-left: 4px solid var(--dg-color-semantic-error-default);
+.dg-card-accent-success {
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-semantic-success-default);
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ### Buttons
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-outline">Primary Outline</button>
+  <button className="dg-btn dg-btn-neutral">Neutral</button>
+  <button className="dg-btn dg-btn-ghost">Ghost</button>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-outline">Primary Outline</button>
+<button class="dg-btn dg-btn-neutral">Neutral</button>
+<button class="dg-btn dg-btn-ghost">Ghost</button>
+```
+
 ```css
-/* Outline button */
-.button-outline {
+.dg-btn-outline {
   background-color: transparent;
-  border: 1px solid var(--dg-color-primary-default);
+  border: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
   color: var(--dg-color-primary-default);
 }
 
-.button-outline:hover {
-  background-color: var(--dg-color-primary-subtler);
-  border-color: var(--dg-color-primary-bold);
+.dg-btn-neutral {
+  border: var(--dg-border-default);
 }
 
-/* Secondary outline button */
-.button-outline-secondary {
-  border: 1px solid var(--dg-color-secondary-default);
-  color: var(--dg-color-secondary-default);
+.dg-btn-ghost {
+  border: none;
 }
 ```
 
-### Tables
+</TabItem>
+</Tabs>
+
+### Modals
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-modal-backdrop">
+  <div className="dg-modal dg-max-w-sm">
+    <div className="dg-modal-header">
+      <p className="dg-modal-title">Modal Title</p>
+    </div>
+    <div className="dg-modal-body">
+      <p>Notice the header and footer borders using divider tokens.</p>
+    </div>
+    <div className="dg-modal-footer">
+      <button className="dg-btn dg-btn-neutral dg-btn-small">Cancel</button>
+      <button className="dg-btn dg-btn-primary dg-btn-small">Confirm</button>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-modal">
+  <div class="dg-modal-header">Modal Title</div>
+  <div class="dg-modal-body">Content...</div>
+  <div class="dg-modal-footer">
+    <button class="dg-btn dg-btn-neutral">Cancel</button>
+    <button class="dg-btn dg-btn-primary">Confirm</button>
+  </div>
+</div>
+```
 
 ```css
-/* Table */
-.table {
-  background-color: var(--dg-color-background-default);
+.dg-modal {
+  border: var(--dg-border-default);
+  border-radius: var(--dg-size-border-radius-card);
+  box-shadow: var(--dg-shadow-elevation-lg);
 }
 
-/* Table header */
-.table thead {
-  background-color: var(--dg-color-background-bold);
-  border-bottom: 2px solid var(--dg-color-alpha-neutral-4);
+.dg-modal-header {
+  border-bottom: var(--dg-border-divider-default);
 }
 
-/* Table row */
-.table tbody tr {
-  border-bottom: 1px solid var(--dg-color-alpha-neutral-2);
-}
-
-.table tbody tr:hover {
-  background-color: var(--dg-color-alpha-neutral-1);
+.dg-modal-footer {
+  border-top: var(--dg-border-divider-default);
 }
 ```
 
-### Dividers
-
-```css
-/* Horizontal divider */
-.divider-horizontal {
-  border-top: 1px solid var(--dg-color-alpha-neutral-3);
-  margin: 16px 0;
-}
-
-/* Vertical divider */
-.divider-vertical {
-  border-left: 1px solid var(--dg-color-alpha-neutral-3);
-  height: 100%;
-}
-
-/* Strong divider */
-.divider-strong {
-  border-top: 2px solid var(--dg-color-alpha-neutral-4);
-}
-```
-
-### Modals and Overlays
-
-```css
-/* Modal content */
-.modal-content {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  box-shadow: 
-    0 4px 16px var(--dg-color-alpha-neutral-4),
-    0 8px 32px var(--dg-color-alpha-neutral-5);
-}
-
-/* Modal header */
-.modal-header {
-  border-bottom: 1px solid var(--dg-color-alpha-neutral-3);
-}
-
-/* Modal footer */
-.modal-footer {
-  background-color: var(--dg-color-background-bold);
-  border-top: 1px solid var(--dg-color-alpha-neutral-3);
-}
-```
+</TabItem>
+</Tabs>
 
 ### Dropdown Menus
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-lg dg-items-start">
+  <div className="dg-dropdown">
+    <div className="dg-dropdown-item">Edit</div>
+    <div className="dg-dropdown-item">Duplicate</div>
+    <div className="dg-dropdown-divider"></div>
+    <div className="dg-dropdown-item dg-dropdown-item-danger">Delete</div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-dropdown">
+  <div class="dg-dropdown-item">Edit</div>
+  <div class="dg-dropdown-item">Duplicate</div>
+  <div class="dg-dropdown-divider"></div>
+  <div class="dg-dropdown-item dg-dropdown-item-danger">Delete</div>
+</div>
+```
+
 ```css
-/* Dropdown container */
-.dropdown-menu {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
+.dg-dropdown {
+  border: var(--dg-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
+  box-shadow: var(--dg-shadow-elevation-md);
 }
 
-/* Dropdown divider */
-.dropdown-divider {
-  border-top: 1px solid var(--dg-color-alpha-neutral-2);
+.dg-dropdown-divider {
+  border-top: var(--dg-border-divider-default);
+  margin: var(--dg-spacing-space-xs) 0;
 }
 ```
 
-## Border Width Patterns
-
-### Standard Widths
-
-```css
-/* Subtle border */
-border-width: 1px;
-
-/* Standard border */
-border-width: 1px;
-
-/* Medium border */
-border-width: 2px;
-
-/* Thick border */
-border-width: 3px;
-
-/* Extra thick border */
-border-width: 4px;
-```
-
-### Accent Borders
-
-Use thicker borders on one side for visual accent:
-
-```css
-/* Left accent */
-.card-accent-left {
-  border-left: 4px solid var(--dg-color-primary-default);
-}
-
-/* Top accent */
-.card-accent-top {
-  border-top: 4px solid var(--dg-color-primary-default);
-}
-
-/* Bottom accent */
-.card-accent-bottom {
-  border-bottom: 4px solid var(--dg-color-primary-default);
-}
-```
+</TabItem>
+</Tabs>
 
 ## Usage Guidelines
 
 ### ✅ Do
 
-- Use `alpha-neutral-3` for most default borders
-- Use `alpha-neutral-2` for subtle dividers
-- Use `alpha-neutral-4` for prominent borders
-- Use semantic colors for borders with meaning
+- Use `--dg-border-default` for most container borders
+- Use `--dg-border-input-*` tokens for form elements
+- Use `--dg-border-divider-*` for horizontal separators
+- Use `--dg-border-focus` alongside `--dg-shadow-focus` for accessibility
 - Test border visibility in both light and dark themes
 
 ### ❌ Don't
 
 - Create custom border colors outside the token system
-- Use hardcoded opacity values
-- Mix border color patterns inconsistently
-- Use semantic colors for non-semantic borders
+- Use hardcoded pixel values for border widths
+- Mix border patterns inconsistently
+- Use semantic border colors for non-semantic elements
 - Forget to consider hover and focus states
 
 ## Accessibility
 
 ### Focus Indicators
 
-Always provide visible focus indicators using borders or outlines:
+Always provide visible focus indicators:
 
 ```css
-/* Accessible focus indicator */
 .interactive-element:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline: var(--dg-border-focus);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
-}
-
-/* Alternative: Border-based focus */
-.button:focus {
-  border: 2px solid var(--dg-color-primary-default);
+  box-shadow: var(--dg-shadow-focus);
 }
 ```
 
 ### Contrast Requirements
 
-Ensure borders meet WCAG contrast standards:
-- **UI components and borders**: Minimum 3:1 contrast ratio with adjacent colors
+- UI components and borders: Minimum 3:1 contrast ratio
+- Consider using `--dg-border-bold` for better visibility
 - Test border visibility in both light and dark themes
-- Consider using thicker borders (2px+) for better visibility
 
 ## Technical Details
+
+### Token Structure
+
+```
+border/
+├── width/
+│   ├── none        → 0
+│   ├── thin        → 1px
+│   ├── medium      → 2px
+│   └── thick       → 4px
+├── default         → thin solid border-color
+├── subtle          → thin solid subtle-color
+├── bold            → thin solid bold-color
+├── input/
+│   ├── DEFAULT     → thin solid input-color
+│   ├── focus       → thin solid primary
+│   ├── error       → thin solid error
+│   └── success     → thin solid success
+├── divider/
+│   ├── DEFAULT     → thin solid subtle-color
+│   └── bold        → medium solid default-color
+└── focus           → medium solid primary
+```
 
 ### File Structure
 
 ```
-packages/lib-design-token/src/tokens/color/shortcut/
-  └── border.js    # Border color shortcuts (coming soon)
+packages/lib-design-token/src/tokens/
+├── border.js              # Border tokens (shorthand, width, input, divider)
+└── color/shortcut/
+    └── border.js          # Border color shortcuts
+```
+
+### CSS Variables Reference
+
+```css
+/* Border widths */
+--dg-border-width-none: 0;
+--dg-border-width-thin: 1px;
+--dg-border-width-medium: 2px;
+--dg-border-width-thick: 4px;
+
+/* Complete border shorthands */
+--dg-border-default: 1px solid var(--dg-color-border-default);
+--dg-border-subtle: 1px solid var(--dg-color-border-subtle);
+--dg-border-bold: 1px solid var(--dg-color-border-bold);
+
+/* Input borders */
+--dg-border-input-default: 1px solid var(--dg-color-border-input-default);
+--dg-border-input-focus: 1px solid var(--dg-color-primary-default);
+--dg-border-input-error: 1px solid var(--dg-color-semantic-error-default);
+--dg-border-input-success: 1px solid var(--dg-color-semantic-success-default);
+
+/* Divider borders */
+--dg-border-divider-default: 1px solid var(--dg-color-border-subtle);
+--dg-border-divider-bold: 2px solid var(--dg-color-border-default);
+
+/* Focus border */
+--dg-border-focus: 2px solid var(--dg-color-primary-default);
 ```
 
 ### TypeScript/JavaScript
@@ -343,39 +551,30 @@ packages/lib-design-token/src/tokens/color/shortcut/
 ```typescript
 import { tokens } from '@designgreat/lib-design-token'
 
-// Border styles
+// Access border tokens
 const borders = {
-  default: `1px solid ${tokens.color.alpha.neutral[3]}`,
-  subtle: `1px solid ${tokens.color.alpha.neutral[2]}`,
-  prominent: `1px solid ${tokens.color.alpha.neutral[4]}`,
-  error: `1px solid ${tokens.color.semantic.error.DEFAULT}`,
-  success: `1px solid ${tokens.color.semantic.success.DEFAULT}`,
+  default: tokens.border.default,
+  subtle: tokens.border.subtle,
+  bold: tokens.border.bold,
+  inputDefault: tokens.border.input.DEFAULT,
+  inputFocus: tokens.border.input.focus,
+  divider: tokens.border.divider.DEFAULT,
+  focus: tokens.border.focus
 }
 
-// Component example
+// Usage in component
 function Card({ variant = 'default', children }) {
-  const borderStyle = {
-    default: borders.default,
-    error: borders.error,
-    success: borders.success,
-  }[variant]
-
   return (
-    <div style={{ 
-      border: borderStyle,
-      padding: '16px',
-      borderRadius: '4px'
-    }}>
+    <div style={{ border: `var(--dg-border-${variant})` }}>
       {children}
     </div>
   )
 }
 ```
 
-## Related Topics
+## Related
 
 - [Alpha Colors](../alpha-colors) - Foundation for neutral borders
 - [Semantic Colors](../semantic-colors) - Borders with meaning
-- [Background Shortcuts](./background) - Pairing borders with backgrounds
 - [Shadow Shortcuts](./shadow) - Combining borders with shadows
-
+- [Border Radius (Effects)](../../effects/border-radius) - Rounded corners

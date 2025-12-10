@@ -1,0 +1,11 @@
+{
+  "label": "Spacing",
+  "position": 3,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Spacing Token Guides",
+    "description": "A comprehensive guide to the spacing token system in Design Great. Learn about pixel values, numbered scales, and semantic spacing scales.",
+    "keywords": ["spacing", "tokens", "padding", "margin", "gap"]
+  }
+}

@@ -3,14 +3,16 @@ sidebar_position: 5
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Interactive State Shortcuts
 
-Interactive state shortcuts provide recommended patterns for styling interactive elements across different states (hover, active, focus, disabled, etc.).
+Interactive state tokens provide consistent, theme-aware colors for styling interactive elements across different states (hover, active, focus, disabled, etc.).
 
 ## Overview
 
-Interactive state colors are primarily defined at the primary color level. For other elements, apply similar patterns using accent and semantic colors.
+The design system includes pre-defined interaction and state tokens for buttons, inputs, and other interactive components. These tokens automatically adapt between light and dark themes.
 
 ### Key States
 
@@ -22,74 +24,158 @@ Interactive state colors are primarily defined at the primary color level. For o
 - **Selected/Activated**: Element is in selected or activated state
 - **Visited**: Link has been visited (links only)
 
-## Button State Patterns
+---
+
+## Button Interaction Colors
+
+Background colors for button states:
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.background.button.interaction.hover` | `--dg-color-background-button-interaction-hover` | Primary button hover |
+| `color.background.button.interaction.focus` | `--dg-color-background-button-interaction-focus` | Primary button focus |
+| `color.background.button.interaction.active` | `--dg-color-background-button-interaction-active` | Primary button active |
+| `color.background.button.state.disabled` | `--dg-color-background-button-state-disabled` | Primary button disabled |
+
+### Subtle Button Interaction Colors
+
+For subtle/neutral buttons:
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.background.button.subtle.interaction.hover` | `--dg-color-background-button-subtle-interaction-hover` | Subtle button hover |
+| `color.background.button.subtle.interaction.focus` | `--dg-color-background-button-subtle-interaction-focus` | Subtle button focus |
+| `color.background.button.subtle.interaction.active` | `--dg-color-background-button-subtle-interaction-active` | Subtle button active |
+| `color.background.button.subtle.state.disabled` | `--dg-color-background-button-subtle-state-disabled` | Subtle button disabled |
 
 ### Primary Buttons
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-primary">Default</button>
+  <button className="dg-btn dg-btn-primary dg-btn-hover">Hover</button>
+  <button className="dg-btn dg-btn-primary dg-btn-active">Active</button>
+  <button className="dg-btn dg-btn-primary dg-btn-focus">Focused</button>
+  <button className="dg-btn dg-btn-primary dg-btn-disabled" disabled>Disabled</button>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="btn-primary">Default</button>
+<button class="btn-primary" disabled>Disabled</button>
+```
+
 ```css
-/* Using primary colors */
-.button-primary {
+.btn-primary {
   background-color: var(--dg-color-primary-default);
-  color: white;
+  color: var(--dg-color-text-inverse);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
 }
 
-.button-primary:hover {
-  background-color: var(--dg-color-primary-hover-default);
-  /* or directly: var(--dg-color-primary-bold) */
+.btn-primary:hover {
+  background-color: var(--dg-color-primary-bold);
 }
 
-.button-primary:active {
-  background-color: var(--dg-color-primary-active-default);
-  /* or directly: var(--dg-color-primary-subtle) */
+.btn-primary:active {
+  background-color: var(--dg-color-primary-subtle);
 }
 
-.button-primary:focus {
+.btn-primary:focus {
   outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
   box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
 }
 
-.button-primary:disabled {
-  background-color: var(--dg-color-primary-disabled-default);
+.btn-primary:disabled {
+  background-color: var(--dg-color-primary-blur);
   opacity: 0.6;
   cursor: not-allowed;
 }
 ```
 
+</TabItem>
+</Tabs>
+
 ### Secondary Buttons
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-secondary">Default</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-hover">Hover</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-active">Active</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-focus">Focused</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-disabled" disabled>Disabled</button>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-secondary">Default</button>
+<button class="dg-btn dg-btn-secondary" disabled>Disabled</button>
+```
+
 ```css
-/* Using secondary colors */
-.button-secondary {
+.dg-btn-secondary {
   background-color: var(--dg-color-secondary-default);
-  color: white;
+  color: var(--dg-color-text-inverse);
 }
 
-.button-secondary:hover {
+.dg-btn-secondary:hover {
   background-color: var(--dg-color-secondary-bold);
 }
 
-.button-secondary:active {
+.dg-btn-secondary:active {
   background-color: var(--dg-color-secondary-subtle);
 }
 
-.button-secondary:focus {
+.dg-btn-secondary:focus {
   outline: 2px solid var(--dg-color-secondary-default);
   outline-offset: 2px;
 }
 
-.button-secondary:disabled {
+.dg-btn-secondary:disabled {
   background-color: var(--dg-color-secondary-blur);
   opacity: 0.6;
 }
 ```
 
+</TabItem>
+</Tabs>
+
 ### Outline Buttons
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-outline">Default</button>
+  <button className="dg-btn dg-btn-outline dg-btn-hover">Hover</button>
+  <button className="dg-btn dg-btn-outline dg-btn-active">Active</button>
+  <button className="dg-btn dg-btn-outline dg-btn-focus">Focused</button>
+  <button className="dg-btn dg-btn-outline dg-btn-disabled" disabled>Disabled</button>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="button-outline">Default</button>
+<button class="button-outline" disabled>Disabled</button>
+```
+
 ```css
-/* Outline button states */
 .button-outline {
   background-color: transparent;
-  border: 1px solid var(--dg-color-primary-default);
+  border: 2px solid var(--dg-color-primary-default);
   color: var(--dg-color-primary-default);
 }
 
@@ -102,6 +188,11 @@ Interactive state colors are primarily defined at the primary color level. For o
   background-color: var(--dg-color-primary-subtle);
 }
 
+.button-outline:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+}
+
 .button-outline:disabled {
   border-color: var(--dg-color-primary-blur);
   color: var(--dg-color-primary-blur);
@@ -109,10 +200,31 @@ Interactive state colors are primarily defined at the primary color level. For o
 }
 ```
 
+</TabItem>
+</Tabs>
+
 ### Ghost/Text Buttons
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-ghost">Default</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-hover">Hover</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-active">Active</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-focus">Focused</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-disabled" disabled>Disabled</button>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="button-ghost">Default</button>
+<button class="button-ghost" disabled>Disabled</button>
+```
+
 ```css
-/* Ghost button states */
 .button-ghost {
   background-color: transparent;
   color: var(--dg-color-primary-default);
@@ -126,55 +238,125 @@ Interactive state colors are primarily defined at the primary color level. For o
   background-color: var(--dg-color-alpha-neutral-3);
 }
 
+.button-ghost:focus {
+  outline: 2px solid var(--dg-color-primary-focus-default);
+  outline-offset: 2px;
+}
+
 .button-ghost:disabled {
   color: var(--dg-color-text-subtlest);
   opacity: 0.6;
 }
 ```
 
-## Link State Patterns
+</TabItem>
+</Tabs>
+
+---
+
+## Link Interaction Colors
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.text.link.interaction.hover` | `--dg-color-text-link-interaction-hover` | Link hover |
+| `color.text.link.interaction.focus` | `--dg-color-text-link-interaction-focus` | Link focus |
+| `color.text.link.interaction.active` | `--dg-color-text-link-interaction-active` | Link active |
+| `color.text.link.interaction.visited` | `--dg-color-text-link-interaction-visited` | Link visited |
+
+### Link State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-link-state-demo">
+  <a href="#" className="dg-link">Default</a>
+  <a href="#" className="dg-link dg-link-hover">Hover</a>
+  <a href="#" className="dg-link dg-link-active">Active</a>
+  <a href="#" className="dg-link dg-link-visited">Visited</a>
+  <a href="#" className="dg-link dg-link-focus">Focused</a>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<a href="/page">Link text</a>
+```
 
 ```css
-/* Default link */
 a {
   color: var(--dg-color-text-link-default);
   text-decoration: underline;
 }
 
-/* Visited state */
-a:visited {
-  color: var(--dg-color-primary-visited-default);
-}
-
-/* Hover state */
 a:hover {
   color: var(--dg-color-primary-hover-default);
   text-decoration-thickness: 2px;
 }
 
-/* Active state */
 a:active {
   color: var(--dg-color-primary-active-default);
 }
 
-/* Focus state */
+a:visited {
+  color: var(--dg-color-primary-visited-default);
+}
+
 a:focus {
   outline: 2px solid var(--dg-color-primary-focus-default);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 ```
 
-## Input State Patterns
+</TabItem>
+</Tabs>
 
-### Text Inputs
+---
+
+## Input Interaction Colors
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.border.input.interaction.focus` | `--dg-color-border-input-interaction-focus` | Input focus border |
+| `color.border.input.state.invalid` | `--dg-color-border-input-state-invalid` | Input error border |
+| `color.border.input.state.disabled` | `--dg-color-border-input-state-disabled` | Input disabled border |
+
+### Text Input States
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-grid-2 dg-gap-md dg-max-w-md">
+  <div className="dg-form-group">
+    <label className="dg-form-label">Default</label>
+    <input type="text" placeholder="Placeholder text..." className="dg-input" />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Focused</label>
+    <input type="text" value="Focused input" className="dg-input dg-input-focus" readOnly />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Disabled</label>
+    <input type="text" value="Disabled input" className="dg-input" disabled />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Hover</label>
+    <input type="text" placeholder="Hover state..." className="dg-input dg-input-hover" />
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<input type="text" class="input" placeholder="Default" />
+<input type="text" class="input" disabled value="Disabled" />
+```
 
 ```css
-/* Input */
 .input {
-  background-color: var(--dg-color-background-default);
   border: 1px solid var(--dg-color-alpha-neutral-3);
-  color: var(--dg-color-text-default);
+  background-color: var(--dg-color-background-default);
 }
 
 .input:hover {
@@ -183,7 +365,7 @@ a:focus {
 
 .input:focus {
   border-color: var(--dg-color-primary-default);
-  box-shadow: 0 0 0 3px var(--dg-color-primary-focus-shadow);
+  box-shadow: var(--dg-shadow-focus);
   outline: none;
 }
 
@@ -192,48 +374,127 @@ a:focus {
   color: var(--dg-color-text-subtlest);
   cursor: not-allowed;
 }
-
-/* Input with placeholder */
-.input::placeholder {
-  color: var(--dg-color-text-subtler);
-}
 ```
+
+</TabItem>
+</Tabs>
 
 ### Input Validation States
 
-```css
-/* Success state */
-.input-success {
-  border-color: var(--dg-color-semantic-success-default);
-}
+<Tabs>
+<TabItem value="demo" label="Demo" default>
 
-.input-success:focus {
+<div className="dg-grid-3 dg-gap-md">
+  <div className="dg-form-group">
+    <label className="dg-form-label dg-helper-text-success">Success</label>
+    <input type="text" value="Valid input" className="dg-input dg-input-success" readOnly />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label dg-helper-text-error">Error</label>
+    <input type="text" value="Invalid" className="dg-input dg-input-error" readOnly />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label dg-message-warning">Warning</label>
+    <input type="text" value="Check this" className="dg-input dg-input-warning" readOnly />
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<input type="text" class="input input-success" value="Valid" />
+<input type="text" class="input input-error" value="Invalid" />
+<input type="text" class="input input-warning" value="Check this" />
+```
+
+```css
+.input-success {
   border-color: var(--dg-color-semantic-success-default);
   box-shadow: 0 0 0 3px var(--dg-color-semantic-success-lowest);
 }
 
-/* Error state */
 .input-error {
-  border-color: var(--dg-color-semantic-error-default);
-}
-
-.input-error:focus {
   border-color: var(--dg-color-semantic-error-default);
   box-shadow: 0 0 0 3px var(--dg-color-semantic-error-lowest);
 }
 
-/* Warning state */
 .input-warning {
-  border-color: var(--dg-color-semantic-warning-default);
-}
-
-.input-warning:focus {
   border-color: var(--dg-color-semantic-warning-default);
   box-shadow: 0 0 0 3px var(--dg-color-semantic-warning-lowest);
 }
 ```
 
-## Toggle/Checkbox State Patterns
+</TabItem>
+</Tabs>
+
+---
+
+## Checkbox & Radio Colors
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.background.checkbox.state.checked` | `--dg-color-background-checkbox-state-checked` | Checked checkbox fill |
+| `color.border.checkbox.interaction.focus` | `--dg-color-border-checkbox-interaction-focus` | Checkbox focus ring |
+| `color.border.checkbox.state.checked` | `--dg-color-border-checkbox-state-checked` | Checked checkbox border |
+| `color.border.radio.interaction.focus` | `--dg-color-border-radio-interaction-focus` | Radio focus ring |
+| `color.border.radio.state.checked` | `--dg-color-border-radio-state-checked` | Checked radio border |
+
+### Toggle/Checkbox State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-state-demo">
+  <div className="dg-state-demo-section">
+    <p className="dg-state-demo-label">Checkbox States</p>
+    <div className="dg-state-demo-row">
+      <div className="dg-state-demo-item">
+        <div className="dg-checkbox"></div>
+        <span className="dg-state-demo-item-label">Off</span>
+      </div>
+      <div className="dg-state-demo-item">
+        <div className="dg-checkbox dg-checkbox-hover"></div>
+        <span className="dg-state-demo-item-label">Hover</span>
+      </div>
+      <div className="dg-state-demo-item">
+        <div className="dg-checkbox dg-checkbox-checked">✓</div>
+        <span className="dg-state-demo-item-label">On</span>
+      </div>
+      <div className="dg-state-demo-item">
+        <div className="dg-checkbox dg-checkbox-disabled"></div>
+        <span className="dg-state-demo-item-label">Disabled</span>
+      </div>
+    </div>
+  </div>
+  <div className="dg-state-demo-section">
+    <p className="dg-state-demo-label">Toggle States</p>
+    <div className="dg-state-demo-row">
+      <div className="dg-state-demo-item">
+        <div className="dg-toggle"><div className="dg-toggle-handle"></div></div>
+        <span className="dg-state-demo-item-label">Off</span>
+      </div>
+      <div className="dg-state-demo-item">
+        <div className="dg-toggle dg-toggle-checked"><div className="dg-toggle-handle"></div></div>
+        <span className="dg-state-demo-item-label">On</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<!-- Checkbox -->
+<input type="checkbox" class="checkbox" />
+<input type="checkbox" class="checkbox" checked />
+<input type="checkbox" class="checkbox" disabled />
+
+<!-- Toggle switch -->
+<button class="toggle-switch" role="switch" aria-checked="false"></button>
+<button class="toggle-switch checked" role="switch" aria-checked="true"></button>
+```
 
 ```css
 /* Checkbox */
@@ -246,25 +507,9 @@ a:focus {
   border-color: var(--dg-color-primary-default);
 }
 
-.checkbox:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
-}
-
-/* Checked state */
 .checkbox:checked {
-  background-color: var(--dg-color-primary-checked-default);
-  border-color: var(--dg-color-primary-checked-default);
-}
-
-.checkbox:checked:hover {
-  background-color: var(--dg-color-primary-bold);
-}
-
-.checkbox:disabled {
-  background-color: var(--dg-color-background-bold);
-  border-color: var(--dg-color-alpha-neutral-3);
-  opacity: 0.6;
+  background-color: var(--dg-color-primary-default);
+  border-color: var(--dg-color-primary-default);
 }
 
 /* Toggle switch */
@@ -272,96 +517,51 @@ a:focus {
   background-color: var(--dg-color-alpha-neutral-4);
 }
 
-.toggle-switch:hover {
-  background-color: var(--dg-color-alpha-neutral-5);
-}
-
 .toggle-switch.checked {
-  background-color: var(--dg-color-primary-checked-default);
-}
-
-.toggle-switch.checked:hover {
-  background-color: var(--dg-color-primary-bold);
+  background-color: var(--dg-color-primary-default);
 }
 ```
 
-## Card and Container State Patterns
+</TabItem>
+</Tabs>
 
-```css
-/* Interactive card */
-.card-interactive {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-  transition: 
-    background-color 200ms ease-in-out,
-    box-shadow 200ms ease-in-out;
-}
+---
 
-.card-interactive:hover {
-  background-color: var(--dg-color-alpha-neutral-1);
-  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
-  cursor: pointer;
-}
+## Selection & Navigation Colors
 
-.card-interactive:active {
-  background-color: var(--dg-color-alpha-neutral-2);
-  box-shadow: 0 2px 4px var(--dg-color-alpha-neutral-3);
-}
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.background.interaction.selected` | `--dg-color-background-interaction-selected` | Selected item background |
+| `color.background.nav.default.interaction.hover` | `--dg-color-background-nav-default-interaction-hover` | Nav item hover |
+| `color.background.nav.default.state.activated` | `--dg-color-background-nav-default-state-activated` | Active nav item |
 
-/* Selected card */
-.card-interactive.selected {
-  border-color: var(--dg-color-primary-default);
-  background-color: var(--dg-color-primary-subtler);
-}
+### Navigation State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-nav-pills">
+  <div className="dg-nav-pill">Default</div>
+  <div className="dg-nav-pill dg-nav-pill-hover">Hover</div>
+  <div className="dg-nav-pill dg-nav-pill-active">Active</div>
+  <div className="dg-nav-pill dg-nav-pill-selected">Selected</div>
+  <div className="dg-nav-pill dg-nav-pill-disabled">Disabled</div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<nav class="nav">
+  <a href="/" class="nav-item">Home</a>
+  <a href="/about" class="nav-item active">About</a>
+  <a href="/contact" class="nav-item">Contact</a>
+</nav>
 ```
 
-## List Item State Patterns
-
 ```css
-/* List item */
-.list-item {
-  background-color: transparent;
-  transition: background-color 150ms ease-in-out;
-}
-
-.list-item:hover {
-  background-color: var(--dg-color-alpha-neutral-2);
-  cursor: pointer;
-}
-
-.list-item:active {
-  background-color: var(--dg-color-alpha-neutral-3);
-}
-
-.list-item:focus {
-  outline: 2px solid var(--dg-color-primary-default);
-  outline-offset: -2px;
-}
-
-/* Selected list item */
-.list-item.selected {
-  background-color: var(--dg-color-primary-subtler);
-  color: var(--dg-color-primary-bold);
-}
-
-.list-item.selected:hover {
-  background-color: var(--dg-color-primary-subtler);
-}
-
-/* Disabled list item */
-.list-item.disabled {
-  color: var(--dg-color-text-subtlest);
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-```
-
-## Navigation State Patterns
-
-```css
-/* Navigation item */
 .nav-item {
-  color: var(--dg-color-text-nav-default);
+  color: var(--dg-color-text-subtle);
 }
 
 .nav-item:hover {
@@ -369,30 +569,43 @@ a:focus {
   color: var(--dg-color-primary-default);
 }
 
-/* Active/current navigation item */
 .nav-item.active {
   background-color: var(--dg-color-primary-subtler);
   color: var(--dg-color-primary-default);
   font-weight: 600;
 }
-
-/* Dropdown trigger */
-.dropdown-trigger[aria-expanded="true"] {
-  background-color: var(--dg-color-primary-opened-bg);
-  color: var(--dg-color-primary-opened-default);
-}
 ```
 
-## Tab State Patterns
+</TabItem>
+</Tabs>
+
+### Tab State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-tabs">
+  <div className="dg-tab">Default</div>
+  <div className="dg-tab dg-tab-hover">Hover</div>
+  <div className="dg-tab dg-tab-selected">Selected</div>
+  <div className="dg-tab dg-tab-disabled">Disabled</div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="tabs" role="tablist">
+  <button class="tab" role="tab">Tab 1</button>
+  <button class="tab selected" role="tab" aria-selected="true">Tab 2</button>
+  <button class="tab" role="tab" disabled>Tab 3</button>
+</div>
+```
 
 ```css
-/* Tab */
 .tab {
   color: var(--dg-color-text-subtle);
   border-bottom: 2px solid transparent;
-  transition: 
-    color 150ms ease-in-out,
-    border-color 150ms ease-in-out;
 }
 
 .tab:hover {
@@ -400,7 +613,6 @@ a:focus {
   background-color: var(--dg-color-alpha-neutral-1);
 }
 
-/* Selected tab */
 .tab.selected {
   color: var(--dg-color-primary-default);
   border-bottom-color: var(--dg-color-primary-default);
@@ -409,15 +621,254 @@ a:focus {
 
 .tab:disabled {
   color: var(--dg-color-text-subtlest);
+  opacity: 0.6;
+}
+```
+
+</TabItem>
+</Tabs>
+
+### List Item State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-list dg-max-w-xs">
+  <div className="dg-list-item">
+    <span>Default Item</span>
+  </div>
+  <div className="dg-list-item dg-list-item-hover">
+    <span>Hovered Item</span>
+  </div>
+  <div className="dg-list-item dg-list-item-selected">
+    <span>✓ Selected Item</span>
+  </div>
+  <div className="dg-list-item dg-list-item-disabled">
+    <span>Disabled Item</span>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<ul class="list">
+  <li class="list-item">Default</li>
+  <li class="list-item selected">Selected</li>
+  <li class="list-item disabled">Disabled</li>
+</ul>
+```
+
+```css
+.list-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out;
+}
+
+.list-item:hover {
+  background-color: var(--dg-color-alpha-neutral-2);
+}
+
+.list-item.selected {
+  background-color: var(--dg-color-primary-subtler);
+  color: var(--dg-color-primary-bold);
+}
+
+.list-item.disabled {
+  color: var(--dg-color-text-subtlest);
   cursor: not-allowed;
   opacity: 0.6;
 }
 ```
 
-## Badge and Tag State Patterns
+</TabItem>
+</Tabs>
+
+---
+
+## Select/Dropdown Colors
+
+| Token | CSS Variable | Use Case |
+|-------|--------------|----------|
+| `color.background.select.interaction.hover` | `--dg-color-background-select-interaction-hover` | Select hover |
+| `color.background.select.interaction.active` | `--dg-color-background-select-interaction-active` | Select active |
+| `color.background.select.state.opened` | `--dg-color-background-select-state-opened` | Select opened state |
+| `color.background.option.interaction.hover` | `--dg-color-background-option-interaction-hover` | Option hover |
+| `color.background.option.interaction.active` | `--dg-color-background-option-interaction-active` | Option active |
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-dropdown">
+  <div className="dg-dropdown-header">Account</div>
+  <div className="dg-dropdown-item">Profile</div>
+  <div className="dg-dropdown-item dg-dropdown-item-hover">Settings (hover)</div>
+  <div className="dg-dropdown-item dg-dropdown-item-disabled">Premium Feature</div>
+  <div className="dg-dropdown-divider"></div>
+  <div className="dg-dropdown-header">Actions</div>
+  <div className="dg-dropdown-item">Export Data</div>
+  <div className="dg-dropdown-item dg-dropdown-item-danger">Delete Account</div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-dropdown">
+  <div class="dg-dropdown-header">Account</div>
+  <div class="dg-dropdown-item">Profile</div>
+  <div class="dg-dropdown-item">Settings</div>
+  <div class="dg-dropdown-item dg-dropdown-item-disabled">Premium Feature</div>
+  <div class="dg-dropdown-divider"></div>
+  <div class="dg-dropdown-header">Actions</div>
+  <div class="dg-dropdown-item">Export Data</div>
+  <div class="dg-dropdown-item dg-dropdown-item-danger">Delete Account</div>
+</div>
+```
 
 ```css
-/* Interactive badge */
+.dg-dropdown {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+  border-radius: var(--dg-size-border-radius-lg);
+  box-shadow: var(--dg-shadow-elevation-md);
+}
+
+.dg-dropdown-header {
+  padding: var(--dg-spacing-space-sm) var(--dg-spacing-inset-sm);
+  font-size: var(--dg-size-font-caption);
+  color: var(--dg-color-text-subtle);
+  font-weight: var(--dg-font-weight-medium);
+}
+
+.dg-dropdown-item {
+  padding: var(--dg-spacing-inset-xs) var(--dg-spacing-inset-sm);
+  cursor: pointer;
+  transition: background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+.dg-dropdown-item:hover {
+  background-color: var(--dg-color-alpha-neutral-1);
+}
+
+.dg-dropdown-item-disabled {
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.dg-dropdown-item-danger {
+  color: var(--dg-color-semantic-error-default);
+}
+
+.dg-dropdown-divider {
+  border-top: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-2);
+  margin: var(--dg-spacing-space-xs) 0;
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Card and Container State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-grid-4 dg-gap-md">
+  <div className="dg-interactive-card">
+    <p className="dg-interactive-card-title">Default</p>
+    <p className="dg-interactive-card-desc">Resting state</p>
+  </div>
+  <div className="dg-interactive-card dg-interactive-card-hover">
+    <p className="dg-interactive-card-title">Hover</p>
+    <p className="dg-interactive-card-desc">Elevated</p>
+  </div>
+  <div className="dg-interactive-card dg-interactive-card-active">
+    <p className="dg-interactive-card-title">Active</p>
+    <p className="dg-interactive-card-desc">Pressed</p>
+  </div>
+  <div className="dg-interactive-card dg-interactive-card-selected">
+    <p className="dg-interactive-card-title">Selected</p>
+    <p className="dg-interactive-card-desc">Chosen</p>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="card-interactive">Default Card</div>
+<div class="card-interactive selected">Selected Card</div>
+```
+
+```css
+.card-interactive {
+  background-color: var(--dg-color-background-default);
+  border: 1px solid var(--dg-color-alpha-neutral-3);
+}
+
+.card-interactive:hover {
+  background-color: var(--dg-color-alpha-neutral-1);
+  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
+}
+
+.card-interactive:active {
+  background-color: var(--dg-color-alpha-neutral-2);
+}
+
+.card-interactive.selected {
+  border-color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-primary-subtler);
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Badge and Tag State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-state-demo">
+  <div className="dg-state-demo-section">
+    <p className="dg-state-demo-label">Interactive Badges</p>
+    <div className="dg-flex dg-gap-sm dg-items-center">
+      <span className="dg-badge dg-badge-interactive">Default</span>
+      <span className="dg-badge dg-badge-interactive dg-badge-interactive-hover">Hover</span>
+      <span className="dg-badge dg-badge-interactive dg-badge-interactive-active">Active</span>
+    </div>
+  </div>
+  <div className="dg-state-demo-section">
+    <p className="dg-state-demo-label">Removable Tags</p>
+    <div className="dg-flex dg-gap-sm dg-items-center">
+      <span className="dg-tag">Tag <span className="dg-tag-remove">×</span></span>
+      <span className="dg-tag">Tag <span className="dg-tag-remove dg-tag-remove-hover">×</span></span>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<!-- Interactive Badge -->
+<span class="badge-interactive">Badge</span>
+
+<!-- Removable Tag -->
+<span class="tag">
+  Tag
+  <button class="remove-button" aria-label="Remove">×</button>
+</span>
+```
+
+```css
 .badge-interactive {
   background-color: var(--dg-color-alpha-neutral-3);
   color: var(--dg-color-text-default);
@@ -425,14 +876,12 @@ a:focus {
 
 .badge-interactive:hover {
   background-color: var(--dg-color-alpha-neutral-4);
-  cursor: pointer;
 }
 
 .badge-interactive:active {
   background-color: var(--dg-color-alpha-neutral-5);
 }
 
-/* Removable tag */
 .tag {
   background-color: var(--dg-color-primary-subtler);
   color: var(--dg-color-primary-bold);
@@ -440,14 +889,60 @@ a:focus {
 
 .tag .remove-button:hover {
   background-color: var(--dg-color-primary-subtle);
-  color: var(--dg-color-primary-bold);
 }
 ```
 
+</TabItem>
+</Tabs>
+
+---
+
 ## Loading State Patterns
 
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-state-demo">
+  <div className="dg-state-demo-section">
+    <p className="dg-state-demo-label">Loading Buttons</p>
+    <div className="dg-flex dg-gap-md dg-items-center">
+      <button className="dg-btn dg-btn-primary">Normal</button>
+      <button className="dg-btn dg-btn-primary dg-btn-loading">
+        <span>Loading</span>
+        <div className="dg-spinner"></div>
+      </button>
+    </div>
+  </div>
+  <div className="dg-state-demo-section">
+    <p className="dg-state-demo-label">Loading Overlay</p>
+    <div className="dg-loading-overlay">
+      <span>Content</span>
+      <div className="dg-loading-overlay-mask">
+        <div className="dg-spinner dg-spinner-primary"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<!-- Loading button -->
+<button class="button button-loading">
+  <span>Submit</span>
+  <span class="spinner"></span>
+</button>
+
+<!-- Loading overlay -->
+<div class="content-area">
+  <div class="loading-overlay">
+    <span class="spinner"></span>
+  </div>
+</div>
+```
+
 ```css
-/* Loading button */
 .button-loading {
   position: relative;
   color: transparent;
@@ -459,45 +954,81 @@ a:focus {
   position: absolute;
   width: 16px;
   height: 16px;
-  border: 2px solid var(--dg-color-text-inverse);
-  border-top-color: transparent;
+  border: 2px solid var(--dg-color-alpha-neutral-3);
+  border-top-color: var(--dg-color-text-inverse);
   border-radius: 50%;
-  animation: spin 0.6s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
-/* Loading overlay */
 .loading-overlay {
   background-color: var(--dg-color-alpha-neutral-4);
-  pointer-events: all;
   cursor: wait;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 ```
 
+</TabItem>
+</Tabs>
+
+---
+
 ## Transition Patterns
 
-### Smooth Transitions
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-state-demo">
+  <div className="dg-transition-demo-section">
+    <p className="dg-state-demo-label">Fast (150ms)</p>
+    <button className="dg-btn dg-btn-primary dg-btn-transition-fast">Hover me</button>
+  </div>
+  <div className="dg-transition-demo-section">
+    <p className="dg-state-demo-label">Standard (200ms)</p>
+    <div className="dg-card-transition-standard">Hover me</div>
+  </div>
+  <div className="dg-transition-demo-section">
+    <p className="dg-state-demo-label">Slow (300ms)</p>
+    <div className="dg-card-transition-slow">Hover me</div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="button">Fast transition</button>
+<div class="interactive-element">Standard transition</div>
+<div class="card">Slow transition</div>
+```
 
 ```css
-/* Standard transition duration */
-.interactive-element {
-  transition: 
-    background-color 200ms ease-in-out,
-    color 200ms ease-in-out,
-    border-color 200ms ease-in-out;
-}
-
-/* Fast transition for immediate feedback */
+/* Fast transition (150ms) - immediate feedback */
 .button {
   transition: 
     background-color 150ms ease-in-out,
     transform 150ms ease-in-out;
 }
 
-/* Slow transition for subtle effects */
+/* Standard transition (200ms) - general interactions */
+.interactive-element {
+  transition: 
+    background-color 200ms ease-in-out,
+    border-color 200ms ease-in-out;
+}
+
+/* Slow transition (300ms) - subtle effects */
 .card {
   transition: box-shadow 300ms ease-in-out;
 }
 ```
+
+</TabItem>
+</Tabs>
+
+---
 
 ## Usage Guidelines
 
@@ -588,7 +1119,7 @@ import { tokens } from '@designgreat/lib-design-token'
 const buttonStates = {
   default: {
     backgroundColor: tokens.color.primary.DEFAULT,
-    color: 'white'
+    color: tokens.color.text.inverse
   },
   hover: {
     backgroundColor: tokens.color.primary.hover.DEFAULT
@@ -631,10 +1162,9 @@ function Button({ disabled, children, ...props }) {
 }
 ```
 
-## Related Topics
+## Related
 
 - [Primary Colors](../primary-brand-colors) - Primary interactive state tokens
 - [Text Shortcuts](./text) - Text colors in different states
 - [Background Shortcuts](./background) - Background colors in different states
 - [Shadow Shortcuts](./shadow) - Shadows in different states
-

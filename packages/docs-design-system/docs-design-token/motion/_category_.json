@@ -1,0 +1,11 @@
+{
+  "label": "Motion",
+  "position": 6,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Motion Token Guides",
+    "description": "A comprehensive guide to the motion token system in Design Great. Learn about durations, easing functions, and transitions for smooth animations.",
+    "keywords": ["motion", "animation", "duration", "easing", "transition"]
+  }
+}
