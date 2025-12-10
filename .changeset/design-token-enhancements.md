@@ -1,5 +1,6 @@
 ---
 '@designgreat/lib-design-token': minor
+'@designgreat/lib-web-component': patch
 ---
 
 ### Design Token Enhancements
@@ -29,3 +30,8 @@
 
 - Reorganized token files for better maintainability
 - Updated generated themes with new token definitions
+- Moved `line-height` tokens from `dg.number['line-height']` to `dg['line-height']`
+
+**lib-web-component:**
+
+- Updated Tailwind config to use new `line-height` token location
