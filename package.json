@@ -27,10 +27,10 @@
     "release": "pnpm install --no-frozen-lockfile && pnpm changeset publish"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+    "*.{js,jsx,ts,tsx,mjs,cjs,mdx}": [
       "pnpm exec eslint --fix"
     ],
-    "*.{json,md,yml,yaml,css,scss,html}": [
+    "*.{json,md,mdx,yml,yaml,css,scss,html}": [
       "pnpm exec prettier --write"
     ]
   },
