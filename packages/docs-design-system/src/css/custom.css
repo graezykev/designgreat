@@ -63,7 +63,7 @@
   /* Menu / Sidebar */
   --ifm-menu-color: var(--dg-color-text-default);
   --ifm-menu-color-active: var(--dg-color-primary-default);
-  --ifm-menu-color-background-active: var(--dg-color-background-interaction-selected);
+  --ifm-menu-color-background-active: var(--dg-color-background-nav-default-state-activated);
 
   /* Code blocks */
   --ifm-code-background: var(--dg-color-background-bold);
@@ -87,7 +87,7 @@
   --ifm-spacing-vertical: var(--dg-spacing-space-md);
 
   /* Font sizes */
-  --ifm-font-size-base: var(--dg-size-font-base);
+  --ifm-font-size-base: var(--dg-size-font-body);
   --ifm-code-font-size: 90%;
 
   /* Table of Contents (TOC) */
@@ -145,8 +145,8 @@
 .color-demo {
   width: 40px;
   height: 40px;
-  border: 1px solid var(--dg-color-border-default);
-  border-radius: 4px;
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-default);
   display: inline-block;
   vertical-align: middle;
 }
@@ -155,8 +155,8 @@
 .color-demo-lg {
   width: 60px;
   height: 40px;
-  border: 1px solid var(--dg-color-border-default);
-  border-radius: 4px;
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-default);
   display: inline-block;
   vertical-align: middle;
 }
@@ -165,8 +165,8 @@
 .color-demo-text {
   width: 60px;
   height: 40px;
-  border: 1px solid var(--dg-color-border-default);
-  border-radius: 4px;
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-default);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -181,7 +181,7 @@
 .spacing-demo {
   height: 16px;
   background-color: var(--dg-color-primary-default);
-  border-radius: 2px;
+  border-radius: var(--dg-size-border-radius-sm);
   display: inline-block;
   vertical-align: middle;
   min-width: 2px;
@@ -263,6 +263,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--dg-line-clamp-1);
+  line-clamp: var(--dg-line-clamp-1);
   overflow: hidden;
   line-height: var(--dg-line-height-normal);
   margin: 0;
@@ -272,6 +273,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--dg-line-clamp-2);
+  line-clamp: var(--dg-line-clamp-2);
   overflow: hidden;
   line-height: var(--dg-line-height-normal);
   margin: 0;
@@ -281,6 +283,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--dg-line-clamp-3);
+  line-clamp: var(--dg-line-clamp-3);
   overflow: hidden;
   line-height: var(--dg-line-height-normal);
   margin: 0;
@@ -300,7 +303,7 @@
 }
 
 /* Line height demo box */
-.dg-line-height-demo {
+.dg-line-height-showcase {
   font-size: var(--dg-size-font-sm);
   padding: var(--dg-spacing-inset-xs);
   background-color: var(--dg-color-background-bold);
@@ -347,14 +350,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--dg-color-text-inverse);
   font-size: var(--dg-size-font-caption);
   margin-top: var(--dg-spacing-space-sm);
   margin-bottom: var(--dg-spacing-space-sm);
 }
 
+.dg-spacing-indicator-height-md {
+  height: var(--dg-spacing-stack-md);
+}
+
 /* Gap demo utilities */
-.dg-gap-demo {
+.dg-gap-showcase {
   display: flex;
   padding: var(--dg-spacing-inset-md);
   background-color: var(--dg-color-background-bold);
@@ -378,10 +385,67 @@
 }
 
 /* Inset demo utilities */
-.dg-inset-demo-card {
+.dg-inset-showcase-card {
   background-color: var(--dg-color-background-bold);
   border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
   border-radius: var(--dg-size-border-radius-lg);
+}
+
+/* Border width demo */
+.dg-border-width-showcase {
+  padding: var(--dg-spacing-inset-md);
+  border-style: solid;
+  border-color: var(--dg-color-primary-default);
+  border-radius: var(--dg-size-border-radius-md);
+  background-color: var(--dg-color-background-default);
+  min-width: 100px;
+}
+
+.dg-border-width-none {
+  border-width: var(--dg-border-width-none);
+}
+.dg-border-width-thin {
+  border-width: var(--dg-border-width-thin);
+}
+.dg-border-width-medium {
+  border-width: var(--dg-border-width-medium);
+}
+.dg-border-width-thick {
+  border-width: var(--dg-border-width-thick);
+}
+
+/* Focus shadow card */
+.dg-focus-card {
+  padding: var(--dg-spacing-inset-md);
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-md);
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow var(--dg-duration-fast) var(--dg-cubic-bezier-ease-out);
+}
+
+.dg-focus-card:focus,
+.dg-focus-card-focused {
+  box-shadow: var(--dg-shadow-focus);
+  border-color: var(--dg-color-primary-default);
+}
+
+/* Focus border showcase - showcases --dg-border-focus token */
+.dg-focus-border-showcase {
+  padding: var(--dg-spacing-inset-md);
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-md);
+  cursor: pointer;
+  transition: outline var(--dg-duration-fast) var(--dg-cubic-bezier-ease-out);
+}
+
+.dg-focus-border-showcase:focus,
+.dg-focus-border-showcase:focus-visible,
+.dg-focus-border-showcase-focused {
+  outline: var(--dg-border-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
 }
 
 .dg-inset-xs {
@@ -457,15 +521,6 @@
 }
 
 /* Shadow elevation demo */
-.shadow-demo {
-  width: 60px;
-  height: 40px;
-  background-color: var(--dg-color-background-bold);
-  border-radius: 6px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
 /* Demo link styling with hover effect */
 .dg-link {
   color: var(--dg-color-text-link-default);
@@ -473,37 +528,272 @@
   transition: color 150ms ease-in-out;
 }
 
-/* Visited - comes early so other states can override */
-.dg-link:visited,
-.dg-link-visited {
-  color: var(--dg-color-primary-visited-default);
+/* Visited - comes early so other states can override (using shortcut token) */
+.dg-link:visited {
+  color: var(--dg-color-text-link-interaction-visited);
 }
 
-/* Hover - overrides visited */
-.dg-link:hover,
-.dg-link-hover {
-  color: var(--dg-color-primary-hover-default);
-  text-decoration-thickness: 2px;
+.dg-link--visited,
+.dg-link--visited:visited {
+  color: var(--dg-color-text-link-interaction-visited);
 }
 
-/* Focus - overrides visited and hover */
+/* Hover - overrides visited (using shortcut token) */
+.dg-link:hover {
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link--hover,
+.dg-link--hover:hover {
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link--hover:active,
+.dg-link--hover:hover:active {
+  /* Active overrides hover modifier - higher specificity (0,2,2) vs (0,2,1) */
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link--visited:hover,
+.dg-link--visited:visited:hover {
+  /* Hover overrides visited */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link--visited:hover:active,
+.dg-link--visited:visited:hover:active {
+  /* Active overrides visited and hover */
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link--hover:visited,
+.dg-link--hover:visited:hover {
+  /* Hover modifier overrides visited */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link--hover:visited:active,
+.dg-link--hover:visited:hover:active {
+  /* Active overrides hover modifier and visited */
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+/* Focus - overrides visited and hover (using shortcut token) */
 .dg-link:focus,
-.dg-link:focus-visible,
-.dg-link-focus {
-  color: var(--dg-color-primary-focus-default);
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
-  border-radius: 2px;
+.dg-link:focus-visible {
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
 }
 
-/* Active - highest priority */
-.dg-link:active,
-.dg-link-active {
-  color: var(--dg-color-primary-active-default);
+.dg-link:hover:focus,
+.dg-link:hover:focus-visible {
+  /* When hovered and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:visited:focus,
+.dg-link:visited:focus-visible {
+  /* Focus overrides visited */
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:visited:hover:focus,
+.dg-link:visited:hover:focus-visible {
+  /* When visited, hovered, and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus,
+.dg-link--focus:focus,
+.dg-link--focus:focus-visible {
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:hover,
+.dg-link--focus:focus:hover,
+.dg-link--focus:focus-visible:hover {
+  /* When focused and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:hover:active,
+.dg-link--focus:focus:hover:active,
+.dg-link--focus:focus-visible:hover:active {
+  /* Active overrides hover and focus modifiers - higher specificity (0,2,3) vs (0,2,2) */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--visited:focus,
+.dg-link--visited:visited:focus,
+.dg-link--visited:visited:focus-visible {
+  /* Focus overrides visited */
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--visited:hover:focus,
+.dg-link--visited:visited:hover:focus,
+.dg-link--visited:visited:hover:focus-visible {
+  /* When visited, hovered, and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:visited,
+.dg-link--focus:visited:focus,
+.dg-link--focus:visited:focus-visible {
+  /* Focus modifier overrides visited */
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:visited:hover,
+.dg-link--focus:visited:hover:focus,
+.dg-link--focus:visited:hover:focus-visible {
+  /* When focused, visited, and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+/* Active - highest priority (using shortcut token) */
+/* Note: Active rules are defined above to ensure they override focus rules */
+
+.dg-link:active {
+  /* Active state - base rule */
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link:hover:active {
+  /* Active overrides hover - same specificity (0,1,2) but comes after hover rules */
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link:focus:active,
+.dg-link:focus-visible:active {
+  /* Active overrides focus - higher specificity (0,1,2) vs (0,1,1) */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:hover:focus:active,
+.dg-link:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--active,
+.dg-link--active:active,
+.dg-link--active:hover {
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link--active:focus,
+.dg-link--active:focus-visible,
+.dg-link--active:active:focus,
+.dg-link--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--active:visited,
+.dg-link--active:visited:active {
+  /* Active overrides visited */
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link--focus:active,
+.dg-link--focus:active:focus,
+.dg-link--focus:active:focus-visible {
+  /* Active overrides focus modifier - specificity (0,2,1) */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:focus:active,
+.dg-link--focus:focus-visible:active,
+.dg-link--focus:focus:active:focus,
+.dg-link--focus:focus-visible:active:focus-visible {
+  /* Active overrides focus modifier - higher specificity (0,2,2) vs (0,2,1) to beat .dg-link--focus:focus */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:hover:active,
+.dg-link--focus:hover:active:focus,
+.dg-link--focus:hover:active:focus-visible,
+.dg-link--focus:hover:focus:active,
+.dg-link--focus:hover:focus-visible:active,
+.dg-link--focus:hover:focus:active:focus,
+.dg-link--focus:hover:focus-visible:active:focus-visible {
+  /* Active overrides hover and focus modifiers */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:visited:focus:active,
+.dg-link--focus:visited:focus-visible:active,
+.dg-link--focus:visited:focus:active:focus,
+.dg-link--focus:visited:focus-visible:active:focus-visible {
+  /* Active overrides visited, focus modifiers */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
 }
 
 /* Link state demo container */
-.dg-link-state-demo {
+.dg-link-state-showcase {
   display: flex;
   gap: var(--dg-spacing-gap-lg);
   flex-wrap: wrap;
@@ -841,7 +1131,7 @@
   position: absolute;
   inset: -1px;
   border-radius: var(--dg-size-border-radius-card);
-  padding: var(--dg-spacing-px2);
+  padding: var(--dg-spacing-space-2xs);
   background: var(--dg-gradient-accent);
   -webkit-mask:
     linear-gradient(var(--dg-color-accent-grey-1) 0 0) content-box,
@@ -945,7 +1235,7 @@
 }
 
 .dg-gradient-image-badge {
-  background: var(--dg-color-alpha-neutral-6);
+  background: var(--dg-color-alpha-neutral-5);
   color: var(--dg-color-text-inverse);
   padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-sm);
   border-radius: var(--dg-size-border-radius-default);
@@ -1016,15 +1306,15 @@
 }
 
 /* Border demo variants */
-.dg-border-default-demo {
+.dg-border-default-showcase {
   border: var(--dg-border-default);
 }
 
-.dg-border-subtle-demo {
+.dg-border-subtle-showcase {
   border: var(--dg-border-subtle);
 }
 
-.dg-border-bold-demo {
+.dg-border-bold-showcase {
   border: var(--dg-border-bold);
 }
 
@@ -1058,6 +1348,32 @@
 }
 .dg-elevation-focus {
   box-shadow: var(--dg-shadow-focus);
+}
+
+/* Shadow color */
+.dg-shadow-color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--dg-spacing-space-sm);
+}
+
+.dg-shadow-color-swatch {
+  width: 80px;
+  height: 80px;
+  background-color: var(--dg-color-shadow-default);
+  border-radius: var(--dg-size-border-radius-lg);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-subtle);
+}
+
+/* Custom shadow card using shadow color directly (not elevation tokens) */
+.dg-shadow-color-card {
+  background-color: var(--dg-color-background-default);
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-lg);
+  box-shadow: 0 4px 8px var(--dg-color-shadow-default);
+  width: 140px;
+  text-align: center;
 }
 .dg-elevation-inset-sm {
   box-shadow: var(--dg-shadow-inset-sm);
@@ -1111,37 +1427,185 @@
     filter var(--dg-duration-fast) var(--dg-cubic-bezier-ease-out);
 }
 
+/* Base button state rules - lower priority, overridden by variant-specific rules */
+.dg-btn:hover {
+  background-color: var(--dg-color-background-bolder);
+}
+
+.dg-btn--hover,
+.dg-btn--hover:hover {
+  background-color: var(--dg-color-background-bolder);
+}
+
+.dg-btn:focus,
+.dg-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn--focus,
+.dg-btn--focus:focus,
+.dg-btn--focus:focus-visible {
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn--focus:hover,
+.dg-btn--focus:focus:hover,
+.dg-btn--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-bolder);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn:active,
+.dg-btn:focus:active,
+.dg-btn:focus-visible:active {
+  /* Active state overrides hover and focus */
+  background-color: var(--dg-color-alpha-neutral-2);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn--focus:active,
+.dg-btn--focus:active:focus,
+.dg-btn--focus:active:focus-visible,
+.dg-btn--focus:focus:active,
+.dg-btn--focus:focus-visible:active {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-alpha-neutral-2);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn--active,
+.dg-btn--active:active,
+.dg-btn--active:hover {
+  background-color: var(--dg-color-alpha-neutral-2);
+}
+
+.dg-btn--active:focus,
+.dg-btn--active:focus-visible,
+.dg-btn--active:active:focus,
+.dg-btn--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-alpha-neutral-2);
+  box-shadow: var(--dg-shadow-focus);
+}
+
 /* Button radius modifiers */
-.dg-btn-radius-xl {
+.dg-btn--radius-xl {
   border-radius: var(--dg-size-border-radius-xl);
 }
 
-.dg-btn-radius-full {
+.dg-btn--radius-full {
   border-radius: var(--dg-size-border-radius-full);
 }
 
 /* --- Color Variants --- */
 
 .dg-btn-primary {
-  background-color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-button-default);
   color: var(--dg-color-text-inverse);
   border: none;
 }
 
-.dg-btn-primary:hover,
-.dg-btn-primary.dg-btn-hover {
-  background-color: var(--dg-color-primary-bold);
+.dg-btn-primary:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
+}
+
+.dg-btn-primary--hover,
+.dg-btn-primary--hover:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
 }
 
 .dg-btn-primary:focus,
-.dg-btn-primary:focus-visible,
-.dg-btn-primary.dg-btn-focus {
+.dg-btn-primary:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary:focus:hover,
+.dg-btn-primary:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--hover:focus,
+.dg-btn-primary--hover:focus-visible,
+.dg-btn-primary--hover:focus:hover,
+.dg-btn-primary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
   box-shadow: var(--dg-shadow-focus);
 }
 
 .dg-btn-primary:active,
-.dg-btn-primary.dg-btn-active {
-  background-color: var(--dg-color-primary-subtle);
+.dg-btn-primary:focus:active,
+.dg-btn-primary:focus-visible:active {
+  /* Active state overrides hover and focus */
+  background-color: var(--dg-color-background-button-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--hover:active,
+.dg-btn-primary--hover:focus:active,
+.dg-btn-primary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  background-color: var(--dg-color-background-button-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--focus,
+.dg-btn-primary--focus:focus,
+.dg-btn-primary--focus:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--focus:hover,
+.dg-btn-primary--focus:focus:hover,
+.dg-btn-primary--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--focus:active,
+.dg-btn-primary--focus:active:focus,
+.dg-btn-primary--focus:active:focus-visible,
+.dg-btn-primary--focus:focus:active,
+.dg-btn-primary--focus:focus-visible:active {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--active,
+.dg-btn-primary--active:active,
+.dg-btn-primary--active:hover {
+  background-color: var(--dg-color-background-button-interaction-active);
+}
+
+.dg-btn-primary--active:focus,
+.dg-btn-primary--active:focus-visible,
+.dg-btn-primary--active:active:focus,
+.dg-btn-primary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary:disabled {
+  background-color: var(--dg-color-background-button-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-primary--disabled,
+.dg-btn-primary--disabled:disabled {
+  background-color: var(--dg-color-background-button-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .dg-btn-neutral {
@@ -1155,90 +1619,419 @@
   border-color: var(--dg-color-alpha-neutral-4);
 }
 
-/* Secondary color button */
-.dg-btn-secondary {
-  background-color: var(--dg-color-secondary-default);
-  color: var(--dg-color-text-inverse);
-  border: none;
+.dg-btn-neutral--hover,
+.dg-btn-neutral--hover:hover {
+  background-color: var(--dg-color-background-bolder);
+  border-color: var(--dg-color-alpha-neutral-4);
 }
 
-.dg-btn-secondary:hover,
-.dg-btn-secondary.dg-btn-hover {
-  background-color: var(--dg-color-secondary-bold);
+.dg-btn-neutral:focus,
+.dg-btn-neutral:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
 }
 
-.dg-btn-secondary:focus,
-.dg-btn-secondary:focus-visible,
-.dg-btn-secondary.dg-btn-focus {
-  outline: 2px solid var(--dg-color-secondary-default);
-  outline-offset: 2px;
+.dg-btn-neutral--focus,
+.dg-btn-neutral--focus:focus,
+.dg-btn-neutral--focus:focus-visible,
+.dg-btn-neutral--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
 }
 
-.dg-btn-secondary:active,
-.dg-btn-secondary.dg-btn-active {
-  background-color: var(--dg-color-secondary-subtle);
+.dg-btn-neutral:active {
+  background-color: var(--dg-color-background-boldest);
 }
 
-.dg-btn-secondary:disabled,
-.dg-btn-secondary.dg-btn-disabled {
-  background-color: var(--dg-color-secondary-blur);
+.dg-btn-neutral:focus:active,
+.dg-btn-neutral:focus-visible:active {
+  /* Active overrides focus - higher specificity (0,2,2) vs (0,1,2) */
+  background-color: var(--dg-color-background-boldest);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-neutral--active,
+.dg-btn-neutral--active:active,
+.dg-btn-neutral--active:hover {
+  background-color: var(--dg-color-background-boldest);
+}
+
+.dg-btn-neutral--active:focus,
+.dg-btn-neutral--active:focus-visible,
+.dg-btn-neutral--active:active:focus,
+.dg-btn-neutral--active:active:focus-visible {
+  /* Active modifier overrides focus */
+  background-color: var(--dg-color-background-boldest);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-neutral:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.dg-btn-neutral:active {
-  background-color: var(--dg-color-alpha-neutral-2);
+.dg-btn-neutral--disabled,
+.dg-btn-neutral--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Secondary color button */
+.dg-btn-secondary {
+  background-color: var(--dg-color-background-button-secondary-default);
+  color: var(--dg-color-text-button-secondary-default);
+  border: none;
+}
+
+.dg-btn-secondary:hover {
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
+}
+
+.dg-btn-secondary--hover,
+.dg-btn-secondary--hover:hover {
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
+}
+
+.dg-btn-secondary:focus,
+.dg-btn-secondary:focus-visible {
+  background-color: var(--dg-color-background-button-secondary-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary:focus:hover,
+.dg-btn-secondary:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--hover:focus,
+.dg-btn-secondary--hover:focus-visible,
+.dg-btn-secondary--hover:focus:hover,
+.dg-btn-secondary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary:active,
+.dg-btn-secondary:focus:active,
+.dg-btn-secondary:focus-visible:active {
+  /* Active state overrides hover and focus */
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--hover:active,
+.dg-btn-secondary--hover:focus:active,
+.dg-btn-secondary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--focus,
+.dg-btn-secondary--focus:focus,
+.dg-btn-secondary--focus:focus-visible {
+  background-color: var(--dg-color-background-button-secondary-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--focus:hover,
+.dg-btn-secondary--focus:focus:hover,
+.dg-btn-secondary--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--focus:active,
+.dg-btn-secondary--focus:active:focus,
+.dg-btn-secondary--focus:active:focus-visible,
+.dg-btn-secondary--focus:focus:active,
+.dg-btn-secondary--focus:focus-visible:active {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--active,
+.dg-btn-secondary--active:active,
+.dg-btn-secondary--active:hover {
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+}
+
+.dg-btn-secondary--active:focus,
+.dg-btn-secondary--active:focus-visible,
+.dg-btn-secondary--active:active:focus,
+.dg-btn-secondary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary:disabled {
+  background-color: var(--dg-color-background-button-secondary-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-secondary--disabled,
+.dg-btn-secondary--disabled:disabled {
+  background-color: var(--dg-color-background-button-secondary-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Subtle/Neutral Variant (using shortcut tokens) --- */
+
+.dg-btn-subtle {
+  background-color: var(--dg-color-background-button-subtle-default);
+  color: var(--dg-color-text-default);
+  border: none;
+}
+
+.dg-btn-subtle:hover {
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+}
+
+.dg-btn-subtle--hover,
+.dg-btn-subtle--hover:hover {
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+}
+
+.dg-btn-subtle:focus,
+.dg-btn-subtle:focus-visible {
+  background-color: var(--dg-color-background-button-subtle-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle:focus:hover,
+.dg-btn-subtle:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--hover:focus,
+.dg-btn-subtle--hover:focus-visible,
+.dg-btn-subtle--hover:focus:hover,
+.dg-btn-subtle--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle:active,
+.dg-btn-subtle:focus:active,
+.dg-btn-subtle:focus-visible:active {
+  /* Active state overrides hover and focus */
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--hover:active,
+.dg-btn-subtle--hover:focus:active,
+.dg-btn-subtle--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--focus,
+.dg-btn-subtle--focus:focus,
+.dg-btn-subtle--focus:focus-visible {
+  background-color: var(--dg-color-background-button-subtle-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--focus:hover,
+.dg-btn-subtle--focus:focus:hover,
+.dg-btn-subtle--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--focus:active,
+.dg-btn-subtle--focus:active:focus,
+.dg-btn-subtle--focus:active:focus-visible,
+.dg-btn-subtle--focus:focus:active,
+.dg-btn-subtle--focus:focus-visible:active {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--active,
+.dg-btn-subtle--active:active,
+.dg-btn-subtle--active:hover {
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+}
+
+.dg-btn-subtle--active:focus,
+.dg-btn-subtle--active:focus-visible,
+.dg-btn-subtle--active:active:focus,
+.dg-btn-subtle--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle:disabled {
+  background-color: var(--dg-color-background-button-subtle-state-disabled);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+}
+
+.dg-btn-subtle--disabled,
+.dg-btn-subtle--disabled:disabled {
+  background-color: var(--dg-color-background-button-subtle-state-disabled);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
 }
 
 /* --- Outline Variant --- */
 
 .dg-btn-outline {
-  background-color: transparent;
-  color: var(--dg-color-primary-default);
-  border: var(--dg-border-width-thin) solid var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-button-outline-default);
+  color: var(--dg-color-text-button-outline-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-button-outline-default);
 }
 
-.dg-btn-outline:hover,
-.dg-btn-outline.dg-btn-hover {
-  background-color: var(--dg-color-alpha-neutral-1);
-  border-color: var(--dg-color-primary-bold);
+.dg-btn-outline:hover {
+  background-color: var(--dg-color-background-button-outline-interaction-hover);
+  border-color: var(--dg-color-border-button-outline-interaction-hover);
+}
+
+.dg-btn-outline--hover,
+.dg-btn-outline--hover:hover {
+  background-color: var(--dg-color-background-button-outline-interaction-hover);
+  border-color: var(--dg-color-border-button-outline-interaction-hover);
 }
 
 .dg-btn-outline:focus,
-.dg-btn-outline:focus-visible,
-.dg-btn-outline.dg-btn-focus {
+.dg-btn-outline:focus-visible {
   box-shadow: var(--dg-shadow-focus);
-  border-color: var(--dg-color-primary-default);
 }
 
-.dg-btn-outline:active,
-.dg-btn-outline.dg-btn-active {
-  background-color: var(--dg-color-alpha-neutral-2);
+.dg-btn-outline--focus,
+.dg-btn-outline--focus:focus,
+.dg-btn-outline--focus:focus-visible,
+.dg-btn-outline--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-outline:active {
+  background-color: var(--dg-color-background-button-outline-interaction-active);
+}
+
+.dg-btn-outline:focus:active,
+.dg-btn-outline:focus-visible:active {
+  /* Active overrides focus - higher specificity (0,2,2) vs (0,1,2) */
+  background-color: var(--dg-color-background-button-outline-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-outline--active,
+.dg-btn-outline--active:active,
+.dg-btn-outline--active:hover,
+.dg-btn-outline--active:focus {
+  background-color: var(--dg-color-background-button-outline-interaction-active);
+}
+
+.dg-btn-outline--active:focus,
+.dg-btn-outline--active:focus-visible,
+.dg-btn-outline--active:active:focus,
+.dg-btn-outline--active:active:focus-visible {
+  /* Active modifier overrides focus */
+  background-color: var(--dg-color-background-button-outline-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-outline:disabled {
+  border-color: var(--dg-color-border-button-outline-state-disabled);
+  color: var(--dg-color-text-button-outline-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-outline--disabled,
+.dg-btn-outline--disabled:disabled {
+  border-color: var(--dg-color-border-button-outline-state-disabled);
+  color: var(--dg-color-text-button-outline-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* --- Ghost/Text Variant --- */
 
 .dg-btn-ghost {
-  background-color: transparent;
-  color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-button-ghost-default);
+  color: var(--dg-color-text-button-ghost-default);
   border: none;
+  box-shadow: none;
 }
 
-.dg-btn-ghost:hover,
-.dg-btn-ghost.dg-btn-hover {
-  background-color: var(--dg-color-alpha-neutral-1);
-  color: var(--dg-color-primary-bold);
+.dg-btn-ghost:hover {
+  background-color: var(--dg-color-background-button-ghost-interaction-hover);
+  color: var(--dg-color-text-button-ghost-interaction-hover);
+}
+
+.dg-btn-ghost--hover,
+.dg-btn-ghost--hover:hover {
+  background-color: var(--dg-color-background-button-ghost-interaction-hover);
+  color: var(--dg-color-text-button-ghost-interaction-hover);
 }
 
 .dg-btn-ghost:focus,
-.dg-btn-ghost:focus-visible,
-.dg-btn-ghost.dg-btn-focus {
+.dg-btn-ghost:focus-visible {
   box-shadow: var(--dg-shadow-focus);
 }
 
-.dg-btn-ghost:active,
-.dg-btn-ghost.dg-btn-active {
-  background-color: var(--dg-color-alpha-neutral-2);
+.dg-btn-ghost--focus,
+.dg-btn-ghost--focus:focus,
+.dg-btn-ghost--focus:focus-visible,
+.dg-btn-ghost--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-ghost:active {
+  background-color: var(--dg-color-background-button-ghost-interaction-active);
+}
+
+.dg-btn-ghost:focus:active,
+.dg-btn-ghost:focus-visible:active {
+  /* Active overrides focus - higher specificity (0,2,2) vs (0,1,2) */
+  background-color: var(--dg-color-background-button-ghost-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-ghost--active,
+.dg-btn-ghost--active:active,
+.dg-btn-ghost--active:hover,
+.dg-btn-ghost--active:focus {
+  background-color: var(--dg-color-background-button-ghost-interaction-active);
+}
+
+.dg-btn-ghost--active:focus,
+.dg-btn-ghost--active:focus-visible,
+.dg-btn-ghost--active:active:focus,
+.dg-btn-ghost--active:active:focus-visible {
+  /* Active modifier overrides focus */
+  background-color: var(--dg-color-background-button-ghost-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-ghost:disabled {
+  color: var(--dg-color-text-button-ghost-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-ghost--disabled,
+.dg-btn-ghost--disabled:disabled {
+  color: var(--dg-color-text-button-ghost-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* --- Gradient Variants --- */
@@ -1249,7 +2042,8 @@
   border: none;
 }
 
-.dg-btn-gradient-primary:hover {
+.dg-btn-gradient-primary:hover,
+.dg-btn-gradient-primary--hover {
   filter: brightness(1.1);
   transform: translateY(-1px);
   box-shadow: var(--dg-shadow-elevation-sm);
@@ -1261,7 +2055,8 @@
   border: none;
 }
 
-.dg-btn-gradient-accent:hover {
+.dg-btn-gradient-accent:hover,
+.dg-btn-gradient-accent--hover {
   filter: brightness(1.1);
   transform: translateY(-1px);
   box-shadow: var(--dg-shadow-elevation-sm);
@@ -1273,7 +2068,8 @@
   border: none;
 }
 
-.dg-btn-gradient-hero:hover {
+.dg-btn-gradient-hero:hover,
+.dg-btn-gradient-hero--hover {
   filter: brightness(1.05);
   transform: translateY(-1px);
 }
@@ -1284,41 +2080,22 @@
   border: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
 }
 
-.dg-btn-gradient-outline:hover {
+.dg-btn-gradient-outline:hover,
+.dg-btn-gradient-outline--hover {
   background: var(--dg-gradient-hero);
   border-color: var(--dg-color-accent-blue-default);
   color: var(--dg-color-text-bold);
 }
 
 /* --- State Modifiers (for demos) --- */
-/* Order: hover → focus → active (mirrors CSS cascade for pseudo-classes) */
 
-.dg-btn-hover {
-  background-color: var(--dg-color-primary-bold);
-}
-
-.dg-btn-focus {
-  outline: none;
-  box-shadow: var(--dg-shadow-focus);
-}
-
-.dg-btn-active {
-  background-color: var(--dg-color-primary-subtle);
-}
-
-.dg-btn-pressed {
+.dg-btn--pressed {
   box-shadow: var(--dg-shadow-inset-sm);
-}
-
-/* Real focus state */
-.dg-btn:focus-visible {
-  outline: none;
-  box-shadow: var(--dg-shadow-focus);
 }
 
 /* --- Disabled State --- */
 
-.dg-btn-disabled,
+.dg-btn--disabled,
 .dg-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -1327,19 +2104,19 @@
 
 /* --- Size Variants --- */
 
-.dg-btn-small {
+.dg-btn--small {
   padding: var(--dg-spacing-space-xs) var(--dg-spacing-inset-sm);
   font-size: var(--dg-size-font-caption);
 }
 
-.dg-btn-large {
+.dg-btn--large {
   padding: var(--dg-spacing-inset-md) var(--dg-spacing-inset-xl);
   font-size: var(--dg-size-font-body);
 }
 
 /* --- Full Width --- */
 
-.dg-btn-full-width {
+.dg-btn--full-width {
   width: 100%;
 }
 
@@ -1684,33 +2461,33 @@
 }
 
 .dg-alert-info {
-  background-color: var(--dg-color-semantic-info-lowest);
-  border-color: var(--dg-color-semantic-info-default);
-  color: var(--dg-color-semantic-info-bold);
+  background-color: var(--dg-color-background-information-default);
+  border-color: var(--dg-color-background-information-bold);
+  color: var(--dg-color-text-information-default);
 }
 
 .dg-alert-success {
-  background-color: var(--dg-color-semantic-success-lowest);
-  border-color: var(--dg-color-semantic-success-default);
-  color: var(--dg-color-semantic-success-bold);
+  background-color: var(--dg-color-background-success-default);
+  border-color: var(--dg-color-background-success-bold);
+  color: var(--dg-color-text-success-default);
 }
 
 .dg-alert-warning {
-  background-color: var(--dg-color-semantic-warning-lowest);
-  border-color: var(--dg-color-semantic-warning-default);
-  color: var(--dg-color-semantic-warning-bold);
+  background-color: var(--dg-color-background-warning-default);
+  border-color: var(--dg-color-background-warning-bold);
+  color: var(--dg-color-text-warning-default);
 }
 
 .dg-alert-error {
-  background-color: var(--dg-color-semantic-error-lowest);
-  border-color: var(--dg-color-semantic-error-default);
-  color: var(--dg-color-semantic-error-bold);
+  background-color: var(--dg-color-background-error-default);
+  border-color: var(--dg-color-background-error-bold);
+  color: var(--dg-color-text-error-default);
 }
 
 .dg-alert-new {
-  background-color: var(--dg-color-semantic-new-lowest);
-  border-color: var(--dg-color-semantic-new-default);
-  color: var(--dg-color-semantic-new-bold);
+  background-color: var(--dg-color-background-discover-default);
+  border-color: var(--dg-color-background-discover-bold);
+  color: var(--dg-color-text-discover-default);
 }
 
 /* --- Form Components --- */
@@ -1722,6 +2499,7 @@
 
 .dg-form-label {
   display: block;
+  color: var(--dg-color-text-default);
   font-weight: var(--dg-font-weight-medium);
   margin-bottom: var(--dg-spacing-space-xs);
 }
@@ -1739,31 +2517,34 @@
 /* Input states - order: hover → focus → validation → disabled */
 .dg-input:hover,
 .dg-input-hover {
-  border-color: var(--dg-color-alpha-neutral-4);
+  border-color: var(--dg-color-border-input-interaction-hover);
 }
 
 .dg-input:focus,
 .dg-input:focus-visible,
 .dg-input-focus {
-  border-color: var(--dg-color-primary-default);
+  border-color: var(--dg-color-border-input-interaction-focus);
   box-shadow: var(--dg-shadow-focus);
   outline: none;
 }
 
 /* Validation states override focus */
 .dg-input-success {
-  border: var(--dg-border-width-medium) solid var(--dg-color-semantic-success-default);
-  box-shadow: 0 0 0 var(--dg-spacing-px3) var(--dg-color-semantic-success-lowest);
+  /* Uses shortcut token --dg-color-border-input-state-valid */
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-input-state-valid);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-success-lowest);
 }
 
 .dg-input-error {
-  border: var(--dg-border-width-medium) solid var(--dg-color-semantic-error-default);
-  box-shadow: 0 0 0 var(--dg-spacing-px3) var(--dg-color-semantic-error-lowest);
+  /* Uses shortcut token --dg-color-border-input-state-invalid */
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-input-state-invalid);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-error-lowest);
 }
 
 .dg-input-warning {
-  border: var(--dg-border-width-medium) solid var(--dg-color-semantic-warning-default);
-  box-shadow: 0 0 0 var(--dg-spacing-px3) var(--dg-color-semantic-warning-lowest);
+  /* Uses shortcut token --dg-color-border-input-state-warning */
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-input-state-warning);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-warning-lowest);
 }
 
 /* Disabled state - lowest priority, overrides everything */
@@ -1776,16 +2557,17 @@
 }
 
 .dg-helper-text {
+  color: var(--dg-color-text-subtle);
   font-size: var(--dg-size-font-caption);
   margin: 0;
 }
 
 .dg-helper-text-success {
-  color: var(--dg-color-semantic-success-bold);
+  color: var(--dg-color-text-success-bold);
 }
 
 .dg-helper-text-error {
-  color: var(--dg-color-semantic-error-bold);
+  color: var(--dg-color-text-error-default);
 }
 
 /* --- Badges --- */
@@ -1813,7 +2595,8 @@
 }
 
 /* Badge interactive hover (for gradient and interactive badges) */
-.dg-badge-gradient:hover {
+.dg-badge-gradient:hover,
+.dg-badge-gradient.dg-badge-gradient-hover {
   transform: scale(1.05);
   box-shadow: var(--dg-shadow-elevation-sm);
   filter: brightness(1.1);
@@ -1866,48 +2649,53 @@
   font-weight: var(--dg-font-weight-semi-bold);
 }
 
+.dg-badge-discover {
+  background-color: var(--dg-color-background-discover-default);
+  color: var(--dg-color-text-discover-default);
+}
+
 .dg-badge-info {
-  background-color: var(--dg-color-semantic-info-lowest);
-  color: var(--dg-color-semantic-info-bold);
+  background-color: var(--dg-color-background-information-default);
+  color: var(--dg-color-text-information-default);
 }
 
 .dg-badge-info-bold {
-  background-color: var(--dg-color-semantic-info-default);
+  background-color: var(--dg-color-background-information-bold);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-badge-success {
-  background-color: var(--dg-color-semantic-success-lowest);
-  color: var(--dg-color-semantic-success-bold);
+  background-color: var(--dg-color-background-success-default);
+  color: var(--dg-color-text-success-default);
 }
 
 .dg-badge-success-bold {
-  background-color: var(--dg-color-semantic-success-default);
+  background-color: var(--dg-color-background-success-bold);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-badge-warning {
-  background-color: var(--dg-color-semantic-warning-lowest);
-  color: var(--dg-color-semantic-warning-bold);
+  background-color: var(--dg-color-background-warning-default);
+  color: var(--dg-color-text-warning-default);
 }
 
 .dg-badge-warning-bold {
-  background-color: var(--dg-color-semantic-warning-default);
+  background-color: var(--dg-color-background-warning-bold);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-badge-error {
-  background-color: var(--dg-color-semantic-error-lowest);
-  color: var(--dg-color-semantic-error-bold);
+  background-color: var(--dg-color-background-error-default);
+  color: var(--dg-color-text-error-default);
 }
 
 .dg-badge-error-bold {
-  background-color: var(--dg-color-semantic-error-default);
+  background-color: var(--dg-color-background-error-bold);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-badge-new {
-  background-color: var(--dg-color-semantic-new-default);
+  background-color: var(--dg-color-background-discover-bold);
   color: var(--dg-color-text-inverse);
   font-weight: var(--dg-font-weight-semi-bold);
 }
@@ -1923,6 +2711,61 @@
   background-color: var(--dg-color-semantic-success-bold);
 }
 
+.dg-btn-success--hover,
+.dg-btn-success--hover:hover {
+  background-color: var(--dg-color-semantic-success-bold);
+}
+
+.dg-btn-success:focus,
+.dg-btn-success:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-success--focus,
+.dg-btn-success--focus:focus,
+.dg-btn-success--focus:focus-visible,
+.dg-btn-success--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-success:active {
+  background-color: var(--dg-color-semantic-success-bolder);
+}
+
+.dg-btn-success:focus:active,
+.dg-btn-success:focus-visible:active {
+  /* Active overrides focus - higher specificity (0,2,2) vs (0,1,2) */
+  background-color: var(--dg-color-semantic-success-bolder);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-success--active,
+.dg-btn-success--active:active,
+.dg-btn-success--active:hover,
+.dg-btn-success--active:focus {
+  background-color: var(--dg-color-semantic-success-bolder);
+}
+
+.dg-btn-success--active:focus,
+.dg-btn-success--active:focus-visible,
+.dg-btn-success--active:active:focus,
+.dg-btn-success--active:active:focus-visible {
+  /* Active modifier overrides focus */
+  background-color: var(--dg-color-semantic-success-bolder);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-success:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-success--disabled,
+.dg-btn-success--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .dg-btn-danger {
   background-color: var(--dg-color-semantic-error-default);
   color: var(--dg-color-text-inverse);
@@ -1931,6 +2774,61 @@
 
 .dg-btn-danger:hover {
   background-color: var(--dg-color-semantic-error-bold);
+}
+
+.dg-btn-danger--hover,
+.dg-btn-danger--hover:hover {
+  background-color: var(--dg-color-semantic-error-bold);
+}
+
+.dg-btn-danger:focus,
+.dg-btn-danger:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger--focus,
+.dg-btn-danger--focus:focus,
+.dg-btn-danger--focus:focus-visible,
+.dg-btn-danger--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger:active {
+  background-color: var(--dg-color-semantic-error-bolder);
+}
+
+.dg-btn-danger:focus:active,
+.dg-btn-danger:focus-visible:active {
+  /* Active overrides focus - higher specificity (0,2,2) vs (0,1,2) */
+  background-color: var(--dg-color-semantic-error-bolder);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger--active,
+.dg-btn-danger--active:active,
+.dg-btn-danger--active:hover,
+.dg-btn-danger--active:focus {
+  background-color: var(--dg-color-semantic-error-bolder);
+}
+
+.dg-btn-danger--active:focus,
+.dg-btn-danger--active:focus-visible,
+.dg-btn-danger--active:active:focus,
+.dg-btn-danger--active:active:focus-visible {
+  /* Active modifier overrides focus */
+  background-color: var(--dg-color-semantic-error-bolder);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-danger--disabled,
+.dg-btn-danger--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .dg-btn-danger-outline {
@@ -1943,58 +2841,160 @@
   background-color: var(--dg-color-semantic-error-lowest);
 }
 
+.dg-btn-danger-outline--hover,
+.dg-btn-danger-outline--hover:hover {
+  background-color: var(--dg-color-semantic-error-lowest);
+}
+
+.dg-btn-danger-outline:focus,
+.dg-btn-danger-outline:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger-outline--focus,
+.dg-btn-danger-outline--focus:focus,
+.dg-btn-danger-outline--focus:focus-visible,
+.dg-btn-danger-outline--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger-outline:active {
+  background-color: var(--dg-color-semantic-error-low);
+}
+
+.dg-btn-danger-outline:focus:active,
+.dg-btn-danger-outline:focus-visible:active {
+  /* Active overrides focus - higher specificity (0,2,2) vs (0,1,2) */
+  background-color: var(--dg-color-semantic-error-low);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger-outline--active,
+.dg-btn-danger-outline--active:active,
+.dg-btn-danger-outline--active:hover,
+.dg-btn-danger-outline--active:focus {
+  background-color: var(--dg-color-semantic-error-low);
+}
+
+.dg-btn-danger-outline--active:focus,
+.dg-btn-danger-outline--active:focus-visible,
+.dg-btn-danger-outline--active:active:focus,
+.dg-btn-danger-outline--active:active:focus-visible {
+  /* Active modifier overrides focus */
+  background-color: var(--dg-color-semantic-error-low);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger-outline:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-danger-outline--disabled,
+.dg-btn-danger-outline--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* --- Demo Card Variations --- */
-.dg-demo-card {
+.dg-showcase-card,
+.dg-border-card {
   background-color: var(--dg-color-background-default);
   border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
   border-radius: var(--dg-size-border-radius-lg);
   padding: var(--dg-spacing-inset-lg);
 }
 
-.dg-demo-card-compact {
+.dg-showcase-card-compact,
+.dg-border-card-compact {
   padding: var(--dg-spacing-inset-md);
 }
 
-.dg-demo-card-title {
+.dg-shadow-color-card-title,
+.dg-border-card-title {
   font-weight: var(--dg-font-weight-semi-bold);
   font-size: var(--dg-size-font-lg);
   margin: 0 0 var(--dg-spacing-space-sm) 0;
   color: var(--dg-color-text-bold);
 }
 
-.dg-demo-card-body {
+.dg-showcase-card-body {
   font-size: var(--dg-size-font-body);
   line-height: var(--dg-line-height-normal);
   color: var(--dg-color-text-default);
   margin: 0 0 var(--dg-spacing-space-md) 0;
 }
 
-.dg-demo-card-meta {
+.dg-shadow-color-card-meta,
+.dg-border-card-meta {
   font-size: var(--dg-size-font-caption);
   color: var(--dg-color-text-subtler);
   margin: 0;
 }
 
+/* Text card classes for Text Shortcuts demo */
+.dg-text-card {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
+  padding: var(--dg-spacing-inset-lg);
+}
+
+.dg-text-card-title {
+  color: var(--dg-color-text-bold);
+  font-size: var(--dg-size-font-lg);
+  font-weight: var(--dg-font-weight-semi-bold);
+  margin: 0 0 var(--dg-spacing-space-sm) 0;
+}
+
+.dg-text-card-body {
+  color: var(--dg-color-text-default);
+  line-height: var(--dg-line-height-normal);
+  margin: 0 0 var(--dg-spacing-space-md) 0;
+}
+
+.dg-text-card-meta {
+  color: var(--dg-color-text-subtler);
+  font-size: var(--dg-size-font-caption);
+  margin: 0;
+}
+
+.dg-card-subtle {
+  border: var(--dg-border-subtle);
+}
+
 .dg-card-outlined {
-  border: var(--dg-border-width-medium) solid var(--dg-color-alpha-neutral-4);
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-bold);
 }
 
 .dg-card-accent-info {
-  border-left: var(--dg-border-width-thick) solid var(--dg-color-semantic-info-default);
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-border-information);
   box-shadow: var(--dg-shadow-elevation-sm);
 }
 
-.dg-card-accent-info .dg-demo-card-title {
+.dg-card-accent-info .dg-shadow-color-card-title,
+.dg-card-accent-info .dg-border-card-title {
   color: var(--dg-color-semantic-info-bold);
 }
 
 .dg-card-accent-success {
-  border-left: var(--dg-border-width-thick) solid var(--dg-color-semantic-success-default);
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-border-success-bold);
   box-shadow: var(--dg-shadow-elevation-sm);
 }
 
-.dg-card-accent-success .dg-demo-card-title {
+.dg-card-accent-success .dg-shadow-color-card-title,
+.dg-card-accent-success .dg-border-card-title {
   color: var(--dg-color-semantic-success-bold);
+}
+
+.dg-card-accent-error {
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-border-error-bold);
+  box-shadow: var(--dg-shadow-elevation-sm);
+}
+
+.dg-card-accent-error .dg-shadow-color-card-title,
+.dg-card-accent-error .dg-border-card-title {
+  color: var(--dg-color-semantic-error-bold);
 }
 
 /* --- Typography Demo Elements --- */
@@ -2047,18 +3047,303 @@
   color: var(--dg-color-text-nav-default);
   font-weight: var(--dg-font-weight-semi-bold);
   text-decoration: none;
+  transition: color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+.dg-nav-primary:hover,
+.dg-nav-primary--hover,
+.dg-nav-primary--hover:hover {
+  color: var(--dg-color-text-nav-interaction-hover);
+}
+
+.dg-nav-primary:focus,
+.dg-nav-primary:focus-visible,
+.dg-nav-primary--focus,
+.dg-nav-primary--focus:focus,
+.dg-nav-primary--focus:focus-visible {
+  color: var(--dg-color-text-nav-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary:focus:hover,
+.dg-nav-primary:focus-visible:hover,
+.dg-nav-primary--focus:hover,
+.dg-nav-primary--focus:focus:hover,
+.dg-nav-primary--focus:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--hover:focus,
+.dg-nav-primary--hover:focus-visible,
+.dg-nav-primary--hover:focus:hover,
+.dg-nav-primary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary:active,
+.dg-nav-primary--active,
+.dg-nav-primary--active:active,
+.dg-nav-primary--active:hover {
+  color: var(--dg-color-text-nav-interaction-active);
+}
+
+.dg-nav-primary:focus:active,
+.dg-nav-primary:focus-visible:active,
+.dg-nav-primary--focus:active,
+.dg-nav-primary--focus:focus:active,
+.dg-nav-primary--focus:focus-visible:active {
+  /* Active overrides focus - show active color + focus indicator */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary:hover:focus:active,
+.dg-nav-primary:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--hover:active,
+.dg-nav-primary--hover:focus:active,
+.dg-nav-primary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--active:focus,
+.dg-nav-primary--active:focus-visible,
+.dg-nav-primary--active:active:focus,
+.dg-nav-primary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--selected {
+  color: var(--dg-color-text-nav-state-selected);
+  font-weight: var(--dg-font-weight-semi-bold);
 }
 
 .dg-nav-secondary {
   color: var(--dg-color-text-nav-secondary-default);
   font-weight: var(--dg-font-weight-medium);
   text-decoration: none;
+  transition: color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+.dg-nav-secondary:hover,
+.dg-nav-secondary--hover,
+.dg-nav-secondary--hover:hover {
+  color: var(--dg-color-text-nav-secondary-interaction-hover);
+}
+
+.dg-nav-secondary:focus,
+.dg-nav-secondary:focus-visible,
+.dg-nav-secondary--focus,
+.dg-nav-secondary--focus:focus,
+.dg-nav-secondary--focus:focus-visible {
+  color: var(--dg-color-text-nav-secondary-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary:focus:hover,
+.dg-nav-secondary:focus-visible:hover,
+.dg-nav-secondary--focus:hover,
+.dg-nav-secondary--focus:focus:hover,
+.dg-nav-secondary--focus:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-secondary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--hover:focus,
+.dg-nav-secondary--hover:focus-visible,
+.dg-nav-secondary--hover:focus:hover,
+.dg-nav-secondary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-secondary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary:active,
+.dg-nav-secondary--active,
+.dg-nav-secondary--active:active,
+.dg-nav-secondary--active:hover {
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+}
+
+.dg-nav-secondary:focus:active,
+.dg-nav-secondary:focus-visible:active,
+.dg-nav-secondary--focus:active,
+.dg-nav-secondary--focus:focus:active,
+.dg-nav-secondary--focus:focus-visible:active {
+  /* Active overrides focus - show active color + focus indicator */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary:hover:focus:active,
+.dg-nav-secondary:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--hover:active,
+.dg-nav-secondary--hover:focus:active,
+.dg-nav-secondary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--active:focus,
+.dg-nav-secondary--active:focus-visible,
+.dg-nav-secondary--active:active:focus,
+.dg-nav-secondary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--selected {
+  color: var(--dg-color-text-nav-secondary-state-selected);
+  font-weight: var(--dg-font-weight-semi-bold);
 }
 
 .dg-nav-tertiary {
   color: var(--dg-color-text-nav-tertiary-default);
-  font-weight: var(--dg-font-weight-normal);
+  font-weight: var(--dg-font-weight-regular);
   text-decoration: none;
+  transition: color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+.dg-nav-tertiary:hover,
+.dg-nav-tertiary--hover,
+.dg-nav-tertiary--hover:hover {
+  color: var(--dg-color-text-nav-tertiary-interaction-hover);
+}
+
+.dg-nav-tertiary:focus,
+.dg-nav-tertiary:focus-visible,
+.dg-nav-tertiary--focus,
+.dg-nav-tertiary--focus:focus,
+.dg-nav-tertiary--focus:focus-visible {
+  color: var(--dg-color-text-nav-tertiary-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary:focus:hover,
+.dg-nav-tertiary:focus-visible:hover,
+.dg-nav-tertiary--focus:hover,
+.dg-nav-tertiary--focus:focus:hover,
+.dg-nav-tertiary--focus:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-tertiary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--hover:focus,
+.dg-nav-tertiary--hover:focus-visible,
+.dg-nav-tertiary--hover:focus:hover,
+.dg-nav-tertiary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-tertiary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary:active,
+.dg-nav-tertiary--active,
+.dg-nav-tertiary--active:active,
+.dg-nav-tertiary--active:hover {
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+}
+
+.dg-nav-tertiary:focus:active,
+.dg-nav-tertiary:focus-visible:active,
+.dg-nav-tertiary--focus:active,
+.dg-nav-tertiary--focus:focus:active,
+.dg-nav-tertiary--focus:focus-visible:active {
+  /* Active overrides focus - show active color + focus indicator */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary:hover:focus:active,
+.dg-nav-tertiary:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--hover:active,
+.dg-nav-tertiary--hover:focus:active,
+.dg-nav-tertiary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--active:focus,
+.dg-nav-tertiary--active:focus-visible,
+.dg-nav-tertiary--active:active:focus,
+.dg-nav-tertiary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--selected {
+  color: var(--dg-color-text-nav-tertiary-state-selected);
+  font-weight: var(--dg-font-weight-medium);
 }
 
 .dg-breadcrumb {
@@ -2069,6 +3354,12 @@
 
 .dg-breadcrumb-separator {
   color: var(--dg-color-text-subtler);
+}
+
+/* Reset margin for text elements inside breadcrumb */
+.dg-breadcrumb .dg-text-body,
+.dg-breadcrumb span {
+  margin: 0;
 }
 
 /* --- Message Elements --- */
@@ -2109,25 +3400,26 @@
   transition: var(--dg-transition-all);
 }
 
-.dg-interactive-card:hover {
-  background-color: var(--dg-color-alpha-neutral-1);
+.dg-interactive-card:hover,
+.dg-interactive-card-hover {
+  background-color: var(--dg-color-background-card-interaction-hover);
   box-shadow: var(--dg-shadow-elevation-md);
 }
 
-.dg-interactive-card:active {
-  background-color: var(--dg-color-alpha-neutral-2);
+.dg-interactive-card:active,
+.dg-interactive-card-active {
+  background-color: var(--dg-color-background-card-interaction-active);
   box-shadow: var(--dg-shadow-elevation-sm);
 }
 
 .dg-interactive-card-selected {
-  background-color: var(--dg-color-primary-default);
-  border: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-card-state-selected);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-interactive-card-selected:hover,
 .dg-interactive-card-selected.dg-interactive-card-hover {
-  background-color: var(--dg-color-primary-hover-default);
+  background-color: var(--dg-color-primary-subtle);
   box-shadow: var(--dg-shadow-elevation-md);
 }
 
@@ -2138,16 +3430,6 @@
 .dg-interactive-card-selected .dg-interactive-card-desc {
   color: var(--dg-color-text-inverse);
   opacity: 0.85;
-}
-
-.dg-interactive-card-hover {
-  background-color: var(--dg-color-alpha-neutral-1);
-  box-shadow: var(--dg-shadow-elevation-md);
-}
-
-.dg-interactive-card-active {
-  background-color: var(--dg-color-alpha-neutral-2);
-  box-shadow: var(--dg-shadow-elevation-sm);
 }
 
 .dg-interactive-card-title {
@@ -2181,21 +3463,23 @@
   border-bottom: none;
 }
 
-/* Hover - but not on selected or disabled */
+/* Hover - reusing nav shortcut tokens */
 .dg-list-item:hover:not(.dg-list-item-selected):not(.dg-list-item-disabled),
 .dg-list-item-hover {
-  background-color: var(--dg-color-alpha-neutral-2);
+  background-color: var(--dg-color-background-nav-default-interaction-hover);
+  color: var(--dg-color-primary-default);
 }
 
-/* Active/Pressed (:active pseudo-class) */
-.dg-list-item:active,
+/* Active/Pressed - reusing nav shortcut tokens */
+.dg-list-item:active:not(.dg-list-item-selected):not(.dg-list-item-disabled),
 .dg-list-item-active {
-  background-color: var(--dg-color-alpha-neutral-3);
+  background-color: var(--dg-color-background-nav-default-interaction-active);
+  color: var(--dg-color-primary-default);
 }
 
-/* Selected - higher priority than hover/active */
+/* Selected - higher priority than hover/active (using shortcut token) */
 .dg-list-item-selected {
-  background-color: var(--dg-color-primary-subtler);
+  background-color: var(--dg-color-background-nav-default-state-activated);
   color: var(--dg-color-primary-bold);
 }
 
@@ -2231,24 +3515,30 @@
     background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
 }
 
-/* Hover - but not on selected or disabled */
+/* Hover - reusing nav shortcut tokens */
 .dg-tab:hover:not(.dg-tab-selected):not(.dg-tab-disabled),
 .dg-tab-hover {
-  color: var(--dg-color-text-default);
-  background-color: var(--dg-color-alpha-neutral-1);
-}
-
-/* Active/Pressed (:active pseudo-class) */
-.dg-tab:active,
-.dg-tab-active {
-  background-color: var(--dg-color-alpha-neutral-2);
-}
-
-/* Selected - higher priority than hover */
-.dg-tab-selected {
   color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-nav-default-interaction-hover);
+}
+
+/* Active/Pressed - reusing nav shortcut tokens */
+.dg-tab:active:not(.dg-tab-selected):not(.dg-tab-disabled),
+.dg-tab-active {
+  background-color: var(--dg-color-background-nav-default-interaction-active);
+  color: var(--dg-color-primary-default);
+}
+
+/* Selected - reusing nav shortcut tokens */
+.dg-tab-selected {
+  color: var(--dg-color-primary-bold);
   font-weight: var(--dg-font-weight-semi-bold);
-  border-bottom-color: var(--dg-color-primary-default);
+  border-bottom-color: var(--dg-color-primary-bold);
+  background-color: var(--dg-color-background-nav-default-state-activated);
+}
+
+.dg-tab-selected:hover {
+  background-color: var(--dg-color-primary-subtle);
 }
 
 /* Disabled - lowest priority */
@@ -2261,7 +3551,7 @@
 /* --- Nav Pills --- */
 .dg-nav-pills {
   display: flex;
-  background-color: var(--dg-color-background-bold);
+  background-color: var(--dg-color-alpha-neutral-1);
   border-radius: var(--dg-size-border-radius-lg);
   padding: var(--dg-spacing-space-xs);
   gap: var(--dg-spacing-space-xs);
@@ -2270,28 +3560,30 @@
 .dg-nav-pill {
   padding: var(--dg-spacing-inset-xs) var(--dg-spacing-inset-md);
   border-radius: var(--dg-size-border-radius-md);
+  background-color: transparent;
   color: var(--dg-color-text-subtle);
   cursor: pointer;
   transition: var(--dg-transition-colors);
 }
 
-/* Hover - but not on selected or disabled */
+/* Hover - reusing nav shortcut tokens */
 .dg-nav-pill:hover:not(.dg-nav-pill-selected):not(.dg-nav-pill-disabled),
 .dg-nav-pill-hover {
-  background-color: var(--dg-color-alpha-neutral-2);
+  background-color: var(--dg-color-background-nav-default-interaction-hover);
   color: var(--dg-color-primary-default);
 }
 
-/* Active/Pressed (:active pseudo-class) */
-.dg-nav-pill:active,
+/* Active/Pressed - reusing nav shortcut tokens */
+.dg-nav-pill:active:not(.dg-nav-pill-selected):not(.dg-nav-pill-disabled),
 .dg-nav-pill-active {
-  background-color: var(--dg-color-alpha-neutral-3);
+  background-color: var(--dg-color-background-nav-default-interaction-active);
+  color: var(--dg-color-primary-default);
 }
 
-/* Selected - the currently selected nav item */
+/* Selected - the currently selected nav item (using shortcut token) */
 .dg-nav-pill-selected {
-  background-color: var(--dg-color-primary-subtler);
-  color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-nav-default-state-activated);
+  color: var(--dg-color-primary-bold);
   font-weight: var(--dg-font-weight-semi-bold);
 }
 
@@ -2310,7 +3602,7 @@
 .dg-checkbox {
   width: var(--dg-spacing-space-lg);
   height: var(--dg-spacing-space-lg);
-  border: var(--dg-border-width-medium) solid var(--dg-color-alpha-neutral-4);
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-default);
   border-radius: var(--dg-size-border-radius-sm);
   background-color: var(--dg-color-background-default);
   display: flex;
@@ -2321,26 +3613,33 @@
 
 .dg-checkbox:hover,
 .dg-checkbox-hover {
-  border-color: var(--dg-color-primary-default);
+  border-color: var(--dg-color-border-checkbox-interaction-hover);
+}
+
+.dg-checkbox:focus,
+.dg-checkbox-focus {
+  border-color: var(--dg-color-border-checkbox-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+  outline: none;
 }
 
 .dg-checkbox-checked {
-  background-color: var(--dg-color-primary-default);
-  border-color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-checkbox-state-checked);
+  border-color: var(--dg-color-border-checkbox-state-checked);
   color: var(--dg-color-text-inverse);
   font-size: var(--dg-size-font-sm);
 }
 
 .dg-checkbox-disabled {
-  border-color: var(--dg-color-alpha-neutral-3);
+  border-color: var(--dg-color-border-checkbox-state-disabled);
   background-color: var(--dg-color-background-bold);
   opacity: 0.6;
   cursor: not-allowed;
 }
 
 .dg-toggle {
-  width: var(--dg-spacing-px48);
-  height: var(--dg-spacing-px24);
+  width: var(--dg-spacing-space-2xl);
+  height: var(--dg-spacing-space-lg);
   border-radius: var(--dg-size-border-radius-full);
   background-color: var(--dg-color-alpha-neutral-4);
   position: relative;
@@ -2354,74 +3653,135 @@
   border-radius: var(--dg-size-border-radius-full);
   background-color: var(--dg-color-background-default);
   position: absolute;
-  top: var(--dg-spacing-px2);
-  left: var(--dg-spacing-px2);
+  top: var(--dg-spacing-space-2xs);
+  left: var(--dg-spacing-space-2xs);
   box-shadow: var(--dg-shadow-elevation-sm);
   transition: transform var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
 }
 
+.dg-toggle:hover,
+.dg-toggle-hover {
+  background-color: var(--dg-color-alpha-neutral-5);
+}
+
+.dg-toggle:focus,
+.dg-toggle-focus {
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
 .dg-toggle-checked {
-  background-color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-checkbox-state-checked);
 }
 
 .dg-toggle-checked .dg-toggle-handle {
-  transform: translateX(var(--dg-spacing-px24));
+  transform: translateX(var(--dg-spacing-space-lg));
+}
+
+.dg-toggle-disabled {
+  background-color: var(--dg-color-background-bold);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Radio Demo --- */
+.dg-radio {
+  width: var(--dg-spacing-space-lg);
+  height: var(--dg-spacing-space-lg);
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-full);
+  background-color: var(--dg-color-background-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+.dg-radio:hover,
+.dg-radio-hover {
+  border-color: var(--dg-color-border-radio-interaction-hover);
+}
+
+.dg-radio:focus,
+.dg-radio-focus {
+  border-color: var(--dg-color-border-radio-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+  outline: none;
+}
+
+.dg-radio-checked {
+  border-color: var(--dg-color-border-radio-state-checked);
+}
+
+.dg-radio-dot {
+  width: var(--dg-spacing-space-sm);
+  height: var(--dg-spacing-space-sm);
+  border-radius: var(--dg-size-border-radius-full);
+  background-color: var(--dg-color-background-radio-checkmark);
+}
+
+.dg-radio-disabled {
+  border-color: var(--dg-color-border-subtle);
+  background-color: var(--dg-color-background-bold);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* State demo containers */
-.dg-state-demo {
+.dg-state-showcase {
   display: flex;
   gap: var(--dg-spacing-gap-xl);
   flex-wrap: wrap;
   align-items: flex-start;
 }
 
-.dg-state-demo-section {
+.dg-state-showcase-section {
   display: flex;
   flex-direction: column;
 }
 
-.dg-state-demo-label {
+.dg-state-showcase-label {
   font-weight: var(--dg-font-weight-semi-bold);
   margin-bottom: var(--dg-spacing-space-sm);
   font-size: var(--dg-size-font-caption);
 }
 
-.dg-state-demo-row {
+.dg-state-showcase-row {
   display: flex;
   gap: var(--dg-spacing-gap-lg);
   align-items: flex-start;
 }
 
-.dg-state-demo-item {
+.dg-state-showcase-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--dg-spacing-space-xs);
 }
 
-.dg-state-demo-item-label {
+.dg-state-showcase-item-label {
   font-size: var(--dg-size-font-caption);
   color: var(--dg-color-text-subtle);
   white-space: nowrap;
 }
 
 /* Legacy support for old labels structure */
-.dg-state-demo-labels {
+.dg-state-showcase-labels {
   display: flex;
   gap: var(--dg-spacing-gap-lg);
-  margin-top: var(--dg-spacing-px4);
+  margin-top: var(--dg-spacing-space-xs);
   font-size: var(--dg-size-font-caption);
   color: var(--dg-color-text-subtle);
 }
 
-.dg-state-demo-label-item {
+.dg-state-showcase-label-item {
   min-width: var(--dg-spacing-space-lg);
   text-align: center;
   white-space: nowrap;
 }
 
-.dg-state-demo-label-item-wide {
+.dg-state-showcase-label-item-wide {
   min-width: var(--dg-spacing-stack-sm);
   text-align: center;
   white-space: nowrap;
@@ -2438,12 +3798,12 @@
 
 .dg-badge-interactive:hover,
 .dg-badge-interactive-hover {
-  background-color: var(--dg-color-alpha-neutral-4);
+  background-color: var(--dg-color-background-badge-interaction-hover);
 }
 
 .dg-badge-interactive:active,
 .dg-badge-interactive-active {
-  background-color: var(--dg-color-alpha-neutral-5);
+  background-color: var(--dg-color-background-badge-interaction-active);
 }
 
 /* Removable tag */
@@ -2451,11 +3811,11 @@
   display: inline-flex;
   align-items: center;
   gap: var(--dg-spacing-space-xs);
-  padding: var(--dg-spacing-px4) var(--dg-spacing-space-sm) var(--dg-spacing-px4)
+  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-sm) var(--dg-spacing-space-xs)
     var(--dg-spacing-space-sm);
   border-radius: var(--dg-size-border-radius-sm);
   font-size: var(--dg-size-font-caption);
-  background-color: var(--dg-color-primary-default);
+  background-color: var(--dg-color-background-button-default);
   color: var(--dg-color-text-inverse);
 }
 
@@ -2465,48 +3825,185 @@
   justify-content: center;
   width: var(--dg-spacing-space-md);
   height: var(--dg-spacing-space-md);
-  border-radius: var(--dg-size-border-radius-xs);
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: var(--dg-size-border-radius-sm);
+  background: transparent;
   cursor: pointer;
   color: inherit;
   font-size: var(--dg-size-font-caption);
+  font-family: inherit;
+  line-height: 1;
   transition: background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.dg-tag-remove:hover,
-.dg-tag-remove-hover {
-  background-color: var(--dg-color-primary-hover-default);
+/* Reuse button interaction tokens for all states */
+.dg-tag-remove:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
+}
+
+.dg-tag-remove--hover,
+.dg-tag-remove--hover:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
+}
+
+.dg-tag-remove:focus,
+.dg-tag-remove:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove:focus:hover,
+.dg-tag-remove:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--hover:focus,
+.dg-tag-remove--hover:focus-visible,
+.dg-tag-remove--hover:focus:hover,
+.dg-tag-remove--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove:active,
+.dg-tag-remove:focus:active,
+.dg-tag-remove:focus-visible:active {
+  /* Active state overrides hover and focus */
+  background-color: var(--dg-color-background-button-interaction-active);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--hover:active,
+.dg-tag-remove--hover:focus:active,
+.dg-tag-remove--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  background-color: var(--dg-color-background-button-interaction-active);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--focus,
+.dg-tag-remove--focus:focus,
+.dg-tag-remove--focus:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--focus:hover,
+.dg-tag-remove--focus:focus:hover,
+.dg-tag-remove--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--focus:active,
+.dg-tag-remove--focus:active:focus,
+.dg-tag-remove--focus:active:focus-visible,
+.dg-tag-remove--focus:focus:active,
+.dg-tag-remove--focus:focus-visible:active {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-active);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--active,
+.dg-tag-remove--active:active,
+.dg-tag-remove--active:hover {
+  background-color: var(--dg-color-background-button-interaction-active);
+}
+
+.dg-tag-remove--active:focus,
+.dg-tag-remove--active:focus-visible,
+.dg-tag-remove--active:active:focus,
+.dg-tag-remove--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-interaction-active);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove:disabled {
+  background-color: var(--dg-color-background-button-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-tag-remove--disabled,
+.dg-tag-remove--disabled:disabled {
+  background-color: var(--dg-color-background-button-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Loading states */
 /* Loading state modifier - use with .dg-btn .dg-btn-primary */
-.dg-btn-loading {
-  color: transparent;
-  position: relative;
+.dg-btn--loading {
+  display: inline-grid;
+  place-items: center;
   pointer-events: none;
+  cursor: wait;
 }
 
-.dg-btn-loading span {
-  opacity: 0;
+.dg-btn--loading:focus,
+.dg-btn--loading:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.dg-btn--loading > * {
+  grid-area: 1 / 1;
+}
+
+.dg-btn--loading span:not(.dg-spinner) {
+  visibility: hidden;
 }
 
 .dg-spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--dg-color-alpha-neutral-3);
+  width: var(--dg-spacing-space-md);
+  height: var(--dg-spacing-space-md);
+  border: var(--dg-border-width-medium) solid var(--dg-color-alpha-neutral-3);
   border-top-color: var(--dg-color-text-inverse);
   border-radius: var(--dg-size-border-radius-full);
-  animation: dg-spin 0.8s linear infinite;
+  animation: dg-spin var(--dg-duration-slowest) linear infinite;
 }
 
 .dg-spinner-primary {
   border-top-color: var(--dg-color-primary-default);
-  width: 24px;
-  height: 24px;
-  border-width: 3px;
+  width: var(--dg-spacing-space-xl);
+  height: var(--dg-spacing-space-xl);
+  border-width: var(--dg-border-width-thick);
 }
 
-.dg-btn-loading .dg-spinner {
+/* Button with loading overlay - keeps text visible under mask */
+.dg-btn--loading-overlay {
+  position: relative;
+  pointer-events: none;
+  cursor: wait;
+}
+
+.dg-btn--loading-mask {
   position: absolute;
+  inset: 0;
+  background-color: var(--dg-color-background-loading-overlay);
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dg-loading-overlay {
@@ -2524,7 +4021,7 @@
 .dg-loading-overlay-mask {
   position: absolute;
   inset: 0;
-  background-color: var(--dg-color-alpha-neutral-4);
+  background-color: var(--dg-color-background-loading-overlay);
   border-radius: var(--dg-size-border-radius-lg);
   display: flex;
   align-items: center;
@@ -2539,19 +4036,19 @@
 }
 
 /* Transition demo cards */
-.dg-transition-demo-section {
+.dg-transition-showcase-section {
   display: flex;
   flex-direction: column;
 }
 
 /* Transition speed modifier for buttons - use with .dg-btn .dg-btn-primary */
-.dg-btn-transition-fast {
+.dg-btn--transition-fast {
   transition:
     background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out),
     transform var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
 }
 
-.dg-btn-transition-fast:hover {
+.dg-btn--transition-fast:hover {
   transform: translateY(-1px);
 }
 
@@ -2604,7 +4101,12 @@
 
 .dg-dropdown-item:hover,
 .dg-dropdown-item-hover {
-  background-color: var(--dg-color-alpha-neutral-1);
+  background-color: var(--dg-color-background-option-interaction-hover);
+}
+
+.dg-dropdown-item:active,
+.dg-dropdown-item-active {
+  background-color: var(--dg-color-background-option-interaction-active);
 }
 
 .dg-dropdown-item-danger {
@@ -2628,6 +4130,52 @@
   font-size: var(--dg-size-font-caption);
   color: var(--dg-color-text-subtle);
   font-weight: var(--dg-font-weight-medium);
+}
+
+/* --- Select Trigger --- */
+.dg-select {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dg-spacing-space-sm);
+  padding: var(--dg-spacing-inset-sm) var(--dg-spacing-inset-md);
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-md);
+  cursor: pointer;
+  min-width: 180px;
+  transition: var(--dg-transition-colors);
+}
+
+.dg-select:hover,
+.dg-select-hover {
+  background-color: var(--dg-color-background-select-interaction-hover);
+}
+
+.dg-select:active,
+.dg-select-active {
+  background-color: var(--dg-color-background-select-interaction-active);
+}
+
+.dg-select-opened {
+  background-color: var(--dg-color-background-select-state-opened);
+  border-color: var(--dg-color-primary-default);
+}
+
+.dg-select-disabled {
+  background-color: var(--dg-color-background-bold);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.dg-select-arrow {
+  color: var(--dg-color-text-subtle);
+  transition: transform var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+.dg-select-opened .dg-select-arrow {
+  transform: rotate(180deg);
 }
 
 /* --- Modal Demo --- */
@@ -3005,7 +4553,7 @@
     0 8px 24px var(--dg-color-alpha-neutral-5);
 }
 
-/* .dg-btn-pressed is defined in button section above */
+/* .dg-btn--pressed is defined in button section above */
 
 .dg-input-inset {
   padding: var(--dg-spacing-inset-sm);

@@ -33,6 +33,30 @@ export default {
             }
           }
         },
+        secondary: {
+          state: {
+            disabled: {
+              value: "{color.text.subtlest}",
+              type: 'color'
+            }
+          }
+        },
+        outline: {
+          state: {
+            disabled: {
+              value: "{color.primary.blur}",
+              type: 'color'
+            }
+          }
+        },
+        ghost: {
+          state: {
+            disabled: {
+              value: "{color.text.subtlest}",
+              type: 'color'
+            }
+          }
+        },
         wireframe: {
           state: {
             disabled: {
@@ -79,6 +103,30 @@ export default {
             }
           }
         },
+        secondary: {
+          state: {
+            disabled: {
+              value: "{color.background.button.secondary.state.disabled}",
+              type: 'color'
+            }
+          }
+        },
+        outline: {
+          state: {
+            disabled: {
+              value: "{color.primary.blur}",
+              type: 'color'
+            }
+          }
+        },
+        ghost: {
+          state: {
+            disabled: {
+              value: "transparent",
+              type: 'color'
+            }
+          }
+        },
         wireframe: {
           state: {
             disabled: {
@@ -90,8 +138,16 @@ export default {
       },
       input: {
         state: {
+          valid: {
+            value: "{color.semantic.success.DEFAULT}",
+            type: 'color'
+          },
           invalid: {
             value: "{color.semantic.error.DEFAULT}",
+            type: 'color'
+          },
+          warning: {
+            value: "{color.semantic.warning.DEFAULT}",
             type: 'color'
           },
           disabled: {
@@ -145,6 +201,30 @@ export default {
           state: {
             disabled: {
               value: "{color.alpha.neutral.2}",
+              type: 'color'
+            }
+          }
+        },
+        secondary: {
+          state: {
+            disabled: {
+              value: "{color.secondary.blur}",
+              type: 'color'
+            }
+          }
+        },
+        outline: {
+          state: {
+            disabled: {
+              value: "transparent",
+              type: 'color'
+            }
+          }
+        },
+        ghost: {
+          state: {
+            disabled: {
+              value: "transparent",
               type: 'color'
             }
           }

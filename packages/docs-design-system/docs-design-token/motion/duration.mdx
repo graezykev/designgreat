@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Duration
 
@@ -12,27 +12,28 @@ Duration tokens define how long animations and transitions should last. They pro
 
 ## Core Duration Scale
 
-| Token | CSS Variable | Value | Use Case |
-|-------|--------------|-------|----------|
-| <CopyableCode>duration.instant</CopyableCode> | <CopyableCode>--dg-duration-instant</CopyableCode> | 0ms | No animation |
-| <CopyableCode>duration.fast</CopyableCode> | <CopyableCode>--dg-duration-fast</CopyableCode> | 100ms | Micro-interactions, hover |
-| <CopyableCode bold>duration.normal</CopyableCode> | <CopyableCode bold>--dg-duration-normal</CopyableCode> | 200ms | Standard transitions |
-| <CopyableCode>duration.slow</CopyableCode> | <CopyableCode>--dg-duration-slow</CopyableCode> | 300ms | Emphasis, page changes |
-| <CopyableCode>duration.slower</CopyableCode> | <CopyableCode>--dg-duration-slower</CopyableCode> | 500ms | Complex animations, modals |
+| Token                                             | CSS Variable                                           | Value | Use Case                        |
+| ------------------------------------------------- | ------------------------------------------------------ | ----- | ------------------------------- |
+| <CopyableCode>duration.instant</CopyableCode>     | <CopyableCode>--dg-duration-instant</CopyableCode>     | 0ms   | No animation                    |
+| <CopyableCode>duration.fast</CopyableCode>        | <CopyableCode>--dg-duration-fast</CopyableCode>        | 100ms | Micro-interactions, hover       |
+| <CopyableCode bold>duration.normal</CopyableCode> | <CopyableCode bold>--dg-duration-normal</CopyableCode> | 200ms | Standard transitions            |
+| <CopyableCode>duration.slow</CopyableCode>        | <CopyableCode>--dg-duration-slow</CopyableCode>        | 300ms | Emphasis, page changes          |
+| <CopyableCode>duration.slower</CopyableCode>      | <CopyableCode>--dg-duration-slower</CopyableCode>      | 500ms | Complex animations, modals      |
+| <CopyableCode>duration.slowest</CopyableCode>     | <CopyableCode>--dg-duration-slowest</CopyableCode>     | 800ms | Continuous animations, spinners |
 
 ## Semantic Durations
 
 Semantic durations map to specific use cases:
 
-| Token | CSS Variable | Reference | Use Case |
-|-------|--------------|-----------|----------|
-| <CopyableCode>duration.transition.hover</CopyableCode> | <CopyableCode>--dg-duration-transition-hover</CopyableCode> | `{duration.fast}` | Hover state changes |
-| <CopyableCode>duration.transition.focus</CopyableCode> | <CopyableCode>--dg-duration-transition-focus</CopyableCode> | `{duration.fast}` | Focus indicators |
-| <CopyableCode>duration.transition.expand</CopyableCode> | <CopyableCode>--dg-duration-transition-expand</CopyableCode> | `{duration.normal}` | Expanding elements |
+| Token                                                     | CSS Variable                                                   | Reference           | Use Case            |
+| --------------------------------------------------------- | -------------------------------------------------------------- | ------------------- | ------------------- |
+| <CopyableCode>duration.transition.hover</CopyableCode>    | <CopyableCode>--dg-duration-transition-hover</CopyableCode>    | `{duration.fast}`   | Hover state changes |
+| <CopyableCode>duration.transition.focus</CopyableCode>    | <CopyableCode>--dg-duration-transition-focus</CopyableCode>    | `{duration.fast}`   | Focus indicators    |
+| <CopyableCode>duration.transition.expand</CopyableCode>   | <CopyableCode>--dg-duration-transition-expand</CopyableCode>   | `{duration.normal}` | Expanding elements  |
 | <CopyableCode>duration.transition.collapse</CopyableCode> | <CopyableCode>--dg-duration-transition-collapse</CopyableCode> | `{duration.normal}` | Collapsing elements |
-| <CopyableCode>duration.transition.fade</CopyableCode> | <CopyableCode>--dg-duration-transition-fade</CopyableCode> | `{duration.normal}` | Fade in/out |
-| <CopyableCode>duration.transition.slide</CopyableCode> | <CopyableCode>--dg-duration-transition-slide</CopyableCode> | `{duration.slow}` | Slide animations |
-| <CopyableCode>duration.transition.modal</CopyableCode> | <CopyableCode>--dg-duration-transition-modal</CopyableCode> | `{duration.slower}` | Modal open/close |
+| <CopyableCode>duration.transition.fade</CopyableCode>     | <CopyableCode>--dg-duration-transition-fade</CopyableCode>     | `{duration.normal}` | Fade in/out         |
+| <CopyableCode>duration.transition.slide</CopyableCode>    | <CopyableCode>--dg-duration-transition-slide</CopyableCode>    | `{duration.slow}`   | Slide animations    |
+| <CopyableCode>duration.transition.modal</CopyableCode>    | <CopyableCode>--dg-duration-transition-modal</CopyableCode>    | `{duration.slower}` | Modal open/close    |
 
 ## Interactive Demo
 
@@ -95,6 +96,33 @@ Semantic durations map to specific use cases:
 </TabItem>
 </Tabs>
 
+## Usage Examples
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-design-token'
+
+// Duration styles
+const durations = {
+  instant: tokens.duration.instant,
+  fast: tokens.duration.fast,
+  normal: tokens.duration.normal,
+  slow: tokens.duration.slow,
+  slower: tokens.duration.slower,
+  slowest: tokens.duration.slowest
+}
+
+// Component example
+function AnimatedCard({ duration = 'normal', children }) {
+  return (
+    <div style={{ transitionDuration: `var(--dg-duration-${duration})` }}>
+      {children}
+    </div>
+  )
+}
+```
+
 ## Usage Guidelines
 
 ### ✅ Do
@@ -130,6 +158,7 @@ packages/lib-design-token/src/tokens/
     normal: { value: 200, type: 'time' },
     slow: { value: 300, type: 'time' },
     slower: { value: 500, type: 'time' },
+    slowest: { value: 800, type: 'time' },
     transition: {
       hover: { value: '{duration.fast}', type: 'time' },
       // ...
@@ -143,4 +172,3 @@ packages/lib-design-token/src/tokens/
 - [Easing](./easing) — Cubic bezier curves
 - [Transitions](./transitions) — Pre-built transition presets
 - [Interactive States](/design-token/colors/shortcuts/interactive-state) — Using duration with states
-

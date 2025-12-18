@@ -2,9 +2,9 @@
 sidebar_position: 5
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Interactive State Shortcuts
 
@@ -30,23 +30,13 @@ The design system includes pre-defined interaction and state tokens for buttons,
 
 Background colors for button states:
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.background.button.interaction.hover` | `--dg-color-background-button-interaction-hover` | Primary button hover |
-| `color.background.button.interaction.focus` | `--dg-color-background-button-interaction-focus` | Primary button focus |
-| `color.background.button.interaction.active` | `--dg-color-background-button-interaction-active` | Primary button active |
-| `color.background.button.state.disabled` | `--dg-color-background-button-state-disabled` | Primary button disabled |
-
-### Subtle Button Interaction Colors
-
-For subtle/neutral buttons:
-
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.background.button.subtle.interaction.hover` | `--dg-color-background-button-subtle-interaction-hover` | Subtle button hover |
-| `color.background.button.subtle.interaction.focus` | `--dg-color-background-button-subtle-interaction-focus` | Subtle button focus |
-| `color.background.button.subtle.interaction.active` | `--dg-color-background-button-subtle-interaction-active` | Subtle button active |
-| `color.background.button.subtle.state.disabled` | `--dg-color-background-button-subtle-state-disabled` | Subtle button disabled |
+|                                                                                                                      | Token                                        | CSS Variable                                      | Use Case                |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------- | ----------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-default)'}}></div>            | `color.background.button.DEFAULT`            | `--dg-color-background-button-default`            | Primary button default  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-interaction-hover)'}}></div>  | `color.background.button.interaction.hover`  | `--dg-color-background-button-interaction-hover`  | Primary button hover    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-interaction-focus)'}}></div>  | `color.background.button.interaction.focus`  | `--dg-color-background-button-interaction-focus`  | Primary button focus    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-interaction-active)'}}></div> | `color.background.button.interaction.active` | `--dg-color-background-button-interaction-active` | Primary button active   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-state-disabled)'}}></div>     | `color.background.button.state.disabled`     | `--dg-color-background-button-state-disabled`     | Primary button disabled |
 
 ### Primary Buttons
 
@@ -55,45 +45,95 @@ For subtle/neutral buttons:
 
 <div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
   <button className="dg-btn dg-btn-primary">Default</button>
-  <button className="dg-btn dg-btn-primary dg-btn-hover">Hover</button>
-  <button className="dg-btn dg-btn-primary dg-btn-active">Active</button>
-  <button className="dg-btn dg-btn-primary dg-btn-focus">Focused</button>
-  <button className="dg-btn dg-btn-primary dg-btn-disabled" disabled>Disabled</button>
+  <button className="dg-btn dg-btn-primary dg-btn-primary--hover">Hover</button>
+  <button className="dg-btn dg-btn-primary dg-btn-primary--active">Active</button>
+  <button className="dg-btn dg-btn-primary dg-btn-primary--focus">Focused</button>
+  <button className="dg-btn dg-btn-primary dg-btn-primary--disabled" disabled>
+    Disabled
+  </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
 ```html
-<button class="btn-primary">Default</button>
-<button class="btn-primary" disabled>Disabled</button>
+<button class="dg-btn dg-btn-primary">Default</button>
+<button class="dg-btn dg-btn-primary dg-btn-primary--hover">Hover</button>
+<button class="dg-btn dg-btn-primary dg-btn-primary--active">Active</button>
+<button class="dg-btn dg-btn-primary dg-btn-primary--focus">Focused</button>
+<button class="dg-btn dg-btn-primary dg-btn-primary--disabled" disabled>Disabled</button>
 ```
 
 ```css
-.btn-primary {
-  background-color: var(--dg-color-primary-default);
+/* Primary button - using shortcut tokens */
+.dg-btn-primary {
+  background-color: var(--dg-color-background-button-default);
   color: var(--dg-color-text-inverse);
-  padding: 10px 20px;
+  padding: var(--dg-spacing-inset-sm) var(--dg-spacing-inset-lg);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--dg-size-border-radius-button);
 }
 
-.btn-primary:hover {
-  background-color: var(--dg-color-primary-bold);
+.dg-btn-primary:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
 }
 
-.btn-primary:active {
-  background-color: var(--dg-color-primary-subtle);
+.dg-btn-primary--hover,
+.dg-btn-primary--hover:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
 }
 
-.btn-primary:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+.dg-btn-primary:focus,
+.dg-btn-primary:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
 }
 
-.btn-primary:disabled {
-  background-color: var(--dg-color-primary-blur);
+.dg-btn-primary--focus,
+.dg-btn-primary--focus:focus,
+.dg-btn-primary--focus:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--focus:hover,
+.dg-btn-primary--focus:focus:hover,
+.dg-btn-primary--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary:active {
+  background-color: var(--dg-color-background-button-interaction-active);
+}
+
+.dg-btn-primary--focus:active,
+.dg-btn-primary--focus:active:focus,
+.dg-btn-primary--focus:active:focus-visible {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary--active,
+.dg-btn-primary--active:active,
+.dg-btn-primary--active:hover {
+  background-color: var(--dg-color-background-button-interaction-active);
+}
+
+.dg-btn-primary--active:focus,
+.dg-btn-primary--active:focus-visible,
+.dg-btn-primary--active:active:focus,
+.dg-btn-primary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-primary:disabled,
+.dg-btn-primary--disabled {
+  background-color: var(--dg-color-background-button-state-disabled);
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -102,6 +142,332 @@ For subtle/neutral buttons:
 </TabItem>
 </Tabs>
 
+### Removable Tags
+
+Tags reuse primary button interaction tokens:
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center">
+  <span className="dg-tag">
+    Tag{' '}
+    <button type="button" className="dg-tag-remove" aria-label="Remove tag">
+      ×
+    </button>
+  </span>
+  <span className="dg-tag">
+    Tag{' '}
+    <button type="button" className="dg-tag-remove dg-tag-remove--hover" aria-label="Remove tag">
+      ×
+    </button>
+  </span>
+  <span className="dg-tag">
+    Tag{' '}
+    <button type="button" className="dg-tag-remove dg-tag-remove--active" aria-label="Remove tag">
+      ×
+    </button>
+  </span>
+  <span className="dg-tag">
+    Tag{' '}
+    <button type="button" className="dg-tag-remove dg-tag-remove--focus" aria-label="Remove tag">
+      ×
+    </button>
+  </span>
+  <span className="dg-tag">
+    Tag{' '}
+    <button
+      type="button"
+      className="dg-tag-remove dg-tag-remove--disabled"
+      aria-label="Remove tag"
+      disabled
+    >
+      ×
+    </button>
+  </span>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<span class="dg-tag"
+  >Tag <button type="button" class="dg-tag-remove" aria-label="Remove tag">×</button></span
+>
+<span class="dg-tag"
+  >Tag
+  <button type="button" class="dg-tag-remove dg-tag-remove--hover" aria-label="Remove tag">
+    ×
+  </button></span
+>
+<span class="dg-tag"
+  >Tag
+  <button type="button" class="dg-tag-remove dg-tag-remove--active" aria-label="Remove tag">
+    ×
+  </button></span
+>
+<span class="dg-tag"
+  >Tag
+  <button type="button" class="dg-tag-remove dg-tag-remove--focus" aria-label="Remove tag">
+    ×
+  </button></span
+>
+<span class="dg-tag"
+  >Tag
+  <button
+    type="button"
+    class="dg-tag-remove dg-tag-remove--disabled"
+    aria-label="Remove tag"
+    disabled
+  >
+    ×
+  </button></span
+>
+```
+
+```css
+/* Tag - reuses button shortcut tokens */
+.dg-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dg-spacing-space-xs);
+  background-color: var(--dg-color-background-button-default);
+  color: var(--dg-color-text-inverse);
+  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-sm);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-tag-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--dg-spacing-space-md);
+  height: var(--dg-spacing-space-md);
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: var(--dg-size-border-radius-sm);
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  font-size: var(--dg-size-font-caption);
+  font-family: inherit;
+  line-height: 1;
+  transition: background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Remove button states - reuse button interaction shortcut tokens */
+.dg-tag-remove:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
+}
+
+.dg-tag-remove--hover,
+.dg-tag-remove--hover:hover {
+  background-color: var(--dg-color-background-button-interaction-hover);
+}
+
+.dg-tag-remove:focus,
+.dg-tag-remove:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--focus,
+.dg-tag-remove--focus:focus,
+.dg-tag-remove--focus:focus-visible {
+  background-color: var(--dg-color-background-button-interaction-focus);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--focus:hover,
+.dg-tag-remove--focus:focus:hover,
+.dg-tag-remove--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-hover);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove:active {
+  background-color: var(--dg-color-background-button-interaction-active);
+}
+
+.dg-tag-remove--focus:active,
+.dg-tag-remove--focus:active:focus,
+.dg-tag-remove--focus:active:focus-visible {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-interaction-active);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove--active,
+.dg-tag-remove--active:active,
+.dg-tag-remove--active:hover {
+  background-color: var(--dg-color-background-button-interaction-active);
+}
+
+.dg-tag-remove--active:focus,
+.dg-tag-remove--active:focus-visible,
+.dg-tag-remove--active:active:focus,
+.dg-tag-remove--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-interaction-active);
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-tag-remove:disabled {
+  background-color: var(--dg-color-background-button-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-tag-remove--disabled,
+.dg-tag-remove--disabled:disabled {
+  background-color: var(--dg-color-background-button-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Subtle Button Interaction Colors
+
+For subtle/neutral buttons:
+
+|                                                                                                                             | Token                                               | CSS Variable                                             | Use Case               |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------- | ---------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-subtle-default)'}}></div>            | `color.background.button.subtle.DEFAULT`            | `--dg-color-background-button-subtle-default`            | Subtle button default  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-subtle-interaction-hover)'}}></div>  | `color.background.button.subtle.interaction.hover`  | `--dg-color-background-button-subtle-interaction-hover`  | Subtle button hover    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-subtle-interaction-focus)'}}></div>  | `color.background.button.subtle.interaction.focus`  | `--dg-color-background-button-subtle-interaction-focus`  | Subtle button focus    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-subtle-interaction-active)'}}></div> | `color.background.button.subtle.interaction.active` | `--dg-color-background-button-subtle-interaction-active` | Subtle button active   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-subtle-state-disabled)'}}></div>     | `color.background.button.subtle.state.disabled`     | `--dg-color-background-button-subtle-state-disabled`     | Subtle button disabled |
+
+### Subtle Buttons
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-subtle">Default</button>
+  <button className="dg-btn dg-btn-subtle dg-btn-subtle--hover">Hover</button>
+  <button className="dg-btn dg-btn-subtle dg-btn-subtle--active">Active</button>
+  <button className="dg-btn dg-btn-subtle dg-btn-subtle--focus">Focused</button>
+  <button className="dg-btn dg-btn-subtle dg-btn-subtle--disabled" disabled>
+    Disabled
+  </button>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<button class="dg-btn dg-btn-subtle">Default</button>
+<button class="dg-btn dg-btn-subtle dg-btn-subtle--hover">Hover</button>
+<button class="dg-btn dg-btn-subtle dg-btn-subtle--active">Active</button>
+<button class="dg-btn dg-btn-subtle dg-btn-subtle--focus">Focused</button>
+<button class="dg-btn dg-btn-subtle dg-btn-subtle--disabled" disabled>Disabled</button>
+```
+
+```css
+/* Subtle button - using shortcut tokens */
+.dg-btn-subtle {
+  background-color: var(--dg-color-background-button-subtle-default);
+  color: var(--dg-color-text-default);
+  border: none;
+}
+
+.dg-btn-subtle:hover {
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+}
+
+.dg-btn-subtle--hover,
+.dg-btn-subtle--hover:hover {
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+}
+
+.dg-btn-subtle:focus,
+.dg-btn-subtle:focus-visible {
+  background-color: var(--dg-color-background-button-subtle-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--focus,
+.dg-btn-subtle--focus:focus,
+.dg-btn-subtle--focus:focus-visible {
+  background-color: var(--dg-color-background-button-subtle-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--focus:hover,
+.dg-btn-subtle--focus:focus:hover,
+.dg-btn-subtle--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-subtle-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle:active {
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+}
+
+.dg-btn-subtle--focus:active,
+.dg-btn-subtle--focus:active:focus,
+.dg-btn-subtle--focus:active:focus-visible {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle--active,
+.dg-btn-subtle--active:active,
+.dg-btn-subtle--active:hover {
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+}
+
+.dg-btn-subtle--active:focus,
+.dg-btn-subtle--active:focus-visible,
+.dg-btn-subtle--active:active:focus,
+.dg-btn-subtle--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-subtle-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-subtle:disabled {
+  background-color: var(--dg-color-background-button-subtle-state-disabled);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+}
+
+.dg-btn-subtle--disabled,
+.dg-btn-subtle--disabled:disabled {
+  background-color: var(--dg-color-background-button-subtle-state-disabled);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Secondary Button Interaction Colors
+
+|                                                                                                                                | Token                                                  | CSS Variable                                                | Use Case                  |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------------------- | ------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-secondary-default)'}}></div>            | `color.background.button.secondary.DEFAULT`            | `--dg-color-background-button-secondary-default`            | Secondary button default  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-secondary-interaction-hover)'}}></div>  | `color.background.button.secondary.interaction.hover`  | `--dg-color-background-button-secondary-interaction-hover`  | Secondary button hover    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-secondary-interaction-focus)'}}></div>  | `color.background.button.secondary.interaction.focus`  | `--dg-color-background-button-secondary-interaction-focus`  | Secondary button focus    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-secondary-interaction-active)'}}></div> | `color.background.button.secondary.interaction.active` | `--dg-color-background-button-secondary-interaction-active` | Secondary button active   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-secondary-state-disabled)'}}></div>     | `color.background.button.secondary.state.disabled`     | `--dg-color-background-button-secondary-state-disabled`     | Secondary button disabled |
+
 ### Secondary Buttons
 
 <Tabs>
@@ -109,10 +475,12 @@ For subtle/neutral buttons:
 
 <div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
   <button className="dg-btn dg-btn-secondary">Default</button>
-  <button className="dg-btn dg-btn-secondary dg-btn-hover">Hover</button>
-  <button className="dg-btn dg-btn-secondary dg-btn-active">Active</button>
-  <button className="dg-btn dg-btn-secondary dg-btn-focus">Focused</button>
-  <button className="dg-btn dg-btn-secondary dg-btn-disabled" disabled>Disabled</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-secondary--hover">Hover</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-secondary--active">Active</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-secondary--focus">Focused</button>
+  <button className="dg-btn dg-btn-secondary dg-btn-secondary--disabled" disabled>
+    Disabled
+  </button>
 </div>
 
 </TabItem>
@@ -120,36 +488,105 @@ For subtle/neutral buttons:
 
 ```html
 <button class="dg-btn dg-btn-secondary">Default</button>
-<button class="dg-btn dg-btn-secondary" disabled>Disabled</button>
+<button class="dg-btn dg-btn-secondary dg-btn-secondary--hover">Hover</button>
+<button class="dg-btn dg-btn-secondary dg-btn-secondary--active">Active</button>
+<button class="dg-btn dg-btn-secondary dg-btn-secondary--focus">Focused</button>
+<button class="dg-btn dg-btn-secondary dg-btn-secondary--disabled" disabled>Disabled</button>
 ```
 
 ```css
+/* Secondary button - using shortcut tokens */
 .dg-btn-secondary {
-  background-color: var(--dg-color-secondary-default);
-  color: var(--dg-color-text-inverse);
+  background-color: var(--dg-color-background-button-secondary-default);
+  color: var(--dg-color-text-button-secondary-default);
 }
 
 .dg-btn-secondary:hover {
-  background-color: var(--dg-color-secondary-bold);
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
+}
+
+.dg-btn-secondary--hover,
+.dg-btn-secondary--hover:hover {
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
 }
 
 .dg-btn-secondary:active {
-  background-color: var(--dg-color-secondary-subtle);
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
 }
 
-.dg-btn-secondary:focus {
-  outline: 2px solid var(--dg-color-secondary-default);
-  outline-offset: 2px;
+.dg-btn-secondary--focus:active,
+.dg-btn-secondary--focus:active:focus,
+.dg-btn-secondary--focus:active:focus-visible {
+  /* When focused button is clicked: show active background + focus indicator */
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--active,
+.dg-btn-secondary--active:active,
+.dg-btn-secondary--active:hover {
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+}
+
+.dg-btn-secondary--active:focus,
+.dg-btn-secondary--active:focus-visible,
+.dg-btn-secondary--active:active:focus,
+.dg-btn-secondary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary:focus,
+.dg-btn-secondary:focus-visible {
+  background-color: var(--dg-color-background-button-secondary-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--focus,
+.dg-btn-secondary--focus:focus,
+.dg-btn-secondary--focus:focus-visible {
+  background-color: var(--dg-color-background-button-secondary-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-secondary--focus:hover,
+.dg-btn-secondary--focus:focus:hover,
+.dg-btn-secondary--focus:focus-visible:hover {
+  /* When focused and hovered: show hover background + focus indicator */
+  background-color: var(--dg-color-background-button-secondary-interaction-hover);
+  box-shadow: var(--dg-shadow-focus);
 }
 
 .dg-btn-secondary:disabled {
-  background-color: var(--dg-color-secondary-blur);
+  background-color: var(--dg-color-background-button-secondary-state-disabled);
   opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-secondary--disabled,
+.dg-btn-secondary--disabled:disabled {
+  background-color: var(--dg-color-background-button-secondary-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 ```
 
 </TabItem>
 </Tabs>
+
+### Outline Button Interaction Colors
+
+|                                                                                                                              | Token                                                | CSS Variable                                              | Use Case                             |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------- | ------------------------------------ |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-outline-default)'}}></div>            | `color.background.button.outline.DEFAULT`            | `--dg-color-background-button-outline-default`            | Outline button default (transparent) |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-outline-interaction-hover)'}}></div>  | `color.background.button.outline.interaction.hover`  | `--dg-color-background-button-outline-interaction-hover`  | Outline button hover                 |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-outline-interaction-active)'}}></div> | `color.background.button.outline.interaction.active` | `--dg-color-background-button-outline-interaction-active` | Outline button active                |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-button-outline-default)'}}></div>                | `color.border.button.outline.DEFAULT`                | `--dg-color-border-button-outline-default`                | Outline button border                |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-button-outline-interaction-hover)'}}></div>      | `color.border.button.outline.interaction.hover`      | `--dg-color-border-button-outline-interaction-hover`      | Outline button hover border          |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-button-outline-state-disabled)'}}></div>         | `color.border.button.outline.state.disabled`         | `--dg-color-border-button-outline-state-disabled`         | Outline button disabled border       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-button-outline-default)'}}></div>                  | `color.text.button.outline.DEFAULT`                  | `--dg-color-text-button-outline-default`                  | Outline button text                  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-button-outline-state-disabled)'}}></div>           | `color.text.button.outline.state.disabled`           | `--dg-color-text-button-outline-state-disabled`           | Outline button disabled text         |
 
 ### Outline Buttons
 
@@ -158,50 +595,96 @@ For subtle/neutral buttons:
 
 <div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
   <button className="dg-btn dg-btn-outline">Default</button>
-  <button className="dg-btn dg-btn-outline dg-btn-hover">Hover</button>
-  <button className="dg-btn dg-btn-outline dg-btn-active">Active</button>
-  <button className="dg-btn dg-btn-outline dg-btn-focus">Focused</button>
-  <button className="dg-btn dg-btn-outline dg-btn-disabled" disabled>Disabled</button>
+  <button className="dg-btn dg-btn-outline dg-btn-outline--hover">Hover</button>
+  <button className="dg-btn dg-btn-outline dg-btn-outline--active">Active</button>
+  <button className="dg-btn dg-btn-outline dg-btn-outline--focus">Focused</button>
+  <button className="dg-btn dg-btn-outline dg-btn-outline--disabled" disabled>
+    Disabled
+  </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
 ```html
-<button class="button-outline">Default</button>
-<button class="button-outline" disabled>Disabled</button>
+<button class="dg-btn dg-btn-outline">Default</button>
+<button class="dg-btn dg-btn-outline dg-btn-outline--hover">Hover</button>
+<button class="dg-btn dg-btn-outline dg-btn-outline--active">Active</button>
+<button class="dg-btn dg-btn-outline dg-btn-outline--focus">Focused</button>
+<button class="dg-btn dg-btn-outline dg-btn-outline--disabled" disabled>Disabled</button>
 ```
 
 ```css
-.button-outline {
-  background-color: transparent;
-  border: 2px solid var(--dg-color-primary-default);
-  color: var(--dg-color-primary-default);
+/* Outline button - using shortcut tokens */
+.dg-btn-outline {
+  background-color: var(--dg-color-background-button-outline-default);
+  color: var(--dg-color-text-button-outline-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-button-outline-default);
 }
 
-.button-outline:hover {
-  background-color: var(--dg-color-primary-subtler);
-  border-color: var(--dg-color-primary-bold);
+.dg-btn-outline:hover {
+  background-color: var(--dg-color-background-button-outline-interaction-hover);
 }
 
-.button-outline:active {
-  background-color: var(--dg-color-primary-subtle);
+.dg-btn-outline--hover,
+.dg-btn-outline--hover:hover {
+  background-color: var(--dg-color-background-button-outline-interaction-hover);
 }
 
-.button-outline:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
+.dg-btn-outline:active {
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
 }
 
-.button-outline:disabled {
-  border-color: var(--dg-color-primary-blur);
-  color: var(--dg-color-primary-blur);
+.dg-btn-outline--active,
+.dg-btn-outline--active:active,
+.dg-btn-outline--active:hover,
+.dg-btn-outline--active:focus {
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+}
+
+.dg-btn-outline:focus,
+.dg-btn-outline:focus-visible {
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-outline--focus,
+.dg-btn-outline--focus:focus,
+.dg-btn-outline--focus:focus-visible,
+.dg-btn-outline--focus:hover {
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-outline:disabled {
+  border-color: var(--dg-color-border-button-secondary-state-disabled);
+  color: var(--dg-color-text-button-secondary-state-disabled);
   opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-outline--disabled,
+.dg-btn-outline--disabled:disabled {
+  border-color: var(--dg-color-border-button-secondary-state-disabled);
+  color: var(--dg-color-text-button-secondary-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 ```
 
 </TabItem>
 </Tabs>
+
+### Ghost Button Interaction Colors
+
+|                                                                                                                            | Token                                              | CSS Variable                                            | Use Case                           |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------- | ---------------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-ghost-default)'}}></div>            | `color.background.button.ghost.DEFAULT`            | `--dg-color-background-button-ghost-default`            | Ghost button default (transparent) |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-ghost-interaction-hover)'}}></div>  | `color.background.button.ghost.interaction.hover`  | `--dg-color-background-button-ghost-interaction-hover`  | Ghost button hover                 |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-button-ghost-interaction-active)'}}></div> | `color.background.button.ghost.interaction.active` | `--dg-color-background-button-ghost-interaction-active` | Ghost button active                |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-button-ghost-default)'}}></div>                  | `color.text.button.ghost.DEFAULT`                  | `--dg-color-text-button-ghost-default`                  | Ghost button text                  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-button-ghost-interaction-hover)'}}></div>        | `color.text.button.ghost.interaction.hover`        | `--dg-color-text-button-ghost-interaction-hover`        | Ghost button hover text            |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-button-ghost-state-disabled)'}}></div>           | `color.text.button.ghost.state.disabled`           | `--dg-color-text-button-ghost-state-disabled`           | Ghost button disabled text         |
 
 ### Ghost/Text Buttons
 
@@ -210,42 +693,78 @@ For subtle/neutral buttons:
 
 <div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
   <button className="dg-btn dg-btn-ghost">Default</button>
-  <button className="dg-btn dg-btn-ghost dg-btn-hover">Hover</button>
-  <button className="dg-btn dg-btn-ghost dg-btn-active">Active</button>
-  <button className="dg-btn dg-btn-ghost dg-btn-focus">Focused</button>
-  <button className="dg-btn dg-btn-ghost dg-btn-disabled" disabled>Disabled</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-ghost--hover">Hover</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-ghost--active">Active</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-ghost--focus">Focused</button>
+  <button className="dg-btn dg-btn-ghost dg-btn-ghost--disabled" disabled>
+    Disabled
+  </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
 ```html
-<button class="button-ghost">Default</button>
-<button class="button-ghost" disabled>Disabled</button>
+<button class="dg-btn dg-btn-ghost">Default</button>
+<button class="dg-btn dg-btn-ghost dg-btn-ghost--hover">Hover</button>
+<button class="dg-btn dg-btn-ghost dg-btn-ghost--active">Active</button>
+<button class="dg-btn dg-btn-ghost dg-btn-ghost--focus">Focused</button>
+<button class="dg-btn dg-btn-ghost dg-btn-ghost--disabled" disabled>Disabled</button>
 ```
 
 ```css
-.button-ghost {
-  background-color: transparent;
-  color: var(--dg-color-primary-default);
+/* Ghost button - using shortcut tokens */
+.dg-btn-ghost {
+  background-color: var(--dg-color-background-button-ghost-default);
+  color: var(--dg-color-text-button-ghost-default);
+  border: none;
 }
 
-.button-ghost:hover {
-  background-color: var(--dg-color-alpha-neutral-2);
+.dg-btn-ghost:hover {
+  background-color: var(--dg-color-background-button-ghost-interaction-hover);
 }
 
-.button-ghost:active {
-  background-color: var(--dg-color-alpha-neutral-3);
+.dg-btn-ghost--hover,
+.dg-btn-ghost--hover:hover {
+  background-color: var(--dg-color-background-button-ghost-interaction-hover);
 }
 
-.button-ghost:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
+.dg-btn-ghost:active {
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
 }
 
-.button-ghost:disabled {
-  color: var(--dg-color-text-subtlest);
+.dg-btn-ghost--active,
+.dg-btn-ghost--active:active,
+.dg-btn-ghost--active:hover,
+.dg-btn-ghost--active:focus {
+  background-color: var(--dg-color-background-button-secondary-interaction-active);
+}
+
+.dg-btn-ghost:focus,
+.dg-btn-ghost:focus-visible {
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-ghost--focus,
+.dg-btn-ghost--focus:focus,
+.dg-btn-ghost--focus:focus-visible,
+.dg-btn-ghost--focus:hover {
+  outline: none;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-ghost:disabled {
+  color: var(--dg-color-text-button-secondary-state-disabled);
   opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-ghost--disabled,
+.dg-btn-ghost--disabled:disabled {
+  color: var(--dg-color-text-button-secondary-state-disabled);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 ```
 
@@ -256,55 +775,261 @@ For subtle/neutral buttons:
 
 ## Link Interaction Colors
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.text.link.interaction.hover` | `--dg-color-text-link-interaction-hover` | Link hover |
-| `color.text.link.interaction.focus` | `--dg-color-text-link-interaction-focus` | Link focus |
-| `color.text.link.interaction.active` | `--dg-color-text-link-interaction-active` | Link active |
-| `color.text.link.interaction.visited` | `--dg-color-text-link-interaction-visited` | Link visited |
+|                                                                                                               | Token                                 | CSS Variable                               | Use Case     |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------ | ------------ |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-link-interaction-hover)'}}></div>   | `color.text.link.interaction.hover`   | `--dg-color-text-link-interaction-hover`   | Link hover   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-link-interaction-focus)'}}></div>   | `color.text.link.interaction.focus`   | `--dg-color-text-link-interaction-focus`   | Link focus   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-link-interaction-active)'}}></div>  | `color.text.link.interaction.active`  | `--dg-color-text-link-interaction-active`  | Link active  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-text-link-interaction-visited)'}}></div> | `color.text.link.interaction.visited` | `--dg-color-text-link-interaction-visited` | Link visited |
 
 ### Link State Patterns
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-link-state-demo">
-  <a href="#" className="dg-link">Default</a>
-  <a href="#" className="dg-link dg-link-hover">Hover</a>
-  <a href="#" className="dg-link dg-link-active">Active</a>
-  <a href="#" className="dg-link dg-link-visited">Visited</a>
-  <a href="#" className="dg-link dg-link-focus">Focused</a>
+<div className="dg-link-state-showcase">
+  <a href="#" className="dg-link">
+    Default
+  </a>
+  <a href="#" className="dg-link dg-link--hover">
+    Hover
+  </a>
+  <a href="#" className="dg-link dg-link--active">
+    Active
+  </a>
+  <a href="#" className="dg-link dg-link--visited">
+    Visited
+  </a>
+  <a href="#" className="dg-link dg-link--focus">
+    Focused
+  </a>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
 ```html
-<a href="/page">Link text</a>
+<a href="#" class="dg-link">Default</a>
+<a href="#" class="dg-link dg-link--hover">Hover</a>
+<a href="#" class="dg-link dg-link--active">Active</a>
+<a href="#" class="dg-link dg-link--visited">Visited</a>
+<a href="#" class="dg-link dg-link--focus">Focused</a>
 ```
 
 ```css
-a {
+/* Links - using shortcut tokens */
+.dg-link {
   color: var(--dg-color-text-link-default);
   text-decoration: underline;
+  transition: color 150ms ease-in-out;
 }
 
-a:hover {
-  color: var(--dg-color-primary-hover-default);
-  text-decoration-thickness: 2px;
+.dg-link:visited {
+  color: var(--dg-color-text-link-interaction-visited);
 }
 
-a:active {
-  color: var(--dg-color-primary-active-default);
+.dg-link--visited,
+.dg-link--visited:visited {
+  color: var(--dg-color-text-link-interaction-visited);
 }
 
-a:visited {
-  color: var(--dg-color-primary-visited-default);
+.dg-link:hover {
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
 }
 
-a:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
+.dg-link:visited:hover {
+  /* Hover overrides visited */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link--hover,
+.dg-link--hover:hover {
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link--visited:hover,
+.dg-link--visited:visited:hover {
+  /* Hover overrides visited */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link--hover:visited,
+.dg-link--hover:visited:hover {
+  /* Hover modifier overrides visited */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+}
+
+.dg-link:focus,
+.dg-link:focus-visible {
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:hover:focus,
+.dg-link:hover:focus-visible {
+  /* When hovered and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:visited:focus,
+.dg-link:visited:focus-visible {
+  /* Focus overrides visited */
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:visited:hover:focus,
+.dg-link:visited:hover:focus-visible {
+  /* When visited, hovered, and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus,
+.dg-link--focus:focus,
+.dg-link--focus:focus-visible {
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:hover,
+.dg-link--focus:focus:hover,
+.dg-link--focus:focus-visible:hover {
+  /* When focused and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--visited:focus,
+.dg-link--visited:visited:focus,
+.dg-link--visited:visited:focus-visible {
+  /* Focus overrides visited */
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:visited,
+.dg-link--focus:visited:focus,
+.dg-link--focus:visited:focus-visible {
+  /* Focus modifier overrides visited */
+  color: var(--dg-color-text-link-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:visited:hover,
+.dg-link--focus:visited:hover:focus,
+.dg-link--focus:visited:hover:focus-visible {
+  /* When focused, visited, and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--visited:hover:focus,
+.dg-link--visited:visited:hover:focus,
+.dg-link--visited:visited:hover:focus-visible {
+  /* When visited, hovered, and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-link-interaction-hover);
+  text-decoration-thickness: var(--dg-border-width-medium);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:active {
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link:focus:active,
+.dg-link:focus-visible:active {
+  /* Active overrides focus */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link:hover:focus:active,
+.dg-link:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--active,
+.dg-link--active:active,
+.dg-link--active:hover {
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link--active:focus,
+.dg-link--active:focus-visible,
+.dg-link--active:active:focus,
+.dg-link--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--active:visited,
+.dg-link--active:visited:active {
+  /* Active overrides visited */
+  color: var(--dg-color-text-link-interaction-active);
+}
+
+.dg-link--focus:active,
+.dg-link--focus:active:focus,
+.dg-link--focus:active:focus-visible,
+.dg-link--focus:focus:active,
+.dg-link--focus:focus-visible:active {
+  /* Active overrides focus modifier */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-link--focus:hover:active,
+.dg-link--focus:hover:active:focus,
+.dg-link--focus:hover:active:focus-visible,
+.dg-link--focus:hover:focus:active,
+.dg-link--focus:hover:focus-visible:active {
+  /* Active overrides hover and focus modifiers */
+  color: var(--dg-color-text-link-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-text-link-interaction-active);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
 }
 ```
 
@@ -315,11 +1040,14 @@ a:focus {
 
 ## Input Interaction Colors
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.border.input.interaction.focus` | `--dg-color-border-input-interaction-focus` | Input focus border |
-| `color.border.input.state.invalid` | `--dg-color-border-input-state-invalid` | Input error border |
-| `color.border.input.state.disabled` | `--dg-color-border-input-state-disabled` | Input disabled border |
+|                                                                                                                | Token                                  | CSS Variable                                | Use Case              |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------- | --------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-interaction-hover)'}}></div> | `color.border.input.interaction.hover` | `--dg-color-border-input-interaction-hover` | Input hover border    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-interaction-focus)'}}></div> | `color.border.input.interaction.focus` | `--dg-color-border-input-interaction-focus` | Input focus border    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-state-valid)'}}></div>       | `color.border.input.state.valid`       | `--dg-color-border-input-state-valid`       | Input success border  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-state-invalid)'}}></div>     | `color.border.input.state.invalid`     | `--dg-color-border-input-state-invalid`     | Input error border    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-state-warning)'}}></div>     | `color.border.input.state.warning`     | `--dg-color-border-input-state-warning`     | Input warning border  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-state-disabled)'}}></div>    | `color.border.input.state.disabled`    | `--dg-color-border-input-state-disabled`    | Input disabled border |
 
 ### Text Input States
 
@@ -349,27 +1077,34 @@ a:focus {
 <TabItem value="code" label="Code">
 
 ```html
-<input type="text" class="input" placeholder="Default" />
-<input type="text" class="input" disabled value="Disabled" />
+<input type="text" class="dg-input" placeholder="Default" />
+<input type="text" class="dg-input dg-input-focus" value="Focused" />
+<input type="text" class="dg-input" disabled value="Disabled" />
+<input type="text" class="dg-input dg-input-hover" placeholder="Hover" />
 ```
 
 ```css
-.input {
-  border: 1px solid var(--dg-color-alpha-neutral-3);
+/* Input - using shortcut tokens */
+.dg-input {
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
   background-color: var(--dg-color-background-default);
 }
 
-.input:hover {
-  border-color: var(--dg-color-alpha-neutral-4);
+.dg-input:hover,
+.dg-input-hover {
+  border-color: var(--dg-color-border-input-interaction-hover);
 }
 
-.input:focus {
-  border-color: var(--dg-color-primary-default);
+.dg-input:focus,
+.dg-input-focus {
+  border-color: var(--dg-color-border-input-interaction-focus);
   box-shadow: var(--dg-shadow-focus);
   outline: none;
 }
 
-.input:disabled {
+.dg-input:disabled,
+.dg-input-disabled {
+  border-color: var(--dg-color-border-input-state-disabled);
   background-color: var(--dg-color-background-bold);
   color: var(--dg-color-text-subtlest);
   cursor: not-allowed;
@@ -403,25 +1138,26 @@ a:focus {
 <TabItem value="code" label="Code">
 
 ```html
-<input type="text" class="input input-success" value="Valid" />
-<input type="text" class="input input-error" value="Invalid" />
-<input type="text" class="input input-warning" value="Check this" />
+<input type="text" class="dg-input dg-input-success" value="Valid input" />
+<input type="text" class="dg-input dg-input-error" value="Invalid" />
+<input type="text" class="dg-input dg-input-warning" value="Check this" />
 ```
 
 ```css
-.input-success {
-  border-color: var(--dg-color-semantic-success-default);
-  box-shadow: 0 0 0 3px var(--dg-color-semantic-success-lowest);
+/* Input validation - using shortcut tokens */
+.dg-input-success {
+  border-color: var(--dg-color-border-input-state-valid);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-success-lowest);
 }
 
-.input-error {
-  border-color: var(--dg-color-semantic-error-default);
-  box-shadow: 0 0 0 3px var(--dg-color-semantic-error-lowest);
+.dg-input-error {
+  border-color: var(--dg-color-border-input-state-invalid);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-error-lowest);
 }
 
-.input-warning {
-  border-color: var(--dg-color-semantic-warning-default);
-  box-shadow: 0 0 0 3px var(--dg-color-semantic-warning-lowest);
+.dg-input-warning {
+  border-color: var(--dg-color-border-input-state-warning);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-warning-lowest);
 }
 ```
 
@@ -432,51 +1168,106 @@ a:focus {
 
 ## Checkbox & Radio Colors
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.background.checkbox.state.checked` | `--dg-color-background-checkbox-state-checked` | Checked checkbox fill |
-| `color.border.checkbox.interaction.focus` | `--dg-color-border-checkbox-interaction-focus` | Checkbox focus ring |
-| `color.border.checkbox.state.checked` | `--dg-color-border-checkbox-state-checked` | Checked checkbox border |
-| `color.border.radio.interaction.focus` | `--dg-color-border-radio-interaction-focus` | Radio focus ring |
-| `color.border.radio.state.checked` | `--dg-color-border-radio-state-checked` | Checked radio border |
+|                                                                                                                   | Token                                     | CSS Variable                                   | Use Case                |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------- | ----------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-checkbox-state-checked)'}}></div> | `color.background.checkbox.state.checked` | `--dg-color-background-checkbox-state-checked` | Checked checkbox fill   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-checkbox-interaction-hover)'}}></div> | `color.border.checkbox.interaction.hover` | `--dg-color-border-checkbox-interaction-hover` | Checkbox hover border   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-checkbox-interaction-focus)'}}></div> | `color.border.checkbox.interaction.focus` | `--dg-color-border-checkbox-interaction-focus` | Checkbox focus ring     |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-checkbox-state-checked)'}}></div>     | `color.border.checkbox.state.checked`     | `--dg-color-border-checkbox-state-checked`     | Checked checkbox border |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-radio-interaction-hover)'}}></div>    | `color.border.radio.interaction.hover`    | `--dg-color-border-radio-interaction-hover`    | Radio hover border      |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-radio-interaction-focus)'}}></div>    | `color.border.radio.interaction.focus`    | `--dg-color-border-radio-interaction-focus`    | Radio focus ring        |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-radio-state-checked)'}}></div>        | `color.border.radio.state.checked`        | `--dg-color-border-radio-state-checked`        | Checked radio border    |
 
 ### Toggle/Checkbox State Patterns
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-state-demo">
-  <div className="dg-state-demo-section">
-    <p className="dg-state-demo-label">Checkbox States</p>
-    <div className="dg-state-demo-row">
-      <div className="dg-state-demo-item">
+<div className="dg-state-showcase">
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Checkbox States</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
         <div className="dg-checkbox"></div>
-        <span className="dg-state-demo-item-label">Off</span>
+        <span className="dg-state-showcase-item-label">Off</span>
       </div>
-      <div className="dg-state-demo-item">
+      <div className="dg-state-showcase-item">
         <div className="dg-checkbox dg-checkbox-hover"></div>
-        <span className="dg-state-demo-item-label">Hover</span>
+        <span className="dg-state-showcase-item-label">Hover</span>
       </div>
-      <div className="dg-state-demo-item">
+      <div className="dg-state-showcase-item">
+        <div className="dg-checkbox dg-checkbox-focus"></div>
+        <span className="dg-state-showcase-item-label">Focus</span>
+      </div>
+      <div className="dg-state-showcase-item">
         <div className="dg-checkbox dg-checkbox-checked">✓</div>
-        <span className="dg-state-demo-item-label">On</span>
+        <span className="dg-state-showcase-item-label">On</span>
       </div>
-      <div className="dg-state-demo-item">
+      <div className="dg-state-showcase-item">
         <div className="dg-checkbox dg-checkbox-disabled"></div>
-        <span className="dg-state-demo-item-label">Disabled</span>
+        <span className="dg-state-showcase-item-label">Disabled</span>
       </div>
     </div>
   </div>
-  <div className="dg-state-demo-section">
-    <p className="dg-state-demo-label">Toggle States</p>
-    <div className="dg-state-demo-row">
-      <div className="dg-state-demo-item">
-        <div className="dg-toggle"><div className="dg-toggle-handle"></div></div>
-        <span className="dg-state-demo-item-label">Off</span>
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Toggle States</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
+        <div className="dg-toggle">
+          <div className="dg-toggle-handle"></div>
+        </div>
+        <span className="dg-state-showcase-item-label">Off</span>
       </div>
-      <div className="dg-state-demo-item">
-        <div className="dg-toggle dg-toggle-checked"><div className="dg-toggle-handle"></div></div>
-        <span className="dg-state-demo-item-label">On</span>
+      <div className="dg-state-showcase-item">
+        <div className="dg-toggle dg-toggle-hover">
+          <div className="dg-toggle-handle"></div>
+        </div>
+        <span className="dg-state-showcase-item-label">Hover</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-toggle dg-toggle-focus">
+          <div className="dg-toggle-handle"></div>
+        </div>
+        <span className="dg-state-showcase-item-label">Focus</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-toggle dg-toggle-checked">
+          <div className="dg-toggle-handle"></div>
+        </div>
+        <span className="dg-state-showcase-item-label">On</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-toggle dg-toggle-disabled">
+          <div className="dg-toggle-handle"></div>
+        </div>
+        <span className="dg-state-showcase-item-label">Disabled</span>
+      </div>
+    </div>
+  </div>
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Radio States</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
+        <div className="dg-radio"></div>
+        <span className="dg-state-showcase-item-label">Off</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-radio dg-radio-hover"></div>
+        <span className="dg-state-showcase-item-label">Hover</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-radio dg-radio-focus"></div>
+        <span className="dg-state-showcase-item-label">Focus</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-radio dg-radio-checked">
+          <div className="dg-radio-dot"></div>
+        </div>
+        <span className="dg-state-showcase-item-label">Selected</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-radio dg-radio-disabled"></div>
+        <span className="dg-state-showcase-item-label">Disabled</span>
       </div>
     </div>
   </div>
@@ -487,38 +1278,119 @@ a:focus {
 
 ```html
 <!-- Checkbox -->
-<input type="checkbox" class="checkbox" />
-<input type="checkbox" class="checkbox" checked />
-<input type="checkbox" class="checkbox" disabled />
+<div class="dg-checkbox"></div>
+<div class="dg-checkbox dg-checkbox-hover"></div>
+<div class="dg-checkbox dg-checkbox-focus"></div>
+<div class="dg-checkbox dg-checkbox-checked">✓</div>
+<div class="dg-checkbox dg-checkbox-disabled"></div>
 
 <!-- Toggle switch -->
-<button class="toggle-switch" role="switch" aria-checked="false"></button>
-<button class="toggle-switch checked" role="switch" aria-checked="true"></button>
+<div class="dg-toggle"><div class="dg-toggle-handle"></div></div>
+<div class="dg-toggle dg-toggle-hover"><div class="dg-toggle-handle"></div></div>
+<div class="dg-toggle dg-toggle-focus"><div class="dg-toggle-handle"></div></div>
+<div class="dg-toggle dg-toggle-checked"><div class="dg-toggle-handle"></div></div>
+<div class="dg-toggle dg-toggle-disabled"><div class="dg-toggle-handle"></div></div>
+
+<!-- Radio -->
+<div class="dg-radio"></div>
+<div class="dg-radio dg-radio-hover"></div>
+<div class="dg-radio dg-radio-focus"></div>
+<div class="dg-radio dg-radio-checked"><div class="dg-radio-dot"></div></div>
+<div class="dg-radio dg-radio-disabled"></div>
 ```
 
 ```css
-/* Checkbox */
-.checkbox {
-  border: 2px solid var(--dg-color-alpha-neutral-4);
+/* Checkbox - using shortcut tokens */
+.dg-checkbox {
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-default);
   background-color: var(--dg-color-background-default);
 }
 
-.checkbox:hover {
-  border-color: var(--dg-color-primary-default);
+.dg-checkbox:hover,
+.dg-checkbox-hover {
+  border-color: var(--dg-color-border-checkbox-interaction-hover);
 }
 
-.checkbox:checked {
-  background-color: var(--dg-color-primary-default);
-  border-color: var(--dg-color-primary-default);
+.dg-checkbox:focus,
+.dg-checkbox-focus {
+  border-color: var(--dg-color-border-checkbox-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
 }
 
-/* Toggle switch */
-.toggle-switch {
+.dg-checkbox-checked {
+  background-color: var(--dg-color-background-checkbox-state-checked);
+  border-color: var(--dg-color-border-checkbox-state-checked);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-checkbox-disabled {
+  border-color: var(--dg-color-border-subtle);
+  background-color: var(--dg-color-background-bold);
+  cursor: not-allowed;
+}
+
+/* Toggle switch - reusing checkbox shortcut tokens */
+.dg-toggle {
   background-color: var(--dg-color-alpha-neutral-4);
 }
 
-.toggle-switch.checked {
-  background-color: var(--dg-color-primary-default);
+.dg-toggle:hover,
+.dg-toggle-hover {
+  background-color: var(--dg-color-alpha-neutral-5);
+  border-color: var(--dg-color-border-checkbox-interaction-hover);
+}
+
+.dg-toggle:focus,
+.dg-toggle-focus {
+  border-color: var(--dg-color-border-checkbox-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-toggle-checked {
+  background-color: var(--dg-color-background-checkbox-state-checked);
+}
+
+.dg-toggle-disabled {
+  background-color: var(--dg-color-background-bold);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Radio - using shortcut tokens */
+.dg-radio {
+  width: var(--dg-spacing-space-lg);
+  height: var(--dg-spacing-space-lg);
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-full);
+  background-color: var(--dg-color-background-default);
+}
+
+.dg-radio:hover,
+.dg-radio-hover {
+  border-color: var(--dg-color-border-radio-interaction-hover);
+}
+
+.dg-radio:focus,
+.dg-radio-focus {
+  border-color: var(--dg-color-border-radio-interaction-focus);
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-radio-checked {
+  border-color: var(--dg-color-border-radio-state-checked);
+}
+
+.dg-radio-dot {
+  width: var(--dg-spacing-space-sm);
+  height: var(--dg-spacing-space-sm);
+  border-radius: var(--dg-size-border-radius-full);
+  background-color: var(--dg-color-background-radio-checkmark);
+}
+
+.dg-radio-disabled {
+  border-color: var(--dg-color-border-subtle);
+  background-color: var(--dg-color-background-bold);
+  cursor: not-allowed;
 }
 ```
 
@@ -529,11 +1401,11 @@ a:focus {
 
 ## Selection & Navigation Colors
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.background.interaction.selected` | `--dg-color-background-interaction-selected` | Selected item background |
-| `color.background.nav.default.interaction.hover` | `--dg-color-background-nav-default-interaction-hover` | Nav item hover |
-| `color.background.nav.default.state.activated` | `--dg-color-background-nav-default-state-activated` | Active nav item |
+|                                                                                                                           | Token                                             | CSS Variable                                           | Use Case                           |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------ | ---------------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-nav-default-interaction-hover)'}}></div>  | `color.background.nav.default.interaction.hover`  | `--dg-color-background-nav-default-interaction-hover`  | Nav/Tab/List item hover            |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-nav-default-interaction-active)'}}></div> | `color.background.nav.default.interaction.active` | `--dg-color-background-nav-default-interaction-active` | Nav/Tab/List item active (pressed) |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-nav-default-state-activated)'}}></div>    | `color.background.nav.default.state.activated`    | `--dg-color-background-nav-default-state-activated`    | Active/Selected nav/tab item       |
 
 ### Navigation State Patterns
 
@@ -552,27 +1424,64 @@ a:focus {
 <TabItem value="code" label="Code">
 
 ```html
-<nav class="nav">
-  <a href="/" class="nav-item">Home</a>
-  <a href="/about" class="nav-item active">About</a>
-  <a href="/contact" class="nav-item">Contact</a>
-</nav>
+<div class="dg-nav-pills">
+  <div class="dg-nav-pill">Default</div>
+  <div class="dg-nav-pill dg-nav-pill-hover">Hover</div>
+  <div class="dg-nav-pill dg-nav-pill-active">Active</div>
+  <div class="dg-nav-pill dg-nav-pill-selected">Selected</div>
+  <div class="dg-nav-pill dg-nav-pill-disabled">Disabled</div>
+</div>
 ```
 
 ```css
-.nav-item {
+/* Navigation pills container - using shortcut tokens */
+.dg-nav-pills {
+  display: flex;
+  background-color: var(--dg-color-alpha-neutral-1);
+  border-radius: var(--dg-size-border-radius-lg);
+  padding: var(--dg-spacing-space-xs);
+  gap: var(--dg-spacing-space-xs);
+}
+
+.dg-nav-pill {
+  padding: var(--dg-spacing-inset-xs) var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-md);
+  background-color: transparent;
   color: var(--dg-color-text-subtle);
+  cursor: pointer;
+  transition: var(--dg-transition-colors);
 }
 
-.nav-item:hover {
-  background-color: var(--dg-color-alpha-neutral-2);
+/* Hover - using nav shortcut token */
+.dg-nav-pill:hover,
+.dg-nav-pill-hover {
+  background-color: var(--dg-color-background-nav-default-interaction-hover);
   color: var(--dg-color-primary-default);
 }
 
-.nav-item.active {
-  background-color: var(--dg-color-primary-subtler);
+/* Active/Pressed - using nav shortcut token */
+.dg-nav-pill:active,
+.dg-nav-pill-active {
+  background-color: var(--dg-color-background-nav-default-interaction-active);
   color: var(--dg-color-primary-default);
-  font-weight: 600;
+}
+
+/* Selected - using nav shortcut token */
+.dg-nav-pill-selected {
+  background-color: var(--dg-color-background-nav-default-state-activated);
+  color: var(--dg-color-primary-bold);
+  font-weight: var(--dg-font-weight-semi-bold);
+}
+
+.dg-nav-pill-selected:hover {
+  background-color: var(--dg-color-primary-subtle);
+}
+
+/* Disabled */
+.dg-nav-pill-disabled {
+  color: var(--dg-color-text-subtlest);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 ```
 
@@ -587,6 +1496,7 @@ a:focus {
 <div className="dg-tabs">
   <div className="dg-tab">Default</div>
   <div className="dg-tab dg-tab-hover">Hover</div>
+  <div className="dg-tab dg-tab-active">Active</div>
   <div className="dg-tab dg-tab-selected">Selected</div>
   <div className="dg-tab dg-tab-disabled">Disabled</div>
 </div>
@@ -595,33 +1505,62 @@ a:focus {
 <TabItem value="code" label="Code">
 
 ```html
-<div class="tabs" role="tablist">
-  <button class="tab" role="tab">Tab 1</button>
-  <button class="tab selected" role="tab" aria-selected="true">Tab 2</button>
-  <button class="tab" role="tab" disabled>Tab 3</button>
+<div class="dg-tabs">
+  <div class="dg-tab">Default</div>
+  <div class="dg-tab dg-tab-hover">Hover</div>
+  <div class="dg-tab dg-tab-active">Active</div>
+  <div class="dg-tab dg-tab-selected">Selected</div>
+  <div class="dg-tab dg-tab-disabled">Disabled</div>
 </div>
 ```
 
 ```css
-.tab {
+/* Tab container */
+.dg-tabs {
+  display: flex;
+  border-bottom: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+}
+
+/* Tab item */
+.dg-tab {
+  padding: var(--dg-spacing-inset-sm) var(--dg-spacing-inset-md);
   color: var(--dg-color-text-subtle);
-  border-bottom: 2px solid transparent;
+  border-bottom: var(--dg-border-width-medium) solid transparent;
+  cursor: pointer;
+  transition: var(--dg-transition-colors);
 }
 
-.tab:hover {
-  color: var(--dg-color-text-default);
-  background-color: var(--dg-color-alpha-neutral-1);
-}
-
-.tab.selected {
+/* Hover - reusing nav shortcut tokens */
+.dg-tab:hover,
+.dg-tab-hover {
   color: var(--dg-color-primary-default);
-  border-bottom-color: var(--dg-color-primary-default);
-  font-weight: 600;
+  background-color: var(--dg-color-background-nav-default-interaction-hover);
 }
 
-.tab:disabled {
+/* Active/Pressed - reusing nav shortcut tokens */
+.dg-tab:active,
+.dg-tab-active {
+  background-color: var(--dg-color-background-nav-default-interaction-active);
+  color: var(--dg-color-primary-default);
+}
+
+/* Selected - reusing nav shortcut tokens */
+.dg-tab-selected {
+  color: var(--dg-color-primary-bold);
+  border-bottom-color: var(--dg-color-primary-bold);
+  font-weight: var(--dg-font-weight-semi-bold);
+  background-color: var(--dg-color-background-nav-default-state-activated);
+}
+
+.dg-tab-selected:hover {
+  background-color: var(--dg-color-primary-subtle);
+}
+
+/* Disabled */
+.dg-tab-disabled {
   color: var(--dg-color-text-subtlest);
   opacity: 0.6;
+  cursor: not-allowed;
 }
 ```
 
@@ -640,6 +1579,9 @@ a:focus {
   <div className="dg-list-item dg-list-item-hover">
     <span>Hovered Item</span>
   </div>
+  <div className="dg-list-item dg-list-item-active">
+    <span>Active Item</span>
+  </div>
   <div className="dg-list-item dg-list-item-selected">
     <span>✓ Selected Item</span>
   </div>
@@ -652,30 +1594,58 @@ a:focus {
 <TabItem value="code" label="Code">
 
 ```html
-<ul class="list">
-  <li class="list-item">Default</li>
-  <li class="list-item selected">Selected</li>
-  <li class="list-item disabled">Disabled</li>
-</ul>
+<div class="dg-list">
+  <div class="dg-list-item"><span>Default Item</span></div>
+  <div class="dg-list-item dg-list-item-hover"><span>Hovered Item</span></div>
+  <div class="dg-list-item dg-list-item-active"><span>Active Item</span></div>
+  <div class="dg-list-item dg-list-item-selected"><span>✓ Selected Item</span></div>
+  <div class="dg-list-item dg-list-item-disabled"><span>Disabled Item</span></div>
+</div>
 ```
 
 ```css
-.list-item {
-  padding: 12px 16px;
+/* List container */
+.dg-list {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-lg);
+  overflow: hidden;
+}
+
+/* List item */
+.dg-list-item {
+  padding: var(--dg-spacing-inset-sm) var(--dg-spacing-inset-md);
   cursor: pointer;
-  transition: background-color 150ms ease-in-out;
+  border-bottom: var(--dg-border-width-thin) solid var(--dg-color-border-subtle);
+  transition: background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
 }
 
-.list-item:hover {
-  background-color: var(--dg-color-alpha-neutral-2);
+/* Hover - reusing nav shortcut tokens */
+.dg-list-item:hover,
+.dg-list-item-hover {
+  background-color: var(--dg-color-background-nav-default-interaction-hover);
+  color: var(--dg-color-primary-default);
 }
 
-.list-item.selected {
-  background-color: var(--dg-color-primary-subtler);
+/* Active/Pressed - reusing nav shortcut tokens */
+.dg-list-item:active,
+.dg-list-item-active {
+  background-color: var(--dg-color-background-nav-default-interaction-active);
+  color: var(--dg-color-primary-default);
+}
+
+/* Selected */
+.dg-list-item-selected {
+  background-color: var(--dg-color-background-nav-default-state-activated);
   color: var(--dg-color-primary-bold);
 }
 
-.list-item.disabled {
+.dg-list-item-selected:hover {
+  background-color: var(--dg-color-primary-subtle);
+}
+
+/* Disabled */
+.dg-list-item-disabled {
   color: var(--dg-color-text-subtlest);
   cursor: not-allowed;
   opacity: 0.6;
@@ -689,22 +1659,124 @@ a:focus {
 
 ## Select/Dropdown Colors
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.background.select.interaction.hover` | `--dg-color-background-select-interaction-hover` | Select hover |
-| `color.background.select.interaction.active` | `--dg-color-background-select-interaction-active` | Select active |
-| `color.background.select.state.opened` | `--dg-color-background-select-state-opened` | Select opened state |
-| `color.background.option.interaction.hover` | `--dg-color-background-option-interaction-hover` | Option hover |
-| `color.background.option.interaction.active` | `--dg-color-background-option-interaction-active` | Option active |
+|                                                                                                                      | Token                                        | CSS Variable                                      | Use Case                    |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------- | --------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-select-interaction-hover)'}}></div>  | `color.background.select.interaction.hover`  | `--dg-color-background-select-interaction-hover`  | Select trigger hover        |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-select-interaction-active)'}}></div> | `color.background.select.interaction.active` | `--dg-color-background-select-interaction-active` | Select trigger active       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-select-state-opened)'}}></div>       | `color.background.select.state.opened`       | `--dg-color-background-select-state-opened`       | Select trigger opened state |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-option-interaction-hover)'}}></div>  | `color.background.option.interaction.hover`  | `--dg-color-background-option-interaction-hover`  | Dropdown option hover       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-option-interaction-active)'}}></div> | `color.background.option.interaction.active` | `--dg-color-background-option-interaction-active` | Dropdown option active      |
+
+### Select Trigger States
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap">
+  <div className="dg-select">
+    <span>Default</span>
+    <span className="dg-select-arrow">▼</span>
+  </div>
+  <div className="dg-select dg-select-hover">
+    <span>Hover</span>
+    <span className="dg-select-arrow">▼</span>
+  </div>
+  <div className="dg-select dg-select-active">
+    <span>Active</span>
+    <span className="dg-select-arrow">▼</span>
+  </div>
+  <div className="dg-select dg-select-opened">
+    <span>Opened</span>
+    <span className="dg-select-arrow">▼</span>
+  </div>
+  <div className="dg-select dg-select-disabled">
+    <span>Disabled</span>
+    <span className="dg-select-arrow">▼</span>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-select">
+  <span>Default</span>
+  <span class="dg-select-arrow">▼</span>
+</div>
+<div class="dg-select dg-select-hover">
+  <span>Hover</span>
+  <span class="dg-select-arrow">▼</span>
+</div>
+<div class="dg-select dg-select-active">
+  <span>Active</span>
+  <span class="dg-select-arrow">▼</span>
+</div>
+<div class="dg-select dg-select-opened">
+  <span>Opened</span>
+  <span class="dg-select-arrow">▼</span>
+</div>
+<div class="dg-select dg-select-disabled">
+  <span>Disabled</span>
+  <span class="dg-select-arrow">▼</span>
+</div>
+```
+
+```css
+/* Select trigger - using shortcut tokens */
+.dg-select {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dg-spacing-space-sm);
+  padding: var(--dg-spacing-inset-sm) var(--dg-spacing-inset-md);
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-md);
+  cursor: pointer;
+  min-width: 180px;
+}
+
+/* Hover - using select shortcut token */
+.dg-select:hover,
+.dg-select-hover {
+  background-color: var(--dg-color-background-select-interaction-hover);
+}
+
+/* Active/Pressed - using select shortcut token */
+.dg-select:active,
+.dg-select-active {
+  background-color: var(--dg-color-background-select-interaction-active);
+}
+
+/* Opened - using select shortcut token */
+.dg-select-opened {
+  background-color: var(--dg-color-background-select-state-opened);
+  border-color: var(--dg-color-primary-default);
+}
+
+/* Disabled */
+.dg-select-disabled {
+  background-color: var(--dg-color-background-bold);
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Dropdown Option States
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
 <div className="dg-dropdown">
   <div className="dg-dropdown-header">Account</div>
-  <div className="dg-dropdown-item">Profile</div>
-  <div className="dg-dropdown-item dg-dropdown-item-hover">Settings (hover)</div>
-  <div className="dg-dropdown-item dg-dropdown-item-disabled">Premium Feature</div>
+  <div className="dg-dropdown-item">Default</div>
+  <div className="dg-dropdown-item dg-dropdown-item-hover">Hover</div>
+  <div className="dg-dropdown-item dg-dropdown-item-active">Active</div>
+  <div className="dg-dropdown-item dg-dropdown-item-disabled">Disabled</div>
   <div className="dg-dropdown-divider"></div>
   <div className="dg-dropdown-header">Actions</div>
   <div className="dg-dropdown-item">Export Data</div>
@@ -717,9 +1789,10 @@ a:focus {
 ```html
 <div class="dg-dropdown">
   <div class="dg-dropdown-header">Account</div>
-  <div class="dg-dropdown-item">Profile</div>
-  <div class="dg-dropdown-item">Settings</div>
-  <div class="dg-dropdown-item dg-dropdown-item-disabled">Premium Feature</div>
+  <div class="dg-dropdown-item">Default</div>
+  <div class="dg-dropdown-item dg-dropdown-item-hover">Hover</div>
+  <div class="dg-dropdown-item dg-dropdown-item-active">Active</div>
+  <div class="dg-dropdown-item dg-dropdown-item-disabled">Disabled</div>
   <div class="dg-dropdown-divider"></div>
   <div class="dg-dropdown-header">Actions</div>
   <div class="dg-dropdown-item">Export Data</div>
@@ -728,13 +1801,46 @@ a:focus {
 ```
 
 ```css
+/* Dropdown container */
 .dg-dropdown {
   background-color: var(--dg-color-background-default);
-  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
   border-radius: var(--dg-size-border-radius-lg);
   box-shadow: var(--dg-shadow-elevation-md);
 }
 
+/* Dropdown option */
+.dg-dropdown-item {
+  padding: var(--dg-spacing-inset-xs) var(--dg-spacing-inset-sm);
+  cursor: pointer;
+  transition: background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+/* Hover - using option shortcut token */
+.dg-dropdown-item:hover,
+.dg-dropdown-item-hover {
+  background-color: var(--dg-color-background-option-interaction-hover);
+}
+
+/* Active/Pressed - using option shortcut token */
+.dg-dropdown-item:active,
+.dg-dropdown-item-active {
+  background-color: var(--dg-color-background-option-interaction-active);
+}
+
+/* Disabled */
+.dg-dropdown-item-disabled {
+  color: var(--dg-color-text-subtlest);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Danger variant */
+.dg-dropdown-item-danger {
+  color: var(--dg-color-semantic-error-default);
+}
+
+/* Header and divider */
 .dg-dropdown-header {
   padding: var(--dg-spacing-space-sm) var(--dg-spacing-inset-sm);
   font-size: var(--dg-size-font-caption);
@@ -742,28 +1848,8 @@ a:focus {
   font-weight: var(--dg-font-weight-medium);
 }
 
-.dg-dropdown-item {
-  padding: var(--dg-spacing-inset-xs) var(--dg-spacing-inset-sm);
-  cursor: pointer;
-  transition: background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
-}
-
-.dg-dropdown-item:hover {
-  background-color: var(--dg-color-alpha-neutral-1);
-}
-
-.dg-dropdown-item-disabled {
-  color: var(--dg-color-text-subtlest);
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.dg-dropdown-item-danger {
-  color: var(--dg-color-semantic-error-default);
-}
-
 .dg-dropdown-divider {
-  border-top: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-2);
+  border-top: var(--dg-border-width-thin) solid var(--dg-color-border-subtle);
   margin: var(--dg-spacing-space-xs) 0;
 }
 ```
@@ -773,7 +1859,15 @@ a:focus {
 
 ---
 
-## Card and Container State Patterns
+## Card Interaction Colors
+
+|                                                                                                                    | Token                                      | CSS Variable                                    | Use Case            |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ | ----------------------------------------------- | ------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-card-interaction-hover)'}}></div>  | `color.background.card.interaction.hover`  | `--dg-color-background-card-interaction-hover`  | Card hover          |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-card-interaction-active)'}}></div> | `color.background.card.interaction.active` | `--dg-color-background-card-interaction-active` | Card active/pressed |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-card-state-selected)'}}></div>     | `color.background.card.state.selected`     | `--dg-color-background-card-state-selected`     | Card selected       |
+
+### Card and Container State Patterns
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
@@ -801,93 +1895,56 @@ a:focus {
 <TabItem value="code" label="Code">
 
 ```html
-<div class="card-interactive">Default Card</div>
-<div class="card-interactive selected">Selected Card</div>
-```
-
-```css
-.card-interactive {
-  background-color: var(--dg-color-background-default);
-  border: 1px solid var(--dg-color-alpha-neutral-3);
-}
-
-.card-interactive:hover {
-  background-color: var(--dg-color-alpha-neutral-1);
-  box-shadow: 0 4px 12px var(--dg-color-alpha-neutral-4);
-}
-
-.card-interactive:active {
-  background-color: var(--dg-color-alpha-neutral-2);
-}
-
-.card-interactive.selected {
-  border-color: var(--dg-color-primary-default);
-  background-color: var(--dg-color-primary-subtler);
-}
-```
-
-</TabItem>
-</Tabs>
-
----
-
-## Badge and Tag State Patterns
-
-<Tabs>
-<TabItem value="demo" label="Demo" default>
-
-<div className="dg-state-demo">
-  <div className="dg-state-demo-section">
-    <p className="dg-state-demo-label">Interactive Badges</p>
-    <div className="dg-flex dg-gap-sm dg-items-center">
-      <span className="dg-badge dg-badge-interactive">Default</span>
-      <span className="dg-badge dg-badge-interactive dg-badge-interactive-hover">Hover</span>
-      <span className="dg-badge dg-badge-interactive dg-badge-interactive-active">Active</span>
-    </div>
-  </div>
-  <div className="dg-state-demo-section">
-    <p className="dg-state-demo-label">Removable Tags</p>
-    <div className="dg-flex dg-gap-sm dg-items-center">
-      <span className="dg-tag">Tag <span className="dg-tag-remove">×</span></span>
-      <span className="dg-tag">Tag <span className="dg-tag-remove dg-tag-remove-hover">×</span></span>
-    </div>
-  </div>
+<div class="dg-interactive-card">
+  <p class="dg-interactive-card-title">Default</p>
+  <p class="dg-interactive-card-desc">Resting state</p>
 </div>
-
-</TabItem>
-<TabItem value="code" label="Code">
-
-```html
-<!-- Interactive Badge -->
-<span class="badge-interactive">Badge</span>
-
-<!-- Removable Tag -->
-<span class="tag">
-  Tag
-  <button class="remove-button" aria-label="Remove">×</button>
-</span>
+<div class="dg-interactive-card dg-interactive-card-hover">
+  <p class="dg-interactive-card-title">Hover</p>
+  <p class="dg-interactive-card-desc">Elevated</p>
+</div>
+<div class="dg-interactive-card dg-interactive-card-active">
+  <p class="dg-interactive-card-title">Active</p>
+  <p class="dg-interactive-card-desc">Pressed</p>
+</div>
+<div class="dg-interactive-card dg-interactive-card-selected">
+  <p class="dg-interactive-card-title">Selected</p>
+  <p class="dg-interactive-card-desc">Chosen</p>
+</div>
 ```
 
 ```css
-.badge-interactive {
-  background-color: var(--dg-color-alpha-neutral-3);
-  color: var(--dg-color-text-default);
+/* Interactive card - using shortcut tokens */
+.dg-interactive-card {
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+  border-radius: var(--dg-size-border-radius-lg);
+  padding: var(--dg-spacing-inset-md);
+  cursor: pointer;
+  transition: var(--dg-transition-all);
 }
 
-.badge-interactive:hover {
-  background-color: var(--dg-color-alpha-neutral-4);
+/* Hover - using card shortcut token */
+.dg-interactive-card:hover,
+.dg-interactive-card-hover {
+  background-color: var(--dg-color-background-card-interaction-hover);
+  box-shadow: var(--dg-shadow-elevation-md);
 }
 
-.badge-interactive:active {
-  background-color: var(--dg-color-alpha-neutral-5);
+/* Active - using card shortcut token */
+.dg-interactive-card:active,
+.dg-interactive-card-active {
+  background-color: var(--dg-color-background-card-interaction-active);
+  box-shadow: var(--dg-shadow-elevation-sm);
 }
 
-.tag {
-  background-color: var(--dg-color-primary-subtler);
-  color: var(--dg-color-primary-bold);
+/* Selected - using card shortcut token */
+.dg-interactive-card-selected {
+  background-color: var(--dg-color-background-card-state-selected);
+  color: var(--dg-color-text-inverse);
 }
 
-.tag .remove-button:hover {
+.dg-interactive-card-selected:hover {
   background-color: var(--dg-color-primary-subtle);
 }
 ```
@@ -897,28 +1954,106 @@ a:focus {
 
 ---
 
-## Loading State Patterns
+## Badge Interaction Colors
+
+|                                                                                                                     | Token                                       | CSS Variable                                     | Use Case             |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------ | -------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-badge-interaction-hover)'}}></div>  | `color.background.badge.interaction.hover`  | `--dg-color-background-badge-interaction-hover`  | Badge hover          |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-badge-interaction-active)'}}></div> | `color.background.badge.interaction.active` | `--dg-color-background-badge-interaction-active` | Badge active/pressed |
+
+### Badge State Patterns
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-state-demo">
-  <div className="dg-state-demo-section">
-    <p className="dg-state-demo-label">Loading Buttons</p>
+<div className="dg-state-showcase">
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Interactive Badges</p>
+    <div className="dg-flex dg-gap-sm dg-items-center">
+      <span className="dg-badge dg-badge-interactive">Default</span>
+      <span className="dg-badge dg-badge-interactive dg-badge-interactive-hover">Hover</span>
+      <span className="dg-badge dg-badge-interactive dg-badge-interactive-active">Active</span>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<!-- Interactive Badge -->
+<span class="dg-badge dg-badge-interactive">Default</span>
+<span class="dg-badge dg-badge-interactive dg-badge-interactive-hover">Hover</span>
+<span class="dg-badge dg-badge-interactive dg-badge-interactive-active">Active</span>
+```
+
+```css
+/* Interactive badge - using shortcut tokens */
+.dg-badge-interactive {
+  background-color: var(--dg-color-alpha-neutral-3);
+  color: var(--dg-color-text-default);
+  cursor: pointer;
+  transition: background-color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+/* Hover - using badge shortcut token */
+.dg-badge-interactive:hover,
+.dg-badge-interactive-hover {
+  background-color: var(--dg-color-background-badge-interaction-hover);
+}
+
+/* Active - using badge shortcut token */
+.dg-badge-interactive:active,
+.dg-badge-interactive-active {
+  background-color: var(--dg-color-background-badge-interaction-active);
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Loading Colors
+
+|                                                                                                            | Token                              | CSS Variable                            | Use Case                   |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------- | --------------------------------------- | -------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-background-loading-overlay)'}}></div> | `color.background.loading.overlay` | `--dg-color-background-loading-overlay` | Loading overlay background |
+
+### Loading State Patterns
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-state-showcase">
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Loading Button (Spinner)</p>
     <div className="dg-flex dg-gap-md dg-items-center">
       <button className="dg-btn dg-btn-primary">Normal</button>
-      <button className="dg-btn dg-btn-primary dg-btn-loading">
+      <button className="dg-btn dg-btn-primary dg-btn--loading">
         <span>Loading</span>
-        <div className="dg-spinner"></div>
+        <span className="dg-spinner"></span>
       </button>
     </div>
   </div>
-  <div className="dg-state-demo-section">
-    <p className="dg-state-demo-label">Loading Overlay</p>
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Loading Button (Overlay)</p>
+    <div className="dg-flex dg-gap-md dg-items-center">
+      <button className="dg-btn dg-btn-primary">Normal</button>
+      <button className="dg-btn dg-btn-primary dg-btn--loading-overlay">
+        <span>Submit</span>
+        <span className="dg-btn--loading-mask">
+          <span className="dg-spinner"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Loading Content Overlay</p>
     <div className="dg-loading-overlay">
       <span>Content</span>
       <div className="dg-loading-overlay-mask">
-        <div className="dg-spinner dg-spinner-primary"></div>
+        <span className="dg-spinner dg-spinner-primary"></span>
       </div>
     </div>
   </div>
@@ -928,45 +2063,109 @@ a:focus {
 <TabItem value="code" label="Code">
 
 ```html
-<!-- Loading button -->
-<button class="button button-loading">
-  <span>Submit</span>
-  <span class="spinner"></span>
+<!-- Loading button (spinner replaces text) -->
+<button class="dg-btn dg-btn-primary dg-btn--loading">
+  <span>Loading</span>
+  <span class="dg-spinner"></span>
 </button>
 
-<!-- Loading overlay -->
-<div class="content-area">
-  <div class="loading-overlay">
-    <span class="spinner"></span>
+<!-- Loading button (overlay keeps text visible) -->
+<button class="dg-btn dg-btn-primary dg-btn--loading-overlay">
+  <span>Submit</span>
+  <span class="dg-btn--loading-mask">
+    <span class="dg-spinner"></span>
+  </span>
+</button>
+
+<!-- Loading content overlay -->
+<div class="dg-loading-overlay">
+  <span>Content</span>
+  <div class="dg-loading-overlay-mask">
+    <span class="dg-spinner dg-spinner-primary"></span>
   </div>
 </div>
 ```
 
 ```css
-.button-loading {
-  position: relative;
-  color: transparent;
+/* Loading button (spinner) - hides text, shows spinner */
+.dg-btn--loading {
+  display: inline-grid;
+  place-items: center;
   pointer-events: none;
-}
-
-.button-loading::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--dg-color-alpha-neutral-3);
-  border-top-color: var(--dg-color-text-inverse);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-.loading-overlay {
-  background-color: var(--dg-color-alpha-neutral-4);
   cursor: wait;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.dg-btn--loading > * {
+  grid-area: 1 / 1; /* Stack all children in same cell */
+}
+
+.dg-btn--loading span:not(.dg-spinner) {
+  visibility: hidden; /* Hide text but keep space */
+}
+
+/* Loading button (overlay) - keeps text visible under mask */
+.dg-btn--loading-overlay {
+  position: relative;
+  pointer-events: none;
+  cursor: wait;
+}
+
+.dg-btn--loading-mask {
+  position: absolute;
+  inset: 0;
+  background-color: var(--dg-color-background-loading-overlay);
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spinner - default (white, for primary buttons) */
+.dg-spinner {
+  width: var(--dg-spacing-space-md);
+  height: var(--dg-spacing-space-md);
+  border: var(--dg-border-width-medium) solid var(--dg-color-alpha-neutral-3);
+  border-top-color: var(--dg-color-text-inverse);
+  border-radius: var(--dg-size-border-radius-full);
+  animation: dg-spin var(--dg-duration-slowest) linear infinite;
+}
+
+/* Spinner - primary color variant (for content overlays) */
+.dg-spinner-primary {
+  border-top-color: var(--dg-color-primary-default);
+  width: var(--dg-spacing-space-xl);
+  height: var(--dg-spacing-space-xl);
+  border-width: var(--dg-border-width-thick);
+}
+
+/* Loading content overlay */
+.dg-loading-overlay {
+  position: relative;
+  width: 140px;
+  height: 80px;
+  background-color: var(--dg-color-background-bold);
+  border-radius: var(--dg-size-border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dg-color-text-subtle);
+}
+
+.dg-loading-overlay-mask {
+  position: absolute;
+  inset: 0;
+  background-color: var(--dg-color-background-loading-overlay);
+  border-radius: var(--dg-size-border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: wait;
+}
+
+@keyframes dg-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 ```
 
@@ -975,60 +2174,63 @@ a:focus {
 
 ---
 
-## Transition Patterns
+## Usage Examples
 
-<Tabs>
-<TabItem value="demo" label="Demo" default>
+### TypeScript/JavaScript
 
-<div className="dg-state-demo">
-  <div className="dg-transition-demo-section">
-    <p className="dg-state-demo-label">Fast (150ms)</p>
-    <button className="dg-btn dg-btn-primary dg-btn-transition-fast">Hover me</button>
-  </div>
-  <div className="dg-transition-demo-section">
-    <p className="dg-state-demo-label">Standard (200ms)</p>
-    <div className="dg-card-transition-standard">Hover me</div>
-  </div>
-  <div className="dg-transition-demo-section">
-    <p className="dg-state-demo-label">Slow (300ms)</p>
-    <div className="dg-card-transition-slow">Hover me</div>
-  </div>
-</div>
+```typescript
+import { tokens } from '@designgreat/lib-design-token'
 
-</TabItem>
-<TabItem value="code" label="Code">
+// Interactive state styles
+const buttonStates = {
+  default: {
+    backgroundColor: tokens.color.background.button.DEFAULT,
+    color: tokens.color.text.inverse
+  },
+  hover: {
+    backgroundColor: tokens.color.background.button.interaction.hover
+  },
+  active: {
+    backgroundColor: tokens.color.background.button.interaction.active
+  },
+  focus: {
+    backgroundColor: tokens.color.background.button.interaction.focus,
+    boxShadow: tokens.shadow.focus
+  },
+  disabled: {
+    backgroundColor: tokens.color.background.button.state.disabled,
+    opacity: 0.6,
+    cursor: 'not-allowed'
+  }
+}
 
-```html
-<button class="button">Fast transition</button>
-<div class="interactive-element">Standard transition</div>
-<div class="card">Slow transition</div>
+// Component example
+function Button({ disabled, children, ...props }) {
+  const [isHovered, setIsHovered] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+
+  const getStyles = () => {
+    if (disabled) return buttonStates.disabled
+    if (isActive) return buttonStates.active
+    if (isHovered) return buttonStates.hover
+    return buttonStates.default
+  }
+
+  return (
+    <button
+      {...props}
+      disabled={disabled}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onMouseDown={() => setIsActive(true)}
+      onMouseUp={() => setIsActive(false)}
+      style={getStyles()}
+    >
+      {children}
+    </button>
+  )
+}
 ```
-
-```css
-/* Fast transition (150ms) - immediate feedback */
-.button {
-  transition: 
-    background-color 150ms ease-in-out,
-    transform 150ms ease-in-out;
-}
-
-/* Standard transition (200ms) - general interactions */
-.interactive-element {
-  transition: 
-    background-color 200ms ease-in-out,
-    border-color 200ms ease-in-out;
-}
-
-/* Slow transition (300ms) - subtle effects */
-.card {
-  transition: box-shadow 300ms ease-in-out;
-}
-```
-
-</TabItem>
-</Tabs>
-
----
 
 ## Usage Guidelines
 
@@ -1057,8 +2259,8 @@ a:focus {
 ```css
 /* Visible focus for keyboard users */
 .interactive:focus-visible {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  outline-offset: 2px;
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-focus-default);
+  outline-offset: var(--dg-spacing-space-2xs);
 }
 
 /* Hide focus for mouse users (optional) */
@@ -1080,7 +2282,7 @@ a:focus {
 }
 
 /* Disabled link */
-a[aria-disabled="true"] {
+a[aria-disabled='true'] {
   color: var(--dg-color-text-subtlest);
   pointer-events: none;
   text-decoration: none;
@@ -1104,61 +2306,111 @@ a[aria-disabled="true"] {
 ### File Structure
 
 ```
-packages/lib-design-token/src/tokens/color/
-  ├── primary.js       # Interactive state tokens
-  ├── shortcut/state.js     # State-specific shortcuts (coming soon)
-  └── shortcut/interaction.js  # Interaction shortcuts (coming soon)
+packages/lib-design-token/src/tokens/color/shortcut/
+  ├── input.js              # Button, input default states
+  ├── input-interaction.js  # Button, input interaction states
+  ├── input-state.js        # Button, input state-specific tokens
+  ├── interaction.js        # Navigation, card, badge interaction states
+  └── state.js              # Navigation, card, badge state-specific tokens
 ```
 
-### TypeScript/JavaScript
+### Token Structure
 
-```typescript
-import { tokens } from '@designgreat/lib-design-token'
-
-// Button state styles
-const buttonStates = {
-  default: {
-    backgroundColor: tokens.color.primary.DEFAULT,
-    color: tokens.color.text.inverse
-  },
-  hover: {
-    backgroundColor: tokens.color.primary.hover.DEFAULT
-  },
-  active: {
-    backgroundColor: tokens.color.primary.active.DEFAULT
-  },
-  disabled: {
-    backgroundColor: tokens.color.primary.disabled.DEFAULT,
-    opacity: 0.6,
-    cursor: 'not-allowed'
+```javascript
+{
+  color: {
+    background: {
+      button: {
+        DEFAULT: { value: '{color.primary.DEFAULT}', type: 'color' },
+        subtle: { value: '{color.alpha.neutral.1}', type: 'color' },
+        secondary: { value: '{color.secondary.DEFAULT}', type: 'color' },
+        outline: { value: 'transparent', type: 'color' },
+        ghost: { value: 'transparent', type: 'color' },
+        interaction: {
+          hover: { value: '{color.primary.hover.DEFAULT}', type: 'color' },
+          focus: { value: '{color.primary.focus.DEFAULT}', type: 'color' },
+          active: { value: '{color.primary.active.DEFAULT}', type: 'color' }
+        },
+        state: {
+          disabled: { value: '{color.primary.disabled.DEFAULT}', type: 'color' }
+        }
+      },
+      nav: {
+        DEFAULT: {
+          interaction: {
+            hover: { value: '{color.background.bold}', type: 'color' },
+            active: { value: '{color.alpha.neutral.3}', type: 'color' }
+          },
+          state: {
+            activated: { value: '{color.primary.activated.bg}', type: 'color' }
+          }
+        }
+      },
+      card: {
+        interaction: {
+          hover: { value: '{color.alpha.neutral.1}', type: 'color' },
+          active: { value: '{color.alpha.neutral.2}', type: 'color' }
+        },
+        state: {
+          selected: { value: '{color.primary.activated.bg}', type: 'color' }
+        }
+      },
+      badge: {
+        interaction: {
+          hover: { value: '{color.alpha.neutral.4}', type: 'color' },
+          active: { value: '{color.alpha.neutral.5}', type: 'color' }
+        }
+      },
+      loading: {
+        overlay: { value: '{color.alpha.neutral.4}', type: 'color' }
+      }
+    },
+    text: {
+      link: {
+        DEFAULT: { value: '{color.primary.DEFAULT}', type: 'color' },
+        interaction: {
+          hover: { value: '{color.primary.hover.DEFAULT}', type: 'color' },
+          visited: { value: '{color.primary.visited.DEFAULT}', type: 'color' }
+        }
+      }
+    },
+    border: {
+      input: {
+        DEFAULT: { value: '{color.alpha.neutral.3}', type: 'color' },
+        interaction: {
+          hover: { value: '{color.alpha.neutral.4}', type: 'color' },
+          focus: { value: '{color.primary.DEFAULT}', type: 'color' }
+        },
+        state: {
+          valid: { value: '{color.semantic.success.DEFAULT}', type: 'color' },
+          invalid: { value: '{color.semantic.error.DEFAULT}', type: 'color' },
+          warning: { value: '{color.semantic.warning.DEFAULT}', type: 'color' }
+        }
+      },
+      checkbox: {
+        DEFAULT: { value: '{color.alpha.neutral.3}', type: 'color' },
+        interaction: {
+          hover: { value: '{color.alpha.neutral.4}', type: 'color' },
+          focus: { value: '{color.primary.DEFAULT}', type: 'color' }
+        },
+        state: {
+          checked: { value: '{color.primary.checked.DEFAULT}', type: 'color' },
+          disabled: { value: '{color.border.subtle}', type: 'color' }
+        }
+      },
+      radio: {
+        DEFAULT: { value: '{color.alpha.neutral.3}', type: 'color' },
+        interaction: {
+          hover: { value: '{color.alpha.neutral.4}', type: 'color' },
+          focus: { value: '{color.primary.DEFAULT}', type: 'color' }
+        },
+        state: {
+          checked: { value: '{color.primary.checked.DEFAULT}', type: 'color' },
+          disabled: { value: '{color.border.subtle}', type: 'color' }
+        }
+      }
+    }
   }
-}
-
-// Component with state management
-function Button({ disabled, children, ...props }) {
-  const [isHovered, setIsHovered] = useState(false)
-  const [isActive, setIsActive] = useState(false)
-
-  const getStyles = () => {
-    if (disabled) return buttonStates.disabled
-    if (isActive) return buttonStates.active
-    if (isHovered) return buttonStates.hover
-    return buttonStates.default
-  }
-
-  return (
-    <button
-      {...props}
-      disabled={disabled}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onMouseDown={() => setIsActive(true)}
-      onMouseUp={() => setIsActive(false)}
-      style={getStyles()}
-    >
-      {children}
-    </button>
-  )
 }
 ```
 

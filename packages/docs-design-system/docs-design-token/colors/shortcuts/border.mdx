@@ -2,9 +2,9 @@
 sidebar_position: 3
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Border Shortcuts
 
@@ -27,27 +27,38 @@ The design system includes pre-defined border tokens that combine width, style, 
 
 These tokens provide complete `border` values (width + style + color):
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `border.default` | `--dg-border-default` | Standard border for cards, containers |
-| `border.subtle` | `--dg-border-subtle` | Light separation, subtle dividers |
-| `border.bold` | `--dg-border-bold` | Emphasized borders |
+| Color                                                                                          | Token            | CSS Variable          | Use Case                              |
+| ---------------------------------------------------------------------------------------------- | ---------------- | --------------------- | ------------------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-default)'}}></div> | `border.default` | `--dg-border-default` | Standard border for cards, containers |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-subtle)'}}></div>  | `border.subtle`  | `--dg-border-subtle`  | Light separation, subtle dividers     |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-bold)'}}></div>    | `border.bold`    | `--dg-border-bold`    | Emphasized borders                    |
+
+<details>
+<summary>Token Values</summary>
+
+| Token     | width                 | style   | color                    |
+| --------- | --------------------- | ------- | ------------------------ |
+| `default` | `{border.width.thin}` | `solid` | `{color.border.DEFAULT}` |
+| `subtle`  | `{border.width.thin}` | `solid` | `{color.border.subtle}`  |
+| `bold`    | `{border.width.thin}` | `solid` | `{color.border.bold}`    |
+
+</details>
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
 <div className="dg-flex dg-gap-lg dg-flex-wrap">
-  <div className="dg-elevation-card dg-border-default-demo">
-    <p className="dg-demo-card-title">Default</p>
-    <p className="dg-demo-card-meta">--dg-border-default</p>
+  <div className="dg-elevation-card dg-border-default-showcase">
+    <p className="dg-border-card-title">Default</p>
+    <p className="dg-border-card-meta">--dg-border-default</p>
   </div>
-  <div className="dg-elevation-card dg-border-subtle-demo">
-    <p className="dg-demo-card-title">Subtle</p>
-    <p className="dg-demo-card-meta">--dg-border-subtle</p>
+  <div className="dg-elevation-card dg-border-subtle-showcase">
+    <p className="dg-border-card-title">Subtle</p>
+    <p className="dg-border-card-meta">--dg-border-subtle</p>
   </div>
-  <div className="dg-elevation-card dg-border-bold-demo">
-    <p className="dg-demo-card-title">Bold</p>
-    <p className="dg-demo-card-meta">--dg-border-bold</p>
+  <div className="dg-elevation-card dg-border-bold-showcase">
+    <p className="dg-border-card-title">Bold</p>
+    <p className="dg-border-card-meta">--dg-border-bold</p>
   </div>
 </div>
 
@@ -81,12 +92,24 @@ These tokens provide complete `border` values (width + style + color):
 
 Specialized borders for form inputs with state variants:
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `border.input.DEFAULT` | `--dg-border-input-default` | Default input border |
-| `border.input.focus` | `--dg-border-input-focus` | Focused input border |
-| `border.input.error` | `--dg-border-input-error` | Error state input border |
-| `border.input.success` | `--dg-border-input-success` | Success state input border |
+| Color                                                                                                          | Token                  | CSS Variable                | Use Case                   |
+| -------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------- | -------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-default)'}}></div>           | `border.input.DEFAULT` | `--dg-border-input-default` | Default input border       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-interaction-focus)'}}></div> | `border.input.focus`   | `--dg-border-input-focus`   | Focused input border       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-error-bold)'}}></div>              | `border.input.error`   | `--dg-border-input-error`   | Error state input border   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-success-bold)'}}></div>            | `border.input.success` | `--dg-border-input-success` | Success state input border |
+
+<details>
+<summary>Token Values</summary>
+
+| Token     | width                 | style   | color                                    |
+| --------- | --------------------- | ------- | ---------------------------------------- |
+| `DEFAULT` | `{border.width.thin}` | `solid` | `{color.border.input.DEFAULT}`           |
+| `focus`   | `{border.width.thin}` | `solid` | `{color.border.input.interaction.focus}` |
+| `error`   | `{border.width.thin}` | `solid` | `{color.border.error.bold}`              |
+| `success` | `{border.width.thin}` | `solid` | `{color.border.success.bold}`            |
+
+</details>
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
@@ -149,15 +172,25 @@ Specialized borders for form inputs with state variants:
 
 Borders for horizontal and vertical dividers:
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `border.divider.DEFAULT` | `--dg-border-divider-default` | Standard divider line |
-| `border.divider.bold` | `--dg-border-divider-bold` | Emphasized divider |
+| Color                                                                                          | Token                    | CSS Variable                  | Use Case              |
+| ---------------------------------------------------------------------------------------------- | ------------------------ | ----------------------------- | --------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-subtle)'}}></div>  | `border.divider.DEFAULT` | `--dg-border-divider-default` | Standard divider line |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-default)'}}></div> | `border.divider.bold`    | `--dg-border-divider-bold`    | Emphasized divider    |
+
+<details>
+<summary>Token Values</summary>
+
+| Token     | width                   | style   | color                    |
+| --------- | ----------------------- | ------- | ------------------------ |
+| `DEFAULT` | `{border.width.thin}`   | `solid` | `{color.border.subtle}`  |
+| `bold`    | `{border.width.medium}` | `solid` | `{color.border.DEFAULT}` |
+
+</details>
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-demo-card dg-demo-card-compact">
+<div className="dg-border-card dg-border-card-compact">
   <p className="dg-text-body">Content above</p>
   <div className="dg-divider"></div>
   <p className="dg-text-body">Content between</p>
@@ -192,164 +225,150 @@ Borders for horizontal and vertical dividers:
 
 Border for keyboard focus indicators:
 
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `border.focus` | `--dg-border-focus` | Focus ring for keyboard navigation |
+| Color                                                                                           | Token          | CSS Variable        | Use Case                           |
+| ----------------------------------------------------------------------------------------------- | -------------- | ------------------- | ---------------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-default)'}}></div> | `border.focus` | `--dg-border-focus` | Focus ring for keyboard navigation |
 
-<Tabs>
-<TabItem value="demo" label="Demo" default>
+<details>
+<summary>Token Values</summary>
 
-<div className="dg-flex dg-gap-lg dg-items-center">
-  <button className="dg-btn dg-btn-primary dg-btn-focus">Focused Button</button>
-</div>
+| Token   | width                   | style   | color                     |
+| ------- | ----------------------- | ------- | ------------------------- |
+| `focus` | `{border.width.medium}` | `solid` | `{color.primary.DEFAULT}` |
 
-</TabItem>
-<TabItem value="code" label="Code">
+</details>
 
-```html
-<button class="dg-btn dg-btn-primary dg-btn-focus">Focused</button>
-```
-
-```css
-.dg-btn-focus {
-  outline: var(--dg-border-focus);
-  outline-offset: 2px;
-  box-shadow: var(--dg-shadow-focus);
-}
-```
-
-</TabItem>
-</Tabs>
-
-### Border Width Tokens
-
-Separate width tokens for custom border compositions:
-
-| Token | CSS Variable | Value | Use Case |
-|-------|--------------|-------|----------|
-| `border.width.none` | `--dg-border-width-none` | 0 | No border |
-| `border.width.thin` | `--dg-border-width-thin` | 1px | Default borders |
-| `border.width.medium` | `--dg-border-width-medium` | 2px | Emphasized borders, focus rings |
-| `border.width.thick` | `--dg-border-width-thick` | 4px | Heavy emphasis, accent borders |
-
-## Border Color Tokens
-
-Separate color tokens for custom border compositions:
-
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.border.default` | `--dg-color-border-default` | Standard border color |
-| `color.border.subtle` | `--dg-color-border-subtle` | Light borders |
-| `color.border.bold` | `--dg-color-border-bold` | Emphasized borders |
-| `color.border.inverse` | `--dg-color-border-inverse` | Borders on dark backgrounds |
-
-### Semantic Border Colors
-
-| Token | CSS Variable | Use Case |
-|-------|--------------|----------|
-| `color.border.information` | `--dg-color-border-information` | Info state borders |
-| `color.border.success.DEFAULT` | `--dg-color-border-success-default` | Success state borders |
-| `color.border.success.bold` | `--dg-color-border-success-bold` | Bold success borders |
-| `color.border.warning` | `--dg-color-border-warning` | Warning state borders |
-| `color.border.error.DEFAULT` | `--dg-color-border-error-default` | Error state borders |
-| `color.border.error.bold` | `--dg-color-border-error-bold` | Bold error borders |
-
-## Usage Examples
-
-### Cards and Containers
-
-<Tabs>
-<TabItem value="demo" label="Demo" default>
-
-<div className="dg-grid-2 dg-gap-md">
-  <div className="dg-demo-card dg-demo-card-compact">
-    <p className="dg-demo-card-title">Default Card</p>
-    <p className="dg-demo-card-meta">Subtle border</p>
-  </div>
-  <div className="dg-demo-card dg-demo-card-compact dg-card-outlined">
-    <p className="dg-demo-card-title">Outlined Card</p>
-    <p className="dg-demo-card-meta">Prominent border</p>
-  </div>
-  <div className="dg-demo-card dg-demo-card-compact dg-card-accent-info">
-    <p className="dg-demo-card-title">Info Card</p>
-    <p className="dg-demo-card-meta">Left accent</p>
-  </div>
-  <div className="dg-demo-card dg-demo-card-compact dg-card-accent-success">
-    <p className="dg-demo-card-title">Success Card</p>
-    <p className="dg-demo-card-meta">Left accent</p>
-  </div>
-</div>
-
-</TabItem>
-<TabItem value="code" label="Code">
-
-```html
-<div class="dg-demo-card">Default Card</div>
-<div class="dg-demo-card dg-card-outlined">Outlined Card</div>
-<div class="dg-demo-card dg-card-accent-info">Info Card</div>
-<div class="dg-demo-card dg-card-accent-success">Success Card</div>
-```
-
-```css
-.dg-demo-card {
-  border: var(--dg-border-default);
-  border-radius: var(--dg-size-border-radius-lg);
-}
-
-.dg-card-outlined {
-  border-width: var(--dg-border-width-medium);
-}
-
-.dg-card-accent-info {
-  border-left: var(--dg-border-width-thick) solid var(--dg-color-semantic-info-default);
-}
-
-.dg-card-accent-success {
-  border-left: var(--dg-border-width-thick) solid var(--dg-color-semantic-success-default);
-}
-```
-
-</TabItem>
-</Tabs>
-
-### Buttons
+### Focus Border Demo
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
 <div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
-  <button className="dg-btn dg-btn-outline">Primary Outline</button>
-  <button className="dg-btn dg-btn-neutral">Neutral</button>
-  <button className="dg-btn dg-btn-ghost">Ghost</button>
+  <div className="dg-focus-border-showcase" tabIndex="0">
+    Default
+  </div>
+  <div className="dg-focus-border-showcase dg-focus-border-showcase-focused" tabIndex="0">
+    Focused
+  </div>
+</div>
+<p className="dg-hint dg-mt-md">↑ Tab to these elements to see focus border</p>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```html
+<div class="dg-focus-border-showcase" tabindex="0">Focusable Element</div>
+```
+
+```css
+.dg-focus-border-showcase {
+  padding: var(--dg-spacing-inset-md);
+  background-color: var(--dg-color-background-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
+  border-radius: var(--dg-size-border-radius-md);
+  cursor: pointer;
+}
+
+.dg-focus-border-showcase:focus,
+.dg-focus-border-showcase:focus-visible,
+.dg-focus-border-showcase-focused {
+  outline: var(--dg-border-focus);
+  outline-offset: var(--dg-spacing-space-2xs);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Border Color Tokens
+
+Separate color tokens for custom border compositions:
+
+|                                                                                                | Token                  | CSS Variable                | Use Case                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------- | --------------------------- | --------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-default)'}}></div> | `color.border.DEFAULT` | `--dg-color-border-default` | Standard border color       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-subtle)'}}></div>  | `color.border.subtle`  | `--dg-color-border-subtle`  | Light borders               |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-bold)'}}></div>    | `color.border.bold`    | `--dg-color-border-bold`    | Emphasized borders          |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-inverse)'}}></div> | `color.border.inverse` | `--dg-color-border-inverse` | Borders on dark backgrounds |
+
+### Semantic Border Colors
+
+|                                                                                                        | Token                          | CSS Variable                        | Use Case              |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------ | ----------------------------------- | --------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-information)'}}></div>     | `color.border.information`     | `--dg-color-border-information`     | Info state borders    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-success-default)'}}></div> | `color.border.success.DEFAULT` | `--dg-color-border-success-default` | Success state borders |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-success-bold)'}}></div>    | `color.border.success.bold`    | `--dg-color-border-success-bold`    | Bold success borders  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-warning)'}}></div>         | `color.border.warning`         | `--dg-color-border-warning`         | Warning state borders |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-error-default)'}}></div>   | `color.border.error.DEFAULT`   | `--dg-color-border-error-default`   | Error state borders   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-error-bold)'}}></div>      | `color.border.error.bold`      | `--dg-color-border-error-bold`      | Bold error borders    |
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-grid-2 dg-gap-md">
+  <div className="dg-border-card dg-border-card-compact dg-card-subtle">
+    <p className="dg-border-card-title">Default Card</p>
+    <p className="dg-border-card-meta">Subtle border</p>
+  </div>
+  <div className="dg-border-card dg-border-card-compact dg-card-outlined">
+    <p className="dg-border-card-title">Outlined Card</p>
+    <p className="dg-border-card-meta">Prominent border</p>
+  </div>
+  <div className="dg-border-card dg-border-card-compact dg-card-accent-info">
+    <p className="dg-border-card-title">Info Card</p>
+    <p className="dg-border-card-meta">Left accent</p>
+  </div>
+  <div className="dg-border-card dg-border-card-compact dg-card-accent-success">
+    <p className="dg-border-card-title">Success Card</p>
+    <p className="dg-border-card-meta">Left accent</p>
+  </div>
+  <div className="dg-border-card dg-border-card-compact dg-card-accent-error">
+    <p className="dg-border-card-title">Error Card</p>
+    <p className="dg-border-card-meta">Left accent</p>
+  </div>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
 ```html
-<button class="dg-btn dg-btn-outline">Primary Outline</button>
-<button class="dg-btn dg-btn-neutral">Neutral</button>
-<button class="dg-btn dg-btn-ghost">Ghost</button>
+<div class="dg-border-card dg-card-subtle">Default Card</div>
+<div class="dg-border-card dg-card-outlined">Outlined Card</div>
+<div class="dg-border-card dg-card-accent-info">Info Card</div>
+<div class="dg-border-card dg-card-accent-success">Success Card</div>
+<div class="dg-border-card dg-card-accent-error">Error Card</div>
 ```
 
 ```css
-.dg-btn-outline {
-  background-color: transparent;
-  border: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
-  color: var(--dg-color-primary-default);
+.dg-border-card {
+  border-radius: var(--dg-size-border-radius-lg);
 }
 
-.dg-btn-neutral {
-  border: var(--dg-border-default);
+.dg-card-subtle {
+  border: var(--dg-border-subtle);
 }
 
-.dg-btn-ghost {
-  border: none;
+.dg-card-outlined {
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-bold);
+}
+
+.dg-card-accent-info {
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-border-information);
+}
+
+.dg-card-accent-success {
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-border-success-bold);
+}
+
+.dg-card-accent-error {
+  border-left: var(--dg-border-width-thick) solid var(--dg-color-border-error-bold);
 }
 ```
 
 </TabItem>
 </Tabs>
+
+## Usage Examples
 
 ### Modals
 
@@ -365,8 +384,8 @@ Separate color tokens for custom border compositions:
       <p>Notice the header and footer borders using divider tokens.</p>
     </div>
     <div className="dg-modal-footer">
-      <button className="dg-btn dg-btn-neutral dg-btn-small">Cancel</button>
-      <button className="dg-btn dg-btn-primary dg-btn-small">Confirm</button>
+      <button className="dg-btn dg-btn-neutral dg-btn--small">Cancel</button>
+      <button className="dg-btn dg-btn-primary dg-btn--small">Confirm</button>
     </div>
   </div>
 </div>
@@ -446,6 +465,33 @@ Separate color tokens for custom border compositions:
 </TabItem>
 </Tabs>
 
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-design-token'
+
+// Border styles
+const borders = {
+  default: tokens.border.default,
+  subtle: tokens.border.subtle,
+  bold: tokens.border.bold,
+  inputDefault: tokens.border.input.DEFAULT,
+  inputFocus: tokens.border.input.focus,
+  divider: tokens.border.divider.DEFAULT,
+  focus: tokens.border.focus
+}
+
+// Component example
+function Card({ variant = 'default', children }) {
+  const borderStyle = borders[variant]
+  return (
+    <div style={{ border: `var(--dg-border-${variant})` }}>
+      {children}
+    </div>
+  )
+}
+```
+
 ## Usage Guidelines
 
 ### ✅ Do
@@ -486,29 +532,6 @@ Always provide visible focus indicators:
 
 ## Technical Details
 
-### Token Structure
-
-```
-border/
-├── width/
-│   ├── none        → 0
-│   ├── thin        → 1px
-│   ├── medium      → 2px
-│   └── thick       → 4px
-├── default         → thin solid border-color
-├── subtle          → thin solid subtle-color
-├── bold            → thin solid bold-color
-├── input/
-│   ├── DEFAULT     → thin solid input-color
-│   ├── focus       → thin solid primary
-│   ├── error       → thin solid error
-│   └── success     → thin solid success
-├── divider/
-│   ├── DEFAULT     → thin solid subtle-color
-│   └── bold        → medium solid default-color
-└── focus           → medium solid primary
-```
-
 ### File Structure
 
 ```
@@ -518,57 +541,103 @@ packages/lib-design-token/src/tokens/
     └── border.js          # Border color shortcuts
 ```
 
-### CSS Variables Reference
+### Token Structure
 
-```css
-/* Border widths */
---dg-border-width-none: 0;
---dg-border-width-thin: 1px;
---dg-border-width-medium: 2px;
---dg-border-width-thick: 4px;
-
-/* Complete border shorthands */
---dg-border-default: 1px solid var(--dg-color-border-default);
---dg-border-subtle: 1px solid var(--dg-color-border-subtle);
---dg-border-bold: 1px solid var(--dg-color-border-bold);
-
-/* Input borders */
---dg-border-input-default: 1px solid var(--dg-color-border-input-default);
---dg-border-input-focus: 1px solid var(--dg-color-primary-default);
---dg-border-input-error: 1px solid var(--dg-color-semantic-error-default);
---dg-border-input-success: 1px solid var(--dg-color-semantic-success-default);
-
-/* Divider borders */
---dg-border-divider-default: 1px solid var(--dg-color-border-subtle);
---dg-border-divider-bold: 2px solid var(--dg-color-border-default);
-
-/* Focus border */
---dg-border-focus: 2px solid var(--dg-color-primary-default);
-```
-
-### TypeScript/JavaScript
-
-```typescript
-import { tokens } from '@designgreat/lib-design-token'
-
-// Access border tokens
-const borders = {
-  default: tokens.border.default,
-  subtle: tokens.border.subtle,
-  bold: tokens.border.bold,
-  inputDefault: tokens.border.input.DEFAULT,
-  inputFocus: tokens.border.input.focus,
-  divider: tokens.border.divider.DEFAULT,
-  focus: tokens.border.focus
-}
-
-// Usage in component
-function Card({ variant = 'default', children }) {
-  return (
-    <div style={{ border: `var(--dg-border-${variant})` }}>
-      {children}
-    </div>
-  )
+```javascript
+{
+  border: {
+    width: {
+      none: { type: 'dimension', value: 0 },
+      thin: { type: 'dimension', value: '{spacing.px1}' },
+      DEFAULT: { type: 'dimension', value: '{border.width.thin}' },
+      medium: { type: 'dimension', value: '{spacing.px2}' },
+      thick: { type: 'dimension', value: '{spacing.px4}' }
+    },
+    default: {
+      type: 'border',
+      value: {
+        width: '{border.width.thin}',
+        style: 'solid',
+        color: '{color.border.DEFAULT}'
+      }
+    },
+    subtle: {
+      type: 'border',
+      value: {
+        width: '{border.width.thin}',
+        style: 'solid',
+        color: '{color.border.subtle}'
+      }
+    },
+    bold: {
+      type: 'border',
+      value: {
+        width: '{border.width.thin}',
+        style: 'solid',
+        color: '{color.border.bold}'
+      }
+    },
+    input: {
+      DEFAULT: {
+        type: 'border',
+        value: {
+          width: '{border.width.thin}',
+          style: 'solid',
+          color: '{color.border.input.DEFAULT}'
+        }
+      },
+      focus: {
+        type: 'border',
+        value: {
+          width: '{border.width.thin}',
+          style: 'solid',
+          color: '{color.border.input.interaction.focus}'
+        }
+      },
+      error: {
+        type: 'border',
+        value: {
+          width: '{border.width.thin}',
+          style: 'solid',
+          color: '{color.border.error.bold}'
+        }
+      },
+      success: {
+        type: 'border',
+        value: {
+          width: '{border.width.thin}',
+          style: 'solid',
+          color: '{color.border.success.bold}'
+        }
+      }
+    },
+    divider: {
+      DEFAULT: {
+        type: 'border',
+        value: {
+          width: '{border.width.thin}',
+          style: 'solid',
+          color: '{color.border.subtle}'
+        }
+      },
+      bold: {
+        type: 'border',
+        value: {
+          width: '{border.width.medium}',
+          style: 'solid',
+          color: '{color.border.DEFAULT}'
+        }
+      }
+    },
+    focus: {
+      type: 'border',
+      value: {
+        width: '{border.width.medium}',
+        style: 'solid',
+        color: '{color.primary.DEFAULT}'
+      }
+    }
+  }
 }
 ```
 

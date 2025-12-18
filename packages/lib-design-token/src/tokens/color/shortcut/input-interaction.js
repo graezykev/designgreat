@@ -10,6 +10,14 @@ export default {
         }
       },
       button: {
+        ghost: {
+          interaction: {
+            "hover": {
+              value: '{color.primary.bold}',
+              type: 'color'
+            }
+          }
+        },
         wireframe: {
           interaction: {
             "hover": {
@@ -68,6 +76,66 @@ export default {
             },
             "active": {
               value: "{color.alpha.neutral.3}",
+              type: 'color'
+            }
+          }
+        },
+        secondary: {
+          "interaction": {
+            "hover": {
+              value: "{color.secondary.bold}",
+              type: 'color'
+            },
+            "focus": {
+              value: "{color.secondary.DEFAULT}",
+              type: 'color'
+            },
+            "focus-visible": {
+              value: "{color.secondary.DEFAULT}",
+              type: 'color'
+            },
+            "active": {
+              value: "{color.secondary.subtle}",
+              type: 'color'
+            }
+          }
+        },
+        outline: {
+          "interaction": {
+            "hover": {
+              value: "{color.alpha.neutral.1}",
+              type: 'color'
+            },
+            "focus": {
+              value: "transparent",
+              type: 'color'
+            },
+            "focus-visible": {
+              value: "transparent",
+              type: 'color'
+            },
+            "active": {
+              value: "{color.alpha.neutral.2}",
+              type: 'color'
+            }
+          }
+        },
+        ghost: {
+          "interaction": {
+            "hover": {
+              value: "{color.alpha.neutral.1}",
+              type: 'color'
+            },
+            "focus": {
+              value: "transparent",
+              type: 'color'
+            },
+            "focus-visible": {
+              value: "transparent",
+              type: 'color'
+            },
+            "active": {
+              value: "{color.alpha.neutral.2}",
               type: 'color'
             }
           }
@@ -216,6 +284,14 @@ export default {
             }
           }
         },
+        outline: {
+          "interaction": {
+            "hover": {
+              value: '{color.primary.bold}',
+              type: 'color'
+            }
+          }
+        },
         wireframe: {
           "interaction": {
             "hover": {
@@ -239,6 +315,10 @@ export default {
       },
       "input": {
         "interaction": {
+          "hover": {
+            value: '{color.border.bold}',
+            type: 'color'
+          },
           "focus": {
             value: '{color.primary.focus.DEFAULT}',
             type: 'color'
@@ -247,6 +327,10 @@ export default {
       },
       "checkbox": {
         "interaction": {
+          "hover": {
+            value: '{color.primary.DEFAULT}',
+            type: 'color'
+          },
           "focus": {
             value: '{color.primary.focus.DEFAULT}',
             type: 'color'
@@ -255,6 +339,10 @@ export default {
       },
       "radio": {
         "interaction": {
+          "hover": {
+            value: '{color.primary.DEFAULT}',
+            type: 'color'
+          },
           "focus": {
             value: '{color.primary.focus.DEFAULT}',
             type: 'color'
