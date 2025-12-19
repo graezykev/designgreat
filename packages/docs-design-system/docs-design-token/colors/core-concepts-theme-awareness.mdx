@@ -223,14 +223,14 @@ Now that you've seen the complete palette, let's understand how theme switching 
 Toggle between light and dark themes using the theme switcher in the navbar to see the semantic aliases change in real-time, while base colors and fixed levels stay constant!
 :::
 
-| Type               | Example               | Light Value            | Dark Value             | Live Demo                                                                                           | Behavior    |
-| ------------------ | --------------------- | ---------------------- | ---------------------- | --------------------------------------------------------------------------------------------------- | ----------- |
-| **Base Color**     | `base.blue`           | `#0055cc`              | `#0055cc`              | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-blue)'}}></div>           | ✅ SAME     |
-| **Fixed Level**    | `accent.grey.1`       | `#ffffff`              | `#ffffff`              | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-1)'}}></div>       | ✅ SAME     |
-| **Fixed Level**    | `accent.grey.12`      | `#0c0c0d`              | `#0c0c0d`              | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-12)'}}></div>      | ✅ SAME     |
-| **Semantic Alias** | `accent.grey.silent`  | `#ffffff` (→ level 1)  | `#0c0c0d` (→ level 12) | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-silent)'}}></div>  | 🔄 SWITCHED |
-| **Semantic Alias** | `accent.grey.bold`    | `#0c0c0d` (→ level 12) | `#ffffff` (→ level 1)  | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-bold)'}}></div>    | 🔄 SWITCHED |
-| **Semantic Alias** | `accent.blue.DEFAULT` | `#0055cc` (→ level 7)  | `#3388ff` (→ level 4)  | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-blue-default)'}}></div> | 🔄 SWITCHED |
+| Type               | Example                     | Light Value            | Dark Value             | Live Demo                                                                                           | Behavior    |
+| ------------------ | --------------------------- | ---------------------- | ---------------------- | --------------------------------------------------------------------------------------------------- | ----------- |
+| **Base Color**     | `color.base.blue`           | `#0055cc`              | `#0055cc`              | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-blue)'}}></div>           | ✅ SAME     |
+| **Fixed Level**    | `color.accent.grey.1`       | `#ffffff`              | `#ffffff`              | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-1)'}}></div>       | ✅ SAME     |
+| **Fixed Level**    | `color.accent.grey.12`      | `#0c0c0d`              | `#0c0c0d`              | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-12)'}}></div>      | ✅ SAME     |
+| **Semantic Alias** | `color.accent.grey.silent`  | `#ffffff` (→ level 1)  | `#0c0c0d` (→ level 12) | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-silent)'}}></div>  | 🔄 SWITCHED |
+| **Semantic Alias** | `color.accent.grey.bold`    | `#0c0c0d` (→ level 12) | `#ffffff` (→ level 1)  | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-grey-bold)'}}></div>    | 🔄 SWITCHED |
+| **Semantic Alias** | `color.accent.blue.DEFAULT` | `#0055cc` (→ level 7)  | `#3388ff` (→ level 4)  | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-accent-blue-default)'}}></div> | 🔄 SWITCHED |
 
 ## How Semantic Aliases Switch Between Themes
 
@@ -283,152 +283,148 @@ flowchart TB
     </marker>
   </defs>
 
-  {/* Title */}
-  <text x="450" y="25" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#666">
-    Grey/Neutral Color Theme Switching
+{/* Title */}
+
+<text x="450" y="25" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#666">
+  Grey/Neutral Color Theme Switching
+</text>
+
+{/* Center gradient column */}
+
+<g id="gradient-levels">
+  <text x="450" y="55" textAnchor="middle" fontSize="11" fontWeight="600" fill="#999">
+    FIXED GRADIENT LEVELS
   </text>
+  {[
+    { level: 1, y: 75, bg: '#fff', text: '#000' },
+    { level: 2, y: 125, bg: '#e8e8e9', text: '#000' },
+    { level: 3, y: 175, bg: '#d0d0d3', text: '#000' },
+    { level: 4, y: 225, bg: '#acacb2', text: '#000' },
+    { level: 5, y: 275, bg: '#8c8c95', text: '#fff' },
+    { level: 6, y: 325, bg: '#6e6e7a', text: '#fff' },
+    { level: 7, y: 375, bg: '#53535e', text: '#fff' },
+    { level: 8, y: 425, bg: '#40404a', text: '#fff' },
+    { level: 9, y: 475, bg: '#2d2d36', text: '#fff' },
+    { level: 10, y: 525, bg: '#1f1f24', text: '#fff' },
+    { level: 11, y: 575, bg: '#1d1d1f', text: '#fff' },
+    { level: 12, y: 625, bg: '#0c0c0d', text: '#fff' }
+  ].map(({ level, y, bg, text }) => (
+    <g key={level}>
+      <rect x="375" y={y} width="150" height="40" rx="2" fill={bg} stroke="#999" strokeWidth="1" />
+      <text x="450" y={y + 25} textAnchor="middle" fontSize="13" fontWeight="600" fill={text}>
+        grey.{level}
+      </text>
+    </g>
+  ))}
+</g>
 
-  {/* Center gradient column */}
-  <g id="gradient-levels">
-    <text x="450" y="55" textAnchor="middle" fontSize="11" fontWeight="600" fill="#999">
-      FIXED GRADIENT LEVELS
-    </text>
-    {[
-      { level: 1, y: 75, bg: '#fff', text: '#000' },
-      { level: 2, y: 125, bg: '#e8e8e9', text: '#000' },
-      { level: 3, y: 175, bg: '#d0d0d3', text: '#000' },
-      { level: 4, y: 225, bg: '#acacb2', text: '#000' },
-      { level: 5, y: 275, bg: '#8c8c95', text: '#fff' },
-      { level: 6, y: 325, bg: '#6e6e7a', text: '#fff' },
-      { level: 7, y: 375, bg: '#53535e', text: '#fff' },
-      { level: 8, y: 425, bg: '#40404a', text: '#fff' },
-      { level: 9, y: 475, bg: '#2d2d36', text: '#fff' },
-      { level: 10, y: 525, bg: '#1f1f24', text: '#fff' },
-      { level: 11, y: 575, bg: '#1d1d1f', text: '#fff' },
-      { level: 12, y: 625, bg: '#0c0c0d', text: '#fff' }
-    ].map(({ level, y, bg, text }) => (
-      <g key={level}>
-        <rect
-          x="375"
-          y={y}
-          width="150"
-          height="40"
-          rx="2"
-          fill={bg}
-          stroke="#999"
-          strokeWidth="1"
+{/* Left aliases - Light Theme */}
+
+<g id="light-aliases">
+  <text x="20" y="55" fontSize="11" fontWeight="600" fill="#999">
+    ☀️ LIGHT THEME
+  </text>
+  {[
+    { name: 'silent', y: 75, type: 'bg' },
+    { name: 'dullest', y: 125, type: 'bg' },
+    { name: 'duller', y: 175, type: 'bg' },
+    { name: 'dull', y: 225, type: 'bg' },
+    { name: 'lowest', y: 275, type: 'bg' },
+    { name: 'lower', y: 325, type: 'bg' },
+    { name: 'low', y: 375, type: 'bg' },
+    { name: 'subtlest', y: 425, type: 'fg' },
+    { name: 'subtler', y: 475, type: 'fg' },
+    { name: 'subtle', y: 525, type: 'fg' },
+    { name: 'DEFAULT', y: 575, type: 'fg' },
+    { name: 'bold', y: 625, type: 'fg' }
+  ].map(({ name, y, type }) => {
+    const isDefault = name === 'DEFAULT'
+    return (
+      <g key={name}>
+        <path
+          d={`M 25 ${y} L 120 ${y} L 120 ${y + 40} L 25 ${y + 40} L 20 ${y + 20} Z`}
+          fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
+          stroke={type === 'bg' ? '#d1d5db' : '#374151'}
+          strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
         />
-        <text x="450" y={y + 25} textAnchor="middle" fontSize="13" fontWeight="600" fill={text}>
-          grey.{level}
+        <text
+          x="70"
+          y={y + 25}
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight={isDefault ? '700' : '600'}
+          fill="#374151"
+        >
+          grey.{name}
         </text>
+        <line
+          x1="120"
+          y1={y + 20}
+          x2="365"
+          y2={y + 20}
+          stroke="#555"
+          strokeWidth="2"
+          markerEnd="url(#arrow)"
+        />
       </g>
-    ))}
-  </g>
+    )
+  })}
+</g>
 
-  {/* Left aliases - Light Theme */}
-  <g id="light-aliases">
-    <text x="20" y="55" fontSize="11" fontWeight="600" fill="#999">
-      ☀️ LIGHT THEME
-    </text>
-    {[
-      { name: 'silent', y: 75, type: 'bg' },
-      { name: 'dullest', y: 125, type: 'bg' },
-      { name: 'duller', y: 175, type: 'bg' },
-      { name: 'dull', y: 225, type: 'bg' },
-      { name: 'lowest', y: 275, type: 'bg' },
-      { name: 'lower', y: 325, type: 'bg' },
-      { name: 'low', y: 375, type: 'bg' },
-      { name: 'subtlest', y: 425, type: 'fg' },
-      { name: 'subtler', y: 475, type: 'fg' },
-      { name: 'subtle', y: 525, type: 'fg' },
-      { name: 'DEFAULT', y: 575, type: 'fg' },
-      { name: 'bold', y: 625, type: 'fg' }
-    ].map(({ name, y, type }) => {
-      const isDefault = name === 'DEFAULT'
-      return (
-        <g key={name}>
-          <path
-            d={`M 25 ${y} L 120 ${y} L 120 ${y + 40} L 25 ${y + 40} L 20 ${y + 20} Z`}
-            fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
-            stroke={type === 'bg' ? '#d1d5db' : '#374151'}
-            strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
-          />
-          <text
-            x="70"
-            y={y + 25}
-            textAnchor="middle"
-            fontSize="12"
-            fontWeight={isDefault ? '700' : '600'}
-            fill="#374151"
-          >
-            grey.{name}
-          </text>
-          <line
-            x1="120"
-            y1={y + 20}
-            x2="365"
-            y2={y + 20}
-            stroke="#555"
-            strokeWidth="2"
-            markerEnd="url(#arrow)"
-          />
-        </g>
-      )
-    })}
-  </g>
+{/* Right aliases - Dark Theme */}
 
-  {/* Right aliases - Dark Theme */}
-  <g id="dark-aliases">
-    <text x="860" y="55" fontSize="11" fontWeight="600" fill="#999" textAnchor="end">
-      🌙 DARK THEME
-    </text>
-    {[
-      { name: 'silent', y: 75, targetY: 625 },
-      { name: 'dullest', y: 125, targetY: 575 },
-      { name: 'duller', y: 175, targetY: 525 },
-      { name: 'dull', y: 225, targetY: 475 },
-      { name: 'lowest', y: 275, targetY: 425 },
-      { name: 'lower', y: 325, targetY: 375 },
-      { name: 'low', y: 375, targetY: 325 },
-      { name: 'subtlest', y: 425, targetY: 275 },
-      { name: 'subtler', y: 475, targetY: 225 },
-      { name: 'subtle', y: 525, targetY: 175 },
-      { name: 'DEFAULT', y: 575, targetY: 125 },
-      { name: 'bold', y: 625, targetY: 75 }
-    ].map(({ name, y, targetY }, idx) => {
-      const type = idx < 7 ? 'bg' : 'fg'
-      const isDefault = name === 'DEFAULT'
-      return (
-        <g key={name}>
-          <path
-            d={`M 780 ${y} L 875 ${y} L 880 ${y + 20} L 875 ${y + 40} L 780 ${y + 40} Z`}
-            fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
-            stroke={type === 'bg' ? '#d1d5db' : '#374151'}
-            strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
-          />
-          <text
-            x="830"
-            y={y + 25}
-            textAnchor="middle"
-            fontSize="12"
-            fontWeight={isDefault ? '700' : '600'}
-            fill="#374151"
-          >
-            grey.{name}
-          </text>
-          <path
-            d={`M ${780} ${y + 20} Q ${650} ${(y + targetY) / 2} ${535} ${targetY + 20}`}
-            stroke="#555"
-            strokeWidth="2"
-            fill="none"
-            markerEnd="url(#arrow)"
-          />
-        </g>
-      )
-    })}
-  </g>
+<g id="dark-aliases">
+  <text x="860" y="55" fontSize="11" fontWeight="600" fill="#999" textAnchor="end">
+    🌙 DARK THEME
+  </text>
+  {[
+    { name: 'silent', y: 75, targetY: 625 },
+    { name: 'dullest', y: 125, targetY: 575 },
+    { name: 'duller', y: 175, targetY: 525 },
+    { name: 'dull', y: 225, targetY: 475 },
+    { name: 'lowest', y: 275, targetY: 425 },
+    { name: 'lower', y: 325, targetY: 375 },
+    { name: 'low', y: 375, targetY: 325 },
+    { name: 'subtlest', y: 425, targetY: 275 },
+    { name: 'subtler', y: 475, targetY: 225 },
+    { name: 'subtle', y: 525, targetY: 175 },
+    { name: 'DEFAULT', y: 575, targetY: 125 },
+    { name: 'bold', y: 625, targetY: 75 }
+  ].map(({ name, y, targetY }, idx) => {
+    const type = idx < 7 ? 'bg' : 'fg'
+    const isDefault = name === 'DEFAULT'
+    return (
+      <g key={name}>
+        <path
+          d={`M 780 ${y} L 875 ${y} L 880 ${y + 20} L 875 ${y + 40} L 780 ${y + 40} Z`}
+          fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
+          stroke={type === 'bg' ? '#d1d5db' : '#374151'}
+          strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
+        />
+        <text
+          x="830"
+          y={y + 25}
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight={isDefault ? '700' : '600'}
+          fill="#374151"
+        >
+          grey.{name}
+        </text>
+        <path
+          d={`M ${780} ${y + 20} Q ${650} ${(y + targetY) / 2} ${535} ${targetY + 20}`}
+          stroke="#555"
+          strokeWidth="2"
+          fill="none"
+          markerEnd="url(#arrow)"
+        />
+      </g>
+    )
+  })}
+</g>
 
-  {/* Legend */}
+{/* Legend */}
+
   <g>
     <path
       d="M 325 685 L 435 685 L 440 697.5 L 435 710 L 325 710 L 320 697.5 Z"
@@ -449,6 +445,7 @@ flowchart TB
     <text x="505" y="702" textAnchor="middle" fontSize="11" fontWeight="600" fill="#374151">
       background
     </text>
+
   </g>
 </svg>
 
@@ -470,146 +467,142 @@ The same switching mechanism applies to all saturated colors. Here's how red col
     </marker>
   </defs>
 
-  {/* Title */}
-  <text x="450" y="25" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#666">
-    Red Color Theme Switching
+{/* Title */}
+
+<text x="450" y="25" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#666">
+  Red Color Theme Switching
+</text>
+
+{/* Center gradient column */}
+
+<g id="red-gradient-levels">
+  <text x="450" y="55" textAnchor="middle" fontSize="11" fontWeight="600" fill="#999">
+    FIXED GRADIENT LEVELS
   </text>
+  {[
+    { level: 1, y: 75, bg: '#fbebea', text: '#000' },
+    { level: 2, y: 125, bg: '#f3c7c4', text: '#000' },
+    { level: 3, y: 175, bg: '#eba49e', text: '#000' },
+    { level: 4, y: 225, bg: '#e38078', text: '#000' },
+    { level: 5, y: 275, bg: '#db5c52', text: '#fff' },
+    { level: 6, y: 325, bg: '#d3382c', text: '#fff' },
+    { level: 7, y: 375, bg: '#ae2e24', text: '#fff' },
+    { level: 8, y: 425, bg: '#7b2119', text: '#fff' },
+    { level: 9, y: 475, bg: '#48130f', text: '#fff' },
+    { level: 10, y: 525, bg: '#150604', text: '#fff' }
+  ].map(({ level, y, bg, text }) => (
+    <g key={level}>
+      <rect x="375" y={y} width="150" height="40" rx="2" fill={bg} stroke="#999" strokeWidth="1" />
+      <text x="450" y={y + 25} textAnchor="middle" fontSize="13" fontWeight="600" fill={text}>
+        red.{level}
+      </text>
+    </g>
+  ))}
+</g>
 
-  {/* Center gradient column */}
-  <g id="red-gradient-levels">
-    <text x="450" y="55" textAnchor="middle" fontSize="11" fontWeight="600" fill="#999">
-      FIXED GRADIENT LEVELS
-    </text>
-    {[
-      { level: 1, y: 75, bg: '#fbebea', text: '#000' },
-      { level: 2, y: 125, bg: '#f3c7c4', text: '#000' },
-      { level: 3, y: 175, bg: '#eba49e', text: '#000' },
-      { level: 4, y: 225, bg: '#e38078', text: '#000' },
-      { level: 5, y: 275, bg: '#db5c52', text: '#fff' },
-      { level: 6, y: 325, bg: '#d3382c', text: '#fff' },
-      { level: 7, y: 375, bg: '#ae2e24', text: '#fff' },
-      { level: 8, y: 425, bg: '#7b2119', text: '#fff' },
-      { level: 9, y: 475, bg: '#48130f', text: '#fff' },
-      { level: 10, y: 525, bg: '#150604', text: '#fff' }
-    ].map(({ level, y, bg, text }) => (
-      <g key={level}>
-        <rect
-          x="375"
-          y={y}
-          width="150"
-          height="40"
-          rx="2"
-          fill={bg}
-          stroke="#999"
-          strokeWidth="1"
+{/* Left aliases - Light Theme */}
+
+<g id="light-red-aliases">
+  <text x="20" y="55" fontSize="11" fontWeight="600" fill="#999">
+    ☀️ LIGHT THEME
+  </text>
+  {[
+    { name: 'lowest', y: 75, type: 'bg' },
+    { name: 'lower', y: 125, type: 'bg' },
+    { name: 'low', y: 175, type: 'bg' },
+    { name: 'subtlest', y: 225, type: 'fg' },
+    { name: 'subtler', y: 275, type: 'fg' },
+    { name: 'subtle', y: 325, type: 'fg' },
+    { name: 'DEFAULT', y: 375, type: 'fg' },
+    { name: 'bold', y: 425, type: 'fg' },
+    { name: 'bolder', y: 475, type: 'fg' },
+    { name: 'boldest', y: 525, type: 'fg' }
+  ].map(({ name, y, type }) => {
+    const isDefault = name === 'DEFAULT'
+    return (
+      <g key={name}>
+        <path
+          d={`M 25 ${y} L 120 ${y} L 120 ${y + 40} L 25 ${y + 40} L 20 ${y + 20} Z`}
+          fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
+          stroke={type === 'bg' ? '#d1d5db' : '#374151'}
+          strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
         />
-        <text x="450" y={y + 25} textAnchor="middle" fontSize="13" fontWeight="600" fill={text}>
-          red.{level}
+        <text
+          x="70"
+          y={y + 25}
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight={isDefault ? '700' : '600'}
+          fill="#374151"
+        >
+          red.{name}
         </text>
+        <line
+          x1="120"
+          y1={y + 20}
+          x2="365"
+          y2={y + 20}
+          stroke="#555"
+          strokeWidth="2"
+          markerEnd="url(#arrow-red)"
+        />
       </g>
-    ))}
-  </g>
+    )
+  })}
+</g>
 
-  {/* Left aliases - Light Theme */}
-  <g id="light-red-aliases">
-    <text x="20" y="55" fontSize="11" fontWeight="600" fill="#999">
-      ☀️ LIGHT THEME
-    </text>
-    {[
-      { name: 'lowest', y: 75, type: 'bg' },
-      { name: 'lower', y: 125, type: 'bg' },
-      { name: 'low', y: 175, type: 'bg' },
-      { name: 'subtlest', y: 225, type: 'fg' },
-      { name: 'subtler', y: 275, type: 'fg' },
-      { name: 'subtle', y: 325, type: 'fg' },
-      { name: 'DEFAULT', y: 375, type: 'fg' },
-      { name: 'bold', y: 425, type: 'fg' },
-      { name: 'bolder', y: 475, type: 'fg' },
-      { name: 'boldest', y: 525, type: 'fg' }
-    ].map(({ name, y, type }) => {
-      const isDefault = name === 'DEFAULT'
-      return (
-        <g key={name}>
-          <path
-            d={`M 25 ${y} L 120 ${y} L 120 ${y + 40} L 25 ${y + 40} L 20 ${y + 20} Z`}
-            fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
-            stroke={type === 'bg' ? '#d1d5db' : '#374151'}
-            strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
-          />
-          <text
-            x="70"
-            y={y + 25}
-            textAnchor="middle"
-            fontSize="12"
-            fontWeight={isDefault ? '700' : '600'}
-            fill="#374151"
-          >
-            red.{name}
-          </text>
-          <line
-            x1="120"
-            y1={y + 20}
-            x2="365"
-            y2={y + 20}
-            stroke="#555"
-            strokeWidth="2"
-            markerEnd="url(#arrow-red)"
-          />
-        </g>
-      )
-    })}
-  </g>
+{/* Right aliases - Dark Theme */}
 
-  {/* Right aliases - Dark Theme */}
-  <g id="dark-red-aliases">
-    <text x="860" y="55" fontSize="11" fontWeight="600" fill="#999" textAnchor="end">
-      🌙 DARK THEME
-    </text>
-    {[
-      { name: 'lowest', y: 75, targetY: 525 },
-      { name: 'lower', y: 125, targetY: 475 },
-      { name: 'low', y: 175, targetY: 425 },
-      { name: 'subtlest', y: 225, targetY: 375 },
-      { name: 'subtler', y: 275, targetY: 325 },
-      { name: 'subtle', y: 325, targetY: 275 },
-      { name: 'DEFAULT', y: 375, targetY: 225 },
-      { name: 'bold', y: 425, targetY: 175 },
-      { name: 'bolder', y: 475, targetY: 125 },
-      { name: 'boldest', y: 525, targetY: 75 }
-    ].map(({ name, y, targetY }, idx) => {
-      const type = idx < 3 ? 'bg' : 'fg'
-      const isDefault = name === 'DEFAULT'
-      return (
-        <g key={name}>
-          <path
-            d={`M 780 ${y} L 875 ${y} L 880 ${y + 20} L 875 ${y + 40} L 780 ${y + 40} Z`}
-            fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
-            stroke={type === 'bg' ? '#d1d5db' : '#374151'}
-            strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
-          />
-          <text
-            x="830"
-            y={y + 25}
-            textAnchor="middle"
-            fontSize="12"
-            fontWeight={isDefault ? '700' : '600'}
-            fill="#374151"
-          >
-            red.{name}
-          </text>
-          <path
-            d={`M ${780} ${y + 20} Q ${650} ${(y + targetY) / 2} ${535} ${targetY + 20}`}
-            stroke="#555"
-            strokeWidth="2"
-            fill="none"
-            markerEnd="url(#arrow-red)"
-          />
-        </g>
-      )
-    })}
-  </g>
+<g id="dark-red-aliases">
+  <text x="860" y="55" fontSize="11" fontWeight="600" fill="#999" textAnchor="end">
+    🌙 DARK THEME
+  </text>
+  {[
+    { name: 'lowest', y: 75, targetY: 525 },
+    { name: 'lower', y: 125, targetY: 475 },
+    { name: 'low', y: 175, targetY: 425 },
+    { name: 'subtlest', y: 225, targetY: 375 },
+    { name: 'subtler', y: 275, targetY: 325 },
+    { name: 'subtle', y: 325, targetY: 275 },
+    { name: 'DEFAULT', y: 375, targetY: 225 },
+    { name: 'bold', y: 425, targetY: 175 },
+    { name: 'bolder', y: 475, targetY: 125 },
+    { name: 'boldest', y: 525, targetY: 75 }
+  ].map(({ name, y, targetY }, idx) => {
+    const type = idx < 3 ? 'bg' : 'fg'
+    const isDefault = name === 'DEFAULT'
+    return (
+      <g key={name}>
+        <path
+          d={`M 780 ${y} L 875 ${y} L 880 ${y + 20} L 875 ${y + 40} L 780 ${y + 40} Z`}
+          fill={isDefault ? '#f3f4f6' : '#e5e7eb'}
+          stroke={type === 'bg' ? '#d1d5db' : '#374151'}
+          strokeWidth={type === 'bg' ? '1' : isDefault ? '2.5' : '2'}
+        />
+        <text
+          x="830"
+          y={y + 25}
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight={isDefault ? '700' : '600'}
+          fill="#374151"
+        >
+          red.{name}
+        </text>
+        <path
+          d={`M ${780} ${y + 20} Q ${650} ${(y + targetY) / 2} ${535} ${targetY + 20}`}
+          stroke="#555"
+          strokeWidth="2"
+          fill="none"
+          markerEnd="url(#arrow-red)"
+        />
+      </g>
+    )
+  })}
+</g>
 
-  {/* Legend */}
+{/* Legend */}
+
   <g>
     <path
       d="M 325 585 L 435 585 L 440 597.5 L 435 610 L 325 610 L 320 597.5 Z"
@@ -630,6 +623,7 @@ The same switching mechanism applies to all saturated colors. Here's how red col
     <text x="505" y="602" textAnchor="middle" fontSize="11" fontWeight="600" fill="#374151">
       background
     </text>
+
   </g>
 </svg>
 
@@ -1075,12 +1069,12 @@ All descendants inherit theme variables automatically:
 
 **Need a quick reminder? Use this cheat sheet to choose the right token type:**
 
-| Category                                           | Behavior            | Examples                                             | Use Case                      |
-| -------------------------------------------------- | ------------------- | ---------------------------------------------------- | ----------------------------- |
-| **[Base Colors](./base-colors)**                   | ✅ Always Fixed     | `base.blue`, `base.red`, `base.grey`                 | Brand identity, logos         |
-| **[Fixed Gradient Levels](./accent-colors)**       | ✅ Always Fixed     | `grey.1-12`, `blue.1-10`, `red.1-10`                 | Data viz, consistent colors   |
-| **[Semantic Aliases](./accent-colors)**            | 🔄 Theme-Switchable | `bold`, `DEFAULT`, `subtle`, `low`, `dull`, `silent` | UI text, backgrounds, borders |
-| **[Primary/Brand Colors](./primary-brand-colors)** | 🔄 Theme-Switchable | `primary.DEFAULT`, `brand.emphasis`                  | Buttons, interactive elements |
-| **[Semantic Colors](./semantic-colors)**           | 🔄 Theme-Switchable | `semantic.info`, `semantic.success`                  | Alerts, feedback messages     |
+| Category                                           | Behavior            | Examples                                                                    | Use Case                      |
+| -------------------------------------------------- | ------------------- | --------------------------------------------------------------------------- | ----------------------------- |
+| **[Base Colors](./base-colors)**                   | ✅ Always Fixed     | `color.base.blue`, `color.base.red`, `color.base.grey`                      | Brand identity, logos         |
+| **[Fixed Gradient Levels](./accent-colors)**       | ✅ Always Fixed     | `color.accent.grey.1-12`, `color.accent.blue.1-10`, `color.accent.red.1-10` | Data viz, consistent colors   |
+| **[Semantic Aliases](./accent-colors)**            | 🔄 Theme-Switchable | `bold`, `DEFAULT`, `subtle`, `low`, `dull`, `silent`                        | UI text, backgrounds, borders |
+| **[Primary/Brand Colors](./primary-brand-colors)** | 🔄 Theme-Switchable | `color.primary.DEFAULT`, `color.brand`                                      | Buttons, interactive elements |
+| **[Semantic Colors](./semantic-colors)**           | 🔄 Theme-Switchable | `color.semantic.info.DEFAULT`, `color.semantic.success.DEFAULT`             | Alerts, feedback messages     |
 
 **💡 Rule of Thumb:** If your element needs to adapt to different themes, use switchable tokens (semantic aliases, primary, semantic colors). If it must stay consistent across themes (like logos or data visualizations), use fixed tokens (base colors or numbered gradient levels).

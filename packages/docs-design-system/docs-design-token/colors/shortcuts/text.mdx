@@ -1184,17 +1184,17 @@ const textStyles = {
   caption: { color: tokens.color.text.subtle },
   disabled: { color: tokens.color.text.subtlest },
   link: { color: tokens.color.text.link.DEFAULT },
-  error: { color: tokens.color.text.error },
-  success: { color: tokens.color.text.success }
+  error: { color: tokens.color.text.error.DEFAULT },
+  success: { color: tokens.color.text.success.DEFAULT }
 }
 
 // Component example
 function Alert({ type, children }) {
   const textColor = {
-    info: tokens.color.text.information,
-    success: tokens.color.text.success,
-    warning: tokens.color.text.warning,
-    error: tokens.color.text.error
+    info: tokens.color.text.information.DEFAULT,
+    success: tokens.color.text.success.DEFAULT,
+    warning: tokens.color.text.warning.DEFAULT,
+    error: tokens.color.text.error.DEFAULT
   }[type]
 
   return <div style={{ color: textColor }}>{children}</div>

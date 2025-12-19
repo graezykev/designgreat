@@ -24,8 +24,8 @@ Perform a comprehensive 12-step documentation review for all docs under:
 
 1. **Run Check**: Execute the check script for this step only
    ```bash
-   node packages/docs-design-system/scripts/documentation-review/check-tokens-stepN.js
-````
+      node packages/docs-design-system/scripts/documentation-review/check-tokens-stepN.js
+   ```
 
 2. **Report Findings**: Generate a report with:
    - Summary of what was checked
@@ -63,6 +63,8 @@ Perform a comprehensive 12-step documentation review for all docs under:
    not defined, or not generated
 2. **Color Demo Correctness**: Verify color demo blocks use correct CSS variables
 3. **Token Usage**: Find tokens defined in tables but not used in subsequent demos
+
+   - **Note**: Inline demos (`spacing-demo`, `color-demo` divs) are visual references only and don't exempt tokens from needing usage in subsequent demos
 4. **Inline Styles**: Find inline styles in demos (should use CSS classes)
 5. **Relevant Token Usage**: Check demos use tokens from same document
 6. **Demo Keyword**: Find CSS class names containing "-demo-" keyword
@@ -91,6 +93,9 @@ Perform a comprehensive 12-step documentation review for all docs under:
 
 - **Step 1**: Shorthand references (e.g., `grey.12`) are allowed in reference columns - filter and
   review manually
+- **Step 3**: Inline demos (`spacing-demo`, `color-demo` divs) are visual references only and don't
+  exempt tokens from needing usage in subsequent demos - some tokens may be intentionally not
+  demonstrated (acceptable)
 - **Step 6**: Exclude legitimate utility classes (`.color-demo`, `.spacing-demo`) - only flag
   problematic patterns
 - **Step 7**: Layout dimensions (`180px`, `140px`, etc.) are acceptable - exclude from checks
@@ -120,26 +125,30 @@ For Step 1:
 
 Repeat for Steps 2-12, one at a time.
 
-```
+````
 
 ## Key Improvements
 
 ### 1. Clear Phase Separation
+
 - **Phase 1**: Check only (no fixes)
 - **Phase 2**: Report findings
 - **Phase 3**: Wait for approval
 
 ### 2. Explicit Instructions
+
 - "DO NOT fix issues directly"
 - "PAUSE after each phase"
 - "Wait for explicit approval"
 
 ### 3. Reusable Scripts
+
 - Scripts are already created and organized
 - Use `run-all-checks.js` to run everything
 - Individual scripts can be run for specific steps
 
 ### 4. Better Structure
+
 - Clear workflow steps
 - Expected output format
 - Numbered steps for easy reference
@@ -162,5 +171,7 @@ findings.
 3. **Reusable** - Scripts can be run multiple times
 4. **Incremental** - Can fix issues one at a time
 5. **Traceable** - All reports saved with timestamps
+
+```
 
 ```

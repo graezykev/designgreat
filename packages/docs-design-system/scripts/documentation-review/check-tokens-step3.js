@@ -178,16 +178,19 @@ function processFile(filePath) {
 
   // Check each table's tokens
   Object.entries(tokensByTable).forEach(([tableIndex, tableTokens]) => {
-    // Get the table end position (use the max end position of tokens in this table)
-    const tableEnd = Math.max(...tableTokens.map(t => t.tableEnd))
+    // Check each token individually using its own tableEnd position
+    // This fixes the bug where tokens with different tableEnd positions
+    // were all checked against content after the MAX tableEnd
+    tableTokens.forEach(token => {
+      // Note: Inline demos (spacing-demo, color-demo) are visual references only
+      // and don't exempt tokens from needing usage in subsequent demos
+      // They still need to be checked for usage in demo sections
 
-    // Get content after this table
-    const afterContent = getContentAfterTable(content, tableEnd)
+      // Get content after THIS token's table end
+      const afterContent = getContentAfterTable(content, token.tableEnd)
 
-    // Only check if there are actual demos after this table
-    if (hasDemos(afterContent)) {
-      // Check each token
-      tableTokens.forEach(token => {
+      // Only check if there are actual demos after this table
+      if (hasDemos(afterContent)) {
         if (!isTokenUsedInContent(token.token, token.cssVariable, afterContent)) {
           issues.push({
             token: token.token,
@@ -196,9 +199,9 @@ function processFile(filePath) {
             position: token.position
           })
         }
-      })
-    }
-    // If no demos after table, skip checking (tokens might be reference-only)
+      }
+      // If no demos after table, skip checking (tokens might be reference-only)
+    })
   })
 
   return { file: relativePath, tokens: tokens.length, issues }
