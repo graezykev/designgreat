@@ -17,7 +17,7 @@ export default {
     border: {
       input: {
         DEFAULT: {
-          value: "{color.border.DEFAULT}",
+          value: "{color.alpha.neutral.3}",
           type: 'color'
         }
       },
