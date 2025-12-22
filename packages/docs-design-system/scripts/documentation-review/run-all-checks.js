@@ -4,7 +4,7 @@
 /**
  * Run All Documentation Review Checks
  *
- * Executes all 12 steps of the documentation review process.
+ * Executes all 13 steps of the documentation review process.
  * Generates reports without making any changes.
  *
  * ⚠️ NOTE: This script runs all checks at once, but the RECOMMENDED workflow
@@ -45,7 +45,8 @@ const STEPS = [
   { num: 9, name: 'PX Scale Variables', script: 'check-tokens-step9.js' },
   { num: 10, name: 'Infima Overrides', script: 'check-tokens-step10.js' },
   { num: 11, name: 'Interactive State Patterns', script: 'check-tokens-step11.js' },
-  { num: 12, name: 'Code Section Consistency', script: 'check-tokens-step12.js' }
+  { num: 12, name: 'Code Section Consistency', script: 'check-tokens-step12.js' },
+  { num: 13, name: 'MDX Text Wrapping', script: 'check-tokens-step13.js' }
 ]
 
 function runStep(step) {
