@@ -2,10 +2,20 @@ export default {
   color: {
     text: {
       nav: {
+        state: {
+          selected: {
+            value: '{color.primary.active.DEFAULT}',
+            type: 'color'
+          }
+        },
         'secondary': {
           state: {
             activated: {
               value: '{color.primary.activated.DEFAULT}',
+              type: 'color'
+            },
+            selected: {
+              value: '{color.primary.active.DEFAULT}',
               type: 'color'
             }
           }
@@ -14,6 +24,10 @@ export default {
           state: {
             activated: {
               value: '{color.primary.activated.DEFAULT}',
+              type: 'color'
+            },
+            selected: {
+              value: '{color.primary.active.DEFAULT}',
               type: 'color'
             }
           }
@@ -28,6 +42,14 @@ export default {
               value: '{color.primary.activated.bg}',
               type: 'color'
             }
+          }
+        }
+      },
+      card: {
+        state: {
+          selected: {
+            value: '{color.primary.activated.bg}',
+            type: 'color'
           }
         }
       }

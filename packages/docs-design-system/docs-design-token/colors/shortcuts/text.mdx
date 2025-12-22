@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Text Shortcuts
 
@@ -27,92 +27,28 @@ Neutral text colors are used for standard text content, providing multiple empha
 
 ### Text Emphasis Levels
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-inverse)'}}>Text</div> | <CopyableCode>color.text.inverse</CopyableCode> | <CopyableCode>--dg-color-text-inverse</CopyableCode> | `{color.accent.neutral.silent}` | Inverse text (for dark backgrounds) |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-bold)'}}>Text</div> | <CopyableCode>color.text.bold</CopyableCode> | <CopyableCode>--dg-color-text-bold</CopyableCode> | `{color.accent.neutral.bold}` | High emphasis text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-default)'}}>Text</div> | <CopyableCode bold>color.text.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-default</CopyableCode> | `{color.accent.neutral.DEFAULT}` | Default body text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtle)'}}>Text</div> | <CopyableCode>color.text.subtle</CopyableCode> | <CopyableCode>--dg-color-text-subtle</CopyableCode> | `{color.accent.neutral.subtle}` | Subtle text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtler)'}}>Text</div> | <CopyableCode>color.text.subtler</CopyableCode> | <CopyableCode>--dg-color-text-subtler</CopyableCode> | `{color.accent.neutral.subtler}` | More subtle text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtlest)'}}>Text</div> | <CopyableCode>color.text.subtlest</CopyableCode> | <CopyableCode>--dg-color-text-subtlest</CopyableCode> | `{color.accent.neutral.subtlest}` | Most subtle text |
-
-### Neutral Text Token Table
-
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-inverse)'}}>Text</div> | <CopyableCode>color.text.inverse</CopyableCode> | <CopyableCode>--dg-color-text-inverse</CopyableCode> | `{color.accent.neutral.silent}` | Text on dark/colored backgrounds |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-bold)'}}>Text</div> | <CopyableCode>color.text.bold</CopyableCode> | <CopyableCode>--dg-color-text-bold</CopyableCode> | `{color.accent.neutral.bold}` | Headings, high-emphasis text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-default)'}}>Text</div> | <CopyableCode bold>color.text.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-default</CopyableCode> | `{color.accent.neutral.DEFAULT}` | Standard body text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtle)'}}>Text</div> | <CopyableCode>color.text.subtle</CopyableCode> | <CopyableCode>--dg-color-text-subtle</CopyableCode> | `{color.accent.neutral.subtle}` | Secondary text, captions |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtler)'}}>Text</div> | <CopyableCode>color.text.subtler</CopyableCode> | <CopyableCode>--dg-color-text-subtler</CopyableCode> | `{color.accent.neutral.subtler}` | Tertiary text, placeholders |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtlest)'}}>Text</div> | <CopyableCode>color.text.subtlest</CopyableCode> | <CopyableCode>--dg-color-text-subtlest</CopyableCode> | `{color.accent.neutral.subtlest}` | Disabled text, very low emphasis |
-
-## Link Colors
-
-Link colors provide a consistent appearance for interactive text elements.
-
-### Link Token
-
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|-------------|
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-link-default)'}}>Text</div> | <CopyableCode bold>color.text.link.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-link-default</CopyableCode> | `{color.primary.DEFAULT}` | Default link color |
-
-:::tip
-For link states (hover, visited, active), use the primary color state tokens:
-- Hover: `color.primary.hover.DEFAULT`
-- Visited: `color.primary.visited.DEFAULT`
-- Active: `color.primary.active.DEFAULT`
-:::
-
-## Navigation Text Colors
-
-Navigation text colors provide a three-level hierarchy for navigation elements.
-
-### Navigation Hierarchy
-
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-nav-default</CopyableCode> | `{color.text.DEFAULT}` | Primary navigation text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.secondary.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-nav-secondary-default</CopyableCode> | `{color.text.subtle}` | Secondary navigation |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.tertiary.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-nav-tertiary-default</CopyableCode> | `{color.text.subtler}` | Tertiary navigation |
-
-## Semantic Text Colors
-
-Semantic text colors map to semantic colors for conveying meaning and system states.
-
-### Semantic Color Tokens
-
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-information-default)'}}>Text</div> | <CopyableCode>color.text.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-information-default</CopyableCode> | `{color.semantic.info.DEFAULT}` | Informational text |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-discover-default)'}}>Text</div> | <CopyableCode>color.text.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-discover-default</CopyableCode> | `{color.semantic.new.DEFAULT}` | New features, discovery |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-success-default)'}}>Text</div> | <CopyableCode>color.text.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-success-default</CopyableCode> | `{color.semantic.success.DEFAULT}` | Success messages |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-warning-default)'}}>Text</div> | <CopyableCode>color.text.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-warning-default</CopyableCode> | `{color.semantic.warning.DEFAULT}` | Warning messages |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-error-default)'}}>Text</div> | <CopyableCode>color.text.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-error-default</CopyableCode> | `{color.semantic.error.DEFAULT}` | Error messages |
-
-### Bold Semantic Text Colors
-
-For text on colored semantic backgrounds, use bold variants:
-
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-information-default)', color: 'var(--dg-color-text-information-bold)'}}>Text</div> | <CopyableCode>color.text.information.bold</CopyableCode> | <CopyableCode>--dg-color-text-information-bold</CopyableCode> | `{color.semantic.info.bolder}` | Text on blue backgrounds |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-discover-default)', color: 'var(--dg-color-text-discover-bold)'}}>Text</div> | <CopyableCode>color.text.discover.bold</CopyableCode> | <CopyableCode>--dg-color-text-discover-bold</CopyableCode> | `{color.semantic.new.bolder}` | Text on purple backgrounds |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-success-default)', color: 'var(--dg-color-text-success-bold)'}}>Text</div> | <CopyableCode>color.text.success.bold</CopyableCode> | <CopyableCode>--dg-color-text-success-bold</CopyableCode> | `{color.semantic.success.bolder}` | Text on green backgrounds |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-warning-default)', color: 'var(--dg-color-text-warning-bold)'}}>Text</div> | <CopyableCode>color.text.warning.bold</CopyableCode> | <CopyableCode>--dg-color-text-warning-bold</CopyableCode> | `{color.semantic.warning.bolder}` | Text on orange backgrounds |
-| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-error-default)', color: 'var(--dg-color-text-error-bold)'}}>Text</div> | <CopyableCode>color.text.error.bold</CopyableCode> | <CopyableCode>--dg-color-text-error-bold</CopyableCode> | `{color.semantic.error.bolder}` | Text on red backgrounds |
-
-## Usage Examples
+|                                                                                                                                                     | Token                                                | CSS Variable                                              | Reference                         | Use Case                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------- | --------------------------------- | -------------------------------- |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-inverse)'}}>Text</div>  | <CopyableCode>color.text.inverse</CopyableCode>      | <CopyableCode>--dg-color-text-inverse</CopyableCode>      | `{color.accent.neutral.silent}`   | Text on dark/colored backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-bold)'}}>Text</div>     | <CopyableCode>color.text.bold</CopyableCode>         | <CopyableCode>--dg-color-text-bold</CopyableCode>         | `{color.accent.neutral.bold}`     | Headings, high-emphasis text     |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-default)'}}>Text</div>  | <CopyableCode bold>color.text.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-default</CopyableCode> | `{color.accent.neutral.DEFAULT}`  | Standard body text               |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtle)'}}>Text</div>   | <CopyableCode>color.text.subtle</CopyableCode>       | <CopyableCode>--dg-color-text-subtle</CopyableCode>       | `{color.accent.neutral.subtle}`   | Secondary text, captions         |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtler)'}}>Text</div>  | <CopyableCode>color.text.subtler</CopyableCode>      | <CopyableCode>--dg-color-text-subtler</CopyableCode>      | `{color.accent.neutral.subtler}`  | Tertiary text, placeholders      |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtlest)'}}>Text</div> | <CopyableCode>color.text.subtlest</CopyableCode>     | <CopyableCode>--dg-color-text-subtlest</CopyableCode>     | `{color.accent.neutral.subtlest}` | Disabled text, very low emphasis |
 
 ### Typography Hierarchy
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-demo-card">
+<div className="dg-showcase-card">
   <h1 className="dg-heading-primary">Page Heading</h1>
   <h2 className="dg-heading-secondary">Section Heading</h2>
-  <p className="dg-text-body">This is body text using the default text color. It should be comfortable to read at standard sizes.</p>
+  <p className="dg-text-body">
+    {
+      'This is body text using the default text color. It should be comfortable to read at standard sizes.'
+    }
+  </p>
   <p className="dg-text-caption">Caption text uses subtle color for secondary information.</p>
   <p className="dg-text-placeholder">Subtler text for placeholders and tertiary content.</p>
   <p className="dg-text-disabled">Subtlest text for disabled or very low emphasis content.</p>
@@ -121,14 +57,14 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-demo-card">
-  <h1 class="dg-heading-primary">Page Heading</h1>
-  <h2 class="dg-heading-secondary">Section Heading</h2>
-  <p class="dg-text-body">Body text...</p>
-  <p class="dg-text-caption">Caption text...</p>
-  <p class="dg-text-placeholder">Subtler text...</p>
-  <p class="dg-text-disabled">Disabled text...</p>
+```jsx
+<div className="dg-showcase-card">
+  <h1 className="dg-heading-primary">{'Page Heading'}</h1>
+  <h2 className="dg-heading-secondary">{'Section Heading'}</h2>
+  <p className="dg-text-body">{'Body text...'}</p>
+  <p className="dg-text-caption">{'Caption text...'}</p>
+  <p className="dg-text-placeholder">{'Subtler text...'}</p>
+  <p className="dg-text-disabled">{'Disabled text...'}</p>
 </div>
 ```
 
@@ -167,23 +103,112 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 </Tabs>
 
+### Badges with Inverse Text
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <span className="dg-badge dg-badge-success-bold">Success</span>
+  <span className="dg-badge dg-badge-error-bold">Error</span>
+  <span className="dg-badge dg-badge-warning-bold">Warning</span>
+  <span className="dg-badge dg-badge-info-bold">Info</span>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```jsx
+<span className="dg-badge dg-badge-success-bold">{'Success'}</span>
+<span className="dg-badge dg-badge-error-bold">{'Error'}</span>
+<span className="dg-badge dg-badge-warning-bold">{'Warning'}</span>
+<span className="dg-badge dg-badge-info-bold">{'Info'}</span>
+```
+
+```css
+.dg-badge {
+  display: inline-block;
+  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-md);
+  border-radius: var(--dg-size-border-radius-badge);
+  font-size: var(--dg-size-font-caption);
+  font-weight: var(--dg-font-weight-semi-bold);
+}
+
+/* Using inverse text on colored backgrounds */
+.dg-badge-success-bold {
+  background-color: var(--dg-color-semantic-success-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-error-bold {
+  background-color: var(--dg-color-semantic-error-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-warning-bold {
+  background-color: var(--dg-color-semantic-warning-default);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-info-bold {
+  background-color: var(--dg-color-semantic-info-default);
+  color: var(--dg-color-text-inverse);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Link Colors
+
+Link colors provide a consistent appearance for interactive text elements.
+
+### Link Token
+
+|                                                                                                                                                         | Token                                                     | CSS Variable                                                   | Reference                 | Use Case           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------- | ------------------------- | ------------------ |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-link-default)'}}>Text</div> | <CopyableCode bold>color.text.link.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-text-link-default</CopyableCode> | `{color.primary.DEFAULT}` | Default link color |
+
+:::tip
+For link states (hover, visited, active, focus), use the link interaction tokens:
+
+- Hover: `color.text.link.interaction.hover` / `--dg-color-text-link-interaction-hover`
+- Visited: `color.text.link.interaction.visited` / `--dg-color-text-link-interaction-visited`
+- Active: `color.text.link.interaction.active` / `--dg-color-text-link-interaction-active`
+- Focus: `color.text.link.interaction.focus` / `--dg-color-text-link-interaction-focus`
+
+See [Interactive State Shortcuts](./interactive-state#link-interaction-colors) for complete link state patterns.
+:::
+
 ### Links
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-demo-card dg-demo-card-compact">
+<div className="dg-showcase-card dg-showcase-card-compact">
   <p className="dg-text-body">
-    Read more about our <a href="#" className="dg-link">design tokens</a> and how they help maintain consistency across <a href="#" className="dg-link">your application</a>.
+    {'Read more about our '}
+    <a href="#" className="dg-link">
+      {'design tokens'}
+    </a>
+    {' and how they help maintain consistency across '}
+    <a href="#" className="dg-link">
+      {'your application'}
+    </a>
+    {'.'}
   </p>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<p class="dg-text-body">
-  Read more about our <a href="#" class="dg-link">design tokens</a>...
+```jsx
+<p className="dg-text-body">
+  {'Read more about our '}
+  <a href="#" className="dg-link">
+    {'design tokens'}
+  </a>
+  {'...'}
 </p>
 ```
 
@@ -194,43 +219,115 @@ For text on colored semantic backgrounds, use bold variants:
 }
 
 .dg-link:hover {
-  color: var(--dg-color-primary-hover-default);
+  color: var(--dg-color-text-link-interaction-hover);
 }
 ```
 
 </TabItem>
 </Tabs>
 
+## Navigation Text Colors
+
+Navigation text colors provide a three-level hierarchy for navigation elements.
+
+### Navigation Hierarchy
+
+|                                                                                                                                                                             | Token                                                                         | CSS Variable                                                                       | Reference                        | Use Case                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------- | ---------------------------- |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-default)'}}>Text</div>                      | <CopyableCode bold>color.text.nav.DEFAULT</CopyableCode>                      | <CopyableCode bold>--dg-color-text-nav-default</CopyableCode>                      | `{color.text.DEFAULT}`           | Primary navigation text      |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-interaction-hover)'}}>Text</div>            | <CopyableCode bold>color.text.nav.interaction.hover</CopyableCode>            | <CopyableCode bold>--dg-color-text-nav-interaction-hover</CopyableCode>            | `{color.primary.hover.DEFAULT}`  | Primary nav hover state      |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-interaction-focus)'}}>Text</div>            | <CopyableCode bold>color.text.nav.interaction.focus</CopyableCode>            | <CopyableCode bold>--dg-color-text-nav-interaction-focus</CopyableCode>            | `{color.primary.focus.DEFAULT}`  | Primary nav focus state      |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-interaction-active)'}}>Text</div>           | <CopyableCode bold>color.text.nav.interaction.active</CopyableCode>           | <CopyableCode bold>--dg-color-text-nav-interaction-active</CopyableCode>           | `{color.primary.active.DEFAULT}` | Primary nav active state     |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-state-selected)'}}>Text</div>               | <CopyableCode bold>color.text.nav.state.selected</CopyableCode>               | <CopyableCode bold>--dg-color-text-nav-state-selected</CopyableCode>               | `{color.primary.active.DEFAULT}` | Primary nav selected state   |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-default)'}}>Text</div>            | <CopyableCode bold>color.text.nav.secondary.DEFAULT</CopyableCode>            | <CopyableCode bold>--dg-color-text-nav-secondary-default</CopyableCode>            | `{color.text.subtle}`            | Secondary navigation         |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-interaction-hover)'}}>Text</div>  | <CopyableCode bold>color.text.nav.secondary.interaction.hover</CopyableCode>  | <CopyableCode bold>--dg-color-text-nav-secondary-interaction-hover</CopyableCode>  | `{color.primary.hover.DEFAULT}`  | Secondary nav hover state    |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-interaction-focus)'}}>Text</div>  | <CopyableCode bold>color.text.nav.secondary.interaction.focus</CopyableCode>  | <CopyableCode bold>--dg-color-text-nav-secondary-interaction-focus</CopyableCode>  | `{color.primary.focus.DEFAULT}`  | Secondary nav focus state    |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-interaction-active)'}}>Text</div> | <CopyableCode bold>color.text.nav.secondary.interaction.active</CopyableCode> | <CopyableCode bold>--dg-color-text-nav-secondary-interaction-active</CopyableCode> | `{color.primary.active.DEFAULT}` | Secondary nav active state   |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-state-selected)'}}>Text</div>     | <CopyableCode bold>color.text.nav.secondary.state.selected</CopyableCode>     | <CopyableCode bold>--dg-color-text-nav-secondary-state-selected</CopyableCode>     | `{color.primary.active.DEFAULT}` | Secondary nav selected state |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-default)'}}>Text</div>             | <CopyableCode bold>color.text.nav.tertiary.DEFAULT</CopyableCode>             | <CopyableCode bold>--dg-color-text-nav-tertiary-default</CopyableCode>             | `{color.text.subtler}`           | Tertiary navigation          |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-interaction-hover)'}}>Text</div>   | <CopyableCode bold>color.text.nav.tertiary.interaction.hover</CopyableCode>   | <CopyableCode bold>--dg-color-text-nav-tertiary-interaction-hover</CopyableCode>   | `{color.text.subtle}`            | Tertiary nav hover state     |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-interaction-focus)'}}>Text</div>   | <CopyableCode bold>color.text.nav.tertiary.interaction.focus</CopyableCode>   | <CopyableCode bold>--dg-color-text-nav-tertiary-interaction-focus</CopyableCode>   | `{color.text.DEFAULT}`           | Tertiary nav focus state     |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-interaction-active)'}}>Text</div>  | <CopyableCode bold>color.text.nav.tertiary.interaction.active</CopyableCode>  | <CopyableCode bold>--dg-color-text-nav-tertiary-interaction-active</CopyableCode>  | `{color.primary.focus.DEFAULT}`  | Tertiary nav active state    |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-state-selected)'}}>Text</div>      | <CopyableCode bold>color.text.nav.tertiary.state.selected</CopyableCode>      | <CopyableCode bold>--dg-color-text-nav-tertiary-state-selected</CopyableCode>      | `{color.primary.active.DEFAULT}` | Tertiary nav selected state  |
+
 ### Navigation
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-demo-card dg-demo-card-compact dg-flex-col dg-gap-lg">
+<div className="dg-showcase-card dg-showcase-card-compact dg-flex-col dg-gap-lg">
   <div>
     <p className="dg-text-caption">Primary Navigation</p>
     <div className="dg-nav">
-      <a href="#" className="dg-nav-primary">Home</a>
-      <a href="#" className="dg-nav-primary">Products</a>
-      <a href="#" className="dg-nav-primary">About</a>
+      <a href="#" className="dg-nav-primary">
+        {'Default'}
+      </a>
+      <a href="#" className="dg-nav-primary dg-nav-primary--hover">
+        {'Hover'}
+      </a>
+      <a href="#" className="dg-nav-primary dg-nav-primary--focus">
+        {'Focus'}
+      </a>
+      <a href="#" className="dg-nav-primary dg-nav-primary--active">
+        {'Active'}
+      </a>
+      <a href="#" className="dg-nav-primary dg-nav-primary--selected">
+        {'Selected'}
+      </a>
     </div>
   </div>
   <div>
     <p className="dg-text-caption">Secondary Navigation</p>
     <div className="dg-nav">
-      <a href="#" className="dg-nav-secondary">Overview</a>
-      <a href="#" className="dg-nav-secondary">Features</a>
-      <a href="#" className="dg-nav-secondary">Pricing</a>
+      <a href="#" className="dg-nav-secondary">
+        {'Default'}
+      </a>
+      <a href="#" className="dg-nav-secondary dg-nav-secondary--hover">
+        {'Hover'}
+      </a>
+      <a href="#" className="dg-nav-secondary dg-nav-secondary--focus">
+        {'Focus'}
+      </a>
+      <a href="#" className="dg-nav-secondary dg-nav-secondary--active">
+        {'Active'}
+      </a>
+      <a href="#" className="dg-nav-secondary dg-nav-secondary--selected">
+        {'Selected'}
+      </a>
+    </div>
+  </div>
+  <div>
+    <p className="dg-text-caption">Tertiary Navigation</p>
+    <div className="dg-nav">
+      <a href="#" className="dg-nav-tertiary">
+        {'Default'}
+      </a>
+      <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">
+        {'Hover'}
+      </a>
+      <a href="#" className="dg-nav-tertiary dg-nav-tertiary--focus">
+        {'Focus'}
+      </a>
+      <a href="#" className="dg-nav-tertiary dg-nav-tertiary--active">
+        {'Active'}
+      </a>
+      <a href="#" className="dg-nav-tertiary dg-nav-tertiary--selected">
+        {'Selected'}
+      </a>
     </div>
   </div>
   <div>
     <p className="dg-text-caption">Breadcrumb</p>
     <div className="dg-breadcrumb">
-      <a href="#" className="dg-nav-tertiary">Home</a>
+      <a href="#" className="dg-nav-tertiary">
+        {'Home'}
+      </a>
       <span className="dg-breadcrumb-separator">/</span>
-      <a href="#" className="dg-nav-tertiary">Products</a>
+      <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">
+        {'Products'}
+      </a>
       <span className="dg-breadcrumb-separator">/</span>
-      <span className="dg-text-body">Item</span>
+      <span>{'Item'}</span>
     </div>
   </div>
 </div>
@@ -238,48 +335,353 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-nav">
-  <a href="#" class="dg-nav-primary">Home</a>
-  <a href="#" class="dg-nav-primary">Products</a>
+```jsx
+// Primary Navigation
+<div className="dg-nav">
+  <a href="#" className="dg-nav-primary">{'Default'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--hover">{'Hover'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--focus">{'Focus'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--active">{'Active'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--selected">{'Selected'}</a>
 </div>
 
-<div class="dg-nav">
-  <a href="#" class="dg-nav-secondary">Overview</a>
-  <a href="#" class="dg-nav-secondary">Features</a>
+// Secondary Navigation
+<div className="dg-nav">
+  <a href="#" className="dg-nav-secondary">{'Default'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--hover">{'Hover'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--focus">{'Focus'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--active">{'Active'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--selected">{'Selected'}</a>
 </div>
 
-<div class="dg-breadcrumb">
-  <a href="#" class="dg-nav-tertiary">Home</a>
-  <span class="dg-breadcrumb-separator">/</span>
-  <a href="#" class="dg-nav-tertiary">Products</a>
-  <span class="dg-breadcrumb-separator">/</span>
-  <span>Item</span>
+// Breadcrumb Navigation
+<div className="dg-breadcrumb">
+  <a href="#" className="dg-nav-tertiary">{'Home'}</a>
+  <span className="dg-breadcrumb-separator">{'/'}</span>
+  <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">{'Products'}</a>
+  <span className="dg-breadcrumb-separator">{'/'}</span>
+  <span>{'Item'}</span>
 </div>
 ```
 
 ```css
+/* Navigation Container */
 .dg-nav {
   display: flex;
   gap: var(--dg-spacing-gap-lg);
 }
 
+/* Primary Navigation */
 .dg-nav-primary {
   color: var(--dg-color-text-nav-default);
   font-weight: var(--dg-font-weight-semi-bold);
   text-decoration: none;
+  transition: color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
 }
 
+.dg-nav-primary:hover,
+.dg-nav-primary--hover,
+.dg-nav-primary--hover:hover {
+  color: var(--dg-color-text-nav-interaction-hover);
+}
+
+.dg-nav-primary:focus,
+.dg-nav-primary:focus-visible,
+.dg-nav-primary--focus,
+.dg-nav-primary--focus:focus,
+.dg-nav-primary--focus:focus-visible {
+  color: var(--dg-color-text-nav-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary:focus:hover,
+.dg-nav-primary:focus-visible:hover,
+.dg-nav-primary--focus:hover,
+.dg-nav-primary--focus:focus:hover,
+.dg-nav-primary--focus:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--hover:focus,
+.dg-nav-primary--hover:focus-visible,
+.dg-nav-primary--hover:focus:hover,
+.dg-nav-primary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary:active,
+.dg-nav-primary--active,
+.dg-nav-primary--active:active,
+.dg-nav-primary--active:hover {
+  color: var(--dg-color-text-nav-interaction-active);
+}
+
+.dg-nav-primary:focus:active,
+.dg-nav-primary:focus-visible:active,
+.dg-nav-primary--focus:active,
+.dg-nav-primary--focus:focus:active,
+.dg-nav-primary--focus:focus-visible:active {
+  /* Active overrides focus - show active color + focus indicator */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary:hover:focus:active,
+.dg-nav-primary:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--hover:active,
+.dg-nav-primary--hover:focus:active,
+.dg-nav-primary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--active:focus,
+.dg-nav-primary--active:focus-visible,
+.dg-nav-primary--active:active:focus,
+.dg-nav-primary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-nav-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-primary--selected {
+  color: var(--dg-color-text-nav-state-selected);
+  font-weight: var(--dg-font-weight-semi-bold);
+}
+
+/* Secondary Navigation */
 .dg-nav-secondary {
   color: var(--dg-color-text-nav-secondary-default);
   font-weight: var(--dg-font-weight-medium);
   text-decoration: none;
+  transition: color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
 }
 
+.dg-nav-secondary:hover,
+.dg-nav-secondary--hover,
+.dg-nav-secondary--hover:hover {
+  color: var(--dg-color-text-nav-secondary-interaction-hover);
+}
+
+.dg-nav-secondary:focus,
+.dg-nav-secondary:focus-visible,
+.dg-nav-secondary--focus,
+.dg-nav-secondary--focus:focus,
+.dg-nav-secondary--focus:focus-visible {
+  color: var(--dg-color-text-nav-secondary-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary:focus:hover,
+.dg-nav-secondary:focus-visible:hover,
+.dg-nav-secondary--focus:hover,
+.dg-nav-secondary--focus:focus:hover,
+.dg-nav-secondary--focus:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-secondary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--hover:focus,
+.dg-nav-secondary--hover:focus-visible,
+.dg-nav-secondary--hover:focus:hover,
+.dg-nav-secondary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-secondary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary:active,
+.dg-nav-secondary--active,
+.dg-nav-secondary--active:active,
+.dg-nav-secondary--active:hover {
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+}
+
+.dg-nav-secondary:focus:active,
+.dg-nav-secondary:focus-visible:active,
+.dg-nav-secondary--focus:active,
+.dg-nav-secondary--focus:focus:active,
+.dg-nav-secondary--focus:focus-visible:active {
+  /* Active overrides focus - show active color + focus indicator */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary:hover:focus:active,
+.dg-nav-secondary:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--hover:active,
+.dg-nav-secondary--hover:focus:active,
+.dg-nav-secondary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--active:focus,
+.dg-nav-secondary--active:focus-visible,
+.dg-nav-secondary--active:active:focus,
+.dg-nav-secondary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-nav-secondary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-secondary--selected {
+  color: var(--dg-color-text-nav-secondary-state-selected);
+  font-weight: var(--dg-font-weight-semi-bold);
+}
+
+/* Tertiary Navigation */
 .dg-nav-tertiary {
   color: var(--dg-color-text-nav-tertiary-default);
-  font-weight: var(--dg-font-weight-normal);
+  font-weight: var(--dg-font-weight-regular);
   text-decoration: none;
+  transition: color var(--dg-duration-fast) var(--dg-cubic-bezier-ease-in-out);
+}
+
+.dg-nav-tertiary:hover,
+.dg-nav-tertiary--hover,
+.dg-nav-tertiary--hover:hover {
+  color: var(--dg-color-text-nav-tertiary-interaction-hover);
+}
+
+.dg-nav-tertiary:focus,
+.dg-nav-tertiary:focus-visible,
+.dg-nav-tertiary--focus,
+.dg-nav-tertiary--focus:focus,
+.dg-nav-tertiary--focus:focus-visible {
+  color: var(--dg-color-text-nav-tertiary-interaction-focus);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary:focus:hover,
+.dg-nav-tertiary:focus-visible:hover,
+.dg-nav-tertiary--focus:hover,
+.dg-nav-tertiary--focus:focus:hover,
+.dg-nav-tertiary--focus:focus-visible:hover {
+  /* When focused (via keyboard) and hovered: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-tertiary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--hover:focus,
+.dg-nav-tertiary--hover:focus-visible,
+.dg-nav-tertiary--hover:focus:hover,
+.dg-nav-tertiary--hover:focus-visible:hover {
+  /* When hover modifier is present and focused: show hover color + focus indicator */
+  color: var(--dg-color-text-nav-tertiary-interaction-hover);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary:active,
+.dg-nav-tertiary--active,
+.dg-nav-tertiary--active:active,
+.dg-nav-tertiary--active:hover {
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+}
+
+.dg-nav-tertiary:focus:active,
+.dg-nav-tertiary:focus-visible:active,
+.dg-nav-tertiary--focus:active,
+.dg-nav-tertiary--focus:focus:active,
+.dg-nav-tertiary--focus:focus-visible:active {
+  /* Active overrides focus - show active color + focus indicator */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary:hover:focus:active,
+.dg-nav-tertiary:hover:focus-visible:active {
+  /* Active overrides hover and focus */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--hover:active,
+.dg-nav-tertiary--hover:focus:active,
+.dg-nav-tertiary--hover:focus-visible:active {
+  /* Active state overrides hover modifier */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--active:focus,
+.dg-nav-tertiary--active:focus-visible,
+.dg-nav-tertiary--active:active:focus,
+.dg-nav-tertiary--active:active:focus-visible {
+  /* Active state overrides focus state */
+  color: var(--dg-color-text-nav-tertiary-interaction-active);
+  outline: var(--dg-border-width-medium) solid var(--dg-color-primary-default);
+  outline-offset: var(--dg-spacing-space-2xs);
+  border-radius: var(--dg-size-border-radius-sm);
+}
+
+.dg-nav-tertiary--selected {
+  color: var(--dg-color-text-nav-tertiary-state-selected);
+  font-weight: var(--dg-font-weight-medium);
+}
+
+/* Breadcrumb */
+.dg-breadcrumb {
+  display: flex;
+  gap: var(--dg-spacing-gap-xs);
+  align-items: center;
 }
 
 .dg-breadcrumb-separator {
@@ -290,12 +692,228 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 </Tabs>
 
+### Navigation State Patterns
+
+Full state demonstrations for all navigation variants:
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-state-showcase">
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Primary Navigation States</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Default'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--hover">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Hover'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--focus">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Focus'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--active">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Active'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--selected">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Selected'}</span>
+      </div>
+    </div>
+  </div>
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Secondary Navigation States</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-secondary">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Default'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-secondary dg-nav-secondary--hover">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Hover'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-secondary dg-nav-secondary--focus">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Focus'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-secondary dg-nav-secondary--active">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Active'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-secondary dg-nav-secondary--selected">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Selected'}</span>
+      </div>
+    </div>
+  </div>
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">Tertiary Navigation States</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-tertiary">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Default'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Hover'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-tertiary dg-nav-tertiary--focus">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Focus'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-tertiary dg-nav-tertiary--active">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Active'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-tertiary dg-nav-tertiary--selected">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Selected'}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```jsx
+// Primary Navigation States
+<div className="dg-state-showcase">
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">{'Primary Navigation States'}</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Default'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--hover">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Hover'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--focus">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Focus'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--active">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Active'}</span>
+      </div>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--selected">
+            {'Link'}
+          </a>
+        </div>
+        <span className="dg-state-showcase-item-label">{'Selected'}</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+</TabItem>
+</Tabs>
+
+## Semantic Text Colors
+
+Semantic text colors map to semantic colors for conveying meaning and system states.
+
+### Semantic Color Tokens
+
+|                                                                                                                                                                | Token                                                       | CSS Variable                                                     | Reference                          | Use Case                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------- | ----------------------- |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-information-default)'}}>Text</div> | <CopyableCode>color.text.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-information-default</CopyableCode> | `{color.semantic.info.DEFAULT}`    | Informational text      |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-discover-default)'}}>Text</div>    | <CopyableCode>color.text.discover.DEFAULT</CopyableCode>    | <CopyableCode>--dg-color-text-discover-default</CopyableCode>    | `{color.semantic.new.DEFAULT}`     | New features, discovery |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-success-default)'}}>Text</div>     | <CopyableCode>color.text.success.DEFAULT</CopyableCode>     | <CopyableCode>--dg-color-text-success-default</CopyableCode>     | `{color.semantic.success.DEFAULT}` | Success messages        |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-warning-default)'}}>Text</div>     | <CopyableCode>color.text.warning.DEFAULT</CopyableCode>     | <CopyableCode>--dg-color-text-warning-default</CopyableCode>     | `{color.semantic.warning.DEFAULT}` | Warning messages        |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-error-default)'}}>Text</div>       | <CopyableCode>color.text.error.DEFAULT</CopyableCode>       | <CopyableCode>--dg-color-text-error-default</CopyableCode>       | `{color.semantic.error.DEFAULT}`   | Error messages          |
+
 ### Semantic Messages
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-demo-card dg-demo-card-compact dg-flex-col dg-gap-sm">
+<div className="dg-showcase-card dg-showcase-card-compact dg-flex-col dg-gap-sm">
   <p className="dg-message dg-message-info">ℹ️ This is an informational message.</p>
   <p className="dg-message dg-message-new">✨ New feature available!</p>
   <p className="dg-message dg-message-success">✓ Your changes have been saved successfully.</p>
@@ -306,12 +924,12 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<p class="dg-message dg-message-info">ℹ️ Informational message</p>
-<p class="dg-message dg-message-new">✨ New feature available!</p>
-<p class="dg-message dg-message-success">✓ Success message</p>
-<p class="dg-message dg-message-warning">⚠️ Warning message</p>
-<p class="dg-message dg-message-error">✕ Error message</p>
+```jsx
+<p className="dg-message dg-message-info">{'ℹ️ Informational message'}</p>
+<p className="dg-message dg-message-new">{'✨ New feature available!'}</p>
+<p className="dg-message dg-message-success">{'✓ Success message'}</p>
+<p className="dg-message dg-message-warning">{'⚠️ Warning message'}</p>
+<p className="dg-message dg-message-error">{'✕ Error message'}</p>
 ```
 
 ```css
@@ -346,92 +964,127 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 </Tabs>
 
-### Badges with Bold Text
+### Bold Semantic Text Colors
+
+For text on colored semantic backgrounds, use bold variants:
+
+|                                                                                                                                                                         | Token                                                    | CSS Variable                                                  | Reference                         | Use Case                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------- | -------------------------- |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-information-default)', color: 'var(--dg-color-text-information-bold)'}}>Text</div> | <CopyableCode>color.text.information.bold</CopyableCode> | <CopyableCode>--dg-color-text-information-bold</CopyableCode> | `{color.semantic.info.bolder}`    | Text on blue backgrounds   |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-discover-default)', color: 'var(--dg-color-text-discover-bold)'}}>Text</div>       | <CopyableCode>color.text.discover.bold</CopyableCode>    | <CopyableCode>--dg-color-text-discover-bold</CopyableCode>    | `{color.semantic.new.bolder}`     | Text on purple backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-success-default)', color: 'var(--dg-color-text-success-bold)'}}>Text</div>         | <CopyableCode>color.text.success.bold</CopyableCode>     | <CopyableCode>--dg-color-text-success-bold</CopyableCode>     | `{color.semantic.success.bolder}` | Text on green backgrounds  |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-warning-default)', color: 'var(--dg-color-text-warning-bold)'}}>Text</div>         | <CopyableCode>color.text.warning.bold</CopyableCode>     | <CopyableCode>--dg-color-text-warning-bold</CopyableCode>     | `{color.semantic.warning.bolder}` | Text on orange backgrounds |
+| <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-error-default)', color: 'var(--dg-color-text-error-bold)'}}>Text</div>             | <CopyableCode>color.text.error.bold</CopyableCode>       | <CopyableCode>--dg-color-text-error-bold</CopyableCode>       | `{color.semantic.error.bolder}`   | Text on red backgrounds    |
+
+### Alert Components
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
-  <span className="dg-badge dg-badge-success-bold">Success</span>
-  <span className="dg-badge dg-badge-error-bold">Error</span>
-  <span className="dg-badge dg-badge-warning-bold">Warning</span>
-  <span className="dg-badge dg-badge-info-bold">Info</span>
+<div className="dg-flex-col dg-gap-sm">
+  <div className="dg-alert dg-alert-info">Info background with bold semantic text</div>
+  <div className="dg-alert dg-alert-new">Discover background with bold semantic text</div>
+  <div className="dg-alert dg-alert-success">Success background with bold semantic text</div>
+  <div className="dg-alert dg-alert-warning">Warning background with bold semantic text</div>
+  <div className="dg-alert dg-alert-error">Error background with bold semantic text</div>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<span class="dg-badge dg-badge-success-bold">Success</span>
-<span class="dg-badge dg-badge-error-bold">Error</span>
-<span class="dg-badge dg-badge-warning-bold">Warning</span>
-<span class="dg-badge dg-badge-info-bold">Info</span>
+```jsx
+<div className="dg-alert dg-alert-info">{'Info message'}</div>
+<div className="dg-alert dg-alert-new">{'Discover message'}</div>
+<div className="dg-alert dg-alert-success">{'Success message'}</div>
+<div className="dg-alert dg-alert-warning">{'Warning message'}</div>
+<div className="dg-alert dg-alert-error">{'Error message'}</div>
 ```
 
 ```css
-.dg-badge {
-  display: inline-block;
-  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-md);
-  border-radius: var(--dg-size-border-radius-badge);
-  font-size: var(--dg-size-font-caption);
-  font-weight: var(--dg-font-weight-semi-bold);
+.dg-alert {
+  padding: var(--dg-spacing-inset-md);
+  border-radius: var(--dg-size-border-radius-md);
+  border-left: var(--dg-border-width-thick) solid;
 }
 
-.dg-badge-success-bold {
-  background-color: var(--dg-color-semantic-success-default);
-  color: var(--dg-color-text-inverse);
+/* Using bold semantic text tokens on colored backgrounds */
+.dg-alert-info {
+  background-color: var(--dg-color-background-information-default);
+  border-color: var(--dg-color-background-information-bold);
+  color: var(--dg-color-text-information-bold);
 }
 
-.dg-badge-error-bold {
-  background-color: var(--dg-color-semantic-error-default);
-  color: var(--dg-color-text-inverse);
+.dg-alert-new {
+  background-color: var(--dg-color-background-discover-default);
+  border-color: var(--dg-color-background-discover-bold);
+  color: var(--dg-color-text-discover-bold);
 }
 
-.dg-badge-warning-bold {
-  background-color: var(--dg-color-semantic-warning-default);
-  color: var(--dg-color-text-inverse);
+.dg-alert-success {
+  background-color: var(--dg-color-background-success-default);
+  border-color: var(--dg-color-background-success-bold);
+  color: var(--dg-color-text-success-bold);
 }
 
-.dg-badge-info-bold {
-  background-color: var(--dg-color-semantic-info-default);
-  color: var(--dg-color-text-inverse);
+.dg-alert-warning {
+  background-color: var(--dg-color-background-warning-default);
+  border-color: var(--dg-color-background-warning-bold);
+  color: var(--dg-color-text-warning-bold);
+}
+
+.dg-alert-error {
+  background-color: var(--dg-color-background-error-default);
+  border-color: var(--dg-color-background-error-bold);
+  color: var(--dg-color-text-error-bold);
 }
 ```
 
 </TabItem>
 </Tabs>
 
+## Usage Examples
+
 ### Form Elements
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-demo-card dg-demo-card-compact dg-flex-col dg-gap-md dg-max-w-xs">
+<div className="dg-showcase-card dg-showcase-card-compact dg-flex-col dg-gap-md dg-max-w-xs">
   <div className="dg-form-group">
     <label className="dg-form-label">Email Address</label>
     <input type="text" placeholder="name@example.com" className="dg-input" />
     <p className="dg-helper-text">We'll never share your email.</p>
   </div>
   <div className="dg-form-group">
-    <label className="dg-form-label">Password</label>
+    <label className="dg-form-label">Success State</label>
+    <input type="text" value="Valid input" className="dg-input dg-input-success" readOnly />
+    <p className="dg-helper-text dg-helper-text-success">✓ Looks good!</p>
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Error State</label>
     <input type="password" value="password" className="dg-input dg-input-error" readOnly />
-    <p className="dg-helper-text dg-helper-text-error">Password must be at least 8 characters.</p>
+    <p className="dg-helper-text dg-helper-text-error">✕ Password must be at least 8 characters.</p>
   </div>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-form-group">
-  <label class="dg-form-label">Email Address</label>
-  <input type="text" placeholder="name@example.com" class="dg-input" />
-  <p class="dg-helper-text">We'll never share your email.</p>
+```jsx
+<div className="dg-form-group">
+  <label className="dg-form-label">{'Email Address'}</label>
+  <input type="text" placeholder="name@example.com" className="dg-input" />
+  <p className="dg-helper-text">{'We\'ll never share your email.'}</p>
 </div>
-<div class="dg-form-group">
-  <label class="dg-form-label">Password</label>
-  <input type="password" class="dg-input dg-input-error" />
-  <p class="dg-helper-text dg-helper-text-error">Password must be at least 8 characters.</p>
+<div className="dg-form-group">
+  <label className="dg-form-label">{'Success State'}</label>
+  <input type="text" className="dg-input dg-input-success" defaultValue="Valid input" />
+  <p className="dg-helper-text dg-helper-text-success">{'✓ Looks good!'}</p>
+</div>
+<div className="dg-form-group">
+  <label className="dg-form-label">{'Error State'}</label>
+  <input type="password" className="dg-input dg-input-error" />
+  <p className="dg-helper-text dg-helper-text-error">{'✕ Password must be at least 8 characters.'}</p>
 </div>
 ```
 
@@ -450,13 +1103,23 @@ For text on colored semantic backgrounds, use bold variants:
   border-radius: var(--dg-size-border-radius-md);
 }
 
+.dg-input-success {
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-input-state-valid);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-success-lowest);
+}
+
 .dg-input-error {
-  border-color: var(--dg-color-semantic-error-default);
+  border: var(--dg-border-width-medium) solid var(--dg-color-border-input-state-invalid);
+  box-shadow: 0 0 0 var(--dg-spacing-space-2xs) var(--dg-color-semantic-error-lowest);
 }
 
 .dg-helper-text {
   color: var(--dg-color-text-subtle);
   font-size: var(--dg-size-font-caption);
+}
+
+.dg-helper-text-success {
+  color: var(--dg-color-text-success-bold);
 }
 
 .dg-helper-text-error {
@@ -472,45 +1135,54 @@ For text on colored semantic backgrounds, use bold variants:
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-demo-card dg-max-w-xs">
-  <h3 className="dg-demo-card-title">Card Title</h3>
-  <p className="dg-demo-card-body">This is the card body text using the default text color for optimal readability.</p>
-  <p className="dg-demo-card-meta">Posted 2 hours ago • 5 min read</p>
+<div className="dg-text-card dg-max-w-xs">
+  <h3 className="dg-text-card-title">Card Title</h3>
+  <p className="dg-text-card-body">
+    {'This is the card body text using the default text color for optimal readability.'}
+  </p>
+  <p className="dg-text-card-meta">Posted 2 hours ago • 5 min read</p>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-demo-card">
-  <h3 class="dg-demo-card-title">Card Title</h3>
-  <p class="dg-demo-card-body">Card body text...</p>
-  <p class="dg-demo-card-meta">Posted 2 hours ago</p>
+```jsx
+<div className="dg-text-card">
+  <h3 className="dg-text-card-title">{'Card Title'}</h3>
+  <p className="dg-text-card-body">{'Card body text...'}</p>
+  <p className="dg-text-card-meta">{'Posted 2 hours ago'}</p>
 </div>
 ```
 
 ```css
-.dg-demo-card {
+/* Card container - using background and border tokens */
+.dg-text-card {
   background-color: var(--dg-color-background-default);
   border: var(--dg-border-width-thin) solid var(--dg-color-border-default);
   border-radius: var(--dg-size-border-radius-lg);
   padding: var(--dg-spacing-inset-lg);
 }
 
-.dg-demo-card-title {
+/* Card title - using text-bold token */
+.dg-text-card-title {
   color: var(--dg-color-text-bold);
   font-size: var(--dg-size-font-lg);
   font-weight: var(--dg-font-weight-semi-bold);
+  margin: 0 0 var(--dg-spacing-space-sm) 0;
 }
 
-.dg-demo-card-body {
+/* Card body - using text-default token */
+.dg-text-card-body {
   color: var(--dg-color-text-default);
   line-height: var(--dg-line-height-normal);
+  margin: 0 0 var(--dg-spacing-space-md) 0;
 }
 
-.dg-demo-card-meta {
+/* Card meta - using text-subtler token */
+.dg-text-card-meta {
   color: var(--dg-color-text-subtler);
   font-size: var(--dg-size-font-caption);
+  margin: 0;
 }
 ```
 
@@ -529,17 +1201,17 @@ const textStyles = {
   caption: { color: tokens.color.text.subtle },
   disabled: { color: tokens.color.text.subtlest },
   link: { color: tokens.color.text.link.DEFAULT },
-  error: { color: tokens.color.text.error },
-  success: { color: tokens.color.text.success }
+  error: { color: tokens.color.text.error.DEFAULT },
+  success: { color: tokens.color.text.success.DEFAULT }
 }
 
 // Component example
 function Alert({ type, children }) {
   const textColor = {
-    info: tokens.color.text.information,
-    success: tokens.color.text.success,
-    warning: tokens.color.text.warning,
-    error: tokens.color.text.error
+    info: tokens.color.text.information.DEFAULT,
+    success: tokens.color.text.success.DEFAULT,
+    warning: tokens.color.text.warning.DEFAULT,
+    error: tokens.color.text.error.DEFAULT
   }[type]
 
   return <div style={{ color: textColor }}>{children}</div>
@@ -584,19 +1256,20 @@ subtlest   ██            (lowest emphasis)
 
 All text color shortcuts meet WCAG AA standards when used on appropriate backgrounds:
 
-| Text Color | Background | Contrast Ratio | WCAG Level |
-|------------|------------|----------------|------------|
-| `{color.text.bold}` | `{color.background.DEFAULT}` | ≥ 7:1 | AAA |
-| `{color.text.DEFAULT}` | `{color.background.DEFAULT}` | ≥ 4.5:1 | AA |
-| `{color.text.subtle}` | `{color.background.DEFAULT}` | ≥ 4.5:1 | AA |
-| `{color.text.inverse}` | Dark backgrounds | ≥ 4.5:1 | AA |
+| Text Color             | Background                   | Contrast Ratio | WCAG Level |
+| ---------------------- | ---------------------------- | -------------- | ---------- |
+| `{color.text.bold}`    | `{color.background.DEFAULT}` | ≥ 7:1          | AAA        |
+| `{color.text.DEFAULT}` | `{color.background.DEFAULT}` | ≥ 4.5:1        | AA         |
+| `{color.text.subtle}`  | `{color.background.DEFAULT}` | ≥ 4.5:1        | AA         |
+| `{color.text.inverse}` | Dark backgrounds             | ≥ 4.5:1        | AA         |
 
 :::warning
 `color.text.subtler` and `color.text.subtlest` may not meet WCAG AA standards for small text. Use these only for:
+
 - Large text (18px+ or 14px+ bold)
 - Non-essential content
 - Supplementary information
-:::
+  :::
 
 ### Best Practices
 
@@ -621,37 +1294,11 @@ All text color shortcuts meet WCAG AA standards when used on appropriate backgro
 ### Testing
 
 Always test text colors:
+
 - ✅ Against your background colors
 - ✅ In both light and dark themes
 - ✅ With color blindness simulators
 - ✅ Using automated contrast checkers
-
-## Complete Token Reference
-
-### All Text Tokens
-
-| Category |  | Token | CSS Variable | Reference |
-|----------|--|-------|--------------|-----------|
-| **Neutral** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-inverse)'}}>Text</div> | <CopyableCode>color.text.inverse</CopyableCode> | <CopyableCode>--dg-color-text-inverse</CopyableCode> | `{color.accent.neutral.silent}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-bold)'}}>Text</div> | <CopyableCode>color.text.bold</CopyableCode> | <CopyableCode>--dg-color-text-bold</CopyableCode> | `{color.accent.neutral.bold}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-default)'}}>Text</div> | <CopyableCode bold>color.text.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-default</CopyableCode> | `{color.accent.neutral.DEFAULT}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtle)'}}>Text</div> | <CopyableCode>color.text.subtle</CopyableCode> | <CopyableCode>--dg-color-text-subtle</CopyableCode> | `{color.accent.neutral.subtle}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtler)'}}>Text</div> | <CopyableCode>color.text.subtler</CopyableCode> | <CopyableCode>--dg-color-text-subtler</CopyableCode> | `{color.accent.neutral.subtler}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-subtlest)'}}>Text</div> | <CopyableCode>color.text.subtlest</CopyableCode> | <CopyableCode>--dg-color-text-subtlest</CopyableCode> | `{color.accent.neutral.subtlest}` |
-| **Link** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-link-default)'}}>Text</div> | <CopyableCode bold>color.text.link.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-link-default</CopyableCode> | `{color.primary.DEFAULT}` |
-| **Navigation** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-nav-default</CopyableCode> | `{color.text.DEFAULT}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-secondary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.secondary.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-nav-secondary-default</CopyableCode> | `{color.text.subtle}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-nav-tertiary-default)'}}>Text</div> | <CopyableCode bold>color.text.nav.tertiary.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-nav-tertiary-default</CopyableCode> | `{color.text.subtler}` |
-| **Semantic** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-information-default)'}}>Text</div> | <CopyableCode bold>color.text.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-information-default</CopyableCode> | `{color.semantic.info.DEFAULT}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-discover-default)'}}>Text</div> | <CopyableCode bold>color.text.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-discover-default</CopyableCode> | `{color.semantic.new.DEFAULT}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-success-default)'}}>Text</div> | <CopyableCode bold>color.text.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-success-default</CopyableCode> | `{color.semantic.success.DEFAULT}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-warning-default)'}}>Text</div> | <CopyableCode bold>color.text.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-warning-default</CopyableCode> | `{color.semantic.warning.DEFAULT}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-default)', color: 'var(--dg-color-text-error-default)'}}>Text</div> | <CopyableCode bold>color.text.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-text-error-default</CopyableCode> | `{color.semantic.error.DEFAULT}` |
-| **Semantic Bold** | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-information-default)', color: 'var(--dg-color-text-information-bold)'}}>Text</div> | <CopyableCode>color.text.information.bold</CopyableCode> | <CopyableCode>--dg-color-text-information-bold</CopyableCode> | `{color.semantic.info.bolder}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-discover-default)', color: 'var(--dg-color-text-discover-bold)'}}>Text</div> | <CopyableCode>color.text.discover.bold</CopyableCode> | <CopyableCode>--dg-color-text-discover-bold</CopyableCode> | `{color.semantic.new.bolder}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-success-default)', color: 'var(--dg-color-text-success-bold)'}}>Text</div> | <CopyableCode>color.text.success.bold</CopyableCode> | <CopyableCode>--dg-color-text-success-bold</CopyableCode> | `{color.semantic.success.bolder}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-warning-default)', color: 'var(--dg-color-text-warning-bold)'}}>Text</div> | <CopyableCode>color.text.warning.bold</CopyableCode> | <CopyableCode>--dg-color-text-warning-bold</CopyableCode> | `{color.semantic.warning.bolder}` |
-| | <div className="color-demo-text" style={{backgroundColor: 'var(--dg-color-background-error-default)', color: 'var(--dg-color-text-error-bold)'}}>Text</div> | <CopyableCode>color.text.error.bold</CopyableCode> | <CopyableCode>--dg-color-text-error-bold</CopyableCode> | `{color.semantic.error.bolder}` |
 
 ## Technical Details
 
@@ -690,4 +1337,3 @@ packages/lib-design-token/src/tokens/color/shortcut/
 - [Semantic Colors](../semantic-colors) - Semantic text color sources
 - [Background Shortcuts](./background) - Pairing text with backgrounds
 - [Theming](/design-token/guides/theming) - Text colors in different themes
-

@@ -30,6 +30,11 @@ export default {
       value: 500,
       comment: 'Complex animations, modals'
     },
+    slowest: {
+      type: 'time',
+      value: 800,
+      comment: 'Continuous animations, spinners'
+    },
 
     // Semantic durations for specific use cases
     transition: {

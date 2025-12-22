@@ -51,6 +51,24 @@ export default {
             type: 'color'
           }
         },
+        secondary: {
+          DEFAULT: {
+            value: "{color.background.button.secondary.DEFAULT}",
+            type: 'color'
+          }
+        },
+        outline: {
+          DEFAULT: {
+            value: "{color.primary.DEFAULT}",
+            type: 'color'
+          }
+        },
+        ghost: {
+          DEFAULT: {
+            value: "transparent",
+            type: 'color'
+          }
+        },
         wireframe: {
           DEFAULT: {
             value: "{color.primary.DEFAULT}",
@@ -90,6 +108,24 @@ export default {
             value: "{color.alpha.neutral.4}",
             type: 'color'
           }
+        },
+        secondary: {
+          DEFAULT: {
+            value: "{color.secondary.DEFAULT}",
+            type: 'color'
+          }
+        },
+        outline: {
+          DEFAULT: {
+            value: "transparent",
+            type: 'color'
+          }
+        },
+        ghost: {
+          DEFAULT: {
+            value: "transparent",
+            type: 'color'
+          }
         }
       }
     },
@@ -102,6 +138,24 @@ export default {
         subtle: {
           DEFAULT: {
             value: "{color.accent.neutral.DEFAULT}",
+            type: 'color'
+          }
+        },
+        secondary: {
+          DEFAULT: {
+            value: "{color.text.inverse}",
+            type: 'color'
+          }
+        },
+        outline: {
+          DEFAULT: {
+            value: "{color.primary.DEFAULT}",
+            type: 'color'
+          }
+        },
+        ghost: {
+          DEFAULT: {
+            value: "{color.primary.DEFAULT}",
             type: 'color'
           }
         },

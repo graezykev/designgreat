@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Elevation
 
@@ -12,21 +12,21 @@ Elevation tokens define shadow depths for creating visual hierarchy. They help u
 
 ## Elevation Scale
 
-| Token | CSS Variable | Shadow | Use Case |
-|-------|--------------|--------|----------|
-| <CopyableCode>shadow.elevation.none</CopyableCode> | <CopyableCode>--dg-shadow-elevation-none</CopyableCode> | None | Flat elements |
-| <CopyableCode>shadow.elevation.sm</CopyableCode> | <CopyableCode>--dg-shadow-elevation-sm</CopyableCode> | 0 1px 2px | Subtle lift |
-| <CopyableCode bold>shadow.elevation.md</CopyableCode> | <CopyableCode bold>--dg-shadow-elevation-md</CopyableCode> | 0 4px 6px 1px | Cards, containers |
-| <CopyableCode>shadow.elevation.lg</CopyableCode> | <CopyableCode>--dg-shadow-elevation-lg</CopyableCode> | 0 10px 16px 2px | Dropdowns, popovers |
-| <CopyableCode>shadow.elevation.xl</CopyableCode> | <CopyableCode>--dg-shadow-elevation-xl</CopyableCode> | 0 20px 24px 4px | Modals, dialogs |
+| Token                                                 | CSS Variable                                               | Shadow          | Use Case            |
+| ----------------------------------------------------- | ---------------------------------------------------------- | --------------- | ------------------- |
+| <CopyableCode>shadow.elevation.none</CopyableCode>    | <CopyableCode>--dg-shadow-elevation-none</CopyableCode>    | None            | Flat elements       |
+| <CopyableCode>shadow.elevation.sm</CopyableCode>      | <CopyableCode>--dg-shadow-elevation-sm</CopyableCode>      | 0 1px 2px       | Subtle lift         |
+| <CopyableCode bold>shadow.elevation.md</CopyableCode> | <CopyableCode bold>--dg-shadow-elevation-md</CopyableCode> | 0 4px 6px 1px   | Cards, containers   |
+| <CopyableCode>shadow.elevation.lg</CopyableCode>      | <CopyableCode>--dg-shadow-elevation-lg</CopyableCode>      | 0 10px 16px 2px | Dropdowns, popovers |
+| <CopyableCode>shadow.elevation.xl</CopyableCode>      | <CopyableCode>--dg-shadow-elevation-xl</CopyableCode>      | 0 20px 24px 4px | Modals, dialogs     |
 
 ## Special Shadows
 
-| Token | CSS Variable | Shadow | Use Case |
-|-------|--------------|--------|----------|
-| <CopyableCode>shadow.focus</CopyableCode> | <CopyableCode>--dg-shadow-focus</CopyableCode> | 0 0 0 2px | Focus rings |
+| Token                                        | CSS Variable                                      | Shadow          | Use Case       |
+| -------------------------------------------- | ------------------------------------------------- | --------------- | -------------- |
+| <CopyableCode>shadow.focus</CopyableCode>    | <CopyableCode>--dg-shadow-focus</CopyableCode>    | 0 0 0 2px       | Focus rings    |
 | <CopyableCode>shadow.inset.sm</CopyableCode> | <CopyableCode>--dg-shadow-inset-sm</CopyableCode> | inset 0 1px 2px | Pressed states |
-| <CopyableCode>shadow.inset.md</CopyableCode> | <CopyableCode>--dg-shadow-inset-md</CopyableCode> | inset 0 2px 4px | Input fields |
+| <CopyableCode>shadow.inset.md</CopyableCode> | <CopyableCode>--dg-shadow-inset-md</CopyableCode> | inset 0 2px 4px | Input fields   |
 
 ## Elevation Demo
 
@@ -74,11 +74,21 @@ Elevation tokens define shadow depths for creating visual hierarchy. They help u
   border-radius: var(--dg-size-border-radius-lg);
 }
 
-.dg-elevation-none { box-shadow: var(--dg-shadow-elevation-none); }
-.dg-elevation-sm { box-shadow: var(--dg-shadow-elevation-sm); }
-.dg-elevation-md { box-shadow: var(--dg-shadow-elevation-md); }
-.dg-elevation-lg { box-shadow: var(--dg-shadow-elevation-lg); }
-.dg-elevation-xl { box-shadow: var(--dg-shadow-elevation-xl); }
+.dg-elevation-none {
+  box-shadow: var(--dg-shadow-elevation-none);
+}
+.dg-elevation-sm {
+  box-shadow: var(--dg-shadow-elevation-sm);
+}
+.dg-elevation-md {
+  box-shadow: var(--dg-shadow-elevation-md);
+}
+.dg-elevation-lg {
+  box-shadow: var(--dg-shadow-elevation-lg);
+}
+.dg-elevation-xl {
+  box-shadow: var(--dg-shadow-elevation-xl);
+}
 ```
 
 </TabItem>
@@ -92,11 +102,11 @@ Elevation tokens define shadow depths for creating visual hierarchy. They help u
 <div className="dg-labeled-row">
   <div className="dg-labeled-item">
     <p className="dg-label">Focus Ring</p>
-    <button className="dg-btn dg-btn-primary dg-btn-focus">Focused Button</button>
+    <button className="dg-btn dg-btn-primary dg-btn-primary--focus">Focused Button</button>
   </div>
   <div className="dg-labeled-item">
     <p className="dg-label">Inset (Pressed)</p>
-    <button className="dg-btn dg-btn-neutral dg-btn-pressed">Pressed Button</button>
+    <button className="dg-btn dg-btn-neutral dg-btn--pressed">Pressed Button</button>
   </div>
 </div>
 
@@ -104,8 +114,8 @@ Elevation tokens define shadow depths for creating visual hierarchy. They help u
 <TabItem value="code" label="Code">
 
 ```html
-<button class="dg-btn dg-btn-primary">Primary Button</button>
-<button class="dg-btn dg-btn-neutral">Neutral Button</button>
+<button class="dg-btn dg-btn-primary dg-btn-primary--focus">Focused Button</button>
+<button class="dg-btn dg-btn-neutral dg-btn--pressed">Pressed Button</button>
 ```
 
 ```css
@@ -125,11 +135,19 @@ Elevation tokens define shadow depths for creating visual hierarchy. They help u
   border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
 }
 
-.dg-btn:focus {
+.dg-btn-primary:focus,
+.dg-btn-primary:focus-visible {
   box-shadow: var(--dg-shadow-focus);
 }
 
-.dg-btn:active {
+.dg-btn-primary--focus,
+.dg-btn-primary--focus:focus,
+.dg-btn-primary--focus:focus-visible,
+.dg-btn-primary--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn--pressed {
   box-shadow: var(--dg-shadow-inset-sm);
 }
 ```
@@ -139,13 +157,13 @@ Elevation tokens define shadow depths for creating visual hierarchy. They help u
 
 ## Elevation Guidelines
 
-| Level | Shadow | Components |
-|-------|--------|------------|
-| 0 | None | Flat backgrounds, dividers |
-| 1 | `sm` | Buttons (resting), cards (flat) |
-| 2 | `md` | Cards, containers, list items |
-| 3 | `lg` | Dropdowns, popovers, tooltips |
-| 4 | `xl` | Modals, dialogs, bottom sheets |
+| Level | Shadow | Components                      |
+| ----- | ------ | ------------------------------- |
+| 0     | None   | Flat backgrounds, dividers      |
+| 1     | `sm`   | Buttons (resting), cards (flat) |
+| 2     | `md`   | Cards, containers, list items   |
+| 3     | `lg`   | Dropdowns, popovers, tooltips   |
+| 4     | `xl`   | Modals, dialogs, bottom sheets  |
 
 ## Interactive Elevation
 
@@ -197,6 +215,32 @@ Elevation tokens define shadow depths for creating visual hierarchy. They help u
 
 </TabItem>
 </Tabs>
+
+## Usage Examples
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-design-token'
+
+// Elevation levels map to shadow tokens
+const elevations = {
+  none: tokens.shadow.elevation.none,
+  sm: tokens.shadow.elevation.sm,
+  md: tokens.shadow.elevation.md,
+  lg: tokens.shadow.elevation.lg,
+  xl: tokens.shadow.elevation.xl
+}
+
+// Component example
+function Card({ elevation = 'md', children }) {
+  return (
+    <div style={{ boxShadow: `var(--dg-shadow-elevation-${elevation})` }}>
+      {children}
+    </div>
+  )
+}
+```
 
 ## Usage Guidelines
 
@@ -253,4 +297,3 @@ packages/lib-design-token/src/tokens/
 
 - [Shadow Shortcuts](/design-token/colors/shortcuts/shadow) — Shadow color tokens
 - [Transitions](../motion/transitions) — Animate elevation changes
-

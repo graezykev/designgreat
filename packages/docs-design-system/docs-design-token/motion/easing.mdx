@@ -2,9 +2,9 @@
 sidebar_position: 3
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Easing
 
@@ -12,13 +12,13 @@ Easing tokens define cubic-bezier curves that control how animations accelerate 
 
 ## Easing Functions
 
-| Token | CSS Variable | Value | Use Case |
-|-------|--------------|-------|----------|
-| <CopyableCode>cubic-bezier.linear</CopyableCode> | <CopyableCode>--dg-cubic-bezier-linear</CopyableCode> | `cubic-bezier(0, 0, 1, 1)` | Constant speed, progress bars |
-| <CopyableCode>cubic-bezier.ease</CopyableCode> | <CopyableCode>--dg-cubic-bezier-ease</CopyableCode> | `cubic-bezier(0.25, 0.1, 0.25, 1)` | General purpose |
-| <CopyableCode>cubic-bezier.ease-in</CopyableCode> | <CopyableCode>--dg-cubic-bezier-ease-in</CopyableCode> | `cubic-bezier(0.42, 0, 1, 1)` | Exits, elements leaving |
-| <CopyableCode bold>cubic-bezier.ease-out</CopyableCode> | <CopyableCode bold>--dg-cubic-bezier-ease-out</CopyableCode> | `cubic-bezier(0, 0, 0.58, 1)` | Entrances, elements arriving |
-| <CopyableCode>cubic-bezier.ease-in-out</CopyableCode> | <CopyableCode>--dg-cubic-bezier-ease-in-out</CopyableCode> | `cubic-bezier(0.42, 0, 0.58, 1)` | Continuous motion |
+| Token                                                   | CSS Variable                                                 | Value                              | Use Case                      |
+| ------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ----------------------------- |
+| <CopyableCode>cubic-bezier.linear</CopyableCode>        | <CopyableCode>--dg-cubic-bezier-linear</CopyableCode>        | `cubic-bezier(0, 0, 1, 1)`         | Constant speed, progress bars |
+| <CopyableCode>cubic-bezier.ease</CopyableCode>          | <CopyableCode>--dg-cubic-bezier-ease</CopyableCode>          | `cubic-bezier(0.25, 0.1, 0.25, 1)` | General purpose               |
+| <CopyableCode>cubic-bezier.ease-in</CopyableCode>       | <CopyableCode>--dg-cubic-bezier-ease-in</CopyableCode>       | `cubic-bezier(0.42, 0, 1, 1)`      | Exits, elements leaving       |
+| <CopyableCode bold>cubic-bezier.ease-out</CopyableCode> | <CopyableCode bold>--dg-cubic-bezier-ease-out</CopyableCode> | `cubic-bezier(0, 0, 0.58, 1)`      | Entrances, elements arriving  |
+| <CopyableCode>cubic-bezier.ease-in-out</CopyableCode>   | <CopyableCode>--dg-cubic-bezier-ease-in-out</CopyableCode>   | `cubic-bezier(0.42, 0, 0.58, 1)`   | Continuous motion             |
 
 ## Easing Visualizations
 
@@ -62,7 +62,10 @@ Easing tokens define cubic-bezier curves that control how animations accelerate 
     <p className="dg-easing-hint">Slow both ends</p>
   </div>
 </div>
-<p className="dg-hint">↑ Watch how each ball moves differently — Linear is constant, Ease-out ★ starts fast then slows (best for UI)</p>
+<p className="dg-hint">
+  ↑ Watch how each ball moves differently — Linear is constant, Ease-out ★ starts fast then slows
+  (best for UI)
+</p>
 
 </TabItem>
 <TabItem value="code" label="Code">
@@ -109,13 +112,23 @@ Easing tokens define cubic-bezier curves that control how animations accelerate 
 
 /* Keyframes for each easing (same path, different timing) */
 @keyframes easingLinear {
-  0%, 100% { left: var(--dg-spacing-space-sm); }
-  50% { left: calc(100% - var(--dg-spacing-space-lg) - var(--dg-spacing-space-sm)); }
+  0%,
+  100% {
+    left: var(--dg-spacing-space-sm);
+  }
+  50% {
+    left: calc(100% - var(--dg-spacing-space-lg) - var(--dg-spacing-space-sm));
+  }
 }
 
 @keyframes easingEaseOut {
-  0%, 100% { left: var(--dg-spacing-space-sm); }
-  50% { left: calc(100% - var(--dg-spacing-space-lg) - var(--dg-spacing-space-sm)); }
+  0%,
+  100% {
+    left: var(--dg-spacing-space-sm);
+  }
+  50% {
+    left: calc(100% - var(--dg-spacing-space-lg) - var(--dg-spacing-space-sm));
+  }
 }
 ```
 
@@ -125,6 +138,7 @@ Easing tokens define cubic-bezier curves that control how animations accelerate 
 ## When to Use Each
 
 ### ease-out (Recommended Default)
+
 Best for most UI interactions. Elements arrive quickly and settle smoothly.
 
 ```css
@@ -136,6 +150,7 @@ Best for most UI interactions. Elements arrive quickly and settle smoothly.
 ```
 
 ### ease-in
+
 Use when elements are leaving or being dismissed.
 
 ```css
@@ -147,6 +162,7 @@ Use when elements are leaving or being dismissed.
 ```
 
 ### ease-in-out
+
 Use for continuous or symmetrical animations.
 
 ```css
@@ -157,12 +173,39 @@ Use for continuous or symmetrical animations.
 ```
 
 ### linear
+
 Use for progress indicators or when constant speed is needed.
 
 ```css
 /* Progress bar, loading spinner rotation */
 .progress-bar {
   transition: width 100ms var(--dg-cubic-bezier-linear);
+}
+```
+
+## Usage Examples
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-design-token'
+
+// Easing styles
+const easing = {
+  linear: tokens['cubic-bezier'].linear,
+  ease: tokens['cubic-bezier'].ease,
+  'ease-in': tokens['cubic-bezier']['ease-in'],
+  'ease-out': tokens['cubic-bezier']['ease-out'],
+  'ease-in-out': tokens['cubic-bezier']['ease-in-out']
+}
+
+// Component example
+function AnimatedBox({ easing = 'ease-out', children }) {
+  return (
+    <div style={{ transitionTimingFunction: `var(--dg-cubic-bezier-${easing})` }}>
+      {children}
+    </div>
+  )
 }
 ```
 
@@ -209,4 +252,3 @@ packages/lib-design-token/src/tokens/
 
 - [Duration](./duration) — Animation timing tokens
 - [Transitions](./transitions) — Pre-built transition presets
-

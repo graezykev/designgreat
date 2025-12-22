@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 9
 sidebar_label: API Reference
 ---
 
@@ -18,12 +18,12 @@ This page documents all TypeScript exports from `@designgreat/lib-design-token`.
 ```typescript
 import {
   // Most commonly used
-  themes,              // Access token values: themes.light, themes.dark
-  getThemeClassName,   // Get CSS class for a theme
-  applyTheme,          // Apply theme to an element
-  
+  themes, // Access token values: themes.light, themes.dark
+  getThemeClassName, // Get CSS class for a theme
+  applyTheme, // Apply theme to an element
+
   // Types
-  type ThemeName,      // 'light' | 'dark'
+  type ThemeName // 'light' | 'dark'
 } from '@designgreat/lib-design-token'
 ```
 
@@ -39,18 +39,18 @@ The main way to access token values programmatically:
 import { themes } from '@designgreat/lib-design-token'
 
 // Access light theme tokens
-const lightBg = themes.light.dg.color.background.DEFAULT    // "#ffffff"
-const lightText = themes.light.dg.color.text.DEFAULT        // "#1d1d1f"
+const lightBg = themes.light.dg.color.background.DEFAULT // "#ffffff"
+const lightText = themes.light.dg.color.text.DEFAULT // "#1d1d1f"
 
 // Access dark theme tokens
-const darkBg = themes.dark.dg.color.background.DEFAULT      // "#0c0c0d"
-const darkText = themes.dark.dg.color.text.DEFAULT          // "#e8e8e9"
+const darkBg = themes.dark.dg.color.background.DEFAULT // "#0c0c0d"
+const darkText = themes.dark.dg.color.text.DEFAULT // "#e8e8e9"
 
 // Spacing
-const spacing = themes.light.dg.spacing.px16                // "1rem"
+const spacing = themes.light.dg.spacing.px16 // "1rem"
 
 // Typography
-const fontFamily = themes.light.dg['font-family'].primary   // "Roboto"
+const fontFamily = themes.light.dg['font-family'].primary // "Roboto"
 ```
 
 ### Named Exports: `light` & `dark`
@@ -60,8 +60,8 @@ Direct access to specific themes:
 ```typescript
 import { light, dark } from '@designgreat/lib-design-token'
 
-const primaryLight = light.dg.color.primary.DEFAULT  // "#0055cc"
-const primaryDark = dark.dg.color.primary.DEFAULT    // "#599eff"
+const primaryLight = light.dg.color.primary.DEFAULT // "#0055cc"
+const primaryDark = dark.dg.color.primary.DEFAULT // "#599eff"
 ```
 
 ### `getThemeTokens(theme)`
@@ -82,7 +82,7 @@ Get array of available theme names:
 ```typescript
 import { listThemeNames } from '@designgreat/lib-design-token'
 
-const themes = listThemeNames()  // ['dark', 'light']
+const themes = listThemeNames() // ['dark', 'light']
 ```
 
 ### `createTheme(base, overrides)`
@@ -96,7 +96,7 @@ const customTheme = createTheme('light', {
   dg: {
     color: {
       primary: {
-        DEFAULT: '#FF0000'  // Override primary color
+        DEFAULT: '#FF0000' // Override primary color
       }
     }
   }
@@ -114,8 +114,8 @@ Returns the CSS class name for a theme:
 ```typescript
 import { getThemeClassName } from '@designgreat/lib-design-token'
 
-getThemeClassName('light')  // '' (light uses :root, no class needed)
-getThemeClassName('dark')   // 'dg-theme-dark'
+getThemeClassName('light') // '' (light uses :root, no class needed)
+getThemeClassName('dark') // 'dg-theme-dark'
 ```
 
 **Usage in React:**
@@ -123,12 +123,8 @@ getThemeClassName('dark')   // 'dg-theme-dark'
 ```tsx
 function App() {
   const [isDark, setIsDark] = useState(false)
-  
-  return (
-    <div className={getThemeClassName(isDark ? 'dark' : 'light')}>
-      {/* Your app */}
-    </div>
-  )
+
+  return <div className={getThemeClassName(isDark ? 'dark' : 'light')}>{/* Your app */}</div>
 }
 ```
 
@@ -165,8 +161,8 @@ Returns the CSS selector for a theme:
 ```typescript
 import { getThemeSelector } from '@designgreat/lib-design-token'
 
-getThemeSelector('light')  // ':root'
-getThemeSelector('dark')   // '.dg-theme-dark'
+getThemeSelector('light') // ':root'
+getThemeSelector('dark') // '.dg-theme-dark'
 ```
 
 ### `getOppositeTheme(theme)`
@@ -176,8 +172,8 @@ Returns the opposite theme name:
 ```typescript
 import { getOppositeTheme } from '@designgreat/lib-design-token'
 
-getOppositeTheme('light')  // 'dark'
-getOppositeTheme('dark')   // 'light'
+getOppositeTheme('light') // 'dark'
+getOppositeTheme('dark') // 'light'
 ```
 
 ---
@@ -191,8 +187,8 @@ Object containing theme class names:
 ```typescript
 import { THEME_CLASSES } from '@designgreat/lib-design-token'
 
-THEME_CLASSES.light  // ''
-THEME_CLASSES.dark   // 'dg-theme-dark'
+THEME_CLASSES.light // ''
+THEME_CLASSES.dark // 'dg-theme-dark'
 ```
 
 ### `THEME_SELECTORS`
@@ -202,8 +198,8 @@ Object containing CSS selectors:
 ```typescript
 import { THEME_SELECTORS } from '@designgreat/lib-design-token'
 
-THEME_SELECTORS.light  // ':root'
-THEME_SELECTORS.dark   // '.dg-theme-dark'
+THEME_SELECTORS.light // ':root'
+THEME_SELECTORS.dark // '.dg-theme-dark'
 ```
 
 ### `THEME_CLASS_PREFIX`
@@ -213,7 +209,7 @@ The prefix used for theme classes:
 ```typescript
 import { THEME_CLASS_PREFIX } from '@designgreat/lib-design-token'
 
-THEME_CLASS_PREFIX  // 'dg-theme'
+THEME_CLASS_PREFIX // 'dg-theme'
 ```
 
 ### `LIGHT_THEME_SELECTOR`
@@ -223,7 +219,7 @@ CSS selector for the light theme:
 ```typescript
 import { LIGHT_THEME_SELECTOR } from '@designgreat/lib-design-token'
 
-LIGHT_THEME_SELECTOR  // ':root'
+LIGHT_THEME_SELECTOR // ':root'
 ```
 
 ### `DEFAULT_THEME`
@@ -233,7 +229,7 @@ The default theme name:
 ```typescript
 import { DEFAULT_THEME } from '@designgreat/lib-design-token'
 
-DEFAULT_THEME  // 'light'
+DEFAULT_THEME // 'light'
 ```
 
 ---
@@ -291,37 +287,37 @@ const overrides: ThemeOverrides = {
 
 ### Functions
 
-| Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| `getThemeClassName` | `theme: ThemeName` | `string` | CSS class name for theme |
-| `getThemeSelector` | `theme: ThemeName` | `string` | CSS selector for theme |
-| `applyTheme` | `element: Element, theme: ThemeName` | `void` | Apply theme to element |
-| `isThemeApplied` | `element: Element, theme: ThemeName` | `boolean` | Check if theme is active |
-| `getOppositeTheme` | `theme: ThemeName` | `ThemeName` | Get opposite theme |
-| `getThemeTokens` | `theme: ThemeName` | `ThemeToken` | Get tokens for theme |
-| `listThemeNames` | — | `ThemeName[]` | Get all theme names |
-| `createTheme` | `base: ThemeName, overrides?: ThemeOverrides` | `ThemeToken` | Create custom theme |
+| Function            | Parameters                                    | Returns       | Description              |
+| ------------------- | --------------------------------------------- | ------------- | ------------------------ |
+| `getThemeClassName` | `theme: ThemeName`                            | `string`      | CSS class name for theme |
+| `getThemeSelector`  | `theme: ThemeName`                            | `string`      | CSS selector for theme   |
+| `applyTheme`        | `element: Element, theme: ThemeName`          | `void`        | Apply theme to element   |
+| `isThemeApplied`    | `element: Element, theme: ThemeName`          | `boolean`     | Check if theme is active |
+| `getOppositeTheme`  | `theme: ThemeName`                            | `ThemeName`   | Get opposite theme       |
+| `getThemeTokens`    | `theme: ThemeName`                            | `ThemeToken`  | Get tokens for theme     |
+| `listThemeNames`    | —                                             | `ThemeName[]` | Get all theme names      |
+| `createTheme`       | `base: ThemeName, overrides?: ThemeOverrides` | `ThemeToken`  | Create custom theme      |
 
 ### Constants
 
-| Constant | Type | Value |
-|----------|------|-------|
-| `themes` | `{ light: ThemeToken, dark: ThemeToken }` | All theme tokens |
-| `light` | `ThemeToken` | Light theme tokens |
-| `dark` | `ThemeToken` | Dark theme tokens |
-| `THEME_CLASSES` | `{ light: '', dark: 'dg-theme-dark' }` | Class names |
-| `THEME_SELECTORS` | `{ light: ':root', dark: '.dg-theme-dark' }` | CSS selectors |
-| `THEME_CLASS_PREFIX` | `'dg-theme'` | Class prefix |
-| `LIGHT_THEME_SELECTOR` | `':root'` | Light selector |
-| `DEFAULT_THEME` | `'light'` | Default theme |
+| Constant               | Type                                         | Value              |
+| ---------------------- | -------------------------------------------- | ------------------ |
+| `themes`               | `{ light: ThemeToken, dark: ThemeToken }`    | All theme tokens   |
+| `light`                | `ThemeToken`                                 | Light theme tokens |
+| `dark`                 | `ThemeToken`                                 | Dark theme tokens  |
+| `THEME_CLASSES`        | `{ light: '', dark: 'dg-theme-dark' }`       | Class names        |
+| `THEME_SELECTORS`      | `{ light: ':root', dark: '.dg-theme-dark' }` | CSS selectors      |
+| `THEME_CLASS_PREFIX`   | `'dg-theme'`                                 | Class prefix       |
+| `LIGHT_THEME_SELECTOR` | `':root'`                                    | Light selector     |
+| `DEFAULT_THEME`        | `'light'`                                    | Default theme      |
 
 ### Types
 
-| Type | Definition | Use Case |
-|------|------------|----------|
-| `ThemeName` | `'light' \| 'dark'` | Theme parameters |
-| `ThemeToken` | Full token structure | Token access |
-| `ThemeOverrides` | `DeepPartial<ThemeToken>` | Custom themes |
+| Type             | Definition                | Use Case         |
+| ---------------- | ------------------------- | ---------------- |
+| `ThemeName`      | `'light' \| 'dark'`       | Theme parameters |
+| `ThemeToken`     | Full token structure      | Token access     |
+| `ThemeOverrides` | `DeepPartial<ThemeToken>` | Custom themes    |
 
 ---
 
@@ -331,17 +327,14 @@ const overrides: ThemeOverrides = {
 
 ```tsx
 import { useState } from 'react'
-import { 
-  getThemeClassName, 
-  type ThemeName 
-} from '@designgreat/lib-design-token'
+import { getThemeClassName, type ThemeName } from '@designgreat/lib-design-token'
 
 function ThemeToggle() {
   const [theme, setTheme] = useState<ThemeName>('light')
-  
+
   return (
     <div className={getThemeClassName(theme)}>
-      <button onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>
+      <button onClick={() => setTheme((t) => (t === 'light' ? 'dark' : 'light'))}>
         Current: {theme}
       </button>
     </div>
@@ -356,13 +349,15 @@ import { themes } from '@designgreat/lib-design-token'
 
 function DynamicBox({ isDark }: { isDark: boolean }) {
   const t = isDark ? themes.dark : themes.light
-  
+
   return (
-    <div style={{
-      backgroundColor: t.dg.color.background.DEFAULT,
-      color: t.dg.color.text.DEFAULT,
-      padding: t.dg.spacing.px16
-    }}>
+    <div
+      style={{
+        backgroundColor: t.dg.color.background.DEFAULT,
+        color: t.dg.color.text.DEFAULT,
+        padding: t.dg.spacing.px16
+      }}
+    >
       Dynamic content
     </div>
   )
@@ -376,9 +371,44 @@ import { themes, type ThemeName } from '@designgreat/lib-design-token'
 
 function getContrastColor(theme: ThemeName, isError: boolean) {
   const t = themes[theme]
-  return isError 
-    ? t.dg.color.semantic.error.DEFAULT 
-    : t.dg.color.text.DEFAULT
+  return isError ? t.dg.color.semantic.error.DEFAULT : t.dg.color.text.DEFAULT
 }
 ```
 
+### TypeScript/JavaScript
+
+```typescript
+import {
+  themes,
+  getThemeClassName,
+  applyTheme,
+  type ThemeName
+} from '@designgreat/lib-design-token'
+
+// Access tokens for a specific theme
+const lightTokens = themes.light
+const darkTokens = themes.dark
+
+// Use tokens in components
+function ThemedButton({ theme }: { theme: ThemeName }) {
+  const tokens = themes[theme]
+  return (
+    <button
+      className={getThemeClassName(theme)}
+      style={{
+        backgroundColor: tokens.dg.color.primary.DEFAULT,
+        color: tokens.dg.color.text.inverse,
+        padding: tokens.dg.spacing.px16
+      }}
+    >
+      Click me
+    </button>
+  )
+}
+
+// Apply theme to an element
+const element = document.getElementById('app')
+if (element) {
+  applyTheme(element, 'dark')
+}
+```

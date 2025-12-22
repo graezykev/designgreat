@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Transitions
 
@@ -12,16 +12,16 @@ Transition tokens provide pre-built transition presets that combine property, du
 
 ## Transition Presets
 
-| Token | CSS Variable | Properties | Duration | Easing |
-|-------|--------------|------------|----------|--------|
-| <CopyableCode bold>transition.all</CopyableCode> | <CopyableCode>--dg-transition-all</CopyableCode> | `all` | 200ms | ease-out |
-| <CopyableCode>transition.colors</CopyableCode> | <CopyableCode>--dg-transition-colors</CopyableCode> | `color, background-color, border-color` | 100ms | ease |
-| <CopyableCode>transition.opacity</CopyableCode> | <CopyableCode>--dg-transition-opacity</CopyableCode> | `opacity` | 200ms | ease-in-out |
-| <CopyableCode>transition.transform</CopyableCode> | <CopyableCode>--dg-transition-transform</CopyableCode> | `transform` | 200ms | ease-out |
-| <CopyableCode>transition.shadow</CopyableCode> | <CopyableCode>--dg-transition-shadow</CopyableCode> | `box-shadow` | 200ms | ease |
-| <CopyableCode>transition.slow</CopyableCode> | <CopyableCode>--dg-transition-slow</CopyableCode> | `all` | 300ms | ease-in-out |
-| <CopyableCode>transition.slower</CopyableCode> | <CopyableCode>--dg-transition-slower</CopyableCode> | `all` | 500ms | ease-in-out |
-| <CopyableCode>transition.none</CopyableCode> | <CopyableCode>--dg-transition-none</CopyableCode> | `none` | 0ms | — |
+| Token                                             | CSS Variable                                           | Properties                              | Duration | Easing      |
+| ------------------------------------------------- | ------------------------------------------------------ | --------------------------------------- | -------- | ----------- |
+| <CopyableCode bold>transition.all</CopyableCode>  | <CopyableCode>--dg-transition-all</CopyableCode>       | `all`                                   | 200ms    | ease-out    |
+| <CopyableCode>transition.colors</CopyableCode>    | <CopyableCode>--dg-transition-colors</CopyableCode>    | `color, background-color, border-color` | 100ms    | ease        |
+| <CopyableCode>transition.opacity</CopyableCode>   | <CopyableCode>--dg-transition-opacity</CopyableCode>   | `opacity`                               | 200ms    | ease-in-out |
+| <CopyableCode>transition.transform</CopyableCode> | <CopyableCode>--dg-transition-transform</CopyableCode> | `transform`                             | 200ms    | ease-out    |
+| <CopyableCode>transition.shadow</CopyableCode>    | <CopyableCode>--dg-transition-shadow</CopyableCode>    | `box-shadow`                            | 200ms    | ease        |
+| <CopyableCode>transition.slow</CopyableCode>      | <CopyableCode>--dg-transition-slow</CopyableCode>      | `all`                                   | 300ms    | ease-in-out |
+| <CopyableCode>transition.slower</CopyableCode>    | <CopyableCode>--dg-transition-slower</CopyableCode>    | `all`                                   | 500ms    | ease-in-out |
+| <CopyableCode>transition.none</CopyableCode>      | <CopyableCode>--dg-transition-none</CopyableCode>      | `none`                                  | 0ms      | —           |
 
 ## Interactive Demo
 
@@ -36,12 +36,14 @@ Transition tokens provide pre-built transition presets that combine property, du
   </div>
   <div className="dg-motion-item">
     <p className="dg-motion-section-label">transition: transform</p>
-    <button className="dg-btn dg-btn-gradient-accent dg-transition-transform">Lifts up on hover</button>
+    <button className="dg-btn dg-btn-gradient-accent dg-transition-transform">
+      {'Lifts up on hover'}
+    </button>
     <p className="dg-hint">200ms · translateY(-2px)</p>
   </div>
   <div className="dg-motion-item">
     <p className="dg-motion-section-label">transition: shadow</p>
-    <div className="dg-motion-card dg-transition-shadow">Gains elevation</div>
+    <div className="dg-motion-card dg-transition-shadow">{'Gains elevation'}</div>
     <p className="dg-hint">200ms · box-shadow change</p>
   </div>
 </div>
@@ -51,7 +53,7 @@ Transition tokens provide pre-built transition presets that combine property, du
     <div className="dg-motion-item">
       <p className="dg-motion-section-label">transition: all</p>
       <div className="dg-motion-card dg-transition-all">
-        <p className="dg-motion-card-title">Multiple props</p>
+        <p className="dg-motion-card-title">{'Multiple props'}</p>
         <p className="dg-motion-card-hint">200ms</p>
       </div>
       <p className="dg-hint">Background + border change</p>
@@ -59,7 +61,7 @@ Transition tokens provide pre-built transition presets that combine property, du
     <div className="dg-motion-item">
       <p className="dg-motion-section-label">transition: slow</p>
       <div className="dg-motion-card dg-transition-slow">
-        <p className="dg-motion-card-title">Emphasis</p>
+        <p className="dg-motion-card-title">{'Emphasis'}</p>
         <p className="dg-motion-card-hint">300ms</p>
       </div>
       <p className="dg-hint">Modals, page transitions</p>
@@ -67,7 +69,7 @@ Transition tokens provide pre-built transition presets that combine property, du
     <div className="dg-motion-item">
       <p className="dg-motion-section-label">transition: slower</p>
       <div className="dg-motion-card dg-transition-slower">
-        <p className="dg-motion-card-title">Dramatic</p>
+        <p className="dg-motion-card-title">{'Dramatic'}</p>
         <p className="dg-motion-card-hint">500ms</p>
       </div>
       <p className="dg-hint">Complex animations, reveals</p>
@@ -151,10 +153,8 @@ You can combine multiple transition presets for fine-grained control:
 
 ```css
 .interactive-card {
-  transition: 
-    var(--dg-transition-colors),
-    var(--dg-transition-transform),
-    var(--dg-transition-shadow);
+  transition:
+    var(--dg-transition-colors), var(--dg-transition-transform), var(--dg-transition-shadow);
 }
 ```
 
@@ -163,6 +163,32 @@ Or use `transition.all` for simplicity when multiple properties change:
 ```css
 .interactive-card {
   transition: var(--dg-transition-all);
+}
+```
+
+## Usage Examples
+
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-design-token'
+
+// Transition styles
+const transitions = {
+  all: tokens.transition.all,
+  colors: tokens.transition.colors,
+  opacity: tokens.transition.opacity,
+  transform: tokens.transition.transform,
+  shadow: tokens.transition.shadow
+}
+
+// Component example
+function InteractiveCard({ transition = 'all', children }) {
+  return (
+    <div style={{ transition: `var(--dg-transition-${transition})` }}>
+      {children}
+    </div>
+  )
 }
 ```
 

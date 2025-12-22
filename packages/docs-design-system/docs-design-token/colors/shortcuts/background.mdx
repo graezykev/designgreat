@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Background Shortcuts
 
@@ -14,49 +14,93 @@ Background color shortcuts provide ready-to-use tokens for backgrounds. These hi
 
 Background color shortcuts provide semantic, theme-aware colors for various background use cases.
 
-### Neutral Backgrounds
-
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-boldest)'}}></div> | <CopyableCode>color.background.boldest</CopyableCode> | <CopyableCode>--dg-color-background-boldest</CopyableCode> | `{color.accent.neutral.dull}` | Boldest background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bolder)'}}></div> | <CopyableCode>color.background.bolder</CopyableCode> | <CopyableCode>--dg-color-background-bolder</CopyableCode> | `{color.accent.neutral.duller}` | Bolder background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bold)'}}></div> | <CopyableCode>color.background.bold</CopyableCode> | <CopyableCode>--dg-color-background-bold</CopyableCode> | `{color.accent.neutral.dullest}` | Bold background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-default)'}}></div> | <CopyableCode bold>color.background.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-default</CopyableCode> | `{color.accent.neutral.silent}` | Default background |
-
 ### Neutral Background Token Table
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-boldest)'}}></div> | <CopyableCode>color.background.boldest</CopyableCode> | <CopyableCode>--dg-color-background-boldest</CopyableCode> | `{color.accent.neutral.dull}` | Darkest backgrounds, high contrast |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bolder)'}}></div> | <CopyableCode>color.background.bolder</CopyableCode> | <CopyableCode>--dg-color-background-bolder</CopyableCode> | `{color.accent.neutral.duller}` | Dark backgrounds |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bold)'}}></div> | <CopyableCode>color.background.bold</CopyableCode> | <CopyableCode>--dg-color-background-bold</CopyableCode> | `{color.accent.neutral.dullest}` | Medium-dark backgrounds |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-default)'}}></div> | <CopyableCode bold>color.background.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-background-default</CopyableCode> | `{color.accent.neutral.silent}` | Default page/card background |
+|                                                                                                       | Token                                                      | CSS Variable                                                    | Reference                        | Use Case                           |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------- | ---------------------------------- |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-boldest)'}}></div> | <CopyableCode>color.background.boldest</CopyableCode>      | <CopyableCode>--dg-color-background-boldest</CopyableCode>      | `{color.accent.neutral.dull}`    | Darkest backgrounds, high contrast |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bolder)'}}></div>  | <CopyableCode>color.background.bolder</CopyableCode>       | <CopyableCode>--dg-color-background-bolder</CopyableCode>       | `{color.accent.neutral.duller}`  | Dark backgrounds                   |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bold)'}}></div>    | <CopyableCode>color.background.bold</CopyableCode>         | <CopyableCode>--dg-color-background-bold</CopyableCode>         | `{color.accent.neutral.dullest}` | Medium-dark backgrounds            |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-default)'}}></div> | <CopyableCode bold>color.background.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-background-default</CopyableCode> | `{color.accent.neutral.silent}`  | Default page/card background       |
 
-### Semantic Backgrounds
+<Tabs>
+<TabItem value="demo" label="Demo" default>
 
-Semantic backgrounds use the lightest shades of semantic colors for alert boxes, banners, and notifications.
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <button className="dg-btn dg-btn-neutral">{'Default'}</button>
+  <button className="dg-btn dg-btn-neutral dg-btn-neutral--hover">{'Hover'}</button>
+  <button className="dg-btn dg-btn-neutral dg-btn-neutral--active">{'Active'}</button>
+  <button className="dg-btn dg-btn-neutral dg-btn-neutral--focus">{'Focused'}</button>
+  <button className="dg-btn dg-btn-neutral dg-btn-neutral--disabled" disabled>
+    {'Disabled'}
+  </button>
+</div>
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-default)'}}></div> | <CopyableCode bold>color.background.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-information-default</CopyableCode> | `{color.semantic.info.lowest}` | Information background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-default)'}}></div> | <CopyableCode bold>color.background.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-discover-default</CopyableCode> | `{color.semantic.new.lowest}` | New feature background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-default)'}}></div> | <CopyableCode bold>color.background.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-success-default</CopyableCode> | `{color.semantic.success.lowest}` | Success message background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-default)'}}></div> | <CopyableCode bold>color.background.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-warning-default</CopyableCode> | `{color.semantic.warning.lowest}` | Warning message background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-default)'}}></div> | <CopyableCode bold>color.background.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-error-default</CopyableCode> | `{color.semantic.error.lowest}` | Error message background |
+</TabItem>
+<TabItem value="code" label="Code">
 
-### Bold Semantic Backgrounds
+```jsx
+<button className="dg-btn dg-btn-neutral">{'Default'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--active">{'Active'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--disabled" disabled>{'Disabled'}</button>
+```
 
-For stronger emphasis, use bold semantic backgrounds with inverse text:
+```css
+.dg-btn-neutral {
+  background-color: var(--dg-color-background-bold);
+  color: var(--dg-color-text-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+}
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|----------|
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-bold)'}}></div> | <CopyableCode>color.background.information.bold</CopyableCode> | <CopyableCode>--dg-color-background-information-bold</CopyableCode> | `{color.semantic.info.DEFAULT}` | Bold blue background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-bold)'}}></div> | <CopyableCode>color.background.discover.bold</CopyableCode> | <CopyableCode>--dg-color-background-discover-bold</CopyableCode> | `{color.semantic.new.DEFAULT}` | Bold purple background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-bold)'}}></div> | <CopyableCode>color.background.success.bold</CopyableCode> | <CopyableCode>--dg-color-background-success-bold</CopyableCode> | `{color.semantic.success.DEFAULT}` | Bold green background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-bold)'}}></div> | <CopyableCode>color.background.warning.bold</CopyableCode> | <CopyableCode>--dg-color-background-warning-bold</CopyableCode> | `{color.semantic.warning.DEFAULT}` | Bold orange background |
-| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-bold)'}}></div> | <CopyableCode>color.background.error.bold</CopyableCode> | <CopyableCode>--dg-color-background-error-bold</CopyableCode> | `{color.semantic.error.DEFAULT}` | Bold red background |
+.dg-btn-neutral:hover {
+  background-color: var(--dg-color-background-bolder);
+  border-color: var(--dg-color-alpha-neutral-4);
+}
 
-## Usage Examples
+.dg-btn-neutral--hover,
+.dg-btn-neutral--hover:hover {
+  background-color: var(--dg-color-background-bolder);
+  border-color: var(--dg-color-alpha-neutral-4);
+}
+
+.dg-btn-neutral:focus,
+.dg-btn-neutral:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-neutral--focus,
+.dg-btn-neutral--focus:focus,
+.dg-btn-neutral--focus:focus-visible,
+.dg-btn-neutral--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-neutral:active {
+  background-color: var(--dg-color-background-boldest);
+}
+
+.dg-btn-neutral--active,
+.dg-btn-neutral--active:active,
+.dg-btn-neutral--active:hover {
+  background-color: var(--dg-color-background-boldest);
+}
+
+.dg-btn-neutral:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-neutral--disabled,
+.dg-btn-neutral--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+```
+
+</TabItem>
+</Tabs>
 
 ### Page Layout
 
@@ -79,14 +123,14 @@ For stronger emphasis, use bold semantic backgrounds with inverse text:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-page-layout">
-  <div class="dg-layout-header">Header</div>
-  <div class="dg-flex dg-gap-md">
-    <div class="dg-layout-sidebar">Sidebar</div>
-    <div class="dg-layout-content">
-      <p class="dg-layout-content-title">Card</p>
-      <p class="dg-layout-content-desc">Content area</p>
+```jsx
+<div className="dg-page-layout">
+  <div className="dg-layout-header">{'Header'}</div>
+  <div className="dg-flex dg-gap-md">
+    <div className="dg-layout-sidebar">{'Sidebar'}</div>
+    <div className="dg-layout-content">
+      <p className="dg-layout-content-title">{'Card'}</p>
+      <p className="dg-layout-content-desc">{'Content area'}</p>
     </div>
   </div>
 </div>
@@ -121,38 +165,123 @@ For stronger emphasis, use bold semantic backgrounds with inverse text:
 </TabItem>
 </Tabs>
 
+### Semantic Backgrounds
+
+Semantic backgrounds use the lightest shades of semantic colors for alert boxes, banners, and notifications.
+
+|                                                                                                                   | Token                                                                  | CSS Variable                                                           | Reference                         | Use Case                   |
+| ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------- | -------------------------- |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-default)'}}></div> | <CopyableCode bold>color.background.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-information-default</CopyableCode> | `{color.semantic.info.lowest}`    | Information background     |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-default)'}}></div>    | <CopyableCode bold>color.background.discover.DEFAULT</CopyableCode>    | <CopyableCode>--dg-color-background-discover-default</CopyableCode>    | `{color.semantic.new.lowest}`     | New feature background     |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-default)'}}></div>     | <CopyableCode bold>color.background.success.DEFAULT</CopyableCode>     | <CopyableCode>--dg-color-background-success-default</CopyableCode>     | `{color.semantic.success.lowest}` | Success message background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-default)'}}></div>     | <CopyableCode bold>color.background.warning.DEFAULT</CopyableCode>     | <CopyableCode>--dg-color-background-warning-default</CopyableCode>     | `{color.semantic.warning.lowest}` | Warning message background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-default)'}}></div>       | <CopyableCode bold>color.background.error.DEFAULT</CopyableCode>       | <CopyableCode>--dg-color-background-error-default</CopyableCode>       | `{color.semantic.error.lowest}`   | Error message background   |
+
+### Light Badge Components
+
+<Tabs>
+<TabItem value="demo" label="Demo" default>
+
+<div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center">
+  <span className="dg-badge dg-badge-discover">New</span>
+  <span className="dg-badge dg-badge-info">Info</span>
+  <span className="dg-badge dg-badge-success">Success</span>
+  <span className="dg-badge dg-badge-warning">Warning</span>
+  <span className="dg-badge dg-badge-error">Error</span>
+</div>
+
+</TabItem>
+<TabItem value="code" label="Code">
+
+```jsx
+<span className="dg-badge dg-badge-discover">{'New'}</span>
+<span className="dg-badge dg-badge-info">{'Info'}</span>
+<span className="dg-badge dg-badge-success">{'Success'}</span>
+<span className="dg-badge dg-badge-warning">{'Warning'}</span>
+<span className="dg-badge dg-badge-error">{'Error'}</span>
+```
+
+```css
+.dg-badge {
+  display: inline-block;
+  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-md);
+  border-radius: var(--dg-size-border-radius-badge);
+  font-size: var(--dg-size-font-caption);
+  font-weight: var(--dg-font-weight-medium);
+}
+
+/* Using semantic background shortcut tokens (default variants) */
+.dg-badge-discover {
+  background-color: var(--dg-color-background-discover-default);
+  color: var(--dg-color-text-discover-default);
+}
+
+.dg-badge-info {
+  background-color: var(--dg-color-background-information-default);
+  color: var(--dg-color-text-information-default);
+}
+
+.dg-badge-success {
+  background-color: var(--dg-color-background-success-default);
+  color: var(--dg-color-text-success-default);
+}
+
+.dg-badge-warning {
+  background-color: var(--dg-color-background-warning-default);
+  color: var(--dg-color-text-warning-default);
+}
+
+.dg-badge-error {
+  background-color: var(--dg-color-background-error-default);
+  color: var(--dg-color-text-error-default);
+}
+```
+
+</TabItem>
+</Tabs>
+
 ### Alert Components
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-flex-col dg-gap-sm">
+<div className="dg-flex-col dg-gap-md">
   <div className="dg-alert dg-alert-info">
-    <span>Info background with semantic text</span>
-  </div>
-  <div className="dg-alert dg-alert-new">
-    <span>Discover background with semantic text</span>
+    <strong>{'Info:'}</strong> {'This is an informational message.'}
   </div>
   <div className="dg-alert dg-alert-success">
-    <span>Success background with semantic text</span>
+    <strong>{'Success:'}</strong> {'Your changes have been saved.'}
   </div>
   <div className="dg-alert dg-alert-warning">
-    <span>Warning background with semantic text</span>
+    <strong>{'Warning:'}</strong> {'Please review before continuing.'}
   </div>
   <div className="dg-alert dg-alert-error">
-    <span>Error background with semantic text</span>
+    <strong>{'Error:'}</strong> {'Something went wrong. Please try again.'}
+  </div>
+  <div className="dg-alert dg-alert-new">
+    <strong>{'New:'}</strong> {'Check out our latest features!'}
   </div>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-alert dg-alert-info">Info message</div>
-<div class="dg-alert dg-alert-new">Discover message</div>
-<div class="dg-alert dg-alert-success">Success message</div>
-<div class="dg-alert dg-alert-warning">Warning message</div>
-<div class="dg-alert dg-alert-error">Error message</div>
+```jsx
+<div className="dg-alert dg-alert-info">
+  <strong>{'Info:'}</strong> {' This is an informational message.'}
+</div>
+<div className="dg-alert dg-alert-success">
+  <strong>{'Success:'}</strong> {' Your changes have been saved.'}
+</div>
+<div className="dg-alert dg-alert-warning">
+  <strong>{'Warning:'}</strong> {' Please review before continuing.'}
+</div>
+<div className="dg-alert dg-alert-error">
+  <strong>{'Error:'}</strong> {' Something went wrong. Please try again.'}
+</div>
+<div className="dg-alert dg-alert-new">
+  <strong>{'New:'}</strong> {' Check out our latest features!'}
+</div>
 ```
 
 ```css
@@ -162,23 +291,54 @@ For stronger emphasis, use bold semantic backgrounds with inverse text:
   border-left: var(--dg-border-width-thick) solid;
 }
 
+/* Using background shortcut tokens */
 .dg-alert-info {
-  background-color: var(--dg-color-semantic-info-lowest);
-  border-color: var(--dg-color-semantic-info-default);
-  color: var(--dg-color-semantic-info-bold);
+  background-color: var(--dg-color-background-information-default);
+  border-color: var(--dg-color-background-information-bold);
+  color: var(--dg-color-text-information-default);
+}
+
+.dg-alert-new {
+  background-color: var(--dg-color-background-discover-default);
+  border-color: var(--dg-color-background-discover-bold);
+  color: var(--dg-color-text-discover-default);
 }
 
 .dg-alert-success {
-  background-color: var(--dg-color-semantic-success-lowest);
-  border-color: var(--dg-color-semantic-success-default);
-  color: var(--dg-color-semantic-success-bold);
+  background-color: var(--dg-color-background-success-default);
+  border-color: var(--dg-color-background-success-bold);
+  color: var(--dg-color-text-success-default);
+}
+
+.dg-alert-warning {
+  background-color: var(--dg-color-background-warning-default);
+  border-color: var(--dg-color-background-warning-bold);
+  color: var(--dg-color-text-warning-default);
+}
+
+.dg-alert-error {
+  background-color: var(--dg-color-background-error-default);
+  border-color: var(--dg-color-background-error-bold);
+  color: var(--dg-color-text-error-default);
 }
 ```
 
 </TabItem>
 </Tabs>
 
-### Badge Components
+### Bold Semantic Backgrounds
+
+For stronger emphasis, use bold semantic backgrounds with inverse text:
+
+|                                                                                                                | Token                                                          | CSS Variable                                                        | Reference                          | Use Case               |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------- | ---------------------- |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-bold)'}}></div> | <CopyableCode>color.background.information.bold</CopyableCode> | <CopyableCode>--dg-color-background-information-bold</CopyableCode> | `{color.semantic.info.DEFAULT}`    | Bold blue background   |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-bold)'}}></div>    | <CopyableCode>color.background.discover.bold</CopyableCode>    | <CopyableCode>--dg-color-background-discover-bold</CopyableCode>    | `{color.semantic.new.DEFAULT}`     | Bold purple background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-bold)'}}></div>     | <CopyableCode>color.background.success.bold</CopyableCode>     | <CopyableCode>--dg-color-background-success-bold</CopyableCode>     | `{color.semantic.success.DEFAULT}` | Bold green background  |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-bold)'}}></div>     | <CopyableCode>color.background.warning.bold</CopyableCode>     | <CopyableCode>--dg-color-background-warning-bold</CopyableCode>     | `{color.semantic.warning.DEFAULT}` | Bold orange background |
+| <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-bold)'}}></div>       | <CopyableCode>color.background.error.bold</CopyableCode>       | <CopyableCode>--dg-color-background-error-bold</CopyableCode>       | `{color.semantic.error.DEFAULT}`   | Bold red background    |
+
+### Bold Badge Components
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
@@ -194,12 +354,12 @@ For stronger emphasis, use bold semantic backgrounds with inverse text:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<span class="dg-badge dg-badge-info-bold">Info</span>
-<span class="dg-badge dg-badge-new">New</span>
-<span class="dg-badge dg-badge-success-bold">Success</span>
-<span class="dg-badge dg-badge-warning-bold">Warning</span>
-<span class="dg-badge dg-badge-error-bold">Error</span>
+```jsx
+<span className="dg-badge dg-badge-info-bold">{'Info'}</span>
+<span className="dg-badge dg-badge-new">{'New'}</span>
+<span className="dg-badge dg-badge-success-bold">{'Success'}</span>
+<span className="dg-badge dg-badge-warning-bold">{'Warning'}</span>
+<span className="dg-badge dg-badge-error-bold">{'Error'}</span>
 ```
 
 ```css
@@ -211,23 +371,29 @@ For stronger emphasis, use bold semantic backgrounds with inverse text:
   font-weight: var(--dg-font-weight-semi-bold);
 }
 
+/* Using background shortcut tokens (bold variants) */
 .dg-badge-info-bold {
-  background-color: var(--dg-color-semantic-info-default);
+  background-color: var(--dg-color-background-information-bold);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-badge-new {
+  background-color: var(--dg-color-background-discover-bold);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-badge-success-bold {
-  background-color: var(--dg-color-semantic-success-default);
+  background-color: var(--dg-color-background-success-bold);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-badge-warning-bold {
-  background-color: var(--dg-color-semantic-warning-default);
+  background-color: var(--dg-color-background-warning-bold);
   color: var(--dg-color-text-inverse);
 }
 
 .dg-badge-error-bold {
-  background-color: var(--dg-color-semantic-error-default);
+  background-color: var(--dg-color-background-error-bold);
   color: var(--dg-color-text-inverse);
 }
 ```
@@ -260,7 +426,7 @@ function Alert({ type, children }) {
   }[type]
 
   return (
-    <div style={{ 
+    <div style={{
       backgroundColor: bgColor,
       padding: '16px',
       borderRadius: '4px'
@@ -270,27 +436,6 @@ function Alert({ type, children }) {
   )
 }
 ```
-
-## Complete Token Reference
-
-### All Background Tokens
-
-| Category |  | Token | CSS Variable | Reference |
-|----------|--|-------|--------------|-----------|
-| **Neutral** | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-boldest)'}}></div> | <CopyableCode>color.background.boldest</CopyableCode> | <CopyableCode>--dg-color-background-boldest</CopyableCode> | `{color.accent.neutral.dull}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bolder)'}}></div> | <CopyableCode>color.background.bolder</CopyableCode> | <CopyableCode>--dg-color-background-bolder</CopyableCode> | `{color.accent.neutral.duller}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-bold)'}}></div> | <CopyableCode>color.background.bold</CopyableCode> | <CopyableCode>--dg-color-background-bold</CopyableCode> | `{color.accent.neutral.dullest}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-default)'}}></div> | <CopyableCode bold>color.background.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-default</CopyableCode> | `{color.accent.neutral.silent}` |
-| **Semantic** | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-default)'}}></div> | <CopyableCode bold>color.background.information.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-information-default</CopyableCode> | `{color.semantic.info.lowest}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-default)'}}></div> | <CopyableCode bold>color.background.discover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-discover-default</CopyableCode> | `{color.semantic.new.lowest}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-default)'}}></div> | <CopyableCode bold>color.background.success.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-success-default</CopyableCode> | `{color.semantic.success.lowest}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-default)'}}></div> | <CopyableCode bold>color.background.warning.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-warning-default</CopyableCode> | `{color.semantic.warning.lowest}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-default)'}}></div> | <CopyableCode bold>color.background.error.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-background-error-default</CopyableCode> | `{color.semantic.error.lowest}` |
-| **Semantic Bold** | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-information-bold)'}}></div> | <CopyableCode>color.background.information.bold</CopyableCode> | <CopyableCode>--dg-color-background-information-bold</CopyableCode> | `{color.semantic.info.DEFAULT}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-discover-bold)'}}></div> | <CopyableCode>color.background.discover.bold</CopyableCode> | <CopyableCode>--dg-color-background-discover-bold</CopyableCode> | `{color.semantic.new.DEFAULT}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-success-bold)'}}></div> | <CopyableCode>color.background.success.bold</CopyableCode> | <CopyableCode>--dg-color-background-success-bold</CopyableCode> | `{color.semantic.success.DEFAULT}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-warning-bold)'}}></div> | <CopyableCode>color.background.warning.bold</CopyableCode> | <CopyableCode>--dg-color-background-warning-bold</CopyableCode> | `{color.semantic.warning.DEFAULT}` |
-| | <div className="color-demo-lg" style={{backgroundColor: 'var(--dg-color-background-error-bold)'}}></div> | <CopyableCode>color.background.error.bold</CopyableCode> | <CopyableCode>--dg-color-background-error-bold</CopyableCode> | `{color.semantic.error.DEFAULT}` |
 
 ## Usage Guidelines
 
@@ -315,16 +460,17 @@ function Alert({ type, children }) {
 
 Always ensure sufficient contrast between backgrounds and text:
 
-| Background | Recommended Text Color | Contrast |
-|------------|----------------------|----------|
-| `{color.accent.neutral.DEFAULT}` | `{color.text.DEFAULT}` | ≥ 4.5:1 ✅ |
-| `{color.accent.neutral.bold}` | `{color.text.DEFAULT}` or `{color.text.inverse}` | ≥ 4.5:1 ✅ |
-| `{color.background.success.DEFAULT}` | `{color.text.success}` | ≥ 4.5:1 ✅ |
-| `{color.background.success.bold}` | `{color.text.success.bold}` (inverse) | ≥ 4.5:1 ✅ |
+| Background                           | Recommended Text Color                           | Contrast   |
+| ------------------------------------ | ------------------------------------------------ | ---------- |
+| `{color.accent.neutral.DEFAULT}`     | `{color.text.DEFAULT}`                           | ≥ 4.5:1 ✅ |
+| `{color.accent.neutral.bold}`        | `{color.text.DEFAULT}` or `{color.text.inverse}` | ≥ 4.5:1 ✅ |
+| `{color.background.success.DEFAULT}` | `{color.text.success.DEFAULT}`                   | ≥ 4.5:1 ✅ |
+| `{color.background.success.bold}`    | `{color.text.success.bold}` (inverse)            | ≥ 4.5:1 ✅ |
 
 ### Testing
 
 Always test background-text combinations:
+
 - ✅ In light and dark themes
 - ✅ With color blindness simulators
 - ✅ Using automated contrast checkers
@@ -401,4 +547,3 @@ packages/lib-design-token/src/tokens/color/shortcut/
 - [Alpha Colors](../alpha-colors) - Using alpha for borders and shadows
 - [Semantic Colors](../semantic-colors) - Semantic background sources
 - [Accent Colors](../accent-colors) - Neutral background sources
-

@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
+import CopyableCode from '@site/src/components/CopyableCode'
 
 # Primary & Brand Colors
 
@@ -11,6 +11,7 @@ Primary colors (also known as brand colors) are the most prominent colors in you
 ## Overview
 
 Primary colors are used for:
+
 - Primary call-to-action buttons
 - Links and interactive elements
 - Active/selected states
@@ -29,8 +30,8 @@ Primary colors are used for:
 
 The `color.brand` token is a simple alias to the primary color:
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|-------------|
+|                                                                                       | Token                                    | CSS Variable                                  | Reference                 | Use Case         |
+| ------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------- | ------------------------- | ---------------- |
 | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-brand)'}}></div> | <CopyableCode>color.brand</CopyableCode> | <CopyableCode>--dg-color-brand</CopyableCode> | `{color.primary.DEFAULT}` | Main brand color |
 
 :::info
@@ -43,13 +44,14 @@ Primary colors provide multiple emphasis levels for different visual weights and
 
 ### Emphasis Scale
 
-|  | Token | CSS Variable | Reference | Alpha | Use Case |
-|--|-------|--------------|-----------|-------|----------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-bold)'}}></div> | <CopyableCode>color.primary.bold</CopyableCode> | <CopyableCode>--dg-color-primary-bold</CopyableCode> | `{color.accent.blue.bold}` | - | Hover states, high emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-default)'}}></div> | <CopyableCode bold>color.primary.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-default</CopyableCode> | `{color.accent.blue.DEFAULT}` | - | Default primary color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-subtle)'}}></div> | <CopyableCode>color.primary.subtle</CopyableCode> | <CopyableCode>--dg-color-primary-subtle</CopyableCode> | `{color.accent.blue.subtle}` | - | Active/pressed states |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-subtler)'}}></div> | <CopyableCode>color.primary.subtler</CopyableCode> | <CopyableCode>--dg-color-primary-subtler</CopyableCode> | `{color.accent.blue.subtler}` | - | Backgrounds, lighter states |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-blur)'}}></div> | <CopyableCode>color.primary.blur</CopyableCode> | <CopyableCode>--dg-color-primary-blur</CopyableCode> | `{color.accent.blue.subtlest}` | 70% | Disabled states, blur effects |
+|                                                                                                 | Token                                                   | CSS Variable                                            | Reference                      | Alpha | Use Case                                  |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------ | ----- | ----------------------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-bolder)'}}></div>  | <CopyableCode>color.primary.bolder</CopyableCode>       | <CopyableCode>--dg-color-primary-bolder</CopyableCode>  | `{color.accent.blue.bolder}`   | -     | Active/pressed states (darker than hover) |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-bold)'}}></div>    | <CopyableCode>color.primary.bold</CopyableCode>         | <CopyableCode>--dg-color-primary-bold</CopyableCode>    | `{color.accent.blue.bold}`     | -     | Hover states, high emphasis               |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-default)'}}></div> | <CopyableCode bold>color.primary.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-default</CopyableCode> | `{color.accent.blue.DEFAULT}`  | -     | Default primary color                     |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-subtle)'}}></div>  | <CopyableCode>color.primary.subtle</CopyableCode>       | <CopyableCode>--dg-color-primary-subtle</CopyableCode>  | `{color.accent.blue.subtle}`   | -     | Subtle emphasis states                    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-subtler)'}}></div> | <CopyableCode>color.primary.subtler</CopyableCode>      | <CopyableCode>--dg-color-primary-subtler</CopyableCode> | `{color.accent.blue.subtler}`  | -     | Backgrounds, lighter states               |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-blur)'}}></div>    | <CopyableCode>color.primary.blur</CopyableCode>         | <CopyableCode>--dg-color-primary-blur</CopyableCode>    | `{color.accent.blue.subtlest}` | 70%   | Disabled states, blur effects             |
 
 ## Interactive State Colors
 
@@ -57,26 +59,26 @@ Primary colors include specific tokens for common interactive states, making it 
 
 ### State-Specific Tokens
 
-|  | State | Token | CSS Variable | Reference | Use Case |
-|--|-------|-------|--------------|---------|----------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-visited-default)'}}></div> | **Visited** | <CopyableCode bold>color.primary.visited.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-visited-default</CopyableCode> | `{color.primary.DEFAULT}` | Visited links |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-hover-default)'}}></div> | **Hover** | <CopyableCode bold>color.primary.hover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-hover-default</CopyableCode> | `{color.primary.bold}` | Hover state for buttons/links |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-focus-default)'}}></div> | **Focus** | <CopyableCode bold>color.primary.focus.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-focus-default</CopyableCode> | `{color.primary.DEFAULT}` | Focus state color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-focus-shadow)'}}></div> | **Focus** | <CopyableCode>color.primary.focus.shadow</CopyableCode> | <CopyableCode>--dg-color-primary-focus-shadow</CopyableCode> | `{color.primary.blur}` | Focus ring/shadow color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-active-default)'}}></div> | **Active** | <CopyableCode bold>color.primary.active.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-active-default</CopyableCode> | `{color.primary.subtle}` | Active/pressed state |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-disabled-default)'}}></div> | **Disabled** | <CopyableCode bold>color.primary.disabled.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-disabled-default</CopyableCode> | `{color.primary.blur}` | Disabled state |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-activated-default)'}}></div> | **Activated** | <CopyableCode bold>color.primary.activated.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-activated-default</CopyableCode> | `{color.primary.DEFAULT}` | Toggle activated color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-activated-bg)'}}></div> | **Activated** | <CopyableCode>color.primary.activated.bg</CopyableCode> | <CopyableCode>--dg-color-primary-activated-bg</CopyableCode> | `{color.primary.blur}` | Toggle activated background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-opened-default)'}}></div> | **Opened** | <CopyableCode bold>color.primary.opened.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-opened-default</CopyableCode> | `{color.primary.DEFAULT}` | Dropdown opened color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-opened-bg)'}}></div> | **Opened** | <CopyableCode>color.primary.opened.bg</CopyableCode> | <CopyableCode>--dg-color-primary-opened-bg</CopyableCode> | `{color.primary.blur}` | Dropdown opened background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-checked-default)'}}></div> | **Checked** | <CopyableCode bold>color.primary.checked.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-checked-default</CopyableCode> | `{color.primary.DEFAULT}` | Checkbox/radio checked |
+|                                                                                                           | State         | Token                                                             | CSS Variable                                                      | Reference                 | Use Case                                 |
+| --------------------------------------------------------------------------------------------------------- | ------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------- | ---------------------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-visited-default)'}}></div>   | **Visited**   | <CopyableCode bold>color.primary.visited.DEFAULT</CopyableCode>   | <CopyableCode>--dg-color-primary-visited-default</CopyableCode>   | `{color.primary.DEFAULT}` | Visited links                            |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-hover-default)'}}></div>     | **Hover**     | <CopyableCode bold>color.primary.hover.DEFAULT</CopyableCode>     | <CopyableCode>--dg-color-primary-hover-default</CopyableCode>     | `{color.primary.bold}`    | Hover state for buttons/links            |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-focus-default)'}}></div>     | **Focus**     | <CopyableCode bold>color.primary.focus.DEFAULT</CopyableCode>     | <CopyableCode>--dg-color-primary-focus-default</CopyableCode>     | `{color.primary.DEFAULT}` | Focus state color                        |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-focus-shadow)'}}></div>      | **Focus**     | <CopyableCode>color.primary.focus.shadow</CopyableCode>           | <CopyableCode>--dg-color-primary-focus-shadow</CopyableCode>      | `{color.primary.blur}`    | Focus ring/shadow color                  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-active-default)'}}></div>    | **Active**    | <CopyableCode bold>color.primary.active.DEFAULT</CopyableCode>    | <CopyableCode>--dg-color-primary-active-default</CopyableCode>    | `{color.primary.bolder}`  | Active/pressed state (darker than hover) |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-disabled-default)'}}></div>  | **Disabled**  | <CopyableCode bold>color.primary.disabled.DEFAULT</CopyableCode>  | <CopyableCode>--dg-color-primary-disabled-default</CopyableCode>  | `{color.primary.blur}`    | Disabled state                           |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-activated-default)'}}></div> | **Activated** | <CopyableCode bold>color.primary.activated.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-activated-default</CopyableCode> | `{color.primary.DEFAULT}` | Toggle activated color                   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-activated-bg)'}}></div>      | **Activated** | <CopyableCode>color.primary.activated.bg</CopyableCode>           | <CopyableCode>--dg-color-primary-activated-bg</CopyableCode>      | `{color.primary.blur}`    | Toggle activated background              |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-opened-default)'}}></div>    | **Opened**    | <CopyableCode bold>color.primary.opened.DEFAULT</CopyableCode>    | <CopyableCode>--dg-color-primary-opened-default</CopyableCode>    | `{color.primary.DEFAULT}` | Dropdown opened color                    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-opened-bg)'}}></div>         | **Opened**    | <CopyableCode>color.primary.opened.bg</CopyableCode>              | <CopyableCode>--dg-color-primary-opened-bg</CopyableCode>         | `{color.primary.blur}`    | Dropdown opened background               |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-checked-default)'}}></div>   | **Checked**   | <CopyableCode bold>color.primary.checked.DEFAULT</CopyableCode>   | <CopyableCode>--dg-color-primary-checked-default</CopyableCode>   | `{color.primary.DEFAULT}` | Checkbox/radio checked                   |
 
 ### State Color Relationships
 
 ```mermaid
 graph LR
     A[DEFAULT] --> B[hover: bold]
-    A --> C[active: subtle]
+    A --> C[active: bolder]
     A --> D[focus: DEFAULT]
     A --> E[disabled: blur]
     A --> F[visited: DEFAULT]
@@ -96,68 +98,101 @@ Primary colors power the main button styles with all interactive states.
 → **See live demos**: [Button State Patterns](./shortcuts/interactive-state#button-interaction-colors) (Primary, Outline, Ghost buttons)
 
 ```css
-.button-primary {
+.dg-btn-primary {
   background-color: var(--dg-color-primary-default);
   color: var(--dg-color-text-inverse);
 }
 
-.button-primary:hover {
+.dg-btn-primary:hover {
   background-color: var(--dg-color-primary-hover-default);
 }
 
-.button-primary:focus {
+.dg-btn-primary:focus {
   box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+}
+```
+
+### Outline Buttons
+
+The standard `.dg-btn-outline` component uses primary colors by default.
+
+→ **See live demos**: [Outline Buttons](./shortcuts/interactive-state#outline-buttons)
+
+```css
+.dg-btn-outline {
+  background-color: var(--dg-color-background-button-outline-default);
+  color: var(--dg-color-text-button-outline-default);
+  border: var(--dg-border-width-thin) solid var(--dg-color-border-button-outline-default);
+}
+
+.dg-btn-outline:hover,
+.dg-btn-outline--hover {
+  background-color: var(--dg-color-background-button-outline-interaction-hover);
+  border-color: var(--dg-color-border-button-outline-interaction-hover);
 }
 ```
 
 ### Links
 
-Primary colors define link appearance and interactive states.
+Primary colors power link appearance through the link shortcut tokens, which reference primary colors.
 
 → **See live demos**: [Link State Patterns](./shortcuts/interactive-state#link-interaction-colors)
 
 ```css
-a {
-  color: var(--dg-color-primary-default);
+.dg-link {
+  color: var(--dg-color-text-link-default);
 }
 
-a:hover {
-  color: var(--dg-color-primary-hover-default);
+.dg-link:hover {
+  color: var(--dg-color-text-link-interaction-hover);
 }
 
-a:visited {
-  color: var(--dg-color-primary-visited-default);
+.dg-link--hover,
+.dg-link--hover:hover {
+  color: var(--dg-color-text-link-interaction-hover);
+}
+
+.dg-link:visited {
+  color: var(--dg-color-text-link-interaction-visited);
+}
+
+.dg-link--visited,
+.dg-link--visited:visited {
+  color: var(--dg-color-text-link-interaction-visited);
 }
 ```
 
 ### Form Controls
 
-Primary colors are used for checkboxes, toggles, and input focus states.
+Primary colors are used for checkboxes, toggles, and input focus states through component shortcut tokens.
 
 → **See live demos**: [Toggle/Checkbox Patterns](./shortcuts/interactive-state#checkbox--radio-colors) | [Input Focus States](./shortcuts/interactive-state#input-interaction-colors)
 
 ```css
-.checkbox:checked {
-  background-color: var(--dg-color-primary-checked-default);
-  border-color: var(--dg-color-primary-checked-default);
+.dg-checkbox-checked {
+  background-color: var(--dg-color-background-checkbox-state-checked);
+  border-color: var(--dg-color-border-checkbox-state-checked);
 }
 
-.input:focus {
-  border-color: var(--dg-color-primary-default);
+.dg-input:focus,
+.dg-input.dg-input-focus {
+  border-color: var(--dg-color-border-input-interaction-focus);
   box-shadow: var(--dg-shadow-focus);
 }
 ```
 
 ### Focus Shadows
 
-The `color.primary.focus.shadow` token powers the focus ring effect.
+The `color.primary.focus.shadow` token powers the focus ring effect. The `shadow.focus` compound token combines primary color with proper spacing for accessible focus indicators.
 
-→ **See live demos**: [Focus Indicators](./shortcuts/shadow#focus-indicators)
+→ **See live demos**: [Focus Shadow](./shortcuts/shadow#focus-shadow) | [Focus Indicators](./shortcuts/shadow#focus-indicators)
 
 ```css
-.interactive-element:focus {
-  outline: 2px solid var(--dg-color-primary-focus-default);
-  box-shadow: 0 0 0 4px var(--dg-color-primary-focus-shadow);
+.dg-focus-card:focus,
+.dg-focus-card-focused {
+  box-shadow: var(--dg-shadow-focus);
+  border-color: var(--dg-color-primary-default);
+  outline: none;
 }
 ```
 
@@ -167,7 +202,20 @@ Primary colors are combined in gradient tokens for hero sections and buttons.
 
 → **See live demos**: [Gradient Buttons](../effects/gradients#interactive-gradient-buttons) | [Hero Gradients](../effects/gradients#animated-hero-gradient)
 
-### TypeScript/JavaScript Usage
+```css
+.dg-btn-gradient-primary {
+  background: var(--dg-gradient-brand-primary);
+  color: var(--dg-color-text-inverse);
+}
+
+.dg-btn-gradient-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: var(--dg-shadow-elevation-sm);
+}
+```
+
+### TypeScript/JavaScript
 
 ```typescript
 import { tokens } from '@designgreat/lib-design-token'
@@ -211,6 +259,7 @@ You can create themes that map primary colors to different accent colors:
 ```
 
 This allows you to:
+
 - Create brand-specific themes
 - Support multiple brands in one application
 - A/B test different color schemes
@@ -238,12 +287,14 @@ This allows you to:
 ### Contrast Requirements
 
 Primary colors should meet WCAG AA standards:
+
 - **Text on primary backgrounds**: Minimum 4.5:1 contrast ratio
 - **Interactive elements**: Minimum 3:1 contrast ratio with adjacent colors
 
 ### Focus Indicators
 
 Always provide visible focus indicators using:
+
 - `color.primary.focus.DEFAULT` for focus outline color
 - `color.primary.focus.shadow` for focus ring/shadow
 
@@ -259,33 +310,10 @@ Always provide visible focus indicators using:
 ### Disabled States
 
 Ensure disabled states are visually distinct:
+
 - Use `color.primary.disabled.DEFAULT` for disabled backgrounds
 - Reduce opacity or add additional visual cues
 - Remove interactive cursors (cursor: not-allowed)
-
-## Complete Token Reference
-
-### All Primary Tokens
-
-| Category |  | Token | CSS Variable | Reference | Use Case |
-|----------|--|-------|--------------|-----------|-------------|
-| **Emphasis** | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-bold)'}}></div> | <CopyableCode>color.primary.bold</CopyableCode> | <CopyableCode>--dg-color-primary-bold</CopyableCode> | `{color.accent.blue.bold}` | Bold emphasis |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-default)'}}></div> | <CopyableCode bold>color.primary.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-default</CopyableCode> | `{color.accent.blue.DEFAULT}` | Base primary color |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-subtle)'}}></div> | <CopyableCode>color.primary.subtle</CopyableCode> | <CopyableCode>--dg-color-primary-subtle</CopyableCode> | `{color.accent.blue.subtle}` | Subtle emphasis |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-subtler)'}}></div> | <CopyableCode>color.primary.subtler</CopyableCode> | <CopyableCode>--dg-color-primary-subtler</CopyableCode> | `{color.accent.blue.subtler}` | More subtle emphasis |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-blur)'}}></div> | <CopyableCode>color.primary.blur</CopyableCode> | <CopyableCode>--dg-color-primary-blur</CopyableCode> | `{color.accent.blue.subtlest}` | Blur/disabled (70% opacity) |
-| **Interactive** | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-visited-default)'}}></div> | <CopyableCode bold>color.primary.visited.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-visited-default</CopyableCode> | `{color.primary.DEFAULT}` | Visited links |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-hover-default)'}}></div> | <CopyableCode bold>color.primary.hover.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-hover-default</CopyableCode> | `{color.primary.bold}` | Hover state |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-focus-default)'}}></div> | <CopyableCode bold>color.primary.focus.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-focus-default</CopyableCode> | `{color.primary.DEFAULT}` | Focus color |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-focus-shadow)'}}></div> | <CopyableCode>color.primary.focus.shadow</CopyableCode> | <CopyableCode>--dg-color-primary-focus-shadow</CopyableCode> | `{color.primary.blur}` | Focus shadow |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-active-default)'}}></div> | <CopyableCode bold>color.primary.active.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-active-default</CopyableCode> | `{color.primary.subtle}` | Active/pressed |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-disabled-default)'}}></div> | <CopyableCode bold>color.primary.disabled.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-disabled-default</CopyableCode> | `{color.primary.blur}` | Disabled state |
-| **Component** | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-activated-default)'}}></div> | <CopyableCode bold>color.primary.activated.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-activated-default</CopyableCode> | `{color.primary.DEFAULT}` | Activated toggle |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-activated-bg)'}}></div> | <CopyableCode>color.primary.activated.bg</CopyableCode> | <CopyableCode>--dg-color-primary-activated-bg</CopyableCode> | `{color.primary.blur}` | Activated background |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-opened-default)'}}></div> | <CopyableCode bold>color.primary.opened.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-opened-default</CopyableCode> | `{color.primary.DEFAULT}` | Opened dropdown |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-opened-bg)'}}></div> | <CopyableCode>color.primary.opened.bg</CopyableCode> | <CopyableCode>--dg-color-primary-opened-bg</CopyableCode> | `{color.primary.blur}` | Opened background |
-| | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-primary-checked-default)'}}></div> | <CopyableCode bold>color.primary.checked.DEFAULT</CopyableCode> | <CopyableCode>--dg-color-primary-checked-default</CopyableCode> | `{color.primary.DEFAULT}` | Checked state |
-| **Alias** | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-brand)'}}></div> | <CopyableCode>color.brand</CopyableCode> | <CopyableCode>--dg-color-brand</CopyableCode> | `{color.primary.DEFAULT}` | Brand alias |
 
 ## Technical Details
 
@@ -307,7 +335,7 @@ packages/lib-design-token/src/tokens/color/
       DEFAULT: { value: '{color.accent.blue.DEFAULT}', type: 'color' },
       bold: { value: '{color.accent.blue.bold}', type: 'color' },
       subtle: { value: '{color.accent.blue.subtle}', type: 'color' },
-      blur: { 
+      blur: {
         value: '{color.accent.blue.subtlest}',
         attributes: { alpha: 0.7 },
         type: 'color'
@@ -329,4 +357,3 @@ packages/lib-design-token/src/tokens/color/
 - [Secondary, Tertiary, Quartus Colors](./secondary-tertiary-quartus) - Additional action colors
 - [Semantic Colors](./semantic-colors) - Semantic meanings vs primary actions
 - [Gradients](../effects/gradients) - Gradient buttons and hero sections
-

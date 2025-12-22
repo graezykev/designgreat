@@ -2,9 +2,9 @@
 sidebar_position: 7
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Semantic Colors
 
@@ -13,6 +13,7 @@ Semantic colors convey specific meanings and system states. They are **theme-awa
 ## Overview
 
 Semantic colors provide consistent visual language for:
+
 - Success and error states
 - Warnings and informational messages
 - Discovery and new features
@@ -29,13 +30,13 @@ Semantic colors provide consistent visual language for:
 
 The Design Great system provides 5 semantic color types:
 
-|  | Semantic Type | Accent Color | Use Case |
-|--|--------------|--------------|----------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-blue)'}}></div> | **Info** | Blue (Primary) | Information, neutral feedback |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-purple)'}}></div> | **New** | Purple | Discovery, new features |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-green)'}}></div> | **Success** | Green | Success states, confirmations |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-orange)'}}></div> | **Warning** | Orange | Warnings, caution |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-red)'}}></div> | **Error** | Red | Errors, critical issues |
+|                                                                                             | Semantic Type | Accent Color   | Use Case                      |
+| ------------------------------------------------------------------------------------------- | ------------- | -------------- | ----------------------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-blue)'}}></div>   | **Info**      | Blue (Primary) | Information, neutral feedback |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-purple)'}}></div> | **New**       | Purple         | Discovery, new features       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-green)'}}></div>  | **Success**   | Green          | Success states, confirmations |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-orange)'}}></div> | **Warning**   | Orange         | Warnings, caution             |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-base-red)'}}></div>    | **Error**     | Red            | Errors, critical issues       |
 
 ## Info (Information)
 
@@ -45,17 +46,17 @@ Info colors use the same blue as primary colors and represent neutral informatio
 
 Info semantic colors reference **blue accent colors**:
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|-------------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-default)'}}></div> | <CopyableCode bold>color.semantic.info.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-info-default</CopyableCode> | `{color.accent.blue.DEFAULT}` | Base info color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-bold)'}}></div> | <CopyableCode>color.semantic.info.bold</CopyableCode> | <CopyableCode>--dg-color-semantic-info-bold</CopyableCode> | `{color.primary.bold}` | Bold emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-subtle)'}}></div> | <CopyableCode>color.semantic.info.subtle</CopyableCode> | <CopyableCode>--dg-color-semantic-info-subtle</CopyableCode> | `{color.primary.subtle}` | Subtle emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-subtler)'}}></div> | <CopyableCode>color.semantic.info.subtler</CopyableCode> | <CopyableCode>--dg-color-semantic-info-subtler</CopyableCode> | `{color.primary.subtler}` | More subtle |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-blur)'}}></div> | <CopyableCode>color.semantic.info.blur</CopyableCode> | <CopyableCode>--dg-color-semantic-info-blur</CopyableCode> | `{color.primary.blur}` | Blur/disabled |
-| `color.semantic.info.1` - `color.semantic.info.10` | - | `{color.accent.blue.*}` | Full gradient scale |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-low)'}}></div> | <CopyableCode>color.semantic.info.low</CopyableCode> | <CopyableCode>--dg-color-semantic-info-low</CopyableCode> | `{color.accent.blue.low}` | Low background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-lower)'}}></div> | <CopyableCode>color.semantic.info.lower</CopyableCode> | <CopyableCode>--dg-color-semantic-info-lower</CopyableCode> | `{color.accent.blue.lower}` | Lower background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-lowest)'}}></div> | <CopyableCode>color.semantic.info.lowest</CopyableCode> | <CopyableCode>--dg-color-semantic-info-lowest</CopyableCode> | `{color.accent.blue.lowest}` | Lowest background |
+|                                                                                                       | Token                                                         | CSS Variable                                                       | Reference                     | Use Case          |
+| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------- | ----------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-default)'}}></div> | <CopyableCode bold>color.semantic.info.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-info-default</CopyableCode> | `{color.accent.blue.DEFAULT}` | Base info color   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-bold)'}}></div>    | <CopyableCode>color.semantic.info.bold</CopyableCode>         | <CopyableCode>--dg-color-semantic-info-bold</CopyableCode>         | `{color.primary.bold}`        | Bold emphasis     |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-subtle)'}}></div>  | <CopyableCode>color.semantic.info.subtle</CopyableCode>       | <CopyableCode>--dg-color-semantic-info-subtle</CopyableCode>       | `{color.primary.subtle}`      | Subtle emphasis   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-subtler)'}}></div> | <CopyableCode>color.semantic.info.subtler</CopyableCode>      | <CopyableCode>--dg-color-semantic-info-subtler</CopyableCode>      | `{color.primary.subtler}`     | More subtle       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-blur)'}}></div>    | <CopyableCode>color.semantic.info.blur</CopyableCode>         | <CopyableCode>--dg-color-semantic-info-blur</CopyableCode>         | `{color.primary.blur}`        | Blur/disabled     |
+| `color.semantic.info.1` - `color.semantic.info.10`                                                    | -                                                             | `{color.accent.blue.*}`                                            | Full gradient scale           |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-low)'}}></div>     | <CopyableCode>color.semantic.info.low</CopyableCode>          | <CopyableCode>--dg-color-semantic-info-low</CopyableCode>          | `{color.accent.blue.low}`     | Low background    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-lower)'}}></div>   | <CopyableCode>color.semantic.info.lower</CopyableCode>        | <CopyableCode>--dg-color-semantic-info-lower</CopyableCode>        | `{color.accent.blue.lower}`   | Lower background  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-info-lowest)'}}></div>  | <CopyableCode>color.semantic.info.lowest</CopyableCode>       | <CopyableCode>--dg-color-semantic-info-lowest</CopyableCode>       | `{color.accent.blue.lowest}`  | Lowest background |
 
 :::info
 `color.semantic.info` references the full blue accent color gradient, providing all emphasis and background levels like other semantic colors.
@@ -67,19 +68,19 @@ New colors use purple and represent discovery, new features, or beta content.
 
 ### New Token Reference
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|-------------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-default)'}}></div> | <CopyableCode bold>color.semantic.new.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-new-default</CopyableCode> | `{color.accent.purple.DEFAULT}` | Base new/discovery color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-boldest)'}}></div> | <CopyableCode>color.semantic.new.boldest</CopyableCode> | <CopyableCode>--dg-color-semantic-new-boldest</CopyableCode> | `{color.accent.purple.boldest}` | Boldest emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-bolder)'}}></div> | <CopyableCode>color.semantic.new.bolder</CopyableCode> | <CopyableCode>--dg-color-semantic-new-bolder</CopyableCode> | `{color.accent.purple.bolder}` | Bolder emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-bold)'}}></div> | <CopyableCode>color.semantic.new.bold</CopyableCode> | <CopyableCode>--dg-color-semantic-new-bold</CopyableCode> | `{color.accent.purple.bold}` | Bold emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-subtle)'}}></div> | <CopyableCode>color.semantic.new.subtle</CopyableCode> | <CopyableCode>--dg-color-semantic-new-subtle</CopyableCode> | `{color.accent.purple.subtle}` | Subtle emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-subtler)'}}></div> | <CopyableCode>color.semantic.new.subtler</CopyableCode> | <CopyableCode>--dg-color-semantic-new-subtler</CopyableCode> | `{color.accent.purple.subtler}` | More subtle |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-subtlest)'}}></div> | <CopyableCode>color.semantic.new.subtlest</CopyableCode> | <CopyableCode>--dg-color-semantic-new-subtlest</CopyableCode> | `{color.accent.purple.subtlest}` | Most subtle |
-| `color.semantic.new.1` - `color.semantic.new.10` | - | `{color.accent.purple.*}` | Full gradient scale |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-low)'}}></div> | <CopyableCode>color.semantic.new.low</CopyableCode> | <CopyableCode>--dg-color-semantic-new-low</CopyableCode> | `{color.accent.purple.low}` | Low background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-lower)'}}></div> | <CopyableCode>color.semantic.new.lower</CopyableCode> | <CopyableCode>--dg-color-semantic-new-lower</CopyableCode> | `{color.accent.purple.lower}` | Lower background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-lowest)'}}></div> | <CopyableCode>color.semantic.new.lowest</CopyableCode> | <CopyableCode>--dg-color-semantic-new-lowest</CopyableCode> | `{color.accent.purple.lowest}` | Lowest background |
+|                                                                                                       | Token                                                        | CSS Variable                                                      | Reference                        | Use Case                 |
+| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------- | -------------------------------- | ------------------------ |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-default)'}}></div>  | <CopyableCode bold>color.semantic.new.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-new-default</CopyableCode> | `{color.accent.purple.DEFAULT}`  | Base new/discovery color |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-boldest)'}}></div>  | <CopyableCode>color.semantic.new.boldest</CopyableCode>      | <CopyableCode>--dg-color-semantic-new-boldest</CopyableCode>      | `{color.accent.purple.boldest}`  | Boldest emphasis         |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-bolder)'}}></div>   | <CopyableCode>color.semantic.new.bolder</CopyableCode>       | <CopyableCode>--dg-color-semantic-new-bolder</CopyableCode>       | `{color.accent.purple.bolder}`   | Bolder emphasis          |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-bold)'}}></div>     | <CopyableCode>color.semantic.new.bold</CopyableCode>         | <CopyableCode>--dg-color-semantic-new-bold</CopyableCode>         | `{color.accent.purple.bold}`     | Bold emphasis            |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-subtle)'}}></div>   | <CopyableCode>color.semantic.new.subtle</CopyableCode>       | <CopyableCode>--dg-color-semantic-new-subtle</CopyableCode>       | `{color.accent.purple.subtle}`   | Subtle emphasis          |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-subtler)'}}></div>  | <CopyableCode>color.semantic.new.subtler</CopyableCode>      | <CopyableCode>--dg-color-semantic-new-subtler</CopyableCode>      | `{color.accent.purple.subtler}`  | More subtle              |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-subtlest)'}}></div> | <CopyableCode>color.semantic.new.subtlest</CopyableCode>     | <CopyableCode>--dg-color-semantic-new-subtlest</CopyableCode>     | `{color.accent.purple.subtlest}` | Most subtle              |
+| `color.semantic.new.1` - `color.semantic.new.10`                                                      | -                                                            | `{color.accent.purple.*}`                                         | Full gradient scale              |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-low)'}}></div>      | <CopyableCode>color.semantic.new.low</CopyableCode>          | <CopyableCode>--dg-color-semantic-new-low</CopyableCode>          | `{color.accent.purple.low}`      | Low background           |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-lower)'}}></div>    | <CopyableCode>color.semantic.new.lower</CopyableCode>        | <CopyableCode>--dg-color-semantic-new-lower</CopyableCode>        | `{color.accent.purple.lower}`    | Lower background         |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-new-lowest)'}}></div>   | <CopyableCode>color.semantic.new.lowest</CopyableCode>       | <CopyableCode>--dg-color-semantic-new-lowest</CopyableCode>       | `{color.accent.purple.lowest}`   | Lowest background        |
 
 ## Success
 
@@ -87,19 +88,19 @@ Success colors use green and represent successful operations, confirmations, and
 
 ### Success Token Reference
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|-------------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-default)'}}></div> | <CopyableCode bold>color.semantic.success.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-success-default</CopyableCode> | `{color.accent.green.DEFAULT}` | Base success color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-boldest)'}}></div> | <CopyableCode>color.semantic.success.boldest</CopyableCode> | <CopyableCode>--dg-color-semantic-success-boldest</CopyableCode> | `{color.accent.green.boldest}` | Boldest emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-bolder)'}}></div> | <CopyableCode>color.semantic.success.bolder</CopyableCode> | <CopyableCode>--dg-color-semantic-success-bolder</CopyableCode> | `{color.accent.green.bolder}` | Bolder emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-bold)'}}></div> | <CopyableCode>color.semantic.success.bold</CopyableCode> | <CopyableCode>--dg-color-semantic-success-bold</CopyableCode> | `{color.accent.green.bold}` | Bold emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-subtle)'}}></div> | <CopyableCode>color.semantic.success.subtle</CopyableCode> | <CopyableCode>--dg-color-semantic-success-subtle</CopyableCode> | `{color.accent.green.subtle}` | Subtle emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-subtler)'}}></div> | <CopyableCode>color.semantic.success.subtler</CopyableCode> | <CopyableCode>--dg-color-semantic-success-subtler</CopyableCode> | `{color.accent.green.subtler}` | More subtle |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-subtlest)'}}></div> | <CopyableCode>color.semantic.success.subtlest</CopyableCode> | <CopyableCode>--dg-color-semantic-success-subtlest</CopyableCode> | `{color.accent.green.subtlest}` | Most subtle |
-| `color.semantic.success.1` - `color.semantic.success.10` | - | `{color.accent.green.*}` | Full gradient scale |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-low)'}}></div> | <CopyableCode>color.semantic.success.low</CopyableCode> | <CopyableCode>--dg-color-semantic-success-low</CopyableCode> | `{color.accent.green.low}` | Low background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-lower)'}}></div> | <CopyableCode>color.semantic.success.lower</CopyableCode> | <CopyableCode>--dg-color-semantic-success-lower</CopyableCode> | `{color.accent.green.lower}` | Lower background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-lowest)'}}></div> | <CopyableCode>color.semantic.success.lowest</CopyableCode> | <CopyableCode>--dg-color-semantic-success-lowest</CopyableCode> | `{color.accent.green.lowest}` | Lowest background |
+|                                                                                                           | Token                                                            | CSS Variable                                                          | Reference                       | Use Case           |
+| --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------- | ------------------ |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-default)'}}></div>  | <CopyableCode bold>color.semantic.success.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-success-default</CopyableCode> | `{color.accent.green.DEFAULT}`  | Base success color |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-boldest)'}}></div>  | <CopyableCode>color.semantic.success.boldest</CopyableCode>      | <CopyableCode>--dg-color-semantic-success-boldest</CopyableCode>      | `{color.accent.green.boldest}`  | Boldest emphasis   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-bolder)'}}></div>   | <CopyableCode>color.semantic.success.bolder</CopyableCode>       | <CopyableCode>--dg-color-semantic-success-bolder</CopyableCode>       | `{color.accent.green.bolder}`   | Bolder emphasis    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-bold)'}}></div>     | <CopyableCode>color.semantic.success.bold</CopyableCode>         | <CopyableCode>--dg-color-semantic-success-bold</CopyableCode>         | `{color.accent.green.bold}`     | Bold emphasis      |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-subtle)'}}></div>   | <CopyableCode>color.semantic.success.subtle</CopyableCode>       | <CopyableCode>--dg-color-semantic-success-subtle</CopyableCode>       | `{color.accent.green.subtle}`   | Subtle emphasis    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-subtler)'}}></div>  | <CopyableCode>color.semantic.success.subtler</CopyableCode>      | <CopyableCode>--dg-color-semantic-success-subtler</CopyableCode>      | `{color.accent.green.subtler}`  | More subtle        |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-subtlest)'}}></div> | <CopyableCode>color.semantic.success.subtlest</CopyableCode>     | <CopyableCode>--dg-color-semantic-success-subtlest</CopyableCode>     | `{color.accent.green.subtlest}` | Most subtle        |
+| `color.semantic.success.1` - `color.semantic.success.10`                                                  | -                                                                | `{color.accent.green.*}`                                              | Full gradient scale             |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-low)'}}></div>      | <CopyableCode>color.semantic.success.low</CopyableCode>          | <CopyableCode>--dg-color-semantic-success-low</CopyableCode>          | `{color.accent.green.low}`      | Low background     |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-lower)'}}></div>    | <CopyableCode>color.semantic.success.lower</CopyableCode>        | <CopyableCode>--dg-color-semantic-success-lower</CopyableCode>        | `{color.accent.green.lower}`    | Lower background   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-success-lowest)'}}></div>   | <CopyableCode>color.semantic.success.lowest</CopyableCode>       | <CopyableCode>--dg-color-semantic-success-lowest</CopyableCode>       | `{color.accent.green.lowest}`   | Lowest background  |
 
 ## Warning
 
@@ -107,19 +108,19 @@ Warning colors use orange and represent warnings, caution, and actions requiring
 
 ### Warning Token Reference
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|-------------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-default)'}}></div> | <CopyableCode bold>color.semantic.warning.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-warning-default</CopyableCode> | `{color.accent.orange.DEFAULT}` | Base warning color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-boldest)'}}></div> | <CopyableCode>color.semantic.warning.boldest</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-boldest</CopyableCode> | `{color.accent.orange.boldest}` | Boldest emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-bolder)'}}></div> | <CopyableCode>color.semantic.warning.bolder</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-bolder</CopyableCode> | `{color.accent.orange.bolder}` | Bolder emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-bold)'}}></div> | <CopyableCode>color.semantic.warning.bold</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-bold</CopyableCode> | `{color.accent.orange.bold}` | Bold emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-subtle)'}}></div> | <CopyableCode>color.semantic.warning.subtle</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-subtle</CopyableCode> | `{color.accent.orange.subtle}` | Subtle emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-subtler)'}}></div> | <CopyableCode>color.semantic.warning.subtler</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-subtler</CopyableCode> | `{color.accent.orange.subtler}` | More subtle |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-subtlest)'}}></div> | <CopyableCode>color.semantic.warning.subtlest</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-subtlest</CopyableCode> | `{color.accent.orange.subtlest}` | Most subtle |
-| `color.semantic.warning.1` - `color.semantic.warning.10` | - | `{color.accent.orange.*}` | Full gradient scale |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-low)'}}></div> | <CopyableCode>color.semantic.warning.low</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-low</CopyableCode> | `{color.accent.orange.low}` | Low background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-lower)'}}></div> | <CopyableCode>color.semantic.warning.lower</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-lower</CopyableCode> | `{color.accent.orange.lower}` | Lower background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-lowest)'}}></div> | <CopyableCode>color.semantic.warning.lowest</CopyableCode> | <CopyableCode>--dg-color-semantic-warning-lowest</CopyableCode> | `{color.accent.orange.lowest}` | Lowest background |
+|                                                                                                           | Token                                                            | CSS Variable                                                          | Reference                        | Use Case           |
+| --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------- | ------------------ |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-default)'}}></div>  | <CopyableCode bold>color.semantic.warning.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-warning-default</CopyableCode> | `{color.accent.orange.DEFAULT}`  | Base warning color |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-boldest)'}}></div>  | <CopyableCode>color.semantic.warning.boldest</CopyableCode>      | <CopyableCode>--dg-color-semantic-warning-boldest</CopyableCode>      | `{color.accent.orange.boldest}`  | Boldest emphasis   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-bolder)'}}></div>   | <CopyableCode>color.semantic.warning.bolder</CopyableCode>       | <CopyableCode>--dg-color-semantic-warning-bolder</CopyableCode>       | `{color.accent.orange.bolder}`   | Bolder emphasis    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-bold)'}}></div>     | <CopyableCode>color.semantic.warning.bold</CopyableCode>         | <CopyableCode>--dg-color-semantic-warning-bold</CopyableCode>         | `{color.accent.orange.bold}`     | Bold emphasis      |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-subtle)'}}></div>   | <CopyableCode>color.semantic.warning.subtle</CopyableCode>       | <CopyableCode>--dg-color-semantic-warning-subtle</CopyableCode>       | `{color.accent.orange.subtle}`   | Subtle emphasis    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-subtler)'}}></div>  | <CopyableCode>color.semantic.warning.subtler</CopyableCode>      | <CopyableCode>--dg-color-semantic-warning-subtler</CopyableCode>      | `{color.accent.orange.subtler}`  | More subtle        |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-subtlest)'}}></div> | <CopyableCode>color.semantic.warning.subtlest</CopyableCode>     | <CopyableCode>--dg-color-semantic-warning-subtlest</CopyableCode>     | `{color.accent.orange.subtlest}` | Most subtle        |
+| `color.semantic.warning.1` - `color.semantic.warning.10`                                                  | -                                                                | `{color.accent.orange.*}`                                             | Full gradient scale              |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-low)'}}></div>      | <CopyableCode>color.semantic.warning.low</CopyableCode>          | <CopyableCode>--dg-color-semantic-warning-low</CopyableCode>          | `{color.accent.orange.low}`      | Low background     |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-lower)'}}></div>    | <CopyableCode>color.semantic.warning.lower</CopyableCode>        | <CopyableCode>--dg-color-semantic-warning-lower</CopyableCode>        | `{color.accent.orange.lower}`    | Lower background   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-warning-lowest)'}}></div>   | <CopyableCode>color.semantic.warning.lowest</CopyableCode>       | <CopyableCode>--dg-color-semantic-warning-lowest</CopyableCode>       | `{color.accent.orange.lowest}`   | Lowest background  |
 
 ## Error
 
@@ -127,250 +128,114 @@ Error colors use red and represent errors, critical issues, and destructive acti
 
 ### Error Token Reference
 
-|  | Token | CSS Variable | Reference | Use Case |
-|--|-------|--------------|-----------|-------------|
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-default)'}}></div> | <CopyableCode bold>color.semantic.error.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-error-default</CopyableCode> | `{color.accent.red.DEFAULT}` | Base error color |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-boldest)'}}></div> | <CopyableCode>color.semantic.error.boldest</CopyableCode> | <CopyableCode>--dg-color-semantic-error-boldest</CopyableCode> | `{color.accent.red.boldest}` | Boldest emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-bolder)'}}></div> | <CopyableCode>color.semantic.error.bolder</CopyableCode> | <CopyableCode>--dg-color-semantic-error-bolder</CopyableCode> | `{color.accent.red.bolder}` | Bolder emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-bold)'}}></div> | <CopyableCode>color.semantic.error.bold</CopyableCode> | <CopyableCode>--dg-color-semantic-error-bold</CopyableCode> | `{color.accent.red.bold}` | Bold emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-subtle)'}}></div> | <CopyableCode>color.semantic.error.subtle</CopyableCode> | <CopyableCode>--dg-color-semantic-error-subtle</CopyableCode> | `{color.accent.red.subtle}` | Subtle emphasis |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-subtler)'}}></div> | <CopyableCode>color.semantic.error.subtler</CopyableCode> | <CopyableCode>--dg-color-semantic-error-subtler</CopyableCode> | `{color.accent.red.subtler}` | More subtle |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-subtlest)'}}></div> | <CopyableCode>color.semantic.error.subtlest</CopyableCode> | <CopyableCode>--dg-color-semantic-error-subtlest</CopyableCode> | `{color.accent.red.subtlest}` | Most subtle |
-| `color.semantic.error.1` - `color.semantic.error.10` | - | `{color.accent.red.*}` | Full gradient scale |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-low)'}}></div> | <CopyableCode>color.semantic.error.low</CopyableCode> | <CopyableCode>--dg-color-semantic-error-low</CopyableCode> | `{color.accent.red.low}` | Low background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-lower)'}}></div> | <CopyableCode>color.semantic.error.lower</CopyableCode> | <CopyableCode>--dg-color-semantic-error-lower</CopyableCode> | `{color.accent.red.lower}` | Lower background |
-| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-lowest)'}}></div> | <CopyableCode>color.semantic.error.lowest</CopyableCode> | <CopyableCode>--dg-color-semantic-error-lowest</CopyableCode> | `{color.accent.red.lowest}` | Lowest background |
+|                                                                                                         | Token                                                          | CSS Variable                                                        | Reference                     | Use Case          |
+| ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------- | ----------------- |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-default)'}}></div>  | <CopyableCode bold>color.semantic.error.DEFAULT</CopyableCode> | <CopyableCode bold>--dg-color-semantic-error-default</CopyableCode> | `{color.accent.red.DEFAULT}`  | Base error color  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-boldest)'}}></div>  | <CopyableCode>color.semantic.error.boldest</CopyableCode>      | <CopyableCode>--dg-color-semantic-error-boldest</CopyableCode>      | `{color.accent.red.boldest}`  | Boldest emphasis  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-bolder)'}}></div>   | <CopyableCode>color.semantic.error.bolder</CopyableCode>       | <CopyableCode>--dg-color-semantic-error-bolder</CopyableCode>       | `{color.accent.red.bolder}`   | Bolder emphasis   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-bold)'}}></div>     | <CopyableCode>color.semantic.error.bold</CopyableCode>         | <CopyableCode>--dg-color-semantic-error-bold</CopyableCode>         | `{color.accent.red.bold}`     | Bold emphasis     |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-subtle)'}}></div>   | <CopyableCode>color.semantic.error.subtle</CopyableCode>       | <CopyableCode>--dg-color-semantic-error-subtle</CopyableCode>       | `{color.accent.red.subtle}`   | Subtle emphasis   |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-subtler)'}}></div>  | <CopyableCode>color.semantic.error.subtler</CopyableCode>      | <CopyableCode>--dg-color-semantic-error-subtler</CopyableCode>      | `{color.accent.red.subtler}`  | More subtle       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-subtlest)'}}></div> | <CopyableCode>color.semantic.error.subtlest</CopyableCode>     | <CopyableCode>--dg-color-semantic-error-subtlest</CopyableCode>     | `{color.accent.red.subtlest}` | Most subtle       |
+| `color.semantic.error.1` - `color.semantic.error.10`                                                    | -                                                              | `{color.accent.red.*}`                                              | Full gradient scale           |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-low)'}}></div>      | <CopyableCode>color.semantic.error.low</CopyableCode>          | <CopyableCode>--dg-color-semantic-error-low</CopyableCode>          | `{color.accent.red.low}`      | Low background    |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-lower)'}}></div>    | <CopyableCode>color.semantic.error.lower</CopyableCode>        | <CopyableCode>--dg-color-semantic-error-lower</CopyableCode>        | `{color.accent.red.lower}`    | Lower background  |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-semantic-error-lowest)'}}></div>   | <CopyableCode>color.semantic.error.lowest</CopyableCode>       | <CopyableCode>--dg-color-semantic-error-lowest</CopyableCode>       | `{color.accent.red.lowest}`   | Lowest background |
 
 ## Usage Examples
 
 ### Alert Components
 
-<Tabs>
-<TabItem value="demo" label="Demo" default>
+Alert components use semantic colors through background and text shortcut tokens for consistent styling.
 
-<div className="dg-flex-col dg-gap-md">
-  <div className="dg-alert dg-alert-info">
-    <strong>Info:</strong> This is an informational message.
-  </div>
-  <div className="dg-alert dg-alert-success">
-    <strong>Success:</strong> Your changes have been saved.
-  </div>
-  <div className="dg-alert dg-alert-warning">
-    <strong>Warning:</strong> Please review before continuing.
-  </div>
-  <div className="dg-alert dg-alert-error">
-    <strong>Error:</strong> Something went wrong. Please try again.
-  </div>
-  <div className="dg-alert dg-alert-new">
-    <strong>New:</strong> Check out our latest features!
-  </div>
-</div>
-
-</TabItem>
-<TabItem value="code" label="Code">
-
-```html
-<div class="dg-alert dg-alert-info">Info message</div>
-<div class="dg-alert dg-alert-success">Success message</div>
-<div class="dg-alert dg-alert-warning">Warning message</div>
-<div class="dg-alert dg-alert-error">Error message</div>
-<div class="dg-alert dg-alert-new">New feature message</div>
-```
-
-```css
-.dg-alert {
-  padding: var(--dg-spacing-inset-md);
-  border-radius: var(--dg-size-border-radius-md);
-  border-left: var(--dg-border-width-thick) solid;
-}
-
-.dg-alert-info {
-  background-color: var(--dg-color-semantic-info-lowest);
-  border-color: var(--dg-color-semantic-info-default);
-  color: var(--dg-color-semantic-info-bold);
-}
-
-.dg-alert-success {
-  background-color: var(--dg-color-semantic-success-lowest);
-  border-color: var(--dg-color-semantic-success-default);
-  color: var(--dg-color-semantic-success-bold);
-}
-
-.dg-alert-warning {
-  background-color: var(--dg-color-semantic-warning-lowest);
-  border-color: var(--dg-color-semantic-warning-default);
-  color: var(--dg-color-semantic-warning-bold);
-}
-
-.dg-alert-error {
-  background-color: var(--dg-color-semantic-error-lowest);
-  border-color: var(--dg-color-semantic-error-default);
-  color: var(--dg-color-semantic-error-bold);
-}
-
-.dg-alert-new {
-  background-color: var(--dg-color-semantic-new-lowest);
-  border-color: var(--dg-color-semantic-new-default);
-  color: var(--dg-color-semantic-new-bold);
-}
-```
-
-</TabItem>
-</Tabs>
+→ **See live demos**: [Alert Components](./shortcuts/background#alert-components)
 
 ### Form Validation
 
-<Tabs>
-<TabItem value="demo" label="Demo" default>
+Form validation states use semantic colors through shortcut tokens for consistent styling.
 
-<div className="dg-flex-col dg-gap-lg dg-max-w-sm">
-  <div className="dg-form-group">
-    <label className="dg-form-label">Default Input</label>
-    <input type="text" placeholder="Enter text..." className="dg-input" />
-  </div>
-  <div className="dg-form-group">
-    <label className="dg-form-label">Success State</label>
-    <input type="text" value="Valid input" className="dg-input dg-input-success" readOnly />
-    <p className="dg-helper-text dg-helper-text-success">✓ Looks good!</p>
-  </div>
-  <div className="dg-form-group">
-    <label className="dg-form-label">Error State</label>
-    <input type="text" value="Invalid input" className="dg-input dg-input-error" readOnly />
-    <p className="dg-helper-text dg-helper-text-error">✕ This field is required</p>
-  </div>
-</div>
-
-</TabItem>
-<TabItem value="code" label="Code">
-
-```html
-<div class="dg-form-group">
-  <label class="dg-form-label">Success State</label>
-  <input type="text" class="dg-input dg-input-success" value="Valid input" />
-  <p class="dg-helper-text dg-helper-text-success">✓ Looks good!</p>
-</div>
-
-<div class="dg-form-group">
-  <label class="dg-form-label">Error State</label>
-  <input type="text" class="dg-input dg-input-error" value="Invalid input" />
-  <p class="dg-helper-text dg-helper-text-error">✕ This field is required</p>
-</div>
-```
-
-```css
-.dg-input {
-  width: 100%;
-  padding: var(--dg-spacing-inset-sm);
-  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
-  border-radius: var(--dg-size-border-radius-md);
-  font-size: var(--dg-size-font-body);
-}
-
-.dg-input-success {
-  border: var(--dg-border-width-medium) solid var(--dg-color-semantic-success-default);
-  box-shadow: 0 0 0 var(--dg-spacing-px3) var(--dg-color-semantic-success-lowest);
-}
-
-.dg-input-error {
-  border: var(--dg-border-width-medium) solid var(--dg-color-semantic-error-default);
-  box-shadow: 0 0 0 var(--dg-spacing-px3) var(--dg-color-semantic-error-lowest);
-}
-
-.dg-helper-text-success {
-  color: var(--dg-color-semantic-success-bold);
-}
-
-.dg-helper-text-error {
-  color: var(--dg-color-semantic-error-bold);
-}
-```
-
-</TabItem>
-</Tabs>
+→ **See live demos**: [Form Elements](./shortcuts/text#form-elements)
 
 ### Badges and Tags
 
-<Tabs>
-<TabItem value="demo" label="Demo" default>
+Badges use semantic colors through background and text shortcut tokens for consistent styling.
 
-<div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center">
-  <span className="dg-badge dg-badge-new">New</span>
-  <span className="dg-badge dg-badge-info">Info</span>
-  <span className="dg-badge dg-badge-success">Success</span>
-  <span className="dg-badge dg-badge-warning">Warning</span>
-  <span className="dg-badge dg-badge-error">Error</span>
-</div>
-
-<div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center dg-mt-md">
-  <span className="dg-badge dg-badge-success-bold">Active</span>
-  <span className="dg-badge dg-badge-warning-bold">Pending</span>
-  <span className="dg-badge dg-badge-error-bold">Inactive</span>
-</div>
-
-</TabItem>
-<TabItem value="code" label="Code">
-
-```html
-<!-- Subtle badges -->
-<span class="dg-badge dg-badge-new">New</span>
-<span class="dg-badge dg-badge-info">Info</span>
-<span class="dg-badge dg-badge-success">Success</span>
-<span class="dg-badge dg-badge-warning">Warning</span>
-<span class="dg-badge dg-badge-error">Error</span>
-
-<!-- Bold badges -->
-<span class="dg-badge dg-badge-success-bold">Active</span>
-<span class="dg-badge dg-badge-warning-bold">Pending</span>
-<span class="dg-badge dg-badge-error-bold">Inactive</span>
-```
-
-```css
-.dg-badge {
-  display: inline-block;
-  padding: var(--dg-spacing-space-xs) var(--dg-spacing-space-md);
-  border-radius: var(--dg-size-border-radius-badge);
-  font-size: var(--dg-size-font-caption);
-  font-weight: var(--dg-font-weight-medium);
-}
-
-.dg-badge-new {
-  background-color: var(--dg-color-semantic-new-default);
-  color: var(--dg-color-text-inverse);
-  font-weight: var(--dg-font-weight-semi-bold);
-}
-
-.dg-badge-success {
-  background-color: var(--dg-color-semantic-success-lowest);
-  color: var(--dg-color-semantic-success-bold);
-}
-
-.dg-badge-success-bold {
-  background-color: var(--dg-color-semantic-success-default);
-  color: var(--dg-color-text-inverse);
-}
-```
-
-</TabItem>
-</Tabs>
+→ **See live demos**: [Light Badges](./shortcuts/background#light-badge-components) | [Bold Badges](./shortcuts/background#bold-badge-components)
 
 ### Buttons with Semantic Meaning
 
 <Tabs>
 <TabItem value="demo" label="Demo" default>
 
-<div className="dg-flex dg-gap-md dg-flex-wrap">
-  <button className="dg-btn dg-btn-success">Confirm</button>
-  <button className="dg-btn dg-btn-danger">Delete</button>
-  <button className="dg-btn dg-btn-danger-outline">Cancel</button>
+<div className="dg-flex dg-gap-md dg-flex-wrap dg-items-center">
+  <div className="dg-flex dg-flex-col dg-gap-sm">
+    <div className="dg-text-sm dg-color-text-subtle">Success Button</div>
+    <div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center">
+      <button className="dg-btn dg-btn-success">{'Default'}</button>
+      <button className="dg-btn dg-btn-success dg-btn-success--hover">{'Hover'}</button>
+      <button className="dg-btn dg-btn-success dg-btn-success--active">{'Active'}</button>
+      <button className="dg-btn dg-btn-success dg-btn-success--focus">{'Focused'}</button>
+      <button className="dg-btn dg-btn-success dg-btn-success--disabled" disabled>
+        {'Disabled'}
+      </button>
+    </div>
+  </div>
+  <div className="dg-flex dg-flex-col dg-gap-sm">
+    <div className="dg-text-sm dg-color-text-subtle">Danger Button</div>
+    <div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center">
+      <button className="dg-btn dg-btn-danger">{'Default'}</button>
+      <button className="dg-btn dg-btn-danger dg-btn-danger--hover">{'Hover'}</button>
+      <button className="dg-btn dg-btn-danger dg-btn-danger--active">{'Active'}</button>
+      <button className="dg-btn dg-btn-danger dg-btn-danger--focus">{'Focused'}</button>
+      <button className="dg-btn dg-btn-danger dg-btn-danger--disabled" disabled>
+        {'Disabled'}
+      </button>
+    </div>
+  </div>
+  <div className="dg-flex dg-flex-col dg-gap-sm">
+    <div className="dg-text-sm dg-color-text-subtle">Danger Outline Button</div>
+    <div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center">
+      <button className="dg-btn dg-btn-danger-outline">{'Default'}</button>
+      <button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--hover">
+        {'Hover'}
+      </button>
+      <button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--active">
+        {'Active'}
+      </button>
+      <button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--focus">
+        {'Focused'}
+      </button>
+      <button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--disabled" disabled>
+        {'Disabled'}
+      </button>
+    </div>
+  </div>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-success">Confirm</button>
-<button class="dg-btn dg-btn-danger">Delete</button>
-<button class="dg-btn dg-btn-danger-outline">Cancel</button>
+```jsx
+// Success Button
+<button className="dg-btn dg-btn-success">{'Default'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--active">{'Active'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--disabled" disabled>{'Disabled'}</button>
+
+// Danger Button
+<button className="dg-btn dg-btn-danger">{'Default'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--active">{'Active'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--disabled" disabled>{'Disabled'}</button>
+
+// Danger Outline Button
+<button className="dg-btn dg-btn-danger-outline">{'Default'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--active">{'Active'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -382,6 +247,7 @@ Error colors use red and represent errors, critical issues, and destructive acti
   transition: var(--dg-transition-all);
 }
 
+/* Success Button */
 .dg-btn-success {
   background-color: var(--dg-color-semantic-success-default);
   color: var(--dg-color-text-inverse);
@@ -392,6 +258,46 @@ Error colors use red and represent errors, critical issues, and destructive acti
   background-color: var(--dg-color-semantic-success-bold);
 }
 
+.dg-btn-success--hover,
+.dg-btn-success--hover:hover {
+  background-color: var(--dg-color-semantic-success-bold);
+}
+
+.dg-btn-success:focus,
+.dg-btn-success:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-success--focus,
+.dg-btn-success--focus:focus,
+.dg-btn-success--focus:focus-visible,
+.dg-btn-success--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-success:active {
+  background-color: var(--dg-color-semantic-success-bolder);
+}
+
+.dg-btn-success--active,
+.dg-btn-success--active:active,
+.dg-btn-success--active:hover,
+.dg-btn-success--active:focus {
+  background-color: var(--dg-color-semantic-success-bolder);
+}
+
+.dg-btn-success:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-success--disabled,
+.dg-btn-success--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Danger Button */
 .dg-btn-danger {
   background-color: var(--dg-color-semantic-error-default);
   color: var(--dg-color-text-inverse);
@@ -402,6 +308,46 @@ Error colors use red and represent errors, critical issues, and destructive acti
   background-color: var(--dg-color-semantic-error-bold);
 }
 
+.dg-btn-danger--hover,
+.dg-btn-danger--hover:hover {
+  background-color: var(--dg-color-semantic-error-bold);
+}
+
+.dg-btn-danger:focus,
+.dg-btn-danger:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger--focus,
+.dg-btn-danger--focus:focus,
+.dg-btn-danger--focus:focus-visible,
+.dg-btn-danger--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger:active {
+  background-color: var(--dg-color-semantic-error-bolder);
+}
+
+.dg-btn-danger--active,
+.dg-btn-danger--active:active,
+.dg-btn-danger--active:hover,
+.dg-btn-danger--active:focus {
+  background-color: var(--dg-color-semantic-error-bolder);
+}
+
+.dg-btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-danger--disabled,
+.dg-btn-danger--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Danger Outline Button */
 .dg-btn-danger-outline {
   background-color: transparent;
   color: var(--dg-color-semantic-error-default);
@@ -410,6 +356,45 @@ Error colors use red and represent errors, critical issues, and destructive acti
 
 .dg-btn-danger-outline:hover {
   background-color: var(--dg-color-semantic-error-lowest);
+}
+
+.dg-btn-danger-outline--hover,
+.dg-btn-danger-outline--hover:hover {
+  background-color: var(--dg-color-semantic-error-lowest);
+}
+
+.dg-btn-danger-outline:focus,
+.dg-btn-danger-outline:focus-visible {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger-outline--focus,
+.dg-btn-danger-outline--focus:focus,
+.dg-btn-danger-outline--focus:focus-visible,
+.dg-btn-danger-outline--focus:hover {
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-btn-danger-outline:active {
+  background-color: var(--dg-color-semantic-error-low);
+}
+
+.dg-btn-danger-outline--active,
+.dg-btn-danger-outline--active:active,
+.dg-btn-danger-outline--active:hover,
+.dg-btn-danger-outline--active:focus {
+  background-color: var(--dg-color-semantic-error-low);
+}
+
+.dg-btn-danger-outline:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dg-btn-danger-outline--disabled,
+.dg-btn-danger-outline--disabled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 ```
 
@@ -448,13 +433,13 @@ const alertStyles = {
 
 ## Semantic Color Summary
 
-| Semantic | Accent Reference | Primary Use Cases |
-|----------|-----------------|-------------------|
-| **info** | Blue (Primary) | Informational messages, help text, neutral feedback |
-| **new** | Purple | New features, beta labels, discovery callouts |
-| **success** | Green | Success messages, confirmations, completed states |
-| **warning** | Orange | Warnings, cautions, non-critical issues |
-| **error** | Red | Errors, validation failures, destructive actions |
+| Semantic    | Accent Reference | Primary Use Cases                                   |
+| ----------- | ---------------- | --------------------------------------------------- |
+| **info**    | Blue (Primary)   | Informational messages, help text, neutral feedback |
+| **new**     | Purple           | New features, beta labels, discovery callouts       |
+| **success** | Green            | Success messages, confirmations, completed states   |
+| **warning** | Orange           | Warnings, cautions, non-critical issues             |
+| **error**   | Red              | Errors, validation failures, destructive actions    |
 
 ## Usage Guidelines
 
@@ -494,7 +479,7 @@ While these color associations are common in Western design systems, be aware of
 - Red may have different meanings in Asian cultures
 - Green can signify different things in Middle Eastern contexts
 - Always combine colors with icons, text, or other visual cues
-:::
+  :::
 
 ## Accessibility
 
@@ -502,15 +487,16 @@ While these color associations are common in Western design systems, be aware of
 
 Never rely on color alone to convey semantic meaning:
 
-```html
-<!-- ❌ Bad: Only color indicates error -->
-<input class="border-error" />
+```jsx
+// ❌ Bad: Only color indicates error
+<input className="border-error" />
 
-<!-- ✅ Good: Color + icon + text -->
-<div class="input-group">
-  <input class="border-error" aria-invalid="true" aria-describedby="error-msg" />
-  <span id="error-msg" class="error-message">
-    <icon name="alert-circle" /> Email is required
+// ✅ Good: Color + icon + text
+<div className="input-group">
+  <input className="border-error" aria-invalid="true" aria-describedby="error-msg" />
+  <span id="error-msg" className="error-message">
+    {' '}
+    <icon name="alert-circle" /> {' Email is required '}
   </span>
 </div>
 ```
@@ -526,6 +512,7 @@ Ensure semantic colors meet WCAG contrast standards:
 ### Testing
 
 Test semantic colors in:
+
 - ✅ Light theme
 - ✅ Dark theme
 - ✅ Color blindness simulators (protanopia, deuteranopia, tritanopia)
@@ -536,17 +523,21 @@ Test semantic colors in:
 Each semantic color type includes:
 
 ### Standard Emphasis Levels
+
 - `DEFAULT` - Base color
 - `bold`, `bolder`, `boldest` - Increasing emphasis
 - `subtle`, `subtler`, `subtlest` - Decreasing emphasis
 
 ### Background Levels
+
 - `low`, `lower`, `lowest` - Background shades
 
 ### Gradient Levels
+
 - `1` through `10` - Full gradient scale
 
 ### Additional (Info only)
+
 - State-specific tokens inherited from primary: `hover`, `active`, `focus`, etc.
 
 ## Technical Details
@@ -564,20 +555,20 @@ packages/lib-design-token/src/tokens/color/
 {
   color: {
     semantic: {
-      new: { 
-        ...tokens.color.accent.purple 
+      new: {
+        ...tokens.color.accent.purple
       },
-      info: { 
-        ...tokens.color.primary 
+      info: {
+        ...tokens.color.primary
       },
-      success: { 
-        ...tokens.color.accent.green 
+      success: {
+        ...tokens.color.accent.green
       },
-      warning: { 
-        ...tokens.color.accent.orange 
+      warning: {
+        ...tokens.color.accent.orange
       },
-      error: { 
-        ...tokens.color.accent.red 
+      error: {
+        ...tokens.color.accent.red
       }
     }
   }
@@ -591,4 +582,3 @@ packages/lib-design-token/src/tokens/color/
 - [Text Shortcuts](./shortcuts/text) - How text uses semantic colors
 - [Background Shortcuts](./shortcuts/background) - How backgrounds use semantic colors
 - [Theming](/design-token/guides/theming) - Theming semantic colors
-

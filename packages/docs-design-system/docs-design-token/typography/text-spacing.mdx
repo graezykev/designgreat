@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-import CopyableCode from '@site/src/components/CopyableCode';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CopyableCode from '@site/src/components/CopyableCode'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 # Text Spacing
 
@@ -14,27 +14,27 @@ Tokens for line height, letter spacing, and line clamp.
 
 Unitless line-height values that scale with font size.
 
-| Token | CSS Variable | Value | Demo |
-|-------|--------------|-------|------|
-| <CopyableCode>line-height.none</CopyableCode> | <CopyableCode>--dg-line-height-none</CopyableCode> | 1 | <div className="dg-line-height-demo" style={{lineHeight: 'var(--dg-line-height-none)'}}>Line height 1.0 — Text sits tightly with no extra spacing between lines.</div> |
-| <CopyableCode>line-height.tight</CopyableCode> | <CopyableCode>--dg-line-height-tight</CopyableCode> | 1.25 | <div className="dg-line-height-demo" style={{lineHeight: 'var(--dg-line-height-tight)'}}>Line height 1.25 — Tight spacing, good for headings and display text.</div> |
-| <CopyableCode>line-height.snug</CopyableCode> | <CopyableCode>--dg-line-height-snug</CopyableCode> | 1.375 | <div className="dg-line-height-demo" style={{lineHeight: 'var(--dg-line-height-snug)'}}>Line height 1.375 — Slightly tighter than normal, for compact UI.</div> |
-| <CopyableCode bold>line-height.normal</CopyableCode> | <CopyableCode bold>--dg-line-height-normal</CopyableCode> | 1.5 | <div className="dg-line-height-demo" style={{lineHeight: 'var(--dg-line-height-normal)'}}>Line height 1.5 — Default for body text. Comfortable reading experience.</div> |
-| <CopyableCode>line-height.relaxed</CopyableCode> | <CopyableCode>--dg-line-height-relaxed</CopyableCode> | 1.625 | <div className="dg-line-height-demo" style={{lineHeight: 'var(--dg-line-height-relaxed)'}}>Line height 1.625 — Relaxed spacing for easier reading of long content.</div> |
-| <CopyableCode>line-height.loose</CopyableCode> | <CopyableCode>--dg-line-height-loose</CopyableCode> | 2 | <div className="dg-line-height-demo" style={{lineHeight: 'var(--dg-line-height-loose)'}}>Line height 2.0 — Double-spaced for documents or special layouts.</div> |
+| Token                                                | CSS Variable                                              | Value | Demo                                                                                                                                                                         |
+| ---------------------------------------------------- | --------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <CopyableCode>line-height.none</CopyableCode>        | <CopyableCode>--dg-line-height-none</CopyableCode>        | 1     | <div className="dg-line-height-showcase" style={{lineHeight: 'var(--dg-line-height-none)'}}>Line height 1.0 — Text sits tightly with no extra spacing between lines.</div>   |
+| <CopyableCode>line-height.tight</CopyableCode>       | <CopyableCode>--dg-line-height-tight</CopyableCode>       | 1.25  | <div className="dg-line-height-showcase" style={{lineHeight: 'var(--dg-line-height-tight)'}}>Line height 1.25 — Tight spacing, good for headings and display text.</div>     |
+| <CopyableCode>line-height.snug</CopyableCode>        | <CopyableCode>--dg-line-height-snug</CopyableCode>        | 1.375 | <div className="dg-line-height-showcase" style={{lineHeight: 'var(--dg-line-height-snug)'}}>Line height 1.375 — Slightly tighter than normal, for compact UI.</div>          |
+| <CopyableCode bold>line-height.normal</CopyableCode> | <CopyableCode bold>--dg-line-height-normal</CopyableCode> | 1.5   | <div className="dg-line-height-showcase" style={{lineHeight: 'var(--dg-line-height-normal)'}}>Line height 1.5 — Default for body text. Comfortable reading experience.</div> |
+| <CopyableCode>line-height.relaxed</CopyableCode>     | <CopyableCode>--dg-line-height-relaxed</CopyableCode>     | 1.625 | <div className="dg-line-height-showcase" style={{lineHeight: 'var(--dg-line-height-relaxed)'}}>Line height 1.625 — Relaxed spacing for easier reading of long content.</div> |
+| <CopyableCode>line-height.loose</CopyableCode>       | <CopyableCode>--dg-line-height-loose</CopyableCode>       | 2     | <div className="dg-line-height-showcase" style={{lineHeight: 'var(--dg-line-height-loose)'}}>Line height 2.0 — Double-spaced for documents or special layouts.</div>         |
 
 ### Semantic Line Heights
 
 Pre-mapped to text elements:
 
-| Token | Maps To | Use Case |
-|-------|---------|----------|
-| `line-height.title` | `none` (1) | Display titles |
-| `line-height.h1` | `tight` (1.25) | H1 headings |
-| `line-height.h2` | `tight` (1.25) | H2 headings |
-| `line-height.h3` | `snug` (1.375) | H3 headings |
-| `line-height.body` | `normal` (1.5) | Body text |
-| `line-height.caption` | `normal` (1.5) | Captions |
+| Token                 | Maps To        | Use Case       |
+| --------------------- | -------------- | -------------- |
+| `line-height.title`   | `none` (1)     | Display titles |
+| `line-height.h1`      | `tight` (1.25) | H1 headings    |
+| `line-height.h2`      | `tight` (1.25) | H2 headings    |
+| `line-height.h3`      | `snug` (1.375) | H3 headings    |
+| `line-height.body`    | `normal` (1.5) | Body text      |
+| `line-height.caption` | `normal` (1.5) | Captions       |
 
 ---
 
@@ -42,23 +42,23 @@ Pre-mapped to text elements:
 
 Adjust character spacing for headings and labels.
 
-| Token | CSS Variable | Value | Demo |
-|-------|--------------|-------|------|
-| <CopyableCode>letter-spacing.tighter</CopyableCode> | <CopyableCode>--dg-letter-spacing-tighter</CopyableCode> | -0.05em | <span style={{letterSpacing: 'var(--dg-letter-spacing-tighter)', fontSize: 'var(--dg-size-font-xl)', fontWeight: 700}}>Tighter spacing</span> |
-| <CopyableCode>letter-spacing.tight</CopyableCode> | <CopyableCode>--dg-letter-spacing-tight</CopyableCode> | -0.025em | <span style={{letterSpacing: 'var(--dg-letter-spacing-tight)', fontSize: 'var(--dg-size-font-xl)', fontWeight: 700}}>Tight spacing</span> |
-| <CopyableCode bold>letter-spacing.normal</CopyableCode> | <CopyableCode bold>--dg-letter-spacing-normal</CopyableCode> | 0 | <span style={{letterSpacing: 'var(--dg-letter-spacing-normal)', fontSize: 'var(--dg-size-font-xl)'}}>Normal spacing</span> |
-| <CopyableCode>letter-spacing.wide</CopyableCode> | <CopyableCode>--dg-letter-spacing-wide</CopyableCode> | 0.025em | <span style={{letterSpacing: 'var(--dg-letter-spacing-wide)', fontSize: 'var(--dg-size-font-sm)'}}>Wide spacing</span> |
-| <CopyableCode>letter-spacing.wider</CopyableCode> | <CopyableCode>--dg-letter-spacing-wider</CopyableCode> | 0.05em | <span style={{letterSpacing: 'var(--dg-letter-spacing-wider)', fontSize: 'var(--dg-size-font-xs)', textTransform: 'uppercase'}}>WIDER SPACING</span> |
-| <CopyableCode>letter-spacing.widest</CopyableCode> | <CopyableCode>--dg-letter-spacing-widest</CopyableCode> | 0.1em | <span style={{letterSpacing: 'var(--dg-letter-spacing-widest)', fontSize: 'var(--dg-size-font-xs)', textTransform: 'uppercase'}}>WIDEST SPACING</span> |
+| Token                                                   | CSS Variable                                                 | Value    | Demo                                                                                                                                                   |
+| ------------------------------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <CopyableCode>letter-spacing.tighter</CopyableCode>     | <CopyableCode>--dg-letter-spacing-tighter</CopyableCode>     | -0.05em  | <span style={{letterSpacing: 'var(--dg-letter-spacing-tighter)', fontSize: 'var(--dg-size-font-xl)', fontWeight: 700}}>Tighter spacing</span>          |
+| <CopyableCode>letter-spacing.tight</CopyableCode>       | <CopyableCode>--dg-letter-spacing-tight</CopyableCode>       | -0.025em | <span style={{letterSpacing: 'var(--dg-letter-spacing-tight)', fontSize: 'var(--dg-size-font-xl)', fontWeight: 700}}>Tight spacing</span>              |
+| <CopyableCode bold>letter-spacing.normal</CopyableCode> | <CopyableCode bold>--dg-letter-spacing-normal</CopyableCode> | 0        | <span style={{letterSpacing: 'var(--dg-letter-spacing-normal)', fontSize: 'var(--dg-size-font-xl)'}}>Normal spacing</span>                             |
+| <CopyableCode>letter-spacing.wide</CopyableCode>        | <CopyableCode>--dg-letter-spacing-wide</CopyableCode>        | 0.025em  | <span style={{letterSpacing: 'var(--dg-letter-spacing-wide)', fontSize: 'var(--dg-size-font-sm)'}}>Wide spacing</span>                                 |
+| <CopyableCode>letter-spacing.wider</CopyableCode>       | <CopyableCode>--dg-letter-spacing-wider</CopyableCode>       | 0.05em   | <span style={{letterSpacing: 'var(--dg-letter-spacing-wider)', fontSize: 'var(--dg-size-font-xs)', textTransform: 'uppercase'}}>WIDER SPACING</span>   |
+| <CopyableCode>letter-spacing.widest</CopyableCode>      | <CopyableCode>--dg-letter-spacing-widest</CopyableCode>      | 0.1em    | <span style={{letterSpacing: 'var(--dg-letter-spacing-widest)', fontSize: 'var(--dg-size-font-xs)', textTransform: 'uppercase'}}>WIDEST SPACING</span> |
 
 ### Letter Spacing Guidelines
 
-| Context | Recommended | Why |
-|---------|-------------|-----|
-| Large headings | `tight` or `tighter` | Tighten as size increases |
-| Body text | `normal` | Default, no adjustment |
-| All caps labels | `wide` or `wider` | Improves readability |
-| Small caps | `wider` or `widest` | Compensates for reduced height |
+| Context         | Recommended          | Why                            |
+| --------------- | -------------------- | ------------------------------ |
+| Large headings  | `tight` or `tighter` | Tighten as size increases      |
+| Body text       | `normal`             | Default, no adjustment         |
+| All caps labels | `wide` or `wider`    | Improves readability           |
+| Small caps      | `wider` or `widest`  | Compensates for reduced height |
 
 ---
 
@@ -66,15 +66,14 @@ Adjust character spacing for headings and labels.
 
 Limit text to a specific number of lines with ellipsis.
 
-
-| Token | CSS Variable | Lines |
-|-------|--------------|-------|
-| <CopyableCode>line-clamp.1</CopyableCode> | <CopyableCode>--dg-line-clamp-1</CopyableCode> | 1 |
-| <CopyableCode>line-clamp.2</CopyableCode> | <CopyableCode>--dg-line-clamp-2</CopyableCode> | 2 |
-| <CopyableCode>line-clamp.3</CopyableCode> | <CopyableCode>--dg-line-clamp-3</CopyableCode> | 3 |
-| <CopyableCode>line-clamp.4</CopyableCode> | <CopyableCode>--dg-line-clamp-4</CopyableCode> | 4 |
-| <CopyableCode>line-clamp.5</CopyableCode> | <CopyableCode>--dg-line-clamp-5</CopyableCode> | 5 |
-| <CopyableCode>line-clamp.6</CopyableCode> | <CopyableCode>--dg-line-clamp-6</CopyableCode> | 6 |
+| Token                                     | CSS Variable                                   | Lines |
+| ----------------------------------------- | ---------------------------------------------- | ----- |
+| <CopyableCode>line-clamp.1</CopyableCode> | <CopyableCode>--dg-line-clamp-1</CopyableCode> | 1     |
+| <CopyableCode>line-clamp.2</CopyableCode> | <CopyableCode>--dg-line-clamp-2</CopyableCode> | 2     |
+| <CopyableCode>line-clamp.3</CopyableCode> | <CopyableCode>--dg-line-clamp-3</CopyableCode> | 3     |
+| <CopyableCode>line-clamp.4</CopyableCode> | <CopyableCode>--dg-line-clamp-4</CopyableCode> | 4     |
+| <CopyableCode>line-clamp.5</CopyableCode> | <CopyableCode>--dg-line-clamp-5</CopyableCode> | 5     |
+| <CopyableCode>line-clamp.6</CopyableCode> | <CopyableCode>--dg-line-clamp-6</CopyableCode> | 6     |
 
 ### Line Clamp Demo
 
@@ -86,7 +85,9 @@ Limit text to a specific number of lines with ellipsis.
     <p className="dg-clamp-label">1 line</p>
     <div className="dg-clamp-container">
       <p className="dg-text-clamp-1">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+        {
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'
+        }
       </p>
     </div>
   </div>
@@ -94,7 +95,9 @@ Limit text to a specific number of lines with ellipsis.
     <p className="dg-clamp-label">2 lines</p>
     <div className="dg-clamp-container">
       <p className="dg-text-clamp-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+        {
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'
+        }
       </p>
     </div>
   </div>
@@ -102,7 +105,9 @@ Limit text to a specific number of lines with ellipsis.
     <p className="dg-clamp-label">3 lines</p>
     <div className="dg-clamp-container">
       <p className="dg-text-clamp-3">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+        {
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'
+        }
       </p>
     </div>
   </div>
@@ -161,7 +166,9 @@ Limit text to a specific number of lines with ellipsis.
 
 ---
 
-## Usage
+## Usage Examples
+
+### CSS
 
 ```css
 /* Line height */
@@ -189,6 +196,40 @@ h1 {
 }
 ```
 
+### TypeScript/JavaScript
+
+```typescript
+import { tokens } from '@designgreat/lib-design-token'
+
+// Text spacing styles
+const spacing = {
+  lineHeight: {
+    tight: tokens['line-height'].tight,
+    normal: tokens['line-height'].normal,
+    relaxed: tokens['line-height'].relaxed
+  },
+  letterSpacing: {
+    tight: tokens['letter-spacing'].tight,
+    normal: tokens['letter-spacing'].normal,
+    wide: tokens['letter-spacing'].wide
+  },
+  lineClamp: {
+    '1': tokens['line-clamp']['1'],
+    '2': tokens['line-clamp']['2'],
+    '3': tokens['line-clamp']['3']
+  }
+}
+
+// Component example
+function Text({ lineHeight = 'normal', children }) {
+  return (
+    <p style={{ lineHeight: `var(--dg-line-height-${lineHeight})` }}>
+      {children}
+    </p>
+  )
+}
+```
+
 ## Technical Details
 
 ### File Structure
@@ -203,14 +244,36 @@ packages/lib-design-token/src/tokens/typography/
 ### Token Structure
 
 ```javascript
-// Line height (unitless values)
-{ 'line-height': { tight: { value: 1.25 }, normal: { value: 1.5 }, ... }}
-
-// Letter spacing (em values)
-{ 'letter-spacing': { tight: { value: -0.025 }, normal: { value: 0 }, ... }}
-
-// Line clamp (integer values)
-{ 'line-clamp': { '1': { value: 1 }, '2': { value: 2 }, ... }}
+{
+  'line-height': {
+    none: { value: 1, type: 'lineHeight' },
+    tight: { value: 1.25, type: 'lineHeight' },
+    snug: { value: 1.375, type: 'lineHeight' },
+    normal: { value: 1.5, type: 'lineHeight' },
+    DEFAULT: { value: '{line-height.normal}', type: 'lineHeight' },
+    relaxed: { value: 1.625, type: 'lineHeight' },
+    loose: { value: 2, type: 'lineHeight' },
+    title: { value: '{line-height.none}', type: 'lineHeight' },
+    h1: { value: '{line-height.tight}', type: 'lineHeight' },
+    h2: { value: '{line-height.tight}', type: 'lineHeight' },
+    h3: { value: '{line-height.snug}', type: 'lineHeight' },
+    h4: { value: '{line-height.snug}', type: 'lineHeight' },
+    h5: { value: '{line-height.normal}', type: 'lineHeight' },
+    h6: { value: '{line-height.normal}', type: 'lineHeight' },
+    body: { value: '{line-height.normal}', type: 'lineHeight' },
+    caption: { value: '{line-height.normal}', type: 'lineHeight' }
+  },
+  'letter-spacing': {
+    tight: { value: -0.025, type: 'letterSpacing' },
+    normal: { value: 0, type: 'letterSpacing' },
+    // ... more values
+  },
+  'line-clamp': {
+    '1': { value: 1, type: 'number' },
+    '2': { value: 2, type: 'number' },
+    // ... more values
+  }
+}
 ```
 
 ## Related

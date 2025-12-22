@@ -9,11 +9,15 @@ export default {
         value: '{color.accent.blue.bold}',
         type: 'color'
       },
-      'subtle': { // a lighter one for the [active] (pressing) state
+      'bolder': { // an even darker one for the [active] (pressing) state
+        value: '{color.accent.blue.bolder}',
+        type: 'color'
+      },
+      'subtle': { // a lighter one for subtle states
         value: '{color.accent.blue.subtle}',
         type: 'color'
       },
-      'subtler': { // a more lighter one for the [active] (pressing) state
+      'subtler': { // an even lighter one for subtle states
         value: '{color.accent.blue.subtler}',
         type: 'color'
       },
@@ -47,7 +51,7 @@ export default {
       },
       active: {
         DEFAULT: {
-          value: '{color.primary.subtle}',
+          value: '{color.primary.bolder}',
           type: 'color'
         }
       },
