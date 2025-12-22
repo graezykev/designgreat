@@ -1,5 +1,430 @@
 # @designgreat/docs-design-system
 
+## 0.8.0
+
+### Minor Changes
+
+- ef6ff01: Add comprehensive design structure documentation
+
+  **New Files Created:**
+
+  **DESIGN_STRUCTURES.md** (1,469 lines): Comprehensive design structure documentation for all major
+  components:
+  - Button (with all variants, states, modifiers)
+  - Spinner
+  - Link
+  - Tag (with removable variant)
+  - Badge
+  - Input
+  - Checkbox
+  - Toggle
+  - Radio
+  - Select
+  - Dropdown
+  - Tab
+  - List
+  - Alert
+  - Tooltip
+  - Nav Pill
+  - Interactive Card
+  - **Navigation** (NEW): Complete structure for `.dg-nav`, `.dg-nav-primary`, `.dg-nav-secondary`,
+    `.dg-nav-tertiary` with all states (hover, focus, active, selected) and BEM-compliant modifier
+    classes
+
+  **ADDITIONAL_DESIGN_STRUCTURES.md** (361 lines): Additional design structures not covered in main
+  file:
+  - `.dg-app-bar-nav` structure
+  - Various card components (`.dg-text-card`, `.dg-card-subtle`, `.dg-card-accent-info`, etc.)
+  - Demo-specific card structures
+
+  **Key Features:**
+  - Complete component hierarchies with all states and modifiers
+  - Token references for all properties
+  - BEM-compliant naming conventions
+  - Usage examples for each component
+  - Navigation structure includes combined state rules (`:focus:hover`, `:focus:active`)
+  - Breadcrumb structure with separator handling
+
+  **Location:**
+  - Files moved from root to `packages/docs-design-system/` for better organization
+  - Part of design system documentation package
+
+  **Purpose:**
+  - Provides comprehensive reference for component structures
+  - Documents all CSS classes, states, and modifiers
+  - Serves as design system specification
+  - Enables consistent component implementation
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Improve code section consistency across documentation (Step 12 compliance)
+
+  **Issue Found:** Step 12 check identified inconsistencies between demo HTML and code sections
+  across multiple documentation files.
+
+  **Changes:**
+  - Update code sections to match demo HTML exactly
+  - Ensure all component classes shown in demos are documented in code sections
+  - Add missing CSS rules to code sections
+  - Fix class name inconsistencies (e.g., single-dash vs double-dash modifiers)
+  - Update button state examples to use BEM-compliant modifier classes (`--hover`, `--focus`,
+    `--active`, `--disabled`)
+
+  **Files Modified:**
+  - `docs-design-token/colors/shortcuts/interactive-state.mdx`: Updated button state demos and code
+    sections
+  - `docs-design-token/colors/shortcuts/text.mdx`: Updated navigation demos and code sections
+  - `docs-design-token/colors/shortcuts/background.mdx`: Updated code sections
+  - `docs-design-token/colors/shortcuts/border.mdx`: Updated code sections
+  - `docs-design-token/colors/shortcuts/shadow.mdx`: Updated code sections
+  - Multiple other documentation files: Code section updates for consistency
+
+  **Compliance:**
+  - Ensures code sections are complete and consistent with demos (Step 12 requirement)
+  - Provides accurate code examples for developers
+  - Maintains demo-code consistency across all documentation
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Comprehensive documentation updates from 12-step review process
+
+  **Overview:** This changeset includes comprehensive documentation improvements identified and
+  fixed during the 12-step documentation review process.
+
+  **Major Updates:**
+
+  **Token Documentation:**
+  - Update token references to use consistent naming (e.g., `color.primary.DEFAULT` instead of
+    `color.primary.default`)
+  - Fix token reference values in tables (e.g., active state now correctly references
+    `{color.primary.bolder}` instead of `{color.primary.subtle}`)
+  - Update use case descriptions for clarity (e.g., "Subtle emphasis states" instead of
+    "Active/pressed states")
+  - Add missing token documentation across multiple pages
+
+  **Table Structure:**
+  - Reorganize token tables for better clarity
+  - Add missing columns and values
+  - Fix reference column values
+  - Improve table formatting and consistency
+
+  **Code Examples:**
+  - Update code examples to use correct token references
+  - Fix CSS variable names in examples
+  - Ensure code examples match actual implementation
+  - Add missing code examples where needed
+
+  **Files Modified (24 files):**
+  - `colors/accent-colors.mdx`: Token reference updates
+  - `colors/alpha-colors.mdx`: Minor formatting updates
+  - `colors/base-colors.mdx`: Documentation improvements
+  - `colors/core-concepts-theme-awareness.mdx`: Added examples
+  - `colors/primary-brand-colors.mdx`: Token reference fixes, table reorganization
+  - `colors/secondary-tertiary-quartus.mdx`: Content updates
+  - `colors/semantic-colors.mdx`: Major updates (178 insertions)
+  - `colors/shortcuts/background.mdx`: Code section updates
+  - `colors/shortcuts/border.mdx`: Major updates (187 insertions)
+  - `colors/shortcuts/interactive-state.mdx`: Major updates (830 insertions)
+  - `colors/shortcuts/shadow.mdx`: Updates (137 insertions)
+  - `colors/shortcuts/text.mdx`: Major updates (537 insertions)
+  - `effects/border-radius.mdx`: Updates
+  - `effects/elevation.mdx`: Updates
+  - `effects/gradients.mdx`: Added content
+  - `guides/api/reference.mdx`: Updates
+  - `motion/duration.mdx`: Added content
+  - `motion/easing.mdx`: Added content
+  - `motion/transitions.mdx`: Added content
+  - `spacing/pixel-values.mdx`: Updates
+  - `spacing/semantic-scales.mdx`: Updates (110 insertions)
+  - `typography/font-sizes.mdx`: Updates
+  - `typography/font-weights.mdx`: Updates
+  - `typography/text-spacing.mdx`: Updates (88 insertions)
+
+  **Statistics:**
+  - 24 files changed
+  - 2,317 insertions
+  - 322 deletions
+
+  **Purpose:**
+  - Ensures documentation accuracy and consistency
+  - Improves developer experience with correct examples
+  - Maintains alignment between documentation and implementation
+  - Addresses issues found in comprehensive 12-step review
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Add navigation link states documentation and demos
+
+  **Changes:**
+  - Add hover, focus, active, and selected states for navigation links (`.dg-nav-primary`,
+    `.dg-nav-secondary`, `.dg-nav-tertiary`)
+  - Add full state demos showing Default, Hover, Focus, Active, Selected states
+  - Update code sections to include all navigation state CSS rules
+  - Document combined state rules (`:focus:hover`, `:focus:active`) for proper interaction behavior
+  - Use new navigation hierarchy tokens (`--dg-color-text-nav-interaction-*`,
+    `--dg-color-text-nav-state-selected`)
+
+  **Files Modified:**
+  - `docs-design-token/colors/shortcuts/text.mdx`: Added navigation states section with full state
+    demos and code examples
+
+  **Purpose:**
+  - Documents navigation component interactive states
+  - Provides examples for developers using navigation components
+  - Ensures consistency with other interactive components (buttons, links, tabs)
+
+  **Related:**
+  - Requires navigation tokens from `@designgreat/lib-design-token` package
+  - CSS implementation in `custom.css` (separate changeset)
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Add comprehensive 12-step documentation review scripts and tooling
+
+  This changeset adds a complete documentation review system with scripts, validation tools, and
+  comprehensive documentation.
+
+  **Scripts Created:**
+  - 12 step-by-step check scripts (check-tokens-step1.js through step12.js) for automated
+    documentation review
+  - run-all-checks.js: Run all 12 steps at once (for baseline assessment only)
+  - validate-scripts.js: Script health validation tool
+
+  **Documentation Created:**
+  - PROMPT_TEMPLATE.md: Complete prompt template for future reviews with iterative step-by-step
+    workflow
+  - ORIGINAL_NOTES.md: Comprehensive documentation of all step-specific notes, exceptions, and
+    instructions from original prompt
+  - SCRIPT_ROBUSTNESS.md: Guide for ensuring script reliability, validation checklists, and testing
+    strategies
+  - COVERAGE_AND_ROBUSTNESS.md: Answers to coverage and robustness questions with validation results
+  - REFACTORING_SUMMARY.md: Summary of workflow improvements and refactoring decisions
+  - README.md: Usage guide with quick start, workflow explanation, and script structure
+
+  **Organization:**
+  - All scripts organized in `packages/docs-design-system/scripts/documentation-review/`
+    subdirectory
+  - All review reports moved to `docs/progress-logs/` with sequential numbering
+    (20-STEP1_FINAL_REPORT.md through 32-STEP1_ISSUES_REPORT.md)
+  - Scripts updated with correct path resolution (../../../..) for new directory structure
+
+  **Workflow Philosophy:**
+  - Iterative step-by-step approach: Complete each step fully (check → report → fix → review →
+    verify → consent) before moving to next step
+  - Prevents fixes in one step from introducing issues that would be caught in later steps
+  - Explicit "DO NOT fix" and "wait for approval" instructions to prevent premature changes
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+### Patch Changes
+
+- ef6ff01: Fix missing disabled state for primary button component
+
+  **Issue Found:** Step 11 check identified that `.dg-btn-primary` was missing disabled state
+  patterns, even though demos were using `dg-btn-primary--disabled` class.
+
+  **Fix:**
+  - Add `.dg-btn-primary:disabled` pseudo-class rule with disabled styling
+  - Add `.dg-btn-primary--disabled` modifier class rule for static demos
+  - Both rules use `--dg-color-background-button-state-disabled` token
+  - Sets opacity to 0.6 and cursor to not-allowed
+
+  **Compliance:**
+  - Ensures primary button has both pseudo-class (`:disabled`) and modifier class (`--disabled`)
+    patterns
+  - Required for Step 11: Interactive State Patterns compliance
+  - Allows both dynamic interaction and static demo states
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Fix CSS syntax error and remove inline style in spacing demo
+
+  **Issue Found:** Step 4 check identified an inline style in spacing/semantic-scales.mdx demo, and
+  a CSS syntax error was discovered when the dev server failed to compile.
+
+  **CSS Syntax Fix:**
+  - Fix orphaned CSS properties in `.dg-spacing-indicator` class
+  - Properties (`justify-content`, `color`, `font-size`, `margin-top`, `margin-bottom`) were
+    accidentally left outside the class block when adding `.dg-spacing-indicator-height-md`
+  - Moved all properties back into `.dg-spacing-indicator` block
+
+  **Inline Style Removal:**
+  - Add `.dg-spacing-indicator-height-md` utility class with `height: var(--dg-spacing-stack-md)`
+  - Replace inline style `style={{height: 'var(--dg-spacing-stack-md)'}}` in
+    spacing/semantic-scales.mdx demo
+  - Update code section in MDX to reflect the change
+
+  **Compliance:**
+  - Removes inline style violation (Step 4 requirement)
+  - Uses CSS class with design token instead of inline style
+  - Maintains functionality while following best practices
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Update documentation to use BEM-compliant modifier classes
+
+  **Issue Found:** Documentation was using inconsistent modifier class naming (single-dash vs
+  double-dash).
+
+  **Changes:**
+  - Update all modifier classes from single-dash (`dg-btn-primary-hover`) to double-dash
+    (`dg-btn-primary--hover`) for BEM compliance
+  - Update navigation modifier classes to use double-dash (`dg-nav-primary--hover`,
+    `dg-nav-primary--focus`, etc.)
+  - Ensure all interactive state modifier classes follow BEM standard (`--hover`, `--focus`,
+    `--active`, `--disabled`, `--selected`)
+  - Update both demo HTML and code sections to reflect BEM-compliant naming
+
+  **Files Modified:**
+  - `docs-design-token/colors/shortcuts/interactive-state.mdx`: Button modifier classes
+  - `docs-design-token/colors/shortcuts/text.mdx`: Navigation modifier classes
+  - Other documentation files: Consistent modifier class naming
+
+  **Compliance:**
+  - Follows BEM (Block Element Modifier) methodology
+  - Ensures consistency with CSS implementation
+  - Provides accurate examples for developers following BEM conventions
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Fix sidebar position conflict in API reference guide
+
+  **Issue Found:** `guides/api/reference.mdx` had `sidebar_position: 1`, conflicting with
+  `quick-start.mdx`.
+
+  **Changes:**
+  - Change `sidebar_position` from `1` to `9` in `guides/api/reference.mdx`
+  - Resolves sidebar navigation conflict
+  - Maintains proper ordering in documentation navigation
+
+  **Files Modified:**
+  - `docs-design-token/guides/api/reference.mdx`: Sidebar position update
+
+  **Note:** Also added TypeScript/JavaScript usage examples section to this file.
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Update button demo code sections to include disabled state (Step 11 compliance)
+
+  **Issue Found:** Step 11 check identified that button demos were using `dg-btn-primary--disabled`
+  class but code sections didn't show the corresponding CSS.
+
+  **Changes:**
+  - Update code sections in interactive-state.mdx to include `.dg-btn-primary:disabled` and
+    `.dg-btn-primary--disabled` CSS rules
+  - Ensure code sections match demo HTML for all button states
+  - Document both pseudo-class and modifier class patterns for disabled state
+
+  **Files Modified:**
+  - `docs-design-token/colors/shortcuts/interactive-state.mdx`: Added disabled state CSS to code
+    sections
+
+  **Compliance:**
+  - Ensures code sections are complete and consistent with demos (Step 12 requirement)
+  - Documents both interactive state patterns (Step 11 requirement)
+  - Provides accurate code examples for developers
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Fix inline style violations in documentation demos (Step 4 compliance)
+
+  **Issue Found:** Step 4 check identified inline styles in demos that should use CSS classes
+  instead.
+
+  **Changes:**
+  - Remove inline style `style={{height: 'var(--dg-spacing-stack-md)'}}` from
+    spacing/semantic-scales.mdx
+  - Replace with CSS class `.dg-spacing-indicator-height-md` for consistency
+  - Update code sections in MDX files to reflect CSS class usage instead of inline styles
+
+  **Files Modified:**
+  - `docs-design-token/spacing/semantic-scales.mdx`: Removed inline style, added CSS class usage
+
+  **Compliance:**
+  - Removes inline style violations (Step 4 requirement)
+  - Uses CSS classes with design tokens instead of inline styles
+  - Maintains functionality while following best practices
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Rename demo-related class names to remove "-demo-" keyword (Step 6 compliance)
+
+  **Issue Found:** Step 6 check identified CSS class names containing "-demo-" keyword that should
+  be renamed for consistency.
+
+  **Changes:**
+  - Rename `dg-gap-demo` → `dg-gap-showcase` in spacing demos
+  - Rename `dg-inset-demo-card` → `dg-inset-showcase-card` in spacing demos
+  - Update all references in both demo HTML and code sections
+  - Maintain functionality while improving naming consistency
+
+  **Files Modified:**
+  - `docs-design-token/spacing/semantic-scales.mdx`: Updated class names from `-demo-` to
+    `-showcase-`
+
+  **Compliance:**
+  - Removes "-demo-" keyword from class names (Step 6 requirement)
+  - Uses more semantic naming (`-showcase-` instead of `-demo-`)
+  - Keeps legitimate utility classes (`.color-demo`, `.spacing-demo`) unchanged as they're
+    acceptable
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- ef6ff01: Fix token reference values and use case descriptions
+
+  **Issue Found:** Token reference values in documentation tables were incorrect or outdated.
+
+  **Changes:**
+  - Fix `color.primary.active.DEFAULT` reference from `{color.primary.subtle}` to
+    `{color.primary.bolder}` (active state should be darker than hover)
+  - Add missing `color.primary.bolder` token to emphasis table
+  - Update use case descriptions for clarity:
+    - `color.primary.subtle`: Changed from "Active/pressed states" to "Subtle emphasis states"
+    - `color.primary.active.DEFAULT`: Updated description to "Active/pressed state (darker than
+      hover)"
+  - Update mermaid diagram to reflect correct active state reference (`active: bolder` instead of
+    `active: subtle`)
+
+  **Files Modified:**
+  - `docs-design-token/colors/primary-brand-colors.mdx`: Token reference fixes and table updates
+
+  **Purpose:**
+  - Ensures documentation accurately reflects token relationships
+  - Provides correct guidance for developers on token usage
+  - Maintains consistency between token values and documentation
+
+  **Related PR:** [#51](https://github.com/graezykev/designgreat/pull/51)
+
+  **Author:** @chunman-yeung
+
+- Updated dependencies [ef6ff01]
+  - @designgreat/lib-design-token@0.9.0
+  - @designgreat/lib-web-component@0.7.5
+
 ## 0.7.5
 
 ### Patch Changes
