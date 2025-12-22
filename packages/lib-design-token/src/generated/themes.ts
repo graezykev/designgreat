@@ -545,15 +545,15 @@ export const light = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#1d1d1f24",
-              "focus": "#1d1d1f4f",
-              "focus-visible": "#1d1d1f4f",
+              "hover": "#1d1d1f4f",
+              "focus": "#1d1d1f24",
+              "focus-visible": "#1d1d1f24",
               "active": "#1d1d1f7d"
             },
             "state": {
               "disabled": "#1d1d1f0f"
             },
-            "DEFAULT": "#1d1d1f4f"
+            "DEFAULT": "#1d1d1f24"
           },
           "secondary": {
             "interaction": {
@@ -684,15 +684,15 @@ export const light = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#1d1d1f24",
-              "focus": "#1d1d1f4f",
-              "focus-visible": "#1d1d1f4f",
+              "hover": "#1d1d1f4f",
+              "focus": "#1d1d1f24",
+              "focus-visible": "#1d1d1f24",
               "active": "#1d1d1f7d"
             },
             "state": {
               "disabled": "#1d1d1f0f"
             },
-            "DEFAULT": "#1d1d1f4f"
+            "DEFAULT": "#1d1d1f24"
           },
           "outline": {
             "interaction": {
@@ -2059,15 +2059,15 @@ export const dark = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#e8e8e924",
-              "focus": "#e8e8e94f",
-              "focus-visible": "#e8e8e94f",
+              "hover": "#e8e8e94f",
+              "focus": "#e8e8e924",
+              "focus-visible": "#e8e8e924",
               "active": "#e8e8e97d"
             },
             "state": {
               "disabled": "#e8e8e90f"
             },
-            "DEFAULT": "#e8e8e94f"
+            "DEFAULT": "#e8e8e924"
           },
           "secondary": {
             "interaction": {
@@ -2198,15 +2198,15 @@ export const dark = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#e8e8e924",
-              "focus": "#e8e8e94f",
-              "focus-visible": "#e8e8e94f",
+              "hover": "#e8e8e94f",
+              "focus": "#e8e8e924",
+              "focus-visible": "#e8e8e924",
               "active": "#e8e8e97d"
             },
             "state": {
               "disabled": "#e8e8e90f"
             },
-            "DEFAULT": "#e8e8e94f"
+            "DEFAULT": "#e8e8e924"
           },
           "outline": {
             "interaction": {

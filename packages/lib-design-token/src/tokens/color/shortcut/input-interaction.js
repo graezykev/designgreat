@@ -63,15 +63,15 @@ export default {
         subtle: {
           "interaction": {
             "hover": {
-              value: "{color.alpha.neutral.3}",
+              value: "{color.alpha.neutral.4}",
               type: 'color'
             },
             "focus": {
-              value: "{color.alpha.neutral.4}",
+              value: "{color.alpha.neutral.3}",
               type: 'color'
             },
             "focus-visible": {
-              value: "{color.alpha.neutral.4}",
+              value: "{color.alpha.neutral.3}",
               type: 'color'
             },
             "active": {

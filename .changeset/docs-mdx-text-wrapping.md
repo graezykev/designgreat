@@ -39,11 +39,11 @@ tags.
 
 Updated button interaction colors at the token level:
 
-- **Subtle buttons**: Swapped hover and active colors
-  - Hover: Changed from `{color.alpha.neutral.5}` to `{color.alpha.neutral.3}` (lighter, feels
-    lifted)
-  - Active: Changed from `{color.alpha.neutral.3}` to `{color.alpha.neutral.5}` (darker, feels
-    pressed down)
+- **Subtle buttons**: Adjusted hover and focus colors
+  - Hover: Changed from `{color.alpha.neutral.3}` to `{color.alpha.neutral.4}` (darker, more
+    visible)
+  - Focus: Changed from `{color.alpha.neutral.4}` to `{color.alpha.neutral.3}` (lighter, clearer
+    focus state)
 - **Secondary buttons**: Made active state darker
   - Hover: Remains `{color.secondary.bold}` (unchanged)
   - Active: Changed from `{color.secondary.subtle}` to `{color.secondary.bolder}` (darker, feels

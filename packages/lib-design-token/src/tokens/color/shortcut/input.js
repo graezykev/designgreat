@@ -105,7 +105,7 @@ export default {
         },
         subtle: {
           DEFAULT: {
-            value: "{color.alpha.neutral.4}",
+            value: "{color.alpha.neutral.3}",
             type: 'color'
           }
         },
