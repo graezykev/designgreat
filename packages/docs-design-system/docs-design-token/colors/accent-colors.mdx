@@ -451,27 +451,6 @@ packages/lib-design-token/src/tokens/color/accent/
 }
 ```
 
-### Gradient Generation Algorithm
-
-Accent color gradients are generated once from base colors and remain consistent:
-
-1. **Base Reference**: Start with a base color (e.g., `#1d1d1f` for grey, `#0055cc` for blue)
-2. **Lightness Calculation**: Generate lighter and darker shades algorithmically
-3. **Fixed Output**: The gradient values are the same in both light and dark themes
-
-```javascript
-const gradientConfig = {
-  totalShades: 10, // Number of gradient levels (10 for saturated, 12 for grey)
-  defaultShade: 7, // Which level is the base color (7 for saturated, 11 for grey)
-  darkestLightness: 0.05, // Lightness of darkest shade
-  lightestLightness: 0.95 // Lightness of lightest shade (or 1.0 for grey)
-}
-```
-
-:::info Implementation
-The gradient generation is implemented in [`color-gradient.js`](https://github.com/graezykev/designgreat/blob/main/packages/lib-design-token/scripts/style-dictionary/color-gradient.js) using the `generateColorShades` function.
-:::
-
 ### Theme Switching Via Aliases
 
 While gradient levels themselves don't change, **semantic aliases map to different levels per theme**:
@@ -488,14 +467,13 @@ While gradient levels themselves don't change, **semantic aliases map to differe
 
 This **alias mapping inversion** is what provides automatic theme adaptation, not changes to the gradient values themselves.
 
-### Gradient Configuration
-
-- **Grey**: 12 shades (default at level 11)
-- **Saturated Colors**: 10 shades (default at level 7)
+:::info Gradient Generation
+For details on how gradients are algorithmically generated from base colors, see [Gradient Generation Algorithm](./core-concepts-theme-awareness#gradient-generation-algorithm) in Core Concepts & Theme-Awareness.
+:::
 
 ## Related
 
-- [Core Concepts & Theme-Awareness](./core-concepts-theme-awareness) - **Core concepts** of fixed vs. switchable colors
+- [Core Concepts & Theme-Awareness](./core-concepts-theme-awareness) - **Core concepts** of fixed vs. switchable colors, including gradient generation algorithm
 - [Base Colors](./base-colors) - Foundation colors that accent colors derive from
 - [Alpha Colors](./alpha-colors) - Transparent versions of accent colors
 - [Primary Colors](./primary-brand-colors) - How primary colors use accent blues

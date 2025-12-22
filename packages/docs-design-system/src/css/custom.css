@@ -2507,7 +2507,7 @@
 .dg-input {
   width: 100%;
   padding: var(--dg-spacing-inset-sm);
-  border: var(--dg-border-width-thin) solid var(--dg-color-alpha-neutral-3);
+  border: var(--dg-border-input-default);
   border-radius: var(--dg-size-border-radius-md);
   background-color: var(--dg-color-background-default);
   color: var(--dg-color-text-default);

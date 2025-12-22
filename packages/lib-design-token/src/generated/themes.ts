@@ -30,7 +30,7 @@ export const light = {
         "DEFAULT": {
           "width": "0.0625rem",
           "style": "solid",
-          "color": "#1d1d1f7d"
+          "color": "#1d1d1f24"
         },
         "focus": {
           "width": "0.0625rem",
@@ -743,7 +743,7 @@ export const light = {
             "warning": "#a54800",
             "disabled": "#1d1d1f4f"
           },
-          "DEFAULT": "#1d1d1f7d"
+          "DEFAULT": "#1d1d1f24"
         },
         "checkbox": {
           "interaction": {
@@ -1544,7 +1544,7 @@ export const dark = {
         "DEFAULT": {
           "width": "0.0625rem",
           "style": "solid",
-          "color": "#e8e8e97d"
+          "color": "#e8e8e924"
         },
         "focus": {
           "width": "0.0625rem",
@@ -2257,7 +2257,7 @@ export const dark = {
             "warning": "#ff9746",
             "disabled": "#e8e8e94f"
           },
-          "DEFAULT": "#e8e8e97d"
+          "DEFAULT": "#e8e8e924"
         },
         "checkbox": {
           "interaction": {
