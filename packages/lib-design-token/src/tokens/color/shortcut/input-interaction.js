@@ -83,7 +83,7 @@ export default {
         secondary: {
           "interaction": {
             "hover": {
-              value: "{color.secondary.subtle}",
+              value: "{color.secondary.bold}",
               type: 'color'
             },
             "focus": {
@@ -95,7 +95,7 @@ export default {
               type: 'color'
             },
             "active": {
-              value: "{color.secondary.bold}",
+              value: "{color.secondary.bolder}",
               type: 'color'
             }
           }

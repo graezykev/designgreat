@@ -37,24 +37,30 @@ tags.
 
 **Button State Colors Update:**
 
-Swapped hover and active background colors at the token level for subtle and secondary buttons:
+Updated button interaction colors at the token level:
 
-- **Hover states**: Now lighter (feels lifted)
-  - Subtle: Changed from `{color.alpha.neutral.5}` to `{color.alpha.neutral.3}`
-  - Secondary: Changed from `{color.secondary.bold}` to `{color.secondary.subtle}`
-- **Active states**: Now darker (feels pressed down)
-  - Subtle: Changed from `{color.alpha.neutral.3}` to `{color.alpha.neutral.5}`
-  - Secondary: Changed from `{color.secondary.subtle}` to `{color.secondary.bold}`
+- **Subtle buttons**: Swapped hover and active colors
+  - Hover: Changed from `{color.alpha.neutral.5}` to `{color.alpha.neutral.3}` (lighter, feels
+    lifted)
+  - Active: Changed from `{color.alpha.neutral.3}` to `{color.alpha.neutral.5}` (darker, feels
+    pressed down)
+- **Secondary buttons**: Made active state darker
+  - Hover: Remains `{color.secondary.bold}` (unchanged)
+  - Active: Changed from `{color.secondary.subtle}` to `{color.secondary.bolder}` (darker, feels
+    pressed down)
+- **Primary buttons**: Unchanged
 
-This creates a more intuitive interaction pattern where hover feels lighter (lifted) and active
-feels darker (pressed down) for subtle and secondary buttons. Primary buttons remain unchanged.
+This creates a more intuitive interaction pattern where active states feel darker (pressed down)
+across all button variants.
 
 **Files Updated:**
 
-- `packages/lib-design-token/src/tokens/color/shortcut/input-interaction.js`: Updated subtle and
-  secondary button hover/active tokens
+- `packages/docs-design-system/docs-design-token/colors/shortcuts/interactive-state.mdx`: Updated
+  Token Structure section to reflect new token values
 - `packages/docs-design-system/src/css/custom.css`: Updated base button hover/active CSS (now uses
-  new token values for subtle/secondary)
+  new token values from lib-design-token)
+
+**Note:** Token changes are documented in a separate changeset for `@designgreat/lib-design-token`.
 
 **Integration:**
 
