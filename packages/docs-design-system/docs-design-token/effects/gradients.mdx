@@ -46,12 +46,12 @@ Gradient tokens provide pre-defined linear gradients for brand elements, backgro
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-gradient-box dg-bg-brand-primary">...</div>
-<div class="dg-gradient-box dg-bg-surface-subtle">...</div>
-<div class="dg-gradient-box dg-bg-hero">...</div>
-<div class="dg-gradient-box dg-bg-accent">...</div>
-<div class="dg-gradient-box dg-bg-overlay-dark">...</div>
+```jsx
+<div className="dg-gradient-box dg-bg-brand-primary">{'...'}</div>
+<div className="dg-gradient-box dg-bg-surface-subtle">{'...'}</div>
+<div className="dg-gradient-box dg-bg-hero">{'...'}</div>
+<div className="dg-gradient-box dg-bg-accent">{'...'}</div>
+<div className="dg-gradient-box dg-bg-overlay-dark">{'...'}</div>
 ```
 
 ```css
@@ -90,10 +90,10 @@ Gradient tokens provide pre-defined linear gradients for brand elements, backgro
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-gradient-primary">Primary CTA</button>
-<button class="dg-btn dg-btn-gradient-accent">Accent Action</button>
-<button class="dg-btn dg-btn-gradient-outline">Outline Style</button>
+```jsx
+<button className="dg-btn dg-btn-gradient-primary">{'Primary CTA'}</button>
+<button className="dg-btn dg-btn-gradient-accent">{'Accent Action'}</button>
+<button className="dg-btn dg-btn-gradient-outline">{'Outline Style'}</button>
 ```
 
 ```css
@@ -164,10 +164,10 @@ For animated gradients with 3+ colors, manual gradient construction is appropria
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-gradient-hero-animated">
-  <h3 class="dg-gradient-hero-title">Welcome to Design Great</h3>
-  <p class="dg-gradient-hero-subtitle">Building beautiful design systems</p>
+```jsx
+<div className="dg-gradient-hero-animated">
+  <h3 className="dg-gradient-hero-title">{'Welcome to Design Great'}</h3>
+  <p className="dg-gradient-hero-subtitle">{'Building beautiful design systems'}</p>
 </div>
 ```
 
@@ -239,11 +239,11 @@ For animated gradients with 3+ colors, manual gradient construction is appropria
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-gradient-card">
-  <div class="dg-gradient-card-icon">🚀</div>
-  <h4 class="dg-gradient-card-title">Launch Fast</h4>
-  <p class="dg-gradient-card-desc">Ship products quickly</p>
+```jsx
+<div className="dg-gradient-card">
+  <div className="dg-gradient-card-icon">{'🚀'}</div>
+  <h4 className="dg-gradient-card-title">{'Launch Fast'}</h4>
+  <p className="dg-gradient-card-desc">{'Ship products quickly'}</p>
 </div>
 ```
 
@@ -289,33 +289,43 @@ For animated gradients with 3+ colors, manual gradient construction is appropria
 
 <div className="dg-gradient-badges-container">
   <span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-primary">
-    New Feature
+    {'New Feature'}
   </span>
-  <span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-accent">Pro</span>
+  <span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-accent">
+    {'Pro'}
+  </span>
   <span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-success">
-    Verified
+    {'Verified'}
   </span>
   <span className="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hot">
-    🔥 Trending
+    {'🔥 Trending'}
   </span>
-  <span className="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hero">Beta</span>
+  <span className="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hero">{'Beta'}</span>
 </div>
 <p className="dg-hint">↑ Hover over badges to see effects</p>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Base + gradient marker + radius + color variant -->
-<span class="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-primary"
-  >New Feature</span
->
-<span class="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-accent">Pro</span>
-<span class="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-success">Verified</span>
+```jsx
+// Base + gradient marker + radius + color variant
+<span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-primary">
+  {'New Feature'}
+</span>
+<span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-accent">
+  {'Pro'}
+</span>
+<span className="dg-badge dg-badge-gradient dg-badge-rounded dg-badge-gradient-success">
+  {'Verified'}
+</span>
 
-<!-- Pill badges -->
-<span class="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hot">🔥 Trending</span>
-<span class="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hero">Beta</span>
+// Pill badges
+<span className="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hot">
+  {'🔥 Trending'}
+</span>
+<span className="dg-badge dg-badge-gradient dg-badge-pill dg-badge-gradient-hero">
+  {'Beta'}
+</span>
 ```
 
 ```css
@@ -411,12 +421,12 @@ For animated gradients with 3+ colors, manual gradient construction is appropria
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-gradient-image-card">
-  <div class="dg-gradient-image-bg dg-bg-accent"></div>
-  <div class="dg-gradient-image-overlay">
-    <h4 class="dg-gradient-image-title">Featured Article</h4>
-    <p class="dg-gradient-image-subtitle">Learn about design tokens</p>
+```jsx
+<div className="dg-gradient-image-card">
+  <div className="dg-gradient-image-bg dg-bg-accent"></div>
+  <div className="dg-gradient-image-overlay">
+    <h4 className="dg-gradient-image-title">{'Featured Article'}</h4>
+    <p className="dg-gradient-image-subtitle">{'Learn about design tokens'}</p>
   </div>
 </div>
 ```
@@ -465,17 +475,19 @@ Gradient text effects typically use 3+ colors for visual impact, requiring manua
 <div className="dg-gradient-text-container">
   <h2 className="dg-gradient-text">Gradient Headlines</h2>
   <p className="dg-gradient-text-description">
-    Use gradient text sparingly for maximum impact on headlines and key phrases.
+    {'Use gradient text sparingly for maximum impact on headlines and key phrases.'}
   </p>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-gradient-text-container">
-  <h2 class="dg-gradient-text">Gradient Headlines</h2>
-  <p class="dg-gradient-text-description">Use gradient text sparingly...</p>
+```jsx
+<div className="dg-gradient-text-container">
+  <h2 className="dg-gradient-text">{'Gradient Headlines'}</h2>
+  <p className="dg-gradient-text-description">
+    {'Use gradient text sparingly for maximum impact on headlines and key phrases.'}
+  </p>
 </div>
 ```
 

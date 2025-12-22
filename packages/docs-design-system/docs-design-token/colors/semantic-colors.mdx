@@ -176,7 +176,7 @@ Badges use semantic colors through background and text shortcut tokens for consi
       <button className="dg-btn dg-btn-success dg-btn-success--active">Active</button>
       <button className="dg-btn dg-btn-success dg-btn-success--focus">Focused</button>
       <button className="dg-btn dg-btn-success dg-btn-success--disabled" disabled>
-        Disabled
+        {'Disabled'}
       </button>
     </div>
   </div>
@@ -188,7 +188,7 @@ Badges use semantic colors through background and text shortcut tokens for consi
       <button className="dg-btn dg-btn-danger dg-btn-danger--active">Active</button>
       <button className="dg-btn dg-btn-danger dg-btn-danger--focus">Focused</button>
       <button className="dg-btn dg-btn-danger dg-btn-danger--disabled" disabled>
-        Disabled
+        {'Disabled'}
       </button>
     </div>
   </div>
@@ -200,7 +200,7 @@ Badges use semantic colors through background and text shortcut tokens for consi
       <button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--active">Active</button>
       <button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--focus">Focused</button>
       <button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--disabled" disabled>
-        Disabled
+        {'Disabled'}
       </button>
     </div>
   </div>
@@ -209,29 +209,27 @@ Badges use semantic colors through background and text shortcut tokens for consi
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Success Button -->
-<button class="dg-btn dg-btn-success">Default</button>
-<button class="dg-btn dg-btn-success dg-btn-success--hover">Hover</button>
-<button class="dg-btn dg-btn-success dg-btn-success--active">Active</button>
-<button class="dg-btn dg-btn-success dg-btn-success--focus">Focused</button>
-<button class="dg-btn dg-btn-success dg-btn-success--disabled" disabled>Disabled</button>
+```jsx
+// Success Button
+<button className="dg-btn dg-btn-success">{'Default'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--active">{'Active'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-success dg-btn-success--disabled" disabled>{'Disabled'}</button>
 
-<!-- Danger Button -->
-<button class="dg-btn dg-btn-danger">Default</button>
-<button class="dg-btn dg-btn-danger dg-btn-danger--hover">Hover</button>
-<button class="dg-btn dg-btn-danger dg-btn-danger--active">Active</button>
-<button class="dg-btn dg-btn-danger dg-btn-danger--focus">Focused</button>
-<button class="dg-btn dg-btn-danger dg-btn-danger--disabled" disabled>Disabled</button>
+// Danger Button
+<button className="dg-btn dg-btn-danger">{'Default'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--active">{'Active'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-danger dg-btn-danger--disabled" disabled>{'Disabled'}</button>
 
-<!-- Danger Outline Button -->
-<button class="dg-btn dg-btn-danger-outline">Default</button>
-<button class="dg-btn dg-btn-danger-outline dg-btn-danger-outline--hover">Hover</button>
-<button class="dg-btn dg-btn-danger-outline dg-btn-danger-outline--active">Active</button>
-<button class="dg-btn dg-btn-danger-outline dg-btn-danger-outline--focus">Focused</button>
-<button class="dg-btn dg-btn-danger-outline dg-btn-danger-outline--disabled" disabled>
-  Disabled
-</button>
+// Danger Outline Button
+<button className="dg-btn dg-btn-danger-outline">{'Default'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--active">{'Active'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-danger-outline dg-btn-danger-outline--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -483,14 +481,17 @@ While these color associations are common in Western design systems, be aware of
 
 Never rely on color alone to convey semantic meaning:
 
-```html
-<!-- ❌ Bad: Only color indicates error -->
-<input class="border-error" />
+```jsx
+// ❌ Bad: Only color indicates error
+<input className="border-error" />
 
-<!-- ✅ Good: Color + icon + text -->
-<div class="input-group">
-  <input class="border-error" aria-invalid="true" aria-describedby="error-msg" />
-  <span id="error-msg" class="error-message"> <icon name="alert-circle" /> Email is required </span>
+// ✅ Good: Color + icon + text
+<div className="input-group">
+  <input className="border-error" aria-invalid="true" aria-describedby="error-msg" />
+  <span id="error-msg" className="error-message">
+    {' '}
+    <icon name="alert-circle" /> {' Email is required '}
+  </span>
 </div>
 ```
 

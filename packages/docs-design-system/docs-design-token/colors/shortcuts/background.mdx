@@ -32,19 +32,19 @@ Background color shortcuts provide semantic, theme-aware colors for various back
   <button className="dg-btn dg-btn-neutral dg-btn-neutral--active">Active</button>
   <button className="dg-btn dg-btn-neutral dg-btn-neutral--focus">Focused</button>
   <button className="dg-btn dg-btn-neutral dg-btn-neutral--disabled" disabled>
-    Disabled
+    {'Disabled'}
   </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-neutral">Default</button>
-<button class="dg-btn dg-btn-neutral dg-btn-neutral--hover">Hover</button>
-<button class="dg-btn dg-btn-neutral dg-btn-neutral--active">Active</button>
-<button class="dg-btn dg-btn-neutral dg-btn-neutral--focus">Focused</button>
-<button class="dg-btn dg-btn-neutral dg-btn-neutral--disabled" disabled>Disabled</button>
+```jsx
+<button className="dg-btn dg-btn-neutral">{'Default'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--active">{'Active'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-neutral dg-btn-neutral--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -123,14 +123,14 @@ Background color shortcuts provide semantic, theme-aware colors for various back
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-page-layout">
-  <div class="dg-layout-header">Header</div>
-  <div class="dg-flex dg-gap-md">
-    <div class="dg-layout-sidebar">Sidebar</div>
-    <div class="dg-layout-content">
-      <p class="dg-layout-content-title">Card</p>
-      <p class="dg-layout-content-desc">Content area</p>
+```jsx
+<div className="dg-page-layout">
+  <div className="dg-layout-header">{'Header'}</div>
+  <div className="dg-flex dg-gap-md">
+    <div className="dg-layout-sidebar">{'Sidebar'}</div>
+    <div className="dg-layout-content">
+      <p className="dg-layout-content-title">{'Card'}</p>
+      <p className="dg-layout-content-desc">{'Content area'}</p>
     </div>
   </div>
 </div>
@@ -193,12 +193,12 @@ Semantic backgrounds use the lightest shades of semantic colors for alert boxes,
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<span class="dg-badge dg-badge-discover">New</span>
-<span class="dg-badge dg-badge-info">Info</span>
-<span class="dg-badge dg-badge-success">Success</span>
-<span class="dg-badge dg-badge-warning">Warning</span>
-<span class="dg-badge dg-badge-error">Error</span>
+```jsx
+<span className="dg-badge dg-badge-discover">{'New'}</span>
+<span className="dg-badge dg-badge-info">{'Info'}</span>
+<span className="dg-badge dg-badge-success">{'Success'}</span>
+<span className="dg-badge dg-badge-warning">{'Warning'}</span>
+<span className="dg-badge dg-badge-error">{'Error'}</span>
 ```
 
 ```css
@@ -247,35 +247,41 @@ Semantic backgrounds use the lightest shades of semantic colors for alert boxes,
 
 <div className="dg-flex-col dg-gap-md">
   <div className="dg-alert dg-alert-info">
-    <strong>Info:</strong> This is an informational message.
+    <strong>{'Info:'}</strong> {'This is an informational message.'}
   </div>
   <div className="dg-alert dg-alert-success">
-    <strong>Success:</strong> Your changes have been saved.
+    <strong>{'Success:'}</strong> {'Your changes have been saved.'}
   </div>
   <div className="dg-alert dg-alert-warning">
-    <strong>Warning:</strong> Please review before continuing.
+    <strong>{'Warning:'}</strong> {'Please review before continuing.'}
   </div>
   <div className="dg-alert dg-alert-error">
-    <strong>Error:</strong> Something went wrong. Please try again.
+    <strong>{'Error:'}</strong> {'Something went wrong. Please try again.'}
   </div>
   <div className="dg-alert dg-alert-new">
-    <strong>New:</strong> Check out our latest features!
+    <strong>{'New:'}</strong> {'Check out our latest features!'}
   </div>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-alert dg-alert-info"><strong>Info:</strong> This is an informational message.</div>
-<div class="dg-alert dg-alert-success"><strong>Success:</strong> Your changes have been saved.</div>
-<div class="dg-alert dg-alert-warning">
-  <strong>Warning:</strong> Please review before continuing.
+```jsx
+<div className="dg-alert dg-alert-info">
+  <strong>{'Info:'}</strong> {' This is an informational message.'}
 </div>
-<div class="dg-alert dg-alert-error">
-  <strong>Error:</strong> Something went wrong. Please try again.
+<div className="dg-alert dg-alert-success">
+  <strong>{'Success:'}</strong> {' Your changes have been saved.'}
 </div>
-<div class="dg-alert dg-alert-new"><strong>New:</strong> Check out our latest features!</div>
+<div className="dg-alert dg-alert-warning">
+  <strong>{'Warning:'}</strong> {' Please review before continuing.'}
+</div>
+<div className="dg-alert dg-alert-error">
+  <strong>{'Error:'}</strong> {' Something went wrong. Please try again.'}
+</div>
+<div className="dg-alert dg-alert-new">
+  <strong>{'New:'}</strong> {' Check out our latest features!'}
+</div>
 ```
 
 ```css
@@ -348,12 +354,12 @@ For stronger emphasis, use bold semantic backgrounds with inverse text:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<span class="dg-badge dg-badge-info-bold">Info</span>
-<span class="dg-badge dg-badge-new">New</span>
-<span class="dg-badge dg-badge-success-bold">Success</span>
-<span class="dg-badge dg-badge-warning-bold">Warning</span>
-<span class="dg-badge dg-badge-error-bold">Error</span>
+```jsx
+<span className="dg-badge dg-badge-info-bold">{'Info'}</span>
+<span className="dg-badge dg-badge-new">{'New'}</span>
+<span className="dg-badge dg-badge-success-bold">{'Success'}</span>
+<span className="dg-badge dg-badge-warning-bold">{'Warning'}</span>
+<span className="dg-badge dg-badge-error-bold">{'Error'}</span>
 ```
 
 ```css

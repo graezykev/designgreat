@@ -45,8 +45,9 @@ Neutral text colors are used for standard text content, providing multiple empha
   <h1 className="dg-heading-primary">Page Heading</h1>
   <h2 className="dg-heading-secondary">Section Heading</h2>
   <p className="dg-text-body">
-    This is body text using the default text color. It should be comfortable to read at standard
-    sizes.
+    {
+      'This is body text using the default text color. It should be comfortable to read at standard sizes.'
+    }
   </p>
   <p className="dg-text-caption">Caption text uses subtle color for secondary information.</p>
   <p className="dg-text-placeholder">Subtler text for placeholders and tertiary content.</p>
@@ -56,14 +57,14 @@ Neutral text colors are used for standard text content, providing multiple empha
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-showcase-card">
-  <h1 class="dg-heading-primary">Page Heading</h1>
-  <h2 class="dg-heading-secondary">Section Heading</h2>
-  <p class="dg-text-body">Body text...</p>
-  <p class="dg-text-caption">Caption text...</p>
-  <p class="dg-text-placeholder">Subtler text...</p>
-  <p class="dg-text-disabled">Disabled text...</p>
+```jsx
+<div className="dg-showcase-card">
+  <h1 className="dg-heading-primary">{'Page Heading'}</h1>
+  <h2 className="dg-heading-secondary">{'Section Heading'}</h2>
+  <p className="dg-text-body">{'Body text...'}</p>
+  <p className="dg-text-caption">{'Caption text...'}</p>
+  <p className="dg-text-placeholder">{'Subtler text...'}</p>
+  <p className="dg-text-disabled">{'Disabled text...'}</p>
 </div>
 ```
 
@@ -117,11 +118,11 @@ Neutral text colors are used for standard text content, providing multiple empha
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<span class="dg-badge dg-badge-success-bold">Success</span>
-<span class="dg-badge dg-badge-error-bold">Error</span>
-<span class="dg-badge dg-badge-warning-bold">Warning</span>
-<span class="dg-badge dg-badge-info-bold">Info</span>
+```jsx
+<span className="dg-badge dg-badge-success-bold">{'Success'}</span>
+<span className="dg-badge dg-badge-error-bold">{'Error'}</span>
+<span className="dg-badge dg-badge-warning-bold">{'Warning'}</span>
+<span className="dg-badge dg-badge-info-bold">{'Info'}</span>
 ```
 
 ```css
@@ -186,23 +187,29 @@ See [Interactive State Shortcuts](./interactive-state#link-interaction-colors) f
 
 <div className="dg-showcase-card dg-showcase-card-compact">
   <p className="dg-text-body">
-    Read more about our{' '}
+    {'Read more about our '}
     <a href="#" className="dg-link">
-      design tokens
-    </a>{' '}
-    and how they help maintain consistency across{' '}
-    <a href="#" className="dg-link">
-      your application
+      {'design tokens'}
     </a>
-    .
+    {' and how they help maintain consistency across '}
+    <a href="#" className="dg-link">
+      {'your application'}
+    </a>
+    {'.'}
   </p>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<p class="dg-text-body">Read more about our <a href="#" class="dg-link">design tokens</a>...</p>
+```jsx
+<p className="dg-text-body">
+  {'Read more about our '}
+  <a href="#" className="dg-link">
+    {'design tokens'}
+  </a>
+  {'...'}
+</p>
 ```
 
 ```css
@@ -253,19 +260,19 @@ Navigation text colors provide a three-level hierarchy for navigation elements.
     <p className="dg-text-caption">Primary Navigation</p>
     <div className="dg-nav">
       <a href="#" className="dg-nav-primary">
-        Default
+        {'Default'}
       </a>
       <a href="#" className="dg-nav-primary dg-nav-primary--hover">
-        Hover
+        {'Hover'}
       </a>
       <a href="#" className="dg-nav-primary dg-nav-primary--focus">
-        Focus
+        {'Focus'}
       </a>
       <a href="#" className="dg-nav-primary dg-nav-primary--active">
-        Active
+        {'Active'}
       </a>
       <a href="#" className="dg-nav-primary dg-nav-primary--selected">
-        Selected
+        {'Selected'}
       </a>
     </div>
   </div>
@@ -273,19 +280,19 @@ Navigation text colors provide a three-level hierarchy for navigation elements.
     <p className="dg-text-caption">Secondary Navigation</p>
     <div className="dg-nav">
       <a href="#" className="dg-nav-secondary">
-        Default
+        {'Default'}
       </a>
       <a href="#" className="dg-nav-secondary dg-nav-secondary--hover">
-        Hover
+        {'Hover'}
       </a>
       <a href="#" className="dg-nav-secondary dg-nav-secondary--focus">
-        Focus
+        {'Focus'}
       </a>
       <a href="#" className="dg-nav-secondary dg-nav-secondary--active">
-        Active
+        {'Active'}
       </a>
       <a href="#" className="dg-nav-secondary dg-nav-secondary--selected">
-        Selected
+        {'Selected'}
       </a>
     </div>
   </div>
@@ -293,19 +300,19 @@ Navigation text colors provide a three-level hierarchy for navigation elements.
     <p className="dg-text-caption">Tertiary Navigation</p>
     <div className="dg-nav">
       <a href="#" className="dg-nav-tertiary">
-        Default
+        {'Default'}
       </a>
       <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">
-        Hover
+        {'Hover'}
       </a>
       <a href="#" className="dg-nav-tertiary dg-nav-tertiary--focus">
-        Focus
+        {'Focus'}
       </a>
       <a href="#" className="dg-nav-tertiary dg-nav-tertiary--active">
-        Active
+        {'Active'}
       </a>
       <a href="#" className="dg-nav-tertiary dg-nav-tertiary--selected">
-        Selected
+        {'Selected'}
       </a>
     </div>
   </div>
@@ -313,11 +320,11 @@ Navigation text colors provide a three-level hierarchy for navigation elements.
     <p className="dg-text-caption">Breadcrumb</p>
     <div className="dg-breadcrumb">
       <a href="#" className="dg-nav-tertiary">
-        Home
+        {'Home'}
       </a>
       <span className="dg-breadcrumb-separator">/</span>
       <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">
-        Products
+        {'Products'}
       </a>
       <span className="dg-breadcrumb-separator">/</span>
       <span>Item</span>
@@ -328,32 +335,32 @@ Navigation text colors provide a three-level hierarchy for navigation elements.
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Primary Navigation -->
-<div class="dg-nav">
-  <a href="#" class="dg-nav-primary">Default</a>
-  <a href="#" class="dg-nav-primary dg-nav-primary--hover">Hover</a>
-  <a href="#" class="dg-nav-primary dg-nav-primary--focus">Focus</a>
-  <a href="#" class="dg-nav-primary dg-nav-primary--active">Active</a>
-  <a href="#" class="dg-nav-primary dg-nav-primary--selected">Selected</a>
+```jsx
+// Primary Navigation
+<div className="dg-nav">
+  <a href="#" className="dg-nav-primary">{'Default'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--hover">{'Hover'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--focus">{'Focus'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--active">{'Active'}</a>
+  <a href="#" className="dg-nav-primary dg-nav-primary--selected">{'Selected'}</a>
 </div>
 
-<!-- Secondary Navigation -->
-<div class="dg-nav">
-  <a href="#" class="dg-nav-secondary">Default</a>
-  <a href="#" class="dg-nav-secondary dg-nav-secondary--hover">Hover</a>
-  <a href="#" class="dg-nav-secondary dg-nav-secondary--focus">Focus</a>
-  <a href="#" class="dg-nav-secondary dg-nav-secondary--active">Active</a>
-  <a href="#" class="dg-nav-secondary dg-nav-secondary--selected">Selected</a>
+// Secondary Navigation
+<div className="dg-nav">
+  <a href="#" className="dg-nav-secondary">{'Default'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--hover">{'Hover'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--focus">{'Focus'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--active">{'Active'}</a>
+  <a href="#" className="dg-nav-secondary dg-nav-secondary--selected">{'Selected'}</a>
 </div>
 
-<!-- Breadcrumb Navigation -->
-<div class="dg-breadcrumb">
-  <a href="#" class="dg-nav-tertiary">Home</a>
-  <span class="dg-breadcrumb-separator">/</span>
-  <a href="#" class="dg-nav-tertiary dg-nav-tertiary--hover">Products</a>
-  <span class="dg-breadcrumb-separator">/</span>
-  <span>Item</span>
+// Breadcrumb Navigation
+<div className="dg-breadcrumb">
+  <a href="#" className="dg-nav-tertiary">{'Home'}</a>
+  <span className="dg-breadcrumb-separator">{'/'}</span>
+  <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">{'Products'}</a>
+  <span className="dg-breadcrumb-separator">{'/'}</span>
+  <span>{'Item'}</span>
 </div>
 ```
 
@@ -699,7 +706,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-primary">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Default</span>
@@ -707,7 +714,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-primary dg-nav-primary--hover">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Hover</span>
@@ -715,7 +722,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-primary dg-nav-primary--focus">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Focus</span>
@@ -723,7 +730,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-primary dg-nav-primary--active">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Active</span>
@@ -731,7 +738,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-primary dg-nav-primary--selected">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Selected</span>
@@ -744,7 +751,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-secondary">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Default</span>
@@ -752,7 +759,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-secondary dg-nav-secondary--hover">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Hover</span>
@@ -760,7 +767,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-secondary dg-nav-secondary--focus">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Focus</span>
@@ -768,7 +775,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-secondary dg-nav-secondary--active">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Active</span>
@@ -776,7 +783,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-secondary dg-nav-secondary--selected">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Selected</span>
@@ -789,7 +796,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-tertiary">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Default</span>
@@ -797,7 +804,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-tertiary dg-nav-tertiary--hover">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Hover</span>
@@ -805,7 +812,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-tertiary dg-nav-tertiary--focus">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Focus</span>
@@ -813,7 +820,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-tertiary dg-nav-tertiary--active">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Active</span>
@@ -821,7 +828,7 @@ Full state demonstrations for all navigation variants:
       <div className="dg-state-showcase-item">
         <div className="dg-nav">
           <a href="#" className="dg-nav-tertiary dg-nav-tertiary--selected">
-            Link
+            {'Link'}
           </a>
         </div>
         <span className="dg-state-showcase-item-label">Selected</span>
@@ -833,41 +840,51 @@ Full state demonstrations for all navigation variants:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Primary Navigation States -->
-<div class="dg-state-showcase">
-  <div class="dg-state-showcase-section">
-    <p class="dg-state-showcase-label">Primary Navigation States</p>
-    <div class="dg-state-showcase-row">
-      <div class="dg-state-showcase-item">
-        <div class="dg-nav">
-          <a href="#" class="dg-nav-primary">Link</a>
+```jsx
+// Primary Navigation States
+<div className="dg-state-showcase">
+  <div className="dg-state-showcase-section">
+    <p className="dg-state-showcase-label">{'Primary Navigation States'}</p>
+    <div className="dg-state-showcase-row">
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary">
+            {'Link'}
+          </a>
         </div>
-        <span class="dg-state-showcase-item-label">Default</span>
+        <span className="dg-state-showcase-item-label">{'Default'}</span>
       </div>
-      <div class="dg-state-showcase-item">
-        <div class="dg-nav">
-          <a href="#" class="dg-nav-primary dg-nav-primary--hover">Link</a>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--hover">
+            {'Link'}
+          </a>
         </div>
-        <span class="dg-state-showcase-item-label">Hover</span>
+        <span className="dg-state-showcase-item-label">{'Hover'}</span>
       </div>
-      <div class="dg-state-showcase-item">
-        <div class="dg-nav">
-          <a href="#" class="dg-nav-primary dg-nav-primary--focus">Link</a>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--focus">
+            {'Link'}
+          </a>
         </div>
-        <span class="dg-state-showcase-item-label">Focus</span>
+        <span className="dg-state-showcase-item-label">{'Focus'}</span>
       </div>
-      <div class="dg-state-showcase-item">
-        <div class="dg-nav">
-          <a href="#" class="dg-nav-primary dg-nav-primary--active">Link</a>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--active">
+            {'Link'}
+          </a>
         </div>
-        <span class="dg-state-showcase-item-label">Active</span>
+        <span className="dg-state-showcase-item-label">{'Active'}</span>
       </div>
-      <div class="dg-state-showcase-item">
-        <div class="dg-nav">
-          <a href="#" class="dg-nav-primary dg-nav-primary--selected">Link</a>
+      <div className="dg-state-showcase-item">
+        <div className="dg-nav">
+          <a href="#" className="dg-nav-primary dg-nav-primary--selected">
+            {'Link'}
+          </a>
         </div>
-        <span class="dg-state-showcase-item-label">Selected</span>
+        <span className="dg-state-showcase-item-label">{'Selected'}</span>
       </div>
     </div>
   </div>
@@ -907,12 +924,12 @@ Semantic text colors map to semantic colors for conveying meaning and system sta
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<p class="dg-message dg-message-info">ℹ️ Informational message</p>
-<p class="dg-message dg-message-new">✨ New feature available!</p>
-<p class="dg-message dg-message-success">✓ Success message</p>
-<p class="dg-message dg-message-warning">⚠️ Warning message</p>
-<p class="dg-message dg-message-error">✕ Error message</p>
+```jsx
+<p className="dg-message dg-message-info">{'ℹ️ Informational message'}</p>
+<p className="dg-message dg-message-new">{'✨ New feature available!'}</p>
+<p className="dg-message dg-message-success">{'✓ Success message'}</p>
+<p className="dg-message dg-message-warning">{'⚠️ Warning message'}</p>
+<p className="dg-message dg-message-error">{'✕ Error message'}</p>
 ```
 
 ```css
@@ -975,12 +992,12 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-alert dg-alert-info">Info message</div>
-<div class="dg-alert dg-alert-new">Discover message</div>
-<div class="dg-alert dg-alert-success">Success message</div>
-<div class="dg-alert dg-alert-warning">Warning message</div>
-<div class="dg-alert dg-alert-error">Error message</div>
+```jsx
+<div className="dg-alert dg-alert-info">{'Info message'}</div>
+<div className="dg-alert dg-alert-new">{'Discover message'}</div>
+<div className="dg-alert dg-alert-success">{'Success message'}</div>
+<div className="dg-alert dg-alert-warning">{'Warning message'}</div>
+<div className="dg-alert dg-alert-error">{'Error message'}</div>
 ```
 
 ```css
@@ -1053,21 +1070,21 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-form-group">
-  <label class="dg-form-label">Email Address</label>
-  <input type="text" placeholder="name@example.com" class="dg-input" />
-  <p class="dg-helper-text">We'll never share your email.</p>
+```jsx
+<div className="dg-form-group">
+  <label className="dg-form-label">{'Email Address'}</label>
+  <input type="text" placeholder="name@example.com" className="dg-input" />
+  <p className="dg-helper-text">{'We\'ll never share your email.'}</p>
 </div>
-<div class="dg-form-group">
-  <label class="dg-form-label">Success State</label>
-  <input type="text" class="dg-input dg-input-success" value="Valid input" />
-  <p class="dg-helper-text dg-helper-text-success">✓ Looks good!</p>
+<div className="dg-form-group">
+  <label className="dg-form-label">{'Success State'}</label>
+  <input type="text" className="dg-input dg-input-success" defaultValue="Valid input" />
+  <p className="dg-helper-text dg-helper-text-success">{'✓ Looks good!'}</p>
 </div>
-<div class="dg-form-group">
-  <label class="dg-form-label">Error State</label>
-  <input type="password" class="dg-input dg-input-error" />
-  <p class="dg-helper-text dg-helper-text-error">✕ Password must be at least 8 characters.</p>
+<div className="dg-form-group">
+  <label className="dg-form-label">{'Error State'}</label>
+  <input type="password" className="dg-input dg-input-error" />
+  <p className="dg-helper-text dg-helper-text-error">{'✕ Password must be at least 8 characters.'}</p>
 </div>
 ```
 
@@ -1121,7 +1138,7 @@ For text on colored semantic backgrounds, use bold variants:
 <div className="dg-text-card dg-max-w-xs">
   <h3 className="dg-text-card-title">Card Title</h3>
   <p className="dg-text-card-body">
-    This is the card body text using the default text color for optimal readability.
+    {'This is the card body text using the default text color for optimal readability.'}
   </p>
   <p className="dg-text-card-meta">Posted 2 hours ago • 5 min read</p>
 </div>
@@ -1129,11 +1146,11 @@ For text on colored semantic backgrounds, use bold variants:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-text-card">
-  <h3 class="dg-text-card-title">Card Title</h3>
-  <p class="dg-text-card-body">Card body text...</p>
-  <p class="dg-text-card-meta">Posted 2 hours ago</p>
+```jsx
+<div className="dg-text-card">
+  <h3 className="dg-text-card-title">{'Card Title'}</h3>
+  <p className="dg-text-card-body">{'Card body text...'}</p>
+  <p className="dg-text-card-meta">{'Posted 2 hours ago'}</p>
 </div>
 ```
 

@@ -49,19 +49,19 @@ Background colors for button states:
   <button className="dg-btn dg-btn-primary dg-btn-primary--active">Active</button>
   <button className="dg-btn dg-btn-primary dg-btn-primary--focus">Focused</button>
   <button className="dg-btn dg-btn-primary dg-btn-primary--disabled" disabled>
-    Disabled
+    {'Disabled'}
   </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-primary">Default</button>
-<button class="dg-btn dg-btn-primary dg-btn-primary--hover">Hover</button>
-<button class="dg-btn dg-btn-primary dg-btn-primary--active">Active</button>
-<button class="dg-btn dg-btn-primary dg-btn-primary--focus">Focused</button>
-<button class="dg-btn dg-btn-primary dg-btn-primary--disabled" disabled>Disabled</button>
+```jsx
+<button className="dg-btn dg-btn-primary">{'Default'}</button>
+<button className="dg-btn dg-btn-primary dg-btn-primary--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-primary dg-btn-primary--active">{'Active'}</button>
+<button className="dg-btn dg-btn-primary dg-btn-primary--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-primary dg-btn-primary--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -151,38 +151,38 @@ Tags reuse primary button interaction tokens:
 
 <div className="dg-flex dg-gap-sm dg-flex-wrap dg-items-center">
   <span className="dg-tag">
-    Tag{' '}
+    {'Tag'}{' '}
     <button type="button" className="dg-tag-remove" aria-label="Remove tag">
-      ×
+      {'×'}
     </button>
   </span>
   <span className="dg-tag">
-    Tag{' '}
+    {'Tag'}{' '}
     <button type="button" className="dg-tag-remove dg-tag-remove--hover" aria-label="Remove tag">
-      ×
+      {'×'}
     </button>
   </span>
   <span className="dg-tag">
-    Tag{' '}
+    {'Tag'}{' '}
     <button type="button" className="dg-tag-remove dg-tag-remove--active" aria-label="Remove tag">
-      ×
+      {'×'}
     </button>
   </span>
   <span className="dg-tag">
-    Tag{' '}
+    {'Tag'}{' '}
     <button type="button" className="dg-tag-remove dg-tag-remove--focus" aria-label="Remove tag">
-      ×
+      {'×'}
     </button>
   </span>
   <span className="dg-tag">
-    Tag{' '}
+    {'Tag'}{' '}
     <button
       type="button"
       className="dg-tag-remove dg-tag-remove--disabled"
       aria-label="Remove tag"
       disabled
     >
-      ×
+      {'×'}
     </button>
   </span>
 </div>
@@ -190,39 +190,32 @@ Tags reuse primary button interaction tokens:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<span class="dg-tag"
-  >Tag <button type="button" class="dg-tag-remove" aria-label="Remove tag">×</button></span
->
-<span class="dg-tag"
-  >Tag
-  <button type="button" class="dg-tag-remove dg-tag-remove--hover" aria-label="Remove tag">
-    ×
-  </button></span
->
-<span class="dg-tag"
-  >Tag
-  <button type="button" class="dg-tag-remove dg-tag-remove--active" aria-label="Remove tag">
-    ×
-  </button></span
->
-<span class="dg-tag"
-  >Tag
-  <button type="button" class="dg-tag-remove dg-tag-remove--focus" aria-label="Remove tag">
-    ×
-  </button></span
->
-<span class="dg-tag"
-  >Tag
+```jsx
+<span className="dg-tag">
+  {'Tag'}{' '}
+  <button type="button" className="dg-tag-remove" aria-label="Remove tag">{'×'}</button>
+</span>
+<span className="dg-tag">
+  {'Tag'}{' '}
+  <button type="button" className="dg-tag-remove dg-tag-remove--hover" aria-label="Remove tag">{'×'}</button>
+</span>
+<span className="dg-tag">
+  {'Tag'}{' '}
+  <button type="button" className="dg-tag-remove dg-tag-remove--active" aria-label="Remove tag">{'×'}</button>
+</span>
+<span className="dg-tag">
+  {'Tag'}{' '}
+  <button type="button" className="dg-tag-remove dg-tag-remove--focus" aria-label="Remove tag">{'×'}</button>
+</span>
+<span className="dg-tag">
+  {'Tag'}{' '}
   <button
     type="button"
-    class="dg-tag-remove dg-tag-remove--disabled"
+    className="dg-tag-remove dg-tag-remove--disabled"
     aria-label="Remove tag"
     disabled
-  >
-    ×
-  </button></span
->
+  >{'×'}</button>
+</span>
 ```
 
 ```css
@@ -361,19 +354,19 @@ For subtle/neutral buttons:
   <button className="dg-btn dg-btn-subtle dg-btn-subtle--active">Active</button>
   <button className="dg-btn dg-btn-subtle dg-btn-subtle--focus">Focused</button>
   <button className="dg-btn dg-btn-subtle dg-btn-subtle--disabled" disabled>
-    Disabled
+    {'Disabled'}
   </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-subtle">Default</button>
-<button class="dg-btn dg-btn-subtle dg-btn-subtle--hover">Hover</button>
-<button class="dg-btn dg-btn-subtle dg-btn-subtle--active">Active</button>
-<button class="dg-btn dg-btn-subtle dg-btn-subtle--focus">Focused</button>
-<button class="dg-btn dg-btn-subtle dg-btn-subtle--disabled" disabled>Disabled</button>
+```jsx
+<button className="dg-btn dg-btn-subtle">{'Default'}</button>
+<button className="dg-btn dg-btn-subtle dg-btn-subtle--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-subtle dg-btn-subtle--active">{'Active'}</button>
+<button className="dg-btn dg-btn-subtle dg-btn-subtle--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-subtle dg-btn-subtle--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -479,19 +472,19 @@ For subtle/neutral buttons:
   <button className="dg-btn dg-btn-secondary dg-btn-secondary--active">Active</button>
   <button className="dg-btn dg-btn-secondary dg-btn-secondary--focus">Focused</button>
   <button className="dg-btn dg-btn-secondary dg-btn-secondary--disabled" disabled>
-    Disabled
+    {'Disabled'}
   </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-secondary">Default</button>
-<button class="dg-btn dg-btn-secondary dg-btn-secondary--hover">Hover</button>
-<button class="dg-btn dg-btn-secondary dg-btn-secondary--active">Active</button>
-<button class="dg-btn dg-btn-secondary dg-btn-secondary--focus">Focused</button>
-<button class="dg-btn dg-btn-secondary dg-btn-secondary--disabled" disabled>Disabled</button>
+```jsx
+<button className="dg-btn dg-btn-secondary">{'Default'}</button>
+<button className="dg-btn dg-btn-secondary dg-btn-secondary--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-secondary dg-btn-secondary--active">{'Active'}</button>
+<button className="dg-btn dg-btn-secondary dg-btn-secondary--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-secondary dg-btn-secondary--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -599,19 +592,19 @@ For subtle/neutral buttons:
   <button className="dg-btn dg-btn-outline dg-btn-outline--active">Active</button>
   <button className="dg-btn dg-btn-outline dg-btn-outline--focus">Focused</button>
   <button className="dg-btn dg-btn-outline dg-btn-outline--disabled" disabled>
-    Disabled
+    {'Disabled'}
   </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-outline">Default</button>
-<button class="dg-btn dg-btn-outline dg-btn-outline--hover">Hover</button>
-<button class="dg-btn dg-btn-outline dg-btn-outline--active">Active</button>
-<button class="dg-btn dg-btn-outline dg-btn-outline--focus">Focused</button>
-<button class="dg-btn dg-btn-outline dg-btn-outline--disabled" disabled>Disabled</button>
+```jsx
+<button className="dg-btn dg-btn-outline">{'Default'}</button>
+<button className="dg-btn dg-btn-outline dg-btn-outline--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-outline dg-btn-outline--active">{'Active'}</button>
+<button className="dg-btn dg-btn-outline dg-btn-outline--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-outline dg-btn-outline--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -697,19 +690,19 @@ For subtle/neutral buttons:
   <button className="dg-btn dg-btn-ghost dg-btn-ghost--active">Active</button>
   <button className="dg-btn dg-btn-ghost dg-btn-ghost--focus">Focused</button>
   <button className="dg-btn dg-btn-ghost dg-btn-ghost--disabled" disabled>
-    Disabled
+    {'Disabled'}
   </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-ghost">Default</button>
-<button class="dg-btn dg-btn-ghost dg-btn-ghost--hover">Hover</button>
-<button class="dg-btn dg-btn-ghost dg-btn-ghost--active">Active</button>
-<button class="dg-btn dg-btn-ghost dg-btn-ghost--focus">Focused</button>
-<button class="dg-btn dg-btn-ghost dg-btn-ghost--disabled" disabled>Disabled</button>
+```jsx
+<button className="dg-btn dg-btn-ghost">{'Default'}</button>
+<button className="dg-btn dg-btn-ghost dg-btn-ghost--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn-ghost dg-btn-ghost--active">{'Active'}</button>
+<button className="dg-btn dg-btn-ghost dg-btn-ghost--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn-ghost dg-btn-ghost--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -789,31 +782,31 @@ For subtle/neutral buttons:
 
 <div className="dg-link-state-showcase">
   <a href="#" className="dg-link">
-    Default
+    {'Default'}
   </a>
   <a href="#" className="dg-link dg-link--hover">
-    Hover
+    {'Hover'}
   </a>
   <a href="#" className="dg-link dg-link--active">
-    Active
+    {'Active'}
   </a>
   <a href="#" className="dg-link dg-link--visited">
-    Visited
+    {'Visited'}
   </a>
   <a href="#" className="dg-link dg-link--focus">
-    Focused
+    {'Focused'}
   </a>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<a href="#" class="dg-link">Default</a>
-<a href="#" class="dg-link dg-link--hover">Hover</a>
-<a href="#" class="dg-link dg-link--active">Active</a>
-<a href="#" class="dg-link dg-link--visited">Visited</a>
-<a href="#" class="dg-link dg-link--focus">Focused</a>
+```jsx
+<a href="#" className="dg-link">{'Default'}</a>
+<a href="#" className="dg-link dg-link--hover">{'Hover'}</a>
+<a href="#" className="dg-link dg-link--active">{'Active'}</a>
+<a href="#" className="dg-link dg-link--visited">{'Visited'}</a>
+<a href="#" className="dg-link dg-link--focus">{'Focused'}</a>
 ```
 
 ```css
@@ -1076,11 +1069,11 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<input type="text" class="dg-input" placeholder="Default" />
-<input type="text" class="dg-input dg-input-focus" value="Focused" />
-<input type="text" class="dg-input" disabled value="Disabled" />
-<input type="text" class="dg-input dg-input-hover" placeholder="Hover" />
+```jsx
+<input type="text" className="dg-input" placeholder="Default" />
+<input type="text" className="dg-input dg-input-focus" defaultValue="Focused" />
+<input type="text" className="dg-input" disabled defaultValue="Disabled" />
+<input type="text" className="dg-input dg-input-hover" placeholder="Hover" />
 ```
 
 ```css
@@ -1137,10 +1130,10 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<input type="text" class="dg-input dg-input-success" value="Valid input" />
-<input type="text" class="dg-input dg-input-error" value="Invalid" />
-<input type="text" class="dg-input dg-input-warning" value="Check this" />
+```jsx
+<input type="text" className="dg-input dg-input-success" defaultValue="Valid input" />
+<input type="text" className="dg-input dg-input-error" defaultValue="Invalid" />
+<input type="text" className="dg-input dg-input-warning" defaultValue="Check this" />
 ```
 
 ```css
@@ -1276,13 +1269,13 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Checkbox -->
-<div class="dg-checkbox"></div>
-<div class="dg-checkbox dg-checkbox-hover"></div>
-<div class="dg-checkbox dg-checkbox-focus"></div>
-<div class="dg-checkbox dg-checkbox-checked">✓</div>
-<div class="dg-checkbox dg-checkbox-disabled"></div>
+```jsx
+// Checkbox
+<div className="dg-checkbox"></div>
+<div className="dg-checkbox dg-checkbox-hover"></div>
+<div className="dg-checkbox dg-checkbox-focus"></div>
+<div className="dg-checkbox dg-checkbox-checked">{'✓'}</div>
+<div className="dg-checkbox dg-checkbox-disabled"></div>
 
 <!-- Toggle switch -->
 <div class="dg-toggle"><div class="dg-toggle-handle"></div></div>
@@ -1423,12 +1416,12 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-nav-pills">
-  <div class="dg-nav-pill">Default</div>
-  <div class="dg-nav-pill dg-nav-pill-hover">Hover</div>
-  <div class="dg-nav-pill dg-nav-pill-active">Active</div>
-  <div class="dg-nav-pill dg-nav-pill-selected">Selected</div>
+```jsx
+<div className="dg-nav-pills">
+  <div className="dg-nav-pill">{'Default'}</div>
+  <div className="dg-nav-pill dg-nav-pill-hover">{'Hover'}</div>
+  <div className="dg-nav-pill dg-nav-pill-active">{'Active'}</div>
+  <div className="dg-nav-pill dg-nav-pill-selected">{'Selected'}</div>
   <div class="dg-nav-pill dg-nav-pill-disabled">Disabled</div>
 </div>
 ```
@@ -1504,12 +1497,12 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-tabs">
-  <div class="dg-tab">Default</div>
-  <div class="dg-tab dg-tab-hover">Hover</div>
-  <div class="dg-tab dg-tab-active">Active</div>
-  <div class="dg-tab dg-tab-selected">Selected</div>
+```jsx
+<div className="dg-tabs">
+  <div className="dg-tab">{'Default'}</div>
+  <div className="dg-tab dg-tab-hover">{'Hover'}</div>
+  <div className="dg-tab dg-tab-active">{'Active'}</div>
+  <div className="dg-tab dg-tab-selected">{'Selected'}</div>
   <div class="dg-tab dg-tab-disabled">Disabled</div>
 </div>
 ```
@@ -1593,13 +1586,23 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-list">
-  <div class="dg-list-item"><span>Default Item</span></div>
-  <div class="dg-list-item dg-list-item-hover"><span>Hovered Item</span></div>
-  <div class="dg-list-item dg-list-item-active"><span>Active Item</span></div>
-  <div class="dg-list-item dg-list-item-selected"><span>✓ Selected Item</span></div>
-  <div class="dg-list-item dg-list-item-disabled"><span>Disabled Item</span></div>
+```jsx
+<div className="dg-list">
+  <div className="dg-list-item">
+    <span>{'Default Item'}</span>
+  </div>
+  <div className="dg-list-item dg-list-item-hover">
+    <span>{'Hovered Item'}</span>
+  </div>
+  <div className="dg-list-item dg-list-item-active">
+    <span>{'Active Item'}</span>
+  </div>
+  <div className="dg-list-item dg-list-item-selected">
+    <span>{'✓ Selected Item'}</span>
+  </div>
+  <div class="dg-list-item dg-list-item-disabled">
+    <span>Disabled Item</span>
+  </div>
 </div>
 ```
 
@@ -1698,22 +1701,22 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-select">
-  <span>Default</span>
-  <span class="dg-select-arrow">▼</span>
+```jsx
+<div className="dg-select">
+  <span>{'Default'}</span>
+  <span className="dg-select-arrow">{'▼'}</span>
 </div>
-<div class="dg-select dg-select-hover">
-  <span>Hover</span>
-  <span class="dg-select-arrow">▼</span>
+<div className="dg-select dg-select-hover">
+  <span>{'Hover'}</span>
+  <span className="dg-select-arrow">{'▼'}</span>
 </div>
-<div class="dg-select dg-select-active">
-  <span>Active</span>
-  <span class="dg-select-arrow">▼</span>
+<div className="dg-select dg-select-active">
+  <span>{'Active'}</span>
+  <span className="dg-select-arrow">{'▼'}</span>
 </div>
-<div class="dg-select dg-select-opened">
-  <span>Opened</span>
-  <span class="dg-select-arrow">▼</span>
+<div className="dg-select dg-select-opened">
+  <span>{'Opened'}</span>
+  <span className="dg-select-arrow">{'▼'}</span>
 </div>
 <div class="dg-select dg-select-disabled">
   <span>Disabled</span>
@@ -1786,17 +1789,17 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-dropdown">
-  <div class="dg-dropdown-header">Account</div>
-  <div class="dg-dropdown-item">Default</div>
-  <div class="dg-dropdown-item dg-dropdown-item-hover">Hover</div>
-  <div class="dg-dropdown-item dg-dropdown-item-active">Active</div>
-  <div class="dg-dropdown-item dg-dropdown-item-disabled">Disabled</div>
-  <div class="dg-dropdown-divider"></div>
-  <div class="dg-dropdown-header">Actions</div>
-  <div class="dg-dropdown-item">Export Data</div>
-  <div class="dg-dropdown-item dg-dropdown-item-danger">Delete Account</div>
+```jsx
+<div className="dg-dropdown">
+  <div className="dg-dropdown-header">{'Account'}</div>
+  <div className="dg-dropdown-item">{'Default'}</div>
+  <div className="dg-dropdown-item dg-dropdown-item-hover">{'Hover'}</div>
+  <div className="dg-dropdown-item dg-dropdown-item-active">{'Active'}</div>
+  <div className="dg-dropdown-item dg-dropdown-item-disabled">{'Disabled'}</div>
+  <div className="dg-dropdown-divider"></div>
+  <div className="dg-dropdown-header">{'Actions'}</div>
+  <div className="dg-dropdown-item">{'Export Data'}</div>
+  <div className="dg-dropdown-item dg-dropdown-item-danger">{'Delete Account'}</div>
 </div>
 ```
 
@@ -1894,14 +1897,14 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-interactive-card">
-  <p class="dg-interactive-card-title">Default</p>
-  <p class="dg-interactive-card-desc">Resting state</p>
+```jsx
+<div className="dg-interactive-card">
+  <p className="dg-interactive-card-title">{'Default'}</p>
+  <p className="dg-interactive-card-desc">{'Resting state'}</p>
 </div>
-<div class="dg-interactive-card dg-interactive-card-hover">
-  <p class="dg-interactive-card-title">Hover</p>
-  <p class="dg-interactive-card-desc">Elevated</p>
+<div className="dg-interactive-card dg-interactive-card-hover">
+  <p className="dg-interactive-card-title">{'Hover'}</p>
+  <p className="dg-interactive-card-desc">{'Elevated'}</p>
 </div>
 <div class="dg-interactive-card dg-interactive-card-active">
   <p class="dg-interactive-card-title">Active</p>
@@ -1980,11 +1983,11 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Interactive Badge -->
-<span class="dg-badge dg-badge-interactive">Default</span>
-<span class="dg-badge dg-badge-interactive dg-badge-interactive-hover">Hover</span>
-<span class="dg-badge dg-badge-interactive dg-badge-interactive-active">Active</span>
+```jsx
+// Interactive Badge
+<span className="dg-badge dg-badge-interactive">{'Default'}</span>
+<span className="dg-badge dg-badge-interactive dg-badge-interactive-hover">{'Hover'}</span>
+<span className="dg-badge dg-badge-interactive dg-badge-interactive-active">{'Active'}</span>
 ```
 
 ```css
@@ -2062,11 +2065,11 @@ For subtle/neutral buttons:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Loading button (spinner replaces text) -->
-<button class="dg-btn dg-btn-primary dg-btn--loading">
-  <span>Loading</span>
-  <span class="dg-spinner"></span>
+```jsx
+// Loading button (spinner replaces text)
+<button className="dg-btn dg-btn-primary dg-btn--loading">
+  <span>{'Loading'}</span>
+  <span className="dg-spinner"></span>
 </button>
 
 <!-- Loading button (overlay keeps text visible) -->

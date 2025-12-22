@@ -46,9 +46,9 @@ The shadow color token defines the base color used for all shadows:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-shadow-color-swatch"></div>
-<div class="dg-shadow-color-card">Custom Shadow</div>
+```jsx
+<div className="dg-shadow-color-swatch"></div>
+<div className="dg-shadow-color-card">{'Custom Shadow'}</div>
 ```
 
 ```css
@@ -133,16 +133,16 @@ Compare shadow depth from flat to maximum elevation:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-elevation-card dg-elevation-none">
-  <p class="dg-shadow-color-card-title">None</p>
-  <p class="dg-shadow-color-card-meta">Flat</p>
+```jsx
+<div className="dg-elevation-card dg-elevation-none">
+  <p className="dg-shadow-color-card-title">{'None'}</p>
+  <p className="dg-shadow-color-card-meta">{'Flat'}</p>
 </div>
-<div class="dg-elevation-card dg-elevation-sm">
-  <p class="dg-shadow-color-card-title">SM</p>
-  <p class="dg-shadow-color-card-meta">Subtle</p>
+<div className="dg-elevation-card dg-elevation-sm">
+  <p className="dg-shadow-color-card-title">{'SM'}</p>
+  <p className="dg-shadow-color-card-meta">{'Subtle'}</p>
 </div>
-<!-- ... md, lg, xl similar structure -->
+// ... md, lg, xl similar structure
 ```
 
 ```css
@@ -195,14 +195,14 @@ Compare shadow depth from flat to maximum elevation:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-interactive-card">
-  <p class="dg-shadow-color-card-title">Default Card</p>
-  <p class="dg-shadow-color-card-meta">Hover to elevate</p>
+```jsx
+<div className="dg-interactive-card">
+  <p className="dg-shadow-color-card-title">{'Default Card'}</p>
+  <p className="dg-shadow-color-card-meta">{'Hover to elevate'}</p>
 </div>
-<div class="dg-elevation-card dg-elevation-lg">
-  <p class="dg-shadow-color-card-title">Elevated Card</p>
-  <p class="dg-shadow-color-card-meta">Using elevation-lg</p>
+<div className="dg-elevation-card dg-elevation-lg">
+  <p className="dg-shadow-color-card-title">{'Elevated Card'}</p>
+  <p className="dg-shadow-color-card-meta">{'Using elevation-lg'}</p>
 </div>
 ```
 
@@ -248,11 +248,11 @@ Compare shadow depth from flat to maximum elevation:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-dropdown">
-  <div class="dg-dropdown-item">Option 1</div>
-  <div class="dg-dropdown-item dg-dropdown-item-hover">Option 2</div>
-  <div class="dg-dropdown-item">Option 3</div>
+```jsx
+<div className="dg-dropdown">
+  <div className="dg-dropdown-item">{'Option 1'}</div>
+  <div className="dg-dropdown-item dg-dropdown-item-hover">{'Option 2'}</div>
+  <div className="dg-dropdown-item">{'Option 3'}</div>
 </div>
 ```
 
@@ -292,17 +292,17 @@ Compare shadow depth from flat to maximum elevation:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-modal-backdrop">
-  <div class="dg-elevation-card dg-elevation-lg">
-    <p class="dg-shadow-color-card-title">Modal</p>
-    <p class="dg-shadow-color-card-meta">elevation-lg</p>
+```jsx
+<div className="dg-modal-backdrop">
+  <div className="dg-elevation-card dg-elevation-lg">
+    <p className="dg-shadow-color-card-title">{'Modal'}</p>
+    <p className="dg-shadow-color-card-meta">{'elevation-lg'}</p>
   </div>
 </div>
-<div class="dg-modal-backdrop">
-  <div class="dg-elevation-card dg-elevation-xl">
-    <p class="dg-shadow-color-card-title">Critical Dialog</p>
-    <p class="dg-shadow-color-card-meta">elevation-xl</p>
+<div className="dg-modal-backdrop">
+  <div className="dg-elevation-card dg-elevation-xl">
+    <p className="dg-shadow-color-card-title">{'Critical Dialog'}</p>
+    <p className="dg-shadow-color-card-meta">{'elevation-xl'}</p>
   </div>
 </div>
 ```
@@ -362,12 +362,12 @@ Compare shadow depth from flat to maximum elevation:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<!-- Basic tooltip -->
-<div class="dg-tooltip">Tooltip text</div>
+```jsx
+// Basic tooltip
+<div className="dg-tooltip">{'Tooltip text'}</div>
 
-<!-- With arrow (combine: base + arrow + position) -->
-<div class="dg-tooltip dg-tooltip-arrow dg-tooltip-top">Arrow down</div>
+// With arrow (combine: base + arrow + position)
+<div className="dg-tooltip dg-tooltip-arrow dg-tooltip-top">{'Arrow down'}</div>
 <div class="dg-tooltip dg-tooltip-arrow dg-tooltip-bottom">Arrow up</div>
 <div class="dg-tooltip dg-tooltip-arrow dg-tooltip-left">Arrow right</div>
 <div class="dg-tooltip dg-tooltip-arrow dg-tooltip-right">Arrow left</div>
@@ -425,10 +425,10 @@ Use the focus shadow for accessible focus indicators:
 
 <div className="dg-flex dg-gap-lg dg-flex-wrap dg-items-center">
   <div className="dg-focus-card" tabIndex="0">
-    Default
+    {'Default'}
   </div>
   <div className="dg-focus-card dg-focus-card-focused" tabIndex="0">
-    Focused
+    {'Focused'}
   </div>
 </div>
 <p className="dg-hint dg-mt-md">↑ Tab to these elements to see focus state</p>
@@ -436,8 +436,9 @@ Use the focus shadow for accessible focus indicators:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<div class="dg-focus-card" tabindex="0">Focusable Card</div>
+```jsx
+<div className="dg-focus-card" tabIndex="0">{'Default'}</div>
+<div className="dg-focus-card dg-focus-card-focused" tabIndex="0">{'Focused'}</div>
 ```
 
 ```css
@@ -473,19 +474,19 @@ Use the focus shadow for accessible focus indicators:
   <button className="dg-btn dg-btn--active">Active</button>
   <button className="dg-btn dg-btn--focus">Focused</button>
   <button className="dg-btn dg-btn--disabled" disabled>
-    Disabled
+    {'Disabled'}
   </button>
 </div>
 
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn">Default</button>
-<button class="dg-btn dg-btn--hover">Hover</button>
-<button class="dg-btn dg-btn--active">Active</button>
-<button class="dg-btn dg-btn--focus">Focused</button>
-<button class="dg-btn dg-btn--disabled" disabled>Disabled</button>
+```jsx
+<button className="dg-btn">{'Default'}</button>
+<button className="dg-btn dg-btn--hover">{'Hover'}</button>
+<button className="dg-btn dg-btn--active">{'Active'}</button>
+<button className="dg-btn dg-btn--focus">{'Focused'}</button>
+<button className="dg-btn dg-btn--disabled" disabled>{'Disabled'}</button>
 ```
 
 ```css
@@ -543,9 +544,9 @@ Use inset shadows for pressed states and recessed areas:
 </TabItem>
 <TabItem value="code" label="Code">
 
-```html
-<button class="dg-btn dg-btn-primary dg-btn--pressed">Pressed Button</button>
-<div class="dg-well">Recessed area</div>
+```jsx
+<button className="dg-btn dg-btn-primary dg-btn--pressed">{'Pressed Button'}</button>
+<div className="dg-well">{'Recessed area'}</div>
 ```
 
 ```css
