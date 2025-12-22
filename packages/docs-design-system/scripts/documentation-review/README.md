@@ -1,10 +1,11 @@
 # Documentation Review Scripts
 
-This directory contains scripts for comprehensive documentation review following a 12-step process.
+This directory contains scripts for comprehensive documentation review following a 13-step process.
 
 ## 📋 Documentation
 
 - **PROMPT_TEMPLATE.md** - Complete prompt template for future reviews
+- **MDX_TEXT_WRAPPING_GUIDE.md** - Guide for wrapping text in `{'text'}` pattern
 - **ORIGINAL_NOTES.md** - All step-specific notes and exceptions from original prompt
 - **SCRIPT_ROBUSTNESS.md** - Guide for ensuring script reliability and validation
 - **COVERAGE_AND_ROBUSTNESS.md** - Answers to coverage and robustness questions
@@ -51,7 +52,7 @@ node packages/docs-design-system/scripts/documentation-review/run-all-checks.js
 ⚠️ **Why not run all at once?** Fixes in Step 1 may introduce issues that Step 2 would catch.
 Complete each step fully before moving forward.
 
-## The 12-Step Review Process
+## The 13-Step Review Process
 
 1. **Token Existence** - Verify tokens and CSS variables are defined
 2. **Color Demo Correctness** - Verify color demo blocks use correct CSS variables
@@ -65,6 +66,8 @@ Complete each step fully before moving forward.
 10. **Infima Overrides** - Check for potential CSS conflicts with Infima
 11. **Interactive State Patterns** - Verify pseudo-class + modifier class patterns
 12. **Code Section Consistency** - Check demo-code consistency
+13. **MDX Text Wrapping** - Check all text content in JSX is wrapped in `{'text'}` to prevent
+    unwanted `<p>` tags
 
 ## Workflow (Iterative Step-by-Step)
 

@@ -76,6 +76,14 @@ const config = [
     name: 'designgreat/audit-scripts-ignore',
     // Audit scripts are utility tools that don't need strict linting
     ignores: ['packages/docs-design-system/audit-color-docs.ts']
+  },
+  {
+    name: 'designgreat/docs-review-guides-ignore',
+    // Documentation review guides contain JSX code examples that ESLint shouldn't parse
+    ignores: [
+      'packages/docs-design-system/scripts/documentation-review/**/*.md',
+      'packages/docs-design-system/scripts/documentation-review/**/*.mdx'
+    ]
   }
 ]
 

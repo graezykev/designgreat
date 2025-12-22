@@ -1429,12 +1429,12 @@
 
 /* Base button state rules - lower priority, overridden by variant-specific rules */
 .dg-btn:hover {
-  background-color: var(--dg-color-background-bolder);
+  background-color: var(--dg-color-alpha-neutral-2);
 }
 
 .dg-btn--hover,
 .dg-btn--hover:hover {
-  background-color: var(--dg-color-background-bolder);
+  background-color: var(--dg-color-alpha-neutral-2);
 }
 
 .dg-btn:focus,
@@ -1454,7 +1454,7 @@
 .dg-btn--focus:focus:hover,
 .dg-btn--focus:focus-visible:hover {
   /* When focused and hovered: show hover background + focus indicator */
-  background-color: var(--dg-color-background-bolder);
+  background-color: var(--dg-color-alpha-neutral-2);
   box-shadow: var(--dg-shadow-focus);
 }
 
@@ -1462,7 +1462,7 @@
 .dg-btn:focus:active,
 .dg-btn:focus-visible:active {
   /* Active state overrides hover and focus */
-  background-color: var(--dg-color-alpha-neutral-2);
+  background-color: var(--dg-color-background-bolder);
   box-shadow: var(--dg-shadow-focus);
 }
 
@@ -1472,14 +1472,14 @@
 .dg-btn--focus:focus:active,
 .dg-btn--focus:focus-visible:active {
   /* When focused button is clicked: show active background + focus indicator */
-  background-color: var(--dg-color-alpha-neutral-2);
+  background-color: var(--dg-color-background-bolder);
   box-shadow: var(--dg-shadow-focus);
 }
 
 .dg-btn--active,
 .dg-btn--active:active,
 .dg-btn--active:hover {
-  background-color: var(--dg-color-alpha-neutral-2);
+  background-color: var(--dg-color-background-bolder);
 }
 
 .dg-btn--active:focus,
@@ -1487,7 +1487,7 @@
 .dg-btn--active:active:focus,
 .dg-btn--active:active:focus-visible {
   /* Active state overrides focus state */
-  background-color: var(--dg-color-alpha-neutral-2);
+  background-color: var(--dg-color-background-bolder);
   box-shadow: var(--dg-shadow-focus);
 }
 

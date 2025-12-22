@@ -392,6 +392,7 @@ export const light = {
       },
       "secondary": {
         "DEFAULT": "#206a83",
+        "bolder": "#0e2e39",
         "bold": "#174c5e",
         "subtle": "#2b8dae",
         "subtler": "#3eabd0",
@@ -544,22 +545,22 @@ export const light = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#1d1d1f7d",
-              "focus": "#1d1d1f4f",
-              "focus-visible": "#1d1d1f4f",
-              "active": "#1d1d1f24"
+              "hover": "#1d1d1f4f",
+              "focus": "#1d1d1f24",
+              "focus-visible": "#1d1d1f24",
+              "active": "#1d1d1f7d"
             },
             "state": {
               "disabled": "#1d1d1f0f"
             },
-            "DEFAULT": "#1d1d1f4f"
+            "DEFAULT": "#1d1d1f24"
           },
           "secondary": {
             "interaction": {
               "hover": "#174c5e",
               "focus": "#206a83",
               "focus-visible": "#206a83",
-              "active": "#2b8dae"
+              "active": "#0e2e39"
             },
             "state": {
               "disabled": "#69bedab3"
@@ -683,15 +684,15 @@ export const light = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#1d1d1f7d",
-              "focus": "#1d1d1f4f",
-              "focus-visible": "#1d1d1f4f",
-              "active": "#1d1d1f24"
+              "hover": "#1d1d1f4f",
+              "focus": "#1d1d1f24",
+              "focus-visible": "#1d1d1f24",
+              "active": "#1d1d1f7d"
             },
             "state": {
               "disabled": "#1d1d1f0f"
             },
-            "DEFAULT": "#1d1d1f4f"
+            "DEFAULT": "#1d1d1f24"
           },
           "outline": {
             "interaction": {
@@ -1905,6 +1906,7 @@ export const dark = {
       },
       "secondary": {
         "DEFAULT": "#206a83",
+        "bolder": "#bfe3ef",
         "bold": "#94d1e5",
         "subtle": "#3eabd0",
         "subtler": "#2b8dae",
@@ -2057,22 +2059,22 @@ export const dark = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#e8e8e97d",
-              "focus": "#e8e8e94f",
-              "focus-visible": "#e8e8e94f",
-              "active": "#e8e8e924"
+              "hover": "#e8e8e94f",
+              "focus": "#e8e8e924",
+              "focus-visible": "#e8e8e924",
+              "active": "#e8e8e97d"
             },
             "state": {
               "disabled": "#e8e8e90f"
             },
-            "DEFAULT": "#e8e8e94f"
+            "DEFAULT": "#e8e8e924"
           },
           "secondary": {
             "interaction": {
               "hover": "#94d1e5",
               "focus": "#206a83",
               "focus-visible": "#206a83",
-              "active": "#3eabd0"
+              "active": "#bfe3ef"
             },
             "state": {
               "disabled": "#206a83b3"
@@ -2196,15 +2198,15 @@ export const dark = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#e8e8e97d",
-              "focus": "#e8e8e94f",
-              "focus-visible": "#e8e8e94f",
-              "active": "#e8e8e924"
+              "hover": "#e8e8e94f",
+              "focus": "#e8e8e924",
+              "focus-visible": "#e8e8e924",
+              "active": "#e8e8e97d"
             },
             "state": {
               "disabled": "#e8e8e90f"
             },
-            "DEFAULT": "#e8e8e94f"
+            "DEFAULT": "#e8e8e924"
           },
           "outline": {
             "interaction": {

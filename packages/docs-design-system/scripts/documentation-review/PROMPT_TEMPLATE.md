@@ -7,7 +7,7 @@ Use this template for future comprehensive documentation reviews.
 ## Refactored Prompt Template
 
 ````
-Perform a comprehensive 12-step documentation review for all docs under:
+Perform a comprehensive 13-step documentation review for all docs under:
 - /designgreat/design-token/category/colors
 - /designgreat/design-token/category/spacing
 - /designgreat/design-token/category/typography
@@ -57,7 +57,7 @@ Perform a comprehensive 12-step documentation review for all docs under:
    - Only after Step N is fully complete and approved
    - **DO NOT proceed to Step N+1 without explicit consent**
 
-## The 12 Steps (Execute ONE at a time)
+## The 13 Steps (Execute ONE at a time)
 
 1. **Token Existence**: Check every table and token to find tokens that don't exist, CSS variables
    not defined, or not generated
@@ -77,6 +77,8 @@ Perform a comprehensive 12-step documentation review for all docs under:
     modifier class (.dg-xxx--hover) patterns
 12. **Code Section Consistency**: Check code sections are complete (HTML and CSS) and consistent
     with demo
+13. **MDX Text Wrapping**: Check all text content in JSX elements is wrapped in `{'text'}` to prevent
+    Docusaurus from adding unwanted `<p>` tags
 
 ## Critical Instructions
 
@@ -103,6 +105,7 @@ Perform a comprehensive 12-step documentation review for all docs under:
 - **Step 10**: Many flagged conflicts are likely safe - manual verification required
 - **Step 11**: `selected` and `opened` states don't need pseudo-classes (state classes only)
 - **Step 12**: Exclude utility classes and demo wrapper classes - focus on component classes
+- **Step 13**: Check that all text content in JSX elements (buttons, links, labels, spans, divs, paragraphs) is wrapped in `{'text'}`. This prevents Docusaurus from wrapping text in unwanted `<p>` tags. Code sections should also use this pattern to match demos. See `MDX_TEXT_WRAPPING_GUIDE.md` for detailed examples.
 
 ### Manual Verification Required
 
@@ -123,7 +126,7 @@ For Step 1:
 3. Get review → Re-check if needed → Wait
 4. Get consent → Proceed to Step 2
 
-Repeat for Steps 2-12, one at a time.
+Repeat for Steps 2-13, one at a time.
 
 ````
 
@@ -157,7 +160,7 @@ Repeat for Steps 2-12, one at a time.
 
 ```
 
-Perform a comprehensive 12-step documentation review using the template above.
+Perform a comprehensive 13-step documentation review using the template above.
 
 Start with Phase 1: Run all checks and generate reports. DO NOT make any fixes - only report
 findings.
