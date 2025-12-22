@@ -544,10 +544,10 @@ export const light = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#1d1d1f7d",
+              "hover": "#1d1d1f24",
               "focus": "#1d1d1f4f",
               "focus-visible": "#1d1d1f4f",
-              "active": "#1d1d1f24"
+              "active": "#1d1d1f7d"
             },
             "state": {
               "disabled": "#1d1d1f0f"
@@ -556,10 +556,10 @@ export const light = {
           },
           "secondary": {
             "interaction": {
-              "hover": "#174c5e",
+              "hover": "#2b8dae",
               "focus": "#206a83",
               "focus-visible": "#206a83",
-              "active": "#2b8dae"
+              "active": "#174c5e"
             },
             "state": {
               "disabled": "#69bedab3"
@@ -683,10 +683,10 @@ export const light = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#1d1d1f7d",
+              "hover": "#1d1d1f24",
               "focus": "#1d1d1f4f",
               "focus-visible": "#1d1d1f4f",
-              "active": "#1d1d1f24"
+              "active": "#1d1d1f7d"
             },
             "state": {
               "disabled": "#1d1d1f0f"
@@ -2057,10 +2057,10 @@ export const dark = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#e8e8e97d",
+              "hover": "#e8e8e924",
               "focus": "#e8e8e94f",
               "focus-visible": "#e8e8e94f",
-              "active": "#e8e8e924"
+              "active": "#e8e8e97d"
             },
             "state": {
               "disabled": "#e8e8e90f"
@@ -2069,10 +2069,10 @@ export const dark = {
           },
           "secondary": {
             "interaction": {
-              "hover": "#94d1e5",
+              "hover": "#3eabd0",
               "focus": "#206a83",
               "focus-visible": "#206a83",
-              "active": "#3eabd0"
+              "active": "#94d1e5"
             },
             "state": {
               "disabled": "#206a83b3"
@@ -2196,10 +2196,10 @@ export const dark = {
           },
           "subtle": {
             "interaction": {
-              "hover": "#e8e8e97d",
+              "hover": "#e8e8e924",
               "focus": "#e8e8e94f",
               "focus-visible": "#e8e8e94f",
-              "active": "#e8e8e924"
+              "active": "#e8e8e97d"
             },
             "state": {
               "disabled": "#e8e8e90f"

@@ -63,7 +63,7 @@ export default {
         subtle: {
           "interaction": {
             "hover": {
-              value: "{color.alpha.neutral.5}",
+              value: "{color.alpha.neutral.3}",
               type: 'color'
             },
             "focus": {
@@ -75,7 +75,7 @@ export default {
               type: 'color'
             },
             "active": {
-              value: "{color.alpha.neutral.3}",
+              value: "{color.alpha.neutral.5}",
               type: 'color'
             }
           }
@@ -83,7 +83,7 @@ export default {
         secondary: {
           "interaction": {
             "hover": {
-              value: "{color.secondary.bold}",
+              value: "{color.secondary.subtle}",
               type: 'color'
             },
             "focus": {
@@ -95,7 +95,7 @@ export default {
               type: 'color'
             },
             "active": {
-              value: "{color.secondary.subtle}",
+              value: "{color.secondary.bold}",
               type: 'color'
             }
           }

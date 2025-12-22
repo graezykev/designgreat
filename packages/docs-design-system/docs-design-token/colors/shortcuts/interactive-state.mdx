@@ -2325,14 +2325,28 @@ packages/lib-design-token/src/tokens/color/shortcut/
     background: {
       button: {
         DEFAULT: { value: '{color.primary.DEFAULT}', type: 'color' },
-        subtle: { value: '{color.alpha.neutral.1}', type: 'color' },
-        secondary: { value: '{color.secondary.DEFAULT}', type: 'color' },
         outline: { value: 'transparent', type: 'color' },
         ghost: { value: 'transparent', type: 'color' },
         interaction: {
           hover: { value: '{color.primary.hover.DEFAULT}', type: 'color' },
           focus: { value: '{color.primary.focus.DEFAULT}', type: 'color' },
           active: { value: '{color.primary.active.DEFAULT}', type: 'color' }
+        },
+        subtle: {
+          DEFAULT: { value: '{color.alpha.neutral.1}', type: 'color' },
+          interaction: {
+            hover: { value: '{color.alpha.neutral.3}', type: 'color' },
+            focus: { value: '{color.alpha.neutral.4}', type: 'color' },
+            active: { value: '{color.alpha.neutral.5}', type: 'color' }
+          }
+        },
+        secondary: {
+          DEFAULT: { value: '{color.secondary.DEFAULT}', type: 'color' },
+          interaction: {
+            hover: { value: '{color.secondary.subtle}', type: 'color' },
+            focus: { value: '{color.secondary.DEFAULT}', type: 'color' },
+            active: { value: '{color.secondary.bold}', type: 'color' }
+          }
         },
         state: {
           disabled: { value: '{color.primary.disabled.DEFAULT}', type: 'color' }
