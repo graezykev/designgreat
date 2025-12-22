@@ -72,6 +72,14 @@ export default {
           color: '{color.border.input.DEFAULT}'
         }
       },
+      hover: {
+        type: 'border',
+        value: {
+          width: '{border.width.thin}',
+          style: 'solid',
+          color: '{color.border.input.interaction.hover}'
+        }
+      },
       focus: {
         type: 'border',
         value: {

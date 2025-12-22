@@ -2517,7 +2517,7 @@
 /* Input states - order: hover → focus → validation → disabled */
 .dg-input:hover,
 .dg-input-hover {
-  border-color: var(--dg-color-border-input-interaction-hover);
+  border: var(--dg-border-input-hover);
 }
 
 .dg-input:focus,
