@@ -32,6 +32,11 @@ export const light = {
           "style": "solid",
           "color": "#1d1d1f24"
         },
+        "hover": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#48484d"
+        },
         "focus": {
           "width": "0.0625rem",
           "style": "solid",
@@ -675,6 +680,19 @@ export const light = {
           "DEFAULT": "#fbebea",
           "bold": "#ae2e24"
         },
+        "input": {
+          "interaction": {
+            "hover": "#48484d",
+            "focus": "#0055cc"
+          },
+          "state": {
+            "valid": "#216e4e",
+            "invalid": "#ae2e24",
+            "warning": "#a54800",
+            "disabled": "#1d1d1f4f"
+          },
+          "DEFAULT": "#1d1d1f24"
+        },
         "button": {
           "interaction": {
             "hover": "#003c90",
@@ -731,19 +749,6 @@ export const light = {
             "DEFAULT": "rgba(0, 0, 0, 0)"
           },
           "DEFAULT": "#0055cc"
-        },
-        "input": {
-          "interaction": {
-            "hover": "#48484d",
-            "focus": "#0055cc"
-          },
-          "state": {
-            "valid": "#216e4e",
-            "invalid": "#ae2e24",
-            "warning": "#a54800",
-            "disabled": "#1d1d1f4f"
-          },
-          "DEFAULT": "#1d1d1f24"
         },
         "checkbox": {
           "interaction": {
@@ -1546,6 +1551,11 @@ export const dark = {
           "style": "solid",
           "color": "#e8e8e924"
         },
+        "hover": {
+          "width": "0.0625rem",
+          "style": "solid",
+          "color": "#b9b9be"
+        },
         "focus": {
           "width": "0.0625rem",
           "style": "solid",
@@ -2189,6 +2199,19 @@ export const dark = {
           "DEFAULT": "#150604",
           "bold": "#e38078"
         },
+        "input": {
+          "interaction": {
+            "hover": "#b9b9be",
+            "focus": "#599eff"
+          },
+          "state": {
+            "valid": "#68d2a6",
+            "invalid": "#e38078",
+            "warning": "#ff9746",
+            "disabled": "#e8e8e94f"
+          },
+          "DEFAULT": "#e8e8e924"
+        },
         "button": {
           "interaction": {
             "hover": "#88baff",
@@ -2245,19 +2268,6 @@ export const dark = {
             "DEFAULT": "rgba(0, 0, 0, 0)"
           },
           "DEFAULT": "#599eff"
-        },
-        "input": {
-          "interaction": {
-            "hover": "#b9b9be",
-            "focus": "#599eff"
-          },
-          "state": {
-            "valid": "#68d2a6",
-            "invalid": "#e38078",
-            "warning": "#ff9746",
-            "disabled": "#e8e8e94f"
-          },
-          "DEFAULT": "#e8e8e924"
         },
         "checkbox": {
           "interaction": {

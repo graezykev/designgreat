@@ -245,6 +245,18 @@ export default {
       }
     },
     "border": {
+      input: {
+        "interaction": {
+          "hover": {
+            value: "{color.alpha.neutral.4}",
+            type: 'color'
+          },
+          "focus": {
+            value: "{color.primary.focus.DEFAULT}",
+            type: 'color'
+          }
+        }
+      },
       button: {
         "interaction": {
           "hover": {

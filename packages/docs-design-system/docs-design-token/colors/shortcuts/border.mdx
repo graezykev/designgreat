@@ -95,6 +95,7 @@ Specialized borders for form inputs with state variants:
 | Color                                                                                                          | Token                  | CSS Variable                | Use Case                   |
 | -------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------- | -------------------------- |
 | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-default)'}}></div>           | `border.input.DEFAULT` | `--dg-border-input-default` | Default input border       |
+| <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-interaction-hover)'}}></div> | `border.input.hover`   | `--dg-border-input-hover`   | Hovered input border       |
 | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-input-interaction-focus)'}}></div> | `border.input.focus`   | `--dg-border-input-focus`   | Focused input border       |
 | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-error-bold)'}}></div>              | `border.input.error`   | `--dg-border-input-error`   | Error state input border   |
 | <div className="color-demo" style={{backgroundColor: 'var(--dg-color-border-success-bold)'}}></div>            | `border.input.success` | `--dg-border-input-success` | Success state input border |
@@ -105,6 +106,7 @@ Specialized borders for form inputs with state variants:
 | Token     | width                 | style   | color                                    |
 | --------- | --------------------- | ------- | ---------------------------------------- |
 | `DEFAULT` | `{border.width.thin}` | `solid` | `{color.border.input.DEFAULT}`           |
+| `hover`   | `{border.width.thin}` | `solid` | `{color.border.input.interaction.hover}` |
 | `focus`   | `{border.width.thin}` | `solid` | `{color.border.input.interaction.focus}` |
 | `error`   | `{border.width.thin}` | `solid` | `{color.border.error.bold}`              |
 | `success` | `{border.width.thin}` | `solid` | `{color.border.success.bold}`            |
@@ -118,6 +120,10 @@ Specialized borders for form inputs with state variants:
   <div className="dg-form-group">
     <label className="dg-form-label">Default</label>
     <input type="text" placeholder="Default input..." className="dg-input" />
+  </div>
+  <div className="dg-form-group">
+    <label className="dg-form-label">Hover</label>
+    <input type="text" placeholder="Hover input..." className="dg-input dg-input-hover" readOnly />
   </div>
   <div className="dg-form-group">
     <label className="dg-form-label">Focus</label>
@@ -138,6 +144,7 @@ Specialized borders for form inputs with state variants:
 
 ```html
 <input type="text" class="dg-input" />
+<input type="text" class="dg-input dg-input-hover" />
 <input type="text" class="dg-input dg-input-focus" />
 <input type="text" class="dg-input dg-input-error" />
 <input type="text" class="dg-input dg-input-success" />
@@ -148,6 +155,11 @@ Specialized borders for form inputs with state variants:
   border: var(--dg-border-input-default);
   border-radius: var(--dg-size-border-radius-md);
   padding: var(--dg-spacing-inset-sm);
+}
+
+.dg-input:hover,
+.dg-input-hover {
+  border: var(--dg-border-input-hover);
 }
 
 .dg-input:focus,
@@ -476,6 +488,7 @@ const borders = {
   subtle: tokens.border.subtle,
   bold: tokens.border.bold,
   inputDefault: tokens.border.input.DEFAULT,
+  inputHover: tokens.border.input.hover,
   inputFocus: tokens.border.input.focus,
   divider: tokens.border.divider.DEFAULT,
   focus: tokens.border.focus
@@ -497,7 +510,7 @@ function Card({ variant = 'default', children }) {
 ### ✅ Do
 
 - Use `--dg-border-default` for most container borders
-- Use `--dg-border-input-*` tokens for form elements
+- Use `--dg-border-input-*` tokens for form elements (including hover states)
 - Use `--dg-border-divider-*` for horizontal separators
 - Use `--dg-border-focus` alongside `--dg-shadow-focus` for accessibility
 - Test border visibility in both light and dark themes
@@ -584,6 +597,14 @@ packages/lib-design-token/src/tokens/
           width: '{border.width.thin}',
           style: 'solid',
           color: '{color.border.input.DEFAULT}'
+        }
+      },
+      hover: {
+        type: 'border',
+        value: {
+          width: '{border.width.thin}',
+          style: 'solid',
+          color: '{color.border.input.interaction.hover}'
         }
       },
       focus: {
