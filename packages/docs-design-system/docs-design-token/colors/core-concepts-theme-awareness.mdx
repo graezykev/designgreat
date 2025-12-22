@@ -134,6 +134,32 @@ flowchart LR
 
 **ALL numbered gradient levels have the same hex values in both themes.** They are algorithmically generated from base colors to form a stable, theme-independent palette.
 
+#### Gradient Generation Algorithm
+
+Accent color gradients are generated once from base colors and remain consistent:
+
+1. **Base Reference**: Start with a base color (e.g., `#1d1d1f` for grey, `#0055cc` for blue)
+2. **Lightness Calculation**: Generate lighter and darker shades algorithmically
+3. **Fixed Output**: The gradient values are the same in both light and dark themes
+
+```javascript
+const gradientConfig = {
+  totalShades: 10, // Number of gradient levels (10 for saturated, 12 for grey)
+  defaultShade: 7, // Which level is the base color (7 for saturated, 11 for grey)
+  darkestLightness: 0.05, // Lightness of darkest shade
+  lightestLightness: 0.95 // Lightness of lightest shade (or 1.0 for grey)
+}
+```
+
+:::info Implementation
+The gradient generation is implemented in [`color-gradient.js`](https://github.com/graezykev/designgreat/blob/main/packages/lib-design-token/scripts/style-dictionary/color-gradient.js) using the `generateColorShades` function.
+:::
+
+#### Gradient Configuration
+
+- **Grey**: 12 shades (default at level 11)
+- **Saturated Colors**: 10 shades (default at level 7)
+
 #### **Grey/Neutral (12 levels)**
 
 |                    | Level 1                                                                                       | Level 2                                                                                       | Level 3                                                                                       | Level 4                                                                                       | Level 5                                                                                       | Level 6                                                                                       | Level 7                                                                                       | Level 8                                                                                       | Level 9                                                                                       | Level 10                                                                                       | Level 11                                                                                       | Level 12                                                                                       |
