@@ -1,5 +1,12 @@
 # @designgreat/lib-web-component
 
+## 0.7.7
+
+### Patch Changes
+
+- Updated dependencies [3e10a39]
+  - @designgreat/lib-design-token@0.10.1
+
 ## 0.7.6
 
 ### Patch Changes
