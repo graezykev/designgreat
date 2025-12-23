@@ -549,10 +549,48 @@ Always provide visible focus indicators:
 
 ```
 packages/lib-design-token/src/tokens/
-├── border.js              # Border tokens (shorthand, width, input, divider)
+├── border.js                    # Border tokens (shorthand, width, input, divider)
 └── color/shortcut/
-    └── border.js          # Border color shortcuts
+    ├── border.js                # Border color shortcuts (default, bold, subtle, semantic)
+    └── input-interaction.js     # Input border interaction colors (hover, focus)
 ```
+
+**Key Files:**
+
+- `border.js`: Defines complete border shorthand tokens (width + style + color) including `border.input.hover` which references `{color.border.input.interaction.hover}`
+- `color/shortcut/border.js`: Defines base border color tokens (`color.border.DEFAULT`, `color.border.bold`, `color.border.subtle`, etc.)
+- `color/shortcut/input-interaction.js`: Defines input-specific border interaction colors (`color.border.input.interaction.hover`, `color.border.input.interaction.focus`)
+
+### Token Reference Chain
+
+The `border.input.hover` token uses a reference chain:
+
+1. **`border.js` (line 80)**: Defines `border.input.hover` with color reference
+
+   ```javascript
+   hover: {
+     type: 'border',
+     value: {
+       width: '{border.width.thin}',
+       style: 'solid',
+       color: '{color.border.input.interaction.hover}'  // ← References color token
+     }
+   }
+   ```
+
+2. **`color/shortcut/input-interaction.js` (line 320)**: Defines the actual color value
+   ```javascript
+   "input": {
+     "interaction": {
+       "hover": {
+         value: '{color.border.bold}',  // ← Current value (can be customized)
+         type: 'color'
+       }
+     }
+   }
+   ```
+
+This allows the border color to be customized independently while maintaining the complete border shorthand structure.
 
 ### Token Structure
 
