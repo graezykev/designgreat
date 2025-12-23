@@ -1,5 +1,15 @@
 # @designgreat/docs-design-system
 
+## 0.9.3
+
+### Patch Changes
+
+- 632439f: Update technical details of Border Shotcuts
+
+  **Related PR:** [#55](https://github.com/graezykev/designgreat/pull/55)
+
+  **Author:** @chunman-yeung
+
 ## 0.9.2
 
 ### Patch Changes
